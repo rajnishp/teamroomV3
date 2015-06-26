@@ -1,0 +1,103 @@
+/challenge
+
+	GET "api.loc.collap.com/v0/challenge"
+
+	Response:
+
+	{
+    "internal_status": {
+        "code": "2000",
+        "message": "Challenge Fetched"
+    },
+    "data": {
+        "challengesDetails": [
+            {
+                "id": "10",
+                "projectId": "0",
+                "title": "title for challenge",
+                "stmt": "statment of challenge , this challenge is a type of post. It can be of any type like article, idea, video etc",
+                "type": "1",
+                "status": "1",
+                "likes": "1",
+                "dislikes": "1",
+                "creationTime": "2015-03-27 19:14:57",
+                "firstName": "rajnish",
+                "lastName": "kumar",
+                "userName": "rajnish"
+            },
+            {
+                "id": "9",
+                "projectId": "0",
+                "title": "title for challenge: Updated title",
+                "stmt": "statment of challenge , Test for PUT method It can be of any type like article, idea, video etc",
+                "type": "1",
+                "status": "1",
+                "likes": "3",
+                "dislikes": "2",
+                "creationTime": "2015-03-27 19:01:55",
+                "firstName": "rajnish",
+                "lastName": "kumar",
+                "userName": "rajnish"
+            },
+            {
+                "id": "8",
+                "projectId": "0",
+                "title": "title for statement",
+                "stmt": "statment of challenge",
+                "type": "1",
+                "status": "1",
+                "likes": "1",
+                "dislikes": "1",
+                "creationTime": "2015-03-27 18:55:47",
+                "firstName": "rajnish",
+                "lastName": "kumar",
+                "userName": "rajnish"
+            },
+            {
+                "id": "3",
+                "projectId": "3",
+                "title": "title od challenge with user id 2",
+                "stmt": "statemetn od challenge with user id 2",
+                "type": "1",
+                "status": "5",
+                "likes": "0",
+                "dislikes": "0",
+                "creationTime": "2015-03-27 05:21:02",
+                "firstName": "rajnish",
+                "lastName": "kumar",
+                "userName": "rajnish"
+            }
+        ]
+    }
+}
+
+
+
+/challenge/<challenge_ID>
+
+	GET "api.loc.collap.com/v0/challenge/3"
+
+	{
+		"internal_status": {
+		    "code": "2000",
+		    "message": "Challenge Fetched"
+		},
+		"data": {
+		    "challengeDetail": [
+                {
+	                "id": "3",
+	                "projectId": "3",
+	                "title": "title od challenge with user id 2",
+	                "stmt": "statemetn od challenge with user id 2",
+	                "type": "1",
+	                "status": "5",
+	                "likes": "0",
+	                "dislikes": "0",
+	                "creationTime": "2015-03-27 05:21:02",
+	                "firstName": "rajnish",
+	                "lastName": "kumar",
+	                "userName": "rajnish"
+	            }
+		    ]
+		}
+	}
