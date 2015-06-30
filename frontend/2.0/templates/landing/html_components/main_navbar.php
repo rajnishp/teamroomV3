@@ -35,14 +35,14 @@
           
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
-            <li class="dropdown ">
+            <li class="dropdown">
               <a href="./index.html" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
               
               Dashboards
               <i class="mainnav-caret"></i>
               </a>
 
-              <ul class="dropdown-menu" role="menu">
+              <ul class="dropdown-menu with-arrow" role="menu">
                 <li>
                   <a href="./index.html">
                   <i class="fa fa-dashboard dropdown-icon "></i> 
@@ -76,7 +76,7 @@
               <i class="mainnav-caret"></i>
               </a>
 
-              <ul class="dropdown-menu" role="menu">
+              <ul class="dropdown-menu with-arrow" role="menu">
                 <li>
                   <a href="./page-pricing.html">
                   <i class="fa fa-money dropdown-icon "></i> 
@@ -123,7 +123,7 @@
               <i class="mainnav-caret"></i>
               </a>
 
-              <ul class="dropdown-menu" role="menu">
+              <ul class="dropdown-menu with-arrow" role="menu">
                 <li>
                   <a href="./page-notifications.html">
                   <i class="fa fa-bell dropdown-icon "></i> 
@@ -175,7 +175,7 @@
                   Login Pages
                   </a>
 
-                  <ul class="dropdown-menu">
+                  <ul class="dropdown-menu with-arrow">
                     <li>
                       <a href="./account-login.html">
                       <i class="fa fa-unlock dropdown-icon "></i> 

@@ -419,4 +419,3 @@
         </div>
 
         <?php include_once 'html_components/footer.php'; ?>
-        </div>

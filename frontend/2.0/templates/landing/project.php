@@ -11,45 +11,19 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
-  <!-- Google Font: Open Sans -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,400italic,600,600italic,800,800italic">
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:400,300,700">
+  <?php include_once 'html_components/header.php'; ?>
 
-  <!-- Font Awesome CSS -->
-  <link rel="stylesheet" href="../../bower_components/fontawesome/css/font-awesome.min.css">
-
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="../../bower_components/bootstrap/dist/css/bootstrap.min.css">
-
-
-  <!-- Custom Add CSS -->
-  <link rel="stylesheet" href="../landing/css/custom_add.css">
-
-
-    <!-- App CSS -->
-  <link rel="stylesheet" href="./css/mvpready-landing.css">
-  <link href="../../bower_components/animate.css/animate.min.css" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="./css/custom.css"> -->
-
-
-  <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="//oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="//oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-
-  <link rel="shortcut icon" href="collap.ico">
 </head>
 
 <body>
 
-<?php include_once 'html_components/navbar.html'; ?>
+<div id="container" class="effect mainnav-lg">
+  <?php include_once 'html_components/main_navbar.php'; ?>
 
-  <div id="wrapper">
+  <div class="">
+      <?php include_once 'html_components/sidebar_button.php'; ?>
 
-    <div class="content">
-
-      <div class="container">
+    <div id="content-container">
 
 <!--         <hr class="spacer-sm"> -->
         
@@ -177,11 +151,5 @@
 
         </div>
 
-      </div>
-    
-    </div>
-
-  </div>
-
-  </body>
-</html>
+      <?php include_once 'html_components/footer.php'; ?>
+       

@@ -17,13 +17,13 @@
 
 <body>
 
-<?php include_once 'html_components/main_navbar.php'; ?>
+<div id="container" class="effect mainnav-lg">
+  <?php include_once 'html_components/main_navbar.php'; ?>
 
-  <div class="content">
+  <div class="">
+      <?php include_once 'html_components/sidebar_button.php'; ?>
 
-    <div class="container">
-
-      <div class="row">
+    <div id="content-container">
 
 
         <div class="col-md-10 col-sm-12 col-md-offset-1">
