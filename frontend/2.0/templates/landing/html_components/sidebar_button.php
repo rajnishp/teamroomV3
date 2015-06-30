@@ -10,7 +10,7 @@
 			<!--MAIN NAVIGATION-->
 			<!--===================================================-->
 			<nav id="mainnav-container">
-				<div id="mainnav" style="border-top-style: solid; border-top-width: 22px;">
+				<div id="mainnav">
 
 					<!--Shortcut buttons-->
 					<!--================================-->
