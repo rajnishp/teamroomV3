@@ -12,22 +12,15 @@
   <link rel="stylesheet" href="../admin/css/mvpready-admin.css">
   
   <link rel="stylesheet" href="../landing/css/mvpready-landing.css">
+
+  <link href="../../bower_components/animate.css/animate.min.css" rel="stylesheet">
   
 
   <!-- Custom Add CSS -->
   <link rel="stylesheet" href="../landing/css/custom_add.css">
 
-
-  <!-- App CSS -->
-  <link href="../../bower_components/animate.css/animate.min.css" rel="stylesheet">
-  <!-- <link rel="stylesheet" href="./css/custom.css"> -->
-
-
   <!-- Favicon -->
   <link rel="shortcut icon" href="favicon.ico">
-
-
-
 
 
   <!--STYLESHEET-->

@@ -18,10 +18,9 @@
 <body>
 
   <div id="container" class="effect mainnav-lg">
-  <?php include_once 'html_components/main_navbar.php'; ?>
+    <?php include_once 'html_components/main_navbar.php'; ?>
 
-  <div class="">
-      <?php include_once 'html_components/sidebar_button.php'; ?>
+    <?php include_once 'html_components/sidebar_button.php'; ?>
 
     <div id="content-container">
 
@@ -416,6 +415,11 @@
             </div> <!-- /.comment -->
           </ol>
         </div>
-        </div>
+      </div>
+    </div>
+    <!-- id Content-container div end -->
+  </div>
+  <!-- id container div end -->
 
-        <?php include_once 'html_components/footer.php'; ?>
+
+  <?php include_once 'html_components/footer.php'; ?>
