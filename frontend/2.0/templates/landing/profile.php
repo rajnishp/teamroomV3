@@ -28,6 +28,42 @@
         
         <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 
+          
+<!--Profile Heading-->
+              <!--===================================================-->
+              <div class="panel">
+                <div class="panel-bg-cover">
+                  <img class="img-responsive" src="../landing/imgs/kapitalia.jpg" alt="Image">
+                </div>
+                <div class="panel-media">
+                  <img src="../landing/imgs/rajnish.jpg" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
+                  <div class="row">
+                    <div class="col-lg-7">
+                      <h3 class="panel-media-heading">Stephen Tran</h3>
+                      <a href="#" class="btn-link">@stephen_doe</a>
+                      <p class="text-muted mar-btm">Web and Graphic designer</p>
+                    </div>
+                    <div class="col-lg-5 text-lg-right">
+                      <button class="btn btn-sm btn-primary">Add Friend</button>
+                      <button class="btn btn-sm btn-mint btn-icon fa fa-envelope icon-lg"></button>
+                    </div>
+                  </div>
+                </div>
+                <div class="panel-body">
+                  <h4>Consectetur adipisicing</h4>
+                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
+                </div>
+              </div>
+
+
+
+
+
+
+
+
+
+
           <img src="../landing/imgs/kapitalia.jpg" class="post-img img-responsive" alt="" >
           <hr class="spacer-sm">
           
