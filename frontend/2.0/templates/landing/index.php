@@ -19,246 +19,230 @@
 
 <?php include_once 'html_components/navbar.html'; ?>
 
-<div id="wrapper">
+  <div id="wrapper">
 
     <div class="content">
+
       <section id = "login">
         <div class="container"  style=" padding-top: 100px;">
 
           <div class="account-wrapper">
 
-                <h3 class ="pull-left">Welcome back to Collap</h3>
-                <h5 class="pull-right" style="margin-top: 28px;">
-                  <a href="#register" style="color:#0CD85E"> 
-                    Don't have an account? 
-                  </a>
-                </h5>
-                <br><br>
-                <label></label>
+            <h3 class ="pull-left">Welcome back to Collap</h3>
+            <h5 class="pull-right" style="margin-top: 28px;">
+              <a href="#register" style="color:#0CD85E"> 
+                Don't have an account? 
+              </a>
+            </h5>
+            <br><br>
+            <label></label>
                 
-                <form class="form account-form login-form masthead-form well">
+            <form class="form account-form login-form masthead-form well">
 
-                  <div class="form-group">
-                    <input type="text" class=" input-block-level form-control" id="username" placeholder="Email or Username" tabindex="1">
-                  </div>
-                  <div class="form-group">
-                    <input type="password" class="input-block-level form-control" id="passwordlogin" placeholder="Password" tabindex="1">
-                  </div>
+              <div class="form-group">
+                <input type="text" class=" input-block-level form-control" id="username" placeholder="Email or Username" tabindex="1">
+              </div>
+              <div class="form-group">
+                <input type="password" class="input-block-level form-control" id="passwordlogin" placeholder="Password" tabindex="1">
+              </div>
 
-                  <div class="form-group clearfix">
-                    <div class="pull-left">         
-                      <label class="checkbox-inline">
-                        <input type="checkbox" class="" value="" tabindex="3" style="margin-top: 11px;"> <h5> Remember me </h5>
-                      </label>
-                    </div>
+              <div class="form-group clearfix">
+                <div class="pull-left">         
+                  <label class="checkbox-inline">
+                    <input type="checkbox" class="" value="" tabindex="3" style="margin-top: 11px;"> <h5> Remember me </h5>
+                  </label>
+                </div>
 
-                    <div class="pull-right">
-                      <h5><a href="#/forgetpassword" style="color:#0CD85E"> Forgot Password? </a> </h5>
-                    </div>
-                  </div> <!-- /.form-group -->
+                <div class="pull-right">
+                  <h5><a href="#/forgetpassword" style="color:#0CD85E"> Forgot Password? </a> </h5>
+                </div>
+              </div> <!-- /.form-group -->
 
-                  <input name="project" type="hidden" value="Collap"/>
-                  <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login"><b> Login </b></button>
-                  <div class="line"> or </div>  
-                  <div class="socials">
-                    <ul class="list-inline">
-                      <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
-                        <img class="media-object img-circle" src="imgs/facebook.png" style="width:50px;"/>
-                      </a></li>
-                      <li><a  href="https://twitter.com/CollapCom" target='_blank'>
-                        <img class="media-object img-circle" src="imgs/Twitter.png" style="width:50px;"/>
-                      </a></li>
-                      <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
-                        <img class="media-object img-circle" src="imgs/pinterest.png" style="width:50px;"/>
-                      </a></li>
-                      <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
-                        <img class="media-object img-circle" src="imgs/google.png" style="width:50px;"/>
-                      </a></li>
-                      <li><a  href="https://in.linkedin.com/" target='_blank'>
-                        <img class="media-object img-circle" src="imgs/linkdin.png" style="width:50px;"/>
-                      </a></li>
-                      <li><a  href="https://github.com/collapcom" target='_blank'>
-                        <img class="media-object img-circle" src="imgs/github.png" style="width:50px;"/>
-                      </a></li>
-                    </ul>
-                  </div> <!-- End of social Login -->
+              <input name="project" type="hidden" value="Collap"/>
+              <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login"><b> Login </b></button>
+              <div class="line"> or </div>  
+              <div class="socials">
+                <ul class="list-inline">
+                  <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
+                    <img class="media-object img-circle" src="imgs/facebook.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://twitter.com/CollapCom" target='_blank'>
+                    <img class="media-object img-circle" src="imgs/Twitter.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
+                    <img class="media-object img-circle" src="imgs/pinterest.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
+                    <img class="media-object img-circle" src="imgs/google.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://in.linkedin.com/" target='_blank'>
+                    <img class="media-object img-circle" src="imgs/linkdin.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://github.com/collapcom" target='_blank'>
+                    <img class="media-object img-circle" src="imgs/github.png" style="width:50px;"/>
+                  </a></li>
+                </ul>
+              </div> <!-- End of social Login -->
 
-                </form>
+            </form>
 
-                <div class="divider large visible-desktop"></div><br/>
+            <div class="divider large visible-desktop"></div><br/>
           </div>
-        </section>      
-      </div> <!-- /.container -->
-
-    </div> <!-- /.item -->
-
-    <hr class="spacer-md hidden-xs">
-    <hr class="spacer-sm visible-xs">
-<hr>
-
-
-              <section id = "register">
-                <div class="container ">
-
-                  <div class="account-wrapper">
-                  <div class="section-header">
-                    <!-- SECTION TITLE -->
-                    <h2 class="dark-text">Register with Collap</h2>
-                  </div>
-                  <div class="row">
-                    <form class="form account-form registration-form masthead-form well" method="POST" action="../admin/index.html">
-
-                      <div class="form-group">
-                        
-                        <input type="text" class="input-block-level form-control" placeholder="Enter first name" id="firstname" onkeyup="nospaces(this)" tabindex="1">
-                      </div> <!-- /.form-group -->
-
-                      <div class="form-group">
-                        <input type="text" class="input-block-level form-control" placeholder="Enter last name" id="lastname" onkeyup="nospaces(this)" tabindex="1">
-                      </div> <!-- /.form-group -->
-
-                      <div class="form-group">
-                        <input type="email" class="input-block-level form-control" placeholder="Enter email-id" id="email" onkeyup="nospaces(this)" onblur="emailCheck();" tabindex="1">
-                        <span id="status_email"></span>
-                      </div> <!-- /.form-group -->
-              
-                      <div class="form-group">
-                        <input type="text" class="input-block-level form-control" placeholder="Enter username" id="usernameR" onkeyup="nospaces(this)" onblur="usernameCheck();"/>
-                        <span id="status"></span>
-                      </div> <!-- /.form-group -->
-
-                      <div class="form-group">
-                        <input type="password" class="input-block-level form-control" placeholder="Enter password" onkeyup="nospaces(this)" id="passwordR"/>
-                      </div> <!-- /.form-group -->
-
-                      <div class="form-group">
-                        <input type="password" class="input-block-level form-control" placeholder="Confirm password" onkeyup="nospaces(this)" id="password2R"/>
-                      </div> <!-- /.form-group -->
-
-                      <label>You are here for</label>
-                      <br>
-
-                      <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeCol' /> Collaboration &nbsp;&nbsp;&nbsp;
-
-                      <input type="checkbox" class="btn btn-mini custom-checkbox" onclick='aboutinvest()' id='typeInv'/> Invester &nbsp;&nbsp;&nbsp;
-                      
-                      <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeFun'/> Fund Searcher 
-
-                      <label>
-                        <div class='totalcapital'>
-                          <label>How much amount you want to invest (in dollars)</label>
-                          <input type="num" class="input-group" id="investment" onkeyup="nospaces(this)" min='10' onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" placeholder="Enter amount"/>
-                          <span class="input-group-addon" style='font-size:20px;'>.00 $</span>
-                        </div>
-                      </label>
-
-                      <div class="form-group">
-                        <label class="checkbox-inline">
-                          <input type="checkbox" class="" value="" tabindex="5">
-                            Aggree to  
-                            <a href="#" data-toggle="modal">Terms &amp; Conditions</a>
-                        </label>
-                      </div>
-                      
-                      <div class="form-group">
-                        <button type="submit" class="btn btn-success" id="request_reg" style="width:100%;height:50px;font-size:22px;" >
-                          <b>Register</b>
-                        </button>
-                      </div>
-
-                      <div class="line"> or </div>
-                      <div class="socials">
-                        <ul class="list-inline">
-                          <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
-                            <img class="media-object img-circle" src="imgs/facebook.png" style="width:50px;"/>
-                          </a></li>
-                          <li><a  href="https://twitter.com/CollapCom" target='_blank'>
-                            <img class="media-object img-circle" src="imgs/Twitter.png" style="width:50px;"/>
-                          </a></li>
-                          <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
-                            <img class="media-object img-circle" src="imgs/pinterest.png" style="width:50px;"/>
-                          </a></li>
-                          <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
-                            <img class="media-object img-circle" src="imgs/google.png" style="width:50px;"/>
-                          </a></li>
-                          <li><a  href="https://in.linkedin.com/" target='_blank'>
-                            <img class="media-object img-circle" src="imgs/linkdin.png" style="width:50px;"/>
-                          </a></li>
-                          <li><a  href="https://github.com/collapcom" target='_blank'>
-                            <img class="media-object img-circle" src="imgs/github.png" style="width:50px;"/>
-                          </a></li>
-                        </ul>
-                      </div>
-                    <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
-                  </form>
-                  </div>
-                </div>
-                </div>
-              </section>
-
-
-  
-            <div class="item " style="background-color: #354b5e; background-image: url(../../global/img/bg/dark-mosaic.png);">
-
-              <hr class="spacer-md hidden-xs">
-              <hr class="spacer-sm visible-xs">
-
-              <div class="container">
-
-                <div class="row">
-
-                  <div class="col-md-6 masthead-text animated fadeInDownBig">
-                    <h4 class="masthead-title">Don't feel limited to color schemes provided.</h4>
-
-                    <p>
-                    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi ut aliquip ex ea commodo consequat.
-                    </p>
-
-                    <br>
-
-                    <div class="masthead-actions">
-                      <a href="javascript:;" class="btn btn-transparent btn-jumbo">
-                      Learn More
-                      </a>
-
-                      <a href="./account-signup.html" class="btn btn-primary btn-jumbo">
-                      Create an Account
-                      </a>
-                    </div> <!-- /.masthead-actions -->
-
-                  </div> <!-- /.masthead-text -->
-
-                  <hr class="spacer-sm visible-xs visible-sm">
-
-                  <div class="col-md-6 masthead-img animated pulse">
-                    <iframe src="https://player.vimeo.com/video/57175742?title=0&amp;byline=0&amp;portrait=0&amp;color=e2007a" style="width: 85%; height: 325px;"></iframe>
-
-                    <hr class="spacer-md">
-                    <hr class="spacer-xs">
+        </div> <!-- /.container -->
+      </section>      
       
-                  </div> <!-- /.masthead-img -->
 
-                </div> <!-- /.row -->
-
-              </div> <!-- /.container -->
-
-            </div> <!-- /.item -->            
-
-          </div>  <!-- /.carousel-inner -->
-          <!-- Carousel nav -->
+      <hr class="spacer-md hidden-xs">
+      <hr class="spacer-sm visible-xs">
+    
+      <hr>
 
 
-          <div class="container">
-            <div class="carousel-controls">
-              <a class="carousel-control left" href="#masthead-carousel" data-slide="prev">&lsaquo;</a>
-              <a class="carousel-control right" href="#masthead-carousel" data-slide="next">&rsaquo;</a>
+      <section id = "register">
+        <div class="container ">
+
+          <div class="account-wrapper">
+            <div class="section-header">
+              <!-- SECTION TITLE -->
+              <h2 class="dark-text">Register with Collap</h2>
+            </div>
+            <div class="row">
+              <form class="form account-form registration-form masthead-form well" method="POST" action="../admin/index.html">
+
+                <div class="form-group">
+                  
+                  <input type="text" class="input-block-level form-control" placeholder="Enter first name" id="firstname" onkeyup="nospaces(this)" tabindex="1">
+                </div> <!-- /.form-group -->
+
+                <div class="form-group">
+                  <input type="text" class="input-block-level form-control" placeholder="Enter last name" id="lastname" onkeyup="nospaces(this)" tabindex="1">
+                </div> <!-- /.form-group -->
+
+                <div class="form-group">
+                  <input type="email" class="input-block-level form-control" placeholder="Enter email-id" id="email" onkeyup="nospaces(this)" onblur="emailCheck();" tabindex="1">
+                  <span id="status_email"></span>
+                </div> <!-- /.form-group -->
+        
+                <div class="form-group">
+                  <input type="text" class="input-block-level form-control" placeholder="Enter username" id="usernameR" onkeyup="nospaces(this)" onblur="usernameCheck();"/>
+                  <span id="status"></span>
+                </div> <!-- /.form-group -->
+
+                <div class="form-group">
+                  <input type="password" class="input-block-level form-control" placeholder="Enter password" onkeyup="nospaces(this)" id="passwordR"/>
+                </div> <!-- /.form-group -->
+
+                <div class="form-group">
+                  <input type="password" class="input-block-level form-control" placeholder="Confirm password" onkeyup="nospaces(this)" id="password2R"/>
+                </div> <!-- /.form-group -->
+
+                <label>You are here for</label>
+                <br>
+
+                <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeCol' /> Collaboration &nbsp;&nbsp;&nbsp;
+
+                <input type="checkbox" class="btn btn-mini custom-checkbox" onclick='aboutinvest()' id='typeInv'/> Invester &nbsp;&nbsp;&nbsp;
+                
+                <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeFun'/> Fund Searcher 
+
+                <label>
+                  <div class='totalcapital'>
+                    <label>How much amount you want to invest (in dollars)</label>
+                    <input type="num" class="input-group" id="investment" onkeyup="nospaces(this)" min='10' onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" placeholder="Enter amount"/>
+                    <span class="input-group-addon" style='font-size:20px;'>.00 $</span>
+                  </div>
+                </label>
+
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" class="" value="" tabindex="5">
+                      Aggree to  
+                      <a href="#" data-toggle="modal">Terms &amp; Conditions</a>
+                  </label>
+                </div>
+                
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success" id="request_reg" style="width:100%;height:50px;font-size:22px;" >
+                    <b>Register</b>
+                  </button>
+                </div>
+
+                <div class="line"> or </div>
+                <div class="socials">
+                  <ul class="list-inline">
+                    <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
+                      <img class="media-object img-circle" src="imgs/facebook.png" style="width:50px;"/>
+                    </a></li>
+                    <li><a  href="https://twitter.com/CollapCom" target='_blank'>
+                      <img class="media-object img-circle" src="imgs/Twitter.png" style="width:50px;"/>
+                    </a></li>
+                    <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
+                      <img class="media-object img-circle" src="imgs/pinterest.png" style="width:50px;"/>
+                    </a></li>
+                    <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
+                      <img class="media-object img-circle" src="imgs/google.png" style="width:50px;"/>
+                    </a></li>
+                    <li><a  href="https://in.linkedin.com/" target='_blank'>
+                      <img class="media-object img-circle" src="imgs/linkdin.png" style="width:50px;"/>
+                    </a></li>
+                    <li><a  href="https://github.com/collapcom" target='_blank'>
+                      <img class="media-object img-circle" src="imgs/github.png" style="width:50px;"/>
+                    </a></li>
+                  </ul>
+                </div>
+                <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
+              </form>
             </div>
           </div>
-            
-        </div> <!-- /.masthead-carousel -->
+        </div>
+      </section>
 
-      </div> <!-- /.masthead -->
 
+      <div class="item " style="background-color: #354b5e; background-image: url(../../global/img/bg/dark-mosaic.png);">
+
+        <hr class="spacer-md hidden-xs">
+        <hr class="spacer-sm visible-xs">
+
+        <div class="container">
+
+          <div class="row">
+
+            <div class="col-md-6 masthead-text animated fadeInDownBig">
+              <h4 class="masthead-title">Don't feel limited to color schemes provided.</h4>
+
+              <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi ut aliquip ex ea commodo consequat.
+              </p>
+
+              <br>
+
+              <div class="masthead-actions">
+                <a href="javascript:;" class="btn btn-transparent btn-jumbo">
+                Learn More
+                </a>
+
+                <a href="./account-signup.html" class="btn btn-primary btn-jumbo">
+                Create an Account
+                </a>
+              </div> <!-- /.masthead-actions -->
+
+            </div> <!-- /.masthead-text -->
+
+            <hr class="spacer-sm visible-xs visible-sm">
+
+            <div class="col-md-6 masthead-img animated pulse">
+              <iframe src="https://player.vimeo.com/video/57175742?title=0&amp;byline=0&amp;portrait=0&amp;color=e2007a" style="width: 85%; height: 325px;"></iframe>
+
+              <hr class="spacer-md">
+              <hr class="spacer-xs">
+
+            </div> <!-- /.masthead-img -->
+
+          </div> <!-- /.row -->
+
+        </div> <!-- /.container -->
+
+      </div> <!-- /.item -->            
 
 
       <div class="content">
@@ -706,130 +690,130 @@
       </div> <!-- /.content -->
 
 
-</div> <!-- /#wrapper -->
+    </div> <!-- /#content -->
+  </div> <!-- /#wrapper -->
 
-<footer class="footer">
-<section id = "contact">
-	<div class="container">
-  		
-      <div class="row">
+  <footer class="footer">
+    <section id = "contact">
+      
+      <div class="container">
+      
+        <div class="row">
 
-        <div class="col-sm-3">
+          <div class="col-sm-3">
 
-          <div class="heading-block">
-            <h4>Collap</h4>
-          </div> <!-- /.heading-block -->    
+            <div class="heading-block">
+              <h4>Collap</h4>
+            </div> <!-- /.heading-block -->    
 
-          <p>Introducing a powerful online platform to collaborate with like minded people and change the world, solving one problem at a time.</p>
-          <p>Collap offers a wide range of tools to identify a challenge and assemble your own team to collaborate and crack it. Here’s to the the joy of collaborative problem solving!</p>
+            <p>Introducing a powerful online platform to collaborate with like minded people and change the world, solving one problem at a time.</p>
+            <p>Collap offers a wide range of tools to identify a challenge and assemble your own team to collaborate and crack it. Here’s to the the joy of collaborative problem solving!</p>
 
-        </div> <!-- /.col -->
-
-
-        <div class="col-sm-3">
-
-          <div class="heading-block">
-            <h4>Keep In Touch</h4>
-          </div> <!-- /.heading-block -->
-
-          <ul class="icons-list">
-            <li>
-              <i class="icon-li fa fa-home"></i>
-              HSR Layout, Sector-2 <br>
-              Bangalore, India 560102
-            </li>
-
-            <li>
-              <i class="icon-li fa fa-phone"></i>
-              +91 8901414422
-            </li>
-
-            <li>
-              <i class="icon-li fa fa-envelope"></i>
-              <a href="mailto:collapcom@gmail.com">collapcom@gmail.com</a>
-            </li>
-<!--             <li>
-              <i class="icon-li fa fa-map-marker"></i>
-              <a href="javascript:;">View Map</a>
-            </li> -->
-          </ul>
-        </div> <!-- /.col -->
+          </div> <!-- /.col -->
 
 
-        <div class="col-sm-3">
+          <div class="col-sm-3">
 
-          <div class="heading-block">
-            <h4>Connect With Us</h4>
-          </div> <!-- /.heading-block -->
+            <div class="heading-block">
+              <h4>Keep In Touch</h4>
+            </div> <!-- /.heading-block -->
 
-          <ul class="icons-list">
+            <ul class="icons-list">
+              <li>
+                <i class="icon-li fa fa-home"></i>
+                HSR Layout, Sector-2 <br>
+                Bangalore, India 560102
+              </li>
 
-            <li>
-              <i class="icon-li fa fa-facebook"></i>
-              <a href="https://www.facebook.com/pages/collapcom/739310236156746"> Facebook </a>
-            </li>
+              <li>
+                <i class="icon-li fa fa-phone"></i>
+                +91 8901414422
+              </li>
 
-            <li>
-              <i class="icon-li fa fa-twitter"></i>
-              <a href="https://twitter.com/collapcom"> Twitter </a>
-            </li>
+              <li>
+                <i class="icon-li fa fa-envelope"></i>
+                <a href="mailto:collapcom@gmail.com">collapcom@gmail.com</a>
+              </li>
 
-            <!-- <li>
-              <i class="icon-li fa fa-soundcloud"></i>
-              <a href="javascipt:;">Sound Cloud</a>
-            </li> -->
+            </ul>
+          </div> <!-- /.col -->
 
-            <li>
-              <i class="icon-li fa fa-google-plus"></i>
-              <a href="https://plus.google.com/+Collapcom/"> Google Plus </a>
-            </li>
-          </ul>
-          
-        </div> <!-- /.col -->
+
+          <div class="col-sm-3">
+
+            <div class="heading-block">
+              <h4>Connect With Us</h4>
+            </div> <!-- /.heading-block -->
+
+            <ul class="icons-list">
+
+              <li>
+                <i class="icon-li fa fa-facebook"></i>
+                <a href="https://www.facebook.com/pages/collapcom/739310236156746"> Facebook </a>
+              </li>
+
+              <li>
+                <i class="icon-li fa fa-twitter"></i>
+                <a href="https://twitter.com/collapcom"> Twitter </a>
+              </li>
+
+              <!-- <li>
+                <i class="icon-li fa fa-soundcloud"></i>
+                <a href="javascipt:;">Sound Cloud</a>
+              </li> -->
+
+              <li>
+                <i class="icon-li fa fa-google-plus"></i>
+                <a href="https://plus.google.com/+Collapcom/"> Google Plus </a>
+              </li>
+            </ul>
+            
+          </div> <!-- /.col -->
 
         
-        <div class="col-sm-3">
+          <div class="col-sm-3">
 
-          <div class="heading-block">
-            <h4>Stay Updated</h4>
-          </div> <!-- /.heading-block -->
+            <div class="heading-block">
+              <h4>Stay Updated</h4>
+            </div> <!-- /.heading-block -->
 
-        <p>Get emails about new ideas, projects and challanges created &amp;  future updates.</p>
-        <br>
-        <form action="/" class="form">
-          
-          <div class="form-group">
-            <!-- <label>Email: <span class="required">*</span></label> -->
-            <input class="form-control" id="newsletter_email" name="newsletter_email" type="text" value="" required="" placeholder="Email Address">
-          </div> <!-- /.form-group -->
+            <p>Get emails about new ideas, projects and challanges created &amp;  future updates.</p>
+            <br>
+            <form action="/" class="form">
+              
+              <div class="form-group">
+                <!-- <label>Email: <span class="required">*</span></label> -->
+                <input class="form-control" id="newsletter_email" name="newsletter_email" type="text" value="" required="" placeholder="Email Address">
+              </div> <!-- /.form-group -->
 
-          <div class="form-group">
-            <button class="btn btn-transparent">Subscribe Me</button>
-          </div> <!-- /.form-group -->
+              <div class="form-group">
+                <button class="btn btn-transparent">Subscribe Me</button>
+              </div> <!-- /.form-group -->
 
-        </form>
+            </form>
 
-      </div> <!-- /.col -->
+          </div> <!-- /.col -->
+
+        </div> <!-- /.row -->
+
+      </div> <!-- /.container -->
+    
+    </section>
+  </footer>
+
+  <footer class="copyright">
+    <div class="container">
+
+      <div class="row">
+
+        <div class="col-sm-12">
+          <p>Copyright &copy; 2014-15 <a href="http://dpower4.com/">Dpower4</a>.</p>
+        </div> <!-- /.col -->
 
       </div> <!-- /.row -->
-
-	</div> <!-- /.container -->
-</section>
-</footer>
-
-<footer class="copyright">
-  <div class="container">
-
-    <div class="row">
-
-      <div class="col-sm-12">
-        <p>Copyright &copy; 2014-15 <a href="http://dpower4.com/">Dpower4</a>.</p>
-      </div> <!-- /.col -->
-
-    </div> <!-- /.row -->
-    
-  </div>
-</footer>
+      
+    </div>
+  </footer>
 
 
 <!-- Bootstrap core JavaScript
