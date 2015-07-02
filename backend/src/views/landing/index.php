@@ -64,22 +64,22 @@
               <div class="socials">
                 <ul class="list-inline">
                   <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
-                    <img class="media-object img-circle" src="imgs/facebook.png" style="width:50px;"/>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/facebook.png" style="width:50px;"/>
                   </a></li>
                   <li><a  href="https://twitter.com/CollapCom" target='_blank'>
-                    <img class="media-object img-circle" src="imgs/Twitter.png" style="width:50px;"/>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/Twitter.png" style="width:50px;"/>
                   </a></li>
                   <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
-                    <img class="media-object img-circle" src="imgs/pinterest.png" style="width:50px;"/>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/pinterest.png" style="width:50px;"/>
                   </a></li>
                   <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
-                    <img class="media-object img-circle" src="imgs/google.png" style="width:50px;"/>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/google.png" style="width:50px;"/>
                   </a></li>
                   <li><a  href="https://in.linkedin.com/" target='_blank'>
-                    <img class="media-object img-circle" src="imgs/linkdin.png" style="width:50px;"/>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/linkdin.png" style="width:50px;"/>
                   </a></li>
                   <li><a  href="https://github.com/collapcom" target='_blank'>
-                    <img class="media-object img-circle" src="imgs/github.png" style="width:50px;"/>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/github.png" style="width:50px;"/>
                   </a></li>
                 </ul>
               </div> <!-- End of social Login -->
