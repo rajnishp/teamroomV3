@@ -1,7 +1,7 @@
 <?php
 
     /**
-    * @author: Jessy James
+    * @author: rahul lahoria
     * This class is nothing but a collection of functions that maybe repeatedly 
     * called from the CustomerResource class or CustomerModel or subsequent models: 
     * CustomerOrganizationProfile, ExternalProfile, ProfileAttribute, etc.
