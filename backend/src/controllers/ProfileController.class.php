@@ -14,31 +14,32 @@ class ProfileController {
 
 	function __construct ( $profileId ){
 		
-		if(isset($_SESSION["user_id"]){
+		if( isset( $_SESSION["user_id"] ) )
 			$this -> userId = $_SESSION["user_id"];
-		}
+		
 
 		$this->profileId = $profileId;
 
 		$DAOFactory = new DAOFactory();
 		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
-		$this -> projectsDAO = $DAOFactory->getProductDAO();
+		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
 
 	}
 
 	function render (){
+		$baseUrl = "http://loc.v2.collap.com/";
 		//loading other click event on the page should be done by ajax
-		
+
 		try{
 			
-			if($this->profileId)
+			/*if($this->profileId)
 				$userProjects = $this->projectsDAO->getByUserId($this->profileId);
 			else
 				$userProjects = $this->projectsDAO->getByUserId($this->userId);
 
 			$userProjects = $this->projectsDAO->getUserProjects();
-			$UserLinks = $this->userInfoDAO->getUsersLinks();
+			$UserLinks = $this->userInfoDAO->getUsersLinks();*/
 
 			require_once 'views/profile/profile.php';
 		} catch (Exception $e){

@@ -14,25 +14,25 @@ class ActivityController {
 
 	function __construct ( $challangeId ){
 		
-		if(isset($_SESSION["user_id"]){
+		if(isset($_SESSION["user_id"]))
 			$this -> userId = $_SESSION["user_id"];
-		}
-
+		
 		$this->challangeId = $challangeId;
 
 		$DAOFactory = new DAOFactory();
 		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
-		$this -> projectsDAO = $DAOFactory->getProductDAO();
+		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
 
 	}
 
 	function render (){
+		$baseUrl = "http://loc.v2.collap.com/";
 		try{
-			$activity = $this->challengesDAO->load($challangeId);
-			$topActivities = $this->challengesDAO->getTopActivities(); 
-			$topProjects = $this->projectsDAO->getTopProjects();
-			$topUsers = $this->userInfoDAO->getTopUsers();
+			//$activity = $this->challengesDAO->load($challangeId);
+			//$topActivities = $this->challengesDAO->getTopActivities(); 
+			//$topProjects = $this->projectsDAO->getTopProjects();
+			//$topUsers = $this->userInfoDAO->getTopUsers();
 
 			require_once 'views/activity/activity.php';
 		} catch (Exception $e){

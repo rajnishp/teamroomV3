@@ -91,43 +91,47 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 	$homeController -> render ();
 }else {
 
-	
+		$page = $route[1];
+		
 		//single page app
-		switch ($route[2]) {
-		case "project":
+		switch ($page) {
+			case "project":
 										
-				$projectController = new ProjectController();
-				$projectController -> render($route[3]);
-			break;
+					$projectController = new ProjectController();
+					$projectController -> render($route[2]);
+				break;
 
-		case "activity":
+			case "activity":
 
-				$activityController = new ActivityController($route[3]);
-				$activityController -> render();
-			break;
+					$activityController = new ActivityController($route[2]);
+					$activityController -> render();
+				break;
 
-		case "profile":
+			case "profile":
 
-				$profileController = new ProfileController($route[3]);
-				$profileController -> render();
-			break;
-		
-		
-		default:
-				if(isset($_SESSION["user_id"]){
-					$dashboardController = new DashboardController();
-					$dashboardController -> render();
-				} else{
-
-					//langing page of collap 
-					// Can also be routed to 404 page
-					$homeController = new HomeController();
-					$homeController -> render ();
-
-				}
+					$profileController = new ProfileController($route[2]);
+					$profileController -> render();
+				break;
 			
-			break;
+			
+			default:
+					if( isset($_SESSION["user_id"] )){
+						$dashboardController = new DashboardController();
+						$dashboardController -> render();
+					} 
+
+					else {
+
+						//langing page of collap 
+						// Can also be routed to 404 page
+						$homeController = new HomeController();
+						$homeController -> render ();
+
+					}
+				
+				break;
 		}
+
 	
 }
 

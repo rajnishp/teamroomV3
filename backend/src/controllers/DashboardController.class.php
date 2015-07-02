@@ -17,6 +17,7 @@ class DashboardController {
 	}
 
 	function render (){
+		$baseUrl = "http://loc.v2.collap.com/";
 
 		try{
 			
