@@ -36,7 +36,7 @@
 			echo (mysqli_error ($dbHandle_new));
 		}
 		else 
-			echo "Inserted row id: ".$response_ch_id. " user_id: " $user_id ." on ch_id: ". $challenge_id ."\n";
+			echo "Inserted row id: ".$response_ch_id. " user_id: ". $user_id ." on ch_id: ". $challenge_id ."\n";
 
 	}
 	

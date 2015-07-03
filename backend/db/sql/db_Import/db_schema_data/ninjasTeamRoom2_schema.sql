@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jul 02, 2015 at 06:17 PM
+-- Generation Time: Jul 02, 2015 at 09:32 PM
 -- Server version: 5.5.43-0ubuntu0.14.04.1
 -- PHP Version: 5.5.9-1ubuntu4.9
 
@@ -53,7 +53,7 @@ CREATE TABLE IF NOT EXISTS `challenges` (
   `creation_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   `last_update_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=10 ;
 
 -- --------------------------------------------------------
 
@@ -117,7 +117,7 @@ CREATE TABLE IF NOT EXISTS `events` (
   `p_c_id` int(16) NOT NULL,
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=3380 ;
 
 -- --------------------------------------------------------
 
@@ -182,7 +182,24 @@ CREATE TABLE IF NOT EXISTS `known_peoples` (
   `last_action_time` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   UNIQUE KEY `requesting_id` (`requesting_id`,`knowing_id`),
   KEY `id` (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=59 ;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `likes`
+--
+
+CREATE TABLE IF NOT EXISTS `likes` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `challenge_id` int(11) NOT NULL,
+  `user_id` int(11) NOT NULL,
+  `status` int(2) NOT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `challenge_id_2` (`challenge_id`,`user_id`),
+  KEY `challenge_id` (`challenge_id`),
+  KEY `user_id` (`user_id`)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 AUTO_INCREMENT=120 ;
 
 -- --------------------------------------------------------
 
@@ -262,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `project_responses` (
   `stmt` varchar(1000) NOT NULL,
   `creation_time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=9 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=40 ;
 
 -- --------------------------------------------------------
 
@@ -292,7 +309,7 @@ CREATE TABLE IF NOT EXISTS `skills` (
   `name` varchar(50) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `name` (`name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=5 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=49 ;
 
 -- --------------------------------------------------------
 
@@ -342,7 +359,7 @@ CREATE TABLE IF NOT EXISTS `teams` (
   `status` int(1) NOT NULL DEFAULT '1',
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`project_id`,`team_name`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=442 ;
 
 -- --------------------------------------------------------
 
@@ -375,7 +392,7 @@ CREATE TABLE IF NOT EXISTS `user_access_aid` (
   `time` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`hash_key`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=2 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=178 ;
 
 -- --------------------------------------------------------
 
@@ -447,7 +464,7 @@ CREATE TABLE IF NOT EXISTS `user_skills` (
   `skill_id` int(5) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `user_id` (`user_id`,`skill_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=79 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
