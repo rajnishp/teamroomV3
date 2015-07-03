@@ -7,7 +7,7 @@
         <!--================================-->
         <div class="navbar-header">
           <a href="index.html" class="navbar-brand">
-            <img src="./img/collap.jpg" alt="Collap Logo" class="brand-icon">
+            <img src="<?= $baseUrl ?>static/img/collap.jpg" alt="Collap Logo" class="brand-icon">
             <div class="brand-title">
               <span class="brand-text">Collap</span>
             </div>

@@ -52,4 +52,4 @@
 
 
 
-  <link rel="shortcut icon" href="collap.ico">
+  <link rel="shortcut icon" href="<?= $baseUrl ?>static/img/fevicon.ico">
