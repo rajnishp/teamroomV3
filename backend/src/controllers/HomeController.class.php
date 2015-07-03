@@ -20,7 +20,7 @@ class HomeController {
 
 	function render (){
 		// here its shower that user is not in session
-		$baseUrl = "http://loc.v2.collap.com/";
+		$baseUrl = "http://loc.v3.collap.com/";
 
 		try{
 			//$topProjects = $this -> projectDAO -> getTopProjects(); // have not found the function find and replace

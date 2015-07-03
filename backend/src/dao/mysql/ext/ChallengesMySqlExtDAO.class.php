@@ -7,6 +7,27 @@
  */
 class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 
+
+	public function getByChallengeId($challengeId){
+		$sql = 'SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user 
+						WHERE challenge.id = ? AND challenge.status != 3 
+							AND challenge.status != 7 AND user.id = challenge.user_id';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($challengeId);
+		return $this->getRowChallenge($sqlQuery);
+	}
+
+	public function getTopActivities () {
+		$sql = 'SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user
+						WHERE 
+						challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id';
+					// add where constraint
+		$sqlQuery = new SqlQuery($sql);
+		return $this->getListChallenge($sqlQuery);
+	}
+
 	/**
 	 * Get user challenge records from table
 	 */
@@ -17,7 +38,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		$sqlQuery->setNumber($userId);
-		return $this->getRowUserChallenge($sqlQuery);
+		return $this->getRowChallenge($sqlQuery);
 	}
 
 	/**
@@ -29,7 +50,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 				WHERE challenge.user_id = ? AND challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id ORDER BY creation_time DESC';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($userId);
-		return $this->getListUserChallenge($sqlQuery);
+		return $this->getListChallenge($sqlQuery);
 	}
 
 	/**
@@ -43,7 +64,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 					AND project.type = 'Public' AND user.id = challenge.user_id";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
-		return $this->getRowUserChallenge($sqlQuery);
+		return $this->getRowChallenge($sqlQuery);
 	}
 
 	/**
@@ -57,7 +78,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 					AND project.type = 'Public' AND user.id = challenge.user_id ORDER BY creation_time DESC";
 
 		$sqlQuery = new SqlQuery($sql);
-		return $this->getListUserChallenge($sqlQuery);
+		return $this->getListChallenge($sqlQuery);
 	}
 
 	/**
@@ -118,7 +139,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	 *
 	 * @return ChallengesMySql 
 	 */
-	protected function readRowUserChallenge($row){
+	protected function readRowChallenge($row){
 		$challenge = new Challenge(0,$row['project_id'],0,0,$row['title'], $row['stmt'],$row['type'],$row['status'],$row['likes'],$row['dislikes'],$row['creation_time'],0, $row['first_name'], $row['last_name'], $row['username'], $row['id']);
 	
 		return $challenge;
@@ -135,11 +156,11 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 		return $challenge;
 	}
 
-	protected function getListUserChallenge($sqlQuery){
+	protected function getListChallenge($sqlQuery){
 		$tab = QueryExecutor::execute($sqlQuery);
 		$ret = array();
 		for($i=0;$i<count($tab);$i++){
-			$ret[$i] = $this->readRowUserChallenge($tab[$i]);
+			$ret[$i] = $this->readRowChallenge($tab[$i]);
 		}
 		return $ret;
 	}
@@ -158,12 +179,12 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	 *
 	 * @return ChallengesMySql 
 	 */
-	protected function getRowUserChallenge($sqlQuery){
+	protected function getRowChallenge($sqlQuery){
 		$tab = QueryExecutor::execute($sqlQuery);
 		if(count($tab)==0){
 			return null;
 		}
-		return $this->readRowUserChallenge($tab[0]);		
+		return $this->readRowChallenge($tab[0]);		
 	}
 }
 ?>

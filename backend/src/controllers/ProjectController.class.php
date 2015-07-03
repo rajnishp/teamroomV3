@@ -28,16 +28,17 @@ class ProjectController {
 	}
 
 	function render (){
-		$baseUrl = "http://loc.v2.collap.com/"; 
+		$baseUrl = "http://loc.v3.collap.com/"; 
 		//loading other click event on the page should be done by ajax
 		
 		try{
 			
 			//$projects = $this->projectsDAO->getByUserId($this->userId, $this->projectId);
-			
+				//by rajnish getByUserId should be getByUserIdProjectId ()
 			//$userProjects = $this->projectsDAO->getUserProjects();
+				//by rajnish getUserProjects() should be getUserProjects($this->userId)
 			//$UserLinks = $this->userInfoDAO->getUsersLinks();
-
+				//by rajnish getUsersLinks() should be getUsersLinks($this->userId)
 			require_once 'views/project/project.php';
 		} catch (Exception $e){
 			echo "Error occur :500 <br>".var_dump($e);

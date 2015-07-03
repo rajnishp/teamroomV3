@@ -7,6 +7,22 @@
  */
 class UserInfoMySqlExtDAO extends UserInfoMySqlDAO{
 
+
+	public function getUsersLinks($userId) {
+		$sql = '';
+		$sqlQuery = new sqlQuery($sql);
+		$sqlQuery -> setNumber($userId);
+
+		return $this -> getListUsers($sqlQuery);
+	}
+
+	public function getTopUsers() {
+		$sql = '';
+		$sqlQuery = new sqlQuery($sql);
+		$sqlQuery -> setNumber($userId);
+
+		return $this -> getListUsers($sqlQuery);
+	}
 	
 }
 ?>

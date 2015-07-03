@@ -26,11 +26,21 @@
 
 
   <!--Bootstrap Stylesheet [ REQUIRED ]-->
-  <link href="<?= $baseUrl ?>static/css/sidebarCSS/bootstrap.min.css" rel="stylesheet">
+  <link href="<?= $baseUrl ?>static/sidebar/css/bootstrap.min.css" rel="stylesheet">
 
 
   <!--Nifty Stylesheet [ REQUIRED ]-->
-  <link href="<?= $baseUrl ?>static/css/sidebarCSS/nifty.min.css" rel="stylesheet">
+  <link href="<?= $baseUrl ?>static/sidebar/css/nifty.min.css" rel="stylesheet">
+
+  
+  
+
+  <!--SCRIPT-->
+  <!--=================================================-->
+
+  <!--Page Load Progress Bar [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/pace/pace.min.css" rel="stylesheet">
+  <script src="<?= $baseUrl ?>static/sidebar/plugins/pace/pace.min.js"></script>
 
 
 
