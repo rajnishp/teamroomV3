@@ -27,7 +27,7 @@ class ActivityController {
 	}
 
 	function render (){
-		$baseUrl = "http://loc.v3.collap.com/";
+		$baseUrl = "http://loc.v2.collap.com/";
 		try{
 			//$activity = $this->challengesDAO->load($challangeId);
 			//$topActivities = $this->challengesDAO->getTopActivities(); 
