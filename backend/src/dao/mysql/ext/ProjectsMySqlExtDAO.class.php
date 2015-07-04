@@ -7,16 +7,16 @@
  */
 class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
-	public function getUserProject($projectId, $userId){
+	/*public function getUserProject($projectId, $userId){
 
-		$sql = 'SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
-					FROM projects as project JOIN user_info as user WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id';
+		$sql = "SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+					FROM projects as project JOIN user_info as user WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id;";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($projectId);
 		$sqlQuery->setNumber($userId);
 		return $this->getRowProject($sqlQuery);
 	}
-
+*/
 	
 	public function getByUserIdProjectId($userId, $projectId){
 
@@ -51,22 +51,24 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	 */
 
 	
-	public function getUserProjects($userId, $start, $noOf){
+	public function getUserProjects($userId, $start, $limit){
 		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team 
-					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 ORDER BY creation_time DESC";
-		if(isset($start) && isset($end)){
-			$sql .= " LIMIT $start,$noOf ";
+					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 ORDER BY creation_time DESC ";
+		if(isset($start) && isset($limit)){
+			$sql .= " LIMIT $start,$limit ;";
+		}
+		else {
+			$sql .= " ;";
 		}
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($userId);
 		$sqlQuery->setNumber($userId);
 		return $this->getListProjects($sqlQuery);
 	}
 	public function queryAllUserProjects($userId){
 		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team 
-					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 ORDER BY creation_time DESC";
+					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 ORDER BY creation_time DESC;";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($userId);
 		$sqlQuery->setNumber($userId);
