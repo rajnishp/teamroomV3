@@ -28,7 +28,7 @@ class ProfileController {
 	}
 
 	function render (){
-		$baseUrl = "http://loc.v3.collap.com/";
+		$baseUrl = "http://loc.v2.collap.com/";
 		//loading other click event on the page should be done by ajax
 
 		try{
