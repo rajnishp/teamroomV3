@@ -28,7 +28,8 @@ class ActivityController {
 	}
 
 	function render (){
-		$baseUrl = "http://loc.v2.collap.com/";
+		global $configs; 
+		$baseUrl = $configs["COLLAP_BASE_URL"];
 		try{
 			$activity = $this->challengesDAO->getByChallengeId($this->challangeId);
 			$comments = $this ->challengeResponsesDAO->getResponses($this->challangeId);

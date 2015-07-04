@@ -20,8 +20,8 @@ class HomeController {
 
 	function render (){
 		// here its shower that user is not in session
-		$baseUrl = "http://loc.v2.collap.com/";
-
+		global $configs; 
+		$baseUrl = $configs["COLLAP_BASE_URL"];
 		try{
 			//$topProjects = $this -> projectDAO -> getTopProjects(); // have not found the function find and replace
 			require_once 'views/landing/index.php';

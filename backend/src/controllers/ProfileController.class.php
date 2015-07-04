@@ -28,17 +28,18 @@ class ProfileController {
 	}
 
 	function render (){
-		$baseUrl = "http://loc.v2.collap.com/";
+		global $configs; 
+		$baseUrl = $configs["COLLAP_BASE_URL"];
 		//loading other click event on the page should be done by ajax
 
 		try{
 			
 			/*if($this->profileId)
-				$userProjects = $this->projectsDAO->getByUserId($this->profileId);
+				$userMProjects = $this->projectsDAO->getUserProjects($this->profileId,0,10);
 			else
-				$userProjects = $this->projectsDAO->getByUserId($this->userId);
+				$userMProjects = $this->projectsDAO->getUserProjects($this->userId,0,10);
 
-			$userProjects = $this->projectsDAO->getUserProjects();
+			$userSProjects = $this->projectsDAO->getUserProjects($this->userId);
 			$UserLinks = $this->userInfoDAO->getUsersLinks();*/
 
 			require_once 'views/profile/profile.php';

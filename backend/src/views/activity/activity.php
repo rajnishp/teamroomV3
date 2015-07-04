@@ -211,11 +211,11 @@
               <li>
                   <i class="fa-li fa fa-chevron-right"></i> 
                   <a href="<?= $baseUrl ?>project/<?= $project->getId() ?>">
-                    <?= $project->getTitle() ?>
+                    <?= $project->getProjectTitle() ?>
                   </a>
               </li>
               
-              <? } ?
+              <? } ?>
             </ul>
 
           </div> <!-- /.col -->

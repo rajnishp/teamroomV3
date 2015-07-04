@@ -28,12 +28,13 @@ class ProjectController {
 	}
 
 	function render (){
-		$baseUrl = "http://loc.v2.collap.com/"; 
+		global $configs; 
+		$baseUrl = $configs["COLLAP_BASE_URL"];
 		//loading other click event on the page should be done by ajax
 		
 		try{
 			
-			//$projects = $this->projectsDAO->getByUserIdProjectId($this->userId, $this->projectId);
+			//$projects = $this->projectsDAO->getByUserIdProjectId(this->userId, $this->projectId);
 			
 			//$userProjects = $this->projectsDAO->getUserProjects($this->userId);
 				
