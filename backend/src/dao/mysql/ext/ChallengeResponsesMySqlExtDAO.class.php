@@ -34,7 +34,7 @@ class ChallengeResponsesMySqlExtDAO extends ChallengeResponsesMySqlDAO{
 	 * @return ChallengeResponsesMySql 
 	 */
 	protected function readRowResponse($row){
-		$challengeResponse = new ChallengeResponse($row['challenge_id'], $row['blob_id'], $row['stmt'], $row['status'], $row['creation_time'], 
+		$challengeResponse = new ChallengeResponse($row['user_id'], $row['challenge_id'], $row['blob_id'], $row['stmt'], $row['status'], $row['creation_time'], 
 													$row['first_name'], $row['last_name'], $row['username'], 
 													$row['id']
 												);
