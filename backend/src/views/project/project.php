@@ -33,7 +33,7 @@
 
               <div class="col-sm-12 col-md-8 col-md-offset-1">
 
-                <img src="imgs/Open.png" style="width=400px;">
+                <img src="<?= $baseUrl ?>static/imgs/Open.png" style="width=400px;">
                 <section class="demo-section">
 
                   <div class="heading-block">
