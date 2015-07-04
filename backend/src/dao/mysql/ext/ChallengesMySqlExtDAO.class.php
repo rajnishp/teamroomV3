@@ -21,9 +21,8 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	public function getTopActivities () {
 		$sql = 'SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user
-						WHERE 
-						challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id';
-					// add where constraint
+						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id ORDER BY rand() LIMIT 5';
+	
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getListChallenge($sqlQuery);
 	}
@@ -40,6 +39,22 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 		$sqlQuery->setNumber($userId);
 		return $this->getRowChallenge($sqlQuery);
 	}
+
+
+	/**
+	 * Get recent activities records from table challenge
+	*/
+
+	public function getRecentActivities () {
+		$sql = 'SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, 
+						user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user
+						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id ORDER BY challenge.creation_time DESC ';
+	
+		$sqlQuery = new SqlQuery($sql);
+		return $this->getListChallenge($sqlQuery);
+	}
+
 
 	/**
 	 * Get all user challenges records from table

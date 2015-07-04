@@ -14,8 +14,13 @@
 		private $stmt;
 		private $status;
 		private $creationTime;
-		
-		function __construct( $userId,$challengeId,$blobId,$stmt,$status,$creationTime,$id = null)	{
+
+		private $firstName;
+		private $lastName;
+		private $username;
+
+
+		function __construct( $userId,$challengeId,$blobId,$stmt,$status,$creationTime, $firstName, $lastName, $username, $id = null)	{
 			$this -> id = $id;
 			$this -> userId= $userId;
 			$this -> challengeId= $challengeId;
@@ -23,6 +28,10 @@
 			$this -> stmt = $stmt;
 			$this -> status = $status;
 			$this -> creationTime=$creationTime;
+			$this -> firstName = $firstName;
+			$this -> lastName = $lastName;
+			$this -> username = $username;
+
 		}
 
 		function setId($id){
@@ -73,6 +82,32 @@
 		function getCreationTime(){
 			return $this -> creationTime;
 		}
+
+
+		function setFirstName($firstName){
+			$this -> firstName = $firstName;
+		}
+
+
+
+		function getFirstName(){
+			return $this-> firstName;
+		}
+		
+		function setLastName($lastName){
+			$this -> lastName = $lastName;
+		}
+		function getLastName(){
+				return $this->lastName;
+		}
+
+		function setUsername($username){
+			$this -> username = $username;
+		}
+		function getUsername(){
+				return $this-> username;
+		}
+
 
 		function toString (){
 			return $this -> id . ", " . 
