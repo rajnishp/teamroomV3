@@ -49,14 +49,13 @@
                 </div> <!-- /.post-aside -->
 
                 <div class="post-main">
-                  <h3 class="post-title"><a href="#"><?= $activity->getTitle() ?></a></h3>
+                  <h3 class="post-title"><a href="#"><?= $activity->getRefinedTitle() ?></a></h3>
                   <h4 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h4>
+                  <?= $activity->getRefinedStmt() ?>
+                  
+                  <!-- <div class="post-content"> -->
 
-                  <img src="<?= $baseUrl ?><?php $imgA = explode( "\"", $activity->getStmt() );echo $imgA[1]; ?>" class="post-img img-responsive" alt="">
-
-                  <div class="post-content">      
-                    <?php $imgA = explode( "\"img/default.gif\"\" />", $activity->getStmt() );echo $imgA[0]; ?>
-                  </div> <!-- /.post-content -->
+                  <!-- </div> --> <!-- /.post-content -->
 
                 </div> <!-- /.post-main -->
 
@@ -166,7 +165,7 @@
                 <div class="recent-post-title">
                   <h4>
                     <a href="<?= $baseUrl ?>activity/<?= $popPost->getId() ?>"> 
-                      <?= $popPost->getTitle() ?>
+                      <?= $popPost->getRefinedTitle() ?>
                     </a>
                   </h4>
 
@@ -192,7 +191,7 @@
               <li>
                 <i class="fa-li fa fa-chevron-right"></i> 
                 <a href="<?= $baseUrl ?>activity/<?= $recPost->getId() ?>">
-                  <?= $recPost->getTitle() ?>
+                  <?= $recPost->getRefinedTitle() ?>
                 </a>
               </li>
               <? } ?>

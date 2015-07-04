@@ -34,13 +34,18 @@ class ProfileController {
 
 		try{
 			
-			/*if($this->profileId)
+			if($this->profileId){
 				$userMProjects = $this->projectsDAO->getUserProjects($this->profileId,0,10);
-			else
+				$userActivities = $this->challengesDAO->getUserActivities($this->profileId,0,10);
+			}
+			else{
 				$userMProjects = $this->projectsDAO->getUserProjects($this->userId,0,10);
+				$userActivities = $this->challengesDAO->getUserActivities($this->userId,0,10);
+			}
 
 			$userSProjects = $this->projectsDAO->getUserProjects($this->userId);
-			$UserLinks = $this->userInfoDAO->getUsersLinks();*/
+
+			$UserLinks = $this->userInfoDAO->getUsersLinks();
 
 			require_once 'views/profile/profile.php';
 		} catch (Exception $e){
