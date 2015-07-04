@@ -33,7 +33,7 @@
                 <!--===================================================-->
                 <div class="panel">
                   <div class="panel-bg-cover">
-                    <img class="img-responsive" src="../landing/imgs/kapitalia.jpg" alt="Image">
+                    <img class="img-responsive" src="<?= $baseUrl ?>static/imgs/kapitalia.jpg" alt="Image">
                   </div>
                   <div class="panel-media">
                     <img src="../landing/imgs/rajnish.jpg" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
