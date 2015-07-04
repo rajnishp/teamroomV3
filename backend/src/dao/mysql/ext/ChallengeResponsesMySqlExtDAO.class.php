@@ -19,8 +19,7 @@ class ChallengeResponsesMySqlExtDAO extends ChallengeResponsesMySqlDAO{
 	 * Get all records from table
 	 */
 	public function getResponses($challengeId){
-		$sql = "SELECT response.id, response.challenge_id, response.stmt, response.creation_time, 
-						user.first_name, user.last_name, user.username 
+		$sql = "SELECT response.*, user.first_name, user.last_name, user.username 
 					FROM challenge_responses as response JOIN user_info as user
 						WHERE response.challenge_id = ? AND response.user_id = user.id ORDER BY response.creation_time DESC ;";
 		$sqlQuery = new SqlQuery($sql);
@@ -35,7 +34,7 @@ class ChallengeResponsesMySqlExtDAO extends ChallengeResponsesMySqlDAO{
 	 * @return ChallengeResponsesMySql 
 	 */
 	protected function readRowResponse($row){
-		$challengeResponse = new ChallengeResponse($row['challenge_id'], $row['stmt'], $row['creation_time'], 
+		$challengeResponse = new ChallengeResponse($row['challenge_id'], $row['blob_id'], $row['stmt'], $row['status'], $row['creation_time'], 
 													$row['first_name'], $row['last_name'], $row['username'], 
 													$row['id']
 												);

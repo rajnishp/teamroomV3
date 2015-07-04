@@ -49,7 +49,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 		$sql = 'SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, 
 						user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user
-						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id ORDER BY challenge.creation_time DESC ';
+						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id ORDER BY challenge.creation_time DESC LIMIT 0, 10';
 	
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getListChallenge($sqlQuery);
