@@ -9,14 +9,17 @@ class UserInfoMySqlExtDAO extends UserInfoMySqlDAO{
 
 
 	public function getUsersLinks($userId) {
-		$sql = "(SELECT a.first_name, a.last_name, a.email, a.phone, a.username, a.rank, a.user_id FROM user_info as a JOIN known_peoples as b WHERE b.requesting_id = ? AND b.status != 4)
+		$sql = "(SELECT a.first_name, a.last_name, a.email, a.phone, a.username, a.rank, a.id FROM user_info as a JOIN known_peoples as b WHERE b.requesting_id = ? AND b.status != 4)
 				UNION 
-				(SELECT a.first_name, a.last_name, a.email, a.phone, a.username, a.rank, a.user_id FROM user_info as a JOIN known_peoples as b WHERE b.knowing_id = ? AND b.status = 2)
+				(SELECT a.first_name, a.last_name, a.email, a.phone, a.username, a.rank, a.id FROM user_info as a JOIN known_peoples as b WHERE b.knowing_id = ? AND b.status = 2)
 				UNION 
-				(SELECT a.first_name, a.last_name, a.email, a.phone, a.username, a.rank, a.user_id FROM user_info as a join (SELECT DISTINCT b.user_id FROM teams as a join teams as b 
-											where a.user_id = $user_id and a.team_name = b.team_name and b.user_id != '$user_id')
-											as b where a.user_id = b.user_id);";
+				(SELECT a.first_name, a.last_name, a.email, a.phone, a.username, a.rank, a.id FROM user_info as a join (SELECT DISTINCT b.user_id FROM teams as a join teams as b 
+											where a.user_id = ? and a.team_name = b.team_name and b.user_id != ?)
+											as b where a.id = b.user_id);";
 		$sqlQuery = new sqlQuery($sql);
+		$sqlQuery -> setNumber($userId);
+		$sqlQuery -> setNumber($userId);
+		$sqlQuery -> setNumber($userId);
 		$sqlQuery -> setNumber($userId);
 
 		return $this -> getListUsers($sqlQuery);

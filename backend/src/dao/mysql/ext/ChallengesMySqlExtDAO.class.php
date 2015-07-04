@@ -59,7 +59,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	/**
 	 * Get all user challenges records from table
 	 */
-	public function getUserActivites($userId, $start, $limit){
+	public function  getUserActivities ($userId, $start, $limit){
 		$sql = "SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
 				FROM challenges as challenge JOIN user_info as user 
 				WHERE challenge.user_id = ? AND challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id ORDER BY creation_time DESC ";

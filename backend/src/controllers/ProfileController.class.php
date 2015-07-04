@@ -16,6 +16,7 @@ class ProfileController {
 		
 		if( isset( $_SESSION["user_id"] ) )
 			$this -> userId = $_SESSION["user_id"];
+			$this->userId = 7;
 		
 
 		$this->profileId = $profileId;
@@ -42,10 +43,10 @@ class ProfileController {
 				$userMProjects = $this->projectsDAO->getUserProjects($this->userId,0,10);
 				$userActivities = $this->challengesDAO->getUserActivities($this->userId,0,10);
 			}
+			
+			$userSProjects = $this->projectsDAO->getUserProjects($this->userId, 0, 10);
 
-			$userSProjects = $this->projectsDAO->getUserProjects($this->userId);
-
-			$UserLinks = $this->userInfoDAO->getUsersLinks();
+			$UserSLinks = $this->userInfoDAO->getUsersLinks($this->userId);
 
 			require_once 'views/profile/profile.php';
 		} catch (Exception $e){

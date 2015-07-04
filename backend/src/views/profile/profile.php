@@ -33,40 +33,24 @@
                 <!--===================================================-->
                 <div class="panel">
                   <div class="panel-bg-cover">
-                    <img class="img-responsive" src="<?= $baseUrl ?>static/imgs/kapitalia.jpg" alt="Image">
+                    <img class="img-responsive" src="<?= $baseUrl ?>static/imgs/kapitalia.jpg" class="post-img img-responsive" alt="Image">
                   </div>
-                  <div class="panel-media">
-                    <img src="../landing/imgs/rajnish.jpg" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
-                    <div class="row">
-                      <div class="col-lg-7">
-                        <h3 class="panel-media-heading">Stephen Tran</h3>
-                        <a href="#" class="btn-link">@stephen_doe</a>
-                        <p class="text-muted mar-btm">Web and Graphic designer</p>
-                      </div>
-                      <div class="col-lg-5 text-lg-right">
-                        <button class="btn btn-sm btn-primary">Add Friend</button>
-                        <button class="btn btn-sm btn-mint btn-icon fa fa-envelope icon-lg"></button>
-                      </div>
-                    </div>
+                  <div class="panel-media" >
+                   
+                    <img src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
+                    
                   </div>
-                  <div class="panel-body">
-                    <h4>Consectetur adipisicing</h4>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                  </div>
+                  
                 </div>
-
-
-
-
-            <img src="../landing/imgs/kapitalia.jpg" class="post-img img-responsive" alt="" >
-            <hr class="spacer-sm">
+         
             
+            <hr class="spacer-sm">            
             <div class="text-center">
               <h3>Rajnish Kumar</h3>
 
               <h5 class="text-muted">Web, Software Engineer</h5>
             </div>
-            
+            <hr>
             <hr class="spacer-sm">
             
             <div class="row text-center">
