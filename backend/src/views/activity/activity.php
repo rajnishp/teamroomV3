@@ -37,9 +37,10 @@
 
                 <div class="post-aside" style="padding-top: 28px;">
                   <div class="post-date">
-                    <span class="post-date-day">09</span>
-                    <span class="post-date-month">Nov</span>
-                    <span class="post-date-year">2014</span>
+                    <?php $data = date_parse($activity->getCreationTime()); ?>
+                    <span class="post-date-day"><?= $data["day"] ?></span>
+                    <span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>
+                    <span class="post-date-year"><?= $data["year"] ?></span>
                   </div>
 
                   <a href="#comments" class="post-comment">
@@ -48,17 +49,13 @@
                 </div> <!-- /.post-aside -->
 
                 <div class="post-main">
-                  <h3 class="post-title"><a href="#">Article Title: Collap V3 has been launched with new UX</a></h3>
-                  <h4 class="post-meta">Published by <a href="javascript:;">Rajnish Panwar</a> in <a href="javascript:;">India</a></h4>
+                  <h3 class="post-title"><a href="#"><?= $activity->getTitle() ?></a></h3>
+                  <h4 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h4>
 
-                  <img src="../../global/img/blog/blog-post-3.jpg" class="post-img img-responsive" alt="">
+                  <img src="<?= $baseUrl ?><?php $imgA = explode( "\"", $activity->getStmt() );echo $imgA[1]; ?>" class="post-img img-responsive" alt="">
 
                   <div class="post-content">      
-                    
-                    <p>UX Myths collects the most frequent user experience misconceptions and explains why they don't hold true. And you don't have to take our word for it, we'll show you a lot of research findings and articles by design and usability gurus.</p>
-
-                    <p>User experience design (UXD or UED) is the process of enhancing user satisfaction by improving the usability, accessibility, and pleasure provided in the interaction between the user and the product.[1] User experience design encompasses traditional human–computer interaction (HCI) design, and extends it by addressing all aspects of a product or service as perceived by users.[2]</p>
-
+                    <?php $imgA = explode( "\"img/default.gif\"\" />", $activity->getStmt() );echo $imgA[0]; ?>
                   </div> <!-- /.post-content -->
 
                 </div> <!-- /.post-main -->
@@ -76,7 +73,8 @@
             </div>
 
             <ol class="comment-list">
-
+            <? foreach ($comments as $comment) { ?>
+              
               <li>
                 <div class="comment">
 
@@ -87,154 +85,23 @@
                   <div class="comment-meta">
 
                     <span class="comment-author">
-                      <a href="javascript:;" class="url">Peter Landt</a>
+                      <a href="javascript:;" class="url"><?= ucfirst($comment->getFirstName()) ?> <?= ucfirst($comment->getLastName()) ?></a>
                     </span>
 
                     <a href="javascript:;" class="comment-timestamp">
-                      April 3, 2013 at 6:47 am
+                      <?= $comment->getCreationTime() ?>
                     </a>
-
-                    -
-
-                    <a class="comment-reply-link" href="javascript:;">Reply</a>
 
                   </div> <!-- /.comment-meta -->
 
                   <div class="comment-body">
-                    <p>Nullam dictum felis eu pede mollis pretium.</p>
+                    <p><?= $comment->getStmt() ?></p>
                   </div> <!-- /.comment-body -->
 
                 </div> <!-- /.comment -->
               </li>
 
-              <li>
-                <div class="comment">
-
-                  <div class="comment-avatar">
-                    <img alt="" src="../../global/img/avatars/avatar-3-md.jpg" class="avatar">
-                  </div> <!-- /.comment-avatar -->
-
-                  <div class="comment-meta">
-
-                    <span class="comment-author">
-                      <a href="javascript:;" class="url">Adelle Charles</a>
-                    </span>
-
-                    <a href="javascript:;" class="comment-timestamp">
-                      April 3, 2013 at 6:47 am
-                    </a>
-
-                    -
-
-                    <a class="comment-reply-link" href="javascript:;">Reply</a>
-
-                  </div> <!-- /.comment-meta -->
-
-                  <div class="comment-body">
-                    <p>Nullam dictum felis eu pede mollis pretium.</p>
-                  </div> <!-- /.comment-body -->
-
-                </div> <!-- /.comment -->
-
-                <ol class="comment-list">
-                  <li>
-                    <div class="comment">
-
-                      <div class="comment-avatar">
-                        <img alt="" src="../../global/img/avatars/avatar-5-md.jpg" class="avatar">
-                      </div> <!-- /.comment-avatar -->
-
-                      <div class="comment-meta">
-
-                        <span class="comment-author">
-                          <a href="javascript:;" class="url">Enda Nasution</a>
-                        </span>
-
-                        <a href="javascript:;" class="comment-timestamp">
-                          April 3, 2013 at 6:47 am
-                        </a>
-
-                        -
-
-                        <a class="comment-reply-link" href="javascript:;">Reply</a>
-
-                      </div> <!-- /.comment-meta -->
-
-                      <div class="comment-body">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
-                      </div> <!-- /.comment-body -->
-
-                    </div> <!-- /.comment -->                    
-                  </li>
-
-                  <li>
-                    <div class="comment">
-
-                      <div class="comment-avatar">
-                        <img alt="" src="../../global/img/avatars/avatar-5-md.jpg" class="avatar">
-                      </div> <!-- /.comment-avatar -->
-
-                      <div class="comment-meta">
-
-                        <span class="comment-author">
-                          <a href="javascript:;" class="url">Enda Nasution</a>
-                        </span>
-
-                        <a href="javascript:;" class="comment-timestamp">
-                          April 3, 2013 at 6:47 am
-                        </a>
-
-                        -
-
-                        <a class="comment-reply-link" href="javascript:;">Reply</a>
-
-                      </div> <!-- /.comment-meta -->
-
-                      <div class="comment-body">
-                        <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
-                      </div> <!-- /.comment-body -->
-
-                    </div> <!-- /.comment -->  
-
-
-                    <ol class="comment-list">
-                      <li>
-                        <div class="comment">
-
-                          <div class="comment-avatar">
-                            <img alt="" src="../../global/img/avatars/avatar-5-md.jpg" class="avatar">
-                          </div> <!-- /.comment-avatar -->
-
-                          <div class="comment-meta">
-
-                            <span class="comment-author">
-                              <a href="javascript:;" class="url">Enda Nasution</a>
-                            </span>
-
-                            <a href="javascript:;" class="comment-timestamp">
-                              April 3, 2013 at 6:47 am
-                            </a>
-
-                            -
-
-                            <a class="comment-reply-link" href="javascript:;">Reply</a>
-
-                          </div> <!-- /.comment-meta -->
-
-                          <div class="comment-body">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium.</p>
-                          </div> <!-- /.comment-body -->
-
-                        </div> <!-- /.comment -->                    
-                      </li>
-                    </ol>
-
-
-
-                  </li>
-                </ol>
-              </li>
-
+            <? } ?>
             </ol>
 
             <hr class="spacer-md">
@@ -285,71 +152,21 @@
             <hr class="spacer-sm">
             <hr class="spacer-xs">
 
-            <ul class="blog-stats">
-
-              <li class="" title="">
-                <a href="javascript:;">
-                  <span class="blog-stats-mark">
-                    <i class="fa fa-twitter"></i>
-                  </span>
-
-                  <span class="blog-stats-count">1,245</span> 
-                  <span class="blog-stats-label">Followers</span>
-                </a>
-              </li>
-
-              <li class="" title="">
-                <a href="javascript:;">
-                  <span class="blog-stats-mark">
-                    <i class="fa fa-rss"></i>
-                  </span>
-
-                  <span class="blog-stats-count">2,390</span> 
-                  <span class="blog-stats-label">Subscribers</span>
-                </a>
-              </li>
-
-              <li class="" title="">
-                <a href="javascript:;">
-                  <span class="blog-stats-mark">
-                    <i class="fa fa-facebook"></i>
-                  </span>
-
-                  <span class="blog-stats-count">3,652</span> 
-                  <span class="blog-stats-label">Likes</span>
-                </a>
-              </li>
-
-              <li class="" title="">
-                <a href="javascript:;">
-                  <span class="blog-stats-mark">
-                    <i class="fa fa-google-plus"></i>
-                  </span>
-
-                  <span class="blog-stats-count">1,072</span> 
-                  <span class="blog-stats-label">Subscribers</span>
-                </a>
-              </li>
-
-            </ul>
-
-            <hr class="spacer-sm">
-            <hr class="spacer-xs">
-
             <h4>Most Popular Posts</h4>
 
             <ul class="blog-popular-posts">
+              <?php foreach ($popPosts as $popPost) { ?>
               <li>
                 <div class="recent-post-thumbnail">
-                  <a href="./page-blog-single.html">
-                    <img width="60" height="60" src="../../global/img/blog/blog-post-4-sm.jpg" alt="">
+                  <a href="<?= $baseUrl ?>activity/<?= $popPost->getId() ?>">
+                    <img width="60" height="60" src="static/img/blog/blog-post-4-sm.jpg" alt="">
                   </a>
                 </div> <!-- /.recent-post-thumbnail -->
 
                 <div class="recent-post-title">
                   <h4>
-                    <a href="./page-blog-single.html"> 
-                      Collap new UX helps to understand better 
+                    <a href="<?= $baseUrl ?>activity/<?= $popPost->getId() ?>"> 
+                      <?= $popPost->getTitle() ?>
                     </a>
                   </h4>
 
@@ -360,47 +177,7 @@
 
               </li>
 
-              <li>
-                <div class="recent-post-thumbnail">
-                  <a href="./page-blog-single.html">
-                    <img width="60" height="60" src="../../global/img/blog/blog-post-2-sm.jpg" alt="">
-                  </a>
-                </div> <!-- /.recent-post-thumbnail -->
-
-                <div class="recent-post-title">
-                  <h4>
-                    <a href="./page-blog-single.html"> 
-                      10 things must know about Startups
-                    </a>
-                  </h4>
-
-                  <span class="recent-post-meta">
-                    Finibus sed nec          
-                  </span> <!-- /.recent-post-meta -->
-                </div> <!-- /.recent-post-title -->
-
-              </li>
-
-              <li>
-                <div class="recent-post-thumbnail">
-                  <a href="./page-blog-single.html">
-                    <img width="60" height="60" src="../../global/img/blog/blog-post-3-sm.jpg" alt="">
-                  </a>
-                </div> <!-- /.recent-post-thumbnail -->
-
-                <div class="recent-post-title">
-                  <h4>
-                    <a href="./page-blog-single.html"> 
-                      Maecenas nec est pharetra, ornare leo 
-                    </a>
-                  </h4>
-
-                  <span class="recent-post-meta">
-                    Curabitur tincidunt           
-                  </span> <!-- /.recent-post-meta -->
-                </div> <!-- /.recent-post-title -->
-
-              </li>
+              <? } ?>
             </ul>
 
 
@@ -411,11 +188,14 @@
             <h4>Recent Posts</h4>
 
             <ul class="fa-ul blog-ul">
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Sed ac arcu eu nunc efficitur volutpat et in arcu</a></li>
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Aliquam nec orci vestibulum tellus placerat iaculis sit amet quis tellus</a></li>
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Morbi imperdiet lorem eu efficitur rutrum</a></li>
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Vestibulum id neque quis nibh pulvinar sagittis</a></li>
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Maecenas nec est pharetra, ornare leo eget, pellentesque urna</a></li>
+              <? foreach ($recPosts as $recPost) { ?>
+              <li>
+                <i class="fa-li fa fa-chevron-right"></i> 
+                <a href="<?= $baseUrl ?>activity/<?= $recPost->getId() ?>">
+                  <?= $recPost->getTitle() ?>
+                </a>
+              </li>
+              <? } ?>
             </ul>
 
 
@@ -423,14 +203,19 @@
             <hr class="spacer-sm">
             <hr class="spacer-xs">
             
-            <h4>Categories</h4>
+            <h4>Most Popular Projects</h4>
 
             <ul class="fa-ul blog-ul">
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Duis ut justo</a></li>
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Curabitur tincidunt</a></li>
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Proin sit amet</a></li>
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Velit dictum fringilla</a></li>
-              <li><i class="fa-li fa fa-chevron-right"></i> <a href="#">Finibus sed nec</a></li>
+              <? foreach ($popProjects as $project) { ?>
+
+              <li>
+                  <i class="fa-li fa fa-chevron-right"></i> 
+                  <a href="<?= $baseUrl ?>project/<?= $project->getId() ?>">
+                    <?= $project->getTitle() ?>
+                  </a>
+              </li>
+              
+              <? } ?
             </ul>
 
           </div> <!-- /.col -->
