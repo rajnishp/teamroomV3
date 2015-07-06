@@ -67,192 +67,340 @@
             </li>
 
 
-
+            <!--Messages Dropdown-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
             <li class="dropdown">
-
-              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                
-              Demo Pages
-              <i class="mainnav-caret"></i>
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                <i class="fa fa-envelope fa-lg"></i>
+                <span class="badge badge-header badge-warning">9</span>
               </a>
 
-              <ul class="dropdown-menu with-arrow" role="menu">
-                <li>
-                  <a href="./page-pricing.html">
-                  <i class="fa fa-money dropdown-icon "></i> 
-                  Plans & Billing
+              <!--Message dropdown menu-->
+              <div class="dropdown-menu dropdown-menu-md with-arrow">
+                <div class="pad-all bord-btm">
+                  <p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p>
+                </div>
+                <div class="nano scrollable">
+                  <div class="nano-content">
+                    <ul class="head-list">
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <img src="img/av2.png" alt="Profile Picture" class="img-circle img-sm">
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">Andy sent you a message</div>
+                            <small class="text-muted">15 minutes ago</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <img src="img/av4.png" alt="Profile Picture" class="img-circle img-sm">
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">Lucy sent you a message</div>
+                            <small class="text-muted">30 minutes ago</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <img src="img/av3.png" alt="Profile Picture" class="img-circle img-sm">
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">Jackson sent you a message</div>
+                            <small class="text-muted">40 minutes ago</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <img src="img/av6.png" alt="Profile Picture" class="img-circle img-sm">
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">Donna sent you a message</div>
+                            <small class="text-muted">5 hours ago</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <img src="img/av4.png" alt="Profile Picture" class="img-circle img-sm">
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">Lucy sent you a message</div>
+                            <small class="text-muted">Yesterday</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <img src="img/av3.png" alt="Profile Picture" class="img-circle img-sm">
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">Jackson sent you a message</div>
+                            <small class="text-muted">Yesterday</small>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
+
+                <!--Dropdown footer-->
+                <div class="pad-all bord-top">
+                  <a href="#" class="btn-link text-dark box-block">
+                    <i class="fa fa-angle-right fa-lg pull-right"></i>Show All Messages
                   </a>
-                </li>
-
-                <li>
-                  <a href="./page-profile.html">
-                  <i class="fa fa-user dropdown-icon "></i> 
-                  Profile
-                  </a>
-                </li>
-
-                <li>
-                  <a href="./page-settings.html">
-                  <i class="fa fa-cogs dropdown-icon "></i> 
-                  Settings
-                  </a>
-                </li>
-
-                <li>
-                  <a href="./page-faq.html">
-                  <i class="fa fa-question dropdown-icon "></i> 
-                  FAQ
-                  </a>
-                </li>
-
-                <li>
-                  <a href="./pages-gallery.html">
-                  <i class="fa fa-picture-o dropdown-icon "></i> 
-                  Gallery
-                  </a>
-                </li>
-              </ul>
-            </li>          
+                </div>
+              </div>
+            </li>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!--End message dropdown-->
 
 
-            <li class="dropdown ">
 
-              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-                
-              Extras
-              <i class="mainnav-caret"></i>
+
+            <!--Notification dropdown-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <li class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle">
+                <i class="fa fa-bell fa-lg"></i>
+                <span class="badge badge-header badge-danger">5</span>
               </a>
 
-              <ul class="dropdown-menu with-arrow" role="menu">
-                <li>
-                  <a href="./page-notifications.html">
-                  <i class="fa fa-bell dropdown-icon "></i> 
-                  Notifications
-                  </a>
-                </li>     
+              <!--Notification dropdown menu-->
+              <div class="dropdown-menu dropdown-menu-md with-arrow">
+                <div class="pad-all bord-btm">
+                  <p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p>
+                </div>
+                <div class="nano scrollable">
+                  <div class="nano-content">
+                    <ul class="head-list">
 
-                <li>
-                  <a href="./extras-icons.html">
-                  <i class="fa fa-smile-o dropdown-icon "></i> 
-                  Font Icons
-                  </a>
-                </li>   
-
-                <li>
-                  <a href="./page-blank.html">
-                  <i class="fa fa-file-o dropdown-icon "></i> 
-                  Page Blank
-                  </a>
-                </li> 
-
-                <li class="dropdown-submenu">
-                  <a tabindex="-1" href="#">
-                  <i class="fa fa-ban dropdown-icon "></i> 
-                  Error Pages
-                  </a>
-
-                  <ul class="dropdown-menu">
-                    <li>
-                      <a href="./page-404.html">
-                      <i class="fa fa-ban dropdown-icon "></i> 
-                      404 Error
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="./page-500.html">
-                      <i class="fa fa-ban dropdown-icon "></i> 
-                      500 Error
-                      </a>
-                    </li>
-                  </ul>
-                </li>
-
-                <li class="dropdown-submenu">
-
-                  <a tabindex="-1" href="#">
-                  <i class="fa fa-lock dropdown-icon "></i> 
-                  Login Pages
-                  </a>
-
-                  <ul class="dropdown-menu with-arrow">
-                    <li>
-                      <a href="./account-login.html">
-                      <i class="fa fa-unlock dropdown-icon "></i> 
-                      Login
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="./account-login-social.html">
-                      <i class="fa fa-unlock dropdown-icon "></i> 
-                      Login Social
-                      </a>
-                    </li>
-
-                    <li>
-                      <a href="./account-signup.html">
-                      <i class="fa fa-star dropdown-icon "></i> 
-                      Signup
-                      </a>
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#">
+                          <div class="clearfix">
+                            <p class="pull-left">Database Repair</p>
+                            <p class="pull-right">70%</p>
+                          </div>
+                          <div class="progress progress-sm">
+                            <div style="width: 70%;" class="progress-bar">
+                              <span class="sr-only">70% Complete</span>
+                            </div>
+                          </div>
+                        </a>
                       </li>
 
-                    <li>
-                      <a href="./account-forgot.html">
-                      <i class="fa fa-envelope dropdown-icon "></i> 
-                      Forgot Password
-                      </a>
-                    </li>
-                  </ul>
-                </li> 
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#">
+                          <div class="clearfix">
+                            <p class="pull-left">Upgrade Progress</p>
+                            <p class="pull-right">10%</p>
+                          </div>
+                          <div class="progress progress-sm">
+                            <div style="width: 10%;" class="progress-bar progress-bar-warning">
+                              <span class="sr-only">10% Complete</span>
+                            </div>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <span class="icon-wrap icon-circle bg-primary">
+                              <i class="fa fa-comment fa-lg"></i>
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">New comments waiting approval</div>
+                            <small class="text-muted">15 minutes ago</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                      <span class="badge badge-success pull-right">90%</span>
+                          <div class="media-left">
+                            <span class="icon-wrap icon-circle bg-danger">
+                              <i class="fa fa-hdd-o fa-lg"></i>
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">HDD is full</div>
+                            <small class="text-muted">50 minutes ago</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <span class="icon-wrap bg-info">
+                              <i class="fa fa-file-word-o fa-lg"></i>
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">Write a news article</div>
+                            <small class="text-muted">Last Update 8 hours ago</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                      <span class="label label-danger pull-right">New</span>
+                          <div class="media-left">
+                            <span class="icon-wrap bg-purple">
+                              <i class="fa fa-comment fa-lg"></i>
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">Comment Sorting</div>
+                            <small class="text-muted">Last Update 8 hours ago</small>
+                          </div>
+                        </a>
+                      </li>
+                  
+                      <!-- Dropdown list-->
+                      <li>
+                        <a href="#" class="media">
+                          <div class="media-left">
+                            <span class="icon-wrap bg-success">
+                              <i class="fa fa-user fa-lg"></i>
+                            </span>
+                          </div>
+                          <div class="media-body">
+                            <div class="text-nowrap">New User Registered</div>
+                            <small class="text-muted">4 minutes ago</small>
+                          </div>
+                        </a>
+                      </li>
+                    </ul>
+                  </div>
+                </div>
 
-              </ul>
-
-            </li>
-
-
-
-            <li class="dropdown">
-
-              <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown">
-              More
-              <i class="mainnav-caret"></i>
-              </a>
-
-              <ul class="dropdown-menu" role="menu">
-                <li>
-                  <a href="../landing/">
-                  <i class="fa fa-external-link dropdown-icon "></i> 
-                  Landing Template
+                <!--Dropdown footer-->
+                <div class="pad-all bord-top">
+                  <a href="#" class="btn-link text-dark box-block">
+                    <i class="fa fa-angle-right fa-lg pull-right"></i>Show All Notifications
                   </a>
-                </li>
-                <li>
-                  <a href="../launch/">
-                  <i class="fa fa-external-link dropdown-icon "></i> 
-                  Launch Template
-                  </a>
-                </li>
-              </ul>
+                </div>
+              </div>
             </li>
-
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!--End notifications dropdown-->
 
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 
+            <li></li>
+            <li></li>
+            <li>
+              <form class="" role="search" style="margin-top: 8px; margin-left: 8px" >
+                <input type="text" class="form-control input-md mainnav-search-query" placeholder="Search">
+                <button class="btn btn-sm mainnav-form-btn" style="margin-top: 8px;"><i class="fa fa-search"></i></button>
+              </form>
+            </li>
 
-          </ul>  
+          </ul>
 
-          
 
             
+  
 
           <ul class="nav navbar-top-links pull-right">
-
-
-              <form class="mainnav-form" role="search">
-                <input type="text" class="form-control input-md mainnav-search-query" placeholder="Search">
-                <button class="btn btn-sm mainnav-form-btn"><i class="fa fa-search"></i></button>
-              </form>           
             
+            <!--User dropdown-->
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <li id="dropdown-user" class="dropdown">
+              <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
+                <span class="pull-right">
+                  <img class="img-circle img-user media-object" src="<?= $baseUrl ?>static/img/av1.png" alt="Profile Picture">
+                </span>
+                <div class="username hidden-xs">Rajnish Panwar</div>
+              </a>
+
+
+              <div class="dropdown-menu dropdown-menu-md dropdown-menu-right with-arrow panel-default">
+
+                <!-- Dropdown heading  -->
+                <div class="pad-all bord-btm">
+                  <p class="text-lg text-muted text-thin mar-btm">750Gb of 1,000Gb Used</p>
+                  <div class="progress progress-sm">
+                    <div class="progress-bar" style="width: 70%;">
+                      <span class="sr-only">70%</span>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- User dropdown menu -->
+                <ul class="head-list">
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-user fa-fw fa-lg"></i> Profile
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="badge badge-danger pull-right">9</span>
+                      <i class="fa fa-envelope fa-fw fa-lg"></i> Messages
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <span class="label label-success pull-right">New</span>
+                      <i class="fa fa-gear fa-fw fa-lg"></i> Settings
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-question-circle fa-fw fa-lg"></i> Help
+                    </a>
+                  </li>
+                  <li>
+                    <a href="#">
+                      <i class="fa fa-lock fa-fw fa-lg"></i> Lock screen
+                    </a>
+                  </li>
+                </ul>
+
+                <!-- Dropdown footer -->
+                <div class="pad-all text-right">
+                  <a href="pages-login.html" class="btn btn-primary">
+                    <i class="fa fa-sign-out fa-fw"></i> Logout
+                  </a>
+                </div>
+              </div>
+            </li>
+            <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
+            <!--End user dropdown-->
             
           </ul>
         </div>

@@ -103,7 +103,7 @@
             </div> <!-- /.heading-block -->
             
 
-            <img src="../landing/imgs/images.jpeg" class="post-img img-responsive" alt="Project Image" >
+            <img src="<?= $baseUrl ?>static/imgs/images.jpeg" class="post-img img-responsive" alt="Project Image" >
             
             <hr class="spacer-sm">
             
@@ -118,7 +118,7 @@
             <hr>
             <hr class="spacer-sm">
 
-            <img src="../landing/imgs/historic.png" class="post-img img-responsive" alt="Project Image" >
+            <img src="<?= $baseUrl ?>static/imgs/historic.png" class="post-img img-responsive" alt="Project Image" >
             
             <hr class="spacer-sm">
             

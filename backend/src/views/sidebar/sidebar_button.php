@@ -7,9 +7,9 @@
 			<!--================================-->
 			<div id="mainnav-shortcut">
 				<ul class="list-unstyled">
-					<li class="col-xs-4" data-content="Additional Sidebar">
+					<li class="col-xs-4" data-content="Chat">
 						<a id="demo-toggle-aside" class="shortcut-grid" href="#">
-							<i class="fa fa-magic"></i>
+							<i class="fa fa-comments"></i>
 						</a>
 					</li>
 					<li class="col-xs-4" data-content="Notification">
@@ -52,36 +52,53 @@
 							<!--Menu list item-->
 							<li>
 								<a href="#">
-									<i class="fa fa-th"></i>
+									<i class="fa fa-bell"></i>
 									<span class="menu-title">
-										<strong>Layouts</strong>
+										<strong>Add Reminder</strong>
 									</span>
-									<i class="arrow"></i>
 								</a>
 				
-								<!--Submenu-->
-								<ul class="collapse">
-									<li><a href="layouts-collapsed-navigation.html">Collapsed Navigation</a></li>
-									<li><a href="layouts-offcanvas-navigation.html">Off-Canvas Navigation</a></li>
-									<li><a href="layouts-offcanvas-slide-in-navigation.html">Slide-in Navigation</a></li>
-									<li><a href="layouts-offcanvas-revealing-navigation.html">Revealing Navigation</a></li>
-									<li class="list-divider"></li>
-									<li><a href="layouts-aside-right-side.html">Aside on the right side</a></li>
-									<li><a href="layouts-aside-left-side.html">Aside on the left side</a></li>
-									<li><a href="layouts-aside-bright-theme.html">Bright aside theme</a></li>
-									<li class="list-divider"></li>
-									<li><a href="layouts-fixed-navbar.html">Fixed Navbar</a></li>
-									<li><a href="layouts-fixed-footer.html">Fixed Footer</a></li>
-									
-								</ul>
 							</li>
 				
+							<!--Menu list item-->
+							<li>
+								<a href="#">
+									<i class="fa fa-bullseye"></i>
+									<span class="menu-title">
+										<strong>All Reminders</strong>
+										<i class="arrow"></i>
+									</span>
+								</a>
+
+								<!--Submenu-->
+								<ul class="collapse">
+									<li><a href="#">Create project for UX Design</a></li>
+									<li><a href="#">Attend interview</a></li>
+									<li><a href="#">Make a presentation for seed funding</a></li>
+									
+								</ul>
+
+
+							</li>
+
+
 							<!--Menu list item-->
 							<li>
 								<a href="widgets.html">
 									<i class="fa fa-flask"></i>
 									<span class="menu-title">
-										<strong>Widgets</strong>
+										<strong>To-Do List</strong>
+										<span class="pull-right badge badge-warning">9</span>
+									</span>
+								</a>
+							</li>
+
+							<!--Menu list item-->
+							<li>
+								<a href="widgets.html">
+									<i class="fa fa-flask"></i>
+									<span class="menu-title">
+										<strong>Get Done List</strong>
 										<span class="pull-right badge badge-warning">9</span>
 									</span>
 								</a>
@@ -90,29 +107,29 @@
 							<li class="list-divider"></li>
 				
 							<!--Category name-->
-							<li class="list-header">Components</li>
+							<li class="list-header">Projects</li>
 				
 							<!--Menu list item-->
 							<li class="active-sub">
 								<a href="#">
 									<i class="fa fa-briefcase"></i>
-									<span class="menu-title">UI Elements</span>
+									<span class="menu-title">Classified Projects</span>
 									<i class="arrow"></i>
 								</a>
 				
 								<!--Submenu-->
 								<ul class="collapse in">
-									<li class="active-link"><a href="ui-buttons.html">Buttons</a></li>
-									<li><a href="ui-checkboxes-radio.html">Checkboxes &amp; Radio</a></li>
-									<li><a href="ui-panels.html">Panels</a></li>
-									<li><a href="ui-modals.html">Modals</a></li>
-									<li><a href="ui-progress-bars.html">Progress bars</a></li>
-									<li><a href="ui-components.html">Components</a></li>
-									<li><a href="ui-typography.html">Typography</a></li>
-									<li><a href="ui-list-group.html">List Group</a></li>
-									<li><a href="ui-tabs-accordions.html">Tabs &amp; Accordions</a></li>
-									<li><a href="ui-alerts-tooltips.html">Alerts &amp; Tooltips</a></li>
-									<li><a href="ui-helper-classes.html">Helper Classes</a></li>
+									
+									<li class="active-link"><a href="#">ASSET Mangament System</a></li>
+									<li><a href="">Collap critical Issues</a></li>
+									<li><a href="">Smart Public Advertisement System</a></li>
+									<li><a href="">Features for future versions of Collap</a></li>
+									<li><a href="">Loaction Tracker	Education Portal</a></li>
+									<li><a href=""></a>Education Portal</li>
+									<li><a href="">Video record test case for new user</a></li>
+									<li><a href="">ExamIgniter.com</a></li>
+									<li><a href="">Success Stories</a></li>
+									<li><a href="">TodFodCode Critical Issuses</a></li>
 									
 								</ul>
 							</li>
@@ -121,16 +138,15 @@
 							<li>
 								<a href="#">
 									<i class="fa fa-edit"></i>
-									<span class="menu-title">Forms</span>
+									<span class="menu-title">Private Projects</span>
 									<i class="arrow"></i>
 								</a>
 				
 								<!--Submenu-->
 								<ul class="collapse">
-									<li><a href="forms-general.html">General</a></li>
-									<li><a href="forms-components.html">Components</a></li>
-									<li><a href="forms-validation.html">Validation</a></li>
-									<li><a href="forms-wizard.html">Wizard</a></li>
+									<li><a href="">Article Ideas</a></li>
+									<li><a href="">Collap V3 UX Design</a></li>
+									<li><a href="">CodeGraph code optimization</a></li>
 									
 								</ul>
 							</li>
@@ -139,30 +155,76 @@
 							<li>
 								<a href="#">
 									<i class="fa fa-table"></i>
-									<span class="menu-title">Tables</span>
+									<span class="menu-title">Public Projects</span>
 									<i class="arrow"></i>
 								</a>
 				
 								<!--Submenu-->
 								<ul class="collapse">
-									<li><a href="tables-static.html">Static Tables</a></li>
-									<li><a href="tables-bootstrap.html">Bootstrap Tables</a></li>
-									<li><a href="tables-datatable.html">Data Tables<span class="label label-info pull-right">New</span></a></li>
-									<li><a href="tables-footable.html">Foo Tables<span class="label label-info pull-right">New</span></a></li>
+									<li><a href="">Computer Library</a></li>
+									<li><a href="">Memory/Brain Power</a></li>
+									<li><a href="">Awesome PICS over Internet</a></li>
+									<li><a href="">Software Clone Detection</a></li>
+									<li><a href="">HYBRID APPROACH FOR DETECTING CODE Clone Detection</a></li>
+									<li><a href="">Sportskeeda: A dating with sports every evening</a></li>
+									<li><a href="">Collap v2 UX design</a></li>
+									<li><a href="">CSE Interview Preparation Questions</a></li>
+									<li><a href=""> Greatest Mens of the Century</a></li>
+									
+								</ul>
+							</li>
+
+
+							<!--Menu list item-->
+							<li>
+								<a href="#">
+									<i class="fa fa-table"></i>
+									<span class="menu-title">Recommended Projects</span>
+									<i class="arrow"></i>
+								</a>
+				
+								<!--Submenu-->
+								<ul class="collapse">
+									<li><a href="">Computer Library</a></li>
+									<li><a href="">Memory/Brain Power</a></li>
+									<li><a href="">Awesome PICS over Internet</a></li>
+									<li><a href="">Software Clone Detection</a></li>
+									<li><a href="">HYBRID APPROACH FOR DETECTING CODE Clone Detection</a></li>
+									<li><a href="">Sportskeeda: A dating with sports every evening</a></li>
+									<li><a href="">Collap v2 UX design</a></li>
+									<li><a href="">CSE Interview Preparation Questions</a></li>
+									<li><a href=""> Greatest Mens of the Century</a></li>
+									
+								</ul>
+							</li>
+
+							<!--Menu list item-->
+							<li>
+								<a href="#">
+									<i class="fa fa-table"></i>
+									<span class="menu-title">Joined Projects</span>
+									<i class="arrow"></i>
+								</a>
+				
+								<!--Submenu-->
+								<ul class="collapse">
+									<li><a href="#">Git Tips #SoftwareDevelopment</a></li>
+									<li><a href="#">MDU: Computer NetworksInformation and Communications Technology</a></li>
+									<li><a href="#">Information and Communications Technology</a></li>
+									<li><a href="#">Collap hands to empower Indian youth</a></li>
+									<li><a href="#">Biomedical Device Engineering</a></li>
+									<li><a href="#">Distributed Combinational Web Query</a></li>
+									<li><a href="#">Upcoming Hackathon 2015</a></li>
+									<li><a href="#">Tech Market News</a></li>
+									<li><a href="#">Academic Zodiac</a></li>
+									<li><a href="#">Distributed Combinational Web Query 2</a></li>
+									<li><a href="#">Smart Grids</a></li>
 									
 								</ul>
 							</li>
 				
 							<!--Menu list item-->
-							<li>
-								<a href="charts.html">
-									<i class="fa fa-line-chart"></i>
-									<span class="menu-title">Charts</span>
-								</a>
-							</li>
-				
-							<li class="list-divider"></li>
-				
+						
 							<!--Category name-->
 							<li class="list-header">Extra</li>
 				
