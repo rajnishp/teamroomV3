@@ -17,15 +17,62 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 		return $this->getRowProject($sqlQuery);
 	}
 */
-	
+	function checkProject($projectId, $userId){
+			//returns true in case of public
+			$type = mysqli_query($db_handle,"SELECT project_type FROM projects where id = '$projectId';") ;
+			$typerow = mysqli_fetch_array($type) ;
+			$usertype = mysqli_query($db_handle, "SELECT * FROM user_info where id = '$userId' ;") ;
+			$usertypeRow = mysqli_fetch_array($usertype) ;
+			$TypeUser = $usertypeRow['user_type'] ;
+			if ($typerow['project_type'] == 1) {
+				return true ;
+			}
+			else if ($typerow['project_type'] == 2) {
+				if(isset($_SESSION['user_id'])){
+					$access = mysqli_query($db_handle,"(SELECT user_id from projects where id = '$projectId' and user_id = '$userId')
+														UNION 
+														(SELECT DISTINCT a.user_id FROM teams as a join projects as b WHERE a.user_id = '$userId' and a.project_id = b.id and b.project_id = '$projectId' and a.member_status = '1') ;") ;
+					if (mysqli_num_rows($access) > 0) {
+						return true ;
+					}
+					else return false ;
+				}
+				else return false ;
+			}
+			else if ($typerow['project_type'] == 4) { 
+				if(isset($_SESSION['user_id'])){
+					if($TypeUser == "investor" || $TypeUser == "collaboratorInvestor" || $TypeUser == "fundsearcherInvestor" || $TypeUser == "collaboratorInvestorFundsearcher"){
+						return true ;
+					} 
+					else {
+						$check = mysqli_query($db_handle,"(SELECT user_id FROM projects WHERE id = '$projectId' AND user_id = '$userId')
+															UNION 
+															(SELECT DISTINCT a.user_id FROM teams as a JOIN projects as b WHERE a.user_id = '$userId' AND a.project_id = b.id AND b.id = '$projectId' AND a.member_status = '1') ;") ;
+						if (mysqli_num_rows($check) > 0) {
+							return true ;
+						}
+						else return false ;
+					}
+				}
+				else return false ;
+			}
+			else return false ;
+				//check user have access if access the return true
+		}
+
 	public function getByUserIdProjectId($userId, $projectId){
 
-		$sql = 'SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
-					FROM projects as project JOIN user_info as user WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($projectId);
-		$sqlQuery->setNumber($userId);
-		return $this->getRowProject($sqlQuery);
+
+		if ($this-> checkProject($projectId, $userId)) {
+
+
+			$sql = 'SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+						FROM projects as project JOIN user_info as user WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id';
+			$sqlQuery = new SqlQuery($sql);
+			$sqlQuery->setNumber($projectId);
+			$sqlQuery->setNumber($userId);
+			return $this->getRowProject($sqlQuery);
+		}
 	}
 
 
