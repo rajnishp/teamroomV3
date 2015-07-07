@@ -88,17 +88,16 @@
 
 
             <hr>
-<!-- /.Activities-block -->
-<div class="activities-start">
-          
-            <div class="post-title">
-                <h3>
-                  Activities
-                </h3>
-            </div> <!-- /.heading-block -->
-            <hr>            
-            <hr class="spacer-sm">
-
+        <!-- /.Activities-block -->
+        <div class="activities-start">
+                  
+                    <div class="post-title">
+                        <h3>
+                          Activities
+                        </h3>
+                    </div> <!-- /.heading-block -->
+                    <hr>            
+                    <hr class="spacer-sm">
 
           <div class="activity-1">
 
