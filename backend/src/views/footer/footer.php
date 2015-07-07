@@ -2,11 +2,12 @@
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Core JS -->
+<!--Committed due to navbar drpdown not working (rajnish)	
 		<script src="<?= $baseUrl ?>static/bower_components/jquery/dist/jquery.js"></script>
 		<script src="<?= $baseUrl ?>static/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
 
 		<script src="<?= $baseUrl ?>static/bower_components/slimscroll/jquery.slimscroll.min.js"></script>
-
+-->
 
 		<!-- App JS -->
 		<script src="<?= $baseUrl ?>static/js/mvpready-admin.js"></script>

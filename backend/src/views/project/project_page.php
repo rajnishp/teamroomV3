@@ -139,29 +139,41 @@
             <hr>
 
           <div class="activity-2">
-            
-            <!-- /.heading-block -->
-            <a href= '#' target="_blank">
-              <h4 class="post-title">Researchers parallelize a common data structure to work with multicore chips </h4>
-            </a>
-            <h4 class="post-meta">Published by <a href="javascript:;">Rajnish Panwar</a> in <a href="javascript:;">India</a></h4>
+            <div class="post-aside" style="padding-top: 28px;">
+              <div class="post-date">
+                <span class="post-date-day">12</span>
+                <span class="post-date-month"> January</span>
+                <span class="post-date-year"> 2015</span>
+              </div>
 
-            <img src="<?= $baseUrl ?>static/imgs/image2.jpeg" class="post-img img-responsive" alt="Project Image" >
-            
-            <hr class="spacer-sm">
+              <a href="#comments" class="post-comment">
+                4
+              </a>
+            </div> <!-- /.post-aside -->
+
+            <div class="post-main">
+              <!-- /.heading-block -->
+              <a href= '#' target="_blank">
+                <h4 class="post-title">Researchers parallelize a common data structure to work with multicore chips </h4>
+              </a>
+              <h4 class="post-meta">Published by <a href="javascript:;">Rajnish Panwar</a> in <a href="javascript:;">India</a></h4>
+
+              <img src="<?= $baseUrl ?>static/imgs/image2.jpeg" class="post-img img-responsive" alt="Project Image" >
               
-            <div class="post-content">
-              <p> Parallelizing common algorithms:
-                  Researchers revamp a common "data structure" so that it will work with multicore chips.
-                  Every undergraduate computer-science major takes a course on data structures, which describes different ways of organizing data in a computer’s memory. Every data structure has its own advantages: Some are good for fast retrieval, some for efficient search, some for quick insertions and deletions, and so on.
-                  Today, hardware manufacturers are making computer chips faster by giving them more cores, or processing units. But while some data structures are well adapted to multicore computing, others are not. In principle, doubling the number of cores should double the efficiency of a computation. With algorithms that use a common data structure called a priority queue, that’s been true for up to about eight cores — but adding any more cores actually causes performance to plummet.
-                  At the Association for Computing Machinery’s Symposium on Principles and Practice of Parallel Programming in February, researchers from MIT’s Computer Science and Artificial Intelligence Laboratory will describe a new way of implementing priority queues that lets them keep pace with the addition of new cores. In simulations, algorithms using their data structure continued to demonstrate performance improvement with the addition of new cores, up to a total of 80 cores.
-              </p>
+              <hr class="spacer-sm">
+                
+              <div class="post-content">
+                <p> Parallelizing common algorithms:
+                    Researchers revamp a common "data structure" so that it will work with multicore chips.
+                    Every undergraduate computer-science major takes a course on data structures, which describes different ways of organizing data in a computer’s memory. Every data structure has its own advantages: Some are good for fast retrieval, some for efficient search, some for quick insertions and deletions, and so on.
+                    Today, hardware manufacturers are making computer chips faster by giving them more cores, or processing units. But while some data structures are well adapted to multicore computing, others are not. In principle, doubling the number of cores should double the efficiency of a computation. With algorithms that use a common data structure called a priority queue, that’s been true for up to about eight cores — but adding any more cores actually causes performance to plummet.
+                    At the Association for Computing Machinery’s Symposium on Principles and Practice of Parallel Programming in February, researchers from MIT’s Computer Science and Artificial Intelligence Laboratory will describe a new way of implementing priority queues that lets them keep pace with the addition of new cores. In simulations, algorithms using their data structure continued to demonstrate performance improvement with the addition of new cores, up to a total of 80 cores.
+                </p>
+              </div>
             </div>
-            
             <hr>
           </div>
-</div>
+        </div>
 
 
 <?php
