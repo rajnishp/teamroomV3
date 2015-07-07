@@ -22,7 +22,7 @@ class DashboardController {
 
 		try{
 			
-			require_once 'view/dashboard/dashboard.php';
+			require_once 'views/dashboard/dashboard.php';
 
 		} catch (Execption $e){
 			echo "Server every on DashboardController <br/>".var_dump($e); 

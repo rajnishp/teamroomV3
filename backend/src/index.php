@@ -112,6 +112,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 					$profileController = new ProfileController($route[2]);
 					$profileController -> render();
 				break;
+
+			case "dashboard":
+
+					$dashboardController = new DashboardController($route[2]);
+					$dashboardController -> render();
+				break;
 			
 			
 			default:

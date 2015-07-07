@@ -41,7 +41,17 @@ class ProjectController {
 			//$UserLinks = $this->userInfoDAO->getUsersLinks($this->userId);
 				
 
-			require_once 'views/project/project.php';
+
+			if (isset($_SESSION['userId'])) {
+				require_once 'views/project/project.php';
+			}
+			else 
+				require_once 'views/project/project_page.php';
+
+
+
+
+
 		} catch (Exception $e){
 			echo "Error occur :500 <br>".var_dump($e);
 		}
