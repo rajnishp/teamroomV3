@@ -84,8 +84,8 @@
 
 							<!--Menu list item-->
 							<li>
-								<a href="widgets.html">
-									<i class="fa fa-flask"></i>
+								<a href="#">
+									<i class="fa fa-tasks"></i>
 									<span class="menu-title">
 										<strong>To-Do List</strong>
 										<span class="pull-right badge badge-warning">9</span>
@@ -95,8 +95,8 @@
 
 							<!--Menu list item-->
 							<li>
-								<a href="widgets.html">
-									<i class="fa fa-flask"></i>
+								<a href="#">
+									<i class="fa fa-tasks"></i>
 									<span class="menu-title">
 										<strong>Get Done List</strong>
 										<span class="pull-right badge badge-warning">9</span>
@@ -124,8 +124,8 @@
 									<li><a href="">Collap critical Issues</a></li>
 									<li><a href="">Smart Public Advertisement System</a></li>
 									<li><a href="">Features for future versions of Collap</a></li>
-									<li><a href="">Loaction Tracker	Education Portal</a></li>
-									<li><a href=""></a>Education Portal</li>
+									<li><a href="">Loaction Tracker</a></li>
+									<li><a href="">Education Portal</a></li>
 									<li><a href="">Video record test case for new user</a></li>
 									<li><a href="">ExamIgniter.com</a></li>
 									<li><a href="">Success Stories</a></li>
