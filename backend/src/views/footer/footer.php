@@ -42,6 +42,26 @@
 	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 
 
+	<!--Bootstrap Select [ OPTIONAL ]-->
+	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-select/bootstrap-select.min.js"></script>
+
+
+	<!--Bootstrap Validator [ OPTIONAL ]-->
+	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
+
+
+	<!--Bootstrap Tags Input [ OPTIONAL ]-->
+	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+
+
+	<!--Bootstrap Timepicker [ OPTIONAL ]-->
+	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
+
+
+	<!--Bootstrap Datepicker [ OPTIONAL ]-->
+	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-datepicker/bootstrap-datepicker.js"></script>
+
+
 	<!--Demo script [ DEMONSTRATION ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/nifty-demo.min.js"></script>
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/layouts.js"></script>

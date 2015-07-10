@@ -33,32 +33,121 @@
 
               <div class="col-sm-12 col-md-8 col-md-offset-1">
 
-
-                <div class="heading-block">
-                  <h4>
-                  Post to Collap What you want to share
-                  </h4>
-                </div> <!-- /.heading-block -->
-
-                <div class="share-widget clearfix">
-
-                  <textarea class="form-control share-widget-textarea" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
-
-                  <div class="share-widget-actions">
-                    <div class="share-widget-types pull-left">
-                      <a href="javascript:;" class="fa fa-picture-o ui-tooltip" title="Post an Image"><i></i></a>
-                      <a href="javascript:;" class="fa fa-video-camera ui-tooltip" title="Upload a Video"><i></i></a>
-                      <a href="javascript:;" class="fa fa-lightbulb-o ui-tooltip" title="Post an Idea"><i></i></a>
-                      <a href="javascript:;" class="fa fa-question-circle ui-tooltip" title="Ask a Question"><i></i></a>
-                    </div>  
-
-                  <div class="pull-right">
-                    <a class="btn btn-primary btn-sm" tabindex="2">Post</a>
+                <div class="panel">
+          
+                  <!-- Panel heading -->
+                  <div class="panel-heading">
+                    <div class="panel-control">
+                      <ul class="nav nav-tabs">
+                        <li><a data-toggle="tab" href="#demo-tabs-box-1"><i class="fa fa question"></i> Activity</a></li>
+                        <li><a data-toggle="tab" href="#demo-tabs-box-2"><i class="fa fa video"></i> Videos</a></li>
+                        <li><a data-toggle="tab" href="#demo-tabs-box-3"><i class="fa fa link"></i> Share Link</a></li>
+                      </ul>
+                    </div>
+                    <h3 class="panel-title">Post to Collap</h3>
                   </div>
+            
+                  <!-- Panel body -->
+                  
+                  <div class="panel-body">
+                    <div class="tab-content">
+                      <div id="demo-tabs-box-1" class="tab-pane fade in">
 
-                  </div> <!-- /.share-widget-actions -->
+                        <form id="demo-bv-errorcnt" class="form-horizontal" action="#" method="post">
 
-                </div> <!-- /.share-widget -->
+                        
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Title</label>
+                            <div class="col-lg-7">
+                              <input type="text" class="form-control" name="title" placeholder="Title">
+                            </div>
+                          </div>
+                          <div class="form-group pad-btm">
+                            <label class="col-lg-3 control-label">Description</label>
+                            <div class="col-lg-7">
+                              <textarea class="form-control" name="description" rows="7" placeholder="Tell us your story..."></textarea>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">File input</label>
+                            <div class="col-md-9">
+                              <span class="pull-left btn btn-default btn-file">
+                              Browse... <input type="file">
+                              </span>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">Post Type</label>
+                            <div class="col-md-9">
+                      
+                              <select class="selectpicker">
+                                <option>Challenge</option>
+                                <option>Article</option>
+                                <option>Photo</option>
+                                <option>Idea</option>
+                              </select>
+                              <!--===================================================-->
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-7 col-sm-offset-3">
+                              <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                    
+                
+          
+                      <!--SHOWING ERRORS IN POPOVER-->
+                      <!--===================================================-->
+                      <div id="demo-tabs-box-2" class="tab-pane fade">
+                        <form id="demo-bv-errorcnt" class="form-horizontal" action="#" method="post">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Title</label>
+                            <div class="col-lg-7">
+                              <input type="text" class="form-control" name="title" placeholder="Title">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Youtube URL</label>
+                            <div class="col-lg-7">
+                              <input type="text" class="form-control" name="website" placeholder="http://" />
+                            </div>
+                          </div>
+                          <div class="form-group pad-btm">
+                            <label class="col-lg-3 control-label">Description</label>
+                            <div class="col-lg-7">
+                              <textarea class="form-control" name="description" rows="7" placeholder="Tell us your story..."></textarea>
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-7 col-sm-offset-3">
+                              <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+          
+                      <div id="demo-tabs-box-3" class="tab-pane fade">
+                        <form id="demo-bv-errorcnt" class="form-horizontal" action="#" method="post">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Share URL</label>
+                            <div class="col-lg-7">
+                              <input type="text" class="form-control" name="website" placeholder="http://" />
+                            </div>
+                          </div>
+                          <div class="row">
+                            <div class="col-sm-7 col-sm-offset-3">
+                              <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Submit</button>
+                            </div>
+                          </div>
+                        </form>
+                      </div>
+                     
+                    </div>
+                  </div>
+                </div>
 
 
 

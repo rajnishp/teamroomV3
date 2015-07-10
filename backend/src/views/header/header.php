@@ -33,7 +33,25 @@
   <link href="<?= $baseUrl ?>static/sidebar/css/nifty.min.css" rel="stylesheet">
 
   
-  
+  <!--Bootstrap Select [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
+
+
+  <!--Bootstrap Tags Input [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+
+  <!--Bootstrap Validator [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">
+
+
+  <!--Bootstrap Timepicker [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-timepicker/bootstrap-timepicker.min.css" rel="stylesheet">
+
+
+  <!--Bootstrap Datepicker [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-datepicker/bootstrap-datepicker.css" rel="stylesheet">
+
 
   <!--SCRIPT-->
   <!--=================================================-->

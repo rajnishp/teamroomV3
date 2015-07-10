@@ -29,19 +29,19 @@
           <div class="col-md-10 col-sm-10 col-md-offset-1 col-sm-offset-1">
 
             
-        <!--Profile Heading-->
-                <!--===================================================-->
-                <div class="panel">
-                  <div class="panel-bg-cover">
-                    <img class="img-responsive" src="<?= $baseUrl ?>static/imgs/kapitalia.jpg" class="post-img img-responsive" alt="Image">
-                  </div>
-                  <div class="panel-media" >
-                   
-                    <img src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
-                    
-                  </div>
-                  
-                </div>
+            <!--Profile Heading-->
+            <!--===================================================-->
+            <div class="panel">
+              <div class="panel-bg-cover">
+                <img class="img-responsive" src="<?= $baseUrl ?>static/imgs/kapitalia.jpg" class="post-img img-responsive" alt="Image">
+              </div>
+              <div class="panel-media" >
+               
+                <img src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
+                
+              </div>
+              
+            </div>
          
             
             <hr class="spacer-sm">            
@@ -142,6 +142,7 @@
                 </h4>
             </div> <!-- /.heading-block -->
 
+            
             <div class="">
               <span class="btn btn-secondary btn-sm"> C </span>
               <span class="btn btn-secondary btn-sm"> Core Java </span>
@@ -149,6 +150,38 @@
               <span class="btn btn-secondary btn-sm"> MySql </span>
 
             </div> <!-- /.list-group -->
+
+            <!-- FORM VALIDATION ON ACCORDION -->
+              <!--===================================================-->
+               <div id="demo-accordion" class="panel-group accordion">
+                  <div class="panel" style="box-shadow: 0px 0px 0px;">
+          
+                    <!-- Accordion title -->
+                    <div class="panel-heading">
+                      <h4 class="panel-title">
+                        <button class="btn btn-primary" data-parent="#demo-accordion" data-toggle="collapse" href="#demo-acc-panel-1">
+                          <i class="fa fa-plus"></i> Add More
+                        </button>
+                      </h4>
+                    </div>
+          
+                    <!-- Accordion content -->
+                    <div id="demo-acc-panel-1" class="panel-collapse collapse">
+                      <div class="panel-body" style="padding-left: 1px;">
+                        <form id="demo-bv-accordion" class="form-horizontal" action="#" method="post">
+                          <input type="text" class="form-control" placeholder="Add a tag" value="Sport, Movie, Documents, Video" data-role="tagsinput">
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </form>
+              <!--===================================================-->
+              <!-- END FORM VALIDATION ON ACCORDION -->
+
+
+
+
             
             <div class="heading-block"></div>
             <div class="post-title">

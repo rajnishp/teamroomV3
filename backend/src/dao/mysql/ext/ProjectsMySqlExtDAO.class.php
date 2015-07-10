@@ -70,22 +70,24 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	public function getByUserIdProjectId($userId, $projectId){
 
 
-		if ($this-> checkProject($projectId, $userId)) {
+		//if ($this-> checkProject($projectId, $userId)) {
 
 
 			$sql = "(SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
 						FROM projects as project JOIN user_info as user WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id AND project.blob_id = 0)
 					UNION
 					(SELECT project.id, project.project_title as title, blob.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
-						FROM projects as project JOIN user_info as user JOIN blobs as blob
+						FROM projects as project JOIN user_info as user JOIN blobs as `blob`
 							WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id
 								AND project.blob_id = blob.id)
 						";
 			$sqlQuery = new SqlQuery($sql);
 			$sqlQuery->setNumber($projectId);
 			$sqlQuery->setNumber($userId);
+			$sqlQuery->setNumber($projectId);
+			$sqlQuery->setNumber($userId);
 			return $this->getRowProject($sqlQuery);
-		}
+		//}
 	}
 
 
@@ -135,6 +137,8 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($userId);
 		$sqlQuery->setNumber($userId);
+		$sqlQuery->setNumber($userId);
+		$sqlQuery->setNumber($userId);
 		return $this->getListProjects($sqlQuery);
 	}
 
@@ -182,7 +186,9 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	 * @return ProjectsMySql 
 	 */
 	protected function readRowProjects($row){
-		$project = new Project(0, 0, $row['title'], $row['statement'],$row['type'],0,0, $row['creation_time'],0,0,0, $row['first_name'], $row['last_name'], $row['username'], $row['id']);
+		$project = new Project(0, 0, $row['title'], $row['statement'],$row['type'],0,0, 
+								$row['creation_time'],0,0,0, 
+								$row['first_name'], $row['last_name'], $row['username'], $row['id']);
 		
 		return $project;
 	}

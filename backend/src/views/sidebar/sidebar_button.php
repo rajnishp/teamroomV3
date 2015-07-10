@@ -51,10 +51,12 @@
 				
 							<!--Menu list item-->
 							<li>
-								<a href="#">
+								<a href="#" data-target="#demo-default-modal" data-toggle="modal">
 									<i class="fa fa-bell"></i>
 									<span class="menu-title">
-										<strong>Add Reminder</strong>
+										<strong>
+										Add Reminder
+										</strong>
 									</span>
 								</a>
 				
@@ -682,3 +684,5 @@
 	
 	<!--===================================================-->
 	<!-- END OF CONTAINER -->
+
+	<?php require_once 'views/modals/modal.php'; ?>

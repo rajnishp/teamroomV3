@@ -24,7 +24,9 @@
 		private $userName;
 
 	
-		function __construct ($userId, $blobId, $projectTitle, $stmt, $type, $orgId, $order, $creationTime, $projectValue, $fundNeeded, $lastUpdateTime, $firstName, $lastName, $userName, $id = null) {
+		function __construct ($userId, $blobId, $projectTitle, $stmt, $type, $orgId, $order, 
+								$creationTime, $projectValue, $fundNeeded, $lastUpdateTime, 
+								$firstName, $lastName, $userName, $id = null) {
 			$this -> id = $id;
 			$this -> userId = $userId;
 			$this -> blobId = $blobId;
