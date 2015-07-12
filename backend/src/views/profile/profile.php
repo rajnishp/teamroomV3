@@ -46,9 +46,11 @@
             
             <hr class="spacer-sm">            
             <div class="text-center">
-              <h3>Rajnish Kumar</h3>
+              <h3><?= ucfirst($userProfile->getFirstName() )?> <?= ucfirst($userProfile->getLastName() )?> <br/>
+                  (<?= ucfirst($userProfile->getRank() )?>)</h3>
 
-              <h5 class="text-muted">Web, Software Engineer</h5>
+              <h5 class="text-muted"><?= $userProfile->getWorkingOrgName() ?>, <?= $userProfile->getLivingTown() ?></h5>
+              <h5 class="text-muted"><?= $userProfile->getAboutUser() ?></h5>
             </div>
             <hr>
             <hr class="spacer-sm">
@@ -102,33 +104,36 @@
                 </h4>
             </div> <!-- /.heading-block -->
             
+            <? foreach ($userMProjects as $project) { ?>
+            <div class="post">
+                <div class="post-aside" style="padding-top: 28px;">
+                  <div class="post-date">
+                    <?php $data = date_parse($project->getCreationTime()); ?>
+                    <span class="post-date-day"><?= $data["day"] ?></span>
+                    <span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>
+                    <span class="post-date-year"><?= $data["year"] ?></span>
+                  </div>
 
-            <img src="<?= $baseUrl ?>static/imgs/images.jpeg" class="post-img img-responsive" alt="Project Image" >
-            
-            <hr class="spacer-sm">
-            
-            <h4 class="post-title">Project Title - Collap UX Design</h4>
-            
-            <div class="post-content">
-              <p> 
-                User experience design (UXD or UED) is the process of enhancing user satisfaction by improving the usability, accessibility, and pleasure provided in the interaction between the user and the product.[1] User experience design encompasses traditional human–computer interaction (HCI) design, and extends it by addressing all aspects of a product or service as perceived by user
-              </p>
+
+              
+                </div> <!-- /.post-aside -->
+              <div class="post-main">
+              <h4 class="post-title"><?= $project->getRefinedTitle() ?></h4>
+              <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                  
+              
+              <div class="post-content">
+                <p> 
+                  <?= $project->getRefinedStmt() ?>
+                </p>
+              </div>
+              </div>
+              <hr>
+              <hr class="spacer-sm">
             </div>
             
-            <hr>
-            <hr class="spacer-sm">
+            <? } ?>
 
-            <img src="<?= $baseUrl ?>static/imgs/historic.png" class="post-img img-responsive" alt="Project Image" >
-            
-            <hr class="spacer-sm">
-            
-            <h4 class="post-title">CartAtHome Connecting Farm to Home</h4>
-            
-            <div class="post-content">
-              <p> 
-                A connected farm is an architectural design common in the New England region of the United States, and England and Wales in the United Kingdom. North American connected farms date back to the 17th century, while their British counterparts have also existed for several centuries. New England connected farms are characterized by a farm house, kitchen, barn, or other structures connected in a rambling fashion. This style evolved from carrying out farm work while remaining sheltered from winter weather. In the United Kingdom there are four distinct types of connected farmsteads, all dissimilar to the New England style.
-              </p>
-            </div>
 
           </div> <!-- /.row md 7-->
 

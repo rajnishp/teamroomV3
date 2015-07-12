@@ -25,6 +25,7 @@ class ProfileController {
 		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
 		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
+		$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
 
 	}
 
@@ -36,14 +37,18 @@ class ProfileController {
 		try{
 			
 			if($this->profileId){
-				$userMProjects = $this->projectsDAO->getUserProjects($this->profileId,0,10);
+				$userMProjects = $this->projectsDAO->getUserPublicProjects($this->profileId,0,10);
 				$userActivities = $this->challengesDAO->getUserActivities($this->profileId,0,10);
+				$userProfile = $this->userInfoDAO->load($this->profileId);
+				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
 			}
 			else{
-				$userMProjects = $this->projectsDAO->getUserProjects($this->userId,0,10);
+				$userMProjects = $this->projectsDAO->getUserPublicProjects($this->userId,0,10);
 				$userActivities = $this->challengesDAO->getUserActivities($this->userId,0,10);
+				$userProfile = $this->userInfoDAO->load($this->userId);
+				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
 			}
-			
+			//var_dump($userMProjects);
 			$userSProjects = $this->projectsDAO->getUserProjects($this->userId, 0, 10);
 
 			$UserSLinks = $this->userInfoDAO->getUsersLinks($this->userId);

@@ -150,13 +150,13 @@
 			$this -> regTime = $regTime;
 		}
 		function getRegTime(){
-			$this -> regTime ;
+			return $this -> regTime ;
 		}
-		function setLastlogintime($lastLoginTime){
+		function setLastLoginTime($lastLoginTime){
 			$this->lastLoginTime=$lastLoginTime;
 		}
 		
-		function getLastlogintime(){
+		function getLastLoginTime(){
 				return $this-> lastLoginTime;
 		}
 		function toString (){

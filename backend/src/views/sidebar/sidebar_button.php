@@ -122,16 +122,15 @@
 								<!--Submenu-->
 								<ul class="collapse in">
 									
-									<li class="active-link"><a href="#">ASSET Mangament System</a></li>
-									<li><a href="">Collap critical Issues</a></li>
-									<li><a href="">Smart Public Advertisement System</a></li>
-									<li><a href="">Features for future versions of Collap</a></li>
-									<li><a href="">Loaction Tracker</a></li>
-									<li><a href="">Education Portal</a></li>
-									<li><a href="">Video record test case for new user</a></li>
-									<li><a href="">ExamIgniter.com</a></li>
-									<li><a href="">Success Stories</a></li>
-									<li><a href="">TodFodCode Critical Issuses</a></li>
+									<!-- <li class="active-link"><a href="#">ASSET Mangament System</a></li>
+									 -->
+									<?php foreach ($projects as $key => $project) { 
+
+										if($project->getType() == "Classified") { ?>	
+										
+										<li><a href=""><?= $project->getRefinedTitle() ?></a></li>
+
+									<?php } } ?>
 									
 								</ul>
 							</li>
@@ -146,9 +145,13 @@
 				
 								<!--Submenu-->
 								<ul class="collapse">
-									<li><a href="">Article Ideas</a></li>
-									<li><a href="">Collap V3 UX Design</a></li>
-									<li><a href="">CodeGraph code optimization</a></li>
+									<?php foreach ($projects as $key => $project) { 
+
+										if($project->getType() == "Private"){ ?>	
+										
+										<li><a href=""><?= $project->getRefinedTitle() ?></a></li>
+
+									<?php } } ?>
 									
 								</ul>
 							</li>
@@ -163,15 +166,13 @@
 				
 								<!--Submenu-->
 								<ul class="collapse">
-									<li><a href="">Computer Library</a></li>
-									<li><a href="">Memory/Brain Power</a></li>
-									<li><a href="">Awesome PICS over Internet</a></li>
-									<li><a href="">Software Clone Detection</a></li>
-									<li><a href="">HYBRID APPROACH FOR DETECTING CODE Clone Detection</a></li>
-									<li><a href="">Sportskeeda: A dating with sports every evening</a></li>
-									<li><a href="">Collap v2 UX design</a></li>
-									<li><a href="">CSE Interview Preparation Questions</a></li>
-									<li><a href=""> Greatest Mens of the Century</a></li>
+									<?php foreach ($projects as $key => $project) { 
+
+										if($project->getType() == "Public"){ ?>	
+										
+										<li><a href=""><?= $project->getRefinedTitle() ?></a></li>
+
+									<?php }} ?>
 									
 								</ul>
 							</li>
@@ -685,4 +686,4 @@
 	<!--===================================================-->
 	<!-- END OF CONTAINER -->
 
-	<?php require_once 'views/modals/modal.php'; ?>
+	<?php //require_once 'views/modals/modal.php'; ?>

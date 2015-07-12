@@ -65,7 +65,14 @@
 	<!--Demo script [ DEMONSTRATION ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/nifty-demo.min.js"></script>
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/layouts.js"></script>
-
+<script type="text/javascript">
+  $( document ).ready(function() {
+    $('img').each(function(){
+    	if($(this).attr('src').substring(0,4) != "http")
+      		$(this).attr('src','http://collap.com/'+$(this).attr('src'));
+    });
+ });
+</script>
 
 
 	</body>

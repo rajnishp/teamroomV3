@@ -25,6 +25,16 @@ class UserInfoMySqlExtDAO extends UserInfoMySqlDAO{
 		return $this -> getListUsers($sqlQuery);
 	}
 
+	public function getByUsernamePassword($username, $password){
+		$sql = "SELECT * FROM user_info WHERE (username = ? OR email = ?) AND password = ?;";
+
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($username);
+		$sqlQuery->set($username);
+		$sqlQuery->set($password);
+		
+		return $this->getRow($sqlQuery);
+	}
 	public function getTopUsers() {
 		$sql = 'SELECT * FROM user_info ORDER BY rank DESC Limit 0, 10;';
 		$sqlQuery = new sqlQuery($sql);
