@@ -123,12 +123,24 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	 * Get all challenges records from table
 	 */
 	public function queryAllChallenges($start = 0, $limit = 10){
-		$sql = "SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
-				FROM challenges as challenge JOIN user_info as user JOIN projects as project
-				WHERE challenge.status != 3 AND challenge.status != 7 
-					AND challenge.type != 2 AND challenge.type != 5 and project.id = challenge.project_id
- 
-					AND project.type = 'Public' AND user.id = challenge.user_id ORDER BY challenge.last_update_time  DESC";
+		$sql = "(SELECT user.id, challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.last_update_time, 
+						user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user JOIN projects as project
+						WHERE challenge.status != 3 AND challenge.status != 7 
+							AND challenge.type != 2 AND challenge.type != 5 
+							AND project.id = challenge.project_id
+							AND challenge.blob_id = 0
+							AND project.type = 'Public' AND user.id = challenge.user_id)
+				UNION
+				(SELECT user.id, challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.last_update_time,
+						user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user JOIN projects as project JOIN blobs as `blob`
+						WHERE challenge.status != 3 AND challenge.status != 7 
+							AND challenge.type != 2 AND challenge.type != 5
+							AND project.id = challenge.project_id 
+							AND project.type = 'Public' AND user.id = challenge.user_id
+							AND challenge.blob_id = blob.id )  
+					ORDER BY last_update_time DESC ";
 
 		if(isset($start) && isset($limit)){
 			$sql .= " LIMIT $start,$limit ;";
@@ -200,7 +212,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	 * @return ChallengesMySql 
 	 */
 	protected function readRowChallenge($row){
-		$challenge = new Challenge(0,$row['project_id'],0,0,$row['title'], $row['stmt'],$row['type'],$row['status'],$row['likes'],$row['dislikes'],$row['creation_time'],0, $row['first_name'], $row['last_name'], $row['username'], $row['id']);
+		$challenge = new Challenge($row['user_id'], $row['project_id'],0,0,$row['title'], $row['stmt'],$row['type'],$row['status'],$row['likes'],$row['dislikes'],$row['creation_time'],0, $row['first_name'], $row['last_name'], $row['username'], $row['id']);
 	
 		return $challenge;
 	}

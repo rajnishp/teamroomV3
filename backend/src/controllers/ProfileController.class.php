@@ -46,7 +46,7 @@ class ProfileController {
 				$userMProjects = $this->projectsDAO->getUserPublicProjects($this->userId,0,10);
 				$userActivities = $this->challengesDAO->getUserActivities($this->userId,0,10);
 				$userProfile = $this->userInfoDAO->load($this->userId);
-				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
+				//$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
 			}
 			//var_dump($userMProjects);
 			$userSProjects = $this->projectsDAO->getUserProjects($this->userId, 0, 10);

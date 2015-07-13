@@ -94,7 +94,7 @@
 			return $this-> id;
 		}
 
-		function setUserID($userId){
+		function setUserId($userId){
 			$this -> userId = $userId;
 		}
 		function getUserId(){
@@ -149,10 +149,10 @@
 			return $this->status;
 		}
 		
-		function setCreationtime($creationTime){
-			$this -> $creationTime = $creationTime;
+		function setCreationTime($creationTime){
+			$this -> creationTime = $creationTime;
 		}
-		function getCreationtime(){
+		function getCreationTime(){
 			return $this-> creationTime;
 		}
 				

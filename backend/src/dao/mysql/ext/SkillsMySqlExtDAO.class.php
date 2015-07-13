@@ -25,6 +25,7 @@ class SkillsMySqlExtDAO extends SkillsMySqlDAO{
 	}
 
 	public function getUserSkills($id){
+		$id = 7;
 		$sql = 'SELECT b.id, a.name FROM skills as a JOIN user_skills as b WHERE b.user_id = ? AND a.id = b.skill_id';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
