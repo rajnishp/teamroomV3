@@ -31,7 +31,7 @@
             
             <div class="row">
 
-              <div class="col-sm-12 col-md-8 col-md-offset-1">
+              <div class="col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
 
 
                 <!--Profile Heading-->
@@ -63,10 +63,11 @@
                     <div class="panel-heading">
                       <div class="panel-control">
                         <ul class="nav nav-tabs">
-                          <li class="active"><a href="#demo-tabs-box-1" data-toggle="tab">Overview</a></li>
-                          <li><a href="#demo-tabs-box-2" data-toggle="tab">Dashboard</a></li>
-                          <li><a href="#demo-tabs-box-3" data-toggle="tab">Teams</a></li>
-                          <li><a href="#demo-tabs-box-4" data-toggle="tab">Activities</a></li>
+                          <li><a href="#tabs-post" data-toggle="tab">Post Otgoings</a></li>
+                          <li class="active"><a href="#tabs-overview" data-toggle="tab">Overview</a></li>
+                          <li><a href="#tabs-dashboard" data-toggle="tab">Dashboard</a></li>
+                          <li><a href="#tabs-teams" data-toggle="tab">Teams</a></li>
+                          <li><a href="#tabs-activities" data-toggle="tab">Activities</a></li>
                         </ul>
                       </div>
                       <h3 class="panel-title">Project Detail</h3>
@@ -76,22 +77,433 @@
                     <div class="panel-body">
                       <div class="tab-content">
 
-                        <div class="tab-pane fade in active" id="demo-tabs-box-1">
+                        <div class="tab-pane fade" id="tabs-post">
+                          
+                          <!-- Post for project starts -->
+
+                          <div class="panel">
+                    
+                            <!-- Panel heading -->
+                            <div class="panel-heading">
+                              <div class="panel-control">
+                                <ul class="nav nav-tabs">
+                                  <li class="active"><a data-toggle="tab" href="#post-activity"><i class="fa fa question"></i> Activity</a></li>
+                                  <li><a data-toggle="tab" href="#post-task"><i class="fa fa task"></i> Task</a></li>
+                                  <li><a data-toggle="tab" href="#post-video"><i class="fa fa video"></i> Video</a></li>
+                                  <li><a data-toggle="tab" href="#post-url"><i class="fa fa link"></i> Share Link</a></li>
+                                </ul>
+                              </div>
+                              <h3 class="panel-title">Post to Collap</h3>
+                            </div>
+                      
+                            <!-- Panel body -->
+                            
+                            <div class="panel-body">
+                              <div class="tab-content">
+
+                                <!--Post Activity: Challenge, Notes, Issues-->
+                                <!--===================================================-->
+
+                                <div id="post-activity" class="tab-pane fade in active">
+
+                                  <form id="demo-bv-errorcnt" class="form-horizontal" action="#" method="post">
+
+                                  
+                                    <div class="form-group">
+                                      <label class="col-lg-3 control-label">Title</label>
+                                      <div class="col-lg-7">
+                                        <input type="text" class="form-control" name="title" placeholder="Title">
+                                      </div>
+                                    </div>
+                                    <div class="form-group pad-btm">
+                                      <label class="col-lg-3 control-label">Description</label>
+                                      <div class="col-lg-7">
+                                        <textarea class="form-control" name="description" rows="7" placeholder="Tell us your story..."></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="col-md-3 control-label">File input</label>
+                                      <div class="col-md-9">
+                                        <span class="pull-left btn btn-default btn-file">
+                                        Browse... <input type="file">
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="col-md-3 control-label">Post Type</label>
+                                      <div class="col-md-9">
+                                
+                                        <select class="selectpicker">
+                                          <option>Challenge</option>
+                                          <option>Notes</option>
+                                          <option>Issues</option>
+                                        </select>
+                                        <!--===================================================-->
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-7 col-sm-offset-3">
+                                        <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Submit</button>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+
+                                <!--Post Task-->
+                                <!--===================================================-->
+
+                                <div id="post-task" class="tab-pane fade">
+
+                                  <form id="demo-bv-errorcnt" class="form-horizontal" action="#" method="post">
+
+                                  
+                                    <div class="form-group">
+                                      <label class="col-lg-3 control-label">Title</label>
+                                      <div class="col-lg-7">
+                                        <input type="text" class="form-control" name="title" placeholder="Title">
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group pad-btm">
+                                      <label class="col-lg-3 control-label">To Whom: </label>
+                                      <div class="col-lg-7">
+
+                                        <select class="selectpicker" data-live-search="true" data-width="100%">
+                                          <option>Self</option>
+                                          <option>Rahul</option>
+                                          <option>Rajnsih</option>
+                                          <option>Anil</option>
+                                          <option>Dileep</option>
+                                          <option>Neeraj</option>
+                                          <option>Rutwik</option>
+                                          <option>Abu</option>
+                                          <option>Video</option>
+                                        </select>
+                                      </div>
+                                    </div>
+        
+                                    <div class="form-group">
+                                      <label class="col-lg-3 control-label">To Whom: </label>
+                                      <div class="col-lg-7">
+                                        <input type="text" class="form-control" name="to_by_email" placeholder="Enter Email-ID">
+                                      </div>
+                                    </div>
+
+                                    <div class="form-group pad-btm">
+                                      <label class="col-lg-3 control-label">Description</label>
+                                      <div class="col-lg-7">
+                                        <textarea class="form-control" name="description" rows="7" placeholder="Tell us your story..."></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="col-md-3 control-label">File input</label>
+                                      <div class="col-md-9">
+                                        <span class="pull-left btn btn-default btn-file">
+                                        Browse... <input type="file">
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="col-md-3 control-label">Task Type</label>
+                                      <div class="col-md-9">
+                                
+                                        <select class="selectpicker">
+                                          <option>Public</option>
+                                          <option>Private</option>
+                                        </select>
+                                        <!--===================================================-->
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-7 col-sm-offset-3">
+                                        <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Submit</button>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>                              
+          
+                    
+                                <!--Post Video-->
+                                <!--===================================================-->
+                                <div id="post-video" class="tab-pane fade">
+                                  <form id="demo-bv-errorcnt" class="form-horizontal" action="#" method="post">
+                                    <div class="form-group">
+                                      <label class="col-lg-3 control-label">Title</label>
+                                      <div class="col-lg-7">
+                                        <input type="text" class="form-control" name="title" placeholder="Title">
+                                      </div>
+                                    </div>
+                                    <div class="form-group">
+                                      <label class="col-lg-3 control-label">Youtube URL</label>
+                                      <div class="col-lg-7">
+                                        <input type="text" class="form-control" name="website" placeholder="http://" />
+                                      </div>
+                                    </div>
+                                    <div class="form-group pad-btm">
+                                      <label class="col-lg-3 control-label">Description</label>
+                                      <div class="col-lg-7">
+                                        <textarea class="form-control" name="description" rows="7" placeholder="Tell us your story..."></textarea>
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-7 col-sm-offset-3">
+                                        <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Submit</button>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+
+                                <!--Post Youtube Link URL-->
+                                <!--===================================================-->
+                    
+                                <div id="post-url" class="tab-pane fade">
+                                  <form id="demo-bv-errorcnt" class="form-horizontal" action="#" method="post">
+                                    <div class="form-group">
+                                      <label class="col-lg-3 control-label">Share URL</label>
+                                      <div class="col-lg-7">
+                                        <input type="text" class="form-control" name="website" placeholder="http://" />
+                                      </div>
+                                    </div>
+                                    <div class="row">
+                                      <div class="col-sm-7 col-sm-offset-3">
+                                        <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Submit</button>
+                                      </div>
+                                    </div>
+                                  </form>
+                                </div>
+                               
+                              </div>
+                            </div>
+                          </div>
+
+                        <!-- Post to collap ends -->
+
+                        </div>
+
+                        <div class="tab-pane fade in active" id="tabs-overview">
                           <h4 class="text-thin">Description</h4>
                           <p>User experience design (UXD or UED) is the process of enhancing user satisfaction by improving the usability, accessibility, and pleasure provided in the interaction between the user and the product.[1] User experience design encompasses traditional human–computer interaction (HCI) design, and extends it by addressing all aspects of a product or service as perceived by user</p>
                         </div>
 
-                        <div class="tab-pane fade" id="demo-tabs-box-2">
+                        <div class="tab-pane fade" id="tabs-dashboard">
                           <h4 class="text-thin">Dashboard</h4>
                           <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
                         </div>
 
-                        <div class="tab-pane fade" id="demo-tabs-box-3">
-                          <h4 class="text-thin">Teams</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                        <div class="tab-pane fade" id="tabs-teams">
+                          
+                          
+                          <!--Teams Names Start here-->
+                          <!--===================================================-->
+                          <div class="row">
+                            <h4>Teams</h4>
+                     
+                            <div class="col-md-6 col-lg-3">
+                              <div class="panel media pad-all" style="background-color: #E4EDF0;">
+                                <div class="media-body">
+                                  <p class="text-2x mar-no text-thin">543</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-3">
+                              <div class="panel media pad-all" style="background-color: #E4EDF0;">
+                                <div class="media-body">
+                                  <p class="text-2x mar-no text-thin">34</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-3">
+                              <div class="panel media pad-all" style="background-color: #E4EDF0;">
+                                <div class="media-body">
+                                  <p class="text-2x mar-no text-thin">654</p>
+                                </div>
+                              </div>
+                            </div>                            
+
+                            <div class="col-md-6 col-lg-3">
+                              <div class="panel media pad-all" style="background-color: #E4EDF0;">
+                                <div class="media-body">
+                                  <p class="text-2x mar-no text-thin">543</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                            <div class="col-md-6 col-lg-3">
+                              <div class="panel media pad-all" style="background-color: #E4EDF0;">
+                                <div class="media-body">
+                                  <p class="text-2x mar-no text-thin">34</p>
+                                </div>
+                              </div>
+                            </div>
+                            
+                          </div>
+                          <!--===================================================-->
+                          <!--Team Names Ends-->
+
+                          <!--Team Members starts-->
+                          <!--===================================================-->
+
+                          <div class="row">
+
+                            <h4> Team Members </h4>
+                            <div class="col-md-6 col-lg-4 col-sm-6">                                                    
+                              <div class="panel media middle" style="background-color: #E4EDF0;">
+                                <div class="media-left bg-primary pad-all">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar" width="40" height="40">
+                                </div>
+                                <div class="media-body pad-lft">
+                                  <a href="#" >Rajnish Kumar</a>
+                                  <p class="text-muted">Dabbling</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-sm-6">                                                    
+                              <div class="panel media middle" style="background-color: #E4EDF0;">
+                                <div class="media-left bg-primary pad-all">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar" width="40" height="40">
+                                </div>
+                                <div class="media-body pad-lft">
+                                  <a href="#" >Rajnish Kumar</a>
+                                  <p class="text-muted">Dabbling</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-sm-6">                                                    
+                              <div class="panel media middle" style="background-color: #E4EDF0;">
+                                <div class="media-left bg-primary pad-all">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar" width="40" height="40">
+                                </div>
+                                <div class="media-body pad-lft">
+                                  <a href="#" >Rajnish Kumar</a>
+                                  <p class="text-muted">Dabbling</p>
+                                </div>
+                              </div>
+                            </div>
+                     
+
+                            <div class="col-md-6 col-lg-4 col-sm-6">                                                    
+                              <div class="panel media middle" style="background-color: #E4EDF0;">
+                                <div class="media-left bg-primary pad-all">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar" width="40" height="40">
+                                </div>
+                                <div class="media-body pad-lft">
+                                  <a href="#" >Rajnish Kumar</a>
+                                  <p class="text-muted">Dabbling</p>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-6 col-lg-4 col-sm-6">                                                    
+                              <div class="panel media middle" style="background-color: #E4EDF0;">
+                                <div class="media-left bg-primary pad-all">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar" width="40" height="40">
+                                </div>
+                                <div class="media-body pad-lft">
+                                  <a href="#" >Rajnish Kumar</a>
+                                  <p class="text-muted">Dabbling</p>
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                          <!--===================================================-->
+                          <!--Team Members Ends-->
+
+                          <!--Team Dashboard starts-->
+                          <!--===================================================-->
+
+                          <div class="row">
+                            <h4> Open Challenges </h4>
+                            <div class="col-md-4 col-lg-4 col-sm-6">
+                              
+                              <div class="panel panel-success panel-colorful text-center">
+                                <div class="panel-body">
+                                  <?= gettimeofday() ?>
+                                </div>
+                                <div class="bg-light pad-ver">
+                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-4 col-lg-4 col-sm-6">
+                              
+                              <div class="panel panel-success panel-colorful text-center">
+                                <div class="panel-body">
+                                  <?= gettimeofday() ?>
+                                </div>
+                                <div class="bg-light pad-ver">
+                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
+                                </div>
+                              </div>
+                            </div>
+                                
+                          </div>
+
+                          <div class="row">
+                            <h4> Work in Progress </h4>
+                            <div class="col-md-4 col-lg-4 col-sm-6">
+                              
+                              <div class="panel panel-success panel-colorful text-center">
+                                <div class="panel-body">
+                                  <?= gettimeofday() ?>
+                                </div>
+                                <div class="bg-light pad-ver">
+                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-4 col-lg-4 col-sm-6">
+                              
+                              <div class="panel panel-success panel-colorful text-center">
+                                <div class="panel-body">
+                                  <?= gettimeofday() ?>
+                                </div>
+                                <div class="bg-light pad-ver">
+                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
+                                </div>
+                              </div>
+                            </div>
+                                
+                          </div>
+
+                          <div class="row">
+                            <h4> Open Challenges </h4>
+                            <div class="col-md-4 col-lg-4 col-sm-6">
+                              
+                              <div class="panel panel-success panel-colorful text-center">
+                                <div class="panel-body">
+                                  <?= gettimeofday() ?>
+                                </div>
+                                <div class="bg-light pad-ver">
+                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
+                                </div>
+                              </div>
+                            </div>
+
+                            <div class="col-md-4 col-lg-4 col-sm-6">
+                              
+                              <div class="panel panel-success panel-colorful text-center">
+                                <div class="panel-body">
+                                  <?= gettimeofday() ?>
+                                </div>
+                                <div class="bg-light pad-ver">
+                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
+                                </div>
+                              </div>
+                            </div>
+                                
+                          </div>
+                          <!--Team Dashboard Ends-->
+                          <!--===================================================-->
+
                         </div>
 
-                        <div class="tab-pane fade" id="demo-tabs-box-4">
+                        <div class="tab-pane fade" id="tabs-activities">
                           <!-- /.Activities-block -->
                           <div class="activities-start">
                   

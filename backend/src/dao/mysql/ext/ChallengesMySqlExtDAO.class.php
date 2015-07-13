@@ -22,6 +22,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 				";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($challengeId);
+		$sqlQuery->setNumber($challengeId);
 		return $this->getRowChallenge($sqlQuery);
 	}
 

@@ -94,46 +94,812 @@
 
         <div class="row">  
 
-          <div class="col-md-7 col-sm-10 col-md-offset-1 col-sm-offset-1">
+          <div class="col-md-10 col-lg-10 col-sm-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
             <hr>
-            <div class="post-title">
-                <h4>
-                  PROJECTS
-                </h4>
-            </div> <!-- /.heading-block -->
-            
 
-            <img src="<?= $baseUrl ?>static/imgs/images.jpeg" class="post-img img-responsive" alt="Project Image" >
-            
-            <hr class="spacer-sm">
-            
-            <h4 class="post-title">Project Title - Collap UX Design</h4>
-            
-            <div class="post-content">
-              <p> 
-                User experience design (UXD or UED) is the process of enhancing user satisfaction by improving the usability, accessibility, and pleasure provided in the interaction between the user and the product.[1] User experience design encompasses traditional human–computer interaction (HCI) design, and extends it by addressing all aspects of a product or service as perceived by user
-              </p>
-            </div>
-            
-            <hr>
-            <hr class="spacer-sm">
+            <!-- Profile page tabs starts here -->
 
-            <img src="<?= $baseUrl ?>static/imgs/historic.png" class="post-img img-responsive" alt="Project Image" >
+                <div class="panel">
+          
+                  <!-- Panel heading -->
+                  <div class="panel-heading">
+                    <div class="panel-control">
+                      <ul class="nav nav-tabs">
+                        <li class="active"><a data-toggle="tab" href="#tabs-profile"><i class="fa fa link"></i> Profile</a></li>
+                        <li><a data-toggle="tab" href="#tabs-project"><i class="fa fa question"></i> Project</a></li>
+                        <li><a data-toggle="tab" href="#tabs-activity"><i class="fa fa video"></i> Activitie</a></li>
+                        <li><a data-toggle="tab" href="#tabs-idea"><i class="fa fa link"></i> Idea</a></li>
+                      </ul>
+                    </div>
+                    <h3 class="panel-title">User Profile</h3>
+                  </div>
             
-            <hr class="spacer-sm">
+                  <!-- Panel body -->
+                  
+                  <div class="panel-body">
+                    <div class="tab-content">
+          
+                    <!--USer Profile Starts-->
+                      <!--===================================================-->
+          
+                      <div id="tabs-profile" class="tab-pane fade active in">
+
+                        <div class = "row heading-block">
+                          <div class="col-md-3 col-lg-3 col-sm-3">
+                            <div class="post-title">
+                                <h4>
+                                  Skill Sets
+                                </h4>
+                            </div> <!-- /.heading-block -->
+
+                          </div>
+                          
+                          <div class="col-md-9 col-lg-9 col-sm-9">
+                          
+                            <div class="">
+                              <span class="btn btn-secondary btn-sm"> C </span>
+                              <span class="btn btn-secondary btn-sm"> Core Java </span>
+                              <span class="btn btn-secondary btn-sm"> PHP </span>
+                              <span class="btn btn-secondary btn-sm"> MySql </span>
+
+                            </div> <!-- /.list-group -->
+
+                            <!-- FORM VALIDATION ON ACCORDION -->
+                              <!--===================================================-->
+                               <div id="demo-accordion" class="panel-group accordion">
+                                  <div class="panel" style="box-shadow: 0px 0px 0px;">
+                          
+                                    <!-- Accordion title -->
+                                    <div class="panel-heading">
+                                      <h4 class="panel-title">
+                                        <button class="btn btn-primary" data-parent="#demo-accordion" data-toggle="collapse" href="#demo-acc-panel-1">
+                                          <i class="fa fa-plus"></i> Add More
+                                        </button>
+                                      </h4>
+                                    </div>
+                          
+                                    <!-- Accordion content -->
+                                    <div id="demo-acc-panel-1" class="panel-collapse collapse">
+                                      <div class="panel-body" style="padding-left: 1px;">
+                                        <form id="demo-bv-accordion" class="form-horizontal" action="#" method="post">
+                                          <input type="text" class="form-control" placeholder="Add a tag" value="Sport, Movie, Documents, Video" data-role="tagsinput">
+                                        </form>
+                                      </div>
+                                    </div>
+                                  </div>
+                                </div>
+                              </form>
+                              <!--===================================================-->
+                            <!-- END FORM VALIDATION ON ACCORDION -->
+
+                          </div>
+                        </div>
+
+                        <div class = "row heading-block">
+                          <div class="col-md-3 col-lg-3 col-sm-3">
+                            
+                            <div class="post-title">
+                              <h4>
+                                Technical Strength
+                              </h4>
+                            </div> <!-- /.heading-block -->
+                          </div>
+                          <div class="col-md-9 col-lg-9 col-sm-9">                         
+                            <div class="post-content">
+                              <p> 
+                                Have undergone training for Ethical hacking.
+                                Red hat certified Engineer (RHCE Certified).
+                                Familier with Linux, Software Design Models
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+
+                        <div class = "row heading-block">
+                          <div class="col-md-3 col-lg-3 col-sm-3">
+                            
+                            <div class="post-title">
+                              <h4>
+                                About Me
+                              </h4>
+                            </div> <!-- /.heading-block -->
+                          </div>
+                          <div class="col-md-9 col-lg-9 col-sm-9">                         
+                            <div class="post-content">
+                              <p> 
+                                Have undergone training for Ethical hacking.
+                                Red hat certified Engineer (RHCE Certified).
+                                Familier with Linux, Software Design Models
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+
+                        <div class = "row heading-block">
+                          <div class="col-md-3 col-lg-3 col-sm-3">
+                            
+                            <div class="post-title">
+                              <h4>
+                                Work Experience
+                              </h4>
+                            </div> <!-- /.heading-block -->
+                          </div>
+   
+                          <div class="col-md-9 col-lg-9 col-sm-9">                         
+                            <div>
+                              <h5 class="">Dpower4 Pvt. Ltd.</h5>
+                              <p class="semibold">Software Engineer</p>          
+                              <p class="text-muted"> 2014 - Present </p>
+                              
+                              <hr>
+                              
+                              <h5 class="">IBM LAbs</h5>
+                              <p class="semibold">Software Developer</p>          
+                              <p class="text-muted"> 2011 - 2014 </p>
+                              
+                              <hr>
+                              
+                              <h5 class="">Ericssion </h5>
+                              <p class="semibold">System Engineer</p>          
+                              <p class="text-muted"> 2010 - 2011 </p>
+
+                            </div> <!-- /.list-group -->
+                          </div>
+                        </div>
+
+                        <div class = "row">
+                          <div class="col-md-3 col-lg-3 col-sm-3">
+                            <div class="post-title">
+                              <h4>
+                                Education
+                              </h4>
+                            </div> <!-- /.heading-block -->
+                          </div>
+
+                          <div class="col-md-9 col-lg-9 col-sm-9">
+                            <div>
+                              <h5 class="">PEC University of Technology</h5>
+                              <p class="semibold">M.Tech, CSE</p>          
+                              <p class="text-muted"> 2012 - 2014 </p>
+                            </div> <!-- /.list-group -->
+
+                            <div>
+                              <h5 class="">UIET MDU Rohtak</h5>
+                              <p class="semibold">B.Tech, CSE</p>          
+                              <p class="text-muted"> 2007 - 2011 </p>
+                            </div> <!-- /.list-group -->
+
+                          </div>
+                        </div>
+                      </div>
+        
+                    <!--USer Profile Starts-->
+                    <!--===================================================-->
+
+                    <!--USer Projects tab starts-->
+                      <!--===================================================-->
+                      
+                      <div id="tabs-project" class="tab-pane fade in">
+                        
+                        <div class="post-aside" style="padding-top: 28px;">
+                          <div class="post-date">
+                            <span class="post-date-day">12</span>
+                            <span class="post-date-month"> January</span>
+                            <span class="post-date-year"> 2015</span>
+                          </div>
+
+                          <a href="#comments" class="post-comment">
+                            4
+                          </a>
+                        </div> <!-- /.post-aside -->
+
+                        <div class="post-main">
+
+                          <h4 class="post-title">Project Title - Collap UX Design</h4>
+                          
+                          <img src="<?= $baseUrl ?>static/imgs/images.jpeg" class="post-img img-responsive" alt="Project Image" >
+              
+                          <hr class="spacer-sm">
+                        
+                          <div class="post-content">
+                            <p> 
+                              User experience design (UXD or UED) is the process of enhancing user satisfaction by improving the usability, accessibility, and pleasure provided in the interaction between the user and the product.[1] User experience design encompasses traditional human–computer interaction (HCI) design, and extends it by addressing all aspects of a product or service as perceived by user
+                            </p>
+                          </div>
+
+                        </div>
+                        <ol class="comment-list">
+                          <li></li>
+                          <li>
+                            <div class="comment">
+
+                              <div class="comment-avatar">
+                                <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                              </div> <!-- /.comment-avatar -->
+
+                              <div class="comment-meta">
+
+                                <span class="comment-author">
+                                  <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                </span>
+
+                                <a href="javascript:;" class="comment-timestamp">
+                                  April 3, 2013 at 6:47 am
+                                </a>
+                                -
+                                <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+                              </div> <!-- /.comment-meta -->
+
+                              <div class="comment-body">
+                              <p> This is comment box, looks nice,, hav eto improve 
+                              ux more, stay on work,, nice article</p>
+                              </div> <!-- /.comment-body -->
+
+                            </div> <!-- /.comment -->
+                          </li>
+
+                          <li>
+                            <div class="comment">
+
+                              <div class="comment-avatar">
+                                <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                              </div> <!-- /.comment-avatar -->
+
+                              <div class="comment-meta">
+
+                                <span class="comment-author">
+                                  <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                </span>
+
+                                <a href="javascript:;" class="comment-timestamp">
+                                  April 3, 2013 at 6:47 am
+                                </a>
+
+                                -
+
+                                <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                              </div> <!-- /.comment-meta -->
+
+                              <div class="comment-body">
+                              <p> This is comment box, looks nice,, hav eto improve 
+                              ux more, stay on work,, nice article</p>
+                              </div> <!-- /.comment-body -->
+
+                            </div> <!-- /.comment -->
+                          </li>
+                        </ol>
+                        
+                        <hr>
+                        <hr class="spacer-sm">
+
+                        <div class="post-aside" style="padding-top: 28px;">
+                          <div class="post-date">
+                            <span class="post-date-day">12</span>
+                            <span class="post-date-month"> January</span>
+                            <span class="post-date-year"> 2015</span>
+                          </div>
+
+                          <a href="#comments" class="post-comment">
+                            4
+                          </a>
+                        </div> <!-- /.post-aside -->
+
+                        <div class="post-main">
+
+                          <h4 class="post-title">CartAtHome Connecting Farm to Home</h4>
+
+                          <img src="<?= $baseUrl ?>static/imgs/historic.png" class="post-img img-responsive" alt="Project Image" >
+                          
+                          <hr class="spacer-sm">
+                                                  
+                          <div class="post-content">
+                            <p> 
+                              A connected farm is an architectural design common in the New England region of the United States, and England and Wales in the United Kingdom. North American connected farms date back to the 17th century, while their British counterparts have also existed for several centuries. New England connected farms are characterized by a farm house, kitchen, barn, or other structures connected in a rambling fashion. This style evolved from carrying out farm work while remaining sheltered from winter weather. In the United Kingdom there are four distinct types of connected farmsteads, all dissimilar to the New England style.
+                            </p>
+                          </div>
+                        </div>
+                        <ol class="comment-list">
+                          <li></li>
+                          <li>
+                            <div class="comment">
+
+                              <div class="comment-avatar">
+                                <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                              </div> <!-- /.comment-avatar -->
+
+                              <div class="comment-meta">
+
+                                <span class="comment-author">
+                                  <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                </span>
+
+                                <a href="javascript:;" class="comment-timestamp">
+                                  April 3, 2013 at 6:47 am
+                                </a>
+                                -
+                                <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+                              </div> <!-- /.comment-meta -->
+
+                              <div class="comment-body">
+                              <p> This is comment box, looks nice,, hav eto improve 
+                              ux more, stay on work,, nice article</p>
+                              </div> <!-- /.comment-body -->
+
+                            </div> <!-- /.comment -->
+                          </li>
+
+                          <li>
+                            <div class="comment">
+
+                              <div class="comment-avatar">
+                                <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                              </div> <!-- /.comment-avatar -->
+
+                              <div class="comment-meta">
+
+                                <span class="comment-author">
+                                  <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                </span>
+
+                                <a href="javascript:;" class="comment-timestamp">
+                                  April 3, 2013 at 6:47 am
+                                </a>
+
+                                -
+
+                                <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                              </div> <!-- /.comment-meta -->
+
+                              <div class="comment-body">
+                              <p> This is comment box, looks nice,, hav eto improve 
+                              ux more, stay on work,, nice article</p>
+                              </div> <!-- /.comment-body -->
+
+                            </div> <!-- /.comment -->
+                          </li>
+                        </ol>
+
+                      </div>
+
+                    <!--USer Projects tab ends-->
+                      <!--===================================================-->
+                 
+                    <!--USer Activities Starts-->
+                      <!--===================================================-->
+                      <div id="tabs-activity" class="tab-pane fade">
+                        <!-- /.Activities-block -->
+                        <div class="activities-start">
+                        
+                          <div class="activity-1">
+
+                            <div class="post-aside" style="padding-top: 28px;">
+                              <div class="post-date">
+                                <span class="post-date-day">12</span>
+                                <span class="post-date-month"> January</span>
+                                <span class="post-date-year"> 2015</span>
+                              </div>
+
+                              <a href="#comments" class="post-comment">
+                                4
+                              </a>
+                            </div> <!-- /.post-aside -->
+
+                            <div class="post-main">
+
+                              <a href= '#' target="_blank">
+                                <h4 class="post-title"> Google teams with Disney to make intergalactic cartoon to inspire kids to code</h4>
+                              </a>
+                              <h4 class="post-meta">Published by <a href="javascript:;">Rajnish Panwar</a> in <a href="javascript:;">India</a></h4>
+                              <img src="<?= $baseUrl ?>static/imgs/googleactivity.jpg" class="post-img img-responsive" alt="Project Image" >
+                              
+                              <hr class="spacer-sm">
+                                
+                              <div class="post-content">
+                                <p> This one might be a show for kids that’s just as fun for adults to watch. Google has partnered with Disney to make a new cartoon series, Miles from Tomorrowland, to inspire kids to code.
+                                    In this outer space adventure, Miles explores the galaxy with his family and best friend in tow. Miles’ family joins him for the ride, including his mom and ship captain, Phoebe, his mechanical engineer dad, Leo, his tech-savvy big sister, Loretta, and his best friend and pet robo-ostrich Merc. The show is designed to not only fuel kids’ interest in space but also coding, teamwork, critical thinking and exploration. The show’s makers tapped consultants from NASA, Space Tourism Society and Google to keep it real. 
+                                    Characters are voiced by a stellar cast, too, including Olivia Munn, Adrian Grenier, Mark Hamill, George Takei, Bill Nye, Wil Wheaton, Alton Brown and Brenda Song.
+                                    The series’ premiere is tomorrow, Feb. 6, on the Disney Channel, starting at 9 a.m. PT. You can watch four back-to-back episodes, each featuring space facts integrated into the storylines of Miles’ missions as he strives to “connect the galaxy on behalf of Tomorrowland Transit Authority.
+                                </p>
+                              </div>
+                            </div>
+                            
+                            
+                            <ol class="comment-list">
+                              <li></li>
+                              <li>
+                                <div class="comment">
+
+                                  <div class="comment-avatar">
+                                    <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                                  </div> <!-- /.comment-avatar -->
+
+                                  <div class="comment-meta">
+
+                                    <span class="comment-author">
+                                      <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                    </span>
+
+                                    <a href="javascript:;" class="comment-timestamp">
+                                      April 3, 2013 at 6:47 am
+                                    </a>
+
+                                    -
+
+                                    <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                                  </div> <!-- /.comment-meta -->
+
+                                  <div class="comment-body">
+                                  <p> This is comment box, looks nice,, hav eto improve 
+                                  ux more, stay on work,, nice article</p>
+                                  </div> <!-- /.comment-body -->
+
+                                </div> <!-- /.comment -->
+                              </li>
+
+                              <li>
+                                <div class="comment">
+
+                                  <div class="comment-avatar">
+                                    <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                                  </div> <!-- /.comment-avatar -->
+
+                                  <div class="comment-meta">
+
+                                    <span class="comment-author">
+                                      <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                    </span>
+
+                                    <a href="javascript:;" class="comment-timestamp">
+                                      April 3, 2013 at 6:47 am
+                                    </a>
+
+                                    -
+
+                                    <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                                  </div> <!-- /.comment-meta -->
+
+                                  <div class="comment-body">
+                                  <p> This is comment box, looks nice,, hav eto improve 
+                                  ux more, stay on work,, nice article</p>
+                                  </div> <!-- /.comment-body -->
+
+                                </div> <!-- /.comment -->
+                              </li>
+
+                              <li>
+                                <div class="comment">
+
+                                  <div class="comment-avatar">
+                                    <img alt="" src="<?= $baseUrl ?>static/imgs/github.png" class="avatar">
+                                  </div> <!-- /.comment-avatar -->
+
+                                  <div class="comment-meta">
+
+                                    <span class="comment-author">
+                                      <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                    </span>
+
+                                    <a href="javascript:;" class="comment-timestamp">
+                                      April 3, 2013 at 6:47 am
+                                    </a>
+
+                                    -
+
+                                    <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                                  </div> <!-- /.comment-meta -->
+
+                                  <div class="comment-body">
+                                  <p> This is comment box, looks nice,, hav eto improve 
+                                  ux more, stay on work,, nice article</p>
+                                  </div> <!-- /.comment-body -->
+
+                                </div> <!-- /.comment -->
+                              </li>
+                            </ol>
+                          
+                          </div>
+
+
+                          
+                          <hr>
+
+                          <div class="activity-2">
+                            <div class="post-aside" style="padding-top: 28px;">
+                              <div class="post-date">
+                                <span class="post-date-day">12</span>
+                                <span class="post-date-month"> January</span>
+                                <span class="post-date-year"> 2015</span>
+                              </div>
+
+                              <a href="#comments" class="post-comment">
+                                4
+                              </a>
+                            </div> <!-- /.post-aside -->
+
+                            <div class="post-main">
+                              <!-- /.heading-block -->
+                              <a href= '#' target="_blank">
+                                <h4 class="post-title">Researchers parallelize a common data structure to work with multicore chips </h4>
+                              </a>
+                              <h4 class="post-meta">Published by <a href="javascript:;">Rajnish Panwar</a> in <a href="javascript:;">India</a></h4>
+
+                              <img src="<?= $baseUrl ?>static/imgs/image2.jpeg" class="post-img img-responsive" alt="Project Image" >
+                              
+                              <hr class="spacer-sm">
+                                
+                              <div class="post-content">
+                                <p> Parallelizing common algorithms:
+                                    Researchers revamp a common "data structure" so that it will work with multicore chips.
+                                    Every undergraduate computer-science major takes a course on data structures, which describes different ways of organizing data in a computer’s memory. Every data structure has its own advantages: Some are good for fast retrieval, some for efficient search, some for quick insertions and deletions, and so on.
+                                    Today, hardware manufacturers are making computer chips faster by giving them more cores, or processing units. But while some data structures are well adapted to multicore computing, others are not. In principle, doubling the number of cores should double the efficiency of a computation. With algorithms that use a common data structure called a priority queue, that’s been true for up to about eight cores — but adding any more cores actually causes performance to plummet.
+                                    At the Association for Computing Machinery’s Symposium on Principles and Practice of Parallel Programming in February, researchers from MIT’s Computer Science and Artificial Intelligence Laboratory will describe a new way of implementing priority queues that lets them keep pace with the addition of new cores. In simulations, algorithms using their data structure continued to demonstrate performance improvement with the addition of new cores, up to a total of 80 cores.
+                                </p>
+                              </div>
+
+
+                              <ol class="comment-list">
+                                <li></li>
+                                <li>
+                                  <div class="comment">
+
+                                    <div class="comment-avatar">
+                                      <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                                    </div> <!-- /.comment-avatar -->
+
+                                    <div class="comment-meta">
+
+                                      <span class="comment-author">
+                                        <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                      </span>
+
+                                      <a href="javascript:;" class="comment-timestamp">
+                                        April 3, 2013 at 6:47 am
+                                      </a>
+                                      -
+                                      <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+                                    </div> <!-- /.comment-meta -->
+
+                                    <div class="comment-body">
+                                    <p> This is comment box, looks nice,, hav eto improve 
+                                    ux more, stay on work,, nice article</p>
+                                    </div> <!-- /.comment-body -->
+
+                                  </div> <!-- /.comment -->
+                                </li>
+
+                                <li>
+                                  <div class="comment">
+
+                                    <div class="comment-avatar">
+                                      <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                                    </div> <!-- /.comment-avatar -->
+
+                                    <div class="comment-meta">
+
+                                      <span class="comment-author">
+                                        <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                      </span>
+
+                                      <a href="javascript:;" class="comment-timestamp">
+                                        April 3, 2013 at 6:47 am
+                                      </a>
+
+                                      -
+
+                                      <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                                    </div> <!-- /.comment-meta -->
+
+                                    <div class="comment-body">
+                                    <p> This is comment box, looks nice,, hav eto improve 
+                                    ux more, stay on work,, nice article</p>
+                                    </div> <!-- /.comment-body -->
+
+                                  </div> <!-- /.comment -->
+                                </li>
+
+                                <li>
+                                  <div class="comment">
+
+                                    <div class="comment-avatar">
+                                      <img alt="" src="<?= $baseUrl ?>static/imgs/github.png" class="avatar">
+                                    </div> <!-- /.comment-avatar -->
+
+                                    <div class="comment-meta">
+
+                                      <span class="comment-author">
+                                        <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                      </span>
+
+                                      <a href="javascript:;" class="comment-timestamp">
+                                        April 3, 2013 at 6:47 am
+                                      </a>
+
+                                      -
+
+                                      <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                                    </div> <!-- /.comment-meta -->
+
+                                    <div class="comment-body">
+                                    <p> This is comment box, looks nice,, hav eto improve 
+                                    ux more, stay on work,, nice article</p>
+                                    </div> <!-- /.comment-body -->
+
+                                  </div> <!-- /.comment -->
+                                </li>
+                              </ol>
+
+                            </div>
+                            <hr>
+                          </div>
+                        </div>              
+                      </div>
+
+                    <!--USer Activities ends-->
+                      <!--===================================================-->
+
+
+                    <!--USer Ideas Starts-->
+                      <!--===================================================-->
+          
+                      <div id="tabs-idea" class="tab-pane fade">
+                        <div class="activity-1">
+
+                          <div class="post-aside" style="padding-top: 28px;">
+                            <div class="post-date">
+                              <span class="post-date-day">12</span>
+                              <span class="post-date-month"> January</span>
+                              <span class="post-date-year"> 2015</span>
+                            </div>
+
+                            <a href="#comments" class="post-comment">
+                              4
+                            </a>
+                          </div> <!-- /.post-aside -->
+
+                          <div class="post-main">
+
+                            <a href= '#' target="_blank">
+                              <h4 class="post-title"> Google teams with Disney to make intergalactic cartoon to inspire kids to code</h4>
+                            </a>
+                            <h4 class="post-meta">Published by <a href="javascript:;">Rajnish Panwar</a> in <a href="javascript:;">India</a></h4>
+                            <img src="<?= $baseUrl ?>static/imgs/googleactivity.jpg" class="post-img img-responsive" alt="Project Image" >
+                            
+                            <hr class="spacer-sm">
+                              
+                            <div class="post-content">
+                              <p> This one might be a show for kids that’s just as fun for adults to watch. Google has partnered with Disney to make a new cartoon series, Miles from Tomorrowland, to inspire kids to code.
+                                  In this outer space adventure, Miles explores the galaxy with his family and best friend in tow. Miles’ family joins him for the ride, including his mom and ship captain, Phoebe, his mechanical engineer dad, Leo, his tech-savvy big sister, Loretta, and his best friend and pet robo-ostrich Merc. The show is designed to not only fuel kids’ interest in space but also coding, teamwork, critical thinking and exploration. The show’s makers tapped consultants from NASA, Space Tourism Society and Google to keep it real. 
+                                  Characters are voiced by a stellar cast, too, including Olivia Munn, Adrian Grenier, Mark Hamill, George Takei, Bill Nye, Wil Wheaton, Alton Brown and Brenda Song.
+                                  The series’ premiere is tomorrow, Feb. 6, on the Disney Channel, starting at 9 a.m. PT. You can watch four back-to-back episodes, each featuring space facts integrated into the storylines of Miles’ missions as he strives to “connect the galaxy on behalf of Tomorrowland Transit Authority.
+                              </p>
+                            </div>
+                          </div>
+                          
+                          
+                          <ol class="comment-list">
+                            <li></li>
+                            <li>
+                              <div class="comment">
+
+                                <div class="comment-avatar">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                                </div> <!-- /.comment-avatar -->
+
+                                <div class="comment-meta">
+
+                                  <span class="comment-author">
+                                    <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                  </span>
+
+                                  <a href="javascript:;" class="comment-timestamp">
+                                    April 3, 2013 at 6:47 am
+                                  </a>
+
+                                  -
+
+                                  <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                                </div> <!-- /.comment-meta -->
+
+                                <div class="comment-body">
+                                <p> This is comment box, looks nice,, hav eto improve 
+                                ux more, stay on work,, nice article</p>
+                                </div> <!-- /.comment-body -->
+
+                              </div> <!-- /.comment -->
+                            </li>
+
+                            <li>
+                              <div class="comment">
+
+                                <div class="comment-avatar">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                                </div> <!-- /.comment-avatar -->
+
+                                <div class="comment-meta">
+
+                                  <span class="comment-author">
+                                    <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                  </span>
+
+                                  <a href="javascript:;" class="comment-timestamp">
+                                    April 3, 2013 at 6:47 am
+                                  </a>
+
+                                  -
+
+                                  <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                                </div> <!-- /.comment-meta -->
+
+                                <div class="comment-body">
+                                <p> This is comment box, looks nice,, hav eto improve 
+                                ux more, stay on work,, nice article</p>
+                                </div> <!-- /.comment-body -->
+
+                              </div> <!-- /.comment -->
+                            </li>
+
+                            <li>
+                              <div class="comment">
+
+                                <div class="comment-avatar">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/github.png" class="avatar">
+                                </div> <!-- /.comment-avatar -->
+
+                                <div class="comment-meta">
+
+                                  <span class="comment-author">
+                                    <a href="javascript:;" class="url">Rajnish Kumar </a>
+                                  </span>
+
+                                  <a href="javascript:;" class="comment-timestamp">
+                                    April 3, 2013 at 6:47 am
+                                  </a>
+
+                                  -
+
+                                  <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
+
+                                </div> <!-- /.comment-meta -->
+
+                                <div class="comment-body">
+                                <p> This is comment box, looks nice,, hav eto improve 
+                                ux more, stay on work,, nice article</p>
+                                </div> <!-- /.comment-body -->
+
+                              </div> <!-- /.comment -->
+                            </li>
+                          </ol>
+                        
+                        </div>
+                      </div>
+
+                    <!--USer Ideas Starts-->
+                      <!--===================================================-->
+
+                    </div>
+                  </div>
+                </div>
+
+              <!-- Profile page tabs ends here -->
+
+
             
-            <h4 class="post-title">CartAtHome Connecting Farm to Home</h4>
-            
-            <div class="post-content">
-              <p> 
-                A connected farm is an architectural design common in the New England region of the United States, and England and Wales in the United Kingdom. North American connected farms date back to the 17th century, while their British counterparts have also existed for several centuries. New England connected farms are characterized by a farm house, kitchen, barn, or other structures connected in a rambling fashion. This style evolved from carrying out farm work while remaining sheltered from winter weather. In the United Kingdom there are four distinct types of connected farmsteads, all dissimilar to the New England style.
-              </p>
-            </div>
 
           </div> <!-- /.row md 7-->
 
 
-
+<?php
+  /*
           <div class="col-md-3 col-sm-10 col-sm-offset-1">
             <hr>
             <div class="post-title">
@@ -194,6 +960,19 @@
               <h5 class="">Dpower4 Pvt. Ltd.</h5>
               <p class="semibold">Software Engineer</p>          
               <p class="text-muted"> 2014 - Present </p>
+              
+              <hr>
+              
+              <h5 class="">IBM LAbs</h5>
+              <p class="semibold">Software Developer</p>          
+              <p class="text-muted"> 2011 - 2014 </p>
+              
+              <hr>
+              
+              <h5 class="">Ericssion </h5>
+              <p class="semibold">System Engineer</p>          
+              <p class="text-muted"> 2010 - 2011 </p>
+
             </div> <!-- /.list-group -->
 
            <div class="heading-block"></div>
@@ -216,234 +995,7 @@
             </div> <!-- /.list-group -->
 
 
-          </div> <!-- /.row md 3-->
-        </div> <!-- /.row -->
-
-        <div class="row">
-
-          <hr class="spacer-sm">
-          <div class="col-md-7 col-sm-10 col-md-offset-1 col-sm-offset-1">
-
-            <br class="visible-xs">
-
-            <div class="heading-block">
-              <h4>
-                Activity Feed
-              </h4>
-            </div> <!-- /.heading-block -->
-
-            <div class="share-widget clearfix">
-
-              <textarea class="form-control share-widget-textarea" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
-
-              <div class="share-widget-actions">
-                <div class="share-widget-types pull-left">
-                  <a href="javascript:;" class="fa fa-picture-o ui-tooltip" title="Post an Image"><i></i></a>
-                  <a href="javascript:;" class="fa fa-video-camera ui-tooltip" title="Upload a Video"><i></i></a>
-                  <a href="javascript:;" class="fa fa-lightbulb-o ui-tooltip" title="Post an Idea"><i></i></a>
-                  <a href="javascript:;" class="fa fa-question-circle ui-tooltip" title="Ask a Question"><i></i></a>
-                </div>  
-
-              <div class="pull-right">
-                <a class="btn btn-primary btn-sm" tabindex="2">Post</a>
-              </div>
-
-              </div> <!-- /.share-widget-actions -->
-
-            </div> <!-- /.share-widget -->
-
-            <br><br>
-
-            <div class="feed-item feed-item-idea">
-
-              <div class="feed-icon bg-primary">
-                <i class="fa fa-lightbulb-o"></i>
-              </div> <!-- /.feed-icon -->
-
-              <div class="feed-subject">
-                <p><a href="javascript:;">Nikita Williams</a> shared an idea: <a href="javascript:;">Create an Awesome Idea</a></p>
-              </div> <!-- /.feed-subject -->
-
-              <div class="feed-content">
-                <ul class="icons-list">
-                  <li>
-                    <i class="icon-li fa fa-quote-left"></i>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
-                  </li>
-                </ul>
-              </div> <!-- /.feed-content -->
-
-              <div class="feed-actions">
-                <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
-                <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
-
-                <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> 2 days ago</a>
-              </div> <!-- /.feed-actions -->
-
-            </div> <!-- /.feed-item -->
-
-
-            <div class="feed-item feed-item-image">
-
-              <div class="feed-icon bg-secondary">
-                <i class="fa fa-picture-o"></i>
-              </div> <!-- /.feed-icon -->
-
-              <div class="feed-subject">
-                <p><a href="javascript:;">Nikita Williams</a> posted the <strong>4 files</strong>: <a href="javascript:;">Annual Reports</a></p>
-              </div> <!-- /.feed-subject -->
-
-              <div class="feed-content">
-                <div class="thumbnail" style="width: 375px">
-                  <img src="./img/mockup.png" style="width: 100%;" alt="Gallery Image">
-                </div> <!-- /.thumbnail -->
-              </div> <!-- /.feed-content -->
-
-              <div class="feed-actions">
-                <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
-                <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
-
-                <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> 2 days ago</a>
-              </div> <!-- /.feed-actions -->
-
-            </div> <!-- /.feed-item -->
-
-
-            <div class="feed-item feed-item-file">
-
-              <div class="feed-icon bg-success">
-                <i class="fa fa-cloud-upload"></i>
-              </div> <!-- /.feed-icon -->
-
-              <div class="feed-subject">
-                <p><a href="javascript:;">Nikita Williams</a> posted the <strong>4 files</strong>: <a href="javascript:;">Annual Reports</a></p>
-              </div> <!-- /.feed-subject -->
-
-              <div class="feed-content">
-                <ul class="icons-list">
-                  <li>
-                    <i class="icon-li fa fa-file-text-o"></i>
-                    <a href="javascript:;">Annual Report 2007</a> - annual_report_2007.pdf
-                  </li>
-
-                  <li>
-                    <i class="icon-li fa fa-file-text-o"></i>
-                    <a href="javascript:;">Annual Report 2008</a> - annual_report_2007.pdf
-                  </li>
-
-                  <li>
-                    <i class="icon-li fa fa-file-text-o"></i>
-                    <a href="javascript:;">Annual Report 2009</a> - annual_report_2007.pdf
-                  </li>
-
-                  <li>
-                    <i class="icon-li fa fa-file-text-o"></i>
-                    <a href="javascript:;">Annual Report 2010</a> - annual_report_2007.pdf
-                  </li>
-                </ul>
-              </div> <!-- /.feed-content -->
-
-              <div class="feed-actions">
-                <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
-                <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
-
-                <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> 2 days ago</a>
-              </div> <!-- /.feed-actions -->
-
-            </div> <!-- /.feed-item -->
-
-
-
-            <div class="feed-item feed-item-bookmark">
-
-              <div class="feed-icon bg-tertiary">
-                <i class="fa fa-bookmark"></i>
-              </div> <!-- /.feed-icon -->
-
-              <div class="feed-subject">
-                <p><a href="javascript:;">Nikita Williams</a> bookmarked a page on Delicious: <a href="javascript:;">Jumpstart Themes</a></p>
-              </div> <!-- /.feed-subject -->
-
-              <div class="feed-content">
-              </div> <!-- /.feed-content -->
-
-              <div class="feed-actions">
-                <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
-                <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
-
-                <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> 2 days ago</a>
-              </div> <!-- /.feed-actions -->
-
-            </div> <!-- /.feed-item -->
-
-
-
-            <div class="feed-item feed-item-question">
-
-              <div class="feed-icon bg-secondary">
-                <i class="fa fa-question"></i>
-              </div> <!-- /.feed-icon -->
-
-              <div class="feed-subject">
-                <p><a href="javascript:;">Nikita Williams</a> posted the question: <a href="javascript:;">Who can I call to get a new parking pass for the Rowan Building?</a></p>
-              </div> <!-- /.feed-subject -->
-
-              <div class="feed-content">
-                <ul class="icons-list">
-                  <li>
-                    <i class="icon-li fa fa-quote-left"></i>
-                    Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.
-                  </li>
-                </ul>
-              </div> <!-- /.feed-content -->
-
-              <div class="feed-actions">
-                <a href="javascript:;" class="pull-left"><i class="fa fa-thumbs-up"></i> 123</a> 
-                <a href="javascript:;" class="pull-left"><i class="fa fa-comment-o"></i> 29</a>
-
-                <a href="javascript:;" class="pull-right"><i class="fa fa-clock-o"></i> 2 days ago</a>
-              </div> <!-- /.feed-actions -->
-
-            </div> <!-- /.feed-item -->
-
-            <br class="visible-xs">            
-            <br class="visible-xs">
-              
-          </div> <!-- /.col md 7-->
-
-
-          <div class="col-md-3 col-sm-10 col-sm-offset-1">
-
-            <div class="heading-block">
-              <h5>
-                Social Stats
-              </h5>
-            </div> <!-- /.heading-block -->
-
-            <div class="list-group">  
-
-              <a href="javascript:;" class="list-group-item">
-                  <h3 class="pull-right"><i class="fa fa-eye text-primary"></i></h3>
-                  <h4 class="list-group-item-heading">38,847</h4>
-                  <p class="list-group-item-text">Profile Views</p>                  
-                </a>
-
-              <a href="javascript:;" class="list-group-item">
-                <h3 class="pull-right"><i class="fa fa-facebook-square  text-primary"></i></h3>
-                <h4 class="list-group-item-heading">3,482</h4>
-                <p class="list-group-item-text">Facebook Likes</p>
-              </a>
-
-              <a href="javascript:;" class="list-group-item">
-                <h3 class="pull-right"><i class="fa fa-twitter-square  text-primary"></i></h3>
-                <h4 class="list-group-item-heading">5,845</h4>
-                <p class="list-group-item-text">Twitter Followers</p>
-              </a>
-            </div> <!-- /.list-group -->
-
-            <br>
-
-            <div class="heading-block">
+                        <div class="heading-block">
               <h5>
                 Project Activity
               </h5>
@@ -481,10 +1033,12 @@
 
             </div> <!-- /.well -->
 
-          </div> <!-- /.col md 3-->
-
+          </div> <!-- /.row md 3-->
+  */
+?>
         </div> <!-- /.row -->
 
+      
         <br><br>
 
       </div> <!-- /.content container -->
