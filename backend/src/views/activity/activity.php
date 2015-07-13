@@ -223,14 +223,9 @@
    
       </div> <!-- id Content-container div end -->
   
-    </div> <!-- id container div end -->
+      <?php require_once 'views/sidebar/sidebar_button.php'; ?>
 
     
-    <?php require_once 'views/sidebar/sidebar_button.php'; ?>
-
-
-  </div>
-
   
   <?php include_once 'views/footer/footer.php'; ?>
 

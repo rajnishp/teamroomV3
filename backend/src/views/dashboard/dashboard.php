@@ -156,74 +156,71 @@
 
 
               <!-- /.Activities-block -->
-                  <div class="activities-start">
-                  
-                    <div class="post-title">
-                        <h3>
-                          Activities
-                        </h3>
-                    </div> <!-- /.heading-block -->
-                    <hr>            
-                    <hr class="spacer-sm">
+                <div class="activities-start">
+                
+                  <div class="post-title">
+                      <h3>
+                        Activities
+                      </h3>
+                  </div> <!-- /.heading-block -->
+                  <hr>            
+                  <hr class="spacer-sm">
 
 
-                    <div class="activity-1">
+                  <div class="activity-1">
 
-                      <?php foreach ($top10Activities as $activities) { ?>
+                    <?php foreach ($top10Activities as $activities) { ?>
 
-                      <div class="post">
-                        <div class="post-aside" style="padding-top: 28px;">
-                          <div class="post-date">
-                            <?php $data = date_parse($activities->getCreationTime()); ?>
-                            <span class="post-date-day"><?= $data["day"] ?></span>
-                            <span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>
-                            <span class="post-date-year"><?= $data["year"] ?></span>
-                          </div>
-                        </div> <!-- /.post-aside -->
+                    <div class="post">
+                      <div class="post-aside" style="padding-top: 28px;">
+                        <div class="post-date">
+                          <?php $data = date_parse($activities->getCreationTime()); ?>
+                          <span class="post-date-day"><?= $data["day"] ?></span>
+                          <span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>
+                          <span class="post-date-year"><?= $data["year"] ?></span>
+                        </div>
+                      </div> <!-- /.post-aside -->
+                    
+                      <div class="post-main">
+                        <h4 class="post-title"><?= $activities->getRefinedTitle() ?></h4>
+                        <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activities->getFirstName()) ?> <?= ucfirst($activities->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                          
                       
-                        <div class="post-main">
-                          <h4 class="post-title"><?= $activities->getRefinedTitle() ?></h4>
-                          <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activities->getFirstName()) ?> <?= ucfirst($activities->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
-                            
-                        
-                          <div class="post-content">
-                            <p> 
-                              <?= $activities->getRefinedStmt() ?>
-                            </p>
+                        <div class="post-content">
+                          <p> 
+                            <?= $activities->getRefinedStmt() ?>
+                          </p>
+                        </div>
+                      </div>
+                      <hr>
+                      <hr class="spacer-sm">
+                    </div>
+                    
+                    <?php } ?>
+                    
+                    
+                    <ol class="comment-list">
+                      <li></li>
+                      <li>
+                        <div class="comment">
+
+                          <div class="comment-avatar">
+                            <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                          </div> <!-- /.comment-avatar -->
+
+                          <div class="comment-meta">
+
                           </div>
                         </div>
-                        <hr>
-                        <hr class="spacer-sm">
-                      </div>
-                      
-                      <?php } ?>
-                      
-                      
-                      <ol class="comment-list">
-                        <li></li>
-                        <li>
-                          <div class="comment">
-
-                            <div class="comment-avatar">
-                              <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
-                            </div> <!-- /.comment-avatar -->
-
-                            <div class="comment-meta">
-
-                            </div>
-                          </div>
-                        </li>
-                      </ol>
-                    </div>
+                      </li>
+                    </ol>
                   </div>
-
+                </div>
+              </div>
+            </div>
+        
         <?php require_once 'views/sidebar/sidebar_button.php'; ?>
-
-      </div>
-    </div>
-
-    <?php require_once 'views/footer/footer.php'; ?>
-
-
+        <?php require_once 'views/footer/footer.php'; ?>
+        
   </body>
 </html>

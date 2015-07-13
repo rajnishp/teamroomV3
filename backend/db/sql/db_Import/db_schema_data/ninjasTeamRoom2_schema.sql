@@ -466,6 +466,53 @@ CREATE TABLE IF NOT EXISTS `user_skills` (
   UNIQUE KEY `user_id` (`user_id`,`skill_id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=79 ;
 
+
+--
+-- Table structure for table `education`
+--
+
+CREATE TABLE IF NOT EXISTS `education` (
+  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `user_id` int( 15 ) NOT NULL ,
+  `institute` varchar( 100 ) NOT NULL ,
+  `degree` varchar( 100 ) NOT NULL ,
+  `branch` varchar( 100 ) NOT NULL ,
+  `from` YEAR( 4 ) NOT NULL ,
+  `to` YEAR( 4 ) NOT NULL ,
+  PRIMARY KEY ( `id` )
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+
+
+--
+-- Table structure for table `job_preference`
+--
+
+CREATE TABLE IF NOT EXISTS `job_preference` (
+  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `user_id` int( 15 ) NOT NULL ,
+  `location` varchar( 100 ) NOT NULL ,
+  `current_ctc` varchar( 100 ) NOT NULL ,
+  `expected_ctc` varchar( 100 ) NOT NULL ,
+  `notice_period` varchar( 10 ) NOT NULL ,
+  PRIMARY KEY ( `id` )
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+
+--
+-- Table structure for table `working_history`
+--
+
+CREATE TABLE IF NOT EXISTS `working_history` (
+  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `user_id` int( 15 ) NOT NULL ,
+  `company_name` varchar( 100 ) NOT NULL ,
+  `from` date NOT NULL ,
+  `to` date NOT NULL ,
+  `designation` varchar( 100 ) NOT NULL ,
+  PRIMARY KEY ( `id` )
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+
+
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
