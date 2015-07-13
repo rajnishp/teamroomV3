@@ -43,10 +43,10 @@ class ProjectController {
 
 
 			if (isset($_SESSION['userId'])) {
-				require_once 'views/project/project_page.php';
+				require_once 'views/project/project.php';
 			}
 			else 
-				require_once 'views/project/project.php';
+				require_once 'views/project/project_page.php';
 
 
 
