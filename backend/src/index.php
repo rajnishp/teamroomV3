@@ -1,4 +1,6 @@
 <?php
+session_start();
+
 include_once "controllers/HomeController.class.php";
 include_once "controllers/ProjectController.class.php";
 include_once "controllers/ActivityController.class.php";
@@ -45,44 +47,9 @@ $logger = new ShopbookLogger();
 $logger -> enabled = true;
 $logger -> debug ("Setting up ...");
 
-if (!empty($_POST)){
-	$form = $_POST['submit'];
-	switch ($form) {
-		case 'login':
-			//varify
-			//and set type
-			$_SESSION['type'] = 1;
-			break;
-
-		case 'signup':
-			//varify
-			//and set type
-			$_SESSION['type'] = 1;
-			break;
-
-		case 'logout':
-			//varify
-			//and set type
-			$_SESSION['type'] = 1;
-			break;
-
-		case 'forgetPassword':
-			//varify
-			//and set type
-			$_SESSION['type'] = 1;
-			break;
-		
-		default:
-			# code...
-			break;
-	}
-	print_r($_POST);
 
 
-}
 
-
-$_SESSION['type'] = "admin";
 $route = explode("/",$_SERVER[REQUEST_URI]);
 
 if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
@@ -117,6 +84,48 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 					$dashboardController = new DashboardController($route[2]);
 					$dashboardController -> render();
+				break;
+
+			case "home":
+
+					$homeController = new HomeController();
+					if($route[2] == "logout"){
+						$homeController -> logout ();
+					}
+					
+					if (!empty($_POST)){
+						$form = $_POST['submit'];
+
+						switch ($form) {
+							case 'login':
+								
+								$homeController -> login ();
+								break;
+
+							case 'signup':
+								$homeController -> signup ();
+								break;
+
+							case 'logout':
+								$homeController -> logout ();
+								break;
+
+							case 'forgetPassword':
+								$homeController -> forgetPassword ();
+								break;
+							
+							default:
+								$homeController -> render ();
+								break;
+						}
+						
+
+
+					}
+					else{
+						$homeController -> render ();
+					}
+
 				break;
 			
 			

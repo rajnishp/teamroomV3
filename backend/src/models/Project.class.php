@@ -51,6 +51,49 @@
 			return $this -> id;
 		}
 
+		function getRefinedStmt(){
+			//repalace space tages
+			$stmt = $this->replaceTags($this->stmt);
+			
+			if ($stmt[0] == "<"){
+
+				$first=explode(' ', $stmt);
+				$rest=ltrim($stmt, $first[0]);
+				$stmt = $first[0] . " class=\"post-img img-responsive\" " . $rest; 
+			}
+
+			return $stmt;
+
+
+		}
+
+		private function replaceTags($req){
+
+			return str_replace(
+							"<s>", "&nbsp;", 
+								str_replace("<r>", "'", 
+										str_replace("<a>", "&",
+											str_replace("<an>", "+", $req))));
+
+		}
+
+		function getRefinedTitle(){
+			//repalace space tages
+			$stmt = $this->replaceTags($this->projectTitle);
+			
+			if ($stmt[0] == "<"){
+
+				$first=explode(' ', $stmt);
+				$rest=ltrim($stmt, $first[0]);
+				$stmt = $first[0] . " class=\"post-img img-responsive\" " . $rest; 
+			}
+
+			return $stmt;
+
+
+		}
+
+
 		function setBlobId ($blobId) {
 			$this -> blobId = $blobId;
 		}

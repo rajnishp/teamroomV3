@@ -37,13 +37,13 @@
             <br><br>
             <label></label>
                 
-            <form class="form account-form login-form masthead-form well">
+            <form class="form account-form login-form masthead-form well" action="<?= $baseUrl ?>home/login" method="post">
 
               <div class="form-group">
-                <input type="text" class=" input-block-level form-control" id="username" placeholder="Email or Username" tabindex="1">
+                <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username" tabindex="1">
               </div>
               <div class="form-group">
-                <input type="password" class="input-block-level form-control" id="passwordlogin" placeholder="Password" tabindex="1">
+                <input type="password" class="input-block-level form-control" id="password" name="password" placeholder="Password" tabindex="1">
               </div>
 
               <div class="form-group clearfix">
@@ -59,7 +59,7 @@
               </div> <!-- /.form-group -->
 
               <input name="project" type="hidden" value="Collap"/>
-              <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login"><b> Login </b></button>
+              <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login" name="submit" value="login"><b> Login </b></button>
               <div class="line"> or </div>  
               <div class="socials">
                 <ul class="list-inline">
@@ -107,33 +107,33 @@
               <h2 class="dark-text">Register with Collap</h2>
             </div>
             <div class="row">
-              <form class="form account-form registration-form masthead-form well" method="POST" action="../admin/index.html">
+              <form class="form account-form registration-form masthead-form well" method="POST" action="<?= $baseUrl?>home/signup">
 
                 <div class="form-group">
                   
-                  <input type="text" class="input-block-level form-control" placeholder="Enter first name" id="firstname" onkeyup="nospaces(this)" tabindex="1">
+                  <input type="text" class="input-block-level form-control" placeholder="Enter first name" id="firstname" name="firstname" onkeyup="nospaces(this)" tabindex="1">
                 </div> <!-- /.form-group -->
 
                 <div class="form-group">
-                  <input type="text" class="input-block-level form-control" placeholder="Enter last name" id="lastname" onkeyup="nospaces(this)" tabindex="1">
+                  <input type="text" class="input-block-level form-control" placeholder="Enter last name" id="lastname" name="lastname" onkeyup="nospaces(this)" tabindex="1">
                 </div> <!-- /.form-group -->
 
                 <div class="form-group">
-                  <input type="email" class="input-block-level form-control" placeholder="Enter email-id" id="email" onkeyup="nospaces(this)" onblur="emailCheck();" tabindex="1">
+                  <input type="email" class="input-block-level form-control" placeholder="Enter email-id" id="email" name="email" onkeyup="nospaces(this)" onblur="emailCheck();" tabindex="1">
                   <span id="status_email"></span>
                 </div> <!-- /.form-group -->
         
                 <div class="form-group">
-                  <input type="text" class="input-block-level form-control" placeholder="Enter username" id="usernameR" onkeyup="nospaces(this)" onblur="usernameCheck();"/>
+                  <input type="text" class="input-block-level form-control" placeholder="Enter username" id="usernameR" name="username" onkeyup="nospaces(this)" onblur="usernameCheck();"/>
                   <span id="status"></span>
                 </div> <!-- /.form-group -->
 
                 <div class="form-group">
-                  <input type="password" class="input-block-level form-control" placeholder="Enter password" onkeyup="nospaces(this)" id="passwordR"/>
+                  <input type="password" class="input-block-level form-control" placeholder="Enter password" onkeyup="nospaces(this)" id="passwordR" name="password"/>
                 </div> <!-- /.form-group -->
 
                 <div class="form-group">
-                  <input type="password" class="input-block-level form-control" placeholder="Confirm password" onkeyup="nospaces(this)" id="password2R"/>
+                  <input type="password" class="input-block-level form-control" placeholder="Confirm password" onkeyup="nospaces(this)" id="password2R" name="password2"/>
                 </div> <!-- /.form-group -->
 
                 <label>You are here for</label>
@@ -162,7 +162,7 @@
                 </div>
                 
                 <div class="form-group">
-                  <button type="submit" class="btn btn-success" id="request_reg" style="width:100%;height:50px;font-size:22px;" >
+                  <button type="submit" class="btn btn-success" name="submit" value="signup" id="request_reg" style="width:100%;height:50px;font-size:22px;" >
                     <b>Register</b>
                   </button>
                 </div>
