@@ -45,15 +45,10 @@
                       <button class="btn btn-success btn-labeled fa fa-plus" style="margin-right: 5px;"> JOIN </button>
                       <button class="btn btn-default btn-labeled fa fa-envelope"> MESSAGE </button>
                 </div>
-<!--                 <div class="panel-body">
-                  <h4>Consectetur adipisicing</h4>
-                  Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat.
-                </div> -->
-              </div>
-              <!--===================================================-->
+             </div>
 
 
-<!--                 <img src="<?= $baseUrl ?>static/imgs/Open.png" class="post-img img-responsive" alt="Project Image">
+<!--              <img src="<?= $baseUrl ?>static/imgs/Open.png" class="post-img img-responsive" alt="Project Image">
  -->
                  <!--Panel with Tabs-->
                   <!--===================================================-->

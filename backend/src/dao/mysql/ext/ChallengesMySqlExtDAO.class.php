@@ -23,7 +23,15 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($challengeId);
 		$sqlQuery->setNumber($challengeId);
-		return $this->getRowChallenge($sqlQuery);
+		
+		$activity = $this->getRowChallenge($sqlQuery);
+
+		$DAOFactory = new DAOFactory();
+		$challengeResponsesDAO = $DAOFactory->getChallengeResponsesDAO();
+
+		$activity -> setResponses ( $challengeResponsesDAO -> getResponses ( $activity -> getId () ) );
+		
+		return $activity;
 	}
 
 	public function getTopActivities () {

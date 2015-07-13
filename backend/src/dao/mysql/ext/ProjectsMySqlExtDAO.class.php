@@ -160,9 +160,13 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	}
 
 	public function queryAllUserProjects($userId){
-		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, 
+								user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team 
-					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 ORDER BY creation_time DESC;";
+						WHERE (project.user_id = ? OR team.user_id = ?) 
+							AND project.user_id = user.id 
+							AND project.type != 'Deleted' AND team.member_status = 1 
+							ORDER BY creation_time DESC;";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($userId);
 		$sqlQuery->setNumber($userId);
