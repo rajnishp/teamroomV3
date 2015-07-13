@@ -34,39 +34,7 @@
             <img src="<?= $baseUrl ?>static/imgs/kapitalia.jpg" class="img-responsive" alt="" >
             <hr class="spacer-sm">
 
-            <!-- Create Project Form -->
-            <form id="demo-bv-errorcnt" class="form-horizontal" action="#" method="post">
-
-              <div class="form-group">
-                <label class="col-lg-3 control-label">Title</label>
-                <div class="col-lg-7">
-                  <input type="text" class="form-control" name="title" placeholder="Project Title">
-                </div>
-              </div>
-              <div class="form-group pad-btm">
-                <label class="col-lg-3 control-label">Description</label>
-                <div class="col-lg-7">
-                  <textarea class="form-control" name="description" rows="7" placeholder="Tell us Project Description..."></textarea>
-                </div>
-              </div>
-              <div class="form-group">
-                <label class="col-md-3 control-label">File input</label>
-                <div class="col-md-9">
-                  <span class="pull-left btn btn-default btn-file">
-                  Browse... <input type="file">
-                  </span>
-                </div>
-              </div>
-              <div class="row">
-                <div class="col-sm-7 col-sm-offset-3">
-                  <button class="btn btn-primary btn-labeled fa fa-send fa-lg" type="submit">Submit</button>
-                </div>
-              </div>
             
-            </form>
-            <hr>
-            <!-- Create Project Form Ends-->
-
             <div class="row text-center">
                 <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 col-lg-offset-4 col-md-offset-4">
 
