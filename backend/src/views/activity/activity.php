@@ -72,7 +72,7 @@
             </div>
 
             <ol class="comment-list">
-            <? foreach ($comments as $comment) { ?>
+            <?php foreach ($comments as $comment) { ?>
               
               <li>
                 <div class="comment">
@@ -100,7 +100,7 @@
                 </div> <!-- /.comment -->
               </li>
 
-            <? } ?>
+            <?php } ?>
             </ol>
 
             <hr class="spacer-md">
@@ -176,7 +176,7 @@
 
               </li>
 
-              <? } ?>
+              <?php } ?>
             </ul>
 
 
@@ -187,14 +187,14 @@
             <h4>Recent Posts</h4>
 
             <ul class="fa-ul blog-ul">
-              <? foreach ($recPosts as $recPost) { ?>
+              <?php foreach ($recPosts as $recPost) { ?>
               <li>
                 <i class="fa-li fa fa-chevron-right"></i> 
                 <a href="<?= $baseUrl ?>activity/<?= $recPost->getId() ?>">
                   <?= $recPost->getRefinedTitle() ?>
                 </a>
               </li>
-              <? } ?>
+              <?php } ?>
             </ul>
 
 
@@ -205,7 +205,7 @@
             <h4>Most Popular Projects</h4>
 
             <ul class="fa-ul blog-ul">
-              <? foreach ($popProjects as $project) { ?>
+              <?php foreach ($popProjects as $project) { ?>
 
               <li>
                   <i class="fa-li fa fa-chevron-right"></i> 
@@ -214,7 +214,7 @@
                   </a>
               </li>
               
-              <? } ?>
+              <?php } ?>
             </ul>
 
           </div> <!-- /.col -->
