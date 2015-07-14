@@ -1,3 +1,6 @@
+  <?php require_once 'views/source/actionDropdown.php'; ?>
+  <?php require_once 'views/source/postForms.php'; ?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -96,12 +99,12 @@
 
                   <div class="activity-1">
 
-                    <?php foreach ($top10Activities as $activities) { ?>
+                    <?php foreach ($top10Activities as $activity) { ?>
 
                     <div class="post">
                       <div class="post-aside" style="padding-top: 28px;">
                         <div class="post-date">
-                          <?php $data = date_parse($activities->getCreationTime()); ?>
+                          <?php $data = date_parse($activity->getCreationTime()); ?>
                           <span class="post-date-day"><?= $data["day"] ?></span>
                           <span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>
                           <span class="post-date-year"><?= $data["year"] ?></span>
@@ -109,38 +112,50 @@
                       </div> <!-- /.post-aside -->
                     
                       <div class="post-main">
-                        <h4 class="post-title"><?= $activities->getRefinedTitle() ?></h4>
-                        <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activities->getFirstName()) ?> <?= ucfirst($activities->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                        <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
+                        <?php dropDown_comment(8, 7, 9); ?>
+                        <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                           
                       
                         <div class="post-content">
                           <p> 
-                            <?= $activities->getRefinedStmt() ?>
+                            <?= $activity->getRefinedStmt() ?>
                           </p>
                         </div>
                       </div>
                       <hr>
                       <hr class="spacer-sm">
                     </div>
-                    
-                    <?php } ?>
-                    
-                    
+
                     <ol class="comment-list">
                       <li></li>
                       <li>
                         <div class="comment">
 
                           <div class="comment-avatar">
-                            <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                            <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
                           </div> <!-- /.comment-avatar -->
 
                           <div class="comment-meta">
-
+                          <p> <?= "The Sample Comment" ?> </p>
                           </div>
                         </div>
                       </li>
+                      
+                      <li>
+
+                        <?php 
+                          $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
+                          postComment( $img_url , 'dashboard/article/comment', 'comment_to_article' , 'comment_article');
+                        ?>
+                      </li>
+                    
                     </ol>
+
+                    
+                    <?php } ?>
+                    
+                    
                   </div>
                 </div>
               </div>
