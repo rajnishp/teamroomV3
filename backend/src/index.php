@@ -6,6 +6,7 @@ include_once "controllers/ProjectController.class.php";
 include_once "controllers/ActivityController.class.php";
 include_once "controllers/ProfileController.class.php";
 include_once "controllers/DashboardController.class.php";
+include_once "controllers/SettingController.class.php";
 
 //include_once "components/base.php";
 
@@ -84,6 +85,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 					$dashboardController = new DashboardController($route[2]);
 					$dashboardController -> render();
+				break;
+
+			case "setting":
+
+					$settingController = new SettingController($route[2]);
+					$settingController -> render();
 				break;
 
 			case "home":

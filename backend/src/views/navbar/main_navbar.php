@@ -243,14 +243,13 @@
                 <!-- User dropdown menu -->
                 <ul class="head-list">
                   <li>
-                    <a href="#">
+                    <a href="<?= $baseUrl ?>profile">
                       <i class="fa fa-user fa-fw fa-lg"></i> Profile
                     </a>
                   </li>
                  
                   <li>
-                    <a href="#">
-                      <span class="label label-success pull-right">New</span>
+                    <a href="<?= $baseUrl ?>setting">
                       <i class="fa fa-gear fa-fw fa-lg"></i> Settings
                     </a>
                   </li>
@@ -259,7 +258,7 @@
 
                 <!-- Dropdown footer -->
                 <div class="pad-all text-right">
-                  <a href="pages-login.html" class="btn btn-primary">
+                  <a href="#" class="btn btn-primary">
                     <i class="fa fa-sign-out fa-fw"></i> Logout
                   </a>
                 </div>
