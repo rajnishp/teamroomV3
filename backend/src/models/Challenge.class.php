@@ -23,7 +23,9 @@
 		private $firstName;
 		private $lastName;
 		private $userName;
-		
+		private $responses;
+
+
 		function __construct( $userId, $projectId, $blobId, $orgId, $title, $stmt, $type, $status, $likes
 		,$dislikes, $creationTime, $lastUpdateTime, $firstName, $lastName, $userName, $id = null)
 		{
@@ -196,6 +198,13 @@
 		}
 		function getUsername(){
 				return $this-> username;
+		}
+
+		function setResponses($responses){
+			$this -> responses= $responses;
+		}
+		function getResponses(){
+			return $this-> responses;		
 		}
 
 		function toString (){

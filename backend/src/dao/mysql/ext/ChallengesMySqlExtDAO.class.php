@@ -29,8 +29,10 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 		$DAOFactory = new DAOFactory();
 		$challengeResponsesDAO = $DAOFactory->getChallengeResponsesDAO();
 
-		$activity -> setResponses ( $challengeResponsesDAO -> getResponses ( $activity -> getId () ) );
-		
+		if ($activity ) {
+			$activity -> setResponses ( $challengeResponsesDAO -> getResponses ( $activity -> getId () ) );
+		}
+
 		return $activity;
 	}
 
@@ -158,7 +160,19 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 		}
 
 		$sqlQuery = new SqlQuery($sql);
-		return $this->getListChallenge($sqlQuery);
+
+		$activitities = $this->getListChallenge($sqlQuery);
+
+		$DAOFactory = new DAOFactory();
+		$challengeResponsesDAO = $DAOFactory->getChallengeResponsesDAO();
+
+		foreach ($activitities as $activity) {
+			if ($activity ) {
+				$activity -> setResponses ( $challengeResponsesDAO -> getResponses ( $activity -> getId () ) );
+			}
+		}
+		//var_dump($activitities); die();
+		return $activitities;
 	}
 
 	/**

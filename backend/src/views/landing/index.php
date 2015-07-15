@@ -23,83 +23,9 @@
 
     <div class="content">
 
-      <section id = "login">
-        <div class="container"  style=" padding-top: 100px;">
-
-          <div class="account-wrapper">
-
-            <h3 class ="pull-left">Welcome back to Collap</h3>
-            <h5 class="pull-right" style="margin-top: 28px;">
-              <a href="#register" style="color:#0CD85E"> 
-                Don't have an account? 
-              </a>
-            </h5>
-            <br><br>
-            <label></label>
-                
-            <form class="form account-form login-form masthead-form well" action="<?= $baseUrl ?>home/login" method="post">
-
-              <div class="form-group">
-                <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username" tabindex="1">
-              </div>
-              <div class="form-group">
-                <input type="password" class="input-block-level form-control" id="password" name="password" placeholder="Password" tabindex="1">
-              </div>
-
-              <div class="form-group clearfix">
-                <div class="pull-left">         
-                  <label class="checkbox-inline">
-                    <input type="checkbox" class="" value="" tabindex="3" style="margin-top: 11px;"> <h5> Remember me </h5>
-                  </label>
-                </div>
-
-                <div class="pull-right">
-                  <h5><a href="#/forgetpassword" style="color:#0CD85E"> Forgot Password? </a> </h5>
-                </div>
-              </div> <!-- /.form-group -->
-
-              <input name="project" type="hidden" value="Collap"/>
-              <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login" name="submit" value="login"><b> Login </b></button>
-              <div class="line"> or </div>  
-              <div class="socials">
-                <ul class="list-inline">
-                  <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
-                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/facebook.png" style="width:50px;"/>
-                  </a></li>
-                  <li><a  href="https://twitter.com/CollapCom" target='_blank'>
-                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/Twitter.png" style="width:50px;"/>
-                  </a></li>
-                  <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
-                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/pinterest.png" style="width:50px;"/>
-                  </a></li>
-                  <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
-                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/google.png" style="width:50px;"/>
-                  </a></li>
-                  <li><a  href="https://in.linkedin.com/" target='_blank'>
-                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/linkdin.png" style="width:50px;"/>
-                  </a></li>
-                  <li><a  href="https://github.com/collapcom" target='_blank'>
-                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/github.png" style="width:50px;"/>
-                  </a></li>
-                </ul>
-              </div> <!-- End of social Login -->
-
-            </form>
-
-            <div class="divider large visible-desktop"></div><br/>
-          </div>
-        </div> <!-- /.container -->
-      </section>      
-      
-
-      <hr class="spacer-md hidden-xs">
-      <hr class="spacer-sm visible-xs">
-    
-      <hr>
-
-
+         
       <section id = "register">
-        <div class="container ">
+        <div class="container " style=" padding-top: 100px;">
 
           <div class="account-wrapper">
             <div class="section-header">
@@ -136,22 +62,23 @@
                   <input type="password" class="input-block-level form-control" placeholder="Confirm password" onkeyup="nospaces(this)" id="password2R" name="password2"/>
                 </div> <!-- /.form-group -->
 
-                <label>You are here for</label>
-                <br>
+                <!-- <label>You are here for</label>
+                  <br>
 
-                <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeCol' /> Collaboration &nbsp;&nbsp;&nbsp;
+                  <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeCol' /> Collaboration &nbsp;&nbsp;&nbsp;
 
-                <input type="checkbox" class="btn btn-mini custom-checkbox" onclick='aboutinvest()' id='typeInv'/> Invester &nbsp;&nbsp;&nbsp;
-                
-                <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeFun'/> Fund Searcher 
+                  <input type="checkbox" class="btn btn-mini custom-checkbox" onclick='aboutinvest()' id='typeInv'/> Invester &nbsp;&nbsp;&nbsp;
+                  
+                  <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeFun'/> Fund Searcher 
 
-                <label>
-                  <div class='totalcapital'>
-                    <label>How much amount you want to invest (in dollars)</label>
-                    <input type="num" class="input-group" id="investment" onkeyup="nospaces(this)" min='10' onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" placeholder="Enter amount"/>
-                    <span class="input-group-addon" style='font-size:20px;'>.00 $</span>
-                  </div>
-                </label>
+                  <label>
+                    <div class='totalcapital'>
+                      <label>How much amount you want to invest (in dollars)</label>
+                      <input type="num" class="input-group" id="investment" onkeyup="nospaces(this)" min='10' onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" placeholder="Enter amount"/>
+                      <span class="input-group-addon" style='font-size:20px;'>.00 $</span>
+                    </div>
+                  </label> 
+                -->
 
                 <div class="form-group">
                   <label class="checkbox-inline">
@@ -171,31 +98,101 @@
                 <div class="socials">
                   <ul class="list-inline">
                     <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
-                      <img class="media-object img-circle" src="imgs/facebook.png" style="width:50px;"/>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/facebook.png" style="width:50px;"/>
                     </a></li>
                     <li><a  href="https://twitter.com/CollapCom" target='_blank'>
-                      <img class="media-object img-circle" src="imgs/Twitter.png" style="width:50px;"/>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/Twitter.png" style="width:50px;"/>
                     </a></li>
                     <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
-                      <img class="media-object img-circle" src="imgs/pinterest.png" style="width:50px;"/>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/pinterest.png" style="width:50px;"/>
                     </a></li>
                     <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
-                      <img class="media-object img-circle" src="imgs/google.png" style="width:50px;"/>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/google.png" style="width:50px;"/>
                     </a></li>
                     <li><a  href="https://in.linkedin.com/" target='_blank'>
-                      <img class="media-object img-circle" src="imgs/linkdin.png" style="width:50px;"/>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/linkdin.png" style="width:50px;"/>
                     </a></li>
                     <li><a  href="https://github.com/collapcom" target='_blank'>
-                      <img class="media-object img-circle" src="imgs/github.png" style="width:50px;"/>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/github.png" style="width:50px;"/>
                     </a></li>
                   </ul>
-                </div>
+                </div> <!-- End of social Login -->
                 <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
               </form>
             </div>
           </div>
         </div>
       </section>
+
+      <hr>
+
+      <section id = "login">
+        <div class="container">
+          <div class="account-wrapper">
+
+            <h3 class ="pull-left">Welcome back to Collap</h3>
+            <h5 class="pull-right" style="margin-top: 28px;">
+              <a href="#register" style="color:#0CD85E"> 
+                Don't have an account? 
+              </a>
+            </h5>
+            <br><br>
+            <label></label>
+                
+            <form class="form account-form login-form masthead-form well" action="<?= $baseUrl ?>home/login" method="post">
+
+              <div class="form-group">
+                <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username" tabindex="1">
+              </div>
+              <div class="form-group">
+                <input type="password" class="input-block-level form-control" id="password" name="password" placeholder="Password" tabindex="1">
+              </div>
+
+              <div class="form-group clearfix">
+                <div class="pull-left">         
+                  <label class="checkbox-inline">
+                    <input type="checkbox" class="" value="" tabindex="3" style="margin-top: 11px;"> <h5> Remember me </h5>
+                  </label>
+                </div>
+
+                <div class="pull-right">
+                  <h5><a href="#forget-password" data-target="#forget-password" data-toggle="modal" style="color:#0CD85E"> Forgot Password? </a> </h5>
+                </div>
+              </div> <!-- /.form-group -->
+
+              <input name="project" type="hidden" value="Collap"/>
+              <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login" name="submit" value="login"><b> Login </b></button>
+              <div class="line"> or </div>  
+              <div class="socials">
+                <ul class="list-inline">
+                  <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/facebook.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://twitter.com/CollapCom" target='_blank'>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/Twitter.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/pinterest.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/google.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://in.linkedin.com/" target='_blank'>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/linkdin.png" style="width:50px;"/>
+                  </a></li>
+                  <li><a  href="https://github.com/collapcom" target='_blank'>
+                    <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/github.png" style="width:50px;"/>
+                  </a></li>
+                </ul>
+              </div> <!-- End of social Login -->
+
+            </form>
+
+            <div class="divider large visible-desktop"></div><br/>
+          </div>
+        </div> <!-- /.container -->
+      </section>   
+      
 
 
       <div class="item " style="background-color: #354b5e; background-image: url(../../global/img/bg/dark-mosaic.png);">
@@ -814,7 +811,61 @@
       
     </div>
   </footer>
+  
 
+  <!--Default Bootstrap Modal-->
+  <!--===================================================-->
+  <div class="modal fade modal-styled" id="forget-password">
+    <div class="modal-dialog">
+      <div class="modal-content">
+
+        <!--Modal header-->
+        <div class="modal-header" >
+          <button data-dismiss="modal" class="close" type="button">
+          <span aria-hidden="true">&times;</span>
+          </button>
+          <h4 class="modal-title">Password Reset</h4>
+        </div>
+
+        <!--Modal body-->
+        <div class="modal-body">
+
+          <div class="account-wrapper">
+
+            <h5>We'll email you instructions on how to reset your password.</h5>
+
+            <form class="form account-form" method="POST" action="forgetPassword">
+
+              <div class="form-group">
+                <label for="forgot-email" class="placeholder-hidden">Your Email</label>
+                <input type="email" class="form-control" id="forgot-email" placeholder="Your Email" tabindex="1">
+              </div> <!-- /.form-group -->
+
+              <div class="form-group">
+                <button type="submit" class="btn btn-secondary btn-block btn-lg" tabindex="2">
+                  Reset Password &nbsp; <i class="fa fa-refresh"></i>
+                </button>
+              </div> <!-- /.form-group -->
+
+              <div class="form-group">
+                <a data-dismiss="modal" href="#login"><i class="fa fa-angle-double-left"></i> &nbsp;Back to Login</a>
+              </div> <!-- /.form-group -->
+            </form>
+
+          </div> <!-- /.account-wrapper -->
+          
+        </div>
+
+        <!--Modal footer-->
+        <div class="modal-footer">
+          <button data-dismiss="modal" class="btn btn-default" type="button">Close</button>
+          <button class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+  <!--===================================================-->
+  <!--End Default Bootstrap Modal-->
 
 <!-- Bootstrap core JavaScript
 ================================================== -->

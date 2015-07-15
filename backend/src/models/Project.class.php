@@ -22,6 +22,7 @@
 		private $firstName;
 		private $lastName;
 		private $userName;
+		private $responses;
 
 	
 		function __construct ($userId, $blobId, $projectTitle, $stmt, $type, $orgId, $order, 
@@ -190,6 +191,13 @@
 		}
 		function getUsername(){
 				return $this-> username;
+		}
+
+		function setResponses($responses){
+			$this -> responses= $responses;
+		}
+		function getResponses(){
+			return $this-> responses;		
 		}
 
 		function toString() {

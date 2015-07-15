@@ -86,7 +86,16 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 			$sqlQuery->setNumber($userId);
 			$sqlQuery->setNumber($projectId);
 			$sqlQuery->setNumber($userId);
-			return $this->getRowProject($sqlQuery);
+			
+			$project = $this->getRowProject($sqlQuery);
+
+			$DAOFactory = new DAOFactory();
+			$projectResponsesDAO = $DAOFactory->getProjectResponsesDAO();
+
+			if ($project ) {
+				$project -> setResponses ( $projectResponsesDAO -> queryAllResponse ( $project -> getId () ) );
+			}
+			return $project;
 		//}
 	}
 
@@ -143,9 +152,22 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	}
 
 	public function getUserPublicProjects($userId, $start, $limit){
-		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "(SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, 
+					user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team 
-					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type = 'Public' AND team.member_status = 1 ORDER BY creation_time DESC ";
+					WHERE (project.user_id = ? OR team.user_id = ?) 
+						AND project.user_id = user.id 
+						AND project.type = 'Public' 
+						AND team.member_status = 1
+						AND project.blob_id = 0)
+				UNION
+				(SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+					FROM projects as project JOIN user_info as user JOIN teams as team JOIN blobs as `blob` 
+					WHERE (project.user_id = ? OR team.user_id = ?) 
+						AND project.user_id = user.id 
+						AND project.type = 'Public' AND team.member_status = 1
+						AND project.blob_id = blob.id)
+					ORDER BY creation_time DESC ";
 		
 		if(isset($start) && isset($limit)){
 			$sql .= " LIMIT $start,$limit ;";
@@ -156,7 +178,21 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($userId);
 		$sqlQuery->setNumber($userId);
+		$sqlQuery->setNumber($userId);
+		$sqlQuery->setNumber($userId);
 		return $this->getListProjects($sqlQuery);
+
+		$projects = $this->getListProjects($sqlQuery);
+
+		$DAOFactory = new DAOFactory();
+		$projectResponsesDAO = $DAOFactory->getProjectResponsesDAO();
+		foreach ($projects as $project) {
+	
+			if ($project ) {
+				$project -> setResponses ( $projectResponsesDAO -> queryAllResponse ( $project -> getId () ) );
+			}
+		}
+		return $projects;
 	}
 
 	public function queryAllUserProjects($userId){

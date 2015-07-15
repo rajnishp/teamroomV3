@@ -35,54 +35,16 @@
 					<div class="nano-content">
 						<ul id="mainnav-menu" class="list-group">
 				
-							<!--Category name-->
-							<li class="list-header">Navigation</li>
-				
 							<!--Menu list item-->
-							<li>
-								<a href="index.html">
+							<!-- <li>
+								<a href="">
 									<i class="fa fa-dashboard"></i>
 									<span class="menu-title">
 										<strong>Dashboard</strong>
 										<span class="label label-success pull-right">Top</span>
 									</span>
 								</a>
-							</li>
-				
-							<!--Menu list item-->
-							<li>
-								<a href="#" data-target="#demo-default-modal" data-toggle="modal">
-									<i class="fa fa-bell"></i>
-									<span class="menu-title">
-										<strong>
-										Add Reminder
-										</strong>
-									</span>
-								</a>
-				
-							</li>
-				
-							<!--Menu list item-->
-							<li>
-								<a href="#">
-									<i class="fa fa-bullseye"></i>
-									<span class="menu-title">
-										<strong>All Reminders</strong>
-										<i class="arrow"></i>
-									</span>
-								</a>
-
-								<!--Submenu-->
-								<ul class="collapse">
-									<li><a href="#">Create project for UX Design</a></li>
-									<li><a href="#">Attend interview</a></li>
-									<li><a href="#">Make a presentation for seed funding</a></li>
-									
-								</ul>
-
-
-							</li>
-
+							</li> -->
 
 							<!--Menu list item-->
 							<li>
@@ -380,5 +342,3 @@
 	
 	<!--===================================================-->
 	<!-- END OF CONTAINER -->
-
-	<?php //require_once 'views/modals/modal.php'; ?>

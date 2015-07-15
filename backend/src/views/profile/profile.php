@@ -1,3 +1,6 @@
+  <?php require_once 'views/source/actionDropdown.php'; ?>
+  <?php require_once 'views/source/postForms.php'; ?>
+
 <!DOCTYPE html>
 <!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
 <!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
@@ -310,73 +313,34 @@
                             <hr>
                             <hr class="spacer-sm">
                           </div>
+
+                          <ol class="comment-list">
+                            <li></li>
+                            <li>
+                              <div class="comment">
+
+                                <div class="comment-avatar">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
+                                </div> <!-- /.comment-avatar -->
+
+                                <div class="comment-meta">
+                                <p> <?= "The Sample Comment" ?> </p>
+                                </div>
+                              </div>
+                            </li>
+                            
+                            <li>
+
+                              <?php 
+                                $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
+                                postComment( $img_url , 'project/comment', 'comment_to_project' , 'comment_project');
+                              ?>
+                            </li>
                           
+                          </ol>
+
                         <?php } ?>
 
-                        <ol class="comment-list">
-                          <li></li>
-                          <li>
-                            <div class="comment">
-
-                              <div class="comment-avatar">
-                                <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
-                              </div> <!-- /.comment-avatar -->
-
-                              <div class="comment-meta">
-
-                                <span class="comment-author">
-                                  <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                </span>
-
-                                <a href="javascript:;" class="comment-timestamp">
-                                  April 3, 2013 at 6:47 am
-                                </a>
-                                -
-                                <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-                              </div> <!-- /.comment-meta -->
-
-                              <div class="comment-body">
-                              <p> This is comment box, looks nice,, hav eto improve 
-                              ux more, stay on work,, nice article</p>
-                              </div> <!-- /.comment-body -->
-
-                            </div> <!-- /.comment -->
-                          </li>
-
-                          <li>
-                            <div class="comment">
-
-                              <div class="comment-avatar">
-                                <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
-                              </div> <!-- /.comment-avatar -->
-
-                              <div class="comment-meta">
-
-                                <span class="comment-author">
-                                  <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                </span>
-
-                                <a href="javascript:;" class="comment-timestamp">
-                                  April 3, 2013 at 6:47 am
-                                </a>
-
-                                -
-
-                                <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                              </div> <!-- /.comment-meta -->
-
-                              <div class="comment-body">
-                              <p> This is comment box, looks nice,, hav eto improve 
-                              ux more, stay on work,, nice article</p>
-                              </div> <!-- /.comment-body -->
-
-                            </div> <!-- /.comment -->
-                          </li>
-                        </ol>
-                        
-                        <hr>
-                        
                       </div>
 
                     <!--USer Projects tab ends-->
@@ -428,232 +392,27 @@
                                 <div class="comment">
 
                                   <div class="comment-avatar">
-                                    <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                                    <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
                                   </div> <!-- /.comment-avatar -->
 
                                   <div class="comment-meta">
-
-                                    <span class="comment-author">
-                                      <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                    </span>
-
-                                    <a href="javascript:;" class="comment-timestamp">
-                                      April 3, 2013 at 6:47 am
-                                    </a>
-
-                                    -
-
-                                    <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                                  </div> <!-- /.comment-meta -->
-
-                                  <div class="comment-body">
-                                  <p> This is comment box, looks nice,, hav eto improve 
-                                  ux more, stay on work,, nice article</p>
-                                  </div> <!-- /.comment-body -->
-
-                                </div> <!-- /.comment -->
+                                  <p> <?= "The Sample Comment" ?> </p>
+                                  </div>
+                                </div>
                               </li>
-
+                              
                               <li>
-                                <div class="comment">
 
-                                  <div class="comment-avatar">
-                                    <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
-                                  </div> <!-- /.comment-avatar -->
-
-                                  <div class="comment-meta">
-
-                                    <span class="comment-author">
-                                      <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                    </span>
-
-                                    <a href="javascript:;" class="comment-timestamp">
-                                      April 3, 2013 at 6:47 am
-                                    </a>
-
-                                    -
-
-                                    <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                                  </div> <!-- /.comment-meta -->
-
-                                  <div class="comment-body">
-                                  <p> This is comment box, looks nice,, hav eto improve 
-                                  ux more, stay on work,, nice article</p>
-                                  </div> <!-- /.comment-body -->
-
-                                </div> <!-- /.comment -->
+                                <?php 
+                                  $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
+                                  postComment( $img_url , 'dashboard/activity/comment', 'comment_to_activity' , 'comment_avtivity');
+                                ?>
                               </li>
-
-                              <li>
-                                <div class="comment">
-
-                                  <div class="comment-avatar">
-                                    <img alt="" src="<?= $baseUrl ?>static/imgs/github.png" class="avatar">
-                                  </div> <!-- /.comment-avatar -->
-
-                                  <div class="comment-meta">
-
-                                    <span class="comment-author">
-                                      <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                    </span>
-
-                                    <a href="javascript:;" class="comment-timestamp">
-                                      April 3, 2013 at 6:47 am
-                                    </a>
-
-                                    -
-
-                                    <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                                  </div> <!-- /.comment-meta -->
-
-                                  <div class="comment-body">
-                                  <p> This is comment box, looks nice,, hav eto improve 
-                                  ux more, stay on work,, nice article</p>
-                                  </div> <!-- /.comment-body -->
-
-                                </div> <!-- /.comment -->
-                              </li>
+                            
                             </ol>
                           
                           </div>
 
-
-                          
-                          <hr>
-
-                          <div class="activity-2">
-                            <div class="post-aside" style="padding-top: 28px;">
-                              <div class="post-date">
-                                <span class="post-date-day">12</span>
-                                <span class="post-date-month"> January</span>
-                                <span class="post-date-year"> 2015</span>
-                              </div>
-
-                              <a href="#comments" class="post-comment">
-                                4
-                              </a>
-                            </div> <!-- /.post-aside -->
-
-                            <div class="post-main">
-                              <!-- /.heading-block -->
-                              <a href= '#' target="_blank">
-                                <h4 class="post-title">Researchers parallelize a common data structure to work with multicore chips </h4>
-                              </a>
-                              <h4 class="post-meta">Published by <a href="javascript:;">Rajnish Panwar</a> in <a href="javascript:;">India</a></h4>
-
-                              <img src="<?= $baseUrl ?>static/imgs/image2.jpeg" class="post-img img-responsive" alt="Project Image" >
-                              
-                              <hr class="spacer-sm">
-                                
-                              <div class="post-content">
-                                <p> Parallelizing common algorithms:
-                                    Researchers revamp a common "data structure" so that it will work with multicore chips.
-                                    Every undergraduate computer-science major takes a course on data structures, which describes different ways of organizing data in a computer’s memory. Every data structure has its own advantages: Some are good for fast retrieval, some for efficient search, some for quick insertions and deletions, and so on.
-                                    Today, hardware manufacturers are making computer chips faster by giving them more cores, or processing units. But while some data structures are well adapted to multicore computing, others are not. In principle, doubling the number of cores should double the efficiency of a computation. With algorithms that use a common data structure called a priority queue, that’s been true for up to about eight cores — but adding any more cores actually causes performance to plummet.
-                                    At the Association for Computing Machinery’s Symposium on Principles and Practice of Parallel Programming in February, researchers from MIT’s Computer Science and Artificial Intelligence Laboratory will describe a new way of implementing priority queues that lets them keep pace with the addition of new cores. In simulations, algorithms using their data structure continued to demonstrate performance improvement with the addition of new cores, up to a total of 80 cores.
-                                </p>
-                              </div>
-
-
-                              <ol class="comment-list">
-                                <li></li>
-                                <li>
-                                  <div class="comment">
-
-                                    <div class="comment-avatar">
-                                      <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
-                                    </div> <!-- /.comment-avatar -->
-
-                                    <div class="comment-meta">
-
-                                      <span class="comment-author">
-                                        <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                      </span>
-
-                                      <a href="javascript:;" class="comment-timestamp">
-                                        April 3, 2013 at 6:47 am
-                                      </a>
-                                      -
-                                      <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-                                    </div> <!-- /.comment-meta -->
-
-                                    <div class="comment-body">
-                                    <p> This is comment box, looks nice,, hav eto improve 
-                                    ux more, stay on work,, nice article</p>
-                                    </div> <!-- /.comment-body -->
-
-                                  </div> <!-- /.comment -->
-                                </li>
-
-                                <li>
-                                  <div class="comment">
-
-                                    <div class="comment-avatar">
-                                      <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
-                                    </div> <!-- /.comment-avatar -->
-
-                                    <div class="comment-meta">
-
-                                      <span class="comment-author">
-                                        <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                      </span>
-
-                                      <a href="javascript:;" class="comment-timestamp">
-                                        April 3, 2013 at 6:47 am
-                                      </a>
-
-                                      -
-
-                                      <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                                    </div> <!-- /.comment-meta -->
-
-                                    <div class="comment-body">
-                                    <p> This is comment box, looks nice,, hav eto improve 
-                                    ux more, stay on work,, nice article</p>
-                                    </div> <!-- /.comment-body -->
-
-                                  </div> <!-- /.comment -->
-                                </li>
-
-                                <li>
-                                  <div class="comment">
-
-                                    <div class="comment-avatar">
-                                      <img alt="" src="<?= $baseUrl ?>static/imgs/github.png" class="avatar">
-                                    </div> <!-- /.comment-avatar -->
-
-                                    <div class="comment-meta">
-
-                                      <span class="comment-author">
-                                        <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                      </span>
-
-                                      <a href="javascript:;" class="comment-timestamp">
-                                        April 3, 2013 at 6:47 am
-                                      </a>
-
-                                      -
-
-                                      <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                                    </div> <!-- /.comment-meta -->
-
-                                    <div class="comment-body">
-                                    <p> This is comment box, looks nice,, hav eto improve 
-                                    ux more, stay on work,, nice article</p>
-                                    </div> <!-- /.comment-body -->
-
-                                  </div> <!-- /.comment -->
-                                </li>
-                              </ol>
-
-                            </div>
-                            <hr>
-                          </div>
                         </div>              
                       </div>
 
@@ -705,96 +464,25 @@
                               <div class="comment">
 
                                 <div class="comment-avatar">
-                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
+                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
                                 </div> <!-- /.comment-avatar -->
 
                                 <div class="comment-meta">
-
-                                  <span class="comment-author">
-                                    <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                  </span>
-
-                                  <a href="javascript:;" class="comment-timestamp">
-                                    April 3, 2013 at 6:47 am
-                                  </a>
-
-                                  -
-
-                                  <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                                </div> <!-- /.comment-meta -->
-
-                                <div class="comment-body">
-                                <p> This is comment box, looks nice,, hav eto improve 
-                                ux more, stay on work,, nice article</p>
-                                </div> <!-- /.comment-body -->
-
-                              </div> <!-- /.comment -->
+                                <p> <?= "The Sample Comment" ?> </p>
+                                </div>
+                              </div>
                             </li>
-
+                            
                             <li>
-                              <div class="comment">
 
-                                <div class="comment-avatar">
-                                  <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar">
-                                </div> <!-- /.comment-avatar -->
-
-                                <div class="comment-meta">
-
-                                  <span class="comment-author">
-                                    <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                  </span>
-
-                                  <a href="javascript:;" class="comment-timestamp">
-                                    April 3, 2013 at 6:47 am
-                                  </a>
-
-                                  -
-
-                                  <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                                </div> <!-- /.comment-meta -->
-
-                                <div class="comment-body">
-                                <p> This is comment box, looks nice,, hav eto improve 
-                                ux more, stay on work,, nice article</p>
-                                </div> <!-- /.comment-body -->
-
-                              </div> <!-- /.comment -->
+                              <?php 
+                                $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
+                                postComment( $img_url , 'dashboard/activity/comment', 'comment_to_idea' , 'comment_idea');
+                              ?>
                             </li>
-
-                            <li>
-                              <div class="comment">
-
-                                <div class="comment-avatar">
-                                  <img alt="" src="<?= $baseUrl ?>static/imgs/github.png" class="avatar">
-                                </div> <!-- /.comment-avatar -->
-
-                                <div class="comment-meta">
-
-                                  <span class="comment-author">
-                                    <a href="javascript:;" class="url">Rajnish Kumar </a>
-                                  </span>
-
-                                  <a href="javascript:;" class="comment-timestamp">
-                                    April 3, 2013 at 6:47 am
-                                  </a>
-
-                                  -
-
-                                  <!-- <a class="comment-reply-link" href="javascript:;">Reply</a> -->
-
-                                </div> <!-- /.comment-meta -->
-
-                                <div class="comment-body">
-                                <p> This is comment box, looks nice,, hav eto improve 
-                                ux more, stay on work,, nice article</p>
-                                </div> <!-- /.comment-body -->
-
-                              </div> <!-- /.comment -->
-                            </li>
+                          
                           </ol>
-                        
+
                         </div>
                       </div>
 
