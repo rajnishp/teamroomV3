@@ -2,7 +2,7 @@
     "mysql": {
         "host": "localhost", 
         "user": "root", 
-        "password": "redhat111111", 
+        "password": "redhat11111p", 
         "database": "ninjasTeamRoom2" 
         }, 
     "mongo": {    
@@ -25,7 +25,7 @@
     },
     "collap_backend" : "/var/www/html/teamroom/backend/src/",
     "COLLAP_API_URL" : "http://api.collap.com/v0/",
-    "COLLAP_BASE_URL" : "http://loc.v3.collap.com/",
+    "COLLAP_BASE_URL" : "http://loc.v2.collap.com/",
     "COLLAP_VERSION"  : "v0",
     "collap_DOMAIN" : "collap.com"
 }
