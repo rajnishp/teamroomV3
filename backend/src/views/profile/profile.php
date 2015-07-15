@@ -142,11 +142,9 @@
                           <div class="col-md-9 col-lg-9 col-sm-9">
                           
                             <div class="">
-                              <span class="btn btn-secondary btn-sm"> C </span>
-                              <span class="btn btn-secondary btn-sm"> Core Java </span>
-                              <span class="btn btn-secondary btn-sm"> PHP </span>
-                              <span class="btn btn-secondary btn-sm"> MySql </span>
-
+                              <?php foreach($userSkills as $skill ) { ?>
+                                <span class="btn btn-secondary btn-sm"> <?= $skill -> getName() ?> </span>
+                              <?php } ?>
                             </div> <!-- /.list-group -->
 
                             <!-- FORM VALIDATION ON ACCORDION -->
@@ -189,36 +187,19 @@
                               </h4>
                             </div> <!-- /.heading-block -->
                           </div>
-                          <div class="col-md-9 col-lg-9 col-sm-9">                         
+                          <div class="col-md-9 col-lg-9 col-sm-9">
+
                             <div class="post-content">
                               <p> 
-                                Have undergone training for Ethical hacking.
-                                Red hat certified Engineer (RHCE Certified).
-                                Familier with Linux, Software Design Models
+                                <?php 
+                                  foreach ($userTechStrength as $techStrength) {
+                                    echo $techStrength -> getStrength(); 
+                                  }
+                                ?>
                               </p>
                             </div>
                           </div>
-                        </div>
-
-
-                        <div class = "row heading-block">
-                          <div class="col-md-3 col-lg-3 col-sm-3">
-                            
-                            <div class="post-title">
-                              <h4>
-                                About Me
-                              </h4>
-                            </div> <!-- /.heading-block -->
-                          </div>
-                          <div class="col-md-9 col-lg-9 col-sm-9">                         
-                            <div class="post-content">
-                              <p> 
-                                Have undergone training for Ethical hacking.
-                                Red hat certified Engineer (RHCE Certified).
-                                Familier with Linux, Software Design Models
-                              </p>
-                            </div>
-                          </div>
+                        
                         </div>
 
                         <div class = "row heading-block">
@@ -233,22 +214,13 @@
    
                           <div class="col-md-9 col-lg-9 col-sm-9">                         
                             <div>
-                              <h5 class="">Dpower4 Pvt. Ltd.</h5>
-                              <p class="semibold">Software Engineer</p>          
-                              <p class="text-muted"> 2014 - Present </p>
+                              <?php foreach ($userWorkExperience as $workExperience) { ?>
+                                <h5 class=""> <?= $workExperience -> getCompanyName() ?> </h5>
+                                <p class="semibold"> <?= $workExperience -> getDesignation() ?></p>          
+                                <p class="text-muted"> <?= $workExperience ->getFrom() ?> - <?= $workExperience ->getTo() ?></p>
+                                <hr>
+                              <?php } ?>
                               
-                              <hr>
-                              
-                              <h5 class="">IBM LAbs</h5>
-                              <p class="semibold">Software Developer</p>          
-                              <p class="text-muted"> 2011 - 2014 </p>
-                              
-                              <hr>
-                              
-                              <h5 class="">Ericssion </h5>
-                              <p class="semibold">System Engineer</p>          
-                              <p class="text-muted"> 2010 - 2011 </p>
-
                             </div> <!-- /.list-group -->
                           </div>
                         </div>
@@ -264,17 +236,13 @@
 
                           <div class="col-md-9 col-lg-9 col-sm-9">
                             <div>
-                              <h5 class="">PEC University of Technology</h5>
-                              <p class="semibold">M.Tech, CSE</p>          
-                              <p class="text-muted"> 2012 - 2014 </p>
+                              <?php foreach ($userEducation as $education) { ?>
+                                <h5 class="bold"> <?= $education -> getInstitute() ?> </h5>
+                                <p class="semibold"> <?= $education -> getDegree() ?> ( <?= $education -> getBranch() ?> ) </p>          
+                                <p class="text-muted"> <?= $workExperience ->getFrom() ?> - <?= $workExperience ->getTo() ?></p>
+                                <hr>
+                              <?php } ?>
                             </div> <!-- /.list-group -->
-
-                            <div>
-                              <h5 class="">UIET MDU Rohtak</h5>
-                              <p class="semibold">B.Tech, CSE</p>          
-                              <p class="text-muted"> 2007 - 2011 </p>
-                            </div> <!-- /.list-group -->
-
                           </div>
                         </div>
                       </div>

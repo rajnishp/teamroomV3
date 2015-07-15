@@ -479,6 +479,8 @@ CREATE TABLE IF NOT EXISTS `education` (
   `branch` varchar( 100 ) NOT NULL ,
   `from` YEAR( 4 ) NOT NULL ,
   `to` YEAR( 4 ) NOT NULL ,
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `id` )
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
 
@@ -490,10 +492,12 @@ CREATE TABLE IF NOT EXISTS `education` (
 CREATE TABLE IF NOT EXISTS `job_preference` (
   `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
   `user_id` int( 15 ) NOT NULL ,
-  `location` varchar( 100 ) NOT NULL ,
+  `location_id` int( 5 ) NOT NULL ,
   `current_ctc` varchar( 100 ) NOT NULL ,
   `expected_ctc` varchar( 100 ) NOT NULL ,
   `notice_period` varchar( 10 ) NOT NULL ,
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `id` )
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
 
@@ -505,13 +509,37 @@ CREATE TABLE IF NOT EXISTS `working_history` (
   `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
   `user_id` int( 15 ) NOT NULL ,
   `company_name` varchar( 100 ) NOT NULL ,
+  `designation` varchar( 100 ) NOT NULL ,
   `from` date NOT NULL ,
   `to` date NOT NULL ,
-  `designation` varchar( 100 ) NOT NULL ,
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `id` )
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
 
+--
+-- Table structure for table `working_locations`
+--
 
+CREATE TABLE IF NOT EXISTS `working_locations` (
+  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `location_name` varchar( 100 ) NOT NULL ,
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY ( `id`, `location_name` )
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+
+--
+-- Table structure for table `technical_strength`
+--
+
+CREATE TABLE IF NOT EXISTS `technical_strength` (
+  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `user_id` int( 15 ) NOT NULL ,
+  `strength` varchar( 500 ) NOT NULL ,
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY ( `id` )
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

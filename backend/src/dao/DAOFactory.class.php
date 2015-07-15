@@ -74,6 +74,20 @@ class DAOFactory{
 		return new ChatMySqlExtDAO();
 	}
 
+
+	/**
+	 * @return EducationDAO
+	 */
+	public static function getEducationDAO(){
+		
+		require_once('EducationDAO.class.php');
+		require_once('models/Education.class.php');
+		require_once('mysql/EducationMySqlDAO.class.php');
+		require_once('mysql/ext/EducationMySqlExtDAO.class.php');
+
+		return new EducationMySqlExtDAO();
+	}
+
 	/**
 	 * @return EventsDAO
 	 */
@@ -93,6 +107,19 @@ class DAOFactory{
 	 */
 	public static function getInvolveInDAO(){
 		return new InvolveInMySqlExtDAO();
+	}
+
+	/**
+	 * @return JobPreferenceDAO
+	 */
+	public static function getJobPreferenceDAO(){
+
+		require_once('JobPreferenceDAO.class.php');
+		require_once('models/JobPreference.class.php');
+		require_once('mysql/JobPreferenceMySqlDAO.class.php');
+		require_once('mysql/ext/JobPreferenceMySqlExtDAO.class.php');
+
+		return new JobPreferenceMySqlExtDAO();
 	}
 
 	/**
@@ -241,6 +268,20 @@ class DAOFactory{
 		return new TeamsMySqlExtDAO();
 	}
 
+
+	/**
+	 * @return TechnicalStrengthDAO
+	 */
+	public static function getTechnicalStrengthDAO(){
+
+		require_once('TechnicalStrengthDAO.class.php');
+		require_once('models/TechnicalStrength.class.php');
+		require_once('mysql/TechnicalStrengthMySqlDAO.class.php');
+		require_once('mysql/ext/TechnicalStrengthMySqlExtDAO.class.php');
+
+		return new TechnicalStrengthMySqlExtDAO();
+	}
+
 	/**
 	 * @return UserAccessAidDAO
 	 */
@@ -283,6 +324,31 @@ class DAOFactory{
 
 	}
 
+	/**
+	 * @return WorkingHistoryDAO
+	 */
+	public static function getWorkingHistoryDAO(){
+		
+		require_once('WorkingHistoryDAO.class.php');
+		require_once('models/WorkingHistory.class.php');
+		require_once('mysql/WorkingHistoryMySqlDAO.class.php');
+		require_once('mysql/ext/WorkingHistoryMySqlExtDAO.class.php');
+
+		return new WorkingHistoryMySqlExtDAO();
+	}
+
+	/**
+	 * @return WorkingLocationsDAO
+	 */
+	public static function getWorkingLocationsDAO(){
+
+		require_once('WorkingLocationsDAO.class.php');
+		require_once('models/WorkingLocation.class.php');
+		require_once('mysql/WorkingLocationsMySqlDAO.class.php');
+		require_once('mysql/ext/WorkingLocationsMySqlExtDAO.class.php');
+		
+		return new WorkingLocationsMySqlExtDAO();
+	}
 
 }
 ?>

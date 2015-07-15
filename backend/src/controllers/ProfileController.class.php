@@ -27,6 +27,11 @@ class ProfileController {
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
 		$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
 
+		$this -> userEducationDAO = $DAOFactory->getEducationDAO();
+		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
+		$this -> userWorkHistoryDAO = $DAOFactory->getWorkingHistoryDAO();
+		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
+
 	}
 
 	function render (){
@@ -41,12 +46,24 @@ class ProfileController {
 				$userActivities = $this->challengesDAO->getUserActivities($this->profileId,0,10);
 				$userProfile = $this->userInfoDAO->load($this->profileId);
 				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
+
+				$userEducation = $this -> userEducationDAO -> queryByUserId($this -> profileId);
+				$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> profileId);
+				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> profileId);
+				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> profileId);
+
 			}
 			else{
 				$userMProjects = $this->projectsDAO->getUserPublicProjects($this->userId,0,10);
 				$userActivities = $this->challengesDAO->getUserActivities($this->userId,0,10);
 				$userProfile = $this->userInfoDAO->load($this->userId);
-				//$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
+				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
+
+				$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);
+				$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
+				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
+				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
+
 			}
 			//var_dump($userMProjects);
 			$userSProjects = $this->projectsDAO->getUserProjects($this->userId, 0, 10);
@@ -60,10 +77,6 @@ class ProfileController {
 
 	}
 
-
-
 }
-
-
 
 ?>
