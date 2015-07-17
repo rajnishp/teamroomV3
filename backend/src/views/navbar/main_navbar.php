@@ -51,20 +51,7 @@
                 <div class="nano scrollable">
                   <div class="nano-content">
                     <ul class="head-list">
-                  
-                      <!-- Dropdown list-->
-                      <li>
-                        <a href="#" class="media">
-                          <div class="media-left">
-                            <img src="img/av2.png" alt="Profile Picture" class="img-circle img-sm">
-                          </div>
-                          <div class="media-body">
-                            <div class="text-nowrap">Andy sent you a message</div>
-                            <small class="text-muted">15 minutes ago</small>
-                          </div>
-                        </a>
-                      </li>
-                  
+                    
                       <!-- Dropdown list-->
                       <li>
                         <a href="#" class="media">
@@ -165,19 +152,20 @@
                     <ul class="head-list">
                   
                       <!-- Dropdown list-->
+                      <?php foreach ($this->notifications as $key => $value) { ?>
+                      <!-- Dropdown list-->
                       <li>
                         <a href="#" class="media">
                           <div class="media-left">
-                            <span class="icon-wrap icon-circle bg-primary">
-                              <i class="fa fa-comment fa-lg"></i>
-                            </span>
+                            <img src="img/av2.png" alt="Profile Picture" class="img-circle img-sm">
                           </div>
                           <div class="media-body">
-                            <div class="text-nowrap">New comments waiting approval</div>
+                            <div class="text-nowrap"><?= $value->getNoticelUrl() ?></div>
                             <small class="text-muted">15 minutes ago</small>
                           </div>
                         </a>
                       </li>
+                  <?php } ?>
                   
                       <!-- Dropdown list-->
                       <li>

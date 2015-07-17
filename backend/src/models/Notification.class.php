@@ -8,7 +8,7 @@
 	class Notification{
 		
 		private $id;
-		private $noticeUrl;
+		private $noticeUrl; //varchar(500)
 		private $userId;
 		private $time;
 

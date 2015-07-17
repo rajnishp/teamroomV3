@@ -33,21 +33,22 @@
             <div class="row">
 
               <div class="col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
+                <div class="post-main">
+                  <div class="pull-left">
+                    <h4 class="post-title"><?= $project->getRefinedTitle() ?></h4>
+                    <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                  </div>
 
+                  <div class="pull-right">
+                      <button class="btn btn-success btn-labeled fa fa-plus " style="margin-right: 5px;"> JOIN </button>
+                      <button class="btn btn-default btn-labeled fa fa-envelope"> MESSAGE </button>
+                  </div>      
+                </div>            
 
                 <!--Profile Heading-->
               <!--===================================================-->
-              <div class="panel">
-                <div class="panel-bg-cover">
-                  <img class="img-responsive" src="<?= $baseUrl ?>static/img/blog/blog-post-2.jpg" alt="Image">
-                </div>
-                <div class="panel-media panel-media-heading" style="padding-left: 65%;">
-                  
-                      <button class="btn btn-success btn-labeled fa fa-plus" style="margin-right: 5px;"> JOIN </button>
-                      <button class="btn btn-default btn-labeled fa fa-envelope"> MESSAGE </button>
-                </div>
-              </div>
-
+              
+              
                  <!--Panel with Tabs-->
                   <!--===================================================-->
                   <div class="panel">
@@ -56,12 +57,13 @@
                     <div class="panel-heading">
                       <div class="panel-control">
                         <ul class="nav nav-tabs">
-                          <li><a href="#tabs-create-project" data-toggle="tab">Create Project</a></li>
-                          <li><a href="#tabs-post" data-toggle="tab">Post Otgoings</a></li>
+                          <!-- <li><a href="#tabs-create-project" data-toggle="tab">Create Project</a></li> -->
+                          <!-- <li><a href="#tabs-post" data-toggle="tab">Post Otgoings</a></li> -->
                           <li class="active"><a href="#tabs-overview" data-toggle="tab">Overview</a></li>
-                          <li><a href="#tabs-dashboard" data-toggle="tab">Dashboard</a></li>
-                          <li><a href="#tabs-teams" data-toggle="tab">Teams</a></li>
+                          <!-- <li><a href="#tabs-dashboard" data-toggle="tab">Dashboard</a></li> -->
                           <li><a href="#tabs-activities" data-toggle="tab">Activities</a></li>
+                          <li><a href="#tabs-teams" data-toggle="tab">Collaborators</a></li>
+                          
                         </ul>
                       </div>
                       <h3 class="panel-title">Project Detail</h3>
@@ -197,8 +199,6 @@
                               </div> <!-- /.post-aside -->
                               
                               <div class="post-main">
-                                <h4 class="post-title"><?= $project->getRefinedTitle() ?></h4>
-                                <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                                   
                               
                                 <div class="post-content">

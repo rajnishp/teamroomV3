@@ -16,6 +16,7 @@ abstract class BaseController {
 
 	protected $challengeResponsesDAO;
 	protected $userSkillDAO;
+	protected $links;
 
 	protected $teamsDAO;
 
@@ -26,8 +27,11 @@ abstract class BaseController {
 		global $configs; 
 		$this->baseUrl = $configs["COLLAP_BASE_URL"];
 
-		if( isset( $_SESSION["user_id"] ) )
+		if( isset( $_SESSION["user_id"] ) ){
+
 			$this -> userId = $_SESSION["user_id"];
+
+		}
 		
 
 	
@@ -40,20 +44,26 @@ abstract class BaseController {
 		$this -> challengeResponsesDAO = $DAOFactory->getChallengeResponsesDAO();
 		
 		$this -> teamsDAO = $DAOFactory-> getTeamsDAO();
+		$this -> notificationsDAO = $DAOFactory-> getNotificationsDAO();
 
 
-		$this->render();
+		$this->process();
 
 	}
 
-	function render (){
+	function process (){
 		
 		
 
 		try{
 			//queryAllUserProjects
-			if($this->userId)
+			if($this->userId){
 				$this->projects = $this->projectsDAO->queryAllUserProjects($this->userId);
+				$this->links = $this->userInfoDAO->getUsersLinks($this->userId);
+				$this->notifications = $this-> notificationsDAO -> getByUserId($this->userId);
+				
+
+			}
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
 			
 

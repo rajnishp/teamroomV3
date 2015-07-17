@@ -82,7 +82,7 @@
 								</a>
 				
 								<!--Submenu-->
-								<ul class="collapse in">
+								<ul class="collapse">
 									
 									<!-- <li class="active-link"><a href="#">ASSET Mangament System</a></li>
 									 -->
@@ -90,7 +90,7 @@
 
 										if($project->getType() == "Classified") { ?>	
 										
-										<li><a href=""><?= $project->getRefinedTitle() ?></a></li>
+										<li><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>"><?= $project->getRefinedTitle() ?></a></li>
 
 									<?php } } ?>
 									
@@ -111,7 +111,7 @@
 
 										if($project->getType() == "Private"){ ?>	
 										
-										<li><a href=""><?= $project->getRefinedTitle() ?></a></li>
+										<li><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>"><?= $project->getRefinedTitle() ?></a></li>
 
 									<?php } } ?>
 									
@@ -132,7 +132,7 @@
 
 										if($project->getType() == "Public"){ ?>	
 										
-										<li><a href=""><?= $project->getRefinedTitle() ?></a></li>
+										<li><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>"><?= $project->getRefinedTitle() ?></a></li>
 
 									<?php }} ?>
 									
@@ -235,7 +235,7 @@
 								<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 								<div class="tab-pane fade in active" id="demo-asd-tab-1">
 									<h4 class="pad-hor text-thin">
-										<span class="pull-right badge badge-warning">3</span> Family
+										<span class="pull-right badge badge-warning">3</span> Online
 									</h4>
 
 									<!--Family-->
@@ -272,20 +272,23 @@
 
 									<hr>
 									<h4 class="pad-hor text-thin">
-										<span class="pull-right badge badge-info">4</span> Friends
+										<span class="pull-right badge badge-info"><?= count($this->links) ?></span> Friends
 									</h4>
 
 									<!--Friends-->
 									<div class="list-group bg-trans">
+									<?php foreach ($this->links as $key => $value) { ?>
+
 										<a href="#" class="list-group-item">
 											<div class="media-left">
 												<img class="img-circle img-xs" src="img/av5.png" alt="Profile Picture">
 											</div>
 											<div class="media-body">
-												<div class="text-lg">Betty Murphy</div>
-												<span class="text-muted">Bye</span>
+												<div class="text-lg"><?= ucfirst($value->getFirstName()) ?> <?= ucfirst($value->getLastName()) ?></div>
+												
 											</div>
 										</a>
+									<?php } ?>
 										<a href="#" class="list-group-item">
 											<div class="media-left">
 												<img class="img-circle img-xs" src="img/av6.png" alt="Profile Picture">

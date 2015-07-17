@@ -78,6 +78,12 @@
 
 		}
 
+		function getImage(){
+		if ($this->stmt[0] == "<")
+			$temp = explode("\"", $this->stmt);
+		return $temp[1];
+		}
+
 		function getRefinedTitle(){
 			//repalace space tages
 			$stmt = $this->replaceTags($this->projectTitle);

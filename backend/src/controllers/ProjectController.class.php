@@ -20,6 +20,7 @@ class ProjectController extends BaseController {
 	function render (){
 
 		$baseUrl = $this->baseUrl;
+		$projects = $this->projects;
 		//loading other click event on the page should be done by ajax
 		
 		try{
@@ -27,15 +28,16 @@ class ProjectController extends BaseController {
 			//imp: add $this -> projectId in paramenter in place of 3(project_id)
 
 			//$projects = $this->projectsDAO->getByUserIdProjectId($this-> userId, $this-> projectId);
-			$project = $this-> projectsDAO -> getByProjectId( 3 );
-			$projectActivities = $this-> challengesDAO -> getProjectActivities( 3, 0,10 );
+			$project = $this-> projectsDAO -> getByProjectId( $this -> projectId );
+			
+			$projectActivities = $this-> challengesDAO -> getProjectActivities( $this -> projectId , 0,10 );
 			
 
 			//$userProjects = $this->projectsDAO->getUserProjects($this->userId);
 				
 			//$UserLinks = $this->userInfoDAO->getUsersLinks($this->userId);
-			$projectTeams = $this-> teamsDAO -> queryAllTeamNames( 3 );
-			$teamMembers = $this-> teamsDAO -> queryAllTeamMembers( 3, 'ASSET mgt Team Dpowe' );
+			$projectTeams = $this-> teamsDAO -> queryAllTeamNames( $this -> projectId );
+			$teamMembers = $this-> teamsDAO -> queryAllTeamMembers($this -> projectId , 'ASSET mgt Team Dpowe' );
 
 
 			if (isset($_SESSION['userId'])) {

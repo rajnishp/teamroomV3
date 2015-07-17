@@ -7,6 +7,13 @@
  */
 class NotificationsMySqlExtDAO extends NotificationsMySqlDAO{
 
+	public function getByUserId($userId){
+		$sql = 'SELECT * FROM notifications WHERE user_id = ? ORDER BY time DESC LIMIT 0 , 10';
+		$sqlQuery = new SqlQuery($sql);
+		
+		$sqlQuery->setNumber($userId);
+		return $this->getList($sqlQuery);
+	}
 	
 }
 ?>

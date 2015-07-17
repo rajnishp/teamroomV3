@@ -15,10 +15,11 @@ class DashboardController extends BaseController {
 	function render (){
 	
 		$baseUrl = $this->baseUrl;
+		$projects = $this->projects;
 
 		try{
 			//queryAllUserProjects
-			$projects = $this->projects;
+			
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
 			$top10Activities =  $this->challengesDAO->queryAllChallenges(0,10);
 			//var_dump($top10Activities);
