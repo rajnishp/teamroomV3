@@ -1,35 +1,19 @@
 <?php
 
-require_once 'dao/DAOFactory.class.php';
-//require_once 'components/xxx.class.php';
-//require_once '.class.php';
+require_once 'controllers/BaseController.class.php';
 
-class ActivityController {
+class ActivityController extends BaseController  {
 
-	private $userId;
-	private $challengesDAO;
-	private $projectsDAO;
-	private $userInfoDAO;
-	private $challangeId;
 
 	function __construct ( $challangeId ){
 		
-		if(isset($_SESSION["user_id"]))
-			$this -> userId = $_SESSION["user_id"];
-		
-		$this->challangeId = $challangeId;
-
-		$DAOFactory = new DAOFactory();
-		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
-		$this -> challengeResponsesDAO = $DAOFactory->getChallengeResponsesDAO();
-		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
-		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
+		parent::__construct();	
 
 	}
 
 	function render (){
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
+		
+		$baseUrl = $this->baseUrl;
 		try{
 			$activity = $this->challengesDAO->getByChallengeId($this->challangeId);
 			$comments = $this ->challengeResponsesDAO->getResponses($this->challangeId);

@@ -53,7 +53,12 @@ class HomeController {
 					//$obj = new rank($newid);
 				$_SESSION['rank'] = $this->user->getRank();
 				
-				header('Location: '.$baseUrl);		
+				if($_GET['from'])
+					$redir = $_GET['from'];
+				else
+					$redir = $baseUrl;
+				
+				header('Location: '.$redir);		
 
 			}
 			else{
@@ -106,7 +111,10 @@ class HomeController {
 	}
 	function logout(){
 
+		global $configs; 
+		$baseUrl = $configs["COLLAP_BASE_URL"];
 		
+
 		$requestedPage = $_GET['url'] ;
 		unset($_SESSION['user_id']);
 	    unset($_SESSION['first_name']);
@@ -115,7 +123,7 @@ class HomeController {
 	    unset($_SESSION['last_login']);
 	    unset($_SESSION['rank']);
 	    session_destroy();
-	    header('Location: '.$requestedPage);
+	    header('Location: '.$baseUrl);
 	    mysqli_close($db_handle);
 
 	}

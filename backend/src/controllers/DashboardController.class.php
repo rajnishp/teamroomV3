@@ -1,44 +1,24 @@
 <?php
 
-require_once 'dao/DAOFactory.class.php';
-//require_once 'components/xxx.class.php';
-//require_once '.class.php';
 
-// this will be a single page app
+require_once 'controllers/BaseController.class.php';
 
-class DashboardController {
+class DashboardController extends BaseController {
 
-	private $userId;
-	private $challengesDAO;
-	private $projectsDAO;
-	private $userInfoDAO;
 	
 
 	function __construct (  ){
-		
-		if( isset( $_SESSION["user_id"] ) )
-			$this -> userId = $_SESSION["user_id"];
-			$this->userId = 7;
-		
-
-	
-		$DAOFactory = new DAOFactory();
-		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
-		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
-		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
-		$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
+		parent::__construct();	
 
 	}
 
 	function render (){
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
-
-		
+	
+		$baseUrl = $this->baseUrl;
 
 		try{
 			//queryAllUserProjects
-			$projects = $this->projectsDAO->queryAllUserProjects($this->userId);
+			$projects = $this->projects;
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
 			$top10Activities =  $this->challengesDAO->queryAllChallenges(0,10);
 			//var_dump($top10Activities);
@@ -48,6 +28,37 @@ class DashboardController {
 			echo "Server every on DashboardController <br/>".var_dump($e); 
 		}
 
+	}
+
+	function postActivity(){
+
+		if(isset($_POST['title'],$_POST['description'], $_POST['activity_type'] )) {
+			
+				$this->user = new challenge(
+										$_POST['firstname'],
+										$_POST['lastname'],
+										$_POST['email'],
+										null,
+										$_POST['username'],
+										md5($_POST['password']),
+										"dabbling",
+										$_POST['user_type'],
+										0,
+										null,
+										0,
+										null,
+										null,
+										null,
+										date("Y-m-d H:i:s"),
+										date("Y-m-d H:i:s"),
+										null);
+				$this->userInfoDAO->insert($this->user);
+				var_dump($this->user);
+				
+			
+
+			}
+		}
 	}
 
 
