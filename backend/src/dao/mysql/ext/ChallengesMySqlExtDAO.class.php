@@ -289,6 +289,47 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	}
 
 	/**
+	 * Get to do list of task and challenges
+	 */
+
+	public function getToDoList($userId){
+		$sql = "(SELECT DISTINCT challenge.id, challenge.title, challenge.creation_time, user.id , user.first_name, 
+							user.last_name, user.username 
+					FROM challenges AS challenge JOIN user_info AS user JOIN challenge_ownership AS c 
+						WHERE c.user_id = ? AND challenge.type = '5' 
+							AND challenge.user_id = user.id AND challenge.id = c.challenge_id)
+				UNION
+				(SELECT DISTINCT challenge.id, challenge.title, challenge.creation_time, user.id, 
+							user.first_name, user.last_name, user.username 
+					FROM challenges AS challenge JOIN user_info AS user JOIN challenge_ownership AS c 
+						WHERE c.user_id = ? AND 
+							(challenge.type = '1' OR challenge.type = '2' OR challenge.type = '3') 
+							AND challenge.status = '2' AND challenge.user_id = user.id 
+							AND challenge.id = c.challenge_id)";
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		$sqlQuery->setNumber($userId);
+		return $this->getListChallenge($sqlQuery);
+	}
+
+
+	/**
+	 * Get GetDone list of task and challenges
+	 */
+
+	public function getGetDoneList($userId){
+		$sql = "SELECT DISTINCT challenge.id, challenge.title, challenge.creation_time, c.user_id, user.first_name, user.last_name, user.username
+					FROM challenges AS challenge JOIN user_info AS user JOIN challenge_ownership AS c
+						WHERE challenge.user_id = ?
+							AND challenge.type = '5'
+							AND c.user_id = user.id
+							AND challenge.id = c.challenge_id";
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		return $this->getListChallenge($sqlQuery);
+	}
+
+	/**
 	 * Read row
 	 *
 	 * @return ChallengesMySql 
