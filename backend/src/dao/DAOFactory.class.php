@@ -262,6 +262,7 @@ class DAOFactory{
 
 		require_once('TeamsDAO.class.php');
 		require_once('models/Team.class.php');
+		require_once('models/TeamMembers.class.php');
 		require_once('mysql/TeamsMySqlDAO.class.php');
 		require_once('mysql/ext/TeamsMySqlExtDAO.class.php');
 

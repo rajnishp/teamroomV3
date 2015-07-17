@@ -10,13 +10,12 @@ class TeamsMySqlExtDAO extends TeamsMySqlDAO{
 	/**
 	 * Get all team name records from table
 	 */
-	public function queryAllTeamNames($projectId, $teamName){
+	public function queryAllTeamNames($projectId){
 		$sql = "SELECT DISTINCT teams.id, teams.team_name, teams.project_id, user.username 
 				FROM teams as teams JOIN user_info as user 
-					WHERE teams.project_id= ? AND teams.team_name != ? AND teams.team_owner = user.id AND teams.status= '1'";
+					WHERE teams.project_id= ? AND teams.team_owner = user.id AND teams.status= '1'";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery -> set($projectId);
-		$sqlQuery -> set($teamName);
 		return $this->getListAllTeams($sqlQuery);
 	}
 

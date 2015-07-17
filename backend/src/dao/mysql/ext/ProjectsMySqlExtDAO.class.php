@@ -74,7 +74,8 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
 
 			$sql = "(SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
-						FROM projects as project JOIN user_info as user WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id AND project.blob_id = 0)
+						FROM projects as project JOIN user_info as user 
+							WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id AND project.blob_id = 0)
 					UNION
 					(SELECT project.id, project.project_title as title, blob.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
 						FROM projects as project JOIN user_info as user JOIN blobs as `blob`
@@ -101,16 +102,31 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
 
 	public function getByProjectId ($projectId) {
-		$sql = "(SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
-					FROM projects as project JOIN user_info as user WHERE project.id = ? AND project.user_id = user.id AND project.blob_id = 0) 
+		//var_dump($projectId); die();
+		$sql = "(SELECT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+					FROM projects as project JOIN user_info as user 
+						WHERE project.id = ? AND project.user_id = user.id AND project.blob_id = 0
+							AND project.type != 'Deleted') 
 				UNION
-				(SELECT project.id, project.project_title as title, blob.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+				(SELECT project.user_id, project.id, project.project_title as title, blob.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN blobs as `blob`
-						WHERE project.id = ? 
-							AND project.blob_id = blob.id)";
+						WHERE project.id = ? AND project.user_id = user.id
+							AND project.blob_id = blob.id
+							AND project.type != 'Deleted')";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($projectId);
-		return $this->getRowProject($sqlQuery);	
+		$sqlQuery->setNumber($projectId);
+
+		$project = $this->getRowUserProject($sqlQuery);
+
+		$DAOFactory = new DAOFactory();
+		$projectResponsesDAO = $DAOFactory->getProjectResponsesDAO();
+
+		if ($project ) {
+			$project -> setResponses ( $projectResponsesDAO -> queryAllResponse ( $project -> getId () ) );
+		}
+		return $project;
+		
 	}
 
 	public function getByUserId ($userId){
@@ -226,7 +242,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	 * @return ProjectsMySql 
 	 */
 	protected function readRowProjects($row){
-		$project = new Project(0, 0, $row['title'], $row['statement'],$row['type'],0,0, 
+		$project = new Project($row['user_id'], 0, $row['title'], $row['statement'],$row['type'],0,0, 
 								$row['creation_time'],0,0,0, 
 								$row['first_name'], $row['last_name'], $row['username'], $row['id']);
 		

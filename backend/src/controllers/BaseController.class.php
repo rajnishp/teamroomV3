@@ -16,6 +16,9 @@ abstract class BaseController {
 
 	protected $challengeResponsesDAO;
 	protected $userSkillDAO;
+
+	protected $teamsDAO;
+
 	
 
 	function __construct (  ){
@@ -36,6 +39,8 @@ abstract class BaseController {
 
 		$this -> challengeResponsesDAO = $DAOFactory->getChallengeResponsesDAO();
 		
+		$this -> teamsDAO = $DAOFactory-> getTeamsDAO();
+
 
 		$this->render();
 

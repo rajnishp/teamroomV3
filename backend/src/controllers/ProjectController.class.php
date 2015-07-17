@@ -1,45 +1,41 @@
 <?php
 
-require_once 'dao/DAOFactory.class.php';
-//require_once 'components/xxx.class.php';
-//require_once '.class.php';
+require_once 'controllers/BaseController.class.php';
 
-class ProjectController {
+class ProjectController extends BaseController {
 
-	private $userId;
-	private $challengesDAO;
-	private $projectsDAO;
-	private $userInfoDAO;
 	private $projectId;
+	//private $teamsDAO;
 
 	function __construct ( $projectId ){
-		
-		if(isset($_SESSION["user_id"]))
-			$this -> userId = $_SESSION["user_id"];
-		
+		parent::__construct();	
 
-		$this->projectId = $projectId;
+		$this-> projectId = $projectId;
+		
+		//$this -> teamsDAO = $this -> DAOFactory-> getTeamsDAO();
 
-		$DAOFactory = new DAOFactory();
-		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
-		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
-		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
 
 	}
 
 	function render (){
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
+
+		$baseUrl = $this->baseUrl;
 		//loading other click event on the page should be done by ajax
 		
 		try{
 			
-			//$projects = $this->projectsDAO->getByUserIdProjectId(this->userId, $this->projectId);
+			//imp: add $this -> projectId in paramenter in place of 3(project_id)
+
+			//$projects = $this->projectsDAO->getByUserIdProjectId($this-> userId, $this-> projectId);
+			$project = $this-> projectsDAO -> getByProjectId( 3 );
+			$projectActivities = $this-> challengesDAO -> getProjectActivities( 3, 0,10 );
 			
+
 			//$userProjects = $this->projectsDAO->getUserProjects($this->userId);
 				
 			//$UserLinks = $this->userInfoDAO->getUsersLinks($this->userId);
-				
+			$projectTeams = $this-> teamsDAO -> queryAllTeamNames( 3 );
+			$teamMembers = $this-> teamsDAO -> queryAllTeamMembers( 3, 'ASSET mgt Team Dpowe' );
 
 
 			if (isset($_SESSION['userId'])) {
@@ -49,13 +45,35 @@ class ProjectController {
 				require_once 'views/project/project.php';
 
 
-
-
-
 		} catch (Exception $e){
 			echo "Error occur :500 <br>".var_dump($e);
 		}
 
+	}
+
+	function createProject(){
+		var_dump($_POST);
+		if(isset($_POST['title'], $_POST['description'], $_POST['type'])){
+			$this->project = new Projects(
+										$userId,
+										$blob_id,
+										$_POST['title'],
+										$_POST['description'],
+										$_POST['type'],
+										1,
+                            			0,
+                            			date("Y-m-d H:i:s"),
+                            			0,
+										0,
+										date("Y-m-d H:i:s"),
+										null);
+			try {
+				$this->project->setId($this->projectsDAO->insert($this->project));
+			}
+			catch (Exception $e){
+				var_dump($e); die();
+			}	
+		}
 	}
 
 

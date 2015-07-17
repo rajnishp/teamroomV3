@@ -65,8 +65,8 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 		switch ($page) {
 			case "project":
 										
-					$projectController = new ProjectController();
-					$projectController -> render($route[2]);
+					$projectController = new ProjectController($route[2]);
+					$projectController -> render();
 				break;
 
 			case "activity":

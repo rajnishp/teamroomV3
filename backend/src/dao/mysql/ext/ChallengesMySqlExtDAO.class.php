@@ -9,12 +9,12 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 
 
 	public function getByChallengeId($challengeId){
-		$sql = "(SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user 
 						WHERE challenge.id = ? AND challenge.status != 3 
 							AND challenge.status != 7 AND user.id = challenge.user_id AND challenge.blob_id = 0)
 				UNION
-				(SELECT challenge.id, challenge.project_id, challenge.title, blob.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
+				(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, blob.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user JOIN blobs as `blob` 
 						WHERE challenge.id = ? AND challenge.status != 3 
 							AND challenge.status != 7 AND user.id = challenge.user_id 
@@ -40,15 +40,9 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 		//for right panel, to show more view activity
 		//current its working on random bases
 
-		$sql = "(SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user
-						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id  AND challenge.blob_id = 0 ORDER BY rand() LIMIT 5)
-				UNION
-				(SELECT challenge.id, challenge.project_id, challenge.title, blob.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
-					FROM challenges as challenge JOIN user_info as user JOIN blobs as `blob`
-						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id 
-							AND challenge.blob_id = blob.id ORDER BY rand() LIMIT 5)
-						";
+						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id  AND challenge.blob_id = 0 ORDER BY rand() LIMIT 5";
 	
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getListChallenge($sqlQuery);
@@ -93,14 +87,58 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	 * Get all user challenges records from table
 	 */
 	public function  getUserActivities ($userId, $start, $limit){
-		$sql = "(SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.type, 
+						challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, challenge.last_update_time, 
+						user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user 
-						WHERE challenge.user_id = ? AND challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id AND challenge.blob_id = 0 ORDER BY creation_time DESC) 
+						WHERE challenge.user_id = ? AND challenge.status != 3 
+							AND challenge.status != 7 AND user.id = challenge.user_id 
+							AND challenge.type != 4 AND challenge.blob_id = 0) 
 				UNION
-				(SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
+				(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, blob.stmt, challenge.type, 
+						challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, challenge.last_update_time, 
+						user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user JOIN blobs as `blob`
-						WHERE challenge.user_id = ? AND challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id
-							AND challenge.blob_id = blob.id ORDER BY creation_time DESC )";
+						WHERE challenge.user_id = ? AND challenge.status != 3 
+							AND challenge.status != 7 AND user.id = challenge.user_id
+							AND challenge.type != 4 AND challenge.blob_id = blob.id)
+				ORDER BY last_update_time DESC ";
+		
+		if(isset($start) && isset($limit)){
+			$sql .= " LIMIT $start,$limit ;";
+		}
+		else {
+			$sql .= ";";
+		}
+
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		$sqlQuery->setNumber($userId);
+		return $this->getListChallenge($sqlQuery);
+	}
+
+	
+	/**
+	 * Get user ideas records from table challenge
+	 */
+	
+	public function  getUserIdeas ($userId, $start, $limit){
+		$sql = "(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.type, 
+						challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, challenge.last_update_time, 
+						user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user 
+						WHERE challenge.user_id = ? AND challenge.status != 3 
+							AND challenge.status != 7 AND user.id = challenge.user_id 
+							AND challenge.type = 4 AND challenge.blob_id = 0) 
+				UNION
+				(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, blob.stmt, challenge.type, 
+						challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, challenge.last_update_time, 
+						user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user JOIN blobs as `blob`
+						WHERE challenge.user_id = ? AND challenge.status != 3 
+							AND challenge.status != 7 AND user.id = challenge.user_id
+							AND challenge.type = 4 AND challenge.blob_id = blob.id)
+				ORDER BY last_update_time DESC ";
 		
 		if(isset($start) && isset($limit)){
 			$sql .= " LIMIT $start,$limit ;";
@@ -142,7 +180,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 							AND challenge.blob_id = 0
 							AND project.type = 'Public' AND user.id = challenge.user_id)
 				UNION
-				(SELECT user.id, challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.last_update_time,
+				(SELECT user.id, challenge.id, challenge.project_id, challenge.title, blob.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.last_update_time,
 						user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user JOIN projects as project JOIN blobs as `blob`
 						WHERE challenge.status != 3 AND challenge.status != 7 
@@ -187,13 +225,35 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	}
 
 	/**
-	 * Get all project challenges records from table
+	 * Get project activities records from table challenge AND user_info
 	 */
-	public function queryAllProjectChallenges($projectId){
-		$sql = 'SELECT * FROM challenges WHERE project_id = ? AND status != 3 AND status != 7';
+	public function getProjectActivities($projectId, $start, $limit){
+		$sql = "(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, challenge.last_update_time,
+						user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user JOIN projects as project 
+						WHERE challenge.project_id = ? AND challenge.status != 3 
+							AND challenge.status != 7 AND user.id = challenge.user_id 
+							AND challenge.blob_id = 0 AND challenge.project_id = project.id)
+				UNION
+				(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, blob.stmt, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, challenge.last_update_time,
+						user.first_name, user.last_name, user.username 
+					FROM challenges as challenge JOIN user_info as user JOIN blobs as `blob`  JOIN projects as project
+						WHERE challenge.project_id = ? AND challenge.status != 3 
+							AND challenge.status != 7 AND user.id = challenge.user_id 
+							AND challenge.blob_id = blob.id AND challenge.project_id = project.id)
+				ORDER BY last_update_time DESC ";
+		
+		if(isset($start) && isset($limit)){
+			$sql .= " LIMIT $start,$limit ;";
+		}
+		else {
+			$sql .= ";";
+		}
+
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($projectId);
-		return $this->getList($sqlQuery);
+		$sqlQuery->setNumber($projectId);
+		return $this->getListChallenge($sqlQuery);
 	}
 
 	public function deleteChallenge($challengeId){
@@ -207,7 +267,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	 * Get project challenge records from table
 	 */
 	public function queryAllTasks($userId, $userId){
-		$sql = "(SELECT DISTINCT challenge.id, challenge.title, challenge.type, challenge.status, challenge.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "(SELECT DISTINCT challenge.user_id, challenge.id, challenge.title, challenge.type, challenge.status, challenge.creation_time, user.first_name, user.last_name, user.username 
 					FROM challenges AS challenge JOIN user_info AS user JOIN challenge_ownership AS owner 
 						WHERE owner.user_id = ? 
 							AND (challenge.type = '5' OR challenge.type = '1' OR challenge.type = '2' OR challenge.type = '3') 
@@ -215,7 +275,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 							AND challenge.id = owner.challenge_id
 				)
 				UNION
-				(SELECT DISTINCT challenge.id, challenge.title, challenge.type, challenge.status, challenge.creation_time, user.first_name, user.last_name, user.username 
+				(SELECT DISTINCT challenge.user_id, challenge.id, challenge.title, challenge.type, challenge.status, challenge.creation_time, user.first_name, user.last_name, user.username 
 					FROM challenges AS challenge JOIN user_info AS user JOIN challenge_ownership AS owner 
 						WHERE challenge.user_id = ?
 							AND challenge.type = '5' 
@@ -245,7 +305,7 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	 * @return ChallengesMySql 
 	 */
 	protected function readRowUserTasks($row){
-		$challenge = new Challenge(0,0,0,0,$row['title'],0,$row['type'],$row['status'],0,0,$row['creation_time'],0, $row['first_name'], $row['last_name'], $row['username'], $row['id']);
+		$challenge = new Challenge($row['user_id'],0,0,0,$row['title'],0,$row['type'],$row['status'],0,0,$row['creation_time'],0, $row['first_name'], $row['last_name'], $row['username'], $row['id']);
 	
 		return $challenge;
 	}
