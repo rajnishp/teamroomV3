@@ -1,42 +1,28 @@
 <?php
 
-require_once 'dao/DAOFactory.class.php';
-//require_once 'components/xxx.class.php';
-//require_once '.class.php';
+require_once 'controllers/BaseController.class.php';
 
-class ProfileController {
+class ProfileController extends BaseController {
 
-	private $userId;
-	private $challengesDAO;
-	private $projectsDAO;
-	private $userInfoDAO;
 	private $profileId;
 
 	function __construct ( $profileId = null ){
+		parent::__construct();	
 		
-		if( isset( $_SESSION["user_id"] ) )
-			$this -> userId = $_SESSION["user_id"];
-			
-		
-
 		$this->profileId = $profileId;
 
 		$DAOFactory = new DAOFactory();
-		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
-		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
-		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
-		$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
-
 		$this -> userEducationDAO = $DAOFactory->getEducationDAO();
 		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
 		$this -> userWorkHistoryDAO = $DAOFactory->getWorkingHistoryDAO();
 		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
+		
 
 	}
 
 	function render (){
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
+		$baseUrl = $this->baseUrl;
+		$projects = $this->projects;
 		//loading other click event on the page should be done by ajax
 
 		try{

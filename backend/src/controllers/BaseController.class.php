@@ -45,6 +45,7 @@ abstract class BaseController {
 		
 		$this -> teamsDAO = $DAOFactory-> getTeamsDAO();
 		$this -> notificationsDAO = $DAOFactory-> getNotificationsDAO();
+		
 
 
 		$this->process();
@@ -61,8 +62,9 @@ abstract class BaseController {
 				$this->projects = $this->projectsDAO->queryAllUserProjects($this->userId);
 				$this->links = $this->userInfoDAO->getUsersLinks($this->userId);
 				$this->notifications = $this-> notificationsDAO -> getByUserId($this->userId);
+				$this->toDoList = $this->challengesDAO->getToDoList($this->userId);
+				$this->getDoneList = $this->challengesDAO->getGetDoneList($this->userId);
 				
-
 			}
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
 			

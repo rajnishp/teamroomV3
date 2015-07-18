@@ -66,10 +66,11 @@
             <hr class="spacer-sm">
 
             <a id="comments"></a>
-
+            <?php if($comments) {?>
             <div class="heading-block">
               <h3>Comments</h3>
             </div>
+            <?php } ?>
 
             <ol class="comment-list">
             <?php foreach ($comments as $comment) { ?>
@@ -78,7 +79,7 @@
                 <div class="comment">
 
                   <div class="comment-avatar">
-                    <img alt="" src="../../global/img/avatars/avatar-4-md.jpg" class="avatar">
+                    <img alt="" src="uploads/profilePictures/<?= $comment->getUsername() ?>.jpg" class="avatar">
                   </div> <!-- /.comment-avatar -->
 
                   <div class="comment-meta">
@@ -158,7 +159,7 @@
               <li>
                 <div class="recent-post-thumbnail">
                   <a href="<?= $baseUrl ?>activity/<?= $popPost->getId() ?>">
-                    <img width="60" height="60" src="static/img/blog/blog-post-4-sm.jpg" alt="">
+                    <img width="60" height="60" src="<?= $popPost->getImage() ?>" alt="">
                   </a>
                 </div> <!-- /.recent-post-thumbnail -->
 

@@ -52,9 +52,25 @@
 									<i class="fa fa-tasks"></i>
 									<span class="menu-title">
 										<strong>To-Do List</strong>
-										<span class="pull-right badge badge-warning">9</span>
+										<span class="pull-right badge badge-warning"><?= count($this->toDoList) ?></span>
 									</span>
+
+
 								</a>
+									<!--Submenu-->
+								<ul class="collapse">
+									
+									<!-- <li class="active-link"><a href="#">ASSET Mangament System</a></li>
+									 -->
+									<?php foreach ($this->toDoList as $key => $project) { ?>
+
+									
+										
+										<li><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>"><?= $project->getRefinedTitle() ?></a></li>
+
+									<?php  } ?>
+									
+								</ul>
 							</li>
 
 							<!--Menu list item-->
@@ -62,10 +78,26 @@
 								<a href="#">
 									<i class="fa fa-tasks"></i>
 									<span class="menu-title">
-										<strong>Get Done List</strong>
-										<span class="pull-right badge badge-warning">9</span>
+										<strong>Get-Done List</strong>
+										<span class="pull-right badge badge-warning"><?= count($this->getDoneList) ?></span>
 									</span>
+
+
 								</a>
+									<!--Submenu-->
+								<ul class="collapse">
+									
+									<!-- <li class="active-link"><a href="#">ASSET Mangament System</a></li>
+									 -->
+									<?php foreach ($this->getDoneList as $key => $project) { ?>
+
+									
+										
+										<li><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>"><?= $project->getRefinedTitle() ?></a></li>
+
+									<?php  } ?>
+									
+								</ul>
 							</li>
 				
 							<li class="list-divider"></li>
@@ -211,19 +243,6 @@
 					<div class="nano">
 						<div class="nano-content">
 							
-							<!--Nav tabs-->
-							<!--================================-->
-							<ul class="nav nav-tabs nav-justified">
-								<li class="active">
-									<a href="#demo-asd-tab-1" data-toggle="tab">
-										<i class="fa fa-comments"></i>
-										<span class="badge badge-purple">7</span>
-									</a>
-								</li>
-								
-							</ul>
-							<!--================================-->
-							<!--End nav tabs-->
 
 
 
@@ -234,43 +253,7 @@
 								<!--First tab (Contact list)-->
 								<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 								<div class="tab-pane fade in active" id="demo-asd-tab-1">
-									<h4 class="pad-hor text-thin">
-										<span class="pull-right badge badge-warning">3</span> Online
-									</h4>
-
-									<!--Family-->
-									<div class="list-group bg-trans">
-										<a href="#" class="list-group-item">
-											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av2.png" alt="Profile Picture">
-											</div>
-											<div class="media-body">
-												<div class="text-lg">Stephen Tran</div>
-												<span class="text-muted">Availabe</span>
-											</div>
-										</a>
-										<a href="#" class="list-group-item">
-											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av4.png" alt="Profile Picture">
-											</div>
-											<div class="media-body">
-												<div class="text-lg">Brittany Meyer</div>
-												<span class="text-muted">I think so</span>
-											</div>
-										</a>
-										<a href="#" class="list-group-item">
-											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av3.png" alt="Profile Picture">
-											</div>
-											<div class="media-body">
-												<div class="text-lg">Donald Brown</div>
-												<span class="text-muted">Lorem ipsum dolor sit amet.</span>
-											</div>
-										</a>
-									</div>
-
-
-									<hr>
+									
 									<h4 class="pad-hor text-thin">
 										<span class="pull-right badge badge-info"><?= count($this->links) ?></span> Friends
 									</h4>
@@ -281,7 +264,8 @@
 
 										<a href="#" class="list-group-item">
 											<div class="media-left">
-												<img class="img-circle img-xs" src="img/av5.png" alt="Profile Picture">
+
+												<img class="img-circle img-xs" src="uploads/profilePictures/<?= $value->getUsername() ?>.jpg" onerror = "this.src = '<?= $baseUrl ?>static/img/collap.jpg';">
 											</div>
 											<div class="media-body">
 												<div class="text-lg"><?= ucfirst($value->getFirstName()) ?> <?= ucfirst($value->getLastName()) ?></div>

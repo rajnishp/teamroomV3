@@ -25,8 +25,208 @@
 
          
       <section id = "register">
+
         <div class="container " style=" padding-top: 100px;">
 
+<div class="panel">
+            <div class="eq-height clearfix">
+              <div class="col-md-5 eq-box-md text-center box-vmiddle-wrap bg-primary">
+          
+                <!-- Simple Promotion Widget -->
+                <!--===================================================-->
+                <div class="box-vmiddle pad-all">
+                  <h3 class="text-thin">Register Today</h3>
+                  <span class="icon-wrap icon-wrap-lg icon-circle bg-trans-light">
+                    <i class="fa fa-gift fa-5x text-primary"></i>
+                  </span>
+                  <p>Members get <span class="text-lg text-bold">50%</span> more points, so register today and start earning points for savings on great rewards!</p>
+                  <a class="btn btn-lg btn-primary btn-labeled fa fa-arrow-right" href="#">Learn More...</a>
+                </div>
+                <!--===================================================-->
+          
+              </div>
+              <div class="col-md-7 eq-box-md eq-no-panel">
+          
+                <!-- Main Form Wizard -->
+                <!--===================================================-->
+                <div id="demo-main-wz">
+          
+                  <!--nav-->
+                  <ul class="row wz-step wz-icon-bw wz-nav-off mar-top">
+                    <li class="col-xs-3">
+                      <a data-toggle="tab" href="#demo-main-tab1">
+                        <span class="icon-wrap icon-wrap-xs bg-danger"><i class="fa fa-info"></i></span>
+                        <p class="text-thin">Account</p>
+                      </a>
+                    </li>
+                    <li class="col-xs-3">
+                      <a data-toggle="tab" href="#demo-main-tab2">
+                        <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-user"></i></span>
+                        <p class="text-thin">Profile</p>
+                      </a>
+                    </li>
+                    <li class="col-xs-3">
+                      <a data-toggle="tab" href="#demo-main-tab3">
+                        <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-home"></i></span>
+                        <p class="text-thin">Address</p>
+                      </a>
+                    </li>
+                    <li class="col-xs-3">
+                      <a data-toggle="tab" href="#demo-main-tab4">
+                        <span class="icon-wrap icon-wrap-xs bg-success"><i class="fa fa-heart"></i></span>
+                        <p class="text-thin">Finish</p>
+                      </a>
+                    </li>
+                  </ul>
+          
+                  <!--progress bar-->
+                  <div class="progress progress-xs">
+                    <div class="progress-bar progress-bar-primary"></div>
+                  </div>
+          
+          
+                  <!--form-->
+                  <form class="form-horizontal">
+                    <div class="panel-body">
+                      <div class="tab-content">
+          
+                        <!--First tab-->
+                        <div id="demo-main-tab1" class="tab-pane">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Username</label>
+                            <div class="col-lg-7">
+                              <input type="text" class="form-control" name="username" placeholder="Username">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Email address</label>
+                            <div class="col-lg-7">
+                              <input type="email" class="form-control" name="email" placeholder="Email">
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Password</label>
+                            <div class="col-lg-7">
+                              <input type="password" class="form-control" name="password" placeholder="Password">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Retype password</label>
+                            <div class="col-lg-7">
+                              <input type="password" class="form-control" name="password2" placeholder="Retype password">
+                            </div>
+                          </div>
+                        </div>
+          
+                        <!--Second tab-->
+                        <div id="demo-main-tab2" class="tab-pane fade">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">First name</label>
+                            <div class="col-lg-7">
+                              <input type="text" placeholder="First name" name="firstName" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Last name</label>
+                            <div class="col-lg-7">
+                              <input type="text" placeholder="Last name" name="lastName" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Company</label>
+                            <div class="col-lg-7">
+                              <input type="text" placeholder="Company" name="company" class="form-control">
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Member Type</label>
+                            <div class="col-lg-7">
+                              <div class="radio">
+                                <label class="form-radio form-icon">
+                                  <input type="radio" value="free" name="memberType"> Free
+                                </label>
+          
+                                <label class="form-radio form-icon">
+                                  <input type="radio" value="personal" name="memberType"> Personal
+                                </label>
+          
+                                <label class="form-radio form-icon">
+                                  <input type="radio" value="bussines" name="memberType"> Bussiness
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+          
+                        <!--Third tab-->
+                        <div id="demo-main-tab3" class="tab-pane">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Phone Number</label>
+                            <div class="col-lg-7">
+                              <input type="text" placeholder="Phone number" name="phoneNumber" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Address</label>
+                            <div class="col-lg-7">
+                              <input type="text" placeholder="Address" name="address" class="form-control">
+                            </div>
+                          </div>
+                          <hr>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">City</label>
+                            <div class="col-lg-7">
+                              <input type="text" placeholder="City" name="city" class="form-control">
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Poscode</label>
+                            <div class="col-lg-7">
+                              <input type="text" placeholder="Poscode" name="poscode" class="form-control">
+                            </div>
+                          </div>
+                        </div>
+          
+                        <!--Fourth tab-->
+                        <div id="demo-main-tab4" class="tab-pane">
+                          <div class="form-group">
+                            <label class="col-lg-3 control-label">Bio</label>
+                            <div class="col-lg-7">
+                              <textarea placeholder="Tell us your story..." rows="7" name="bio" class="form-control"></textarea>
+                            </div>
+                          </div>
+                          <div class="form-group">
+                            <div class="col-lg-7 col-lg-offset-3">
+                              <div class="checkbox">
+                                <label class="form-checkbox form-icon">
+                                  <input type="checkbox" value="java" name="acceptTerms"> Accept the terms and policies
+                                </label>
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+          
+          
+                    <!--Footer button-->
+                    <div class="pull-right pad-all">
+                      <button type="button" class="previous btn btn-primary">Previous</button>
+                      <button type="button" class="next btn btn-primary">Next</button>
+                      <button type="button" class="finish btn btn-success" disabled>Finish</button>
+                    </div>
+          
+                  </form>
+                </div>
+                <!--===================================================-->
+                <!-- End of Main Form Wizard -->
+          
+              </div>
+            </div>
+          </div>
+          
           <div class="account-wrapper">
             <div class="section-header">
               <!-- SECTION TITLE -->

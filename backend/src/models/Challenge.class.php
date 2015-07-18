@@ -63,6 +63,17 @@
 
 		}
 
+		function getImage(){
+			if (substr($this->stmt, 0, 4) == "<img")
+				$temp = explode("\"", $this->stmt);
+			else{
+				global $configs; 
+				return $configs["COLLAP_BASE_URL"]."static/img/collap.jpg";
+				
+			}
+			return $temp[1];
+		}
+
 		private function replaceTags($req){
 
 			return str_replace(

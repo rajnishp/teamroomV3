@@ -37,7 +37,7 @@ class ProjectController extends BaseController {
 				
 			//$UserLinks = $this->userInfoDAO->getUsersLinks($this->userId);
 			$projectTeams = $this-> teamsDAO -> queryAllTeamNames( $this -> projectId );
-			$teamMembers = $this-> teamsDAO -> queryAllTeamMembers($this -> projectId , 'ASSET mgt Team Dpowe' );
+			$teamMembers = $this-> teamsDAO -> queryAllTeamMembers($this -> projectId , 'defaultteam' );
 
 
 			if (isset($_SESSION['userId'])) {

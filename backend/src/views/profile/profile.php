@@ -62,7 +62,7 @@
                 
               <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3 col-lg-offset-4 col-md-offset-4">
                 <h4><small>Projects</small></h4>
-                <p class="semibold">4</p>
+                <p class="semibold"><?= count($projects) ?></p>
               </div>  
 
               <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3">

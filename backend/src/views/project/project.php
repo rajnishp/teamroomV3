@@ -34,7 +34,8 @@
 
               <div class="col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
                 <div class="post-main">
-                  <div class="pull-left">
+                  
+                    <div class="pull-left">
                     <h4 class="post-title"><?= $project->getRefinedTitle() ?></h4>
                     <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                   </div>
@@ -251,23 +252,7 @@
                         <div class="tab-pane fade" id="tabs-teams">
                           
                           
-                          <!--Teams Names Start here-->
-                          <!--===================================================-->
-                          <div class="row">
-                            <h4>Teams</h4>
-                            <?php foreach ($projectTeams as $team) { ?>
-                              <div class="col-md-6 col-lg-3">
-                                <div class="panel media pad-all" style="background-color: #E4EDF0;">
-                                  <div class="media-body">
-                                    <p class="text-2x mar-no text-thin"> <?= $team -> getTeamName() ?></p>
-                                  </div>
-                                </div>
-                              </div>
-                            <?php } ?>
-                            
-                            
-                            
-                          </div>
+                         
                           <!--===================================================-->
                           <!--Team Names Ends-->
 
@@ -281,7 +266,7 @@
                               <div class="col-md-6 col-lg-4 col-sm-6">                                                    
                                 <div class="panel media middle" style="background-color: #E4EDF0;">
                                   <div class="media-left bg-primary pad-all">
-                                    <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" class="avatar" width="40" height="40">
+                                    <img alt="" src="uploads/profilePictures/<?= $teamMember->getUsername() ?>.jpg" onerror = "this.src = '<?= $baseUrl ?>static/img/collap.jpg';" class="avatar" width="40" height="40">
                                   </div>
                                   <div class="media-body pad-lft">
                                     <a href="#" class="text-capitalize"><?= $teamMember -> getFirstName() ?> <?= $teamMember -> getLastName() ?></a>
@@ -297,89 +282,9 @@
                           <!--Team Dashboard starts-->
                           <!--===================================================-->
 
-                          <div class="row">
-                            <h4> Open Challenges </h4>
-                            <div class="col-md-4 col-lg-4 col-sm-6">
-                              
-                              <div class="panel panel-success panel-colorful text-center">
-                                <div class="panel-body">
-                                  <?= gettimeofday() ?>
-                                </div>
-                                <div class="bg-light pad-ver">
-                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
-                                </div>
-                              </div>
-                            </div>
+                         
 
-                            <div class="col-md-4 col-lg-4 col-sm-6">
-                              
-                              <div class="panel panel-success panel-colorful text-center">
-                                <div class="panel-body">
-                                  <?= gettimeofday() ?>
-                                </div>
-                                <div class="bg-light pad-ver">
-                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
-                                </div>
-                              </div>
-                            </div>
-                                
-                          </div>
-
-                          <div class="row">
-                            <h4> Work in Progress </h4>
-                            <div class="col-md-4 col-lg-4 col-sm-6">
-                              
-                              <div class="panel panel-success panel-colorful text-center">
-                                <div class="panel-body">
-                                  <?= gettimeofday() ?>
-                                </div>
-                                <div class="bg-light pad-ver">
-                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col-md-4 col-lg-4 col-sm-6">
-                              
-                              <div class="panel panel-success panel-colorful text-center">
-                                <div class="panel-body">
-                                  <?= gettimeofday() ?>
-                                </div>
-                                <div class="bg-light pad-ver">
-                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
-                                </div>
-                              </div>
-                            </div>
-                                
-                          </div>
-
-                          <div class="row">
-                            <h4> Open Challenges </h4>
-                            <div class="col-md-4 col-lg-4 col-sm-6">
-                              
-                              <div class="panel panel-success panel-colorful text-center">
-                                <div class="panel-body">
-                                  <?= gettimeofday() ?>
-                                </div>
-                                <div class="bg-light pad-ver">
-                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
-                                </div>
-                              </div>
-                            </div>
-
-                            <div class="col-md-4 col-lg-4 col-sm-6">
-                              
-                              <div class="panel panel-success panel-colorful text-center">
-                                <div class="panel-body">
-                                  <?= gettimeofday() ?>
-                                </div>
-                                <div class="bg-light pad-ver">
-                                  <h4 class="mar-no text-thin"><i class="fa fa-hdd-o"></i>Challenge/Task Title</h4>
-                                </div>
-                              </div>
-                            </div>
-                                
-                          </div>
+                         
                           <!--Team Dashboard Ends-->
                           <!--===================================================-->
 

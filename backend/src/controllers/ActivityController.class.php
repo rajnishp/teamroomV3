@@ -8,12 +8,15 @@ class ActivityController extends BaseController  {
 	function __construct ( $challangeId ){
 		
 		parent::__construct();	
+		$this->challangeId = $challangeId;
 
 	}
 
 	function render (){
 		
 		$baseUrl = $this->baseUrl;
+		$projects = $this->projects;
+
 		try{
 			$activity = $this->challengesDAO->getByChallengeId($this->challangeId);
 			$comments = $this ->challengeResponsesDAO->getResponses($this->challangeId);
