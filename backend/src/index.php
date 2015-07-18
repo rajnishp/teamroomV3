@@ -112,8 +112,32 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 			case "setting":
 
-					$settingController = new SettingController($route[2]);
-					$settingController -> render();
+					$settingController = new SettingController();
+					$where = $route[2];
+					switch ($where) {
+							case 'updateTechStrength':
+								
+								$settingController -> updateTechStrength();
+
+								break;
+
+							case 'signup':
+								$homeController -> signup ();
+								break;
+
+							case 'logout':
+								$homeController -> logout ();
+								break;
+
+							case 'forgetPassword':
+								$homeController -> forgetPassword ();
+								break;
+							
+							default:
+								$settingController -> render();
+								break;
+						}
+
 				break;
 
 			case "home":

@@ -12,11 +12,11 @@ class ProfileController {
 	private $userInfoDAO;
 	private $profileId;
 
-	function __construct ( $profileId ){
+	function __construct ( $profileId = null ){
 		
 		if( isset( $_SESSION["user_id"] ) )
 			$this -> userId = $_SESSION["user_id"];
-			$this->userId = 7;
+			
 		
 
 		$this->profileId = $profileId;
@@ -41,7 +41,7 @@ class ProfileController {
 
 		try{
 			
-			if($this->profileId){
+			if($this->profileId != null){
 				$userMProjects = $this->projectsDAO->getUserPublicProjects($this->profileId,0,10);
 				$userActivities = $this->challengesDAO->getUserActivities($this->profileId,0,10);
 				$userProfile = $this->userInfoDAO->load($this->profileId);
@@ -55,9 +55,10 @@ class ProfileController {
 			}
 			else{
 				$userMProjects = $this->projectsDAO->getUserPublicProjects($this->userId,0,10);
+				
 				$userActivities = $this->challengesDAO->getUserActivities($this->userId,0,10);
 				$userProfile = $this->userInfoDAO->load($this->userId);
-				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
+				$userSkills = $this ->userSkillDAO->getUserSkills($this->userId);
 
 				$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);
 				$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);

@@ -71,7 +71,7 @@
 
                         <br><br>
 
-                        <form action="profile/update" class="form-horizontal" method="POST">
+                        <form action="profile/updatePic" class="form-horizontal" method="POST">
 
                           <div class="form-group">
 
@@ -81,7 +81,7 @@
 
                               <div class="fileinput fileinput-new" data-provides="fileinput">
                                 <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="min-width: 125px; min-height: 125px;">
-                                  <img src="<?= $baseUrl ?>static/img/rajnish.jpg" alt="Avatar">
+                                  <img src="<?= $baseUrl ?>static/img/rajnish.png" alt="Avatar">
                                 </div>
                                 <div>
                                   <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
@@ -93,13 +93,22 @@
 
                           </div> <!-- /.form-group -->
 
+                        </form>
+
+                        <div class="heading-block">
+                          <h3>
+                            Edit Information
+                          </h3>
+                        </div> <!-- /.heading-block -->
+
+                        <form action="profile/updateUserInfo" class="form-horizontal" method="POST">
 
                           <div class="form-group">
 
                             <label class="col-md-3 control-label">Username</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="user-name" value="jumpstartui" class="form-control" disabled />
+                              <input type="text" name="user-name" value="<?= ucfirst($userProfile->getUsername())?>" class="form-control" disabled />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -110,7 +119,7 @@
                             <label class="col-md-3 control-label">First Name</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="first-name" value="Rod" class="form-control" />
+                              <input type="text" name="first_name" value="<?= ucfirst($userProfile->getFirstName() )?>" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -122,7 +131,7 @@
                             <label class="col-md-3 control-label">Last Name</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="last-name" value="Howard" class="form-control" />
+                              <input type="text" name="last_name" value="<?= ucfirst($userProfile->getLastName() )?>" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -134,7 +143,7 @@
                             <label class="col-md-3 control-label">Email Address</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="email-address" value="rod@example.com" class="form-control" />
+                              <input type="text" name="email_address" value="<?= ucfirst($userProfile->getEmail() )?>" class="form-control" disabled/>
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -145,7 +154,7 @@
                             <label class="col-md-3 control-label">About You</label>
 
                             <div class="col-md-7">
-                              <textarea id="about-textarea" name="about-you" rows="6" class="form-control">Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes.</textarea>
+                              <textarea id="about-textarea" name="about_user" rows="6" class="form-control"><?= $userProfile -> getAboutUser() ?></textarea>
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -162,6 +171,161 @@
 
                         </form>
 
+                        <div class="heading-block">
+                          <h3>
+                            Edit Technical Strength
+                          </h3>
+                        </div> <!-- /.heading-block -->
+
+
+                        <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST">
+
+                          <div class="form-group">
+
+                            <label class="col-md-3 control-label">Technical Strength</label>
+                            <?php foreach ($userTechStrength as $key => $value) { ?>
+                            <div class="col-md-7">
+                              <input type="text" name="tech_strength" value="<?= ucfirst($value -> getStrength()) ?>" class="form-control"/>
+                            </div> <!-- /.col -->
+                            <?php } ?>
+                          </div> <!-- /.form-group -->
+
+                          <div class="form-group">
+                            <div class="col-md-7 col-md-push-3">
+                              <button type="submit" class="btn btn-primary">Save Changes</button>
+                              &nbsp;
+                              <button type="reset" class="btn btn-default">Cancel</button>
+                            </div> <!-- /.col -->
+                          </div> <!-- /.form-group -->
+
+                        </form>
+
+                        <div class="heading-block">
+                          <h3>
+                            Edit Work Experience
+                          </h3>
+                        </div> <!-- /.heading-block -->
+
+
+                        <?php foreach ($userWorkExperience as $workExperience) { ?>
+                          <form action="profile/updateWorkExp" class="form-horizontal" method="POST">
+
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Institute Name</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="company_name" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Name of Degree</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="designation" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Institute Name</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="from" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Institute Name</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="to" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+
+                            <div class="form-group">
+                              <div class="col-md-7 col-md-push-3">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                &nbsp;
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                              </div> <!-- /.col -->
+                            </div> <!-- /.form-group -->
+
+                          </form>
+                        <?php } ?>
+
+                        <div class="heading-block">
+                          <h3>
+                            Edit Education
+                          </h3>
+                        </div> <!-- /.heading-block -->
+
+                        <?php foreach ($userEducation as $education) { ?>
+                          <form action="profile/updateEducation" class="form-horizontal" method="POST">
+
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Institute Name</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="institute" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Name of Degree</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="degree" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Branch Name</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="branch" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Started From</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="from" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">To</label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="to" value="<?= ucfirst($education -> getTo()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+
+                            <div class="form-group">
+                              <div class="col-md-7 col-md-push-3">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                &nbsp;
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                              </div> <!-- /.col -->
+                            </div> <!-- /.form-group -->
+
+                          </form>
+                        <?php } ?>
 
                       </div> <!-- /.tab-pane-profile -->
 

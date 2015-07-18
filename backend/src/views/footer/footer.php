@@ -71,7 +71,14 @@
     	if($(this).attr('src').substring(0,4) != "http")
       		$(this).attr('src','http://collap.com/'+$(this).attr('src'));
     });
+
+    
  });
+  function lazyExecute(){
+  	$('#nav-controller').click()
+  }
+
+  setTimeout(lazyExecute,5000);
 </script>
 
 

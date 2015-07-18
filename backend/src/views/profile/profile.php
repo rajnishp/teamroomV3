@@ -40,7 +40,7 @@
               </div>
               <div class="panel-media" >
                
-                <img src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
+                <img src="uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
                 
               </div>
               
@@ -286,7 +286,7 @@
                                     <?php foreach ($project -> getResponses() as $response) { ?>
                                       
                                       <div class="comment-avatar">
-                                        <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
+                                        <img alt="" src="uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
                                       </div> <!-- /.comment-avatar -->
 
                                       <div class="comment-meta">

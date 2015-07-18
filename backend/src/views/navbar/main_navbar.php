@@ -26,7 +26,7 @@
             <!--Navigation toogle button-->
             <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
             <li class="tgl-menu-btn">
-              <a class="mainnav-toggle" href="#">
+              <a class="mainnav-toggle" href="#" id="nav-controller">
                 <i class="fa fa-navicon fa-lg"></i>
               </a>
             </li>
@@ -220,9 +220,9 @@
             <li id="dropdown-user" class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                 <span class="pull-right">
-                  <img class="img-circle img-user media-object" src="<?= $baseUrl ?>static/img/av1.png" alt="Profile Picture">
+                  <img class="img-circle img-user media-object" src="uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" alt="Profile Picture">
                 </span>
-                <div class="username hidden-xs">Rajnish Panwar</div>
+                <div class="username hidden-xs"><?= ucfirst($_SESSION['first_name']) ?></div>
               </a>
 
 
@@ -246,7 +246,7 @@
 
                 <!-- Dropdown footer -->
                 <div class="pad-all text-right">
-                  <a href="#" class="btn btn-primary">
+                  <a href="<?= $baseUrl ?>home/logout" class="btn btn-primary">
                     <i class="fa fa-sign-out fa-fw"></i> Logout
                   </a>
                 </div>

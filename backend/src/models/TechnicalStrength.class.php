@@ -18,7 +18,7 @@
 			$this -> userId = $userId;
 			$this -> strength = $strength;
 			$this -> addedOn = $addedOn;
-			$this-> lastUpdateOn = $lastUpdateOn;
+			$this -> lastUpdateOn = $lastUpdateOn;
 
 		}
 
