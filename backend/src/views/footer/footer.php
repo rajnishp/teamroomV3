@@ -66,14 +66,15 @@
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/nifty-demo.min.js"></script>
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/layouts.js"></script>
 <script>
+	var last = 10;
 	$(window).scroll(function(event) {
 		if ($(window).scrollTop() == ($(document).height() - $(window).height())) {
 			event.preventDefault();
 			$('#panel-cont').append("<div class='loading'><center><img src='http://collap.com/img/loading.gif' /></center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>");
-			var dataString = 'chal=6' ;
+			var dataString = 'last=' + last ;
 			var value = parseInt($("#viewchid").val()) ;
 			$.ajax({
-				type: "GET",
+				type: "POST",
 				url: "dashboard/activities/get_next",
 				data: dataString,
 				cache: false,
@@ -89,6 +90,8 @@
 					else {
 						$('#panel-cont').append(result);
 						$('.loading').remove();
+						last = last + 5;
+						console.log(last);
 						
 					}
 				}
