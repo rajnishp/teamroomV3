@@ -64,6 +64,19 @@ class ProfileController extends BaseController {
 
 	}
 
+	function getNextActivities(){
+		$last = $_POST["last"];
+		if($this->profileId != "activities")
+			$userId = $this->profileId;
+		else
+			$userId = $this->userId;
+		$top10Activities =  $this-> challengesDAO -> getUserActivities( $userId , $last,5);
+		
+		
+			//var_dump($top10Activities);
+		require_once 'views/dashboard/activitiesView.php';
+	}
+
 }
 
 ?>

@@ -290,7 +290,8 @@
 
                         </div>
 
-                        <div class="tab-pane fade" id="tabs-activities">
+                        <div class="tab-pane fade" id="tabs-activities" >
+                        <div class="activity-1" id="panel-cont">
                           <!-- /.Activities-block -->
                           <?php foreach ($projectActivities as $activity) { ?>
 
@@ -350,6 +351,7 @@
                             </div>
 
                           <?php } ?>
+                          </div>
                           <!-- /.Activities-block ends-->
                         </div>
                       </div>

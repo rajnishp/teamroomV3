@@ -53,6 +53,15 @@ class ProjectController extends BaseController {
 
 	}
 
+	function getNextActivities(){
+		$last = $_POST["last"];
+		$top10Activities =  $this-> challengesDAO -> getProjectActivities( $this -> projectId , $last,5);
+		
+		
+			//var_dump($top10Activities);
+		require_once 'views/dashboard/activitiesView.php';
+	}
+	
 	function createProject(){
 		var_dump($_POST);
 		if(isset($_POST['title'], $_POST['description'], $_POST['type'])){

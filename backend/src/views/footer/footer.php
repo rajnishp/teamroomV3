@@ -75,7 +75,7 @@
 			var value = parseInt($("#viewchid").val()) ;
 			$.ajax({
 				type: "POST",
-				url: "dashboard/activities/get_next",
+				url: window.location.href + "/activities/get_next",
 				data: dataString,
 				cache: false,
 				success: function(result){
