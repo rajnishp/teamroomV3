@@ -65,6 +65,40 @@
 	<!--Demo script [ DEMONSTRATION ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/nifty-demo.min.js"></script>
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/layouts.js"></script>
+<script>
+	$(window).scroll(function(event) {
+		if ($(window).scrollTop() == ($(document).height() - $(window).height())) {
+			event.preventDefault();
+			$('#panel-cont').append("<div class='loading'><center><img src='http://collap.com/img/loading.gif' /></center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>");
+			var dataString = 'chal=6' ;
+			var value = parseInt($("#viewchid").val()) ;
+			$.ajax({
+				type: "GET",
+				url: "dashboard/activities/get_next",
+				data: dataString,
+				cache: false,
+				success: function(result){
+					var notice = result.split("<") ;
+					if (notice['0'] == 'no data') {
+						$('.loading').remove();
+						var data = document.getElementById("appendloading") ;
+						if(data == null) {
+							$('#panel-cont').append("<div id='appendloading'><br/><br/><center style='font-size:24px;'> Whooo... You have read all Posts </center></div>");
+						}
+					}
+					else {
+						$('#panel-cont').append(result);
+						$('.loading').remove();
+						
+					}
+				}
+			});
+		}
+	});
+	 
+	getallreminders() ; 
+</script>
+
 <script type="text/javascript">
   $( document ).ready(function() {
     $('img').each(function(){

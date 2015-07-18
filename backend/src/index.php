@@ -84,28 +84,35 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 			case "dashboard":
 
 					$dashboardController = new DashboardController($route[2]);
-					if (!empty($_POST)){
-						$form = $_POST['submit'];
-						//action url dashboard
-						//value of submit buttun should be activity
-						switch ($form) {
-							case 'activity':
+					$where = $route[2];
+					
+					switch ($where) {
+							case 'activities':
 								
+								$dashboardController -> getNextActivities();
+
+								break;
+
+							case 'activity':
 								$dashboardController -> postActivity ();
 								break;
 
+							case 'logout':
+								$homeController -> logout ();
+								break;
+
+							case 'forgetPassword':
+								$homeController -> forgetPassword ();
+								break;
 							
 							default:
-								$homeController -> render ();
+								$dashboardController -> render ();
 								break;
-						}
+					}
+
+					
 						
-
-
-					}
-					else{
-						$dashboardController -> render ();
-					}
+					
 
 					
 				break;

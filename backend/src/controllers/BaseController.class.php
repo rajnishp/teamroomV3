@@ -1,6 +1,8 @@
 <?php
 
 require_once 'dao/DAOFactory.class.php';
+require_once 'views/source/actionDropdown.php';
+require_once 'views/source/postForms.php';
 //require_once 'components/xxx.class.php';
 //require_once '.class.php';
 
@@ -64,7 +66,7 @@ abstract class BaseController {
 				$this->notifications = $this-> notificationsDAO -> getByUserId($this->userId);
 				$this->toDoList = $this->challengesDAO->getToDoList($this->userId);
 				$this->getDoneList = $this->challengesDAO->getGetDoneList($this->userId);
-				
+
 			}
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
 			

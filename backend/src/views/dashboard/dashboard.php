@@ -97,7 +97,7 @@
                   <hr class="spacer-sm">
 
 
-                  <div class="activity-1">
+                  <div class="activity-1" id="panel-cont">
 
                     <?php foreach ($top10Activities as $activity) { ?>
 
@@ -158,6 +158,7 @@
 
                     <?php } ?>
                     
+                 
                   </div>
                 </div>
               </div>

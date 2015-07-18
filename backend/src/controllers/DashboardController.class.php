@@ -22,6 +22,7 @@ class DashboardController extends BaseController {
 			
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
 			$top10Activities =  $this->challengesDAO->queryAllChallenges(0,10);
+			$_SESSION["last"] = 10;
 			//var_dump($top10Activities);
 			require_once 'views/dashboard/dashboard.php';
 
@@ -29,6 +30,17 @@ class DashboardController extends BaseController {
 			echo "Server every on DashboardController <br/>".var_dump($e); 
 		}
 
+	}
+
+	function getNextActivities(){
+		$last = intval($_SESSION["last"]);
+
+		$top10Activities =  $this->challengesDAO->queryAllChallenges( $last,5);
+		$_SESSION["last"] =  strval($last + 5);
+		var_dump($_SESSION['last']) ;
+		echo "<br />";
+			//var_dump($top10Activities);
+		require_once 'views/dashboard/activitiesView.php';
 	}
 
 	function postActivity(){
