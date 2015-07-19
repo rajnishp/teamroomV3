@@ -53,6 +53,21 @@ $logger -> debug ("Setting up ...");
 
 $route = explode("/",$_SERVER[REQUEST_URI]);
 
+//for url translantion
+if(substr($route[1], 0, 11) == "profile.php"){
+	$temp = explode("=", $route[1]);
+	$route[2] = $temp[1];
+	$route[1] = "profile";
+
+}
+if(substr($route[1], 0, 18) == "challengesOpen.php"){
+	$temp = explode("=", $route[1]);
+	$route[2] = $temp[1];
+	$route[1] = "activity";
+	
+}
+//end of url translantion
+
 if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 	//langing page of collap
 	$homeController = new HomeController();
@@ -122,12 +137,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 								break;
 
-							case 'activity':
-								$dashboardController -> postActivity ();
+							case 'ideas':
+								$profileController -> getNextIdeas();
 								break;
 
-							case 'logout':
-								$homeController -> logout ();
+							case 'projects':
+								$profileController -> getNextProjects();
 								break;
 
 							case 'forgetPassword':
@@ -137,6 +152,10 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 							default:
 								if($route[2] == 'activities')
 									$profileController -> getNextActivities();
+								if($route[2] == 'ideas')
+									$profileController -> getNextIdeas();
+								if($route[2] == 'projects')
+									$profileController -> getNextProjects();
 								else
 									$profileController -> render ();
 								break;

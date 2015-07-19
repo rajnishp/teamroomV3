@@ -140,9 +140,9 @@
                     <div class="panel-control">
                       <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#tabs-profile"><i class="fa fa link"></i> Profile</a></li>
-                        <li><a data-toggle="tab" href="#tabs-project"><i class="fa fa question"></i> Project</a></li>
-                        <li><a data-toggle="tab" href="#tabs-activity"><i class="fa fa video"></i> Activitie</a></li>
-                        <li><a data-toggle="tab" href="#tabs-idea"><i class="fa fa link"></i> Idea</a></li>
+                        <li id="projectTab"><a data-toggle="tab" href="#tabs-project"  ><i class="fa fa question"></i> Project</a></li>
+                        <li id="activityTab" ><a data-toggle="tab" href="#tabs-activity" ><i class="fa fa video"></i> Activitie</a></li>
+                        <li id="ideaTab" ><a data-toggle="tab" href="#tabs-idea" ><i class="fa fa link"></i> Idea</a></li>
                       </ul>
                     </div>
                     <h3 class="panel-title">User Profile</h3>
@@ -428,7 +428,7 @@
                       <!--===================================================-->
           
                       <div id="tabs-idea" class="tab-pane fade">
-                        <div class="activity-1">
+                        
 
                           <div class="post-aside" style="padding-top: 28px;">
                             <div class="post-date">
@@ -490,7 +490,7 @@
                             </ol>
                           </div>
                          
-                        </div>
+                        
                       </div>
 
                     <!--USer Ideas Starts-->

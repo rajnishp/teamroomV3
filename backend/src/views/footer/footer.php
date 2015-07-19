@@ -65,41 +65,83 @@
 	<!--Demo script [ DEMONSTRATION ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/nifty-demo.min.js"></script>
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/layouts.js"></script>
+
 <script>
-	var last = 10;
-	$(window).scroll(function(event) {
-		if ($(window).scrollTop() == ($(document).height() - $(window).height())) {
-			event.preventDefault();
-			$('#panel-cont').append("<div class='loading'><center><img src='http://collap.com/img/loading.gif' /></center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>");
-			var dataString = 'last=' + last ;
-			var value = parseInt($("#viewchid").val()) ;
-			$.ajax({
-				type: "POST",
-				url: window.location.href + "/activities/get_next",
-				data: dataString,
-				cache: false,
-				success: function(result){
-					var notice = result.split("<") ;
-					if (notice['0'] == 'no data') {
-						$('.loading').remove();
-						var data = document.getElementById("appendloading") ;
-						if(data == null) {
-							$('#panel-cont').append("<div id='appendloading'><br/><br/><center style='font-size:24px;'> Whooo... You have read all Posts </center></div>");
-						}
-					}
-					else {
-						$('#panel-cont').append(result);
-						$('.loading').remove();
-						last = last + 5;
-						console.log(last);
-						
-					}
-				}
-			});
-		}
-	});
-	 
-	getallreminders() ; 
+function addMorePost(url, dataString,addAt){
+
+  $.ajax({
+          type: "POST",
+          url: window.location.href + url,
+          data: dataString,
+          cache: false,
+          success: function(result){
+            var notice = result.split("<") ;
+            if (notice['0'] == 'no data') {
+              $('.loading').remove();
+              var data = document.getElementById("appendloading") ;
+              if(data == null) {
+                $(addAt).append("<div id='appendloading'><br/><br/><center style='font-size:24px;'> Whooo... You have read all Posts </center></div>");
+              }
+            }
+            else {
+              $(addAt).append(result);
+              $('.loading').remove();
+              console.log(last);
+              
+            }
+          }
+        });
+
+}
+  var lastPoject = 0;
+  var lastIdea = 0;
+  var last = 10;
+  $(window).scroll(function(event) {
+    
+    
+    if ($(window).scrollTop() == ($(document).height() - $(window).height())) {
+      if($('#projectTab').attr('class') == "active"){
+        event.preventDefault();
+        var addAt = "#tabs-project";//tabs-idea
+        var url = "/projects/get_next";
+
+        $(addAt).append("<div class='loading'><center><img src='http://collap.com/img/loading.gif' /></center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>");
+        var dataString = 'last=' + lastPoject ;
+        lastPoject  = lastPoject + 5;
+        addMorePost(url, dataString,addAt);        
+        
+      }
+      else if($('#ideaTab').attr('class') == "active"){
+        event.preventDefault();
+        var addAt = "#tabs-idea";//tabs-idea
+        var url = "/ideas/get_next";
+
+        $(addAt).append("<div class='loading'><center><img src='http://collap.com/img/loading.gif' /></center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>");
+        var dataString = 'last=' + lastIdea ;
+        lastIdea  = lastIdea + 5;
+
+        addMorePost(url, dataString,addAt);        
+        
+      } else{
+
+      	event.preventDefault();
+        var addAt = '#panel-cont';//tabs-idea
+        var url = "/activities/get_next";
+
+        $(addAt).append("<div class='loading'><center><img src='http://collap.com/img/loading.gif' /></center><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><br/></div>");
+        var dataString = 'last=' + last ;
+        last  = last + 5;
+
+        addMorePost(url, dataString,addAt);
+
+      }
+
+
+
+    }
+  });
+   
+   
 </script>
 
 <script type="text/javascript">

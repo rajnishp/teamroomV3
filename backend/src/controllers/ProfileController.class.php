@@ -27,7 +27,7 @@ class ProfileController extends BaseController {
 		try{
 			
 			if($this->profileId != null){
-				$userMProjects = $this->projectsDAO->getUserPublicProjects($this->profileId,0,10);
+				//$userMProjects = $this->projectsDAO->getUserPublicProjects($this->profileId,0,10);
 				$userActivities = $this->challengesDAO->getUserActivities($this->profileId,0,10);
 				$userProfile = $this->userInfoDAO->load($this->profileId);
 				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
@@ -39,7 +39,7 @@ class ProfileController extends BaseController {
 
 			}
 			else{
-				$userMProjects = $this->projectsDAO->getUserPublicProjects($this->userId,0,10);
+				//$userMProjects = $this->projectsDAO->getUserPublicProjects($this->userId,0,10);
 				
 				$userActivities = $this->challengesDAO->getUserActivities($this->userId,0,10);
 				$userProfile = $this->userInfoDAO->load($this->userId);
@@ -58,7 +58,7 @@ class ProfileController extends BaseController {
 
 			require_once 'views/profile/profile.php';
 		} catch (Exception $e){
-			echo "Error occur :500 <br>".var_dump($e);
+			//echo "Error occur :500 <br>".var_dump($e);
 		}
 
 	}
@@ -74,6 +74,37 @@ class ProfileController extends BaseController {
 		
 			//var_dump($top10Activities);
 		require_once 'views/dashboard/activitiesView.php';
+	}
+
+	function getNextProjects(){
+		$last = $_POST["last"];
+		if($this->profileId != "projects")
+			$userId = $this->profileId;
+		else
+			$userId = $this->userId;
+		$top10Activities =  $this-> projectsDAO->getUserPublicProjects( $userId , $last,5);
+		
+		
+			//var_dump($top10Activities);
+		require_once 'views/dashboard/activitiesView.php';
+	}
+
+	function getNextIdeas(){
+		$last = $_POST["last"];
+		if($this->profileId != "ideas")
+			$userId = $this->profileId;
+		else
+			$userId = $this->userId;
+		try{
+			$top10Activities =  $this-> challengesDAO->getUserIdeas( $userId , $last,5);
+			require_once 'views/dashboard/activitiesView.php';
+		}catch(Exception $e){
+
+		}
+		
+		
+			//var_dump($top10Activities);
+		
 	}
 
 }
