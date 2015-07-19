@@ -204,6 +204,18 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 								break;
 
+							case 'updateUserInfo':
+								
+								$settingController -> updateUserInfo();
+
+								break;
+
+							case 'updateWorkExp':
+								
+								$settingController -> updateWorkExp();
+
+								break;
+
 							case 'signup':
 								$homeController -> signup ();
 								break;

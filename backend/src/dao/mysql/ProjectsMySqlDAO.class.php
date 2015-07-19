@@ -282,6 +282,8 @@ class ProjectsMySqlDAO implements ProjectsDAO{
 	 */
 	protected function readRow($row){
 		$project = new Project($project->userId = $row['user_id'], $row['blob_id'],$row['project_title'], $row['stmt'],$row['type'],$row['org_id'],$row['order'],$row['creation_time'],$row['project_value'], $row['fund_needed'], $row['last_update_time'],
+								$row['technical_skills'], $row['my_role'], $row['team_size'], $row['duration_from'], $row['duration_to'],
+								$row['first_name'], $row['last_name'], $row['username'],
 		$row['id']);
 		
 		

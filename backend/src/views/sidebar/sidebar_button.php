@@ -241,7 +241,7 @@
 
 									<!--Friends-->
 									<div class="list-group bg-trans">
-									<?php /* foreach ($this->links as $key => $value) { ?>
+									<?php  foreach ($this->links as $key => $value) { ?>
 
 										<a href="#" class="list-group-item">
 											<div class="media-left">
@@ -253,7 +253,7 @@
 												
 											</div>
 										</a>
-									<?php } */?>
+									<?php } ?>
 										<a href="#" class="list-group-item">
 											<div class="media-left">
 												<img class="img-circle img-xs" src="img/av6.png" alt="Profile Picture">

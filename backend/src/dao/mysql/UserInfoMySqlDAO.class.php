@@ -109,6 +109,9 @@ class UserInfoMySqlDAO implements UserInfoDAO{
 		$sqlQuery->set($userInfo->getLastlogintime());
 
 		$sqlQuery->setNumber($userInfo->getId());
+
+//var_dump($sqlQuery); die();
+
 		return $this->executeUpdate($sqlQuery);
 	}
 

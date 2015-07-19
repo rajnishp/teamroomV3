@@ -17,48 +17,75 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 		return $this->getRowProject($sqlQuery);
 	}
 */
-		function checkAuth(){
-			return true;
-		}
-		function checkProject($projectId, $userId){
+	
+	function checkAuth($projectId, $userId){
+		
+		//returns true in case of public
+		
+		
+		$projectType = $this -> load($projectId);			
+		
+		if($projectType){
 			
-			//returns true in case of public
+			if ($projectType -> getType() == 'Public')
+				return true;
+
+			else if ($projectType -> getType() == 'Classified') {
 			
-			$type = mysqli_query($db_handle,"SELECT project_type FROM projects where id = '$projectId';") ;
+				if(isset($userId)) {
 			
-			$typerow = mysqli_fetch_array($type) ;
-			
-			$usertype = mysqli_query($db_handle, "SELECT * FROM user_info where id = '$userId' ;") ;
-			
-			$usertypeRow = mysqli_fetch_array($usertype) ;
-			
-			$TypeUser = $usertypeRow['user_type'] ;
-			
-			if ($typerow['project_type'] == 1) {
-				return true ;
-			}
-			else if ($typerow['project_type'] == 2) {
-				if(isset($_SESSION['user_id'])){
-					$access = mysqli_query($db_handle,"(SELECT user_id from projects where id = '$projectId' and user_id = '$userId')
-														UNION 
-														(SELECT DISTINCT a.user_id FROM teams as a join projects as b WHERE a.user_id = '$userId' and a.project_id = b.id and b.project_id = '$projectId' and a.member_status = '1') ;") ;
-					if (mysqli_num_rows($access) > 0) {
+					$sql = "(SELECT user_id from projects where id = ? and user_id = ?)
+							UNION 
+							(SELECT DISTINCT team.user_id FROM teams as team join projects as project 
+									WHERE team.user_id = ? and team.project_id = project.id and project.id = ? and team.member_status = '1')
+							;";
+
+					$sqlQuery = new SqlQuery($sql);
+					$sqlQuery->setNumber($projectId);
+					$sqlQuery->setNumber($userId);
+					$sqlQuery->setNumber($userId);
+					$sqlQuery->setNumber($projectId);
+					
+					$projectAccess = $this->getListProjects($sqlQuery);
+
+
+					if ($projectAccess) {
 						return true ;
 					}
 					else return false ;
 				}
 				else return false ;
 			}
-			else if ($typerow['project_type'] == 4) { 
-				if(isset($_SESSION['user_id'])){
-					if($TypeUser == "investor" || $TypeUser == "collaboratorInvestor" || $TypeUser == "fundsearcherInvestor" || $TypeUser == "collaboratorInvestorFundsearcher"){
+
+			else if ($projectType -> getType() == 'Private') { 
+				
+				if(isset($userId)) {
+
+					$DAOFactory = new DAOFactory();
+					$userInfoDAO = $DAOFactory->getUserInfoDAO();
+
+					$userType = $userInfoDAO -> load($userId); 
+
+					if($userType -> getUserType() == "investor" || $userType -> getUserType() == "collaboratorInvestor" || $userType -> getUserType() == "fundsearcherInvestor" || $userType -> getUserType() == "collaboratorInvestorFundsearcher"){
 						return true ;
 					} 
 					else {
-						$check = mysqli_query($db_handle,"(SELECT user_id FROM projects WHERE id = '$projectId' AND user_id = '$userId')
-															UNION 
-															(SELECT DISTINCT a.user_id FROM teams as a JOIN projects as b WHERE a.user_id = '$userId' AND a.project_id = b.id AND b.id = '$projectId' AND a.member_status = '1') ;") ;
-						if (mysqli_num_rows($check) > 0) {
+
+						$sql = "(SELECT user_id from projects where id = ? and user_id = ?)
+								UNION 
+								(SELECT DISTINCT team.user_id FROM teams as team join projects as project 
+										WHERE team.user_id = ? and team.project_id = project.id and project.id = ? and team.member_status = '1')
+								;";
+
+						$sqlQuery = new SqlQuery($sql);
+						$sqlQuery->setNumber($projectId);
+						$sqlQuery->setNumber($userId);
+						$sqlQuery->setNumber($userId);
+						$sqlQuery->setNumber($projectId);
+						
+						$projectAccessPrivate = $this->getListProjects($sqlQuery);
+
+						if ($projectAccessPrivate) {
 							return true ;
 						}
 						else return false ;
@@ -67,13 +94,15 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 				else return false ;
 			}
 			else return false ;
-				//check user have access if access the return true
 		}
+		else return false ;
+
+		
+
+		//check user have access if access the return true
+	}
 
 	public function getByUserIdProjectId($userId, $projectId){
-
-
-		//if ($this-> checkProject($projectId, $userId)) {
 
 
 			$sql = "(SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
@@ -100,7 +129,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 				$project -> setResponses ( $projectResponsesDAO -> queryAllResponse ( $project -> getId () ) );
 			}
 			return $project;
-		//}
+		
 	}
 
 

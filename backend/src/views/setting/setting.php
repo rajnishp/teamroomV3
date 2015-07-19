@@ -198,28 +198,31 @@
                         </div> <!-- /.heading-block -->
 
 
-                        <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST">
+                        <?php foreach ($userTechStrength as $key => $value) { ?>
 
-                          <div class="form-group">
+                          <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST">
 
-                            <label class="col-md-3 control-label">Technical Strength</label>
-                            <?php foreach ($userTechStrength as $key => $value) { ?>
-                            <div class="col-md-7">
-                              <input type="text" name="tech_strength" value="<?= ucfirst($value -> getStrength()) ?>" class="form-control"/>
-                            </div> <!-- /.col -->
-                            <?php } ?>
-                          </div> <!-- /.form-group -->
+                            <div class="form-group">
 
-                          <div class="form-group">
-                            <div class="col-md-7 col-md-push-3">
-                              <button type="submit" class="btn btn-primary">Save Changes</button>
-                              &nbsp;
-                              <button type="reset" class="btn btn-default">Cancel</button>
-                            </div> <!-- /.col -->
-                          </div> <!-- /.form-group -->
+                              <label class="col-md-3 control-label">Technical Strength</label>
+                            
+                              <div class="col-md-7">
+                                <input type="text" name="tech_strength" value="<?= ucfirst($value -> getStrength()) ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+                            </div> <!-- /.form-group -->
 
-                        </form>
+                            <div class="form-group">
+                              <div class="col-md-7 col-md-push-3">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                &nbsp;
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                              </div> <!-- /.col -->
+                            </div> <!-- /.form-group -->
 
+                          </form>
+              
+                        <?php } ?>
+          
                         <div class="heading-block">
                           <h3>
                             Edit Work Experience
@@ -228,7 +231,8 @@
 
 
                         <?php foreach ($userWorkExperience as $workExperience) { ?>
-                          <form action="profile/updateWorkExp" class="form-horizontal" method="POST">
+                          
+                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST">
 
                             <div class="form-group">
 
