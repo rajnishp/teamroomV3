@@ -22,12 +22,8 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 		
 		//returns true in case of public
 		
-		$sql = "SELECT type FROM projects where id = ? ;";
-
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($projectId);
 		
-		$projectType = $this->getRowUserProject($sqlQuery);			
+		$projectType = $this -> load($projectId);			
 		
 		if($projectType){
 			
@@ -37,6 +33,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 			else if ($projectType -> getType() == 'Classified') {
 			
 				if(isset($userId)) {
+			
 					$sql = "(SELECT user_id from projects where id = ? and user_id = ?)
 							UNION 
 							(SELECT DISTINCT team.user_id FROM teams as team join projects as project 
@@ -48,10 +45,11 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 					$sqlQuery->setNumber($userId);
 					$sqlQuery->setNumber($userId);
 					$sqlQuery->setNumber($projectId);
-				
+					
 					$projectAccess = $this->getListProjects($sqlQuery);
 
-					if (count($projectAccess) > 0) {
+
+					if ($projectAccess) {
 						return true ;
 					}
 					else return false ;
@@ -62,25 +60,33 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 			else if ($projectType -> getType() == 'Private') { 
 				
 				if(isset($userId)) {
-				
-					$sql = "SELECT user_type FROM user_info where id = ? ;";
-			
-					$sqlQuery = new SqlQuery($sql);
-					
-					$sqlQuery->setNumber($userId);
-					
+
 					$DAOFactory = new DAOFactory();
 					$userInfoDAO = $DAOFactory->getUserInfoDAO();
 
-					$userType = $userInfoDAO -> readUserRow($sqlQuery);
+					$userType = $userInfoDAO -> load($userId); 
 
 					if($userType -> getUserType() == "investor" || $userType -> getUserType() == "collaboratorInvestor" || $userType -> getUserType() == "fundsearcherInvestor" || $userType -> getUserType() == "collaboratorInvestorFundsearcher"){
 						return true ;
 					} 
 					else {
 
-						if (count($projectAccess) > 0) {
-								return true ;
+						$sql = "(SELECT user_id from projects where id = ? and user_id = ?)
+								UNION 
+								(SELECT DISTINCT team.user_id FROM teams as team join projects as project 
+										WHERE team.user_id = ? and team.project_id = project.id and project.id = ? and team.member_status = '1')
+								;";
+
+						$sqlQuery = new SqlQuery($sql);
+						$sqlQuery->setNumber($projectId);
+						$sqlQuery->setNumber($userId);
+						$sqlQuery->setNumber($userId);
+						$sqlQuery->setNumber($projectId);
+						
+						$projectAccessPrivate = $this->getListProjects($sqlQuery);
+
+						if ($projectAccessPrivate) {
+							return true ;
 						}
 						else return false ;
 					}
