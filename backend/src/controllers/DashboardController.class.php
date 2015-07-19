@@ -15,8 +15,7 @@ class DashboardController extends BaseController {
 	function render (){
 	
 		$baseUrl = $this->baseUrl;
-		$projects = $this->projects;
-
+		
 		try{
 			//queryAllUserProjects
 			

@@ -22,7 +22,6 @@ class ProfileController extends BaseController {
 
 	function render (){
 		$baseUrl = $this->baseUrl;
-		$projects = $this->projects;
 		//loading other click event on the page should be done by ajax
 
 		try{

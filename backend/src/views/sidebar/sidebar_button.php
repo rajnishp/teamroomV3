@@ -62,11 +62,11 @@
 									
 									<!-- <li class="active-link"><a href="#">ASSET Mangament System</a></li>
 									 -->
-									<?php foreach ($this->toDoList as $key => $project) { ?>
+									<?php foreach ($this->toDoList as $key => $to_to) { ?>
 
 									
 										
-										<li><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>"><?= $project->getRefinedTitle() ?></a></li>
+										<li><a href="<?= $baseUrl ?>project/<?= $to_to->getId() ?>"><?= $to_to->getRefinedTitle() ?></a></li>
 
 									<?php  } ?>
 									
@@ -89,11 +89,9 @@
 									
 									<!-- <li class="active-link"><a href="#">ASSET Mangament System</a></li>
 									 -->
-									<?php foreach ($this->getDoneList as $key => $project) { ?>
-
-									
+									<?php foreach ($this->getDoneList as $key => $get_done) { ?>
 										
-										<li><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>"><?= $project->getRefinedTitle() ?></a></li>
+										<li><a href="<?= $baseUrl ?>project/<?= $get_done->getId() ?>"><?= $get_done->getRefinedTitle() ?></a></li>
 
 									<?php  } ?>
 									
@@ -118,7 +116,7 @@
 									
 									<!-- <li class="active-link"><a href="#">ASSET Mangament System</a></li>
 									 -->
-									<?php foreach ($projects as $key => $project) { 
+									<?php foreach ($this->projects as $key => $project) { 
 
 										if($project->getType() == "Classified") { ?>	
 										
@@ -139,7 +137,7 @@
 				
 								<!--Submenu-->
 								<ul class="collapse">
-									<?php foreach ($projects as $key => $project) { 
+									<?php foreach ($this->projects as $key => $project) { 
 
 										if($project->getType() == "Private"){ ?>	
 										
@@ -160,7 +158,7 @@
 				
 								<!--Submenu-->
 								<ul class="collapse">
-									<?php foreach ($projects as $key => $project) { 
+									<?php foreach ($this->projects as $key => $project) { 
 
 										if($project->getType() == "Public"){ ?>	
 										
@@ -182,45 +180,18 @@
 				
 								<!--Submenu-->
 								<ul class="collapse">
-									<li><a href="">Computer Library</a></li>
-									<li><a href="">Memory/Brain Power</a></li>
-									<li><a href="">Awesome PICS over Internet</a></li>
-									<li><a href="">Software Clone Detection</a></li>
-									<li><a href="">HYBRID APPROACH FOR DETECTING CODE Clone Detection</a></li>
-									<li><a href="">Sportskeeda: A dating with sports every evening</a></li>
-									<li><a href="">Collap v2 UX design</a></li>
-									<li><a href="">CSE Interview Preparation Questions</a></li>
-									<li><a href=""> Greatest Mens of the Century</a></li>
+									<?php foreach ($this->recommendedProjects as $key => $project) { 
+
+										if($project->getType() == "Public"){ ?>	
+										
+										<li><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>"><?= $project->getRefinedTitle() ?></a></li>
+
+									<?php }} ?>
 									
 								</ul>
 							</li>
 
-							<!--Menu list item-->
-							<li>
-								<a href="#">
-									<i class="fa fa-table"></i>
-									<span class="menu-title">Joined Projects</span>
-									<i class="arrow"></i>
-								</a>
-				
-								<!--Submenu-->
-								<ul class="collapse">
-									<li><a href="#">Git Tips #SoftwareDevelopment</a></li>
-									<li><a href="#">MDU: Computer NetworksInformation and Communications Technology</a></li>
-									<li><a href="#">Information and Communications Technology</a></li>
-									<li><a href="#">Collap hands to empower Indian youth</a></li>
-									<li><a href="#">Biomedical Device Engineering</a></li>
-									<li><a href="#">Distributed Combinational Web Query</a></li>
-									<li><a href="#">Upcoming Hackathon 2015</a></li>
-									<li><a href="#">Tech Market News</a></li>
-									<li><a href="#">Academic Zodiac</a></li>
-									<li><a href="#">Distributed Combinational Web Query 2</a></li>
-									<li><a href="#">Smart Grids</a></li>
-									
-								</ul>
-							</li>
-				
-							<!--Menu list item-->
+							
 						
 							
 						</ul>

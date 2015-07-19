@@ -36,7 +36,6 @@ abstract class BaseController {
 		}
 		
 
-	
 		$DAOFactory = new DAOFactory();
 		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
 		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
@@ -61,11 +60,14 @@ abstract class BaseController {
 		try{
 			//queryAllUserProjects
 			if($this->userId){
-				$this->projects = $this->projectsDAO->queryAllUserProjects($this->userId);
-				$this->links = $this->userInfoDAO->getUsersLinks($this->userId);
-				$this->notifications = $this-> notificationsDAO -> getByUserId($this->userId);
-				$this->toDoList = $this->challengesDAO->getToDoList($this->userId);
-				$this->getDoneList = $this->challengesDAO->getGetDoneList($this->userId);
+				$this-> projects = $this->projectsDAO->queryAllUserProjects($this->userId);
+				
+				$this-> recommendedProjects = $this->projectsDAO->getRecommendedProjects($this->userId);
+
+				$this-> links = $this->userInfoDAO->getUsersLinks($this->userId);
+				$this-> notifications = $this-> notificationsDAO -> getByUserId($this->userId);
+				$this-> toDoList = $this->challengesDAO->getToDoList($this->userId);
+				$this-> getDoneList = $this->challengesDAO->getGetDoneList($this->userId);
 
 			}
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);

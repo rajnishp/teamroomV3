@@ -101,7 +101,7 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <form action="profile/updateUserInfo" class="form-horizontal" method="POST">
+                        <form action="<?= $baseUrl ?>setting/updateUserInfo" class="form-horizontal" method="POST">
 
                           <div class="form-group">
 
@@ -132,6 +132,26 @@
 
                             <div class="col-md-7">
                               <input type="text" name="last_name" value="<?= ucfirst($userProfile->getLastName() )?>" class="form-control" />
+                            </div> <!-- /.col -->
+
+                          </div> <!-- /.form-group -->
+
+                          <div class="form-group">
+
+                            <label class="col-md-3 control-label">Contact Number</label>
+
+                            <div class="col-md-7">
+                              <input type="text" name="phone" value="<?= ucfirst($userProfile->getPhone() )?>" class="form-control" />
+                            </div> <!-- /.col -->
+
+                          </div> <!-- /.form-group -->
+
+                          <div class="form-group">
+
+                            <label class="col-md-3 control-label">Current Living Place</label>
+
+                            <div class="col-md-7">
+                              <input type="text" name="living_place" value="<?= ucfirst($userProfile->getLivingTown() )?>" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->

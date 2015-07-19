@@ -22,13 +22,13 @@ class TeamsMySqlExtDAO extends TeamsMySqlDAO{
 	/**
 	 * Get all team member records from table
 	 */
-	public function queryAllTeamMembers($projectId, $teamName){
-		$sql = "SELECT team.id, user.first_name, user.last_name, user.username, user.rank 
+	public function queryAllTeamMembers($projectId){
+		$sql = "SELECT DISTINCT team.id, user.first_name, user.last_name, user.username, user.rank 
 				FROM teams as team join user_info as user 
-				WHERE team.project_id= ? AND user.id = team.user_id AND team.member_status = '1' AND team.status= '1' AND team.team_name = ?";
+				WHERE team.project_id= ? AND user.id = team.user_id AND team.member_status = '1' AND team.status= '1'";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery -> set($projectId);
-		$sqlQuery -> set($teamName);
+		//$sqlQuery -> set($teamName);
 		return $this->getListAllTeamMembers($sqlQuery);
 	}
 

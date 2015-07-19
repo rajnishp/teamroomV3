@@ -236,6 +236,27 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
 	}
 
+	public function getRecommendedProjects($userId) {
+		$sql = "SELECT DISTINCT *, project_title as title
+					FROM projects
+						WHERE user_id != ?
+							AND type = 'Public'
+							AND id NOT
+							IN ( SELECT DISTINCT project_id
+									FROM teams
+										WHERE user_id = ?)
+				ORDER BY rand( ) LIMIT 10 ;";
+
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		$sqlQuery->setNumber($userId);
+
+		return $this->getListProjects($sqlQuery);
+
+	}
+
+	
+
 	/**
 	 * Read row
 	 *

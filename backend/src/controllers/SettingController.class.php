@@ -59,7 +59,7 @@ class SettingController {
 	}
 
 	function updateTechStrength() {
-		var_dump($_POST);die();
+		
 		if(isset($_POST['tech_strength'])) {
 			$tech_strength = new TechnicalStrength(
 					$_SESSION['user_id'],
@@ -67,10 +67,37 @@ class SettingController {
 					date("Y-m-d H:i:s"),
 					date("Y-m-d H:i:s")
 				);
-			var_dump($_POST); die();
+			
 			$this -> userTechStrengthDAO ->insert($tech_strength);
 		}
+
+		$this->render ();
 	}
+
+	function updateUserInfo() {
+		var_dump($_POST); die();
+		if(isset($_POST['first_name'], $_POST['last_name'], $_POST['phone'], $_POST['$living_place'], $_POST['about_user'])) {
+			$userInfo = new UserInfo(
+					$_POST['first_name'],
+					$_POST['last_name'],
+					null,
+					$_POST['phone'],
+					null,
+					null,
+					null, null, null,
+					null, null, null,
+          			$_POST['$living_place'],
+          			$_POST['about_user'],
+          			null, null, null
+				);
+			
+			$this -> userInfoDAO ->update($userInfo);
+		}
+
+		$this->render ();
+	}
+
+	
 
 }
 

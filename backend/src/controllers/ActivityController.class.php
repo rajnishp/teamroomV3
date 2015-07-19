@@ -15,8 +15,7 @@ class ActivityController extends BaseController  {
 	function render (){
 		
 		$baseUrl = $this->baseUrl;
-		$projects = $this->projects;
-
+		
 		try{
 			$activity = $this->challengesDAO->getByChallengeId($this->challangeId);
 			$comments = $this ->challengeResponsesDAO->getResponses($this->challangeId);
