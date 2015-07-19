@@ -17,6 +17,9 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 		return $this->getRowProject($sqlQuery);
 	}
 */
+		function checkAuth(){
+			return true;
+		}
 		function checkProject($projectId, $userId){
 			
 			//returns true in case of public

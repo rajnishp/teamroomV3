@@ -27,23 +27,32 @@ class ProjectController extends BaseController {
 			//imp: add $this -> projectId in paramenter in place of 3(project_id)
 
 			//$projects = $this->projectsDAO->getByUserIdProjectId($this-> userId, $this-> projectId);
-			$project = $this-> projectsDAO -> getByProjectId( $this -> projectId );
-			
-			$projectActivities = $this-> challengesDAO -> getProjectActivities( $this -> projectId , 0,10 );
-			
-
-			//$userProjects = $this->projectsDAO->getUserProjects($this->userId);
+			if($this-> projectsDAO -> checkAuth($this->projectId,$this->userId)){
+				$project = $this-> projectsDAO -> getByProjectId( $this -> projectId );
 				
-			//$UserLinks = $this->userInfoDAO->getUsersLinks($this->userId);
-			//$projectTeams = $this-> teamsDAO -> queryAllTeamNames( $this -> projectId );
-			$teamMembers = $this-> teamsDAO -> queryAllTeamMembers($this -> projectId );
+				$projectActivities = $this-> challengesDAO -> getProjectActivities( $this -> projectId , 0,10 );
+				
 
-
-			if (isset($_SESSION['userId'])) {
-				require_once 'views/project/project_page.php';
+				//$userProjects = $this->projectsDAO->getUserProjects($this->userId);
+					
+				//$UserLinks = $this->userInfoDAO->getUsersLinks($this->userId);
+				//$projectTeams = $this-> teamsDAO -> queryAllTeamNames( $this -> projectId );
+				$teamMembers = $this-> teamsDAO -> queryAllTeamMembers($this -> projectId );
+				if($project){
+					if (isset($_SESSION['userId'])) 
+						require_once 'views/project/project_page.php';
+					else 
+						require_once 'views/project/project.php';
+				}
+				else 
+					require_once 'views/error/pages-404.php';				
+			
 			}
-			else 
-				require_once 'views/project/project.php';
+			else {
+				require_once 'views/error/pages-404.php';				
+			}
+
+			
 
 
 		} catch (Exception $e){

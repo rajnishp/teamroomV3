@@ -7,6 +7,9 @@
  */
 class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 
+	public function checkAuth(){
+			return true;
+	}
 
 	public function getByChallengeId($challengeId){
 		$sql = "(SELECT challenge.user_id, challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, user.first_name, user.last_name, user.username 
