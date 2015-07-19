@@ -237,7 +237,7 @@
               <h2 class="dark-text">Register with Collap</h2>
             </div>
             <div class="row">
-              <form class="form account-form registration-form masthead-form well" method="POST" action="<?= $baseUrl?>home/signup">
+              <form class="form account-form registration-form masthead-form well" method="POST" action="<?= $baseUrl?>home/signup" onSubmit="return (validateReg());">
 
                 <div class="form-group">
                   
@@ -343,7 +343,7 @@
             </div>
 
             <div class="row">            
-              <form class="form account-form login-form masthead-form well" action="<?= $baseUrl ?>home/login" method="post">
+              <form class="form account-form login-form masthead-form well" action="<?= $baseUrl ?>home/login" method="post" onSubmit="return (validateLog());">
 
                 <div class="form-group">
                   <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username" tabindex="1">
@@ -696,19 +696,7 @@
 
             <p>Get emails about new ideas, projects and challanges created &amp;  future updates.</p>
             <br>
-            <form action="/" class="form">
-              
-              <div class="form-group">
-                <!-- <label>Email: <span class="required">*</span></label> -->
-                <input class="form-control" id="newsletter_email" name="newsletter_email" type="text" value="" required="" placeholder="Email Address">
-              </div> <!-- /.form-group -->
-
-              <div class="form-group">
-                <button class="btn btn-transparent">Subscribe Me</button>
-              </div> <!-- /.form-group -->
-
-            </form>
-
+            
           </div> <!-- /.col -->
 
         </div> <!-- /.row -->
@@ -754,11 +742,11 @@
 
             <h5>We'll email you instructions on how to reset your password.</h5>
 
-            <form class="form account-form" method="POST" action="forgetPassword">
+            <form class="form account-form" method="POST" action="forgetPassword" onsubmit="validateEmail()">
 
               <div class="form-group">
                 <label for="forgot-email" class="placeholder-hidden">Your Email</label>
-                <input type="email" class="form-control" id="forgot-email" placeholder="Your Email" tabindex="1">
+                <input type="email" class="form-control" id="forgot-email" placeholder="Your Email" tabindex="1"  style= "border-color: blue;">
               </div> <!-- /.form-group -->
 
               <div class="form-group">
@@ -798,6 +786,7 @@
 <script src="static/global/js/mvpready-core.js"></script>
 <script src="static/global/js/mvpready-helpers.js"></script>
 <script src="static/js/mvpready-landing.js"></script>
+<script src="static/js/landingPage.js"></script>
 
 
 </body>
