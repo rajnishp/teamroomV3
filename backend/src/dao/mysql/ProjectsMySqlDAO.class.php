@@ -57,11 +57,11 @@ class ProjectsMySqlDAO implements ProjectsDAO{
  	 * @param ProjectsMySql project
  	 */
 	public function insert($project){
-		$sql = 'INSERT INTO projects (user_id, blob_id, project_title, stmt, type, org_id, `order`, creation_time, project_value, fund_needed, last_update_time) 
-							VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO projects (user_id, blob_id, project_title, stmt, type, org_id, `order`, creation_time, project_value, fund_needed, last_update_time, technical_skills, my_role, team_size, duration_from, duration_to) 
+							VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($project->getUserId());
+		$sqlQuery->set($project->getUserId());
 		$sqlQuery->setNumber($project->getBlobId());
 		$sqlQuery->set($project->getProjectTitle());
 		$sqlQuery->set($project->getStmt());
@@ -73,8 +73,14 @@ class ProjectsMySqlDAO implements ProjectsDAO{
 		$sqlQuery->setNumber($project->getFundNeeded());
 		$sqlQuery->set($project->getLastUpdateTime());
 
+		$sqlQuery->set($project->getTechnicalSkills());
+		$sqlQuery->set($project->getMyRole());
+		$sqlQuery->set($project->getTeamSize());
+		$sqlQuery->set($project->getDurationFrom());
+		$sqlQuery->set($project->getDurationTo());
+
 		$id = $this->executeInsert($sqlQuery);	
-		$project-> seTId ($id);
+		$project-> setId ($id);
 		return $id;
 	}
 	

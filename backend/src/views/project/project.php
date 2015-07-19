@@ -101,50 +101,6 @@
                     <div class="panel-body">
                       <div class="tab-content">
                         
-                        <div class="tab-pane fade" id="tabs-create-project">
-                          <!-- Create Project Form -->
-                          <div class="share-widget clearfix">
-
-                            <form id="" class="form-horizontal" action="<?= $baseUrl ?>project/createProject" method="post">
-
-                              <div class="share-widget">
-                                <input type="text" class="form-control" name="title" placeholder="Title">
-                              </div>
-                              <br />
-
-                              <textarea class="form-control share-widget-textarea" name = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1">
-                                
-                              </textarea>
-
-                              <div class="share-widget-actions">
-                                <div class=" pull-left">
-                                  <div class="col-md-6">
-                                   
-                                    <select class="selectpicker" name="type" data-live-search="true" data-width="100%" id= "type" >    
-                                        <option value='Default' >Default</option>
-                                        <option value='Public' >Public</option>
-                                        <option value='Classified' >Classified</option>
-                                        <option value='Private' >Private</option>
-                                    </select>
-                                   
-                                  </div>
-                                  <div class="col-md-6">
-                                    <input type="file" name="file" class="btn btn-default btn-file" value="Browse">
-                                  </div>    
-                                </div>  
-
-                                <div class="pull-right">
-                                  <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
-                                </div>
-                              </div>
-                            </form>
-                            
-                            <hr>
-                            <!-- Create Project Form Ends-->
-                          </div>
-
-                        </div>
-                          
                         <div class="tab-pane fade" id="tabs-post">
                           
                           <!-- Post for project starts -->

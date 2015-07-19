@@ -265,6 +265,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	protected function readRowProjects($row){
 		$project = new Project($row['user_id'], 0, $row['title'], $row['statement'],$row['type'],0,0, 
 								$row['creation_time'],0,0,0, 
+								$row['technical_skills'], $row['my_role'], $row['team_size'], $row['duration_from'], $row['duration_to'],
 								$row['first_name'], $row['last_name'], $row['username'], $row['id']);
 		
 		return $project;

@@ -21,6 +21,13 @@
 		private $projectValue;
 		private $fundNeeded;
 		private $lastUpdateTime;
+
+		private $technicalSkills;
+		private $myRole;
+		private $teamSize;
+		private $durationFrom;
+		private $durationTo;
+
 		private $firstName;
 		private $lastName;
 		private $userName;
@@ -28,7 +35,8 @@
 
 	
 		function __construct ($userId, $blobId, $projectTitle, $stmt, $type, $orgId, $order, 
-								$creationTime, $projectValue, $fundNeeded, $lastUpdateTime, 
+								$creationTime, $projectValue, $fundNeeded, $lastUpdateTime,
+								$technicalSkills, $myRole, $teamSize, $durationFrom, $durationTo, 
 								$firstName, $lastName, $userName, $id = null) {
 			$this -> id = $id;
 			$this -> userId = $userId;
@@ -42,10 +50,19 @@
 			$this -> projectValue = $projectValue;
 			$this -> fundNeeded = $fundNeeded;
 			$this -> lastUpdateTime = $lastUpdateTime;
+			
+			$this -> technicalSkills = $technicalSkills;
+			$this -> myRole = $myRole;
+			$this -> teamSize = $teamSize;
+			$this -> durationFrom = $durationFrom;
+			$this -> durationTo = $durationTo;
+
 			$this -> firstName = $firstName;
 			$this -> lastName = $lastName;
 			$this -> userName = $userName;
+
 		}
+		
 
 		function setId ($id) {
 			$this -> id = $id;
@@ -183,6 +200,43 @@
 		function getFundNeeded () {
 			return $this -> fundNeeded;
 		}
+
+
+		function setTechnicalSkills ($technicalSkills) {
+			$this -> technicalSkills = $technicalSkills;
+		}
+		function getTechnicalSkills () {
+			return $this -> technicalSkills;
+		}
+
+		function setMyRole ($myRole) {
+			$this -> myRole = $myRole;
+		}
+		function getMyRole () {
+			return $this -> myRole;
+		}
+
+		function setTeamSize ($teamSize) {
+			$this -> teamSize = $teamSize;
+		}
+		function getTeamSize () {
+			return $this -> teamSize;
+		}
+
+		function setDurationFrom ($durationFrom) {
+			$this -> durationFrom = $durationFrom;
+		}
+		function getDurationFrom () {
+			return $this -> durationFrom;
+		}
+
+		function setDurationTo ($durationTo) {
+			$this -> durationTo = $durationTo;
+		}
+		function getDurationTo () {
+			return $this -> durationTo;
+		}
+
 
 		function setFirstName($firstName){
 			$this -> firstName = $firstName;

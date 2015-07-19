@@ -539,7 +539,15 @@ CREATE TABLE IF NOT EXISTS `technical_strength` (
   `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `id` )
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
+
+ALTER TABLE projects 
+  ADD technical_skills varchar( 500 ) ,
+  ADD my_role varchar( 500 ) ,
+  ADD team_size int( 2 ) ,
+  ADD duration_from date,
+  ADD duration_to date ;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

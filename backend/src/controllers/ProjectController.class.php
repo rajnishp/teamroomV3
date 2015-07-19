@@ -47,7 +47,7 @@ class ProjectController extends BaseController {
 
 
 		} catch (Exception $e){
-			echo "Error occur :500 <br>".var_dump($e);
+			echo "At Render() Error occur :500 <br>".var_dump($e);
 		}
 
 	}
@@ -60,13 +60,21 @@ class ProjectController extends BaseController {
 			//var_dump($top10Activities);
 		require_once 'views/dashboard/activitiesView.php';
 	}
+
+
+	function createNewProject(){
+		$baseUrl = $this->baseUrl;
+		
+		require_once 'views/project/createProject.php';
+	}
+	
 	
 	function createProject(){
-		var_dump($_POST);
-		if(isset($_POST['title'], $_POST['description'], $_POST['type'])){
-			$this->project = new Projects(
-										$userId,
-										$blob_id,
+		if(isset($_POST['title'], $_POST['description'], $_POST['type'], $_POST['tech_skills'], $_POST['my_role'], $_POST['team_size'], $_POST['start'], $_POST['end'])){
+			
+			$newProject = new Project(
+										$this->userId,
+										0,
 										$_POST['title'],
 										$_POST['description'],
 										$_POST['type'],
@@ -76,14 +84,26 @@ class ProjectController extends BaseController {
                             			0,
 										0,
 										date("Y-m-d H:i:s"),
+										$_POST['tech_skills'],
+										$_POST['my_role'],
+										$_POST['team_size'],
+										$_POST['start'],
+										$_POST['end'],
+										null,
+										null,
 										null);
+				
+				//var_dump( $newProject ); die();
 			try {
-				$this->project->setId($this->projectsDAO->insert($this->project));
+				$this -> projectId = $this -> projectsDAO -> insert($newProject) ;
+				
 			}
 			catch (Exception $e){
 				var_dump($e); die();
 			}	
 		}
+		$this -> render ();
+
 	}
 
 
