@@ -325,7 +325,7 @@
                         <!-- /.Activities-block -->
                         <div class="activities-start">
                         
-                          <div class="activity-1">
+                          <div class="activity-1" id="panel-cont">
 
                             <?php foreach ($userActivities as $activity) { ?>
 

@@ -66,7 +66,31 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 			case "project":
 										
 					$projectController = new ProjectController($route[2]);
-					$projectController -> render();
+					$where = $route[3];
+					
+					switch ($where) {
+							case 'activities':
+								
+								$projectController -> getNextActivities();
+
+								break;
+
+							case 'activity':
+								$dashboardController -> postActivity ();
+								break;
+
+							case 'logout':
+								$homeController -> logout ();
+								break;
+
+							case 'forgetPassword':
+								$homeController -> forgetPassword ();
+								break;
+							
+							default:
+								$projectController -> render ();
+								break;
+					}
 				break;
 
 			case "activity":
@@ -78,7 +102,34 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 			case "profile":
 
 					$profileController = new ProfileController($route[2]);
-					$profileController -> render();
+					$where = $route[3];
+					
+					switch ($where) {
+							case 'activities':
+								
+								$profileController -> getNextActivities();
+
+								break;
+
+							case 'activity':
+								$dashboardController -> postActivity ();
+								break;
+
+							case 'logout':
+								$homeController -> logout ();
+								break;
+
+							case 'forgetPassword':
+								$homeController -> forgetPassword ();
+								break;
+							
+							default:
+								if($route[2] == 'activities')
+									$profileController -> getNextActivities();
+								else
+									$profileController -> render ();
+								break;
+					}
 				break;
 
 			case "dashboard":
@@ -109,12 +160,7 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 								$dashboardController -> render ();
 								break;
 					}
-
-					
-						
-					
-
-					
+				
 				break;
 
 			case "setting":
