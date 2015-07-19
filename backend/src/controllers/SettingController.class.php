@@ -75,29 +75,158 @@ class SettingController {
 	}
 
 	function updateUserInfo() {
-		var_dump($_POST); die();
-		if(isset($_POST['first_name'], $_POST['last_name'], $_POST['phone'], $_POST['$living_place'], $_POST['about_user'])) {
-			$userInfo = new UserInfo(
-					$_POST['first_name'],
-					$_POST['last_name'],
-					null,
-					$_POST['phone'],
-					null,
-					null,
-					null, null, null,
-					null, null, null,
-          			$_POST['$living_place'],
-          			$_POST['about_user'],
-          			null, null, null
-				);
-			
-			$this -> userInfoDAO ->update($userInfo);
+		
+		if(isset($_POST['first_name'], $_POST['last_name'], $_POST['phone'], $_POST['living_place'], $_POST['about_user'])) {
+	
+	        if (! isset($this -> userId)) {
+	            $warnings_payload [] = 'PUT call to /user must be succeeded ' . 
+	                                    'by /userId i.e. PUT /user/userId';
+	            throw new UnsupportedResourceMethodException();
+	        }
+
+	        if (! isset($_POST))
+	            throw new MissingParametersException('No fields specified for updation');
+
+	        $userObj = $this -> userInfoDAO -> load($this -> userId);
+	        
+	        if(! is_object($userObj)) 
+	            return array('code' => '2004');
+
+	        $newFirstName= $_POST ['first_name'];
+	        if (isset($newFirstName)) {
+	            if ($newFirstName != $userObj -> getFirstName()) {
+	                $update = true;
+	                $userObj -> setFirstName($newFirstName);
+	            }
+	        }
+
+	        $newLastName= $_POST ['last_name'];
+	        if (isset($newLastName)) {
+	            if ($newLastName != $userObj -> getLastName()) {
+	                $update = true;
+	                $userObj -> setLastName($newLastName);
+	            }
+	        }
+
+	        $newPhone= $_POST ['phone'];
+	        if (isset($newPhone)) {
+	            if ($newPhone != $userObj -> getPhone()) {
+	                $update = true;
+	                $userObj -> setPhone($newPhone);
+	            }
+	        }
+
+	        $newLivingTown= $_POST ['living_town'];
+	        if (isset($newLivingTown)) {
+	            if ($newLivingTown != $userObj -> getLivingTown()) {
+	                $update = true;
+	                $userObj -> setLivingTown($newLivingTown);
+	            }
+	        }
+
+	        $newAboutUser= $_POST ['about_user'];
+	        if (isset($newAboutUser)) {
+	            if ($newAboutUser != $userObj -> getAboutUser()) {
+	                $update = true;
+	                $userObj -> setAboutUser($newAboutUser);
+	            }
+	        }
+
+	        if ($update) {
+	            //$logger -> debug('PUT User object: ' . $userObj -> toString());
+	            $result = $this -> userInfoDAO -> update($userObj);
+	            //$logger -> debug('Updated entry: ' . $result);
+	        }
+
 		}
 
 		$this->render ();
 	}
 
+	function updateWorkExp() {
+		
+		if(isset($_POST['company_name'], $_POST['designation'], $_POST['from'], $_POST['to'])) {
 	
+	        if (! isset($this -> userId)) {
+	            $warnings_payload [] = 'PUT call to /user must be succeeded ' . 
+	                                    'by /userId i.e. PUT /user/userId';
+	            throw new UnsupportedResourceMethodException();
+	        }
+
+	        if (! isset($_POST))
+	            throw new MissingParametersException('No fields specified for updation');
+
+	        $workExpObj = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
+	       	
+	       	echo "load work exp with userId";
+	       	//var_dump($workExpObj); die();
+	        
+	        if(isset($workExpObj)) {
+
+	        	echo "inside------isset workExpObj";
+
+
+				$newCompanyName= $_POST ['company_name'];
+		        if (isset($newCompanyName)) {
+		            if ($newCompanyName != $workExpObj -> getCompanyName()) {
+		                $update = true;
+		                $workExpObj -> setCompanyName($newCompanyName);
+		            }
+		        }
+
+		        $newDesignation= $_POST ['designation'];
+		        if (isset($newDesignation)) {
+		            if ($newDesignation != $workExpObj -> getDesignation()) {
+		                $update = true;
+		                $workExpObj -> setDesignation($newDesignation);
+		            }
+		        }
+
+		        $newFrom= $_POST ['from'];
+		        if (isset($newFrom)) {
+		            if ($newFrom != $workExpObj -> getFrom()) {
+		                $update = true;
+		                $workExpObj -> setFrom($newFrom);
+		            }
+		        }
+
+		        $newTo= $_POST ['to'];
+		        if (isset($newTo)) {
+		            if ($newTo != $workExpObj -> getTo()) {
+		                $update = true;
+		                $workExpObj -> setTo($newTo);
+		            }
+		        }
+
+		        var_dump($workExpObj); die();
+
+		        if ($update) {
+		            //$logger -> debug('PUT User object: ' . $userObj -> toString());
+		            $result = $this -> userWorkHistoryDAO -> update($workExpObj);
+		            //$logger -> debug('Updated entry: ' . $result);
+		        }
+		    }
+
+		    else {
+				if(isset($_POST['company_name'], $_POST ['designation'], $_POST ['from'], $_POST ['to'])) {
+					$workExpObj = new WorkingHistory(
+							$this -> userId,
+							$_POST['company_name'],
+							$_POST['designation'],
+							$_POST['from'],
+							$_POST['to'],
+							date("Y-m-d H:i:s"),
+							date("Y-m-d H:i:s")
+						);
+					
+		            $result = $this -> userWorkHistoryDAO -> update($workExpObj);
+				}
+
+		    }
+		}
+
+		$this->render ();
+	}
 
 }
 
