@@ -7,12 +7,39 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 <head>
-  <title>Homepage &middot; Welcome to Collap</title>
+  <title><?= $project->getRefinedTitle() ?></title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+ 
+
+  <!-- for Google -->
+  <meta name="description" content="<?= strip_tags($project->getRefinedStmt()) ?>" />
+  <meta name="keywords" content="<?= strip_tags($project->getKeywords()) ?>" />
+  <meta name="author" content="<?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?>" />
+  <meta name="copyright" content="true" />
+  <meta name="application-name" content="Article" />
+
+  <!-- for Facebook -->          
+  <meta property="og:title" content="<?= $project->getRefinedTitle() ?>" />
+  <meta name="og:author" content="<?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?>" />
+  <meta property="og:type" content="article"/>
+  
+  <meta name="p:domain_verify" content="c336f4706953c5ce54aa851d2d3da4b5"/>
+  <meta property="og:image" content='<?= $baseUrl ?><?= $project->getImage() ?>' />
+  <meta property="og:url" content="<?= $baseUrl ?>project/<?= $project->getId() ?>" />
+  <meta property="og:image:type" content="image/jpeg" />
+
+  <meta property="og:description" content="<?= strip_tags($project->getRefinedStmt()) ?>" />
+
+  <!-- for Twitter -->          
+  <meta name="twitter:card" content="photo" />
+  <meta name="twitter:site" content="@collap">
+  <meta name="twitter:creator" content="@<?= $project->getFirstName() ?><?= $project->getLastName() ?>">
+  <meta name="twitter:url" content="<?= $baseUrl ?>project/<?= $project->getId() ?>" />
+  <meta name="twitter:title" content="<?= $project->getRefinedTitle() ?>" />
+  <meta name="twitter:description" content="<?= strip_tags($project->getRefinedStmt()) ?>" />
+  <meta name="twitter:image" content="<?= $baseUrl ?><?= $project->getImage() ?>" />
 
   <?php require_once 'views/header/header.php'; ?>
 

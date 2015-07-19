@@ -7,12 +7,41 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 <head>
-  <title>Collap &middot; Profile Page</title>
+  <title><?= ucfirst($userProfile->getFirstName() )?> <?= ucfirst($userProfile->getLastName() )?> 
+                  (<?= ucfirst($userProfile->getRank() )?>), Enjoing New opportunities in Jobs, Ideas, Project and Collaborations.</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="">
-  <meta name="author" content="">
+ 
+ <!-- for Google -->
+  <meta name="description" content="<?= strip_tags($userProfile->getAboutUser()) ?>" />
+  <meta name="keywords" content="<?= ucfirst($userProfile->getFirstName() )?> <?= ucfirst($userProfile->getLastName() )?>, <?= ucfirst($userProfile->getRank() )?>, <?= str_replace(" ", ",", $userProfile->getAboutUser()) ?>" />
+  <meta name="author" content="<?= ucfirst($userProfile->getFirstName()) ?> <?= ucfirst($userProfile->getLastName()) ?>" />
+  <meta name="copyright" content="true" />
+  <meta name="application-name" content="Article" />
+
+  <!-- for Facebook -->          
+  <meta property="og:title" content="<?= ucfirst($userProfile->getFirstName() )?> <?= ucfirst($userProfile->getLastName() )?> 
+                  (<?= ucfirst($userProfile->getRank() )?>), Enjoing New opportunities in Jobs, Ideas, Project and Collaborations." />
+  <meta name="og:author" content="<?= ucfirst($userProfile->getFirstName()) ?> <?= ucfirst($userProfile->getLastName()) ?>" />
+  <meta property="og:type" content="article"/>
+  
+  <meta name="p:domain_verify" content="c336f4706953c5ce54aa851d2d3da4b5"/>
+  <meta property="og:image" content='<?= $baseUrl ?>uploads/profilePictures/<?= $userProfile->getUsername() ?>.jpg' />
+  <meta property="og:url" content="<?= $baseUrl ?>profile/<?= $userProfile->getId() ?>" />
+  <meta property="og:image:type" content="image/jpeg" />
+
+  <meta property="og:description" content="<?= strip_tags($userProfile->getAboutUser()) ?>" />
+
+  <!-- for Twitter -->          
+  <meta name="twitter:card" content="photo" />
+  <meta name="twitter:site" content="@collap">
+  <meta name="twitter:creator" content="@<?= $userProfile->getFirstName() ?><?= $userProfile->getLastName() ?>">
+  <meta name="twitter:url" content="<?= $baseUrl ?>profile/<?= $userProfile->getId() ?>" />
+  <meta name="twitter:title" content="<?= ucfirst($userProfile->getFirstName() )?> <?= ucfirst($userProfile->getLastName() )?> 
+                  (<?= ucfirst($userProfile->getRank() )?>), Enjoing New opportunities in Jobs, Ideas, Project and Collaborations." />
+  <meta name="twitter:description" content="<?= strip_tags($userProfile->getAboutUser()) ?>" />
+  <meta name="twitter:image" content="<?= $baseUrl ?>uploads/profilePictures/<?= $userProfile->getUsername() ?>.jpg" />
 
   <?php include_once 'views/header/header.php'; ?>
   
@@ -40,7 +69,7 @@
               </div>
               <div class="panel-media" >
                
-                <img src="uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
+                <img src="uploads/profilePictures/<?= $userProfile->getUsername() ?>.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
                 
               </div>
               

@@ -2,10 +2,12 @@
 	/**
 	 * Object represents table 'challenges'
 	 *
-     	 * @author: http://rahullahoria.com
+     	 * @author: rahullahoria
      	 * @date: 2015-03-03 14:48	 
 	 */
-	class Challenge {
+require_once 'models/BaseModel.class.php';
+
+	class Challenge extends BaseModel {
 		
 		private $id;
 		private $userId;
@@ -61,6 +63,10 @@
 			return $stmt;
 
 
+		}
+
+		function getKeywords(){
+			return $this->extract_keywords($this->getRefinedTitle() ." ". $this->getRefinedStmt());
 		}
 
 		function getImage(){

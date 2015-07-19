@@ -8,7 +8,7 @@
 	class Blob{
 		
 		private $id;
-		private $stmt;
+		private $stmt;
 		
 		function __construct($stmt, $id = null){
 			$this->id = $id;
@@ -39,6 +39,7 @@
 						id => $this->id,
 						stmt => $this->stmt
 				);
-		}		
+		}
+		
 	}
 ?>

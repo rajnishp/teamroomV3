@@ -239,7 +239,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 			default:
 					if( isset($_SESSION["user_id"] )){
 						$dashboardController = new DashboardController();
-						$dashboardController -> render();
+						
+						if($route[2] == 'activities')
+							$dashboardController -> getNextActivities();
+						else
+							$dashboardController -> render ();
+						break;
 					} 
 
 					else {

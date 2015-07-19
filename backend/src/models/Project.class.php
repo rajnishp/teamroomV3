@@ -2,10 +2,12 @@
 	/**
 	 * Object represents table 'projects'
 	 *
-     	 * @author: http://phpdao.com
+     	 * @author: Rahu Lhaoria
      	 * @date: 2015-03-03 14:48	 
 	 */
-	class Project{
+
+	require_once 'models/BaseModel.class.php';
+	class Project extends BaseModel {
 		
 		private $id;
 		private $userId;
@@ -76,6 +78,10 @@
 										str_replace("<a>", "&",
 											str_replace("<an>", "+", $req))));
 
+		}
+
+		function getKeywords(){
+			return $this->extract_keywords($this->getRefinedTitle() ." ". $this->getRefinedStmt());
 		}
 
 		function getImage(){
