@@ -7,8 +7,39 @@
  */
 class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 
-	public function checkAuth(){
-			return true;
+	public function checkAuth($challengeId, $userId){
+		
+		$outsideProject = $this -> load($challengeId);
+		if ($outsideProject) {
+
+			if ($outsideProject -> getStatus() == 3 || $outsideProject -> getStatus() == 7) {
+				return false;
+			}
+
+			elseif (($outsideProject -> getProjectId()) == 0 ){
+				return true;
+			}
+			
+			elseif(($outsideProject -> getProjectId()) != 0) {
+				$sql = "SELECT teams.user_id FROM teams WHERE project_id = ? and user_id = ? and member_status = 1 ;" ;
+				
+				$sqlQuery = new SqlQuery($sql);
+				$sqlQuery->setNumber($outsideProject -> getProjectId());
+				$sqlQuery->setNumber($userId);
+				
+				$activity = $this->getRowChallenge($sqlQuery);
+				
+				if ($activity)
+					return true;
+				else
+					return false;
+
+			}
+			else
+				return false;
+		}
+		else
+			return false;
 	}
 
 	public function getByChallengeId($challengeId){
