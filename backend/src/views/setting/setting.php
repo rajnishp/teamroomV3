@@ -101,14 +101,14 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <form action="<?= $baseUrl ?>setting/updateUserInfo" class="form-horizontal" method="POST">
+                        <form action="<?= $baseUrl ?>setting/updateUserInfo" class="form-horizontal" method="POST" onSubmit="return (validateUpdateProfile());">
 
                           <div class="form-group">
 
                             <label class="col-md-3 control-label">Username</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="user-name" value="<?= ucfirst($userProfile->getUsername())?>" class="form-control" disabled />
+                              <input type="text" name="user_name" id="user_name" value="<?= ucfirst($userProfile->getUsername())?>" class="form-control" disabled />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -119,7 +119,7 @@
                             <label class="col-md-3 control-label">First Name</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="first_name" value="<?= ucfirst($userProfile->getFirstName() )?>" class="form-control" />
+                              <input type="text" name="first_name" id= "first_name" value="<?= ucfirst($userProfile->getFirstName() )?>" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -131,7 +131,7 @@
                             <label class="col-md-3 control-label">Last Name</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="last_name" value="<?= ucfirst($userProfile->getLastName() )?>" class="form-control" />
+                              <input type="text" name="last_name"  id= "last_name" value="<?= ucfirst($userProfile->getLastName() )?>" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -141,7 +141,7 @@
                             <label class="col-md-3 control-label">Contact Number</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="phone" value="<?= ucfirst($userProfile->getPhone() )?>" class="form-control" />
+                              <input type="text" name="phone" id="phone" value="<?= ucfirst($userProfile->getPhone() )?>" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -151,7 +151,7 @@
                             <label class="col-md-3 control-label">Current Living Place</label>
 
                             <div class="col-md-7">
-                              <input type="text" name="living_place" value="<?= ucfirst($userProfile->getLivingTown() )?>" class="form-control" />
+                              <input type="text" name="living_place" id="living_place" value="<?= ucfirst($userProfile->getLivingTown() )?>" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -174,7 +174,7 @@
                             <label class="col-md-3 control-label">About You</label>
 
                             <div class="col-md-7">
-                              <textarea id="about-textarea" name="about_user" rows="6" class="form-control"><?= $userProfile -> getAboutUser() ?></textarea>
+                              <textarea id="about-textarea" name="about_user" id="about_user" rows="6" class="form-control"><?= $userProfile -> getAboutUser() ?></textarea>
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -200,7 +200,7 @@
 
                         <?php foreach ($userTechStrength as $key => $value) { ?>
 
-                          <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST">
+                          <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
 
                             <div class="form-group">
 
@@ -208,7 +208,7 @@
                             
                               <div class="col-md-7">
                                 <input type="hidden" name="id" value="<?= $value -> getId() ?>" class="form-control"/>
-                                <input type="text" name="tech_strength" value="<?= ucfirst($value -> getStrength()) ?>" class="form-control"/>
+                                <input type="text" name="tech_strength" id="tech_strength" value="<?= ucfirst($value -> getStrength()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
                             </div> <!-- /.form-group -->
 
@@ -223,26 +223,27 @@
                           </form>
               
                         <?php } ?>
-                        <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST">
 
-                            <div class="form-group">
+                        <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
 
-                              <label class="col-md-3 control-label">Technical Strength</label>
-                            
-                              <div class="col-md-7">
-                                <input type="text" name="tech_strength" value="" class="form-control"/>
-                              </div> <!-- /.col -->
-                            </div> <!-- /.form-group -->
+                          <div class="form-group">
 
-                            <div class="form-group">
-                              <div class="col-md-7 col-md-push-3">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                                &nbsp;
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                              </div> <!-- /.col -->
-                            </div> <!-- /.form-group -->
+                            <label class="col-md-3 control-label">Technical Strength</label>
+                          
+                            <div class="col-md-7">
+                              <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
+                            </div> <!-- /.col -->
+                          </div> <!-- /.form-group -->
 
-                          </form>
+                          <div class="form-group">
+                            <div class="col-md-7 col-md-push-3">
+                              <button type="submit" class="btn btn-primary">Save Changes</button>
+                              &nbsp;
+                              <button type="reset" class="btn btn-default">Cancel</button>
+                            </div> <!-- /.col -->
+                          </div> <!-- /.form-group -->
+
+                        </form>
 
           
                         <div class="heading-block">
@@ -254,42 +255,43 @@
 
                         <?php foreach ($userWorkExperience as $workExperience) { ?>
                           
-                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST">
+                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp());">
 
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Institute Name</label>
+                              <label class="col-md-3 control-label">Company Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="company_name" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
+                                <input type="text" name="company_name" id="company_name" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
+                                <input type="hidden" name="id" value="<?= $workExperience -> getId() ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
                             
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Name of Degree</label>
+                              <label class="col-md-3 control-label">Designation</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="designation" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
+                                <input type="text" name="designation" id="designation" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Institute Name</label>
+                              <label class="col-md-3 control-label">Started From</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="from" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control"/>
+                                <input type="text" name="from" id="from" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Institute Name</label>
+                              <label class="col-md-3 control-label">Leave </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="to" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control"/>
+                                <input type="text" name="to" id="to" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -304,42 +306,43 @@
 
                           </form>
                         <?php } ?>
-                            <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST">
+                          
+                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp());">
 
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Institute Name</label>
+                              <label class="col-md-3 control-label">Company Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="company_name" value="" class="form-control"/>
+                                <input type="text" name="company_name" id="company_name" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
                             
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Name of Degree</label>
+                              <label class="col-md-3 control-label">Designation</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="designation" value="" class="form-control"/>
+                                <input type="text" name="designation" id="designation" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Institute Name</label>
+                              <label class="col-md-3 control-label">Started From</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="from" value="" class="form-control"/>
+                                <input type="text" name="from" id="from" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Institute Name</label>
+                              <label class="col-md-3 control-label">Leave </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="to" value="" class="form-control"/>
+                                <input type="text" name="to" id="to" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -361,14 +364,15 @@
                         </div> <!-- /.heading-block -->
 
                         <?php foreach ($userEducation as $education) { ?>
-                          <form action="profile/updateEducation" class="form-horizontal" method="POST">
+                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method="POST" onSubmit="return (validateUpdateEducation());">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Institute Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="institute" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
+                                <input type="text" name="institute" id="institute" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
+                                <input type="hidden" name="id" value="<?= ucfirst($education -> getId()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -378,7 +382,7 @@
                               <label class="col-md-3 control-label">Name of Degree</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="degree" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
+                                <input type="text" name="degree" id="degree" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -387,7 +391,7 @@
                               <label class="col-md-3 control-label">Branch Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="branch" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
+                                <input type="text" name="branch" id="branch" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -396,7 +400,7 @@
                               <label class="col-md-3 control-label">Started From</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="from" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control"/>
+                                <input type="text" name="from" id="from" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -406,7 +410,7 @@
                               <label class="col-md-3 control-label">To</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="to" value="<?= ucfirst($education -> getTo()) ?>" class="form-control"/>
+                                <input type="text" name="to" id="to" value="<?= ucfirst($education -> getTo()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -422,14 +426,14 @@
                           </form>
                         <?php } ?>
 
-                          <form action="profile/updateEducation" class="form-horizontal" method="POST">
+                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method="POST" onSubmit="return (validateUpdateEducation());">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Institute Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="institute" value="" class="form-control"/>
+                                <input type="text" name="institute" id="institute" value="" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -439,7 +443,7 @@
                               <label class="col-md-3 control-label">Name of Degree</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="degree" value="" class="form-control"/>
+                                <input type="text" name="degree" id="degree" value="" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -448,7 +452,7 @@
                               <label class="col-md-3 control-label">Branch Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="branch" value="" class="form-control"/>
+                                <input type="text" name="branch" id="branch" value="" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -457,7 +461,7 @@
                               <label class="col-md-3 control-label">Started From</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="from" value="" class="form-control"/>
+                                <input type="text" name="from" id="from" value="" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -467,7 +471,7 @@
                               <label class="col-md-3 control-label">To</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="to" value="" class="form-control"/>
+                                <input type="text" name="to" id="to" value="" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -500,7 +504,7 @@
 
                         <br><br>
 
-                        <form action="profile/update" class="form-horizontal" method="POST">
+                        <form action="<?= $baseUrl ?>setting/updatePassword" class="form-horizontal" method="POST">
 
                           <div class="form-group">
 
@@ -568,5 +572,36 @@
 
     <?php require_once 'views/footer/footer.php'; ?>
 
+
+    <script src="<?= $baseUrl ?>static/js/genericEmptyFieldValidator.js"></script>
+
+    <script type="text/javascript">
+
+      function validateUpdateProfile(){
+        console.log("Inside Validate User Profile");
+        fields = ["first_name","last_name","phone","living_place", "about_user"];
+        return genericEmptyFieldValidator(fields);
+        
+      }
+
+      function validateUpdateTechStrength(){
+        console.log("Inside Validate Technical Strength");
+        fields = ["tech_strength"];
+        return genericEmptyFieldValidator(fields);
+      }
+
+      function validateUpdateWorkExp(){
+        console.log("Inside Validate Work Experience");
+        fields = ["company_name", "designation", "from", "to"];
+        return genericEmptyFieldValidator(fields);
+      }
+
+      function validateUpdateEducation(){
+        console.log("Inside Validate Education");
+        fields = ["institute", "degree", "branch", "from", "to"];
+        return genericEmptyFieldValidator(fields);
+      }
+    </script>
+  
   </body>
 </html>

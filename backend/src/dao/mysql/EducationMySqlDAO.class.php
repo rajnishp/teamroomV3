@@ -57,7 +57,7 @@ class EducationMySqlDAO implements EducationDAO{
  	 * @param EducationMySql education
  	 */
 	public function insert($education){
-		$sql = 'INSERT INTO education (user_id, institute, degree, branch, `from`, to, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO education (user_id, institute, degree, branch, `from`, `to`, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($education->getUserId());
@@ -80,7 +80,7 @@ class EducationMySqlDAO implements EducationDAO{
  	 * @param EducationMySql education
  	 */
 	public function update($education){
-		$sql = 'UPDATE education SET user_id = ?, institute = ?, degree = ?, branch = ?, `from` = ?, to = ?, added_on = ?, last_update_on = ? WHERE id = ?';
+		$sql = 'UPDATE education SET user_id = ?, institute = ?, degree = ?, branch = ?, `from` = ?, `to` = ?, added_on = ?, last_update_on = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($education->getUserId());
@@ -141,7 +141,7 @@ class EducationMySqlDAO implements EducationDAO{
 	}
 
 	public function queryByTo($value){
-		$sql = 'SELECT * FROM education WHERE to = ?';
+		$sql = 'SELECT * FROM education WHERE `to` = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -198,7 +198,7 @@ class EducationMySqlDAO implements EducationDAO{
 	}
 
 	public function deleteByTo($value){
-		$sql = 'DELETE FROM education WHERE to = ?';
+		$sql = 'DELETE FROM education WHERE `to` = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);

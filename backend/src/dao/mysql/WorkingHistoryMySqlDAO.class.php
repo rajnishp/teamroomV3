@@ -57,7 +57,7 @@ class WorkingHistoryMySqlDAO implements WorkingHistoryDAO{
  	 * @param WorkingHistoryMySql workingHistory
  	 */
 	public function insert($workingHistory){
-		$sql = 'INSERT INTO working_history (user_id, company_name, designation, `from`, to, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO working_history (user_id, company_name, designation, `from`, `to`, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($workingHistory->getUserId());
@@ -79,7 +79,7 @@ class WorkingHistoryMySqlDAO implements WorkingHistoryDAO{
  	 * @param WorkingHistoryMySql workingHistory
  	 */
 	public function update($workingHistory){
-		$sql = 'UPDATE working_history SET user_id = ?, company_name = ?, designation = ?, `from` = ?, to = ?, added_on = ?, last_update_on = ? WHERE id = ?';
+		$sql = 'UPDATE working_history SET user_id = ?, company_name = ?, designation = ?, `from` = ?, `to` = ?, added_on = ?, last_update_on = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($workingHistory->getUserId());
@@ -90,7 +90,7 @@ class WorkingHistoryMySqlDAO implements WorkingHistoryDAO{
 		$sqlQuery->set($workingHistory->getAddedOn());
 		$sqlQuery->set($workingHistory->getLastUpdateOn());
 
-		$sqlQuery->setNumber($workingHistory->id);
+		$sqlQuery->setNumber($workingHistory->getId());
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -132,7 +132,7 @@ class WorkingHistoryMySqlDAO implements WorkingHistoryDAO{
 	}
 
 	public function queryByTo($value){
-		$sql = 'SELECT * FROM working_history WHERE to = ?';
+		$sql = 'SELECT * FROM working_history WHERE `to` = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -182,7 +182,7 @@ class WorkingHistoryMySqlDAO implements WorkingHistoryDAO{
 	}
 
 	public function deleteByTo($value){
-		$sql = 'DELETE FROM working_history WHERE to = ?';
+		$sql = 'DELETE FROM working_history WHERE `to` = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);

@@ -219,6 +219,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 								$settingController -> updateWorkExp();
 
 								break;
+							case 'updateEducation':
+								
+								$settingController -> updateEducation();
+
+								break;
+								
 
 							case 'signup':
 								$homeController -> signup ();

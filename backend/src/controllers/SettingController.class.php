@@ -151,84 +151,46 @@ class SettingController {
 		
 		if(isset($_POST['company_name'], $_POST['designation'], $_POST['from'], $_POST['to'])) {
 	
-	        if (! isset($this -> userId)) {
-	            $warnings_payload [] = 'PUT call to /user must be succeeded ' . 
-	                                    'by /userId i.e. PUT /user/userId';
-	            throw new UnsupportedResourceMethodException();
-	        }
+			$workExpObj = new WorkingHistory(
+									$this -> userId,
+									$_POST['company_name'],
+									$_POST['designation'],
+									$_POST['from'],
+									$_POST['to'],
+									date("Y-m-d H:i:s"),
+									date("Y-m-d H:i:s"),
+									$_POST['id']
+								);
 
-	        if (! isset($_POST))
-	            throw new MissingParametersException('No fields specified for updation');
-
-	        $workExpObj = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
-	       	
-	       	echo "load work exp with userId";
-	       	//var_dump($workExpObj); die();
-	        
-	        if(isset($workExpObj)) {
-
-	        	echo "inside------isset workExpObj";
-
-
-				$newCompanyName= $_POST ['company_name'];
-		        if (isset($newCompanyName)) {
-		            if ($newCompanyName != $workExpObj -> getCompanyName()) {
-		                $update = true;
-		                $workExpObj -> setCompanyName($newCompanyName);
-		            }
-		        }
-
-		        $newDesignation= $_POST ['designation'];
-		        if (isset($newDesignation)) {
-		            if ($newDesignation != $workExpObj -> getDesignation()) {
-		                $update = true;
-		                $workExpObj -> setDesignation($newDesignation);
-		            }
-		        }
-
-		        $newFrom= $_POST ['from'];
-		        if (isset($newFrom)) {
-		            if ($newFrom != $workExpObj -> getFrom()) {
-		                $update = true;
-		                $workExpObj -> setFrom($newFrom);
-		            }
-		        }
-
-		        $newTo= $_POST ['to'];
-		        if (isset($newTo)) {
-		            if ($newTo != $workExpObj -> getTo()) {
-		                $update = true;
-		                $workExpObj -> setTo($newTo);
-		            }
-		        }
-
-		        var_dump($workExpObj); die();
-
-		        if ($update) {
-		            //$logger -> debug('PUT User object: ' . $userObj -> toString());
-		            $result = $this -> userWorkHistoryDAO -> update($workExpObj);
-		            //$logger -> debug('Updated entry: ' . $result);
-		        }
-		    }
-
-		    else {
-				if(isset($_POST['company_name'], $_POST ['designation'], $_POST ['from'], $_POST ['to'])) {
-					$workExpObj = new WorkingHistory(
-							$this -> userId,
-							$_POST['company_name'],
-							$_POST['designation'],
-							$_POST['from'],
-							$_POST['to'],
-							date("Y-m-d H:i:s"),
-							date("Y-m-d H:i:s")
-						);
-					
-		            $result = $this -> userWorkHistoryDAO -> update($workExpObj);
-				}
-
-		    }
+			if(isset($_POST['id']))
+				$this -> userWorkHistoryDAO ->update($workExpObj);
+			else
+				$this -> userWorkHistoryDAO ->insert($workExpObj);
 		}
+		$this->render ();
+	}
 
+	function updateEducation() {
+		
+		if(isset($_POST['institute'], $_POST['degree'], $_POST['branch'], $_POST['from'], $_POST['to'])) {
+	
+			$educationObj = new Education(
+									$this -> userId,
+									$_POST['institute'],
+									$_POST['degree'],
+									$_POST['branch'],
+									$_POST['from'],
+									$_POST['to'],
+									date("Y-m-d H:i:s"),
+									date("Y-m-d H:i:s"),
+									$_POST['id']
+								);
+
+			if(isset($_POST['id']))
+				$this -> userEducationDAO ->update($educationObj);
+			else
+				$this -> userEducationDAO ->insert($educationObj);
+		}
 		$this->render ();
 	}
 

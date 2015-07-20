@@ -7,16 +7,6 @@
  */
 class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
-	/*public function getUserProject($projectId, $userId){
-
-		$sql = "SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
-					FROM projects as project JOIN user_info as user WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id;";
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($projectId);
-		$sqlQuery->setNumber($userId);
-		return $this->getRowProject($sqlQuery);
-	}
-*/
 	
 	function checkAuth($projectId, $userId){
 		
