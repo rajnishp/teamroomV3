@@ -37,7 +37,7 @@
                     </h3>
                   </div> <!-- /.heading-block -->
                   
-                  <form id="create_project" class="form-horizontal" action="<?= $baseUrl ?>project/createProject" method="post">
+                  <form id="create_project" class="form-horizontal" action="<?= $baseUrl ?>project/createProject" method="post" onSubmit="return (validateCreateProject());">
 
                     
 
@@ -46,7 +46,7 @@
                       <label class="col-md-3 control-label">Title</label>
 
                       <div class="col-md-7">
-                        <input type="text" name="title" class="form-control" placeholder="Title" />
+                        <input type="text" name="title" id = "title"class="form-control" placeholder="Title" />
                       </div> <!-- /.col -->
 
                     </div> <!-- /.form-group -->
@@ -56,7 +56,7 @@
                       <label class="col-md-3 control-label">Used Technical Skills</label>
 
                       <div class="col-md-7">
-                        <input type="text" name="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
+                        <input type="text" name="tech_skills" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
                       </div> <!-- /.col -->
 
                     </div> <!-- /.form-group -->
@@ -66,7 +66,7 @@
                       <label class="col-md-3 control-label">Your Role</label>
 
                       <div class="col-md-7">
-                        <input type="text" name="my_role" class="form-control" placeholder="Specify Your Role" />
+                        <input type="text" name="my_role" id="my_role" class="form-control" placeholder="Specify Your Role" />
                       </div> <!-- /.col -->
 
                     </div> <!-- /.form-group -->
@@ -75,7 +75,7 @@
 
                       <label class="col-md-3 control-label">Team Size</label>
                       <div class="col-md-7">
-                        <input type="text" name="team_size" class="form-control" placeholder="Team Size" />
+                        <input type="text" name="team_size" id="team_size" class="form-control" placeholder="Team Size" />
                       </div>
 
                     </div> <!-- /.form-group -->
@@ -139,6 +139,34 @@
       </div>
 
     <?php require_once 'views/footer/footer.php'; ?>
+<script type="text/javascript">
+  
+  function genericEmptyFieldValidator(fields){
+    returnBool = true;
+    $.each(fields, function( index, value ) {
+      console.log(value);
+      if($('#'+value).val() == "" || $('#'+value).val() == null){
+        $('#'+value).keypress(function() {
+            genericEmptyFieldValidator([value]);
+        });
 
+        $('#'+value).css("border-color", "red");
+        
+        returnBool = false;
+      }else{
+        $('#'+value).css("border-color", "blue");
+      }
+    });
+
+    return returnBool;
+  }
+
+
+  function validateCreateProject(){
+    fields = ["title","my_role","tech_skills","team_size"];
+    return genericEmptyFieldValidator(fields);
+    
+  }
+</script>
   </body>
 </html>
