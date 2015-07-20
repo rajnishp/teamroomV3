@@ -62,13 +62,17 @@ class SettingController {
 		
 		if(isset($_POST['tech_strength'])) {
 			$tech_strength = new TechnicalStrength(
-					$_SESSION['user_id'],
+					$this->userId,
 					$_POST['tech_strength'],
 					date("Y-m-d H:i:s"),
-					date("Y-m-d H:i:s")
+					date("Y-m-d H:i:s"),
+					$_POST['id']
 				);
-			
-			$this -> userTechStrengthDAO ->insert($tech_strength);
+
+			if(isset($_POST['id']))
+				$this -> userTechStrengthDAO ->update($tech_strength);
+			else
+				$this -> userTechStrengthDAO ->insert($tech_strength);
 		}
 
 		$this->render ();
