@@ -301,24 +301,19 @@
                 <div class="line"> or </div>
                 <div class="socials">
                   <ul class="list-inline">
+                    
                     <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
                       <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/facebook.png" style="width:50px;"/>
                     </a></li>
-                    <li><a  href="https://twitter.com/CollapCom" target='_blank'>
-                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/Twitter.png" style="width:50px;"/>
-                    </a></li>
-                    <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
-                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/pinterest.png" style="width:50px;"/>
-                    </a></li>
+                    
                     <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
                       <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/google.png" style="width:50px;"/>
                     </a></li>
+                    
                     <li><a  href="https://in.linkedin.com/" target='_blank'>
                       <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/linkdin.png" style="width:50px;"/>
                     </a></li>
-                    <li><a  href="https://github.com/collapcom" target='_blank'>
-                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/github.png" style="width:50px;"/>
-                    </a></li>
+                    
                   </ul>
                 </div> <!-- End of social Login -->
                 <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
@@ -369,24 +364,19 @@
                 <div class="line"> or </div>  
                 <div class="socials">
                   <ul class="list-inline">
+                    
                     <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
                       <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/facebook.png" style="width:50px;"/>
                     </a></li>
-                    <li><a  href="https://twitter.com/CollapCom" target='_blank'>
-                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/Twitter.png" style="width:50px;"/>
-                    </a></li>
-                    <li><a  href="https://www.pinterest.com/collapcom/" target='_blank'>
-                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/pinterest.png" style="width:50px;"/>
-                    </a></li>
+                    
                     <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
                       <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/google.png" style="width:50px;"/>
                     </a></li>
+                    
                     <li><a  href="https://in.linkedin.com/" target='_blank'>
                       <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/linkdin.png" style="width:50px;"/>
                     </a></li>
-                    <li><a  href="https://github.com/collapcom" target='_blank'>
-                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/github.png" style="width:50px;"/>
-                    </a></li>
+                    
                   </ul>
                 </div> <!-- End of social Login -->
 
@@ -410,33 +400,12 @@
           <div class="row">
 
             <div class="col-md-6 masthead-text animated fadeInDownBig">
-              <h4 class="masthead-title">Don't feel limited to color schemes provided.</h4>
-
-              <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi ut aliquip ex ea commodo consequat.
-              </p>
-
-              <br>
-
-              <div class="masthead-actions">
-                <a href="javascript:;" class="btn btn-transparent btn-jumbo">
-                Learn More
-                </a>
-
-                <a href="./account-signup.html" class="btn btn-primary btn-jumbo">
-                Create an Account
-                </a>
-              </div> <!-- /.masthead-actions -->
 
             </div> <!-- /.masthead-text -->
 
             <hr class="spacer-sm visible-xs visible-sm">
 
             <div class="col-md-6 masthead-img animated pulse">
-              <iframe src="https://player.vimeo.com/video/57175742?title=0&amp;byline=0&amp;portrait=0&amp;color=e2007a" style="width: 85%; height: 325px;"></iframe>
-
-              <hr class="spacer-md">
-              <hr class="spacer-xs">
 
             </div> <!-- /.masthead-img -->
 
@@ -466,7 +435,7 @@
 
                 <div class="col-sm-4">
                   <div class="feature-sm">
-                    <i class="fa fa-anchor feature-sm-icon text-secondary"></i>
+                    <i class="fa fa-question-circle feature-sm-icon text-secondary"></i>
 
                     <h3 class="feature-sm-label">What is collap.com?</h3>
 
@@ -479,7 +448,7 @@
 
                 <div class="col-sm-4">
                   <div class="feature-sm">
-                    <i class="fa fa-ils feature-sm-icon text-secondary"></i>
+                    <i class="fa fa-users feature-sm-icon text-secondary"></i>
 
                     <h3 class="feature-sm-label">Who can use it?</h3>
 
@@ -515,9 +484,7 @@
                     <h3 class="feature-sm-label">How can collap.com help people?</h3>
 
                     <p class="feature-sm-content">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation.
+                      Collap.com is a free collaborative and talent hunt engine. Collap.com helps in regenarate ideas and keep it alive. Create project for your idea and find similar idea hunter talent and start working here.
                     </p>
                   </div> <!-- /.feature-sm -->
                 </div> <!-- /.col -->
@@ -529,71 +496,19 @@
                     <h3 class="feature-sm-label">Why people love to use collap.com? </h3>
 
                     <p class="feature-sm-content">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation.
+                      As collap.com name specify coll-ap collaboration. Its free to use and helps peoples to reach other same interest peoples for working on their idea. Help to find out co-founder.
                     </p>
                   </div> <!-- /.feature-sm -->
                 </div> <!-- /.col -->
 
                 <div class="col-sm-4">
                   <div class="feature-sm">
-                    <i class="fa fa-cloud-download feature-sm-icon text-secondary"></i>
+                    <i class="fa fa-usd feature-sm-icon text-secondary"></i>
 
                     <h3 class="feature-sm-label">Does I need to pay collap for its services?</h3>
 
                     <p class="feature-sm-content">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation.
-                    </p>
-                  </div> <!-- /.feature-sm -->
-                </div> <!-- /.col -->
-
-              </div> <!-- /.row -->
-
-
-
-              <div class="row">
-
-                <div class="col-sm-4">
-                  <div class="feature-sm">
-                    <i class="fa fa-crosshairs feature-sm-icon text-secondary"></i>
-
-                    <h3 class="feature-sm-label">Quis nostrud exercitation</h3>
-
-                    <p class="feature-sm-content">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation.
-                    </p>
-                  </div> <!-- /.feature-sm -->
-                </div> <!-- /.col -->
-
-                <div class="col-sm-4">
-                  <div class="feature-sm">
-                    <i class="fa fa-rocket feature-sm-icon text-secondary"></i>
-
-                    <h3 class="feature-sm-label">Incididunt ut labore</h3>
-
-                    <p class="feature-sm-content">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation.
-                    </p>
-                  </div> <!-- /.feature-sm -->
-                </div> <!-- /.col -->
-
-                <div class="col-sm-4">
-                  <div class="feature-sm">
-                    <i class="fa fa-star feature-sm-icon text-secondary"></i>
-
-                    <h3 class="feature-sm-label">Enim ad minim</h3>
-
-                    <p class="feature-sm-content">
-                      Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                      tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                      quis nostrud exercitation.
+                      Collap is free for use. You do not need to pay any amount for its use. Collap is a collaboration plateform. For future it may charge little only for server running cost and other maintainance costs. Its free to use, so enjoy here.
                     </p>
                   </div> <!-- /.feature-sm -->
                 </div> <!-- /.col -->
