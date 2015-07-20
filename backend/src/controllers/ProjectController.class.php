@@ -115,9 +115,29 @@ class ProjectController extends BaseController {
 
 	}
 
+	function joinProject () {
+		if(isset($_POST['join_project'])) {
+			$newMember = new Team(
+								$this-> userId,
+								$this-> projectId,
+								'defaultteam',
+								0,
+								date("Y-m-d H:i:s"),
+								1,
+								0,
+								1,
+								null
+							);
+			try {
+				$this -> teamsDAO -> insert($newMember) ;
+			}
+			catch (Exception $e){
+				var_dump($e); die();
+			}	
+		}
+		$this -> render ();
+	}
 
 }
-
-
 
 ?>

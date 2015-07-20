@@ -60,14 +60,14 @@ class TeamsMySqlDAO implements TeamsDAO{
 		$sql = 'INSERT INTO teams (user_id, project_id, team_name, team_owner, team_creation, member_status, leave_team, status) VALUES (?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($team->getUserId());
-		$sqlQuery->setNumber($team->getProjectId());
+		$sqlQuery->set($team->getUserId());
+		$sqlQuery->set($team->getProjectId());
 		$sqlQuery->set($team->getTeamName());
-		$sqlQuery->setNumber($team->getTeamOwner());
+		$sqlQuery->set($team->getTeamOwner());
 		$sqlQuery->set($team->getTeamCreation());
-		$sqlQuery->setNumber($team->getMemberStatus());
+		$sqlQuery->set($team->getMemberStatus());
 		$sqlQuery->set($team->getLeaveTeam());
-		$sqlQuery->setNumber($team->getStatus());
+		$sqlQuery->set($team->getStatus());
 
 		$id = $this->executeInsert($sqlQuery);	
 		$team-> setId($id);

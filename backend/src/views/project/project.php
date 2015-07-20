@@ -60,16 +60,27 @@
             <div class="row">
 
               <div class="col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
-                <div class="post-main">
+                
+                <div class="row" style="margin-left: 15px; margin-right: 15px;">
                   
-                    <div class="pull-left">
+                  <div class="pull-left">
                     <h4 class="post-title"><?= $project->getRefinedTitle() ?></h4>
                     <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                   </div>
 
-                  <div class="pull-right">
-                      <button class="btn btn-success btn-labeled fa fa-plus " style="margin-right: 5px;"> JOIN </button>
-                      <button class="btn btn-default btn-labeled fa fa-envelope"> MESSAGE </button>
+                  <div class="pull-right" style="margin-top: 25px;">
+                    
+                    <div class="col-md-6 col-lg-6 col-sm-6" style="margin-bottom: 6px;">
+                      <form action="<?= $baseUrl ?>project/<?= $project->getId() ?>/joinProject" name="join_project" method="POST">
+                        <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold" name="join_project" style="margin-right: 5px;"> JOIN </button>
+                      </form>
+                    </div>
+                    <div class="col-md-6 col-lg-6 col-sm-6">
+                      <form action="<?= $baseUrl ?>project/message" name="message" >
+                        <button class="btn btn-lg btn-default btn-labeled fa fa-envelope text-semibold"> MESSAGE </button>
+                      </form>
+                    </div>
+                  
                   </div>      
                 </div>            
 

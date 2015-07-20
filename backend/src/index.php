@@ -112,6 +112,10 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 									$projectController -> createProject();
 								}
 
+								elseif ($route['3'] == 'joinProject') {
+									$projectController -> joinProject();
+								}
+
 								else 
 									$projectController -> render ();
 	

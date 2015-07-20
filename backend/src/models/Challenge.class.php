@@ -165,7 +165,7 @@ require_once 'models/BaseModel.class.php';
 			$this -> status = $status;
 		}
 		function getStatus(){
-			return $this->status;
+			return $this-> status;
 		}
 		
 		function setCreationTime($creationTime){

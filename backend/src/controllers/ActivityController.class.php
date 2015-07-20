@@ -17,7 +17,9 @@ class ActivityController extends BaseController  {
 		$baseUrl = $this->baseUrl;
 		
 		try{
+			
 			if($this-> challengesDAO -> checkAuth($this->challangeId,$this->userId)){
+
 				$activity = $this->challengesDAO->getByChallengeId($this->challangeId);
 				$comments = $this ->challengeResponsesDAO->getResponses($this->challangeId);
 				
