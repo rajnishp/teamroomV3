@@ -133,6 +133,7 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 			case "profile":
 
 					$profileController = new ProfileController($route[2]);
+
 					$where = $route[3];
 					
 					switch ($where) {
@@ -157,9 +158,9 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 							default:
 								if($route[2] == 'activities')
 									$profileController -> getNextActivities();
-								if($route[2] == 'ideas')
+								else if($route[2] == 'ideas')
 									$profileController -> getNextIdeas();
-								if($route[2] == 'projects')
+								else if($route[2] == 'projects')
 									$profileController -> getNextProjects();
 								else
 									$profileController -> render ();

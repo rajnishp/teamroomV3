@@ -32,6 +32,8 @@ abstract class BaseController {
 		if( isset( $_SESSION["user_id"] ) ){
 
 			$this -> userId = $_SESSION["user_id"];
+			$this -> username = $_SESSION["username"];
+
 
 		}
 		
