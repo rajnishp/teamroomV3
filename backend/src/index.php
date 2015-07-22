@@ -301,7 +301,7 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 						if($route[2] == 'activities')
 							$dashboardController -> getNextActivities();
 
-						elseif ('postActivity')
+						elseif ($route[2] == 'postActivity')
 								$dashboardController -> postActivity ();
 
 						else
