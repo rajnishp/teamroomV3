@@ -97,7 +97,7 @@
                       <div class="panel-control">
                         <ul class="nav nav-tabs">
                           <!-- <li><a href="#tabs-create-project" data-toggle="tab">Create Project</a></li> -->
-                          <!-- <li><a href="#tabs-post" data-toggle="tab">Post Otgoings</a></li> -->
+                          <li><a href="#tabs-post" data-toggle="tab">Post Otgoings</a></li>
                           <li class="active"><a href="#tabs-overview" data-toggle="tab">Overview</a></li>
                           <!-- <li><a href="#tabs-dashboard" data-toggle="tab">Dashboard</a></li> -->
                           <li><a href="#tabs-activities" data-toggle="tab">Activities</a></li>
@@ -118,7 +118,7 @@
 
                             <div class="share-widget clearfix">
                               
-                              <form id="post_to_project" class="form-horizontal" action="#" method="post" onsubmit="return selectType()">
+                              <form id="postActivityProject" action="<?= $baseUrl ?>postActivity" class="form-horizontal" method="post" onSubmit="return (validatePostActivity());">
 
                                 <div class="share-widget">
                                   <input type="text" class="form-control" name="title" placeholder="Title">
@@ -135,15 +135,15 @@
                                     
                                     <div class="col-md-6" style="margin-top: 9px;">
                                       <label class="form-radio form-normal active form-inline">
-                                        <input type="radio" checked="" name="project_activity" id ="challenge" value="Challenge"> Challenge 
+                                        <input type="radio" checked="" name="activity" id ="challenge" value="1"> Challenge 
                                       </label>
 
                                       <label class="form-radio form-normal">
-                                        <input type="radio" name="project_activity" id = "notes" value="Notes"> Notes 
+                                        <input type="radio" name="activity" id = "notes" value="6"> Notes 
                                       </label>
                                     
                                       <label class="form-radio form-normal">
-                                        <input type="radio" name="project_activity" id = "task_select" value="Task" > Task
+                                        <input type="radio" name="activity" id = "task_select" value="5" > Task
                                       </label>
                                     </div>
                                     

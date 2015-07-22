@@ -27,7 +27,8 @@
 	<!--BootstrapJS [ RECOMMENDED ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/js/bootstrap.min.js"></script>
 
-
+  <!--Fast Click [ OPTIONAL ]-->
+  <script src="<?= $baseUrl ?>static/sidebar/plugins/fast-click/fastclick.min.js"></script>
 	
 	
 	<!--Nifty Admin [ RECOMMENDED ]-->
@@ -42,13 +43,12 @@
 	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-select/bootstrap-select.min.js"></script>
 
 
-	<!--Bootstrap Select [ OPTIONAL ]-->
-	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-select/bootstrap-select.min.js"></script>
-
-
 	<!--Bootstrap Validator [ OPTIONAL ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-validator/bootstrapValidator.min.js"></script>
 
+
+  <!--Bootstrap Wizard [ OPTIONAL ]-->
+  <script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-wizard/jquery.bootstrap.wizard.min.js"></script>
 
 	<!--Bootstrap Tags Input [ OPTIONAL ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
@@ -65,6 +65,10 @@
 	<!--Demo script [ DEMONSTRATION ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/nifty-demo.min.js"></script>
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/layouts.js"></script>
+
+    <!--Form Wizard [ SAMPLE ]-->
+  <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-wizard.js"></script>
+
 
 <script>
 function addMorePost(url, dataString,addAt){

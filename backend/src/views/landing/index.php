@@ -581,12 +581,12 @@
 
               <li>
                 <i class="icon-li fa fa-facebook"></i>
-                <a href="https://www.facebook.com/pages/collapcom/739310236156746"> Facebook </a>
+                <a href="https://www.facebook.com/pages/collapcom/739310236156746" target="_blank"> Facebook </a>
               </li>
 
               <li>
                 <i class="icon-li fa fa-twitter"></i>
-                <a href="https://twitter.com/collapcom"> Twitter </a>
+                <a href="https://twitter.com/collapcom" target="_blank"> Twitter </a>
               </li>
 
               <!-- <li>
@@ -596,7 +596,7 @@
 
               <li>
                 <i class="icon-li fa fa-google-plus"></i>
-                <a href="https://plus.google.com/+Collapcom/"> Google Plus </a>
+                <a href="https://plus.google.com/+Collapcom/" target="_blank"> Google Plus </a>
               </li>
             </ul>
             

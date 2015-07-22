@@ -43,14 +43,14 @@
 
                 <div class="share-widget clearfix">
                   
-                  <form id="post_to_project" class="form-horizontal" action="#" method="post" onsubmit="return selectType()">
+                  <form id="postActivity" action="<?= $baseUrl ?>postActivity" class="form-horizontal" method="post" onSubmit="return (validatePostActivity());">
 
                     <div class="share-widget">
-                      <input type="text" class="form-control" name="title" placeholder="Title">
+                      <input type="text" class="form-control" name="title" id="title" placeholder="Title">
                     </div>
                     <br />
 
-                    <textarea class="form-control share-widget-textarea" name = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1">
+                    <textarea class="form-control share-widget-textarea" name = "description" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1">
                       
                     </textarea>
 
@@ -59,26 +59,26 @@
                         
                         <div class="col-md-6" style="margin-top: 9px;">
                           <label class="form-radio form-normal active form-inline">
-                            <input type="radio" checked="" name="activity" value="Challenge"> Challenge 
+                            <input type="radio" checked="" name="activity" id="activity_type" value="1"> Challenge 
                           </label>
 
                           <label class="form-radio form-normal">
-                            <input type="radio" name="activity" value="Article"> Article 
+                            <input type="radio" name="activity" id="activity_type" value="7"> Article 
                           </label>
                         
                           <label class="form-radio form-normal">
-                            <input type="radio" name="activity" value="Idea"> Idea
+                            <input type="radio" name="activity" id="activity_type" value="4"> Idea
                           </label>
                         </div>
                         
                         <div class="col-md-6">
-                          <input type="file" name="file" class="btn btn-default btn-file pull-right">
+                          <input type="file" name="file" id="file" class="btn btn-default btn-file pull-right">
                         </div>
                      
                       </div>
 
                       <div class="pull-right">
-                        <a class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</a>
+                        <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</a>
                       </div>
                     </div> <!-- /.share-widget-actions -->
                   
@@ -169,5 +169,16 @@
         <?php require_once 'views/sidebar/sidebar_button.php'; ?>
         <?php require_once 'views/footer/footer.php'; ?>
         
+        <script src="<?= $baseUrl ?>static/js/genericEmptyFieldValidator.js"></script>
+
+        <script type="text/javascript">
+
+          function validatePostActivity(){
+            fields = ["title","description","activity_type"];
+            return genericEmptyFieldValidator(fields);
+            
+          }
+        </script> 
+
   </body>
 </html>

@@ -37,6 +37,13 @@
   <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-select/bootstrap-select.min.css" rel="stylesheet">
 
 
+  <!--Font Awesome [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+
+  <!--Switchery [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/switchery/switchery.min.css" rel="stylesheet">
+
   <!--Bootstrap Tags Input [ OPTIONAL ]-->
   <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
 

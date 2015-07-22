@@ -7,6 +7,7 @@ include_once "controllers/ActivityController.class.php";
 include_once "controllers/ProfileController.class.php";
 include_once "controllers/DashboardController.class.php";
 include_once "controllers/SettingController.class.php";
+include_once "controllers/CompleteProfileController.class.php";
 
 //include_once "components/base.php";
 
@@ -178,10 +179,6 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 								break;
 
-							case 'activity':
-								$dashboardController -> postActivity ();
-								break;
-
 							case 'logout':
 								$homeController -> logout ();
 								break;
@@ -189,7 +186,7 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 							case 'forgetPassword':
 								$homeController -> forgetPassword ();
 								break;
-							
+
 							default:
 								$dashboardController -> render ();
 								break;
@@ -287,13 +284,21 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 				break;
 			
-			
+			case "completeProfile":
+					$completeProfileController = new CompleteProfileController();
+					$completeProfileController -> render();
+				break;
+
 			default:
 					if( isset($_SESSION["user_id"] )){
 						$dashboardController = new DashboardController();
 						
 						if($route[2] == 'activities')
 							$dashboardController -> getNextActivities();
+
+						elseif ('postActivity')
+								$dashboardController -> postActivity ();
+
 						else
 							$dashboardController -> render ();
 						break;

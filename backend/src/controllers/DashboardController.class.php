@@ -41,33 +41,29 @@ class DashboardController extends BaseController {
 	}
 
 	function postActivity(){
-
-		if(isset($_POST['title'],$_POST['description'], $_POST['activity_type'] )) {
-			
-				$this->user = new challenge(
-										$_POST['firstname'],
-										$_POST['lastname'],
-										$_POST['email'],
-										null,
-										$_POST['username'],
-										md5($_POST['password']),
-										"dabbling",
-										$_POST['user_type'],
+var_dump($_POST); die();
+		if(isset($_POST['title'],$_POST['description'], $_POST['activity'])) {
+			echo "I am inside if isset";	
+				$challengeObj = new Challenge(
+										$this -> userId,
 										0,
-										null,
 										0,
-										null,
-										null,
-										null,
+										0,
+										$_POST['title'],
+										$_POST['description'],
+										$_POST['activity'],
+										1,
+										0,
+										0,
 										date("Y-m-d H:i:s"),
 										date("Y-m-d H:i:s"),
-										null);
-				$this->userInfoDAO->insert($this->user);
-				var_dump($this->user);
+										null, null, null);
 				
-			
+				$this-> challengesDAO -> insert($challengeObj);			
 
 			}
+		var_dump($challengeObj); die();
+
 		}
 	}
 
