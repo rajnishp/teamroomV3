@@ -41,10 +41,10 @@ class DashboardController extends BaseController {
 	}
 
 	function postActivity(){
-var_dump($_POST); die();
-		if(isset($_POST['title'],$_POST['description'], $_POST['activity'])) {
-			echo "I am inside if isset";	
-				$challengeObj = new Challenge(
+	
+		if(isset($_POST['title'],$_POST['description'])) {
+			
+			$challengeObj = new Challenge(
 										$this -> userId,
 										0,
 										0,
@@ -59,10 +59,10 @@ var_dump($_POST); die();
 										date("Y-m-d H:i:s"),
 										null, null, null);
 				
-				$this-> challengesDAO -> insert($challengeObj);			
+			$this-> challengesDAO -> insert($challengeObj);			
 
 			}
-		var_dump($challengeObj); die();
+		$this -> render();
 
 		}
 	}

@@ -79,7 +79,6 @@ class SettingController {
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Technical Strength Can Not Be Empty";
 		}
-
 		
 	}
 
@@ -142,19 +141,24 @@ class SettingController {
 	        }
 
 	        if ($update) {
-	            //$logger -> debug('PUT User object: ' . $userObj -> toString());
-	            $result = $this -> userInfoDAO -> update($userObj);
-	            //$logger -> debug('Updated entry: ' . $result);
+	            $this -> userInfoDAO -> update($userObj);
 	        }
-
+			
+			echo "Updated Successfully";
 		}
-
-		$this->render ();
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Profiles fileds Can Not Be Empty";
+		}
 	}
 
 	function updateWorkExp() {
 		
-		if(isset($_POST['company_name'], $_POST['designation'], $_POST['from'], $_POST['to'])) {
+		if(isset($_POST['company_name'], $_POST['designation'], $_POST['from'], $_POST['to'])
+				 && $_POST['company_name'] != "" 
+				 && $_POST['designation'] != "" 
+				 && $_POST['from'] != "" 
+				 && $_POST['to'] != "") {
 	
 			$workExpObj = new WorkingHistory(
 									$this -> userId,
@@ -171,14 +175,23 @@ class SettingController {
 				$this -> userWorkHistoryDAO ->update($workExpObj);
 			else
 				$this -> userWorkHistoryDAO ->insert($workExpObj);
+			echo "Updated Successfully";
 		}
-		$this->render ();
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Work Experience fields can Not Be Empty";
+		}
 	}
 
 	function updateEducation() {
 		
-		if(isset($_POST['institute'], $_POST['degree'], $_POST['branch'], $_POST['from'], $_POST['to'])) {
-	
+		if(isset($_POST['institute'], $_POST['degree'], $_POST['branch'], $_POST['from'], $_POST['to'])
+				 && $_POST['institute'] != "" 
+				 && $_POST['degree'] != "" 
+				 && $_POST['branch'] != "" 
+				 && $_POST['from'] != "" 
+				 && $_POST['to'] != "") {
+			
 			$educationObj = new Education(
 									$this -> userId,
 									$_POST['institute'],
@@ -195,10 +208,13 @@ class SettingController {
 				$this -> userEducationDAO ->update($educationObj);
 			else
 				$this -> userEducationDAO ->insert($educationObj);
+			echo "Updated Successfully";
 		}
-		$this->render ();
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Education fields can Not Be Empty";
+		}
 	}
-
 }
 
 ?>

@@ -210,7 +210,6 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 					FROM challenges as challenge JOIN user_info as user JOIN projects as project
 						WHERE challenge.status != 3 AND challenge.status != 7 
 							AND challenge.type != 2 AND challenge.type != 5 
-							AND project.id = challenge.project_id
 							AND challenge.blob_id = 0
 							AND project.type = 'Public' AND user.id = challenge.user_id)
 				UNION
@@ -219,7 +218,6 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 					FROM challenges as challenge JOIN user_info as user JOIN projects as project JOIN blobs as `blob`
 						WHERE challenge.status != 3 AND challenge.status != 7 
 							AND challenge.type != 2 AND challenge.type != 5
-							AND project.id = challenge.project_id 
 							AND project.type = 'Public' AND user.id = challenge.user_id
 							AND challenge.blob_id = blob.id )  
 					ORDER BY last_update_time DESC ";

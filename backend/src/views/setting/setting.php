@@ -174,7 +174,7 @@
                             <label class="col-md-3 control-label">About You</label>
 
                             <div class="col-md-7">
-                              <textarea id="about-textarea" name="about_user" id="about_user" rows="6" class="form-control"><?= $userProfile -> getAboutUser() ?></textarea>
+                              <textarea name="about_user" id="about_user" rows="6" class="form-control"><?= $userProfile -> getAboutUser() ?></textarea>
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -255,14 +255,14 @@
 
                         <?php foreach ($userWorkExperience as $workExperience) { ?>
                           
-                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp());">
+                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp(<?= $key ?>));">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Company Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="company_name" id="company_name" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
+                                <input type="text" name="company_name" id="company_name_<?= $key ?>" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
                                 <input type="hidden" name="id" value="<?= $workExperience -> getId() ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
@@ -273,7 +273,7 @@
                               <label class="col-md-3 control-label">Designation</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="designation" id="designation" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
+                                <input type="text" name="designation" id="designation_<?= $key ?>" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -282,7 +282,7 @@
                               <label class="col-md-3 control-label">Started From</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="from" id="from" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control"/>
+                                <input type="text" name="from" id="from_<?= $key ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -291,7 +291,7 @@
                               <label class="col-md-3 control-label">Leave </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="to" id="to" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control"/>
+                                <input type="text" name="to" id="to_<?= $key ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -577,44 +577,36 @@
 
     <script type="text/javascript">
 
-      function validateUpdateProfile(){
-        console.log("Inside Validate User Profile");
-        fields = ["first_name","last_name","phone","living_place", "about_user"];
-        return genericEmptyFieldValidator(fields);
-        
-      }
+      function postUpdateProfile(){
+        var dataString = "";
+        $.each(fields, function( index, value ) {
+          
+          dataString = "first_name=" + $('#'+value).val() + "&last_name=" + $('#'+value).val() + "&phone=" + $('#'+value).val() + "&living_place=" + $('#'+value).val() + "&about_user="+ $('#'+value).val();
+          
+        });
 
-function postUpdateTechStrength(){
-    var dataString = "";
-    $.each(fields, function( index, value ) {
-        console.log(value);
-        
-        dataString = "tech_strength=" + $('#'+value).val() ;  
-        
-    });
-
-   $.ajax({
+        $.ajax({
           type: "POST",
-          url: "<?= $baseUrl ?>" + "setting/updateTechStrength",
+          url: "<?= $baseUrl ?>" + "setting/updateUserInfo",
           data: dataString,
           cache: false,
           success: function(result){
             $.niftyNoty({ 
               type:"success",
               icon:"fa fa-check fa-lg",
-              title:"Technical Strength",
+              title:"Profile Information",
               message:result,
               focus: true,
               container:"floating",
               timer:4000
             });
           },
-           error: function(result){
+          error: function(result){
             console.log(result);
             $.niftyNoty({ 
               type:"danger",
               icon:"fa fa-check fa-lg",
-              title:"Technical Strength",
+              title:"Profile Information",
               message:result.responseText,
               focus: true,
               container:"floating",
@@ -622,9 +614,64 @@ function postUpdateTechStrength(){
             });
           }
 
-        });
+        });      
+      }
 
-}
+      function validateUpdateProfile(){
+
+        console.log("Inside Validate user Profile");
+        
+        fields = ["first_name","last_name","phone","living_place", "about_user"];
+
+        if(genericEmptyFieldValidator(fields)){
+          console.log("iam there");
+          postUpdateProfile(fields);          
+
+        }
+        return false;
+      }
+
+      function postUpdateTechStrength(){
+          var dataString = "";
+          $.each(fields, function( index, value ) {
+              console.log(value);
+              
+              dataString = "tech_strength=" + $('#'+value).val() ;  
+              
+          });
+
+         $.ajax({
+                type: "POST",
+                url: "<?= $baseUrl ?>" + "setting/updateTechStrength",
+                data: dataString,
+                cache: false,
+                success: function(result){
+                  $.niftyNoty({ 
+                    type:"success",
+                    icon:"fa fa-check fa-lg",
+                    title:"Technical Strength",
+                    message:result,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+                },
+                 error: function(result){
+                  console.log(result);
+                  $.niftyNoty({ 
+                    type:"danger",
+                    icon:"fa fa-check fa-lg",
+                    title:"Technical Strength",
+                    message:result.responseText,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+                }
+
+              });
+
+      }
 
       function validateUpdateTechStrength(key){
 
@@ -647,16 +694,78 @@ function postUpdateTechStrength(){
         return false;
       }
 
+      function postUpdateWorkExp(){
+          var dataString = "";
+          $.each(fields, function( index, value ) {
+              console.log(value);
+              
+              dataString = "company_name=" + $('#'+value).val() + "&designation=" + $('#'+value).val() + "&from=" + $('#'+value).val() + "&to=" + $('#'+value).val() ;  
+              
+          });
+
+          $.ajax({
+            type: "POST",
+            url: "<?= $baseUrl ?>" + "setting/updateWorkExp",
+            data: dataString,
+            cache: false,
+            success: function(result){
+              $.niftyNoty({ 
+                type:"success",
+                icon:"fa fa-check fa-lg",
+                title:"Working Experience",
+                message:result,
+                focus: true,
+                container:"floating",
+                timer:4000
+              });
+            },
+             error: function(result){
+              console.log(result);
+              $.niftyNoty({ 
+                type:"danger",
+                icon:"fa fa-check fa-lg",
+                title:"Working Experience",
+                message:result.responseText,
+                focus: true,
+                container:"floating",
+                timer:4000
+              });
+            }
+          });
+
+      }
+
       function validateUpdateWorkExp(){
         console.log("Inside Validate Work Experience");
         fields = ["company_name", "designation", "from", "to"];
-        return genericEmptyFieldValidator(fields);
+
+        if(key != undefined ){
+           $.each(fields, function( index, value ) {
+
+              fields[index] = value + "_" +key;
+
+           });
+        }
+        if (genericEmptyFieldValidator(fields)) {
+            postUpdateWorkExp(fields);
+        }
       }
 
       function validateUpdateEducation(){
         console.log("Inside Validate Education");
         fields = ["institute", "degree", "branch", "from", "to"];
-        return genericEmptyFieldValidator(fields);
+
+        if(key != undefined ){
+           $.each(fields, function( index, value ) {
+
+              fields[index] = value + "_" +key;
+
+           });
+        }
+        if (genericEmptyFieldValidator(fields)) {
+            postUpdateEducation(fields);
+        }
+       
       }
     </script>
   

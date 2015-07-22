@@ -154,7 +154,7 @@
                                   </div>
 
                                   <div class="pull-right">
-                                    <a class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</a>
+                                    <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
                                   </div>
                                 </div> <!-- /.share-widget-actions -->
                               
