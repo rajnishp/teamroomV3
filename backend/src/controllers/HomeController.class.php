@@ -57,16 +57,18 @@ class HomeController {
 					$redir = $_GET['from'];
 				else
 					$redir = $baseUrl;
-				
+
 				header('Location: '.$redir);		
 
 			}
 			else{
 
-				echo "user not found";
+				header('Location: '.$baseUrl);
 			}
 
-		}
+		} 
+		else 
+			header('Location: '.$baseUrl);
 
 	}
 	function signup(){

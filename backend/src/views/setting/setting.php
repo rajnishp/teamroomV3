@@ -200,7 +200,7 @@
 
                         <?php foreach ($userTechStrength as $key => $value) { ?>
 
-                          <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
+                          <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength(<?= $key ?>));">
 
                             <div class="form-group">
 
@@ -208,7 +208,7 @@
                             
                               <div class="col-md-7">
                                 <input type="hidden" name="id" value="<?= $value -> getId() ?>" class="form-control"/>
-                                <input type="text" name="tech_strength" id="tech_strength" value="<?= ucfirst($value -> getStrength()) ?>" class="form-control"/>
+                                <input type="text" name="tech_strength" id="tech_strength_<?= $key ?>" value="<?= ucfirst($value -> getStrength()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
                             </div> <!-- /.form-group -->
 
@@ -584,10 +584,67 @@
         
       }
 
-      function validateUpdateTechStrength(){
-        console.log("Inside Validate Technical Strength");
+function postUpdateTechStrength(){
+    var dataString = "";
+    $.each(fields, function( index, value ) {
+        console.log(value);
+        
+        dataString = "tech_strength=" + $('#'+value).val() ;  
+        
+    });
+
+   $.ajax({
+          type: "POST",
+          url: "<?= $baseUrl ?>" + "setting/updateTechStrength",
+          data: dataString,
+          cache: false,
+          success: function(result){
+            $.niftyNoty({ 
+              type:"success",
+              icon:"fa fa-check fa-lg",
+              title:"Technical Strength",
+              message:result,
+              focus: true,
+              container:"floating",
+              timer:4000
+            });
+          },
+           error: function(result){
+            console.log(result);
+            $.niftyNoty({ 
+              type:"danger",
+              icon:"fa fa-check fa-lg",
+              title:"Technical Strength",
+              message:result.responseText,
+              focus: true,
+              container:"floating",
+              timer:4000
+            });
+          }
+
+        });
+
+}
+
+      function validateUpdateTechStrength(key){
+
+        console.log("Inside Validate Technical Strength",key);
         fields = ["tech_strength"];
-        return genericEmptyFieldValidator(fields);
+
+        if(key != undefined ){
+           $.each(fields, function( index, value ) {
+
+              fields[index] = value + "_" +key;
+
+
+           });
+        }
+        if(genericEmptyFieldValidator(fields)){
+
+            postUpdateTechStrength(fields);          
+
+        }
+        return false;
       }
 
       function validateUpdateWorkExp(){

@@ -60,7 +60,7 @@ class SettingController {
 
 	function updateTechStrength() {
 		
-		if(isset($_POST['tech_strength'])) {
+		if(isset($_POST['tech_strength']) && $_POST['tech_strength'] != "") {
 			$tech_strength = new TechnicalStrength(
 					$this->userId,
 					$_POST['tech_strength'],
@@ -73,9 +73,14 @@ class SettingController {
 				$this -> userTechStrengthDAO ->update($tech_strength);
 			else
 				$this -> userTechStrengthDAO ->insert($tech_strength);
+			echo "Updated Successfully";
+		}
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Technical Strength Can Not Be Empty";
 		}
 
-		$this->render ();
+		
 	}
 
 	function updateUserInfo() {
