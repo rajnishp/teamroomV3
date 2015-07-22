@@ -84,6 +84,8 @@ class SettingController {
 
 	function updateUserInfo() {
 		
+		var_dump($_POST); die();
+		
 		if(isset($_POST['first_name'], $_POST['last_name'], $_POST['phone'], $_POST['living_place'], $_POST['about_user'])) {
 	
 	        if (! isset($this -> userId)) {
@@ -214,6 +216,48 @@ class SettingController {
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Education fields can Not Be Empty";
 		}
+	}
+
+
+	function updatePassword() {
+		
+		if(isset($_POST['old_password'], $_POST['new_password_1'], $_POST['new_password_2'])
+					&& $_POST['old_password'] != ''
+					&& $_POST['new_password_1'] != '' && $_POST['new_password_2'] != '') {
+
+			$oldPassCheck = $this -> userInfoDAO -> load($this -> userId);
+			
+			$oldPassword = md5($oldPassCheck -> getPassword());
+
+			if ( $oldPassword = $_POST['old_password']){
+
+				if ($_POST['new_password_1'] == $_POST['new_password_2']) {
+				
+					$newPassword = md5($_POST['new_password_1']);
+				
+					$oldPassCheck = $this -> userInfoDAO -> update($newPassword);
+				
+					echo "Updated Successfully";
+
+				}	
+				else{
+					header('HTTP/1.1 500 Internal Server Error');
+					echo "New Password do not match, Try Again";
+				}
+				
+			}
+
+			else{
+				header('HTTP/1.1 500 Internal Server Error');
+				echo "Old password do not match, Try Again";
+			}
+
+		}
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Password fields can Not Be Empty";
+		}
+		
 	}
 }
 

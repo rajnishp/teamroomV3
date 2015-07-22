@@ -126,9 +126,7 @@
                                   </div>
                                 <br />
 
-                                <textarea class="form-control share-widget-textarea" name = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1">
-                                  
-                                </textarea>
+                                <textarea class="form-control share-widget-textarea" name = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
 
                                 <div class="share-widget-actions">
                                   <div class="share-widget-types pull-left">

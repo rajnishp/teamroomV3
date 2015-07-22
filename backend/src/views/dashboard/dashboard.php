@@ -50,9 +50,7 @@
                     </div>
                     <br />
 
-                    <textarea class="form-control share-widget-textarea" name = "description" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1">
-                      
-                    </textarea>
+                    <textarea class="form-control share-widget-textarea" name ="description" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
 
                     <div class="share-widget-actions">
                       <div class="share-widget-types pull-left">
@@ -173,10 +171,53 @@
 
         <script type="text/javascript">
 
+
+        function postActivity(){
+          var dataString = "";
+          $.each(fields, function( index, value ) {
+              console.log(value);
+              
+              dataString = "title=" + $('#'+value).val() + "&description=" + $('#'+value).val() + "activity_type=" + $('#'+value).val() ;
+              
+          });
+
+         $.ajax({
+                type: "POST",
+                url: "<?= $baseUrl ?>" + "setting/postActivity",
+                data: dataString,
+                cache: false,
+                success: function(result){
+                  $.niftyNoty({ 
+                    type:"success",
+                    icon:"fa fa-check fa-lg",
+                    title:"Post Activity",
+                    message:result,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+                },
+                 error: function(result){
+                  console.log(result);
+                  $.niftyNoty({ 
+                    type:"danger",
+                    icon:"fa fa-check fa-lg",
+                    title:"Post Activity",
+                    message:result.responseText,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+                }
+
+              });
+
+      }
           function validatePostActivity(){
             fields = ["title","description","activity_type"];
-            return genericEmptyFieldValidator(fields);
-            
+            if (genericEmptyFieldValidator(fields)) {
+              postActivity(fields);
+            }
           }
         </script> 
 

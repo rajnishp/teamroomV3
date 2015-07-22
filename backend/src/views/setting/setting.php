@@ -253,7 +253,7 @@
                         </div> <!-- /.heading-block -->
 
 
-                        <?php foreach ($userWorkExperience as $workExperience) { ?>
+                        <?php foreach ($userWorkExperience as $key => $workExperience) { ?>
                           
                           <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp(<?= $key ?>));">
 
@@ -277,22 +277,21 @@
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
+                            
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Started From</label>
+                              <label class="col-md-3 control-label">Duration</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="from" id="from_<?= $key ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control"/>
-                              </div> <!-- /.col -->
 
-                            </div> <!-- /.form-group -->
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Leave </label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="to" id="to_<?= $key ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control"/>
-                              </div> <!-- /.col -->
+                                <div id="demo-dp-range">
+                                  <div id="datepicker" class="input-daterange input-group">
+                                    <input type="text" name="from" id="work_from_<?= $key ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control"/>
+                                    <span class="input-group-addon">to</span>
+                                    <input type="text" name="to" id="work_to_<?= $key ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control"/>
+                                  </div>
+                                </div>
+                              </div>
 
                             </div> <!-- /.form-group -->
 
@@ -307,7 +306,7 @@
                           </form>
                         <?php } ?>
                           
-                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp());">
+                          <form class="form-horizontal"  onSubmit="return (validateUpdateWorkExp());">
 
                             <div class="form-group">
 
@@ -328,23 +327,21 @@
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
+
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Started From</label>
+                              <label class="col-md-3 control-label">Duration</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="from" id="from" class="form-control"/>
-                              </div> <!-- /.col -->
 
-                            </div> <!-- /.form-group -->
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Leave </label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="to" id="to" class="form-control"/>
-                              </div> <!-- /.col -->
-
+                                <div id="demo-dp-range">
+                                  <div id="datepicker" class="input-daterange input-group">
+                                    <input type="text" name="from" id="work_from" class="form-control"/>
+                                    <span class="input-group-addon">to</span>
+                                    <input type="text" name="to" id="work_to" class="form-control"/>
+                                  </div>
+                                </div>
+                              </div>
                             </div> <!-- /.form-group -->
 
                             <div class="form-group">
@@ -363,15 +360,15 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <?php foreach ($userEducation as $education) { ?>
-                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method="POST" onSubmit="return (validateUpdateEducation());">
+                        <?php foreach ($userEducation as $key1 => $education) { ?>
+                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method = "POST" onSubmit="return (validateUpdateEducation(<?= $education->getId() ?>));">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Institute Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="institute" id="institute" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
+                                <input type="text" name="institute" id="institute_<?= $key1 ?>" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
                                 <input type="hidden" name="id" value="<?= ucfirst($education -> getId()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
@@ -382,7 +379,7 @@
                               <label class="col-md-3 control-label">Name of Degree</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="degree" id="degree" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
+                                <input type="text" name="degree" id="degree_<?= $key1 ?>" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -391,29 +388,26 @@
                               <label class="col-md-3 control-label">Branch Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="branch" id="branch" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Started From</label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="from" id="from" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control"/>
+                                <input type="text" name="branch" id="branch_<?= $key1 ?>" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
 
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">To</label>
+                              <label class="col-md-3 control-label">Duration</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="to" id="to" value="<?= ucfirst($education -> getTo()) ?>" class="form-control"/>
-                              </div> <!-- /.col -->
 
-                            </div> <!-- /.form-group -->
+                                <div id="demo-dp-range">
+                                  <div id="datepicker" class="input-daterange input-group">
+                                    <input type="text" name="from" id="edu_from_<?= $key1 ?>" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control"/>
+                                    <span class="input-group-addon">to</span>
+                                    <input type="text" name="to" id="edu_to_<?= $key1 ?>" value="<?= ucfirst($education -> getTo()) ?>" class="form-control"/>
+                                  </div>
+                                </div>
+                              </div>
+                            </div>  <!-- /.form-group -->
 
                             <div class="form-group">
                               <div class="col-md-7 col-md-push-3">
@@ -456,25 +450,23 @@
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Started From</label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="from" id="from" value="" class="form-control"/>
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
 
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">To</label>
+                              <label class="col-md-3 control-label">Duration</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="to" id="to" value="" class="form-control"/>
-                              </div> <!-- /.col -->
 
+                                <div id="demo-dp-range">
+                                  <div id="datepicker" class="input-daterange input-group">
+                                    <input type="text" name="from" id="edu_from" value="" class="form-control"/>
+                                    <span class="input-group-addon">to</span>
+                                    <input type="text" name="to" id="edu_to" value="" class="form-control"/>
+                                  </div>
+                                </div>
+                              </div>
                             </div> <!-- /.form-group -->
+
 
                             <div class="form-group">
                               <div class="col-md-7 col-md-push-3">
@@ -504,14 +496,14 @@
 
                         <br><br>
 
-                        <form action="<?= $baseUrl ?>setting/updatePassword" class="form-horizontal" method="POST">
+                        <form action="<?= $baseUrl ?>setting/updatePassword" class="form-horizontal" method="POST" onSubmit="return (validateUpdatePassword());">
 
                           <div class="form-group">
 
                             <label class="col-md-3 control-label">Old Password</label>
 
                             <div class="col-md-7">
-                              <input type="password" name="old-password" class="form-control" />
+                              <input type="password" name="old_password" id="old_password" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -523,7 +515,7 @@
                             <label class="col-md-3 control-label">New Password</label>
 
                             <div class="col-md-7">
-                              <input type="password" name="new-password-1" class="form-control" />
+                              <input type="password" name="new_password_1" id="new_password_1" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -534,7 +526,7 @@
                             <label class="col-md-3 control-label">New Password Confirm</label>
 
                             <div class="col-md-7">
-                              <input type="password" name="new-password-2" class="form-control" />
+                              <input type="password" name="new_password_2" id="new_password_2" class="form-control" />
                             </div> <!-- /.col -->
 
                           </div> <!-- /.form-group -->
@@ -581,8 +573,8 @@
         var dataString = "";
         $.each(fields, function( index, value ) {
           
-          dataString = "first_name=" + $('#'+value).val() + "&last_name=" + $('#'+value).val() + "&phone=" + $('#'+value).val() + "&living_place=" + $('#'+value).val() + "&about_user="+ $('#'+value).val();
-          
+          dataString = "first_name=" + first_name + "&last_name=" + last_name + "&phone=" + phone + "&living_place=" + living_place + "&about_user=" + about_user;
+          alert(dataString); 
         });
 
         $.ajax({
@@ -694,14 +686,13 @@
         return false;
       }
 
-      function postUpdateWorkExp(){
+      function postUpdateWorkExp(fields){
           var dataString = "";
-          $.each(fields, function( index, value ) {
-              console.log(value);
+          
               
-              dataString = "company_name=" + $('#'+value).val() + "&designation=" + $('#'+value).val() + "&from=" + $('#'+value).val() + "&to=" + $('#'+value).val() ;  
+          dataString = "company_name=" + $('#'+fields[0]).val() + "&designation=" + $('#'+fields[1]).val() + "&from=" + $('#'+fields[2]).val() + "&to=" + $('#'+fields[3]).val() ;  
               
-          });
+          
 
           $.ajax({
             type: "POST",
@@ -735,9 +726,9 @@
 
       }
 
-      function validateUpdateWorkExp(){
+      function validateUpdateWorkExp(key){
         console.log("Inside Validate Work Experience");
-        fields = ["company_name", "designation", "from", "to"];
+        fields = ["company_name", "designation", "work_from", "work_to"];
 
         if(key != undefined ){
            $.each(fields, function( index, value ) {
@@ -749,24 +740,120 @@
         if (genericEmptyFieldValidator(fields)) {
             postUpdateWorkExp(fields);
         }
+        return false;
       }
 
-      function validateUpdateEducation(){
+
+      function postUpdateEducation(fields){
+          var dataString = "";
+
+          dataString = "institute=" + $('#'+fields[0]).val() + "&degree=" + $('#'+fields[1]).val() + "&branch=" + $('#'+fields[2]).val() + "&edu_from=" + $('#'+fields[3]).val() + "&edu_to=" + $('#'+fields[4]).val() ;  
+
+          $.ajax({
+            type: "POST",
+            url: "<?= $baseUrl ?>" + "setting/updateEducation",
+            data: dataString,
+            cache: false,
+            success: function(result){
+              $.niftyNoty({ 
+                type:"success",
+                icon:"fa fa-check fa-lg",
+                title:"Education",
+                message:result,
+                focus: true,
+                container:"floating",
+                timer:4000
+              });
+            },
+             error: function(result){
+              console.log(result);
+              $.niftyNoty({ 
+                type:"danger",
+                icon:"fa fa-check fa-lg",
+                title:"Education",
+                message:result.responseText,
+                focus: true,
+                container:"floating",
+                timer:4000
+              });
+            }
+          });
+
+      }
+
+      function validateUpdateEducation(key){
+        
         console.log("Inside Validate Education");
-        fields = ["institute", "degree", "branch", "from", "to"];
+        
+        fields = ["institute", "degree", "branch", "edu_from", "edu_to"];
 
         if(key != undefined ){
-           $.each(fields, function( index, value ) {
+            $.each(fields, function( index, value ) {
 
               fields[index] = value + "_" +key;
 
            });
         }
+alert(fields);
         if (genericEmptyFieldValidator(fields)) {
+        
             postUpdateEducation(fields);
         }
-       
+        return false;
+
       }
+
+      function postUpdatePassword(){
+        //check new_password_1 and new_password_2 match or not
+        var dataString = "";
+        $.each(fields, function( index, value ) {
+            console.log(value);
+            
+            dataString = "old_password=" + $('#'+value).val() + "&new_password_1=" + $('#'+value).val() + "&new_password_2=" + $('#'+value).val();
+            
+        });
+
+        $.ajax({
+          type: "POST",
+          url: "<?= $baseUrl ?>" + "setting/updatePassword",
+          data: dataString,
+          cache: false,
+          success: function(result){
+            $.niftyNoty({ 
+              type:"success",
+              icon:"fa fa-check fa-lg",
+              title:"Reset Password",
+              message:result,
+              focus: true,
+              container:"floating",
+              timer:4000
+            });
+          },
+           error: function(result){
+            console.log(result);
+            $.niftyNoty({ 
+              type:"danger",
+              icon:"fa fa-check fa-lg",
+              title:"Reset Password",
+              message:result.responseText,
+              focus: true,
+              container:"floating",
+              timer:4000
+            });
+          }
+        });
+      }
+
+      function validateUpdatePassword(){
+        console.log("Inside Validate Password");
+        fields = ["old_password", "new_password_1","new_password_2"];
+
+        if (genericEmptyFieldValidator(fields)) {
+            postUpdatePassword(fields);
+        }
+        return false;    
+      }
+      
     </script>
   
   </body>

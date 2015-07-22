@@ -221,7 +221,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 								$settingController -> updateEducation();
 
 								break;
+							
+							case 'updatePassword':
 								
+								$settingController -> updatePassword();
+
+								break;								
 
 							case 'signup':
 								$homeController -> signup ();

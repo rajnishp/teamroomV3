@@ -99,9 +99,7 @@
                       <label class="col-md-3 control-label">Description</label>
                       <div class="col-md-7">
                        
-                        <textarea class="form-control share-widget-textarea" name = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1">
-                          
-                        </textarea>
+                        <textarea class="form-control share-widget-textarea" name = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1"></textarea>
 
                         <div class="share-widget-actions">
                           <div class=" pull-left">

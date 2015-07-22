@@ -58,13 +58,18 @@ class DashboardController extends BaseController {
 										date("Y-m-d H:i:s"),
 										date("Y-m-d H:i:s"),
 										null, null, null);
+
 				
 			$this-> challengesDAO -> insert($challengeObj);			
-
-			}
-		$this -> render();
-
+			echo "Posted Successfully";
 		}
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Activity fields can not be Empty";
+		}
+		
 	}
+
+}
 
 ?>
