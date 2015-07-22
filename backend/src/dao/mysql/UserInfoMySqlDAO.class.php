@@ -156,7 +156,7 @@ class UserInfoMySqlDAO implements UserInfoDAO{
 		$sql = 'SELECT * FROM user_info WHERE username = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
-		return $this->getList($sqlQuery);
+		return $this->getRow($sqlQuery);
 	}
 
 	public function queryByPassword($value){

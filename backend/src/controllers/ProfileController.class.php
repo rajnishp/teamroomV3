@@ -6,30 +6,36 @@ class ProfileController extends BaseController {
 
 	private $profileId;
 
-	function __construct ( $profileId = null ){
+	function __construct ( $profileUN = null ){
 		parent::__construct();	
-		
-		$this->profileId = $profileId;
 
 		$DAOFactory = new DAOFactory();
 		$this -> userEducationDAO = $DAOFactory->getEducationDAO();
 		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
 		$this -> userWorkHistoryDAO = $DAOFactory->getWorkingHistoryDAO();
 		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
-		
+		if($profileUN){
+			$this->profileUN = $profileUN;
+			$this->userProfile = $this->userInfoDAO->queryByUsername($this->profileUN);
+			$this->profileId = $this->userProfile->getId();
+		}
 
 	}
 
 	function render (){
 		$baseUrl = $this->baseUrl;
+
 		//loading other click event on the page should be done by ajax
 
 		try{
 			
-			if($this->profileId != null){
+			if($this->profileUN != null){
 				//$userMProjects = $this->projectsDAO->getUserPublicProjects($this->profileId,0,10);
+				$userProfile = $this->userProfile;
+
+				
 				$userActivities = $this->challengesDAO->getUserActivities($this->profileId,0,10);
-				$userProfile = $this->userInfoDAO->load($this->profileId);
+				
 				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
 
 				$userEducation = $this -> userEducationDAO -> queryByUserId($this -> profileId);
