@@ -198,17 +198,17 @@
                         </div> <!-- /.heading-block -->
 
 
-                        <?php foreach ($userTechStrength as $key => $value) { ?>
-
-                          <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength(<?= $key ?>));">
+                        <?php foreach ($userTechStrength as $key => $techStrength) { ?>
+                          <?= $techStrength->getId() ?>
+                          <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength(<?= $techStrength->getId() ?>));">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Technical Strength</label>
                             
                               <div class="col-md-7">
-                                <input type="hidden" name="id" value="<?= $value -> getId() ?>" class="form-control"/>
-                                <input type="text" name="tech_strength" id="tech_strength_<?= $key ?>" value="<?= ucfirst($value -> getStrength()) ?>" class="form-control"/>
+                                <input type="hidden" name="id" value="<?= $techStrength->getId() ?>" class="form-control"/>
+                                <input type="text" name="tech_strength" id="tech_strength_<?= $techStrength->getId() ?>" value="<?= ucfirst($techStrength -> getStrength()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
                             </div> <!-- /.form-group -->
 
@@ -624,16 +624,21 @@
         return false;
       }
 
-      function postUpdateTechStrength(){
+      function postUpdateTechStrength(fields, key){
           var dataString = "";
-          $.each(fields, function( index, value ) {
+/*          $.each(fields, function( index, value ) {
               console.log(value);
               
               dataString = "tech_strength=" + $('#'+value).val() ;  
               
-          });
-
-         $.ajax({
+          });*/
+          if (key != undefined) {
+            dataString = "tech_strength=" + $('#'+fields[0]).val() + "&id=" + key ;
+          } 
+          else {
+            dataString = "tech_strength=" + $('#'+fields[0]).val();          }
+  
+          $.ajax({
                 type: "POST",
                 url: "<?= $baseUrl ?>" + "setting/updateTechStrength",
                 data: dataString,
@@ -662,7 +667,7 @@
                   });
                 }
 
-              });
+          });
 
       }
 
@@ -681,7 +686,7 @@
         }
         if(genericEmptyFieldValidator(fields)){
 
-            postUpdateTechStrength(fields);          
+            postUpdateTechStrength(fields, key);          
 
         }
         return false;
