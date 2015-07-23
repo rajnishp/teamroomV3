@@ -20,6 +20,9 @@ class ProjectController extends BaseController {
 	function render (){
 
 		$baseUrl = $this->baseUrl;
+		if ( ! isset($this -> projectId) || $this -> projectId == "" ){
+						header('Location: '. $baseUrl);
+		}
 		//loading other click event on the page should be done by ajax
 		
 		try{
@@ -27,6 +30,8 @@ class ProjectController extends BaseController {
 			//imp: add $this -> projectId in paramenter in place of 3(project_id)
 
 			//$projects = $this->projectsDAO->getByUserIdProjectId($this-> userId, $this-> projectId);
+			
+
 			if($this-> projectsDAO -> checkAuth($this->projectId,$this->userId)){
 				$project = $this-> projectsDAO -> getByProjectId( $this -> projectId );
 				

@@ -34,7 +34,7 @@ class SettingController {
 	function render (){
 		global $configs; 
 		$baseUrl = $configs["COLLAP_BASE_URL"];
-		if ( ! isset($this -> userId) ){
+		if ( ! isset($this -> userId) || $this -> userId == ""){
 						header('Location: '. $baseUrl);
 		}
 		//loading other click event on the page should be done by ajax

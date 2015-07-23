@@ -44,7 +44,7 @@ class ProfileController extends BaseController {
 				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> profileId);
 
 			}
-			else{
+			else if($this->userId){
 				//$userMProjects = $this->projectsDAO->getUserPublicProjects($this->userId,0,10);
 				
 				$userActivities = $this->challengesDAO->getUserActivities($this->userId,0,10);
@@ -57,6 +57,8 @@ class ProfileController extends BaseController {
 				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
 
 			}
+			else
+				header('Location: '. $baseUrl);
 			//var_dump($userMProjects);
 			$userSProjects = $this->projectsDAO->getUserProjects($this->userId, 0, 10);
 
