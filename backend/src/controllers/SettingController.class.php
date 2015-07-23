@@ -72,11 +72,14 @@ class SettingController {
 					$_POST['id']
 				);
 
-			if(isset($_POST['id']))
+			if(isset($_POST['id'])) {
 				$this -> userTechStrengthDAO ->update($tech_strength);
-			else
+				echo "Updated Successfully";
+			}
+			else {
 				$this -> userTechStrengthDAO ->insert($tech_strength);
-			echo "Updated Successfully";
+				echo "Added Successfully";
+			}
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
@@ -158,12 +161,8 @@ class SettingController {
 	}
 
 	function updateWorkExp() {
-		
-		if(isset($_POST['company_name'], $_POST['designation'], $_POST['from'], $_POST['to'])
-				 && $_POST['company_name'] != "" 
-				 && $_POST['designation'] != "" 
-				 && $_POST['from'] != "" 
-				 && $_POST['to'] != "") {
+
+		if(isset($_POST['company_name'], $_POST['designation'], $_POST['from'], $_POST['to'])) {
 	
 			$workExpObj = new WorkingHistory(
 									$this -> userId,
@@ -176,11 +175,15 @@ class SettingController {
 									$_POST['id']
 								);
 
-			if(isset($_POST['id']))
+			if(isset($_POST['id'])) {
 				$this -> userWorkHistoryDAO ->update($workExpObj);
-			else
+				echo "Updated Successfully";
+			}
+			
+			else {
 				$this -> userWorkHistoryDAO ->insert($workExpObj);
-			echo "Updated Successfully";
+				echo "Added Successfully";
+			}
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
@@ -189,13 +192,7 @@ class SettingController {
 	}
 
 	function updateEducation() {
-		
-		if(isset($_POST['institute'], $_POST['degree'], $_POST['branch'], $_POST['from'], $_POST['to'])
-				 && $_POST['institute'] != "" 
-				 && $_POST['degree'] != "" 
-				 && $_POST['branch'] != "" 
-				 && $_POST['from'] != "" 
-				 && $_POST['to'] != "") {
+		if(isset($_POST['institute'], $_POST['degree'], $_POST['branch'], $_POST['from'], $_POST['to'])) {
 			
 			$educationObj = new Education(
 									$this -> userId,
@@ -209,11 +206,14 @@ class SettingController {
 									$_POST['id']
 								);
 
-			if(isset($_POST['id']))
+			if(isset($_POST['id'])) {
 				$this -> userEducationDAO ->update($educationObj);
-			else
+				echo "Updated Successfully";
+			}
+			else {
 				$this -> userEducationDAO ->insert($educationObj);
-			echo "Updated Successfully";
+				echo "Added Successfully";
+			}
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');

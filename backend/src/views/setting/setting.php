@@ -255,14 +255,14 @@
 
                         <?php foreach ($userWorkExperience as $key => $workExperience) { ?>
                           
-                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp(<?= $key ?>));">
+                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp(<?= $workExperience->getId() ?>));">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Company Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="company_name" id="company_name_<?= $key ?>" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
+                                <input type="text" name="company_name" id="company_name_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
                                 <input type="hidden" name="id" value="<?= $workExperience -> getId() ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
@@ -273,7 +273,7 @@
                               <label class="col-md-3 control-label">Designation</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="designation" id="designation_<?= $key ?>" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
+                                <input type="text" name="designation" id="designation_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -286,9 +286,9 @@
 
                                 <div id="demo-dp-range">
                                   <div id="datepicker" class="input-daterange input-group">
-                                    <input type="text" name="from" id="work_from_<?= $key ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control"/>
+                                    <input type="text" name="from" id="work_from_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control" placeholder="YYY-MM-DD"/>
                                     <span class="input-group-addon">to</span>
-                                    <input type="text" name="to" id="work_to_<?= $key ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control"/>
+                                    <input type="text" name="to" id="work_to_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control" placeholder="YYY-MM-DD"/>
                                   </div>
                                 </div>
                               </div>
@@ -336,9 +336,9 @@
 
                                 <div id="demo-dp-range">
                                   <div id="datepicker" class="input-daterange input-group">
-                                    <input type="text" name="from" id="work_from" class="form-control"/>
+                                    <input type="text" name="from" id="work_from" class="form-control"  placeholder="YYY-MM-DD"/>
                                     <span class="input-group-addon">to</span>
-                                    <input type="text" name="to" id="work_to" class="form-control"/>
+                                    <input type="text" name="to" id="work_to" class="form-control"  placeholder="YYY-MM-DD"/>
                                   </div>
                                 </div>
                               </div>
@@ -360,15 +360,16 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <?php foreach ($userEducation as $key1 => $education) { ?>
-                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method = "POST" onSubmit="return (validateUpdateEducation(<?= $education->getId() ?>));">
+                        <?php foreach ($userEducation as $key1 => $education) { 
+                          echo $education -> getId() . " <br/>";?>
+                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method = "POST" onSubmit="return (validateUpdateEducation(<?= $education -> getId() ?>));">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Institute Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="institute" id="institute_<?= $key1 ?>" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
+                                <input type="text" name="institute" id="institute_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
                                 <input type="hidden" name="id" value="<?= ucfirst($education -> getId()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
@@ -379,7 +380,7 @@
                               <label class="col-md-3 control-label">Name of Degree</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="degree" id="degree_<?= $key1 ?>" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
+                                <input type="text" name="degree" id="degree_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -388,7 +389,7 @@
                               <label class="col-md-3 control-label">Branch Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="branch" id="branch_<?= $key1 ?>" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
+                                <input type="text" name="branch" id="branch_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -401,9 +402,9 @@
 
                                 <div id="demo-dp-range">
                                   <div id="datepicker" class="input-daterange input-group">
-                                    <input type="text" name="from" id="edu_from_<?= $key1 ?>" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control"/>
+                                    <input type="text" name="from" id="edu_from_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control" placeholder="YYYY"/>
                                     <span class="input-group-addon">to</span>
-                                    <input type="text" name="to" id="edu_to_<?= $key1 ?>" value="<?= ucfirst($education -> getTo()) ?>" class="form-control"/>
+                                    <input type="text" name="to" id="edu_to_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getTo()) ?>" class="form-control" placeholder="YYYY"/>
                                   </div>
                                 </div>
                               </div>
@@ -459,9 +460,9 @@
 
                                 <div id="demo-dp-range">
                                   <div id="datepicker" class="input-daterange input-group">
-                                    <input type="text" name="from" id="edu_from" value="" class="form-control"/>
+                                    <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
                                     <span class="input-group-addon">to</span>
-                                    <input type="text" name="to" id="edu_to" value="" class="form-control"/>
+                                    <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
                                   </div>
                                 </div>
                               </div>
@@ -686,13 +687,18 @@
         return false;
       }
 
-      function postUpdateWorkExp(fields){
+      function postUpdateWorkExp(fields, key){
           var dataString = "";
+
+          if (key != undefined) {
+            dataString = "company_name=" + $('#'+fields[0]).val() + "&designation=" + $('#'+fields[1]).val() + "&from=" + $('#'+fields[2]).val() + "&to=" + $('#'+fields[3]).val() + "&id=" + key ;
+          } 
+          else {
+            dataString = "company_name=" + $('#'+fields[0]).val() + "&designation=" + $('#'+fields[1]).val() + "&from=" + $('#'+fields[2]).val() + "&to=" + $('#'+fields[3]).val() ;
+          }                        
+            
           
-              
-          dataString = "company_name=" + $('#'+fields[0]).val() + "&designation=" + $('#'+fields[1]).val() + "&from=" + $('#'+fields[2]).val() + "&to=" + $('#'+fields[3]).val() ;  
-              
-          
+          console.log(dataString);
 
           $.ajax({
             type: "POST",
@@ -738,16 +744,21 @@
            });
         }
         if (genericEmptyFieldValidator(fields)) {
-            postUpdateWorkExp(fields);
+            postUpdateWorkExp(fields, key);
         }
         return false;
       }
 
 
-      function postUpdateEducation(fields){
+      function postUpdateEducation(fields, key){
           var dataString = "";
 
-          dataString = "institute=" + $('#'+fields[0]).val() + "&degree=" + $('#'+fields[1]).val() + "&branch=" + $('#'+fields[2]).val() + "&edu_from=" + $('#'+fields[3]).val() + "&edu_to=" + $('#'+fields[4]).val() ;  
+          if (key != undefined) {
+            dataString = "institute=" + $('#'+fields[0]).val() + "&degree=" + $('#'+fields[1]).val() + "&branch=" + $('#'+fields[2]).val() + "&from=" + $('#'+fields[3]).val() + "&to=" + $('#'+fields[4]).val() + "&id=" + key ;
+          } 
+          else {
+            dataString = "institute=" + $('#'+fields[0]).val() + "&degree=" + $('#'+fields[1]).val() + "&branch=" + $('#'+fields[2]).val() + "&from=" + $('#'+fields[3]).val() + "&to=" + $('#'+fields[4]).val() ;
+          }
 
           $.ajax({
             type: "POST",
@@ -794,10 +805,10 @@
 
            });
         }
-alert(fields);
+
         if (genericEmptyFieldValidator(fields)) {
-        
-            postUpdateEducation(fields);
+   
+            postUpdateEducation(fields, key);
         }
         return false;
 
