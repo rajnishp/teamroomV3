@@ -14,7 +14,9 @@ class ProjectsMySqlDAO implements ProjectsDAO{
 	 * @return ProjectsMySql 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM projects WHERE id = ?';
+		$sql = 'SELECT project.*, user.first_name, user.last_name, user.username 
+					FROM projects as project JOIN user_info as user 
+						WHERE project.id = ? AND project.user_id = user.id';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);

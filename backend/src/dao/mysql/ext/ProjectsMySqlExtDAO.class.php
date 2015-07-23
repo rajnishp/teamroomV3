@@ -233,18 +233,44 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 		return $projects;
 	}
 
-	public function queryAllUserProjects($userId){
-		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, 
-								user.first_name, user.last_name, user.username 
-					FROM projects as project JOIN user_info as user JOIN teams as team 
-						WHERE (project.user_id = ? OR team.user_id = ?) 
-							AND project.user_id = user.id 
-							AND project.type != 'Deleted' AND team.member_status = 1 
-							ORDER BY creation_time DESC;";
+
+	public function getUserJoinedProjects($userId){
+		$sql = "SELECT DISTINCT team.project_id AS id, project.project_title AS title, project.stmt AS statement, project.type, project.creation_time, 
+								user.first_name, user.last_name, user.username
+					FROM teams AS team JOIN projects AS project JOIN user_info AS user
+						WHERE 
+							team.project_id NOT IN (SELECT project.id AS project_id FROM projects WHERE project.user_id =? AND project.type != 'Deleted')
+							AND team.user_id =?
+							AND team.user_id = user.id
+							AND team.project_id = project.id
+							AND team.member_status = '1' ORDER BY creation_time DESC";
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($userId);
 		$sqlQuery->setNumber($userId);
-		return $this->getListProjects($sqlQuery);
+		$joinedProjects = $this->getListProjects($sqlQuery);
+		
+		//var_dump($joinedProjects); die();
+		return $joinedProjects;
+	}
+
+	public function queryAllUserProjects($userId){
+		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, 
+								user.first_name, user.last_name, user.username 
+					FROM projects as project JOIN user_info as user
+						WHERE project.user_id = ? 
+							AND project.user_id = user.id 
+							AND project.type != 'Deleted' 
+							ORDER BY creation_time DESC;";
+
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		
+		$userProjects = $this -> getListProjects($sqlQuery);
+		$userJoinedProjects = $this -> getUserJoinedProjects($userId);
+
+		$userAllProjects = array_merge((array) $userProjects, (array) $userJoinedProjects);
+		//var_dump($userAllProjects); die();
+		return $userAllProjects;
 	}
 
 	public function getTopProjects() {

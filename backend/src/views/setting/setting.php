@@ -15,6 +15,7 @@
 
 </head>
 
+  <body>
     <div id="container" class="effect mainnav-lg">
         
       <?php require_once 'views/navbar/main_navbar.php'; ?>
@@ -553,13 +554,16 @@
                 </div> <!-- /.panel -->
 
 
-              </div> <!-- /.layout -->
+            </div> <!-- /.layout -->
 
-            </div> <!-- .content-container -->
+          </div> <!-- /.row -->
+        
+        </div> <!-- .content-container -->
 
         <?php require_once 'views/sidebar/sidebar_button.php'; ?>
 
       </div> <!-- /.boxed -->
+    
     </div> <!-- /.container -->
 
     <?php require_once 'views/footer/footer.php'; ?>
@@ -594,7 +598,7 @@
             console.log(result);
             $.niftyNoty({ 
               type:"danger",
-              icon:"fa fa-check fa-lg",
+              icon:"fa fa-times fa-lg",
               title:"Profile Information",
               message:result.responseText,
               focus: true,
@@ -654,7 +658,7 @@
                   console.log(result);
                   $.niftyNoty({ 
                     type:"danger",
-                    icon:"fa fa-check fa-lg",
+                    icon:"fa fa-times fa-lg",
                     title:"Technical Strength",
                     message:result.responseText,
                     focus: true,
@@ -721,7 +725,7 @@
               console.log(result);
               $.niftyNoty({ 
                 type:"danger",
-                icon:"fa fa-check fa-lg",
+                icon:"fa fa-times fa-lg",
                 title:"Working Experience",
                 message:result.responseText,
                 focus: true,
