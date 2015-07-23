@@ -199,7 +199,7 @@
 
 
                         <?php foreach ($userTechStrength as $key => $techStrength) { ?>
-                          <?= $techStrength->getId() ?>
+
                           <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength(<?= $techStrength->getId() ?>));">
 
                             <div class="form-group">
@@ -360,8 +360,7 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <?php foreach ($userEducation as $key1 => $education) { 
-                          echo $education -> getId() . " <br/>";?>
+                        <?php foreach ($userEducation as $key1 => $education) { ?>
                           <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method = "POST" onSubmit="return (validateUpdateEducation(<?= $education -> getId() ?>));">
 
                             <div class="form-group">
@@ -570,14 +569,11 @@
 
     <script type="text/javascript">
 
-      function postUpdateProfile(){
+      function postUpdateProfile(fields){
         var dataString = "";
-        $.each(fields, function( index, value ) {
           
-          dataString = "first_name=" + first_name + "&last_name=" + last_name + "&phone=" + phone + "&living_place=" + living_place + "&about_user=" + about_user;
-          alert(dataString); 
-        });
-
+        dataString = "first_name=" + $('#'+fields[0]).val() + "&last_name=" + $('#'+fields[1]).val() + "&phone=" + $('#'+fields[2]).val() + "&living_place=" + $('#'+fields[3]).val() + "&about_user=" + $('#'+fields[4]).val();
+         
         $.ajax({
           type: "POST",
           url: "<?= $baseUrl ?>" + "setting/updateUserInfo",

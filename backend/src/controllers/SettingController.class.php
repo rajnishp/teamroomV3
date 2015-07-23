@@ -90,7 +90,7 @@ class SettingController {
 
 	function updateUserInfo() {
 		
-		var_dump($_POST); die();
+		//var_dump($_POST); die();
 		
 		if(isset($_POST['first_name'], $_POST['last_name'], $_POST['phone'], $_POST['living_place'], $_POST['about_user'])) {
 	
