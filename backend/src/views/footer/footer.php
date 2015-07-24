@@ -65,12 +65,19 @@
 	<!--Demo script [ DEMONSTRATION ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/nifty-demo.min.js"></script>
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/layouts.js"></script>
-
+	
     <!--Form Wizard [ SAMPLE ]-->
   <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-wizard.js"></script>
   <script src="<?= $baseUrl ?>static/js/genericEmptyFieldValidator.js"></script>
 
 <script>
+$('#demo-dp-range .input-daterange').datepicker({
+		format: "MM dd, yyyy",
+		todayBtn: "linked",
+		autoclose: true,
+		todayHighlight: true
+	});
+	
 function addMorePost(url, dataString,addAt){
 
   $.ajax({

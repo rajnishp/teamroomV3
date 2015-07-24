@@ -53,6 +53,11 @@ $logger -> debug ("Setting up ...");
 
 
 $route = explode("/",$_SERVER[REQUEST_URI]);
+$logger -> debug ("router :: " .json_encode($route));
+
+$logger -> debug ("post :: " .json_encode($_POST));
+
+$logger -> debug ("get :: " .json_encode($_GET));
 
 //for url translantion
 if(substr($route[1], 0, 11) == "profile.php"){
@@ -104,13 +109,16 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 								break;
 							
 							default:
+
 								if ($route['2'] == 'createNew'){
+
 									$projectController -> createNewProject();
 								}
 
 								elseif($route['2'] == 'createProject') {
 
 									$projectController -> createProject();
+
 								}
 
 								elseif ($route['3'] == 'joinProject') {

@@ -22,6 +22,8 @@ abstract class BaseController {
 
 	protected $teamsDAO;
 
+	protected $logger;
+
 	
 
 	function __construct (  ){
@@ -29,6 +31,10 @@ abstract class BaseController {
 		global $configs; 
 		$this->baseUrl = $configs["COLLAP_BASE_URL"];
 
+		global $logger;
+		$this -> logger = $logger;
+
+		$this -> logger -> debug("BaseController started");
 		if( isset( $_SESSION["user_id"] ) ){
 
 			$this -> userId = $_SESSION["user_id"];

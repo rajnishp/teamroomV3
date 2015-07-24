@@ -84,6 +84,7 @@ class ProjectController extends BaseController {
 	
 	
 	function createProject(){
+		$this -> logger -> debug( "inside Crete Porject");
 		if(isset($_POST['title'], $_POST['description'], $_POST['type'], $_POST['tech_skills'], $_POST['my_role'], $_POST['team_size'], $_POST['start'], $_POST['end'])){
 			
 			$newProject = new Project(
@@ -101,22 +102,26 @@ class ProjectController extends BaseController {
 										$_POST['tech_skills'],
 										$_POST['my_role'],
 										$_POST['team_size'],
-										$_POST['start'],
-										$_POST['end'],
+										date("Y-m-d H:i:s", strtotime( $_POST['start'])),
+										date("Y-m-d H:i:s", strtotime($_POST['end'])),
 										null,
 										null,
 										null);
-				
-				//var_dump( $newProject ); die();
+			$this -> logger -> debug( "project");
+			
 			try {
 				$this -> projectId = $this -> projectsDAO -> insert($newProject) ;
+				$this -> logger -> debug( "project id: " . $this->projectId);
+				echo $this->baseUrl . "project/" . $this->projectId;
+				//header("location: " . );
 				
 			}
 			catch (Exception $e){
-				var_dump($e); die();
+
+				echo "Failed to post";
 			}	
 		}
-		$this -> render ();
+		
 
 	}
 
