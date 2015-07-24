@@ -118,9 +118,7 @@
             <div class="text-center">
               <p>
                 <?php if(!$this->isKnown()) { ?>
-                  <form action="<?= $baseUrl ?>profile/sendLinkRequest" method="POST">
-                    <button type="submit" class="btn btn-info">Link</button>
-                  </form>
+                    <button class="btn btn-info" onclick="postLinkRequest()">Link</button>
                 <?php }?>
                 <!-- &nbsp;
                 <a href="javascript:;" class="btn btn-tertiary">Message</a> -->
@@ -464,7 +462,114 @@
   </div>
 
   <?php include_once 'views/footer/footer.php'; ?>
+  
+  <script type="text/javascript">
 
+        function  postLinkRequest(){
+          var dataString = "";
+          $.ajax({
+                type: "POST",
+                url: "<?= $baseUrl ?>" + "profile/<?= $userProfile->getUsername() ?>/sendLinkRequest",
+                data: dataString,
+                cache: false,
+                success: function(result){
+                  $.niftyNoty({ 
+                    type:"success",
+                    icon:"fa fa-check fa-lg",
+                    title:"Link Request",
+                    message:result,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+                },
+                 error: function(result){
+                  console.log(result);
+                  $.niftyNoty({ 
+                    type:"danger",
+                    icon:"fa fa-times fa-lg",
+                    title:"Link Request",
+                    message:result.responseText,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+                }
+            });
+    }
 
+  </script>
+<script type="text/javascript">
+
+function requestAccept(key){
+          var dataString = "";
+          dataString = "id=" + key ;
+
+          $.ajax({
+            type: "POST",
+            url: "<?= $baseUrl ?>" + "profile/<?= $userProfile->getUsername() ?>/confirmLinkRequest",
+            data: dataString,
+            cache: false,
+            success: function(result){
+              $.niftyNoty({ 
+                type:"success",
+                icon:"fa fa-check fa-lg",
+                title:"Link Request",
+                message:result,
+                focus: true,
+                container:"floating",
+                timer:4000
+              });
+            },
+             error: function(result){
+              console.log(result);
+              $.niftyNoty({ 
+                type:"danger",
+                icon:"fa fa-times fa-lg",
+                title:"Link Request",
+                message:result.responseText,
+                focus: true,
+                container:"floating",
+                timer:4000
+              });
+            }
+          });
+        }
+
+function requestDelete(key){
+          var dataString = "";
+          dataString = "id=" + key ;
+
+          $.ajax({
+            type: "POST",
+            url: "<?= $baseUrl ?>" + "profile/<?= $userProfile->getUsername() ?>/deleteLinkRequest",
+            data: dataString,
+            cache: false,
+            success: function(result){
+              $.niftyNoty({ 
+                type:"success",
+                icon:"fa fa-check fa-lg",
+                title:"Link Request",
+                message:result,
+                focus: true,
+                container:"floating",
+                timer:4000
+              });
+            },
+             error: function(result){
+              console.log(result);
+              $.niftyNoty({ 
+                type:"danger",
+                icon:"fa fa-times fa-lg",
+                title:"Link Request",
+                message:result.responseText,
+                focus: true,
+                container:"floating",
+                timer:4000
+              });
+            }
+          });
+        }
+</script>
   </body>
 </html>

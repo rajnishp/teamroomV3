@@ -135,7 +135,7 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 					$profileController = new ProfileController($route[2]);
 
 					$where = $route[3];
-					
+
 					switch ($where) {
 							case 'activities':
 								
@@ -154,6 +154,19 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 							case 'forgetPassword':
 								$homeController -> forgetPassword ();
 								break;
+
+
+							case 'sendLinkRequest':
+								$profileController -> sendLinkRequest();
+								break;					
+
+							case 'confirmLinkRequest':
+								$profileController -> confirmLinkRequest();
+								break;	
+
+							case 'deleteLinkRequest':
+								$profileController -> deleteLinkRequest();
+								break;	
 							
 							default:
 								if($route[2] == 'activities')
@@ -291,9 +304,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 				break;
 			
 			case "completeProfile":
-					$completeProfileController = new CompleteProfileController();
-					$completeProfileController -> render();
-				break;
+					if( isset($_SESSION["user_id"] )){
+						$completeProfileController = new CompleteProfileController();
+						$completeProfileController -> render();
+						break;
+					}
+				
 
 			default:
 					if( isset($_SESSION["user_id"] )){

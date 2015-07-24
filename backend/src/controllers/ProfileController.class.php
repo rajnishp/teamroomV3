@@ -14,10 +14,20 @@ class ProfileController extends BaseController {
 		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
 		$this -> userWorkHistoryDAO = $DAOFactory->getWorkingHistoryDAO();
 		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
+		
+		$this -> knownPeoplesDAO = $DAOFactory->getKnownPeoplesDAO();
+		$this -> notificationDAO = $DAOFactory->getNotificationsDAO();
+
 		if($profileUN){
 			$this->profileUN = $profileUN;
-			$this->userProfile = $this->userInfoDAO->queryByUsername($this->profileUN);
-			$this->profileId = $this->userProfile->getId();
+			try{
+				$this->userProfile = $this->userInfoDAO->queryByUsername($this->profileUN);
+				if(!isset($this->userProfile))
+					header("location:". $this ->baseUrl);
+				$this->profileId = $this->userProfile->getId();
+			} catch (Exception $e){
+			header("location:". $this ->baseUrl);
+			}
 		}
 
 	}
@@ -128,6 +138,132 @@ class ProfileController extends BaseController {
 		
 	}
 
+
+	function sendLinkRequest () {
+		try {
+			$knownObj = new KnownPeople (
+								$this -> userId,
+								$this -> profileId,
+								1,
+								0,
+								date("Y-m-d H:i:s")
+							);
+
+			$linkId = $this-> knownPeoplesDAO -> insert($knownObj);			
+			
+			$noticeUrl = "<div class='row-fluid'>
+							<a href ='#' style='white-space: normal ;'>
+							<i class='icon-plus'></i>
+									</a>&nbsp; 
+								Send Link on  ".date("Y-m-d H:i:s")."<br/>
+							<button type='submit' class='btn-link' onclick='requestAccept(\"".$linkId."\")' value='Accept'></button>
+							<button type='submit' class='btn-link' onclick='requestDelete(\"".$linkId."\")' value='Delete'></button>
+						</div>";
+
+			$noticeObj = new Notification(
+								$noticeUrl,
+								$this -> profileId,
+								date("Y-m-d H:i:s")
+							);
+
+			$this-> notificationDAO -> insert($noticeObj);			
+			
+			echo "Request Sent";
+		}
+		catch (Exception $e){
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Request can not be Sent, Try Again";
+		}
+	}
+
+	function confirmLinkRequest () {
+
+		//var_dump($_POST); die();
+		
+		if(isset($_POST['id'])) {
+
+			if (! isset($_POST))
+	            throw new MissingParametersException('No fields specified for updation');
+
+	        $knownObj = $this -> knownPeoplesDAO -> load($_POST['id']);
+	        
+	        if(! is_object($knownObj)) 
+	            return array('code' => '2004');
+
+	        $newStatus= 2;
+	        if (isset($newStatus)) {
+	            if ($newStatus != $knownObj -> getStatus()) {
+	                $update = true;
+	                $knownObj -> setStatus($newStatus);
+	            }
+	        }
+
+	        $newLastActionTime= date("Y-m-d H:i:s");
+	        if (isset($newLastActionTime)) {
+	            if ($newLastActionTime != $knownObj -> getLastActionTime()) {
+	                $update = true;
+	                $knownObj -> setLastActionTime($newLastActionTime);
+	            }
+	        }
+
+	        if ($update) {
+	            $this -> knownPeoplesDAO -> update($knownObj);
+				echo "Request Confirmed";
+			}
+			else{
+				header('HTTP/1.1 500 Internal Server Error');
+				echo "Request can not be Confirmed, Try Again";
+			}
+		}
+		else{
+				header('HTTP/1.1 500 Internal Server Error');
+				echo "Request can not be Confirmed, Try Again";
+		}
+	}
+
+	function deleteLinkRequest () {
+
+				
+		if(isset($_POST['id'])) {
+
+			if (! isset($_POST))
+	            throw new MissingParametersException('No fields specified for updation');
+
+	        $knownObj = $this -> knownPeoplesDAO -> load($_POST['id']);
+	        
+	        if(! is_object($knownObj)) 
+	            return array('code' => '2004');
+
+	        $newStatus= 3;
+	        if (isset($newStatus)) {
+	            if ($newStatus != $knownObj -> getStatus()) {
+	                $update = true;
+	                $knownObj -> setStatus($newStatus);
+	            }
+	        }
+
+	        $newLastActionTime= date("Y-m-d H:i:s");
+	        if (isset($newLastActionTime)) {
+	            if ($newLastActionTime != $knownObj -> getLastActionTime()) {
+	                $update = true;
+	                $knownObj -> setLastActionTime($newLastActionTime);
+	            }
+	        }
+
+	        if ($update) {
+	            $this -> knownPeoplesDAO -> update($knownObj);
+				echo "Request Confirmed";
+			}
+			else{
+				header('HTTP/1.1 500 Internal Server Error');
+				echo "Request can not be Confirmed, Try Again";
+			}
+		}
+		else{
+				header('HTTP/1.1 500 Internal Server Error');
+				echo "Request can not be Confirmed, Try Again";
+		}
+	}	
 }
 
 ?>
