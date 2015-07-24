@@ -96,19 +96,20 @@
 
               <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3">
 
-                <h4><small>Followers</small></h4>          
+                <h4><small>Activity</small></h4>          
                 <p class="semibold">23</p>   
               </div>
               
               <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3">
-                <h4><small>Following</small></h4>               
+                <h4><small>Ideas</small></h4>               
                 <p class="semibold">123</p>   
               </div>
               
               <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3">
                 <h4><small>Contact</small></h4>               
-                <a href="../icon/facebook-square"><i class="fa fa-facebook-square"></i></a>
-                <a href="../icon/twitter-square"><i class="fa fa-twitter-square"></i></a>
+                <a href="#"><i class="fa fa-facebook-square"></i></a>
+                <a href="#"><i class="fa fa-twitter-square"></i></a>
+                <a href="#"><i class="fa fa-linkedin-square"></i></a>
               </div>
 
             </div> <!-- /.row text center -->
@@ -116,9 +117,13 @@
 
             <div class="text-center">
               <p>
-                <a href="javascript:;" class="btn btn-info">Follow</a> 
-                &nbsp;
-                <a href="javascript:;" class="btn btn-tertiary">Message</a>
+                <?php if(!$this->isKnown()) { ?>
+                  <form action="<?= $baseUrl ?>profile/sendLinkRequest" method="POST">
+                    <button type="submit" class="btn btn-info">Link</button>
+                  </form>
+                <?php }?>
+                <!-- &nbsp;
+                <a href="javascript:;" class="btn btn-tertiary">Message</a> -->
               </p>
             </div>
           

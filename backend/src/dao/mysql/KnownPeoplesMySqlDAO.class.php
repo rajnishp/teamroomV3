@@ -175,7 +175,6 @@ class KnownPeoplesMySqlDAO implements KnownPeoplesDAO{
 		$row['last_action_time'],$row['id']);
 		
 		
-
 		return $knownPeople;
 	}
 	

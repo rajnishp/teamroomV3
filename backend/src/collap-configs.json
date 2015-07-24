@@ -2,7 +2,7 @@
     "mysql": {
         "host": "localhost", 
         "user": "root", 
-        "password": "redhat11111", 
+        "password": "redhat111111", 
         "database": "ninjasTeamRoom2" 
         }, 
     "mongo": {    

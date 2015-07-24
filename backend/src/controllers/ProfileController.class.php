@@ -56,6 +56,7 @@ class ProfileController extends BaseController {
 				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
 				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
 
+
 			}
 			else
 				header('Location: '. $baseUrl);
@@ -69,6 +70,18 @@ class ProfileController extends BaseController {
 			//echo "Error occur :500 <br>".var_dump($e);
 		}
 
+	}
+
+	private function isKnown(){
+		if(!isset($this->profileId))
+			return true;
+		foreach ($this->links as $key => $value) {
+			if($this->profileId == $value->getId()){
+				return true;
+			}
+		}
+		return false;
+		
 	}
 
 	function getNextActivities(){
