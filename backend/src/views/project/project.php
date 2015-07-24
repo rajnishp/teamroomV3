@@ -118,35 +118,38 @@
 
                             <div class="share-widget clearfix">
                               
-                              <form id="postActivityProject" action="<?= $baseUrl ?>postActivity" class="form-horizontal" method="post" onSubmit="return (validatePostActivity());">
+                              <form id="postActivityProject"  class="form-horizontal" onSubmit="return (validatePostActivity('project'));">
 
                                 <div class="share-widget">
-                                  <input type="text" class="form-control" name="title" placeholder="Title">
-                                  <input type="hidden" name="project_id" value="">
+                                  <input type="text" class="form-control" id="title"  placeholder="Title">
+                                  <input type="hidden" id="project_id" value="<?= $this->projectId ?>">
                                   </div>
                                 <br />
 
-                                <textarea class="form-control share-widget-textarea" name = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
+                                <textarea class="form-control share-widget-textarea" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
 
                                 <div class="share-widget-actions">
                                   <div class="share-widget-types pull-left">
                                     
-                                    <div class="col-md-6" style="margin-top: 9px;">
+                                    <div class="col-md-8" style="margin-top: 9px;">
                                       <label class="form-radio form-normal active form-inline">
-                                        <input type="radio" checked="" name="activity" id ="challenge" value="1"> Challenge 
+                                        <input type="radio" checked="" name="activity" id="activity_type"value="1"> Challenge 
                                       </label>
 
                                       <label class="form-radio form-normal">
-                                        <input type="radio" name="activity" id = "notes" value="6"> Notes 
+                                        <input type="radio" name="activity" id="activity_type" value="6"> Notes 
                                       </label>
                                     
                                       <label class="form-radio form-normal">
-                                        <input type="radio" name="activity" id = "task_select" value="5" > Task
+                                        <input type="radio" name="activity" id="activity_type" value="5" > Task
+                                      </label>
+                                      <label class="form-radio form-normal">
+                                        <input type="radio" name="activity" id="activity_type" value="4"> Idea
                                       </label>
                                     </div>
                                     
-                                    <div class="col-md-6">
-                                      <input type="file" name="file" class="btn btn-default btn-file pull-right">
+                                    <div class="col-md-4">
+                                      <input type="file" id="_file" class="btn btn-default btn-file pull-right">
                                     </div>
                                     
                                   </div>
@@ -430,6 +433,9 @@
       </div>
     </div>
 
+
+
+    <?php require_once 'views/footer/footer.php'; ?>
 <script type="text/javascript">
   $(document).ready(function() {
      $('input[type="radio"]').click(function() {
@@ -443,9 +449,6 @@
      });
   });
 </script>
-
-    <?php require_once 'views/footer/footer.php'; ?>
-
 
   </body>
 </html>
