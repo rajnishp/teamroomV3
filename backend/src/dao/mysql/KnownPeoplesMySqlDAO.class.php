@@ -13,12 +13,11 @@ class KnownPeoplesMySqlDAO implements KnownPeoplesDAO{
 	 * @param String $id primary key
 	 * @return KnownPeoplesMySql 
 	 */
-	public function load($requestingId, $knowingId){
-		$sql = 'SELECT * FROM known_peoples WHERE requesting_id = ?  AND knowing_id = ? ';
+	public function load($id){
+		$sql = 'SELECT * FROM known_peoples WHERE id = ? ';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($requestingId);
-		$sqlQuery->setNumber($knowingId);
-
+		$sqlQuery->setNumber($id);
+		
 		return $this->getRow($sqlQuery);
 	}
 
@@ -81,18 +80,17 @@ class KnownPeoplesMySqlDAO implements KnownPeoplesDAO{
  	 * @param KnownPeoplesMySql knownPeople
  	 */
 	public function update($knownPeople){
-		$sql = 'UPDATE known_peoples SET id = ?, status = ?, requesting_time = ?, last_action_time = ? WHERE requesting_id = ?  AND knowing_id = ? ';
+		$sql = 'UPDATE known_peoples SET  status = ?, requesting_time = ?, last_action_time = ?, requesting_id = ?, knowing_id = ?  WHERE id = ? ';
+		
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($knownPeople->id);
-		$sqlQuery->setNumber($knownPeople->status);
-		$sqlQuery->set($knownPeople->requestingTime);
-		$sqlQuery->set($knownPeople->lastActionTime);
-
-		
-		$sqlQuery->setNumber($knownPeople->requestingId);
-
-		$sqlQuery->setNumber($knownPeople->knowingId);
+		$sqlQuery->setNumber($knownPeople->getStatus());
+		$sqlQuery->set($knownPeople->getRequsetingTime());
+		$sqlQuery->set($knownPeople->getLastActionTime());
+		$sqlQuery->setNumber($knownPeople->getRequestingId());
+		$sqlQuery->setNumber($knownPeople->getKnowingId());
+	
+		$sqlQuery->setNumber($knownPeople->getId());
 
 		return $this->executeUpdate($sqlQuery);
 	}

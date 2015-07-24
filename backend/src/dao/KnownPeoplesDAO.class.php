@@ -13,7 +13,7 @@ interface KnownPeoplesDAO{
 	 * @param String $id primary key
 	 * @Return KnownPeoples 
 	 */
-	public function load($requestingId, $knowingId);
+	public function load($id);
 
 	/**
 	 * Get all records from table
