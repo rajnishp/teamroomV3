@@ -33,6 +33,8 @@ abstract class BaseController {
 
 			$this -> userId = $_SESSION["user_id"];
 			$this -> username = $_SESSION["username"];
+			$this -> firstName = $_SESSION['first_name'];
+			$this -> lastName = $_SESSION['last_name'];
 
 
 		}

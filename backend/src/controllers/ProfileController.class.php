@@ -148,16 +148,17 @@ class ProfileController extends BaseController {
 								0,
 								date("Y-m-d H:i:s")
 							);
+			//var_dump($userProfile); die();
 
 			$linkId = $this-> knownPeoplesDAO -> insert($knownObj);			
 			
 			$noticeUrl = "<div class='row-fluid'>
-							<a href ='#' style='white-space: normal ;'>
-							<i class='icon-plus'></i>
-									</a>&nbsp; 
+							<a href ='#'>
+							<i class='fa fa-plus'></i>
+								".$this -> firstName." ".$this -> lastName."</a>&nbsp; 
 								Send Link on  ".date("Y-m-d H:i:s")."<br/>
-							<button type='submit' class='btn-link' onclick='requestAccept(\"".$linkId."\")' value='Accept'></button>
-							<button type='submit' class='btn-link' onclick='requestDelete(\"".$linkId."\")' value='Delete'></button>
+							<button type='submit' class='btn btn-primary' onclick='requestAccept(\"".$linkId."\")' value='Accept'>Accept</button>
+							<button type='submit' class='btn btn-danger' onclick='requestDelete(\"".$linkId."\")' value='Delete'>Cancel</button>
 						</div>";
 
 			$noticeObj = new Notification(
