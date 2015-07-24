@@ -130,6 +130,11 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 					$activityController -> render();
 				break;
 
+			case "fileUpload":
+					require_once "controllers/FilesController.class.php";
+					
+				break;
+
 			case "profile":
 
 					$profileController = new ProfileController($route[2]);

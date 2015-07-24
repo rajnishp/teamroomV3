@@ -46,7 +46,7 @@ class DashboardController extends BaseController {
 			
 			$challengeObj = new Challenge(
 										$this -> userId,
-										0,
+										$_POST['project_id']? $_POST['project_id']:0,
 										0,
 										0,
 										$_POST['title'],

@@ -31,7 +31,7 @@
            <h3 class="title">Post to Collap</h3>
            <!-- Post to collap starts -->
            <div class="share-widget clearfix">
-              <form id="postActivity" class="form-horizontal" onSubmit="return (validatePostActivity());">
+              <form id="postActivity" class="form-horizontal" onSubmit="return (validatePostActivity('dashboard'));">
                  <div class="share-widget">
                     <input type="text" class="form-control" id="title" placeholder="Title">
                  </div>
@@ -51,7 +51,7 @@
                           </label>
                        </div>
                        <div class="col-md-6">
-                          <input type="file" name="file" id="file" class="btn btn-default btn-file pull-right">
+                          <input type="file" name="_file" id="_file" class="btn btn-default btn-file pull-right">
                        </div>
                     </div>
                     <div class="pull-right">
@@ -125,55 +125,7 @@
      </div>
      <?php require_once 'views/sidebar/sidebar_button.php'; ?>
      <?php require_once 'views/footer/footer.php'; ?>
-     <script src="<?= $baseUrl ?>static/js/genericEmptyFieldValidator.js"></script>
-     <script type="text/javascript">
-        function postDBActivity(fields){
-          var dataString = "";
-          
-          
-          dataString = "title=" + $('#'+fields[0]).val() + "&description=" + $('#'+fields[1]).val() + "&activity_type=" + $('input[name="activity"]:checked').val();
-              
-          
-         $.ajax({
-                type: "POST",
-                url: "<?= $baseUrl ?>" + "dashboard/postActivity",
-                data: dataString,
-                cache: false,
-                success: function(result){
-                  $.niftyNoty({ 
-                    type:"success",
-                    icon:"fa fa-check fa-lg",
-                    title:"Post Activity",
-                    message:result,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
-                },
-                 error: function(result){
-                  console.log(result);
-                  $.niftyNoty({ 
-                    type:"danger",
-                    icon:"fa fa-check fa-lg",
-                    title:"Post Activity",
-                    message:result.responseText,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
-                }
-        
-              });
-        
-        }
-          function validatePostActivity(){
-            fields = ["title","description"];
-            if (genericEmptyFieldValidator(fields)) {
-              
-              postDBActivity(fields);
-            }
-            return false;
-          }
-     </script> 
+     
+      
   </body>
 </html>
