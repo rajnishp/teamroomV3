@@ -180,8 +180,8 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 								break;
 
-							case 'logout':
-								$homeController -> logout ();
+							case 'postActivity':
+								$dashboardController -> postActivity ();
 								break;
 
 							case 'forgetPassword':

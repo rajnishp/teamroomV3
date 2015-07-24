@@ -342,6 +342,9 @@
 
                 <div class="form-group">
                   <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username" tabindex="1">
+                  <i class="form-control-feedback" style="display: none;" data-bv-icon-for="username" data-original-title="" title=""></i>
+                  <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="username" data-bv-result="NOT_VALIDATED">The first name is required and cannot be empty</small>
+                  <small class="help-block" style="display: none;" data-bv-validator="regexp" data-bv-for="username" data-bv-result="NOT_VALIDATED">The first name can only consist of alphabetical characters and spaces</small>
                 </div>
                 <div class="form-group">
                   <input type="password" class="input-block-level form-control" id="password" name="password" placeholder="Password" tabindex="1">
