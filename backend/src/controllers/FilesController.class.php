@@ -5,7 +5,7 @@ function checkNCreateFolder($username,$dir){
 
 	$root = $configs['COLLAP_FILE_ROOT'];
 	if (!file_exists($root.$username)) {
-		
+
 		mkdir($root.$username, 0777, true);
 	}
 	if (!file_exists($root.$username."/".$dir)) {
@@ -66,29 +66,32 @@ if(isset($_SESSION['username'])){
 				
 				break;
 			
-			case "profile":
+			case "profilePic":
 				$pic = explode(".", $_FILES["file"]["name"]) ;
 				$pict = $pic['1'] ;
+				global $configs;
+
+				$root = $configs['COLLAP_FILE_ROOT'];
 				if ($pict == "jpg") {
 					$picname = $username.".".$pict ;
 				}
 				else { 
 					$picname = $username.".jpg" ;
 				}
-				$filePath = "uploads/profilePictures/".$picname;
-				if(!file_exists("/var/www/html/collap_files/".$filePath)) {
+				$filePath = "profilePictures/".$picname;
+				if(!file_exists($root.$filePath)) {
 					saveFile($filePath); 
 				} 
 				 else {
-					 unlink("/var/www/html/collap_files/uploads/profilePictures/".$username.".jpg") ;
-					 unlink("/var/www/html/collap_files/uploads/profilePictures/".$username.".png") ;
-					 unlink("/var/www/html/collap_files/uploads/profilePictures/".$username.".jpeg") ;
-					 unlink("/var/www/html/collap_files/uploads/profilePictures/".$username.".gif") ;
+					 unlink($root."profilePictures/".$username.".jpg") ;
+					 unlink($root."profilePictures/".$username.".png") ;
+					 unlink($root."profilePictures/".$username.".jpeg") ;
+					 unlink($root."profilePictures/".$username.".gif") ;
 					 saveFile($filePath);
-					 rename("/var/www/html/collap_files/".$filePath.".jpg",
-							'/var/www/html/collap_files/uploads/profilePictures/'.$username.".jpg");					 
+					 rename($root.$filePath.".jpg",
+							$root.'profilePictures/'.$username.".jpg");					 
 					 }
-				echo $filePath;
+				echo 'uploads/'.$filePath;
 				exit;
 				
 				break;

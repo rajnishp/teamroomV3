@@ -81,12 +81,14 @@
                             <div class="col-md-7">
 
                               <div class="fileinput fileinput-new" data-provides="fileinput">
-                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="min-width: 125px; min-height: 125px;">
-                                  <img src="<?= $baseUrl ?>static/img/rajnish.png" alt="Avatar">
+                                <div class="fileinput-preview thumbnail" data-trigger="fileinput" style="max-width: 200px;">
+                                  
+                                  <img id="target" alt="Avatar" src="uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" >
                                 </div>
                                 <div>
-                                  <span class="btn btn-default btn-file"><span class="fileinput-new">Select image</span><span class="fileinput-exists">Change</span><input type="file" name="..."></span>
-                                  <a href="#" class="btn btn-default fileinput-exists" data-dismiss="fileinput">Remove</a>
+
+                                <input id="src" type="file"/> 
+                                  
                                 </div>
                               </div> <!-- /.fileupload -->
 
@@ -871,6 +873,68 @@
       }
       
     </script>
-  
+<script type="text/javascript">
+function uploadProfilePic(){
+            //var _progress = document.getElementById('_progress'); 
+            if(src.files.length === 0){
+              
+              return false ;
+            }
+            else if (src.files['0'].size > 2015000) {
+             
+                  $.niftyNoty({ 
+                    type:"danger",
+                    icon:"fa fa-check fa-lg",
+                    title:"File Upload Error",
+                    message:"File size is too large",
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+              
+              return false ;
+            } 
+            else {
+              var data = new FormData();
+              data.append('file', src.files[0]);
+              var request = new XMLHttpRequest();
+              var responceTx = "";
+              request.onreadystatechange = function(){
+                if(request.readyState == 4){
+                  responceTx = request.response;
+                  $.niftyNoty({ 
+                    type:"danger",
+                    icon:"fa fa-check fa-lg",
+                    title:"Profile Pic Change Successfully",
+                    message:responceTx,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+                }
+              };
+            }
+            request.upload.addEventListener('progress', function(e){
+              //_progress.style.width = Math.ceil(e.loaded/e.total) * 100 + '%';
+            }, false);  
+            request.open('POST', '<?= $baseUrl ?>fileUpload/profilePic');
+            request.send(data);
+          }
+
+  function showImage() {
+    var src = document.getElementById("src");
+    var target = document.getElementById("target");
+  var fr=new FileReader();
+  // when image is loaded, set the src of the image where you want to display it
+  fr.onload = function(e) { target.src = this.result; };
+  src.addEventListener("change",function() {
+    // fill fr with image data    
+    fr.readAsDataURL(src.files[0]);
+    uploadProfilePic();
+  });
+}
+showImage();
+
+</script>  
   </body>
 </html>
