@@ -57,19 +57,11 @@
                   
                       <!-- Dropdown list-->
                       <?php foreach ($this->notifications as $key => $value) { ?>
-                      <!-- Dropdown list-->
-                      <li>
-                        <a href="#" class="media">
-                          <div class="media-left">
-                            <img src="img/av2.png" alt="Profile Picture" class="img-circle img-sm">
-                          </div>
-                          <div class="media-body">
-                            <div class="text-nowrap"><?= $value->getNoticelUrl() ?></div>
-                            <small class="text-muted">15 minutes ago</small>
-                          </div>
-                        </a>
-                      </li>
-                  <?php } ?>
+                        <!-- Dropdown list-->
+                        <li>
+                          <?= $value->getNoticelUrl() ?>
+                        </li>
+                      <?php } ?>
                   
                       <!-- Dropdown list-->
                       <li>

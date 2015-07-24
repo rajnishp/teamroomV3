@@ -148,18 +148,20 @@ class ProfileController extends BaseController {
 								0,
 								date("Y-m-d H:i:s")
 							);
-			//var_dump($userProfile); die();
-
+			
 			$linkId = $this-> knownPeoplesDAO -> insert($knownObj);			
 			
-			$noticeUrl = "<div class='row-fluid'>
-							<a href ='#'>
-							<i class='fa fa-plus'></i>
-								".$this -> firstName." ".$this -> lastName."</a>&nbsp; 
-								Send Link on  ".date("Y-m-d H:i:s")."<br/>
-							<button type='submit' class='btn btn-primary' onclick='requestAccept(\"".$linkId."\")' value='Accept'>Accept</button>
-							<button type='submit' class='btn btn-danger' onclick='requestDelete(\"".$linkId."\")' value='Delete'>Cancel</button>
-						</div>";
+			$noticeUrl ="<a href='#' class='media'>
+                          <div class='media-left'>
+                        	<img class='img-circle img-user media-object' src='uploads/profilePictures/".$this -> username.".jpg' style='height: 40px; width:40px;' alt='Profile Picture'>	
+                          </div>
+                          <div class='media-body'>
+                            <div class='text-nowrap'>".ucfirst($this -> firstName)." ".ucfirst($this -> lastName)." sent Link Request</div>
+                            <button type='submit' class='btn btn-sm btn-primary' onclick='requestAccept(\"".$linkId."\")' value='Accept'>Accept</button>
+							<button type='submit' class='btn btn-sm btn-danger' onclick='requestDelete(\"".$linkId."\")' value='Delete'>Cancel</button>
+                          </div>
+                        </a>";
+
 
 			$noticeObj = new Notification(
 								$noticeUrl,
