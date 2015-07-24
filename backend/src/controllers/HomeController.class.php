@@ -48,6 +48,7 @@ class HomeController {
 				$_SESSION['user_id'] = $this->user->getId();
 				$_SESSION['username'] = $this->user->getUsername() ;
 				$_SESSION['first_name'] = $this->user->getFirstName() ;
+				$_SESSION['last_name'] = $this->user->getLastName() ;
 				$_SESSION['email'] = $this->user->getEmail();
 				$_SESSION['last_login'] = $this->user->getLastLoginTime() ;
 					//$obj = new rank($newid);
@@ -98,6 +99,7 @@ class HomeController {
 					$_SESSION['user_id'] = $this->user->getId();
 					$_SESSION['username'] = $this->user->getUsername() ;
 					$_SESSION['first_name'] = $this->user->getFirstName() ;
+					$_SESSION['last_name'] = $this->user->getLastName() ;
 					$_SESSION['email'] = $this->user->getEmail();
 					$_SESSION['last_login'] = $this->user->getLastLoginTime() ;
 					//$obj = new rank($newid);

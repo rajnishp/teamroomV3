@@ -423,53 +423,170 @@
                           </form>
                         <?php } ?>
 
-                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method="POST" onSubmit="return (validateUpdateEducation());">
+                        <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method="POST" onSubmit="return (validateUpdateEducation());">
+
+                          <div class="form-group">
+
+                            <label class="col-md-3 control-label">Institute Name</label>
+
+                            <div class="col-md-7">
+                              <input type="text" name="institute" id="institute" value="" class="form-control"/>
+                            </div> <!-- /.col -->
+
+                          </div> <!-- /.form-group -->
+                          
+                          <div class="form-group">
+
+                            <label class="col-md-3 control-label">Name of Degree</label>
+
+                            <div class="col-md-7">
+                              <input type="text" name="degree" id="degree" value="" class="form-control"/>
+                            </div> <!-- /.col -->
+
+                          </div> <!-- /.form-group -->
+                          <div class="form-group">
+
+                            <label class="col-md-3 control-label">Branch Name</label>
+
+                            <div class="col-md-7">
+                              <input type="text" name="branch" id="branch" value="" class="form-control"/>
+                            </div> <!-- /.col -->
+
+                          </div> <!-- /.form-group -->
+
+                          <div class="form-group">
+
+                            <label class="col-md-3 control-label">Duration</label>
+
+                            <div class="col-md-7">
+
+                              <div id="demo-dp-range">
+                                <div id="datepicker" class="input-daterange input-group">
+                                  <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
+                                  <span class="input-group-addon">to</span>
+                                  <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
+                                </div>
+                              </div>
+                            </div>
+                          </div> <!-- /.form-group -->
+
+
+                          <div class="form-group">
+                            <div class="col-md-7 col-md-push-3">
+                              <button type="submit" class="btn btn-primary">Save Changes</button>
+                              &nbsp;
+                              <button type="reset" class="btn btn-default">Cancel</button>
+                            </div> <!-- /.col -->
+                          </div> <!-- /.form-group -->
+
+                        </form>
+
+                        <div class="heading-block">
+                          <h3>
+                          Edit Job Preferences
+                          </h3>
+                        </div> <!-- /.heading-block -->
+
+                        <?php foreach ($userJobPreference as $key => $jobPreference) { ?>
+                          <form class="form-horizontal" method = "POST" onSubmit="return (validateUpdateJobPreference(<?= $jobPreference -> getId() ?>));">
+
 
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Institute Name</label>
+                              <label class="col-md-3 control-label">Preferred Locations </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="institute" id="institute" value="" class="form-control"/>
+                                <input type="text" name="location" id="location_<?= $jobPreference -> getId() ?>" value="<?= $jobPreference -> getLocationId() ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
                             
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Name of Degree</label>
+                              <label class="col-md-3 control-label">Current CTC </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="degree" id="degree" value="" class="form-control"/>
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Branch Name</label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="branch" id="branch" value="" class="form-control"/>
+                                <input type="text" name="current_ctc" id="current_ctc_<?= $jobPreference -> getId() ?>" value="<?= $jobPreference -> getCurrentCtc() ?>" class="form-control"/>
+                                <input type="hidden" name="id" value="<?= ucfirst($jobPreference -> getId()) ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
 
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Duration</label>
+                              <label class="col-md-3 control-label">Expected CTC </label>
 
                               <div class="col-md-7">
+                                <input type="text" name="expected_ctc" id="expected_ctc_<?= $jobPreference -> getId() ?>" value="<?= $jobPreference -> getExpectedCtc() ?>" class="form-control"/>
+                              </div> <!-- /.col -->
 
-                                <div id="demo-dp-range">
-                                  <div id="datepicker" class="input-daterange input-group">
-                                    <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
-                                    <span class="input-group-addon">to</span>
-                                    <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
-                                  </div>
-                                </div>
-                              </div>
                             </div> <!-- /.form-group -->
 
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Notice Period </label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="notice_period" id="notice_period_<?= $jobPreference -> getId() ?>" value="<?= $jobPreference -> getNoticePeriod() ?>" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            
+
+                            <div class="form-group">
+                              <div class="col-md-7 col-md-push-3">
+                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                &nbsp;
+                                <button type="reset" class="btn btn-default">Cancel</button>
+                              </div> <!-- /.col -->
+                            </div> <!-- /.form-group -->
+
+                          </form>
+                        <?php } ?>
+
+                          <form class="form-horizontal" method = "POST" onSubmit="return (validateUpdateJobPreference();">
+
+
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Preferred Locations </label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="location" id="location" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Current CTC </label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="current_ctc" id="current_ctc" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Expected CTC </label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="expected_ctc" id="expected_ctc" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+
+                            <div class="form-group">
+
+                              <label class="col-md-3 control-label">Notice Period </label>
+
+                              <div class="col-md-7">
+                                <input type="text" name="notice_period" id="notice_period" class="form-control"/>
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            
 
                             <div class="form-group">
                               <div class="col-md-7 col-md-push-3">

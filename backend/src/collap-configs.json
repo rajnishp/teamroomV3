@@ -25,7 +25,6 @@
     },
     "collap_backend" : "/var/www/html/teamroom/backend/src/",
     "COLLAP_API_URL" : "http://api.collap.com/v0/",
-    "COLLAP_FILE_ROOT": "/var/www/dpower4/collap_files/uploads/",
     "COLLAP_BASE_URL" : "http://loc.v2.collap.com/",
     "COLLAP_VERSION"  : "v0",
     "collap_DOMAIN" : "collap.com"
