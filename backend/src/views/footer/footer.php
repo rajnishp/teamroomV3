@@ -53,6 +53,9 @@
 	<!--Bootstrap Tags Input [ OPTIONAL ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
 
+  <!--Chosen [ OPTIONAL ]-->
+  <script src="<?= $baseUrl ?>static/sidebar/plugins/chosen/chosen.jquery.min.js"></script>
+
 
 	<!--Bootstrap Timepicker [ OPTIONAL ]-->
 	<script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-timepicker/bootstrap-timepicker.min.js"></script>
@@ -66,9 +69,15 @@
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/nifty-demo.min.js"></script>
 	<script src="<?= $baseUrl ?>static/sidebar/js/demo/layouts.js"></script>
 	
-    <!--Form Wizard [ SAMPLE ]-->
+
+  <!--Form Wizard [ SAMPLE ]-->
   <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-wizard.js"></script>
   <script src="<?= $baseUrl ?>static/js/genericEmptyFieldValidator.js"></script>
+
+  
+    <!--Form Component [ SAMPLE ]-->
+    <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-component.js"></script>
+
 
 <script>
 $('#demo-dp-range .input-daterange').datepicker({

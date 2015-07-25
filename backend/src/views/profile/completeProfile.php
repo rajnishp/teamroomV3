@@ -54,32 +54,45 @@
             
                     <!--nav-->
                     <ul class="row wz-step wz-icon-bw wz-nav-off mar-top">
-                      <li class="col-xs-2">
-                        <a data-toggle="tab" href="#demo-main-tab1">
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#profile">
                           <span class="icon-wrap icon-wrap-xs bg-danger"><i class="fa fa-info"></i></span>
                           <p class="text-thin">Profile</p>
                         </a>
                       </li>
-                      <li class="col-xs-3">
-                        <a data-toggle="tab" href="#demo-main-tab2">
+                      <li class="col-xs-2">
+                        <a data-toggle="tab" href="#tech_strength">
                           <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-code"></i></span>
                           <p class="text-thin">Technical Strength</p>
                         </a>
                       </li>
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#skills">
+                          <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-code"></i></span>
+                          <p class="text-thin">Skills</p>
+                        </a>
+                      </li>
                       <li class="col-xs-2">
-                        <a data-toggle="tab" href="#demo-main-tab3">
+                        <a data-toggle="tab" href="#work_exp">
                           <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-briefcase"></i></span>
                           <p class="text-thin">Work Experience</p>
                         </a>
                       </li>
-                      <li class="col-xs-3">
-                        <a data-toggle="tab" href="#demo-main-tab4">
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#education">
                           <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-book"></i></span>
                           <p class="text-thin">Education</p>
                         </a>
                       </li>
                       <li class="col-xs-2">
-                        <a data-toggle="tab" href="#demo-main-tab5">
+                        <a data-toggle="tab" href="#projects">
+                          <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-book"></i></span>
+                          <p class="text-thin">Projects</p>
+                        </a>
+                      </li>
+
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#finish">
                           <span class="icon-wrap icon-wrap-xs bg-success"><i class="fa fa-heart"></i></span>
                           <p class="text-thin">Finish</p>
                         </a>
@@ -98,7 +111,7 @@
                         <div class="tab-content">
             
                           <!--First tab-->
-                          <div id="demo-main-tab1" class="tab-pane">
+                          <div id="profile" class="tab-pane">
                             <form action="<?= $baseUrl ?>setting/updateUserInfo" class="form-horizontal" method="POST" onSubmit="return (validateUpdateProfile());">
 
                               <div class="form-group">
@@ -163,7 +176,7 @@
                           </div> <!-- End First tab-->
             
                           <!--Second tab-->
-                          <div id="demo-main-tab2" class="tab-pane fade">
+                          <div id="tech_strength" class="tab-pane fade">
                             
                             <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
 
@@ -187,9 +200,23 @@
                             </form>
 
                           </div> <!--End Second tab-->
-            
+                          
                           <!--Third tab-->
-                          <div id="demo-main-tab3" class="tab-pane">
+                          <div id="skills" class="tab-pane fade">
+                            <div class="row">                      
+                              <div class="col-md-6">
+                                <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                                  <?php foreach ($allSkills as $skillName) { ?>
+                                    <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
+                                  <?php } ?>
+                                </select>
+                                <button type="submit" id="skills" class="btn btn-primary" onclick="return (validateUpdateSkills());">Add Skills</button>
+                              </div>
+                            </div>
+                          </div> <!--End Third tab-->
+                          
+                          <!--Fourth tab-->
+                          <div id="work_exp" class="tab-pane">
                             <form class="form-horizontal"  onSubmit="return (validateUpdateWorkExp());">
 
                               <div class="form-group">
@@ -237,10 +264,10 @@
                               </div> <!-- /.form-group -->
 
                             </form>
-                          </div> <!--End Third tab-->
+                          </div> <!--End Fourth tab-->
             
-                          <!--Fourth tab-->
-                          <div id="demo-main-tab4" class="tab-pane">
+                          <!--Fifth tab-->
+                          <div id="education" class="tab-pane">
                             <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method="POST" onSubmit="return (validateUpdateEducation());">
 
                               <div class="form-group">
@@ -298,12 +325,102 @@
                               </div> <!-- /.form-group -->
 
                             </form>
-                          </div> <!--End Fourth tab-->
+                          </div> <!--End Fifth tab-->
 
-                          <!--Fourth tab-->
-                          <div id="demo-main-tab5" class="tab-pane">
+
+                          <!--Sixth tab-->
+                          <div id="projects" class="tab-pane">
+                            <form class="form-horizontal" onSubmit="return (validateCreateProject());">
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Title</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" id ="title" class="form-control" placeholder="Title" />
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Used Technical Skills</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Your Role</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Team Size</label>
+                                <div class="col-md-7">
+                                  <input type="integer" id="team_size" class="form-control" placeholder="Team Size" />
+                                </div>
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Duration</label>
+                                <div class="col-md-7">
+                                  <div id="demo-dp-range">
+                                    <div class="input-daterange input-group" id="datepicker">
+                                      <input type="text" class="form-control" name="start" id="start"/>
+                                      <span class="input-group-addon">To</span>
+                                      <input type="text" class="form-control" name="end" id="end" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+                                <label class="col-md-3 control-label">Description</label>
+                                <div class="col-md-7">
+                                 
+                                  <textarea class="form-control share-widget-textarea" id = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1"></textarea>
+
+                                  <div class="share-widget-actions">
+                                    <div class=" pull-left">
+                                      <div class="col-md-6">
+                                       
+                                        <select class="selectpicker" name="type" data-live-search="true" data-width="100%" id= "type" >    
+                                            <option value='Public' >Public</option>
+                                            <option value='Classified' >Classified</option>
+                                            <option value='Private' >Private</option>
+                                        </select>
+                                       
+                                      </div>
+                                      <div class="col-md-6">
+                                        <input type="file" name="file" class="btn btn-default btn-file" value="Browse">
+                                      </div>    
+                                    </div>  
+
+                                    <div class="pull-right">
+                                      <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </form>
+                          </div> <!--End Sixth tab-->
+                          
+                          <!--Seventh tab-->
+                          <div id="finish" class="tab-pane">
                           </div>
-                        </div>
+                        </div><!--End Seventh tab-->
                       </div>
             
             
@@ -327,8 +444,6 @@
           <!--===================================================-->
           <!--End page content-->
 
-          <?php require_once 'views/sidebar/sidebar_button.php'; ?>
-
         </div>
         <!--===================================================-->
         <!--END CONTENT CONTAINER-->
@@ -338,7 +453,7 @@
     </div> <!-- /.container -->
 
     <?php require_once 'views/footer/footer.php'; ?>
-
+    
 </body>
 </html>
 

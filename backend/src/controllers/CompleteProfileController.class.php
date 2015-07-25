@@ -9,14 +9,21 @@ class CompleteProfileController extends BaseController  {
 		
 		parent::__construct();	
 
+
 	}
 
 	function render (){
 		
 		$baseUrl = $this->baseUrl;
+
+		if ( ! isset($this -> userId) || $this -> userId == ""){
+						header('Location: '. $baseUrl);
+		}
 		
 		try{
-			
+
+			$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
+
 			require_once 'views/profile/completeProfile.php';
 			
 		} catch (Exception $e){

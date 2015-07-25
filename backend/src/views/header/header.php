@@ -47,6 +47,9 @@
   <!--Bootstrap Tags Input [ OPTIONAL ]-->
   <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
 
+  <!--Chosen [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/chosen/chosen.min.css" rel="stylesheet">
+
 
   <!--Bootstrap Validator [ OPTIONAL ]-->
   <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-validator/bootstrapValidator.min.css" rel="stylesheet">

@@ -1,40 +1,20 @@
 <?php
 
-require_once 'dao/DAOFactory.class.php';
-//require_once 'components/xxx.class.php';
-//require_once '.class.php';
+require_once 'controllers/BaseController.class.php';
 
-class SettingController {
-
-	private $userId;
-	private $userInfoDAO;
-	private $userEducationDAO;
-	private $userTechStrengthDAO;
-	private $userWorkHistoryDAO;
-	private $userJobPreferenceDAO;
+class SettingController extends BaseController {
 
 	function __construct ( ){
 		
-		if( isset( $_SESSION["user_id"] ) )
-			$this -> userId = $_SESSION["user_id"];
-			//$this->userId = 7;
+		parent::__construct();
 		
-
-		$DAOFactory = new DAOFactory();
-		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
-		$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
-		$this -> userSkillsInsertDAO = $DAOFactory->getUserSkillsDAO();
-
-		$this -> userEducationDAO = $DAOFactory->getEducationDAO();
-		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
-		$this -> userWorkHistoryDAO = $DAOFactory->getWorkingHistoryDAO();
-		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
-
+		
 	}
 
 	function render (){
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
+
+		$baseUrl = $this->baseUrl;
+
 		if ( ! isset($this -> userId) || $this -> userId == ""){
 						header('Location: '. $baseUrl);
 		}
@@ -44,15 +24,13 @@ class SettingController {
 
 			//var_dump($this->userId);
 			
-			$userProfile = $this->userInfoDAO->load($this->userId);
-			$userSkills = $this -> userSkillDAO->getUserSkills($this->userId);
+			$userProfile = $this -> userInfoDAO-> load($this->userId);
+			$userSkills = $this -> userSkillDAO-> getUserSkills($this->userId);
 
-			$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
+			$allSkills = $this -> userSkillDAO-> availableUserSkills($this->userId);
 
-			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);
-			
+			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);			
 			$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
-			
 			$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
 			$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
 

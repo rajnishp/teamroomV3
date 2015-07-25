@@ -10,23 +10,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
-
-
-  <!--Bootstrap Tags Input [ OPTIONAL ]-->
-  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
-
-  <!--Chosen [ OPTIONAL ]-->
-  <link href="<?= $baseUrl ?>static/sidebar/plugins/chosen/chosen.min.css" rel="stylesheet">
-
-  <!--jQuery [ REQUIRED ]-->
-  <script src="<?= $baseUrl ?>static/sidebar/js/jquery-2.1.1.min.js"></script>
-  <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-component.js"></script>
-
-  <!--Bootstrap Tags Input [ OPTIONAL ]-->
-  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
-
-  <!--Chosen [ OPTIONAL ]-->
-  <link href="<?= $baseUrl ?>static/sidebar/plugins/chosen/chosen.min.css" rel="stylesheet">
   
 
   <?php require_once 'views/header/header.php'; ?>
@@ -746,17 +729,6 @@
 
     <?php require_once 'views/footer/footer.php'; ?>
 
-    <!--Bootstrap Tags Input [ OPTIONAL ]-->
-    <script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
-
-
-    <!--Chosen [ OPTIONAL ]-->
-    <script src="<?= $baseUrl ?>static/sidebar/plugins/chosen/chosen.jquery.min.js"></script>
-
-    <!--Form Component [ SAMPLE ]-->
-    <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-component.js"></script>
-
-    <script src="<?= $baseUrl ?>static/js/genericEmptyFieldValidator.js"></script>
 
     <script type="text/javascript">
 
