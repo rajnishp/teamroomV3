@@ -22,7 +22,8 @@ class SettingController {
 
 		$DAOFactory = new DAOFactory();
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
-		//$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
+		$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
+		$this -> userSkillsInsertDAO = $DAOFactory->getUserSkillsDAO();
 
 		$this -> userEducationDAO = $DAOFactory->getEducationDAO();
 		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
@@ -44,7 +45,9 @@ class SettingController {
 			//var_dump($this->userId);
 			
 			$userProfile = $this->userInfoDAO->load($this->userId);
-			//$userSkills = $this ->userSkillDAO->getUserSkills($this->userId);
+			$userSkills = $this -> userSkillDAO->getUserSkills($this->userId);
+
+			$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
 
 			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);
 			
@@ -261,6 +264,35 @@ class SettingController {
 			echo "Password fields can Not Be Empty";
 		}
 		
+	}
+
+	function updateSkills() {
+
+		if(isset($_POST['skills']) && $_POST['skills'] != '') {
+
+			$skillIds = explode(',', $_POST['skills']);
+
+			foreach ($skillIds as $skill_id) {
+				
+				$skillsObj = new UserSkill(
+									$this -> userId,
+									$skill_id
+								);
+
+				try {
+					$this -> userSkillsInsertDAO ->insert($skillsObj);
+				}
+				catch (Exception $e) {
+
+				}
+			}
+			echo "Updated Successfully";
+		}
+		
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Skills field can Not Be Empty";
+		}
 	}
 }
 

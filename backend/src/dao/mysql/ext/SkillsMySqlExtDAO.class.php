@@ -31,6 +31,13 @@ class SkillsMySqlExtDAO extends SkillsMySqlDAO{
 		return $this->getList($sqlQuery);
 	}
 
+		public function availableUserSkills($userId){
+		$sql = "SELECT * FROM `skills` WHERE id NOT IN ( SELECT skill_id AS id FROM user_skills WHERE user_id = ? )";
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		return $this->getList($sqlQuery);
+	}
+
 	/**
  	 * Delete record from table
  	 * @param skill primary key

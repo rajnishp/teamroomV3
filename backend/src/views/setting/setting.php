@@ -11,6 +11,24 @@
   <meta name="description" content="">
   <meta name="author" content="">
 
+
+  <!--Bootstrap Tags Input [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+  <!--Chosen [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/chosen/chosen.min.css" rel="stylesheet">
+
+  <!--jQuery [ REQUIRED ]-->
+  <script src="<?= $baseUrl ?>static/sidebar/js/jquery-2.1.1.min.js"></script>
+  <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-component.js"></script>
+
+  <!--Bootstrap Tags Input [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.css" rel="stylesheet">
+
+  <!--Chosen [ OPTIONAL ]-->
+  <link href="<?= $baseUrl ?>static/sidebar/plugins/chosen/chosen.min.css" rel="stylesheet">
+  
+
   <?php require_once 'views/header/header.php'; ?>
 
 </head>
@@ -61,16 +79,29 @@
                       <!--===================================================-->
            
                       <div id="tabs-profile" class="tab-pane fade active in">
-
+                        
                         <div class="heading-block">
                           <h3>
-                            Edit Profile
+                            Update Resume
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <p> Here, Edit your profile.</p>
+                        <form action="#" class="form-horizontal" method="POST">
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">Upload Resume</label>
+                            <div class="col-md-9">
+                              <span class="pull-left btn btn-default btn-file">
+                              Browse... <input type="file" id="resume" name="resume">
+                              </span>
+                            </div>
+                          </div>
+                        </form>
 
-                        <br><br>
+                        <div class="heading-block">
+                          <h3>
+                            Update Profile Picture
+                          </h3>
+                        </div> <!-- /.heading-block -->
 
                         <form action="profile/updatePic" class="form-horizontal" method="POST">
 
@@ -193,6 +224,34 @@
                           </div> <!-- /.form-group -->
 
                         </form>
+
+                        <div class="heading-block">
+                          <h3>
+                            Add More Skills 
+                          </h3>
+                        </div> <!-- /.heading-block -->
+                          
+                          
+                        <div class="">
+                          <?php foreach($userSkills as $skill ) { ?>
+                            <span class="btn btn-secondary btn-sm"> <?= $skill -> getName() ?> </span>
+                          <?php } ?>
+                        </div> <!-- /.list-group -->
+                        <hr class="spacer-sm">
+                        <!-- Multiple Skills Select Choosen -->
+                        <!--===================================================-->
+                        <div class="row">                      
+                          <div class="col-md-6">
+                            <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                              <?php //var_dump($allSkills); die();
+                                foreach ($allSkills as $skillName) { ?>
+                                <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
+                              <?php } ?>
+                            </select>
+                            <button type="submit" id="skills" class="btn btn-primary" onclick="return (validateUpdateSkills());">Add Skills</button>
+                            <!--===================================================-->
+                          </div>
+                        </div>
 
                         <div class="heading-block">
                           <h3>
@@ -687,6 +746,15 @@
 
     <?php require_once 'views/footer/footer.php'; ?>
 
+    <!--Bootstrap Tags Input [ OPTIONAL ]-->
+    <script src="<?= $baseUrl ?>static/sidebar/plugins/bootstrap-tagsinput/bootstrap-tagsinput.min.js"></script>
+
+
+    <!--Chosen [ OPTIONAL ]-->
+    <script src="<?= $baseUrl ?>static/sidebar/plugins/chosen/chosen.jquery.min.js"></script>
+
+    <!--Form Component [ SAMPLE ]-->
+    <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-component.js"></script>
 
     <script src="<?= $baseUrl ?>static/js/genericEmptyFieldValidator.js"></script>
 
@@ -727,6 +795,62 @@
           }
 
         });      
+      }
+
+      function postUpdateSkills(fields){
+        var dataString = "";
+        dataString = "skills="+fields;
+        //alert (dataString); return false;
+        
+        $.ajax({
+          type: "POST",
+          url: "<?= $baseUrl ?>" + "setting/updateSkills",
+          data: dataString,
+          cache: false,
+          success: function(result){
+            $.niftyNoty({ 
+              type:"success",
+              icon:"fa fa-check fa-lg",
+              title:"Update Skills",
+              message:result,
+              focus: true,
+              container:"floating",
+              timer:4000
+            });
+          },
+          error: function(result){
+            console.log(result);
+            $.niftyNoty({ 
+              type:"danger",
+              icon:"fa fa-times fa-lg",
+              title:"Update Skills",
+              message:result.responseText,
+              focus: true,
+              container:"floating",
+              timer:4000
+            });
+          }
+
+        });
+      }
+      function validateUpdateSkills(){
+
+        console.log("Inside Validate user Skills");
+        
+        
+        var skillsArray = []; 
+        $('#demo-cs-multiselect :selected').each(function(i, selected){ 
+          skillsArray[i] = $(selected).val(); 
+        });
+
+        //alert(skillsArray); return false;
+
+        //if(genericEmptyFieldValidator(skillsArray)){
+          console.log("iam there");
+          postUpdateSkills(skillsArray);          
+
+        //}
+        return false;
       }
 
       function validateUpdateProfile(){
