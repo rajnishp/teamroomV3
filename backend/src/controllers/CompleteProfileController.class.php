@@ -7,7 +7,7 @@ class CompleteProfileController extends BaseController  {
 
 	function __construct ( ){
 		
-		parent::__construct();	
+		parent::__construct();
 
 
 	}
@@ -23,6 +23,7 @@ class CompleteProfileController extends BaseController  {
 		try{
 
 			$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
+			$allLocations = $this -> userJobLocationsDAO-> availableJobLocations( $this-> userId );
 
 			require_once 'views/profile/completeProfile.php';
 			

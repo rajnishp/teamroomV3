@@ -139,38 +139,38 @@
 
 
 <script type="text/javascript">
-function postNewProject(fields){
-          //fields = ["title","my_role","tech_skills","team_size","description"];
-          var dataString = "";
+  function postNewProject(fields){
+    //fields = ["title","my_role","tech_skills","team_size","description"];
+    var dataString = "";
 
-          
-          dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val()  ;
-          //console.log(dataString);
-          
-          $.ajax({
-            type: "POST",
-            url: "<?= $baseUrl ?>project/createProject",
-            data: dataString,
-            cache: false,
-            success: function(result){
-              window.location.href  = result;
+    
+    dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val()  ;
+    //console.log(dataString);
+    
+    $.ajax({
+      type: "POST",
+      url: "<?= $baseUrl ?>project/createProject",
+      data: dataString,
+      cache: false,
+      success: function(result){
+        window.location.href  = result;
 
-            },
-             error: function(result){
-              console.log(result);
-              $.niftyNoty({ 
-                type:"danger",
-                icon:"fa fa-check fa-lg",
-                title:"Project",
-                message:result.responseText,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
-            }
-          });
-          return false;
+      },
+       error: function(result){
+        console.log(result);
+        $.niftyNoty({ 
+          type:"danger",
+          icon:"fa fa-check fa-lg",
+          title:"Project",
+          message:result.responseText,
+          focus: true,
+          container:"floating",
+          timer:4000
+        });
       }
+    });
+    return false;
+  }
 
   function validateCreateProject(){
     fields = ["title","my_role","tech_skills","team_size","description"];
@@ -181,7 +181,7 @@ function postNewProject(fields){
     }
 
     return false;
-    
+
   }
 </script>
   </body>

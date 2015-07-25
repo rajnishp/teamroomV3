@@ -25,9 +25,11 @@ class SettingController extends BaseController {
 			//var_dump($this->userId);
 			
 			$userProfile = $this -> userInfoDAO-> load($this->userId);
-			$userSkills = $this -> userSkillDAO-> getUserSkills($this->userId);
+			$userSkills = $this -> userSkillDAO-> getUserSkills( $this-> userId );
 
-			$allSkills = $this -> userSkillDAO-> availableUserSkills($this->userId);
+			$allSkills = $this -> userSkillDAO-> availableUserSkills( $this-> userId );
+			
+			$allLocations = $this -> userJobLocationsDAO-> availableJobLocations( $this-> userId );
 
 			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);			
 			$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
@@ -68,6 +70,64 @@ class SettingController extends BaseController {
 		}
 		
 	}
+
+
+	function updateJobPreference() {
+		
+		if(isset($_POST['locations'], $_POST['current_ctc'], $_POST['expected_ctc'], $_POST['notice_period'], $_POST['id'])) {	
+
+			$locationIds = explode(',', $_POST['locations']);
+
+			foreach ($locationIds as $locationId) {
+				
+				if((isset($_POST['id'])) && $_POST['id'] != undefined) {
+					$jobPreferenceObj = new JobPreference(
+													$this -> userId,
+													$locationId,
+													$_POST['current_ctc'],
+													$_POST['expected_ctc'],
+													$_POST['notice_period'],
+													null,
+													date("Y-m-d H:i:s"),
+													$_POST['id']
+												);
+					try {
+						$this -> userJobPreferenceDAO ->update($jobPreferenceObj);
+					}
+					catch (Exception $e) {
+
+					}
+				}
+				else {
+					$jobPreferenceObj = new JobPreference(
+												$this -> userId,
+												$locationId,
+												$_POST['current_ctc'],
+												$_POST['expected_ctc'],
+												$_POST['notice_period'],
+												date("Y-m-d H:i:s"),
+												null,
+												null
+											);
+					
+					try {
+						$this -> userJobPreferenceDAO ->insert($jobPreferenceObj);
+					}
+					catch (Exception $e) {
+
+					}
+					
+				}		
+				
+			}
+			echo "Updated Successfully";
+		}
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Technical Strength Can Not Be Empty";
+		}
+	}
+
 
 	function updateUserInfo() {
 		
