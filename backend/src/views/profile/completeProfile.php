@@ -218,25 +218,37 @@
                           
                           <!--Third tab-->
                           <div id="tab_skills" class="tab-pane fade">
-                            <div class="row">                      
-                              <div class="col-md-6">
-                                <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
-                                  <?php foreach ($allSkills as $skillName) { ?>
-                                    <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
-                                  <?php } ?>
-                                </select>
-                              </div>
-                               
-                              <div class="pull-right pad-all">
+                            
+                            <div class="form-horizontal">
+                              <div class="form-group">
 
-                                <button type="submit" id="skills" class="btn btn-success" onclick="return (validateUpdateSkills());">Add Skills</button>
-                                
-                                <button type="button" class="previous btn btn-info">Previous</button>
+                                <label class="col-md-3 control-label">Add Skills</label>
 
-                                <button type="button" class="next btn btn-primary">Next</button>    
-                              </div>
-                            </div>
-                          
+                                <div class="col-md-7">                                  
+                                  <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                                    <?php foreach ($allSkills as $skillName) { ?>
+                                      <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
+                                    <?php } ?>
+                                  </select>
+
+                                  <button type="submit" id="skills" class="btn btn-success" onclick="return (validateUpdateSkills());">Add Skills</button>
+
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+                                <div class="pull-right pad-all">
+
+                                  <button type="button" class="previous btn btn-info">Previous</button>
+
+                                  <button type="button" class="next btn btn-primary">Next</button>
+    
+                                </div> <!-- /.col -->
+                              </div> <!-- /.form-group -->
+
+                            </div> <!-- /.form-horizontal -->
+
                           </div> <!--End Third tab-->
                           
                           <!--Fourth tab-->
@@ -302,20 +314,14 @@
 
                                 <label class="col-md-3 control-label">Preferred Locations <br/>(First Location is first <b>Preference</b>) </label>
 
-                                <div class="col-md-7">
-                                  <div class="">
-                                    <?php foreach($userPreferredJobLocations as $locationName ) { ?>
-                                      <span class="btn btn-secondary btn-sm"> <?= $locationName -> getLocationName() ?> </span>
-                                    <?php } ?>
-                                  </div> <!-- /.list-group -->
-                                  
+                                <div class="col-md-7">          
                                   <select id="demo-cs-multiselect1" data-placeholder="Choose Location by Preference..." multiple tabindex="4">
                                     <?php foreach ($allLocations as $availablelocation) { ?>
                                       <option value="<?= $availablelocation -> getId() ?>" id ="location_<?= $availablelocation -> getId() ?>"><?= $availablelocation-> getLocationName() ?></option>  
                                     <?php } ?>
                                   </select>
 
-                                  <button type="submit" id="locations" class="btn btn-primary" onclick="return (validateUpdateLocations());">Add Locations</button>
+                                  <button type="submit" id="locations" class="btn btn-success" onclick="return (validateUpdateLocations());">Add Locations</button>
 
                                 </div> <!-- /.col -->
 
@@ -357,7 +363,7 @@
                               <div class="form-group">
                                 <div class="pull-right pad-all">
 
-                                  <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference());">Save Changes</button>
+                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateJobPreference());">Save Changes</button>
 
                                   <button type="button" class="previous btn btn-info">Previous</button>
 
@@ -536,14 +542,20 @@
                           
                           <!--Eight tab-->
                           <div id="tab_finish" class="tab-pane">
+                            <div class="form-horizontal">
+                              You have completed Your Profile. <br />
 
+                              You can also edit/modify your profile on your profile setting page. <br />
+                              Keep updating your profile for more chances to get call, Recruiters always preferred updated profile. <br />
+
+                            </div>
                             <div class="pull-right pad-all">
 
                               <button type="button" class="previous btn btn-info">Previous</button>
     
-                              <button type="button" class="finish btn btn-success">Finish</button>
+                              <a href="<?= $baseUrl ?>" type="button" class="finish btn btn-success">Finish</a>
   
-                            </div> <!-- /.col -->      
+                            </div> <!-- /.col -->
 
                           </div>
                         </div><!--End Eight tab-->

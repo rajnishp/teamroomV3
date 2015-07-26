@@ -16,7 +16,7 @@ class SettingController extends BaseController {
 		$baseUrl = $this->baseUrl;
 
 		if ( ! isset($this -> userId) || $this -> userId == ""){
-						header('Location: '. $baseUrl);
+			header('Location: '. $baseUrl);
 		}
 		//loading other click event on the page should be done by ajax
 
@@ -77,47 +77,56 @@ class SettingController extends BaseController {
 
 	function updateJobPreference() {
 		
-			if(isset($_POST['current_ctc'], $_POST['expected_ctc'], $_POST['notice_period'])) {	
-				if((isset($_POST['id'])) && $_POST['id'] != undefined) {
-					$jobPreferenceObj = new JobPreference(
-													$this -> userId,
-													$_POST['current_ctc'],
-													$_POST['expected_ctc'],
-													$_POST['notice_period'],
-													$this-> userJobPreference -> getAddedOn(),
-													date("Y-m-d H:i:s"),
-													$_POST['id']
-												);
-					try {
-						$this -> userJobPreferenceDAO ->update($jobPreferenceObj);
-					}
-					catch (Exception $e) {
-
-					}
-					echo "Updated Successfully";
-				}
-				else {
-					$jobPreferenceObj = new JobPreference(
+		if(isset($_POST['current_ctc'], $_POST['expected_ctc'], $_POST['notice_period'])) {	
+		
+			if((isset($_POST['id'])) && $_POST['id'] != undefined) {
+				
+				$jobPreferenceObj = new JobPreference(
 												$this -> userId,
 												$_POST['current_ctc'],
 												$_POST['expected_ctc'],
 												$_POST['notice_period'],
-												date("Y-m-d H:i:s"),
 												null,
-												null
+												date("Y-m-d H:i:s"),
+												$_POST['id']
 											);
-					
-					try {
-						$this -> userJobPreferenceDAO ->insert($jobPreferenceObj);
-					}
-					catch (Exception $e) {
+		
+				try {
 
-					}
-					echo "Added Successfully";
-				}		
-				
+					if ($this -> userJobPreferenceDAO ->update($jobPreferenceObj))
+						echo "Added Successfully";
+					else
+						echo "Failed to Add, Try Again";
+				}
+				catch (Exception $e) {
+					echo "Failed: ". var_dump($e);
+				}
+				echo "Updated Successfully";
 			}
-			else{
+			else {
+				$jobPreferenceObj = new JobPreference(
+											$this -> userId,
+											$_POST['current_ctc'],
+											$_POST['expected_ctc'],
+											$_POST['notice_period'],
+											date("Y-m-d H:i:s"),
+											null,
+											null
+										);
+				
+				try {
+					if ($this -> userJobPreferenceDAO ->insert($jobPreferenceObj))
+						echo "Added Successfully";
+					else
+						echo "Failed to Add, Try Again";
+				}
+				catch (Exception $e) {
+
+				}
+			}		
+			
+		}
+		else{
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Technical Strength Can Not Be Empty";
 		}

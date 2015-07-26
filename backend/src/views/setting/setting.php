@@ -534,6 +534,7 @@
                         </div> <!-- /.heading-block -->
 
                         <div class="form-horizontal">
+                          
                           <div class="form-group">
 
                               <label class="col-md-3 control-label">Preferred Locations <br/>(First Location is first <b>Preference</b>) </label>
@@ -555,13 +556,15 @@
 
                               </div> <!-- /.col -->
 
-                            </div> <!-- /.form-group -->
-                          </div>
-
+                          </div> <!-- /.form-group -->
+                        
+                        </div>
+                        
                         <!-- /.form edit job preferences --> 
-                        <?php if (count($userJobPreference) == 1) { 
-                          echo "inside if............";?>
-                          <div class="form-horizontal">
+                        <?php 
+                            if ($userJobPreference) {
+                              foreach ($userJobPreference as $key => $userJobPreference) { ?>
+                                <div class="form-horizontal">
                             
                             <div class="form-group">
 
@@ -603,52 +606,53 @@
                                 <button type="reset" class="btn btn-default">Cancel</button>
                               </div> <!-- /.col -->
                             </div> <!-- /.form-group -->
-                          </div>
+                                </div>
 
-                        <?php } else { ?>
+                        <?php } } 
+                            else { ?>
 
-                          <div class="form-horizontal">
+                              <div class="form-horizontal">
 
-                            <div class="form-group">
+                                <div class="form-group">
 
-                              <label class="col-md-3 control-label">Current CTC </label>
+                                  <label class="col-md-3 control-label">Current CTC </label>
 
-                              <div class="col-md-7">
-                                <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
-                              </div> <!-- /.col -->
+                                  <div class="col-md-7">
+                                    <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                  </div> <!-- /.col -->
 
-                            </div> <!-- /.form-group -->
+                                </div> <!-- /.form-group -->
 
-                            <div class="form-group">
+                                <div class="form-group">
 
-                              <label class="col-md-3 control-label">Expected CTC </label>
+                                  <label class="col-md-3 control-label">Expected CTC </label>
 
-                              <div class="col-md-7">
-                                <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
-                              </div> <!-- /.col -->
+                                  <div class="col-md-7">
+                                    <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                  </div> <!-- /.col -->
 
-                            </div> <!-- /.form-group -->
+                                </div> <!-- /.form-group -->
 
-                            <div class="form-group">
+                                <div class="form-group">
 
-                              <label class="col-md-3 control-label">Notice Period </label>
+                                  <label class="col-md-3 control-label">Notice Period </label>
 
-                              <div class="col-md-7">
-                                <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
-                              </div> <!-- /.col -->
+                                  <div class="col-md-7">
+                                    <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
+                                  </div> <!-- /.col -->
 
-                            </div> <!-- /.form-group -->
-                            
+                                </div> <!-- /.form-group -->
+                                
 
-                            <div class="form-group">
-                              <div class="col-md-7 col-md-push-3">
-                                <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference());">Save Changes</button>
-                                &nbsp;
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                              </div> <!-- /.col -->
-                            </div> <!-- /.form-group -->
+                                <div class="form-group">
+                                  <div class="col-md-7 col-md-push-3">
+                                    <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference());">Save Changes</button>
+                                    &nbsp;
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                  </div> <!-- /.col -->
+                                </div> <!-- /.form-group -->
 
-                          </div>
+                              </div>
                         <?php } ?>
 
                       </div> <!-- /.tab-pane-profile -->
