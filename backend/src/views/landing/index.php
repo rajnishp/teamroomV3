@@ -21,233 +21,29 @@
 
 <body>
 
-<?php include_once 'views/navbar/navbar.html'; ?>
+<?php include_once 'views/navbar/navbar.php'; ?>
 
   <div id="wrapper">
 
     <div class="content">
 
          
-      <section id = "register">
+      <section id = "register" style="background-color: #354b5e; background-image: url(<?= $baseUrl ?>static/global/img/bg/dark-mosaic.png);">
 
-        <div class="container " style=" padding-top: 100px;">
+        <div class="container " style=" padding-top: 70px;" >
 
-          <div class="panel">
-            <div class="eq-height clearfix">
-              <div class="col-md-5 eq-box-md text-center box-vmiddle-wrap bg-primary">
-          
-                <!-- Simple Promotion Widget -->
-                <!--===================================================-->
-                <div class="box-vmiddle pad-all">
-                  <h3 class="text-thin">Register Today</h3>
-                  <span class="icon-wrap icon-wrap-lg icon-circle bg-trans-light">
-                    <i class="fa fa-gift fa-5x text-primary"></i>
-                  </span>
-                  <p>Members get <span class="text-lg text-bold">50%</span> more points, so register today and start earning points for savings on great rewards!</p>
-                  <a class="btn btn-lg btn-primary btn-labeled fa fa-arrow-right" href="#">Learn More...</a>
-                </div>
-                <!--===================================================-->
-          
-              </div>
-              <div class="col-md-7 eq-box-md eq-no-panel">
-          
-                <!-- Main Form Wizard -->
-                <!--===================================================-->
-                <div id="demo-main-wz">
-          
-                  <!--nav-->
-                  <ul class="row wz-step wz-icon-bw wz-nav-off mar-top">
-                    <li class="col-xs-3">
-                      <a data-toggle="tab" href="#demo-main-tab1">
-                        <span class="icon-wrap icon-wrap-xs bg-danger"><i class="fa fa-info"></i></span>
-                        <p class="text-thin">Account</p>
-                      </a>
-                    </li>
-                    <li class="col-xs-3">
-                      <a data-toggle="tab" href="#demo-main-tab2">
-                        <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-user"></i></span>
-                        <p class="text-thin">Profile</p>
-                      </a>
-                    </li>
-                    <li class="col-xs-3">
-                      <a data-toggle="tab" href="#demo-main-tab3">
-                        <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-home"></i></span>
-                        <p class="text-thin">Address</p>
-                      </a>
-                    </li>
-                    <li class="col-xs-3">
-                      <a data-toggle="tab" href="#demo-main-tab4">
-                        <span class="icon-wrap icon-wrap-xs bg-success"><i class="fa fa-heart"></i></span>
-                        <p class="text-thin">Finish</p>
-                      </a>
-                    </li>
-                  </ul>
-          
-                  <!--progress bar-->
-                  <div class="progress progress-xs">
-                    <div class="progress-bar progress-bar-primary"></div>
-                  </div>
-          
-          
-                  <!--form-->
-                  <form class="form-horizontal">
-                    <div class="panel-body">
-                      <div class="tab-content">
-          
-                        <!--First tab-->
-                        <div id="demo-main-tab1" class="tab-pane">
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Username</label>
-                            <div class="col-lg-7">
-                              <input type="text" class="form-control" name="username" placeholder="Username">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Email address</label>
-                            <div class="col-lg-7">
-                              <input type="email" class="form-control" name="email" placeholder="Email">
-                            </div>
-                          </div>
-                          <hr>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Password</label>
-                            <div class="col-lg-7">
-                              <input type="password" class="form-control" name="password" placeholder="Password">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Retype password</label>
-                            <div class="col-lg-7">
-                              <input type="password" class="form-control" name="password2" placeholder="Retype password">
-                            </div>
-                          </div>
-                        </div>
-          
-                        <!--Second tab-->
-                        <div id="demo-main-tab2" class="tab-pane fade">
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">First name</label>
-                            <div class="col-lg-7">
-                              <input type="text" placeholder="First name" name="firstName" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Last name</label>
-                            <div class="col-lg-7">
-                              <input type="text" placeholder="Last name" name="lastName" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Company</label>
-                            <div class="col-lg-7">
-                              <input type="text" placeholder="Company" name="company" class="form-control">
-                            </div>
-                          </div>
-                          <hr>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Member Type</label>
-                            <div class="col-lg-7">
-                              <div class="radio">
-                                <label class="form-radio form-icon">
-                                  <input type="radio" value="free" name="memberType"> Free
-                                </label>
-          
-                                <label class="form-radio form-icon">
-                                  <input type="radio" value="personal" name="memberType"> Personal
-                                </label>
-          
-                                <label class="form-radio form-icon">
-                                  <input type="radio" value="bussines" name="memberType"> Bussiness
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-          
-                        <!--Third tab-->
-                        <div id="demo-main-tab3" class="tab-pane">
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Phone Number</label>
-                            <div class="col-lg-7">
-                              <input type="text" placeholder="Phone number" name="phoneNumber" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Address</label>
-                            <div class="col-lg-7">
-                              <input type="text" placeholder="Address" name="address" class="form-control">
-                            </div>
-                          </div>
-                          <hr>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">City</label>
-                            <div class="col-lg-7">
-                              <input type="text" placeholder="City" name="city" class="form-control">
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Poscode</label>
-                            <div class="col-lg-7">
-                              <input type="text" placeholder="Poscode" name="poscode" class="form-control">
-                            </div>
-                          </div>
-                        </div>
-          
-                        <!--Fourth tab-->
-                        <div id="demo-main-tab4" class="tab-pane">
-                          <div class="form-group">
-                            <label class="col-lg-3 control-label">Bio</label>
-                            <div class="col-lg-7">
-                              <textarea placeholder="Tell us your story..." rows="7" name="bio" class="form-control"></textarea>
-                            </div>
-                          </div>
-                          <div class="form-group">
-                            <div class="col-lg-7 col-lg-offset-3">
-                              <div class="checkbox">
-                                <label class="form-checkbox form-icon">
-                                  <input type="checkbox" value="java" name="acceptTerms"> Accept the terms and policies
-                                </label>
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-          
-          
-                    <!--Footer button-->
-                    <div class="pull-right pad-all">
-                      <button type="button" class="previous btn btn-primary">Previous</button>
-                      <button type="button" class="next btn btn-primary">Next</button>
-                      <button type="button" class="finish btn btn-success" disabled>Finish</button>
-                    </div>
-          
-                  </form>
-                </div>
-                <!--===================================================-->
-                <!-- End of Main Form Wizard -->
-          
-              </div>
-            </div>
-          </div>
-
-          <div class="account-wrapper">
-            <div class="section-header">
-              <!-- SECTION TITLE -->
-              <h2 class="dark-text">Register with Collap</h2>
-            </div>
+         
+         
+            
             <div class="row">
-              <form class="form account-form registration-form masthead-form well" method="POST" action="<?= $baseUrl?>home/signup" onSubmit="return (validateReg());">
+              <div class="col-md-5 masthead-text animated fadeInDownBig">
+                <div class="section-header">
+              <!-- SECTION TITLE -->
+              <h4 class="masthead-title">Register</h4>
+            </div>
+              <form class="form account-form registration-form masthead-form" method="POST" action="<?= $baseUrl?>home/signup" onSubmit="return (validateReg());">
 
-                <div class="form-group">
-                  
-                  <input type="text" class="input-block-level form-control" placeholder="Enter first name" id="firstname" name="firstname" onkeyup="nospaces(this)" tabindex="1">
-                </div> <!-- /.form-group -->
-
-                <div class="form-group">
-                  <input type="text" class="input-block-level form-control" placeholder="Enter last name" id="lastname" name="lastname" onkeyup="nospaces(this)" tabindex="1">
-                </div> <!-- /.form-group -->
-
+                
                 <div class="form-group">
                   <input type="email" class="input-block-level form-control" placeholder="Enter email-id" id="email" name="email" onkeyup="nospaces(this)" onblur="emailCheck();" tabindex="1">
                   <span id="status_email"></span>
@@ -262,10 +58,7 @@
                   <input type="password" class="input-block-level form-control" placeholder="Enter password" onkeyup="nospaces(this)" id="passwordR" name="password"/>
                 </div> <!-- /.form-group -->
 
-                <div class="form-group">
-                  <input type="password" class="input-block-level form-control" placeholder="Confirm password" onkeyup="nospaces(this)" id="password2R" name="password2"/>
-                </div> <!-- /.form-group -->
-
+                
                 <!-- <label>You are here for</label>
                   <br>
 
@@ -318,8 +111,12 @@
                 </div> <!-- End of social Login -->
                 <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
               </form>
-            </div>
+              </div><div class="col-md-7 masthead-text animated fadeInDownBig">
+
+              <iframe width="630" height="380" src="https://www.youtube.com/embed/hDWHBSCMj0w" frameborder="0" allowfullscreen style="margin-top: 61px;"></iframe>
           </div>
+            </div>
+         
         </div>
       </section>
 
@@ -327,10 +124,15 @@
 
       <section id = "login">
         <div class="container">
-          <div class="account-wrapper" style="margin-top: 60px;">
+          <div class="row">
+          <div class="col-md-7 masthead-text animated fadeInDownBig">
+          </div>
+          <div class="col-md-5 masthead-text animated fadeInDownBig">
+          <div class="account-body" style="margin-top: 60px;">
+          
             <div class="row">
-              <h3 class ="pull-left">Welcome back to Collap</h3>
-              <h5 class="pull-right" style="margin-top: 28px;">
+              <h3 class ="pull-left">Login</h3>
+              <h5 class="pull-right" style="margin-top: 18px;">
                 <a href="#register" style="color:#0CD85E"> 
                   Don't have an account? 
                 </a>
@@ -338,7 +140,7 @@
             </div>
 
             <div class="row">            
-              <form class="form account-form login-form masthead-form well" action="<?= $baseUrl ?>home/login" method="post" onSubmit="return (validateLog());">
+              <form class="form account-form login-form masthead-form" action="<?= $baseUrl ?>home/login<?= $this->fromUrl ? "?from=".$this->fromUrl:""  ?>" method="post" onSubmit="return (validateLog());">
 
                 <div class="form-group">
                   <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username" tabindex="1">
@@ -388,12 +190,13 @@
 
             <div class="divider large visible-desktop"></div><br/>
           </div>
+          </div>
+          </div>
         </div> <!-- /.container -->
       </section>   
       
 
-
-      <div class="item " style="background-color: #354b5e; background-image: url(../../global/img/bg/dark-mosaic.png);">
+      <div class="item " style="background-color: #354b5e; background-image: url(<?= $baseUrl ?>static/global/img/bg/dark-mosaic.png);">
 
         <hr class="spacer-md hidden-xs">
         <hr class="spacer-sm visible-xs">
@@ -403,12 +206,32 @@
           <div class="row">
 
             <div class="col-md-6 masthead-text animated fadeInDownBig">
+              <h4 class="masthead-title">Power of collaboration.</h4>
+
+              <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi ut aliquip ex ea commodo consequat.
+              </p>
+
+              <br>
+
+              <div class="masthead-actions">
+                <a href="javascript:;" class="btn btn-transparent btn-jumbo">
+                Learn More
+                </a>
+
+                <a href="./account-signup.html" class="btn btn-primary btn-jumbo">
+                Create an Account
+                </a>
+              </div> <!-- /.masthead-actions -->
 
             </div> <!-- /.masthead-text -->
 
             <hr class="spacer-sm visible-xs visible-sm">
 
             <div class="col-md-6 masthead-img animated pulse">
+              <iframe width="560" height="315" src="https://www.youtube.com/embed/iN_A7keXtVg" frameborder="0" allowfullscreen></iframe>
+              <hr class="spacer-md">
+              <hr class="spacer-xs">
 
             </div> <!-- /.masthead-img -->
 
@@ -419,9 +242,142 @@
       </div> <!-- /.item -->            
 
 
+
       <div class="content">
 
 
+        <section id="section-features" class="home-section">
+
+          <div class="container">
+
+            <div class="heading-block heading-minimal heading-center">
+              <h1>
+                Why to Start Collaborating?
+              </h1>
+            </div> <!-- /.heading-block -->
+
+            
+
+
+            <div class="feature-lg">
+
+              <div class="row">
+                
+                <div class="col-sm-6">
+                  <hr class="spacer-sm">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/HKGkBRk1kSo" frameborder="0" allowfullscreen></iframe>
+                </div><!-- /.col -->
+                
+                <div class="col-sm-6">
+                  <div class="feature-content">
+                    <h5>Consent accullignis dentibea.</h5>
+                    <h3>Fully flexible user interface</h3>
+                    <p>Magnis modipsae que lib voloratati andigen daepeditem quiate ut reporemni aut labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped.</p>
+                    <ul class="icons-list">
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Voloratati andigen daepeditem quiate
+                      </li>
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Laceaque quiae sitiorem
+                      </li>
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Tumquam core posae
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-default">Check out the functions</a>
+                  </div> <!-- /.feature-content -->
+                </div><!-- /.col -->
+                
+              </div> <!-- /.row -->
+
+            </div> <!-- /.feature-lg -->
+
+
+            <hr class="spacer-lg">
+
+
+            <div class="feature-lg figure-right">
+
+              <div class="row">
+                
+                <div class="col-sm-6 col-sm-push-6 ">
+                  <hr class="spacer-sm">
+                  <iframe width="420" height="315" src="https://www.youtube.com/embed/NsndhCQ5hRY" frameborder="0" allowfullscreen></iframe>
+                </div><!-- /.col -->
+                
+                <div class="col-sm-6 col-sm-pull-6">
+                  <div class="feature-content">
+                    <h5>Incim resto explabo.</h5>
+                    <h3>Over 14,000 designs available</h3>
+                    <p>Magnis modipsae que lib voloratati andigen daepeditem quiate es reporemus aut labor. Laceaque quiae sitiorem rest non restibusaes dem tumquam core posae volor remped modis volor. Doloreiur quia commolu ptatemp dolupta oreprerum tibusam eumenis et consent accullignis lib dentibea autem inisita.</p>
+                    <ul class="icons-list">
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Tumquam core posae volor remped modis volor
+                      </li>
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Non restibusaes dem tumquam
+                      </li>
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Modipsae que lib voloratati andigen daepeditem
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-default">Visit the showroom</a>
+                  </div> <!-- /.feature-content -->
+                </div><!-- /.col -->
+                
+              </div> <!-- /.row -->
+
+            </div> <!-- /.feature-lg -->
+
+
+            <hr class="spacer-lg">
+
+
+            <div class="feature-lg">
+
+              <div class="row">
+                
+                <div class="col-sm-6">
+                  <hr class="spacer-xs">
+                  <iframe width="420" height="315" src="https://www.youtube.com/embed/63NTB7oObtw" frameborder="0" allowfullscreen></iframe>
+                </div><!-- /.col -->
+                
+                <div class="col-sm-6">
+                  <div class="feature-content">
+                    <h5>Sir Ken Robinson: Collaboration in the 21st Century</h5>
+                    <h3>Social media made even easier</h3>
+                    <p>Magnis modipsae que lib voloratati andigen daepeditem quiate ut reporemni aut labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor. Doloreiur qui commolu ptatemp.</p>
+                    <ul class="icons-list">
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Tumquam core posae volor remped modis volor
+                      </li>
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Non restibusaes dem tumquam
+                      </li>
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Modipsae que lib voloratati andigen daepeditem
+                      </li>
+                    </ul>
+                    <a href="#" class="btn btn-default">Learn more about it</a>
+                  </div> <!-- /.feature-content -->
+                </div><!-- /.col -->
+                
+              </div> <!-- /.row -->
+
+            </div> <!-- /.feature-lg -->
+
+            </div> <!-- /.container -->
+
+          </section>
 
           <section id="faq" class="home-section" style="background-color: #f3f3f3;">
 

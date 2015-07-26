@@ -113,7 +113,7 @@
                              
                             </div>
                             <div class="col-md-6">
-                              <input type="file" name="file" class="btn btn-default btn-file" value="Browse">
+                              <input type="file" name="_file" class="btn btn-default btn-file" value="Browse">
                             </div>    
                           </div>  
 
@@ -139,12 +139,26 @@
 
 
 <script type="text/javascript">
+
 function postNewProject(fields){
           //fields = ["title","my_role","tech_skills","team_size","description"];
+          var imgTx = "";
+          if(responceTx != undefined ){
+            var res = responceTx.split(".");
+            if ((res['1'] == "jpg") || (res['1'] == "jpeg") || (res['1'] == "png") || (res['1'] == "gif")){
+                imgTx = "<img src=\""+responceTx+"\" style=\"max-width: 100%;\" onError=\"this.src=\"img/default.gif\"\" /><br/>";
+              }
+              else {
+                imgTx = responceTx ;
+              }
+          }
           var dataString = "";
-
           
-          dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val()  ;
+          if(imgTx == "" )          
+            dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val()  ;
+          else
+            dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + imgTx + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val()  ;
+          
           //console.log(dataString);
           
           $.ajax({
@@ -172,12 +186,56 @@ function postNewProject(fields){
           return false;
       }
 
+      function uploadProjectFile(page, fields){
+            //var _progress = document.getElementById('_progress'); 
+            if(_file.files.length === 0){
+              
+              return false ;
+            }
+            else if (_file.files['0'].size > 2015000) {
+             
+                  $.niftyNoty({ 
+                    type:"danger",
+                    icon:"fa fa-check fa-lg",
+                    title:"File Upload Error",
+                    message:"File size is too large",
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+              
+              return false ;
+            } 
+            else {
+              var data = new FormData();
+              data.append('file', _file.files[0]);
+              var request = new XMLHttpRequest();
+              var responceTx = "";
+              request.onreadystatechange = function(){
+                if(request.readyState == 4){
+                  responceTx = request.response;
+                  postNewProject(fields, responceTx);
+                  
+                }
+              };
+            }
+            request.upload.addEventListener('progress', function(e){
+              //_progress.style.width = Math.ceil(e.loaded/e.total) * 100 + '%';
+            }, false);  
+            request.open('POST', '<?= $baseUrl ?>fileUpload/'+page);
+            request.send(data);
+          }
+
+
   function validateCreateProject(){
     fields = ["title","my_role","tech_skills","team_size","description"];
     
     if (genericEmptyFieldValidator(fields)) {
-   
-            postNewProject(fields);
+        //    if(_file.files.length != 0){
+          //    uploadProjectFile('project',fields);
+            //}
+            //else 
+              postNewProject(fields);
     }
 
     return false;

@@ -266,7 +266,7 @@
                 
                 <div class="col-sm-6">
                   <hr class="spacer-sm">
-                  <figure class="feature-figure"><img src="./img/features/product01.png" class="img-responsive" alt=""></figure>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/HKGkBRk1kSo" frameborder="0" allowfullscreen></iframe>
                 </div><!-- /.col -->
                 
                 <div class="col-sm-6">

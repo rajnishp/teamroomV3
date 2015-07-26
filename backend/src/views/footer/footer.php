@@ -77,7 +77,7 @@ $('#demo-dp-range .input-daterange').datepicker({
 		autoclose: true,
 		todayHighlight: true
 	});
-	
+
 function addMorePost(url, dataString,addAt){
 
   $.ajax({
@@ -212,7 +212,7 @@ function addMorePost(url, dataString,addAt){
         
         }
 
-        function uploadFile(page){
+        function uploadFile(page,fields){
             //var _progress = document.getElementById('_progress'); 
             if(_file.files.length === 0){
               

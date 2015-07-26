@@ -1,3 +1,11 @@
+<?php 
+
+if(!isset($_SESSION['username'])){
+  require_once 'views/navbar/navbar.php';;
+}
+else {
+
+?>
   <!--NAVBAR-->
     <!--===================================================-->
     <header id="navbar">
@@ -162,3 +170,4 @@
     </header>
     <!--===================================================-->
     <!--END NAVBAR-->
+<?php } ?>

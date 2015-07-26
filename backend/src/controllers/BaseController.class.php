@@ -24,12 +24,16 @@ abstract class BaseController {
 
 	protected $logger;
 
+	protected $url;
+
 	
 
 	function __construct (  ){
 		
 		global $configs; 
 		$this->baseUrl = $configs["COLLAP_BASE_URL"];
+
+		$this->url = rtrim($this->baseUrl,"/").$_SERVER[REQUEST_URI];
 
 		global $logger;
 		$this -> logger = $logger;

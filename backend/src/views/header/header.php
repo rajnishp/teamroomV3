@@ -19,7 +19,11 @@
   <!-- Custom Add CSS -->
   <link rel="stylesheet" href="<?= $baseUrl ?>static/css/custom_add.css">
 
-  
+  <style type="text/css">
+iframe {
+ 
+}
+  </style>
 
   <!--STYLESHEET-->
   <!--=================================================-->

@@ -10,6 +10,7 @@ class HomeController {
 	private $project;
 	private $userInfoDAO;
 	private $user;
+	private $fromUrl;
 
 
 	function __construct (  ){
@@ -17,6 +18,7 @@ class HomeController {
 		$DAOFactory = new DAOFactory();
 		$this -> projectDAO = $DAOFactory->getProjectsDAO();
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
+		$this -> fromUrl = $_GET['from'];
 		
 
 	}
