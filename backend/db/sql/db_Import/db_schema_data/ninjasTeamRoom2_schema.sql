@@ -30,7 +30,7 @@ CREATE TABLE IF NOT EXISTS `blobs` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `stmt` text NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=11 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1;
 
 -- --------------------------------------------------------
 
@@ -482,7 +482,7 @@ CREATE TABLE IF NOT EXISTS `education` (
   `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `id` )
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
 
 
 --
@@ -492,14 +492,14 @@ CREATE TABLE IF NOT EXISTS `education` (
 CREATE TABLE IF NOT EXISTS `job_preference` (
   `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
   `user_id` int( 15 ) NOT NULL ,
-  `location_id` int( 5 ) NOT NULL ,
   `current_ctc` varchar( 100 ) NOT NULL ,
   `expected_ctc` varchar( 100 ) NOT NULL ,
   `notice_period` varchar( 10 ) NOT NULL ,
   `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
-  PRIMARY KEY ( `id` )
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+  PRIMARY KEY ( `id` ),
+  UNIQUE KEY user_id (`user_id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
 
 --
 -- Table structure for table `working_history`
@@ -515,18 +515,18 @@ CREATE TABLE IF NOT EXISTS `working_history` (
   `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
   `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
   PRIMARY KEY ( `id` )
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
 
 --
 -- Table structure for table `working_locations`
 --
 
 CREATE TABLE IF NOT EXISTS `working_locations` (
-  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `id` int( 4 ) NOT NULL AUTO_INCREMENT ,
   `location_name` varchar( 100 ) NOT NULL ,
   `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY ( `id`, `location_name` )
-) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
 
 --
 -- Table structure for table `technical_strength`
@@ -547,6 +547,24 @@ ALTER TABLE projects
   ADD team_size int( 2 ) ,
   ADD duration_from date,
   ADD duration_to date ;
+
+/* Alter table job_prefenrennce , delete location_id, its ambigious */
+
+ALTER TABLE `job_preference` DROP `location_id` ;
+
+
+--
+-- Table structure for table `user_locations`
+--
+
+CREATE TABLE IF NOT EXISTS `user_locations` (
+  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `user_id` int( 15 ) NOT NULL ,
+  `location_id` varchar( 4 ) NOT NULL ,
+  `priority` varchar( 2 ) NOT NULL ,
+  PRIMARY KEY ( `id` ),
+  UNIQUE KEY user_location_id (`user_id`, `location_id`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
 
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

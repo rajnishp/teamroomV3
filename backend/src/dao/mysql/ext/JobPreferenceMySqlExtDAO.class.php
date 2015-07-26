@@ -14,17 +14,6 @@ class JobPreferenceMySqlExtDAO extends JobPreferenceMySqlDAO{
 
 		$jobPreference = $this->getList($sqlQuery);
 
-		$DAOFactory = new DAOFactory();
-		$locationsDAO = $DAOFactory-> getWorkingLocationsDAO();
-
-		foreach ($jobPreference as $preference) {
-			
-			if ($preference ) {
-				$locations = $locationsDAO ->  load( $preference -> getLocationId () );
-				$preference -> setLocations ( $locations );
-			}
-		}
-
 		return $jobPreference;
 	}
 }

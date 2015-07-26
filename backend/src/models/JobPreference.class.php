@@ -9,7 +9,6 @@
 		
 		private $id;
 		private $userId;
-		private $locationId;
 		private $currentCtc;
 		private $expectedCtc;
 		private $noticePeriod;
@@ -19,10 +18,9 @@
 		private $locations;
 		
 
-		function __construct ($userId, $locationId, $currentCtc, $expectedCtc, $noticePeriod, $addedOn, $lastUpdateOn, $id = null) {
+		function __construct ($userId, $currentCtc, $expectedCtc, $noticePeriod, $addedOn, $lastUpdateOn, $id = null) {
 			$this-> id = $id;
 			$this-> userId = $userId;
-			$this-> locationId = $locationId;
 			$this-> currentCtc = $currentCtc;
 			$this-> expectedCtc = $expectedCtc;
 			$this-> noticePeriod = $noticePeriod;
@@ -42,13 +40,6 @@
 		}
 		function getUserId(){
 			return $this-> userId;
-		}
-
-		function setLocationId($locationId){
-			$this -> locationId = $locationId;
-		}
-		function getLocationId(){
-			return $this-> locationId;
 		}
 
 		function setCurrentCtc($currentCtc){
@@ -86,12 +77,6 @@
 			return $this-> lastUpdateOn;
 		}
 
-
-		function setLocations($locations){
-			$this -> locations = $locations;
-		}
-		function getLocations(){
-			return $this-> locations;
-		}
 	}
+
 ?>

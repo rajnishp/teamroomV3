@@ -3,7 +3,7 @@
  * Class that operate on table 'job_preference'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-07-15 12:50
+ * @date: 2015-07-26 12:11
  */
 class JobPreferenceMySqlDAO implements JobPreferenceDAO{
 
@@ -57,11 +57,10 @@ class JobPreferenceMySqlDAO implements JobPreferenceDAO{
  	 * @param JobPreferenceMySql jobPreference
  	 */
 	public function insert($jobPreference){
-		$sql = 'INSERT INTO job_preference (user_id, location_id, current_ctc, expected_ctc, notice_period, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO job_preference (user_id, current_ctc, expected_ctc, notice_period, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($jobPreference->getUserId());
-		$sqlQuery->setNumber($jobPreference->getLocationId());
 		$sqlQuery->set($jobPreference->getCurrentCtc());
 		$sqlQuery->set($jobPreference->getExpectedCtc());
 		$sqlQuery->set($jobPreference->getNoticePeriod());
@@ -79,17 +78,15 @@ class JobPreferenceMySqlDAO implements JobPreferenceDAO{
  	 * @param JobPreferenceMySql jobPreference
  	 */
 	public function update($jobPreference){
-		$sql = 'UPDATE job_preference SET user_id = ?, location_id = ?, current_ctc = ?, expected_ctc = ?, notice_period = ?, added_on = ?, last_update_on = ? WHERE id = ?';
+		$sql = 'UPDATE job_preference SET user_id = ?, current_ctc = ?, expected_ctc = ?, notice_period = ?, added_on = ?, last_update_on = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($jobPreference->getUserId());
-		$sqlQuery->setNumber($jobPreference->getLocationId());
 		$sqlQuery->set($jobPreference->getCurrentCtc());
 		$sqlQuery->set($jobPreference->getExpectedCtc());
 		$sqlQuery->set($jobPreference->getNoticePeriod());
 		$sqlQuery->set($jobPreference->getAddedOn());
 		$sqlQuery->set($jobPreference->getLastUpdateOn());
-
 
 		$sqlQuery->setNumber($jobPreference->getId());
 		return $this->executeUpdate($sqlQuery);
@@ -106,13 +103,6 @@ class JobPreferenceMySqlDAO implements JobPreferenceDAO{
 
 	public function queryByUserId($value){
 		$sql = 'SELECT * FROM job_preference WHERE user_id = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->getList($sqlQuery);
-	}
-
-	public function queryByLocationId($value){
-		$sql = 'SELECT * FROM job_preference WHERE location_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
@@ -161,13 +151,6 @@ class JobPreferenceMySqlDAO implements JobPreferenceDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByLocationId($value){
-		$sql = 'DELETE FROM job_preference WHERE location_id = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->executeUpdate($sqlQuery);
-	}
-
 	public function deleteByCurrentCtc($value){
 		$sql = 'DELETE FROM job_preference WHERE current_ctc = ?';
 		$sqlQuery = new SqlQuery($sql);
@@ -211,7 +194,7 @@ class JobPreferenceMySqlDAO implements JobPreferenceDAO{
 	 * @return JobPreferenceMySql 
 	 */
 	protected function readRow($row){
-		$jobPreference = new JobPreference($row['user_id'], $row['location_id'], $row['current_ctc'], $row['expected_ctc'], $row['notice_period'], $row['added_on'], $row['last_update_on'], $row['id']);
+		$jobPreference = new JobPreference($row['user_id'], $row['current_ctc'], $row['expected_ctc'], $row['notice_period'], $row['added_on'], $row['last_update_on'], $row['id']);
 		
 		return $jobPreference;
 	}

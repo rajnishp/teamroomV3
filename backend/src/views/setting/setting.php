@@ -213,27 +213,31 @@
                             Add More Skills 
                           </h3>
                         </div> <!-- /.heading-block -->
-                          
-                          
-                        <div class="">
-                          <?php foreach($userSkills as $skill ) { ?>
-                            <span class="btn btn-secondary btn-sm"> <?= $skill -> getName() ?> </span>
-                          <?php } ?>
-                        </div> <!-- /.list-group -->
-                        <hr class="spacer-sm">
-                        <!-- Multiple Skills Select Choosen -->
-                        <!--===================================================-->
-                        <div class="row">                      
-                          <div class="col-md-6">
-                            <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
-                              <?php //var_dump($allSkills); die();
-                                foreach ($allSkills as $skillName) { ?>
-                                <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
-                              <?php } ?>
-                            </select>
-                            <button type="submit" id="skills" class="btn btn-primary" onclick="return (validateUpdateSkills());">Add Skills</button>
-                            <!--===================================================-->
-                          </div>
+
+                        <div class="form-horizontal">
+                          <div class="form-group">
+
+                            <label class="col-md-3 control-label">Update Skills </label>
+
+                            <div class="col-md-7">
+                              <div class="">
+                                <?php foreach($userSkills as $skill ) { ?>
+                                  <span class="btn btn-secondary btn-sm"> <?= $skill -> getName() ?> </span>
+                                <?php } ?>
+                              </div> <!-- /.list-group -->
+                              
+                              <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                                <?php
+                                  foreach ($allSkills as $skillName) { ?>
+                                  <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
+                                <?php } ?>
+                              </select>
+
+                              <button type="submit" id="skills" class="btn btn-primary" onclick="return (validateUpdateSkills());">Add Skills</button>
+
+                            </div> <!-- /.col -->
+
+                          </div> <!-- /.form-group -->
                         </div>
 
                         <div class="heading-block">
@@ -529,100 +533,47 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <!-- /.form edit job preferences --> 
-                        <?php if(isset($userJobPreference)) { ?>
+                        <div class="form-horizontal">
                           
-                          <div class="form-horizontal">
-                            
-                            <div class="form-group">
+                          <div class="form-group">
 
-                              <label class="col-md-3 control-label">Preferred Locations </label>
+                              <label class="col-md-3 control-label">Preferred Locations <br/>(First Location is first <b>Preference</b>) </label>
 
                               <div class="col-md-7">
                                 <div class="">
-                                  <?php foreach($allLocations as $locationName ) { ?>
+                                  <?php foreach($userPreferredJobLocations as $locationName ) { ?>
                                     <span class="btn btn-secondary btn-sm"> <?= $locationName -> getLocationName() ?> </span>
                                   <?php } ?>
                                 </div> <!-- /.list-group -->
-                                <hr class="spacer-sm">
-                                <select id="demo-cs-multiselect1" data-placeholder="Choose a Location..." multiple tabindex="4">
-                                  <?php foreach ($allLocations as $locationName) { ?>
-                                    <option value="<?= $locationName -> getId() ?>" id ="location_<?= $locationName -> getId() ?>"><?= $locationName-> getLocationName() ?></option>  
-                                  <?php } ?>
-                                </select>
-
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
-                            <?php foreach ($userJobPreference as $jobPreference) { ?>
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Current CTC </label>
-
-                                <div class="col-md-7">
-
-                                  <input type="text" name="current_ctc" id="current_ctc" value="<?= $jobPreference -> getCurrentCtc() ?>" class="form-control"/>
-                                  <input type="hidden" name="id" value="<?= $jobPreference -> getId() ?>" class="form-control"/>
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Expected CTC </label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="expected_ctc" id="expected_ctc" value="<?= $jobPreference -> getExpectedCtc() ?>" class="form-control"/>
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Notice Period </label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="notice_period" id="notice_period" value="<?= $jobPreference -> getNoticePeriod() ?>" class="form-control"/>
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-                              
-
-                              <div class="form-group">
-                                <div class="col-md-7 col-md-push-3">
-                                  <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference(<?= $jobPreference -> getId() ?>));">Save Changes</button>
-                                  &nbsp;
-                                  <button type="reset" class="btn btn-default">Cancel</button>
-                                </div> <!-- /.col -->
-                              </div> <!-- /.form-group -->
-                            <?php break; } ?>
-                          </div>
-                        <?php } else { ?>
-
-                          <div class="form-horizontal">
-
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Preferred Locations </label>
-
-                              <div class="col-md-7">
                                 
-                                <select id="demo-cs-multiselect1" data-placeholder="Choose a Location..." multiple tabindex="4">
-                                  <?php foreach ($allLocations as $locationName) { ?>
-                                    <option value="<?= $locationName -> getId() ?>" id ="location_<?= $locationName -> getId() ?>"><?= $locationName-> getLocationName() ?></option>  
+                                <select id="demo-cs-multiselect1" data-placeholder="Choose Location by Preference..." multiple tabindex="4">
+                                  <?php foreach ($allLocations as $availablelocation) { ?>
+                                    <option value="<?= $availablelocation -> getId() ?>" id ="location_<?= $availablelocation -> getId() ?>"><?= $availablelocation-> getLocationName() ?></option>  
                                   <?php } ?>
                                 </select>
 
+                                <button type="submit" id="locations" class="btn btn-primary" onclick="return (validateUpdateLocations());">Add Locations</button>
+
                               </div> <!-- /.col -->
 
-                            </div> <!-- /.form-group -->
+                          </div> <!-- /.form-group -->
+                        
+                        </div>
+                        
+                        <!-- /.form edit job preferences --> 
+                        <?php 
+                            if ($userJobPreference) {
+                              foreach ($userJobPreference as $key => $userJobPreference) { ?>
+                                <div class="form-horizontal">
                             
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Current CTC </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+
+                                <input type="text" name="current_ctc" id="current_ctc" value="<?= $userJobPreference -> getCurrentCtc() ?>" class="form-control"/>
+                                <input type="hidden" name="id" value="<?= $userJobPreference -> getId() ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -632,7 +583,7 @@
                               <label class="col-md-3 control-label">Expected CTC </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                <input type="text" name="expected_ctc" id="expected_ctc" value="<?= $userJobPreference -> getExpectedCtc() ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -642,7 +593,7 @@
                               <label class="col-md-3 control-label">Notice Period </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
+                                <input type="text" name="notice_period" id="notice_period" value="<?= $userJobPreference -> getNoticePeriod() ?>" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -650,14 +601,60 @@
 
                             <div class="form-group">
                               <div class="col-md-7 col-md-push-3">
-                                <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference());">Save Changes</button>
+                                <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference(<?= $userJobPreference -> getId() ?>));">Save Changes</button>
                                 &nbsp;
                                 <button type="reset" class="btn btn-default">Cancel</button>
                               </div> <!-- /.col -->
                             </div> <!-- /.form-group -->
+                                </div>
 
-                          </div>
+                        <?php } } 
+                            else { ?>
+
+                              <div class="form-horizontal">
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Current CTC </label>
+
+                                  <div class="col-md-7">
+                                    <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Expected CTC </label>
+
+                                  <div class="col-md-7">
+                                    <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Notice Period </label>
+
+                                  <div class="col-md-7">
+                                    <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+                                
+
+                                <div class="form-group">
+                                  <div class="col-md-7 col-md-push-3">
+                                    <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference());">Save Changes</button>
+                                    &nbsp;
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                  </div> <!-- /.col -->
+                                </div> <!-- /.form-group -->
+
+                              </div>
                         <?php } ?>
+
                       </div> <!-- /.tab-pane-profile -->
 
                       <!--Change Password-->
@@ -676,7 +673,7 @@
 
                         <br><br>
 
-                        <form action="<?= $baseUrl ?>setting/updatePassword" class="form-horizontal" method="POST" onSubmit="return (validateUpdatePassword());">
+                        <div class="form-horizontal">
 
                           <div class="form-group">
 
@@ -715,7 +712,7 @@
                           <div class="form-group">
 
                             <div class="col-md-7 col-md-push-3">
-                              <button type="submit" class="btn btn-primary">Save Changes</button>
+                              <button type="submit" class="btn btn-primary" onclick="return (validateUpdatePassword());">Save Changes</button>
                               &nbsp;
                               <button type="reset" class="btn btn-default">Cancel</button>
                             </div> <!-- /.col -->

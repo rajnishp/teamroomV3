@@ -28,7 +28,8 @@ abstract class BaseController {
 	protected $userJobPreferenceDAO;
 	protected $userSkillsInsertDAO;
 
-	protected $userJobLocationsDAO;
+	protected $jobLocationsDAO;
+	protected $userPreferredLocationsDAO;
 
 	protected $logger;
 
@@ -75,7 +76,9 @@ abstract class BaseController {
 		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
 		$this -> userSkillsInsertDAO = $DAOFactory->getUserSkillsDAO();
 
-		$this -> userJobLocationsDAO = $DAOFactory->getWorkingLocationsDAO();
+		$this -> jobLocationsDAO = $DAOFactory->getWorkingLocationsDAO();
+		$this -> userPreferredLocationsDAO = $DAOFactory->getUserLocationsDAO();
+
 		
 		
 		$this->process();

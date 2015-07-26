@@ -311,6 +311,19 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return UserLocationsDAO
+	 */
+	public static function getUserLocationsDAO(){
+
+		require_once('UserLocationsDAO.class.php');
+		require_once('models/UserLocation.class.php');
+		require_once('mysql/UserLocationsMySqlDAO.class.php');
+		require_once('mysql/ext/UserLocationsMySqlExtDAO.class.php');
+
+		return new UserLocationsMySqlExtDAO();
+	}
+
+	/**
 	 * @return UserProfessionsDAO
 	 */
 	public static function getUserProfessionsDAO(){

@@ -255,6 +255,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 								break;
 							
+							case 'updateLocations':
+								
+								$settingController -> updateLocations();
+
+								break;
+
 							case 'updateJobPreference':
 								
 								$settingController -> updateJobPreference();

@@ -16,7 +16,7 @@ class SettingController extends BaseController {
 		$baseUrl = $this->baseUrl;
 
 		if ( ! isset($this -> userId) || $this -> userId == ""){
-						header('Location: '. $baseUrl);
+			header('Location: '. $baseUrl);
 		}
 		//loading other click event on the page should be done by ajax
 
@@ -29,12 +29,15 @@ class SettingController extends BaseController {
 
 			$allSkills = $this -> userSkillDAO-> availableUserSkills( $this-> userId );
 			
-			$allLocations = $this -> userJobLocationsDAO-> availableJobLocations( $this-> userId );
+			$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
 
 			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);			
 			$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
 			$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
+			
 			$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
+
+			$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
 
 			require_once 'views/setting/setting.php';
 		
@@ -74,58 +77,60 @@ class SettingController extends BaseController {
 
 	function updateJobPreference() {
 		
-		if(isset($_POST['locations'], $_POST['current_ctc'], $_POST['expected_ctc'], $_POST['notice_period'], $_POST['id'])) {	
-
-			$locationIds = explode(',', $_POST['locations']);
-
-			foreach ($locationIds as $locationId) {
+		if(isset($_POST['current_ctc'], $_POST['expected_ctc'], $_POST['notice_period'])) {	
+		
+			if((isset($_POST['id'])) && $_POST['id'] != undefined) {
 				
-				if((isset($_POST['id'])) && $_POST['id'] != undefined) {
-					$jobPreferenceObj = new JobPreference(
-													$this -> userId,
-													$locationId,
-													$_POST['current_ctc'],
-													$_POST['expected_ctc'],
-													$_POST['notice_period'],
-													null,
-													date("Y-m-d H:i:s"),
-													$_POST['id']
-												);
-					try {
-						$this -> userJobPreferenceDAO ->update($jobPreferenceObj);
-					}
-					catch (Exception $e) {
-
-					}
-				}
-				else {
-					$jobPreferenceObj = new JobPreference(
+				$jobPreferenceObj = new JobPreference(
 												$this -> userId,
-												$locationId,
 												$_POST['current_ctc'],
 												$_POST['expected_ctc'],
 												$_POST['notice_period'],
-												date("Y-m-d H:i:s"),
 												null,
-												null
+												date("Y-m-d H:i:s"),
+												$_POST['id']
 											);
-					
-					try {
-						$this -> userJobPreferenceDAO ->insert($jobPreferenceObj);
-					}
-					catch (Exception $e) {
+		
+				try {
 
-					}
-					
-				}		
-				
+					if ($this -> userJobPreferenceDAO ->update($jobPreferenceObj))
+						echo "Added Successfully";
+					else
+						echo "Failed to Add, Try Again";
+				}
+				catch (Exception $e) {
+					echo "Failed: ". var_dump($e);
+				}
+				echo "Updated Successfully";
 			}
-			echo "Updated Successfully";
+			else {
+				$jobPreferenceObj = new JobPreference(
+											$this -> userId,
+											$_POST['current_ctc'],
+											$_POST['expected_ctc'],
+											$_POST['notice_period'],
+											date("Y-m-d H:i:s"),
+											null,
+											null
+										);
+				
+				try {
+					if ($this -> userJobPreferenceDAO ->insert($jobPreferenceObj))
+						echo "Added Successfully";
+					else
+						echo "Failed to Add, Try Again";
+				}
+				catch (Exception $e) {
+
+				}
+			}		
+			
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Technical Strength Can Not Be Empty";
 		}
+			
 	}
 
 
@@ -265,25 +270,41 @@ class SettingController extends BaseController {
 
 	function updatePassword() {
 		
-		if(isset($_POST['old_password'], $_POST['new_password_1'], $_POST['new_password_2'])
-					&& $_POST['old_password'] != ''
-					&& $_POST['new_password_1'] != '' && $_POST['new_password_2'] != '') {
+		if(isset($_POST['old_password'], $_POST['new_password_1'], $_POST['new_password_2'])) {
 
-			$oldPassCheck = $this -> userInfoDAO -> load($this -> userId);
+			try {
+				$userObj = $this -> userInfoDAO -> load($this -> userId);				
+			}
+			catch (Exception $e) {
+				echo "Error occurred: " . var_dump($e);
+			}
 			
-			$oldPassword = md5($oldPassCheck -> getPassword());
+			$oldPassword = md5 ($_POST['old_password']);
+			
+			$oldPassCheck = $this -> userInfoDAO -> load($this -> userId);
 
-			if ( $oldPassword = $_POST['old_password']){
 
-				if ($_POST['new_password_1'] == $_POST['new_password_2']) {
+			$oldPasswordVerify = $oldPassCheck -> getPassword();
+
+			
+			if ( $oldPasswordVerify == $oldPassword  ){
+
+				if (($_POST['new_password_1']) == ($_POST['new_password_2'])) {
 				
 					$newPassword = md5($_POST['new_password_1']);
 				
-					$oldPassCheck = $this -> userInfoDAO -> update($newPassword);
-				
+					try {				
+						$this -> userInfoDAO -> updateNewPassword($newPassword, $this -> userId);
+					
+					}
+					catch (Exception $e) {
+						echo "Error occurred: " . var_dump($e);
+					}
+
 					echo "Updated Successfully";
 
 				}	
+
 				else{
 					header('HTTP/1.1 500 Internal Server Error');
 					echo "New Password do not match, Try Again";
@@ -330,6 +351,39 @@ class SettingController extends BaseController {
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Skills field can Not Be Empty";
+		}
+	}
+
+	function updateLocations() {
+
+		if(isset($_POST['locations']) && $_POST['locations'] != '') {
+
+			$locationIds = explode(',', $_POST['locations']);
+
+			$priority = 1;
+			
+			foreach ($locationIds as $location_id) {
+				
+				$locationsObj = new UserLocation(
+									$this -> userId,
+									$location_id,
+									$priority
+								);
+
+				try {
+					$this -> userPreferredLocationsDAO ->insert($locationsObj);
+				}
+				catch (Exception $e) {
+
+				}
+				$priority++;
+			}
+			echo "Updated Successfully";
+		}
+		
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Locations field can Not Be Empty";
 		}
 	}
 }
