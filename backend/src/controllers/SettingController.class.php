@@ -29,12 +29,15 @@ class SettingController extends BaseController {
 
 			$allSkills = $this -> userSkillDAO-> availableUserSkills( $this-> userId );
 			
-			$allLocations = $this -> userJobLocationsDAO-> availableJobLocations( $this-> userId );
+			$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
 
 			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);			
 			$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
 			$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
+			
 			$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
+
+			$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
 
 			require_once 'views/setting/setting.php';
 		
@@ -74,20 +77,14 @@ class SettingController extends BaseController {
 
 	function updateJobPreference() {
 		
-		if(isset($_POST['locations'], $_POST['current_ctc'], $_POST['expected_ctc'], $_POST['notice_period'], $_POST['id'])) {	
-
-			$locationIds = explode(',', $_POST['locations']);
-
-			foreach ($locationIds as $locationId) {
-				
+			if(isset($_POST['current_ctc'], $_POST['expected_ctc'], $_POST['notice_period'])) {	
 				if((isset($_POST['id'])) && $_POST['id'] != undefined) {
 					$jobPreferenceObj = new JobPreference(
 													$this -> userId,
-													$locationId,
 													$_POST['current_ctc'],
 													$_POST['expected_ctc'],
 													$_POST['notice_period'],
-													null,
+													$this-> userJobPreference -> getAddedOn(),
 													date("Y-m-d H:i:s"),
 													$_POST['id']
 												);
@@ -97,11 +94,11 @@ class SettingController extends BaseController {
 					catch (Exception $e) {
 
 					}
+					echo "Updated Successfully";
 				}
 				else {
 					$jobPreferenceObj = new JobPreference(
 												$this -> userId,
-												$locationId,
 												$_POST['current_ctc'],
 												$_POST['expected_ctc'],
 												$_POST['notice_period'],
@@ -116,16 +113,15 @@ class SettingController extends BaseController {
 					catch (Exception $e) {
 
 					}
-					
+					echo "Added Successfully";
 				}		
 				
 			}
-			echo "Updated Successfully";
-		}
-		else{
+			else{
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Technical Strength Can Not Be Empty";
 		}
+			
 	}
 
 
@@ -330,6 +326,39 @@ class SettingController extends BaseController {
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Skills field can Not Be Empty";
+		}
+	}
+
+	function updateLocations() {
+
+		if(isset($_POST['locations']) && $_POST['locations'] != '') {
+
+			$locationIds = explode(',', $_POST['locations']);
+
+			$priority = 1;
+			
+			foreach ($locationIds as $location_id) {
+				
+				$locationsObj = new UserLocation(
+									$this -> userId,
+									$location_id,
+									$priority
+								);
+
+				try {
+					$this -> userPreferredLocationsDAO ->insert($locationsObj);
+				}
+				catch (Exception $e) {
+
+				}
+				$priority++;
+			}
+			echo "Updated Successfully";
+		}
+		
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Locations field can Not Be Empty";
 		}
 	}
 }

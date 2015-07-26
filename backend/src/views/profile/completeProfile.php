@@ -298,23 +298,32 @@
                           <div id="tab_job_preference" class="tab-pane">
                             
                             <div class="form-horizontal">
-
                               <div class="form-group">
 
-                                <label class="col-md-3 control-label">Preferred Locations </label>
+                                <label class="col-md-3 control-label">Preferred Locations <br/>(First Location is first <b>Preference</b>) </label>
 
                                 <div class="col-md-7">
+                                  <div class="">
+                                    <?php foreach($userPreferredJobLocations as $locationName ) { ?>
+                                      <span class="btn btn-secondary btn-sm"> <?= $locationName -> getLocationName() ?> </span>
+                                    <?php } ?>
+                                  </div> <!-- /.list-group -->
                                   
-                                  <select id="demo-cs-multiselect1" data-placeholder="Choose a Location..." multiple tabindex="4">
-                                    <?php foreach ($allLocations as $locationName) { ?>
-                                      <option value="<?= $locationName -> getId() ?>" id ="location_<?= $locationName -> getId() ?>"><?= $locationName-> getLocationName() ?></option>  
+                                  <select id="demo-cs-multiselect1" data-placeholder="Choose Location by Preference..." multiple tabindex="4">
+                                    <?php foreach ($allLocations as $availablelocation) { ?>
+                                      <option value="<?= $availablelocation -> getId() ?>" id ="location_<?= $availablelocation -> getId() ?>"><?= $availablelocation-> getLocationName() ?></option>  
                                     <?php } ?>
                                   </select>
+
+                                  <button type="submit" id="locations" class="btn btn-primary" onclick="return (validateUpdateLocations());">Add Locations</button>
 
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
                               
+                              
+                                
+
                               <div class="form-group">
 
                                 <label class="col-md-3 control-label">Current CTC </label>
@@ -344,7 +353,7 @@
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
-                         
+                              
                               <div class="form-group">
                                 <div class="pull-right pad-all">
 

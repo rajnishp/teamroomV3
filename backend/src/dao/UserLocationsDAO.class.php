@@ -5,13 +5,13 @@
  * @author: http://phpdao.com
  * @date: 2015-07-26 12:11
  */
-interface JobPreferenceDAO{
+interface UserLocationsDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @Return JobPreference 
+	 * @Return UserLocations 
 	 */
 	public function load($id);
 
@@ -28,23 +28,23 @@ interface JobPreferenceDAO{
 	
 	/**
  	 * Delete record from table
- 	 * @param jobPreference primary key
+ 	 * @param userLocation primary key
  	 */
 	public function delete($id);
 	
 	/**
  	 * Insert record to table
  	 *
- 	 * @param JobPreference jobPreference
+ 	 * @param UserLocations userLocation
  	 */
-	public function insert($jobPreference);
+	public function insert($userLocation);
 	
 	/**
  	 * Update record in table
  	 *
- 	 * @param JobPreference jobPreference
+ 	 * @param UserLocations userLocation
  	 */
-	public function update($jobPreference);	
+	public function update($userLocation);	
 
 	/**
 	 * Delete all rows
@@ -53,28 +53,16 @@ interface JobPreferenceDAO{
 
 	public function queryByUserId($value);
 
-	public function queryByCurrentCtc($value);
+	public function queryByLocationId($value);
 
-	public function queryByExpectedCtc($value);
-
-	public function queryByNoticePeriod($value);
-
-	public function queryByAddedOn($value);
-
-	public function queryByLastUpdateOn($value);
+	public function queryByPriority($value);
 
 
 	public function deleteByUserId($value);
 
-	public function deleteByCurrentCtc($value);
+	public function deleteByLocationId($value);
 
-	public function deleteByExpectedCtc($value);
-
-	public function deleteByNoticePeriod($value);
-
-	public function deleteByAddedOn($value);
-
-	public function deleteByLastUpdateOn($value);
+	public function deleteByPriority($value);
 
 
 }
