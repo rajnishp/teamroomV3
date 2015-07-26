@@ -45,6 +45,17 @@ class UserInfoMySqlExtDAO extends UserInfoMySqlDAO{
 		return $this -> getListUsers($sqlQuery);
 	}
 
+
+	public function updateNewPassword($password, $userId){
+		$sql = "UPDATE user_info SET password = ? WHERE id = ?";
+
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($password);
+		$sqlQuery->set($userId);
+		
+		return $this -> executeUpdate($sqlQuery);
+	}
+
 	/**
 	 * Read row
 	 *

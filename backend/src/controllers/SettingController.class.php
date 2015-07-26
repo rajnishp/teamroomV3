@@ -270,25 +270,41 @@ class SettingController extends BaseController {
 
 	function updatePassword() {
 		
-		if(isset($_POST['old_password'], $_POST['new_password_1'], $_POST['new_password_2'])
-					&& $_POST['old_password'] != ''
-					&& $_POST['new_password_1'] != '' && $_POST['new_password_2'] != '') {
+		if(isset($_POST['old_password'], $_POST['new_password_1'], $_POST['new_password_2'])) {
 
-			$oldPassCheck = $this -> userInfoDAO -> load($this -> userId);
+			try {
+				$userObj = $this -> userInfoDAO -> load($this -> userId);				
+			}
+			catch (Exception $e) {
+				echo "Error occurred: " . var_dump($e);
+			}
 			
-			$oldPassword = md5($oldPassCheck -> getPassword());
+			$oldPassword = md5 ($_POST['old_password']);
+			
+			$oldPassCheck = $this -> userInfoDAO -> load($this -> userId);
 
-			if ( $oldPassword = $_POST['old_password']){
 
-				if ($_POST['new_password_1'] == $_POST['new_password_2']) {
+			$oldPasswordVerify = $oldPassCheck -> getPassword();
+
+			
+			if ( $oldPasswordVerify == $oldPassword  ){
+
+				if (($_POST['new_password_1']) == ($_POST['new_password_2'])) {
 				
 					$newPassword = md5($_POST['new_password_1']);
 				
-					$oldPassCheck = $this -> userInfoDAO -> update($newPassword);
-				
+					try {				
+						$this -> userInfoDAO -> updateNewPassword($newPassword, $this -> userId);
+					
+					}
+					catch (Exception $e) {
+						echo "Error occurred: " . var_dump($e);
+					}
+
 					echo "Updated Successfully";
 
 				}	
+
 				else{
 					header('HTTP/1.1 500 Internal Server Error');
 					echo "New Password do not match, Try Again";

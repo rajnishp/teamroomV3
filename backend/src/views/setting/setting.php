@@ -673,7 +673,7 @@
 
                         <br><br>
 
-                        <form action="<?= $baseUrl ?>setting/updatePassword" class="form-horizontal" method="POST" onSubmit="return (validateUpdatePassword());">
+                        <div class="form-horizontal">
 
                           <div class="form-group">
 
@@ -712,7 +712,7 @@
                           <div class="form-group">
 
                             <div class="col-md-7 col-md-push-3">
-                              <button type="submit" class="btn btn-primary">Save Changes</button>
+                              <button type="submit" class="btn btn-primary" onclick="return (validateUpdatePassword());">Save Changes</button>
                               &nbsp;
                               <button type="reset" class="btn btn-default">Cancel</button>
                             </div> <!-- /.col -->

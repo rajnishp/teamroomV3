@@ -412,15 +412,13 @@
 
       }
 
-      function postUpdatePassword(){
+      function postUpdatePassword(fields){
         //check new_password_1 and new_password_2 match or not
         var dataString = "";
-        $.each(fields, function( index, value ) {
-            console.log(value);
             
-            dataString = "old_password=" + $('#'+value).val() + "&new_password_1=" + $('#'+value).val() + "&new_password_2=" + $('#'+value).val();
-            
-        });
+        dataString = "old_password=" + $('#'+fields[0]).val() + "&new_password_1=" + $('#'+fields[1]).val() + "&new_password_2=" + $('#'+fields[2]).val();
+
+alert(dataString);
 
         $.ajax({
           type: "POST",
@@ -460,7 +458,7 @@
         if (genericEmptyFieldValidator(fields)) {
             postUpdatePassword(fields);
         }
-        return false;    
+        return false;
       }
 
 
