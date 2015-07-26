@@ -10,6 +10,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="">
   <meta name="author" content="">
+  
 
   <?php require_once 'views/header/header.php'; ?>
 
@@ -61,16 +62,29 @@
                       <!--===================================================-->
            
                       <div id="tabs-profile" class="tab-pane fade active in">
-
+                        
                         <div class="heading-block">
                           <h3>
-                            Edit Profile
+                            Update Resume
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <p> Here, Edit your profile.</p>
+                        <form action="#" class="form-horizontal" method="POST">
+                          <div class="form-group">
+                            <label class="col-md-3 control-label">Upload Resume</label>
+                            <div class="col-md-9">
+                              <span class="pull-left btn btn-default btn-file">
+                              Browse... <input type="file" id="resume" name="resume">
+                              </span>
+                            </div>
+                          </div>
+                        </form>
 
-                        <br><br>
+                        <div class="heading-block">
+                          <h3>
+                            Update Profile Picture
+                          </h3>
+                        </div> <!-- /.heading-block -->
 
                         <form action="profile/updatePic" class="form-horizontal" method="POST">
 
@@ -193,6 +207,34 @@
                           </div> <!-- /.form-group -->
 
                         </form>
+
+                        <div class="heading-block">
+                          <h3>
+                            Add More Skills 
+                          </h3>
+                        </div> <!-- /.heading-block -->
+                          
+                          
+                        <div class="">
+                          <?php foreach($userSkills as $skill ) { ?>
+                            <span class="btn btn-secondary btn-sm"> <?= $skill -> getName() ?> </span>
+                          <?php } ?>
+                        </div> <!-- /.list-group -->
+                        <hr class="spacer-sm">
+                        <!-- Multiple Skills Select Choosen -->
+                        <!--===================================================-->
+                        <div class="row">                      
+                          <div class="col-md-6">
+                            <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                              <?php //var_dump($allSkills); die();
+                                foreach ($allSkills as $skillName) { ?>
+                                <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
+                              <?php } ?>
+                            </select>
+                            <button type="submit" id="skills" class="btn btn-primary" onclick="return (validateUpdateSkills());">Add Skills</button>
+                            <!--===================================================-->
+                          </div>
+                        </div>
 
                         <div class="heading-block">
                           <h3>
@@ -487,16 +529,90 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <?php foreach ($userJobPreference as $key => $jobPreference) { ?>
-                          <form class="form-horizontal" method = "POST" onSubmit="return (validateUpdateJobPreference(<?= $jobPreference -> getId() ?>));">
+                        <!-- /.form edit job preferences --> 
+                        <?php if(isset($userJobPreference)) { ?>
+                          
+                          <div class="form-horizontal">
+                            
+                            <div class="form-group">
 
+                              <label class="col-md-3 control-label">Preferred Locations </label>
+
+                              <div class="col-md-7">
+                                <div class="">
+                                  <?php foreach($allLocations as $locationName ) { ?>
+                                    <span class="btn btn-secondary btn-sm"> <?= $locationName -> getLocationName() ?> </span>
+                                  <?php } ?>
+                                </div> <!-- /.list-group -->
+                                <hr class="spacer-sm">
+                                <select id="demo-cs-multiselect1" data-placeholder="Choose a Location..." multiple tabindex="4">
+                                  <?php foreach ($allLocations as $locationName) { ?>
+                                    <option value="<?= $locationName -> getId() ?>" id ="location_<?= $locationName -> getId() ?>"><?= $locationName-> getLocationName() ?></option>  
+                                  <?php } ?>
+                                </select>
+
+                              </div> <!-- /.col -->
+
+                            </div> <!-- /.form-group -->
+                            <?php foreach ($userJobPreference as $jobPreference) { ?>
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Current CTC </label>
+
+                                <div class="col-md-7">
+
+                                  <input type="text" name="current_ctc" id="current_ctc" value="<?= $jobPreference -> getCurrentCtc() ?>" class="form-control"/>
+                                  <input type="hidden" name="id" value="<?= $jobPreference -> getId() ?>" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Expected CTC </label>
+
+                                <div class="col-md-7">
+                                  <input type="text" name="expected_ctc" id="expected_ctc" value="<?= $jobPreference -> getExpectedCtc() ?>" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Notice Period </label>
+
+                                <div class="col-md-7">
+                                  <input type="text" name="notice_period" id="notice_period" value="<?= $jobPreference -> getNoticePeriod() ?>" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+                              
+
+                              <div class="form-group">
+                                <div class="col-md-7 col-md-push-3">
+                                  <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference(<?= $jobPreference -> getId() ?>));">Save Changes</button>
+                                  &nbsp;
+                                  <button type="reset" class="btn btn-default">Cancel</button>
+                                </div> <!-- /.col -->
+                              </div> <!-- /.form-group -->
+                            <?php break; } ?>
+                          </div>
+                        <?php } else { ?>
+
+                          <div class="form-horizontal">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Preferred Locations </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="location" id="location_<?= $jobPreference -> getId() ?>" value="<?= $jobPreference -> getLocationId() ?>" class="form-control"/>
+                                
+                                <select id="demo-cs-multiselect1" data-placeholder="Choose a Location..." multiple tabindex="4">
+                                  <?php foreach ($allLocations as $locationName) { ?>
+                                    <option value="<?= $locationName -> getId() ?>" id ="location_<?= $locationName -> getId() ?>"><?= $locationName-> getLocationName() ?></option>  
+                                  <?php } ?>
+                                </select>
+
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -506,8 +622,7 @@
                               <label class="col-md-3 control-label">Current CTC </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="current_ctc" id="current_ctc_<?= $jobPreference -> getId() ?>" value="<?= $jobPreference -> getCurrentCtc() ?>" class="form-control"/>
-                                <input type="hidden" name="id" value="<?= ucfirst($jobPreference -> getId()) ?>" class="form-control"/>
+                                <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -517,7 +632,7 @@
                               <label class="col-md-3 control-label">Expected CTC </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="expected_ctc" id="expected_ctc_<?= $jobPreference -> getId() ?>" value="<?= $jobPreference -> getExpectedCtc() ?>" class="form-control"/>
+                                <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -527,7 +642,7 @@
                               <label class="col-md-3 control-label">Notice Period </label>
 
                               <div class="col-md-7">
-                                <input type="text" name="notice_period" id="notice_period_<?= $jobPreference -> getId() ?>" value="<?= $jobPreference -> getNoticePeriod() ?>" class="form-control"/>
+                                <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -535,69 +650,14 @@
 
                             <div class="form-group">
                               <div class="col-md-7 col-md-push-3">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
+                                <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference());">Save Changes</button>
                                 &nbsp;
                                 <button type="reset" class="btn btn-default">Cancel</button>
                               </div> <!-- /.col -->
                             </div> <!-- /.form-group -->
 
-                          </form>
+                          </div>
                         <?php } ?>
-
-                          <form class="form-horizontal" method = "POST" onSubmit="return (validateUpdateJobPreference();">
-
-
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Preferred Locations </label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="location" id="location" class="form-control"/>
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
-
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Current CTC </label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="current_ctc" id="current_ctc" class="form-control"/>
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
-
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Expected CTC </label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="expected_ctc" id="expected_ctc" class="form-control"/>
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
-
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Notice Period </label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="notice_period" id="notice_period" class="form-control"/>
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
-                            
-
-                            <div class="form-group">
-                              <div class="col-md-7 col-md-push-3">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                                &nbsp;
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                              </div> <!-- /.col -->
-                            </div> <!-- /.form-group -->
-
-                          </form>
-
                       </div> <!-- /.tab-pane-profile -->
 
                       <!--Change Password-->
@@ -686,312 +746,12 @@
     </div> <!-- /.container -->
 
     <?php require_once 'views/footer/footer.php'; ?>
+    
+    <?php include_once "static/js/updateUserProfileSettingFunctions.php"; ?>
 
-
-    <script src="<?= $baseUrl ?>static/js/genericEmptyFieldValidator.js"></script>
-
-    <script type="text/javascript">
-
-      function postUpdateProfile(fields){
-        var dataString = "";
-          
-        dataString = "first_name=" + $('#'+fields[0]).val() + "&last_name=" + $('#'+fields[1]).val() + "&phone=" + $('#'+fields[2]).val() + "&living_place=" + $('#'+fields[3]).val() + "&about_user=" + $('#'+fields[4]).val();
-         
-        $.ajax({
-          type: "POST",
-          url: "<?= $baseUrl ?>" + "setting/updateUserInfo",
-          data: dataString,
-          cache: false,
-          success: function(result){
-            $.niftyNoty({ 
-              type:"success",
-              icon:"fa fa-check fa-lg",
-              title:"Profile Information",
-              message:result,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
-          },
-          error: function(result){
-            console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-times fa-lg",
-              title:"Profile Information",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
-          }
-
-        });      
-      }
-
-      function validateUpdateProfile(){
-
-        console.log("Inside Validate user Profile");
-        
-        fields = ["first_name","last_name","phone","living_place", "about_user"];
-
-        if(genericEmptyFieldValidator(fields)){
-          console.log("iam there");
-          postUpdateProfile(fields);          
-
-        }
-        return false;
-      }
-
-      function postUpdateTechStrength(fields, key){
-          var dataString = "";
-/*          $.each(fields, function( index, value ) {
-              console.log(value);
-              
-              dataString = "tech_strength=" + $('#'+value).val() ;  
-              
-          });*/
-          if (key != undefined) {
-            dataString = "tech_strength=" + $('#'+fields[0]).val() + "&id=" + key ;
-          } 
-          else {
-            dataString = "tech_strength=" + $('#'+fields[0]).val();          }
-  
-          $.ajax({
-                type: "POST",
-                url: "<?= $baseUrl ?>" + "setting/updateTechStrength",
-                data: dataString,
-                cache: false,
-                success: function(result){
-                  $.niftyNoty({ 
-                    type:"success",
-                    icon:"fa fa-check fa-lg",
-                    title:"Technical Strength",
-                    message:result,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
-                },
-                 error: function(result){
-                  console.log(result);
-                  $.niftyNoty({ 
-                    type:"danger",
-                    icon:"fa fa-times fa-lg",
-                    title:"Technical Strength",
-                    message:result.responseText,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
-                }
-
-          });
-
-      }
-
-      function validateUpdateTechStrength(key){
-
-        console.log("Inside Validate Technical Strength",key);
-        fields = ["tech_strength"];
-
-        if(key != undefined ){
-           $.each(fields, function( index, value ) {
-
-              fields[index] = value + "_" +key;
-
-
-           });
-        }
-        if(genericEmptyFieldValidator(fields)){
-
-            postUpdateTechStrength(fields, key);          
-
-        }
-        return false;
-      }
-
-      function postUpdateWorkExp(fields, key){
-          var dataString = "";
-
-          if (key != undefined) {
-            dataString = "company_name=" + $('#'+fields[0]).val() + "&designation=" + $('#'+fields[1]).val() + "&from=" + $('#'+fields[2]).val() + "&to=" + $('#'+fields[3]).val() + "&id=" + key ;
-          } 
-          else {
-            dataString = "company_name=" + $('#'+fields[0]).val() + "&designation=" + $('#'+fields[1]).val() + "&from=" + $('#'+fields[2]).val() + "&to=" + $('#'+fields[3]).val() ;
-          }                        
-            
-          
-          console.log(dataString);
-
-          $.ajax({
-            type: "POST",
-            url: "<?= $baseUrl ?>" + "setting/updateWorkExp",
-            data: dataString,
-            cache: false,
-            success: function(result){
-              $.niftyNoty({ 
-                type:"success",
-                icon:"fa fa-check fa-lg",
-                title:"Working Experience",
-                message:result,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
-            },
-             error: function(result){
-              console.log(result);
-              $.niftyNoty({ 
-                type:"danger",
-                icon:"fa fa-times fa-lg",
-                title:"Working Experience",
-                message:result.responseText,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
-            }
-          });
-
-      }
-
-      function validateUpdateWorkExp(key){
-        console.log("Inside Validate Work Experience");
-        fields = ["company_name", "designation", "work_from", "work_to"];
-
-        if(key != undefined ){
-           $.each(fields, function( index, value ) {
-
-              fields[index] = value + "_" +key;
-
-           });
-        }
-        if (genericEmptyFieldValidator(fields)) {
-            postUpdateWorkExp(fields, key);
-        }
-        return false;
-      }
-
-
-      function postUpdateEducation(fields, key){
-          var dataString = "";
-
-          if (key != undefined) {
-            dataString = "institute=" + $('#'+fields[0]).val() + "&degree=" + $('#'+fields[1]).val() + "&branch=" + $('#'+fields[2]).val() + "&from=" + $('#'+fields[3]).val() + "&to=" + $('#'+fields[4]).val() + "&id=" + key ;
-          } 
-          else {
-            dataString = "institute=" + $('#'+fields[0]).val() + "&degree=" + $('#'+fields[1]).val() + "&branch=" + $('#'+fields[2]).val() + "&from=" + $('#'+fields[3]).val() + "&to=" + $('#'+fields[4]).val() ;
-          }
-
-          $.ajax({
-            type: "POST",
-            url: "<?= $baseUrl ?>" + "setting/updateEducation",
-            data: dataString,
-            cache: false,
-            success: function(result){
-              $.niftyNoty({ 
-                type:"success",
-                icon:"fa fa-check fa-lg",
-                title:"Education",
-                message:result,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
-            },
-             error: function(result){
-              console.log(result);
-              $.niftyNoty({ 
-                type:"danger",
-                icon:"fa fa-check fa-lg",
-                title:"Education",
-                message:result.responseText,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
-            }
-          });
-
-      }
-
-      function validateUpdateEducation(key){
-        
-        console.log("Inside Validate Education");
-        
-        fields = ["institute", "degree", "branch", "edu_from", "edu_to"];
-
-        if(key != undefined ){
-            $.each(fields, function( index, value ) {
-
-              fields[index] = value + "_" +key;
-
-           });
-        }
-
-        if (genericEmptyFieldValidator(fields)) {
-   
-            postUpdateEducation(fields, key);
-        }
-        return false;
-
-      }
-
-      function postUpdatePassword(){
-        //check new_password_1 and new_password_2 match or not
-        var dataString = "";
-        $.each(fields, function( index, value ) {
-            console.log(value);
-            
-            dataString = "old_password=" + $('#'+value).val() + "&new_password_1=" + $('#'+value).val() + "&new_password_2=" + $('#'+value).val();
-            
-        });
-
-        $.ajax({
-          type: "POST",
-          url: "<?= $baseUrl ?>" + "setting/updatePassword",
-          data: dataString,
-          cache: false,
-          success: function(result){
-            $.niftyNoty({ 
-              type:"success",
-              icon:"fa fa-check fa-lg",
-              title:"Reset Password",
-              message:result,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
-          },
-           error: function(result){
-            console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-check fa-lg",
-              title:"Reset Password",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
-          }
-        });
-      }
-
-      function validateUpdatePassword(){
-        console.log("Inside Validate Password");
-        fields = ["old_password", "new_password_1","new_password_2"];
-
-        if (genericEmptyFieldValidator(fields)) {
-            postUpdatePassword(fields);
-        }
-        return false;    
-      }
-      
-    </script>
+    
 <script type="text/javascript">
-function uploadProfilePic(){
+  function uploadProfilePic(){
             //var _progress = document.getElementById('_progress'); 
             if(src.files.length === 0){
               

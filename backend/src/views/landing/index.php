@@ -209,21 +209,11 @@
               <h4 class="masthead-title">Power of collaboration.</h4>
 
               <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Nisi ut aliquip ex ea commodo consequat.
+              Collaboration, lets you to produce quility solution in very short time with various diversity in the socity. Collaboratoin is neccessory due to big diversity in the socity. Collaboration brings up New Ideas, New Relations, Shared Resources, Inovative solutions, Strengthened Newtwork and Inpleased Legitimacy.
               </p>
 
               <br>
-
-              <div class="masthead-actions">
-                <a href="javascript:;" class="btn btn-transparent btn-jumbo">
-                Learn More
-                </a>
-
-                <a href="./account-signup.html" class="btn btn-primary btn-jumbo">
-                Create an Account
-                </a>
-              </div> <!-- /.masthead-actions -->
-
+ 
             </div> <!-- /.masthead-text -->
 
             <hr class="spacer-sm visible-xs visible-sm">
@@ -270,24 +260,31 @@
                 
                 <div class="col-sm-6">
                   <div class="feature-content">
-                    <h5>Consent accullignis dentibea.</h5>
-                    <h3>Fully flexible user interface</h3>
-                    <p>Magnis modipsae que lib voloratati andigen daepeditem quiate ut reporemni aut labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped.</p>
+                    <h5>TEDx San Diego</h5>
+                    <h3>Collaboration - Affect/Possibility: Ken Blanchard</h3>
+                    <p>Changes needs a plan, plan will help to make a difference.</p>
                     <ul class="icons-list">
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Voloratati andigen daepeditem quiate
+                        You can not learn everything ourself.
                       </li>
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Laceaque quiae sitiorem
+                        No one is smarter then all of us.
                       </li>
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Tumquam core posae
+                        Reach people around us.
+                      </li>
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        Find people who have similar thought and collaborate together and do better.
+                      </li>
+                      <li>
+                        <i class="icon-li fa fa-check text-primary"></i>
+                        We are here to give to give not to get.
                       </li>
                     </ul>
-                    <a href="#" class="btn btn-default">Check out the functions</a>
                   </div> <!-- /.feature-content -->
                 </div><!-- /.col -->
                 
@@ -305,29 +302,29 @@
                 
                 <div class="col-sm-6 col-sm-push-6 ">
                   <hr class="spacer-sm">
-                  <iframe width="420" height="315" src="https://www.youtube.com/embed/NsndhCQ5hRY" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/NsndhCQ5hRY" frameborder="0" allowfullscreen></iframe>
                 </div><!-- /.col -->
                 
                 <div class="col-sm-6 col-sm-pull-6">
                   <div class="feature-content">
-                    <h5>Incim resto explabo.</h5>
-                    <h3>Over 14,000 designs available</h3>
-                    <p>Magnis modipsae que lib voloratati andigen daepeditem quiate es reporemus aut labor. Laceaque quiae sitiorem rest non restibusaes dem tumquam core posae volor remped modis volor. Doloreiur quia commolu ptatemp dolupta oreprerum tibusam eumenis et consent accullignis lib dentibea autem inisita.</p>
+                    <h5>TheArtmadillo</h5>
+                    <h3>Effective Team Work and Collaboration</h3>
+                    <p>Our world and socity is continously change, products and services are becoming more and more complex. New technologies anre becomming a part of our life. Our old ways of solving problems are becoming obsolete, due to increase in complaxity. The new interdisciplinary team collaboration can provide us better solution to the problems</p>
                     <ul class="icons-list">
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Tumquam core posae volor remped modis volor
+                        Effective collaboration in Multi-disciplinary TEAMS.
                       </li>
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Non restibusaes dem tumquam
+                        Our old ways of solving problems are becoming obsolete.
                       </li>
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Modipsae que lib voloratati andigen daepeditem
+                        Collaboration provices interdeciplinarity Thinking to achieve innovative solution.
                       </li>
                     </ul>
-                    <a href="#" class="btn btn-default">Visit the showroom</a>
+                    
                   </div> <!-- /.feature-content -->
                 </div><!-- /.col -->
                 
@@ -345,29 +342,28 @@
                 
                 <div class="col-sm-6">
                   <hr class="spacer-xs">
-                  <iframe width="420" height="315" src="https://www.youtube.com/embed/63NTB7oObtw" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/63NTB7oObtw" frameborder="0" allowfullscreen></iframe>
                 </div><!-- /.col -->
                 
                 <div class="col-sm-6">
                   <div class="feature-content">
-                    <h5>Sir Ken Robinson: Collaboration in the 21st Century</h5>
-                    <h3>Social media made even easier</h3>
-                    <p>Magnis modipsae que lib voloratati andigen daepeditem quiate ut reporemni aut labor. Laceaque quiae sitiorem rest non restibusaes es tumquam core posae volor remped modis volor. Doloreiur qui commolu ptatemp.</p>
+                    <h5>Create, Think and Share.</h5>
+                    <h3>Sir Ken Robinson: Collaboration in the 21st Centuryier</h3>
+                    <p></p>
                     <ul class="icons-list">
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Tumquam core posae volor remped modis volor
+                        Creativity is operational idea, you can plan for it and make it happen systematically.
                       </li>
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Non restibusaes dem tumquam
+                        We need to make continous innovation. 
                       </li>
                       <li>
                         <i class="icon-li fa fa-check text-primary"></i>
-                        Modipsae que lib voloratati andigen daepeditem
+                        Creativity is applied innovation.
                       </li>
                     </ul>
-                    <a href="#" class="btn btn-default">Learn more about it</a>
                   </div> <!-- /.feature-content -->
                 </div><!-- /.col -->
                 

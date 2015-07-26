@@ -1,39 +1,20 @@
 <?php
 
-require_once 'dao/DAOFactory.class.php';
-//require_once 'components/xxx.class.php';
-//require_once '.class.php';
+require_once 'controllers/BaseController.class.php';
 
-class SettingController {
-
-	private $userId;
-	private $userInfoDAO;
-	private $userEducationDAO;
-	private $userTechStrengthDAO;
-	private $userWorkHistoryDAO;
-	private $userJobPreferenceDAO;
+class SettingController extends BaseController {
 
 	function __construct ( ){
 		
-		if( isset( $_SESSION["user_id"] ) )
-			$this -> userId = $_SESSION["user_id"];
-			//$this->userId = 7;
+		parent::__construct();
 		
-
-		$DAOFactory = new DAOFactory();
-		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
-		//$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
-
-		$this -> userEducationDAO = $DAOFactory->getEducationDAO();
-		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
-		$this -> userWorkHistoryDAO = $DAOFactory->getWorkingHistoryDAO();
-		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
-
+		
 	}
 
 	function render (){
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
+
+		$baseUrl = $this->baseUrl;
+
 		if ( ! isset($this -> userId) || $this -> userId == ""){
 						header('Location: '. $baseUrl);
 		}
@@ -43,13 +24,15 @@ class SettingController {
 
 			//var_dump($this->userId);
 			
-			$userProfile = $this->userInfoDAO->load($this->userId);
-			//$userSkills = $this ->userSkillDAO->getUserSkills($this->userId);
+			$userProfile = $this -> userInfoDAO-> load($this->userId);
+			$userSkills = $this -> userSkillDAO-> getUserSkills( $this-> userId );
 
-			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);
+			$allSkills = $this -> userSkillDAO-> availableUserSkills( $this-> userId );
 			
+			$allLocations = $this -> userJobLocationsDAO-> availableJobLocations( $this-> userId );
+
+			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);			
 			$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
-			
 			$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
 			$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
 
@@ -87,6 +70,64 @@ class SettingController {
 		}
 		
 	}
+
+
+	function updateJobPreference() {
+		
+		if(isset($_POST['locations'], $_POST['current_ctc'], $_POST['expected_ctc'], $_POST['notice_period'], $_POST['id'])) {	
+
+			$locationIds = explode(',', $_POST['locations']);
+
+			foreach ($locationIds as $locationId) {
+				
+				if((isset($_POST['id'])) && $_POST['id'] != undefined) {
+					$jobPreferenceObj = new JobPreference(
+													$this -> userId,
+													$locationId,
+													$_POST['current_ctc'],
+													$_POST['expected_ctc'],
+													$_POST['notice_period'],
+													null,
+													date("Y-m-d H:i:s"),
+													$_POST['id']
+												);
+					try {
+						$this -> userJobPreferenceDAO ->update($jobPreferenceObj);
+					}
+					catch (Exception $e) {
+
+					}
+				}
+				else {
+					$jobPreferenceObj = new JobPreference(
+												$this -> userId,
+												$locationId,
+												$_POST['current_ctc'],
+												$_POST['expected_ctc'],
+												$_POST['notice_period'],
+												date("Y-m-d H:i:s"),
+												null,
+												null
+											);
+					
+					try {
+						$this -> userJobPreferenceDAO ->insert($jobPreferenceObj);
+					}
+					catch (Exception $e) {
+
+					}
+					
+				}		
+				
+			}
+			echo "Updated Successfully";
+		}
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Technical Strength Can Not Be Empty";
+		}
+	}
+
 
 	function updateUserInfo() {
 		
@@ -261,6 +302,35 @@ class SettingController {
 			echo "Password fields can Not Be Empty";
 		}
 		
+	}
+
+	function updateSkills() {
+
+		if(isset($_POST['skills']) && $_POST['skills'] != '') {
+
+			$skillIds = explode(',', $_POST['skills']);
+
+			foreach ($skillIds as $skill_id) {
+				
+				$skillsObj = new UserSkill(
+									$this -> userId,
+									$skill_id
+								);
+
+				try {
+					$this -> userSkillsInsertDAO ->insert($skillsObj);
+				}
+				catch (Exception $e) {
+
+				}
+			}
+			echo "Updated Successfully";
+		}
+		
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Skills field can Not Be Empty";
+		}
 	}
 }
 

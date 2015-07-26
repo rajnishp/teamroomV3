@@ -54,32 +54,51 @@
             
                     <!--nav-->
                     <ul class="row wz-step wz-icon-bw wz-nav-off mar-top">
-                      <li class="col-xs-2">
-                        <a data-toggle="tab" href="#demo-main-tab1">
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#tab_profile">
                           <span class="icon-wrap icon-wrap-xs bg-danger"><i class="fa fa-info"></i></span>
                           <p class="text-thin">Profile</p>
                         </a>
                       </li>
-                      <li class="col-xs-3">
-                        <a data-toggle="tab" href="#demo-main-tab2">
+                      <li class="col-xs-2">
+                        <a data-toggle="tab" href="#tab_tech_strength">
                           <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-code"></i></span>
                           <p class="text-thin">Technical Strength</p>
                         </a>
                       </li>
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#tab_skills">
+                          <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-code"></i></span>
+                          <p class="text-thin">Skills</p>
+                        </a>
+                      </li>
                       <li class="col-xs-2">
-                        <a data-toggle="tab" href="#demo-main-tab3">
+                        <a data-toggle="tab" href="#tab_work_exp">
                           <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-briefcase"></i></span>
                           <p class="text-thin">Work Experience</p>
                         </a>
                       </li>
-                      <li class="col-xs-3">
-                        <a data-toggle="tab" href="#demo-main-tab4">
+                      <li class="col-xs-2">
+                        <a data-toggle="tab" href="#tab_job_preference">
+                          <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-briefcase"></i></span>
+                          <p class="text-thin">Job Preference</p>
+                        </a>
+                      </li>
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#tab_education">
                           <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-book"></i></span>
                           <p class="text-thin">Education</p>
                         </a>
                       </li>
                       <li class="col-xs-2">
-                        <a data-toggle="tab" href="#demo-main-tab5">
+                        <a data-toggle="tab" href="#tab_projects">
+                          <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-book"></i></span>
+                          <p class="text-thin">Projects</p>
+                        </a>
+                      </li>
+
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#tab_finish">
                           <span class="icon-wrap icon-wrap-xs bg-success"><i class="fa fa-heart"></i></span>
                           <p class="text-thin">Finish</p>
                         </a>
@@ -93,13 +112,13 @@
             
             
                     <!--form-->
-                    <form class="form-horizontal">
+                    
                       <div class="panel-body">
                         <div class="tab-content">
             
                           <!--First tab-->
-                          <div id="demo-main-tab1" class="tab-pane">
-                            <form action="<?= $baseUrl ?>setting/updateUserInfo" class="form-horizontal" method="POST" onSubmit="return (validateUpdateProfile());">
+                          <div id="tab_profile" class="tab-pane">
+                            <div class="form-horizontal">
 
                               <div class="form-group">
 
@@ -152,20 +171,24 @@
                               </div> <!-- /.form-group -->
 
                               <div class="form-group">
-                                <div class="col-md-7 col-md-push-3">
-                                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                                  &nbsp;
-                                  <button type="reset" class="btn btn-default">Cancel</button>
+      
+                                <div class="pull-right pad-all">
+
+                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateProfile());">Save Changes</button>
+
+                                  <button type="button" class="next btn btn-primary">Next</button>
+                                  
                                 </div> <!-- /.col -->
+      
                               </div> <!-- /.form-group -->
 
-                            </form> <!--End Form user basic profile-->
+                            </div> <!--End Form user basic profile-->
                           </div> <!-- End First tab-->
             
                           <!--Second tab-->
-                          <div id="demo-main-tab2" class="tab-pane fade">
+                          <div id="tab_tech_strength" class="tab-pane fade">
                             
-                            <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
+                            <div class="form-horizontal">
 
                               <div class="form-group">
 
@@ -177,20 +200,48 @@
                               </div> <!-- /.form-group -->
 
                               <div class="form-group">
-                                <div class="col-md-7 col-md-push-3">
-                                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                                  &nbsp;
-                                  <button type="reset" class="btn btn-default">Cancel</button>
+    
+                                <div class="pull-right pad-all">
+
+                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateTechStrength());">Save Changes</button>
+
+                                  <button type="button" class="previous btn btn-info">Previous</button>
+
+                                  <button type="button" class="next btn btn-primary">Next</button>
+    
                                 </div> <!-- /.col -->
                               </div> <!-- /.form-group -->
                             
-                            </form>
+                            </div>
 
                           </div> <!--End Second tab-->
-            
+                          
                           <!--Third tab-->
-                          <div id="demo-main-tab3" class="tab-pane">
-                            <form class="form-horizontal"  onSubmit="return (validateUpdateWorkExp());">
+                          <div id="tab_skills" class="tab-pane fade">
+                            <div class="row">                      
+                              <div class="col-md-6">
+                                <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                                  <?php foreach ($allSkills as $skillName) { ?>
+                                    <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
+                                  <?php } ?>
+                                </select>
+                              </div>
+                               
+                              <div class="pull-right pad-all">
+
+                                <button type="submit" id="skills" class="btn btn-success" onclick="return (validateUpdateSkills());">Add Skills</button>
+                                
+                                <button type="button" class="previous btn btn-info">Previous</button>
+
+                                <button type="button" class="next btn btn-primary">Next</button>    
+                              </div>
+                            </div>
+                          
+                          </div> <!--End Third tab-->
+                          
+                          <!--Fourth tab-->
+                          <div id="tab_work_exp" class="tab-pane">
+                            <div class="form-horizontal">
 
                               <div class="form-group">
 
@@ -229,19 +280,89 @@
                               </div> <!-- /.form-group -->
 
                               <div class="form-group">
-                                <div class="col-md-7 col-md-push-3">
-                                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                                  &nbsp;
-                                  <button type="reset" class="btn btn-default">Cancel</button>
+                                <div class="pull-right pad-all">
+
+                                  <button type="submit" class="btn btn-success" onclick ="return (validateUpdateWorkExp());">Save Changes</button>
+
+                                  <button type="button" class="previous btn btn-info">Previous</button>
+
+                                  <button type="button" class="next btn btn-primary">Next</button>
+    
                                 </div> <!-- /.col -->
                               </div> <!-- /.form-group -->
 
-                            </form>
-                          </div> <!--End Third tab-->
+                            </div>
+                          </div> <!--End Fourth tab-->
             
-                          <!--Fourth tab-->
-                          <div id="demo-main-tab4" class="tab-pane">
-                            <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method="POST" onSubmit="return (validateUpdateEducation());">
+                          <!--Fifth tab-->
+                          <div id="tab_job_preference" class="tab-pane">
+                            
+                            <div class="form-horizontal">
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Preferred Locations </label>
+
+                                <div class="col-md-7">
+                                  
+                                  <select id="demo-cs-multiselect1" data-placeholder="Choose a Location..." multiple tabindex="4">
+                                    <?php foreach ($allLocations as $locationName) { ?>
+                                      <option value="<?= $locationName -> getId() ?>" id ="location_<?= $locationName -> getId() ?>"><?= $locationName-> getLocationName() ?></option>  
+                                    <?php } ?>
+                                  </select>
+
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+                              
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Current CTC </label>
+
+                                <div class="col-md-7">
+                                  <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Expected CTC </label>
+
+                                <div class="col-md-7">
+                                  <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Notice Period </label>
+
+                                <div class="col-md-7">
+                                  <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+                         
+                              <div class="form-group">
+                                <div class="pull-right pad-all">
+
+                                  <button type="submit" class="btn btn-primary" onclick="return (validateUpdateJobPreference());">Save Changes</button>
+
+                                  <button type="button" class="previous btn btn-info">Previous</button>
+
+                                  <button type="button" class="next btn btn-primary">Next</button>
+    
+                                </div> <!-- /.col -->
+                              </div> <!-- /.form-group -->
+                            </div>
+                          
+                          </div> <!--End Fifth tab-->
+
+                           <!--Sixth tab-->
+                          <div id="tab_education" class="tab-pane">
+                            <div class="form-horizontal">
 
                               <div class="form-group">
 
@@ -290,31 +411,136 @@
 
 
                               <div class="form-group">
-                                <div class="col-md-7 col-md-push-3">
-                                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                                  &nbsp;
-                                  <button type="reset" class="btn btn-default">Cancel</button>
+                                <div class="pull-right pad-all">
+
+                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateEducation());">Save Changes</button>
+
+                                  <button type="button" class="previous btn btn-info">Previous</button>
+
+                                  <button type="button" class="next btn btn-primary">Next</button>
+    
                                 </div> <!-- /.col -->
                               </div> <!-- /.form-group -->
 
-                            </form>
-                          </div> <!--End Fourth tab-->
+                            </div>
+                          </div> <!--End Sixth tab-->
 
-                          <!--Fourth tab-->
-                          <div id="demo-main-tab5" class="tab-pane">
+
+                          <!--Seventh tab-->
+                          <div id="tab_projects" class="tab-pane">
+                            <div class="form-horizontal">
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Title</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" id ="title" class="form-control" placeholder="Title" />
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Used Technical Skills</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Your Role</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Team Size</label>
+                                <div class="col-md-7">
+                                  <input type="integer" id="team_size" class="form-control" placeholder="Team Size" />
+                                </div>
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Duration</label>
+                                <div class="col-md-7">
+                                  <div id="demo-dp-range">
+                                    <div class="input-daterange input-group" id="datepicker">
+                                      <input type="text" class="form-control" name="start" id="start"/>
+                                      <span class="input-group-addon">To</span>
+                                      <input type="text" class="form-control" name="end" id="end" />
+                                    </div>
+                                  </div>
+                                </div>
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+                                <label class="col-md-3 control-label">Description</label>
+                                <div class="col-md-7">
+                                 
+                                  <textarea class="form-control share-widget-textarea" id = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1"></textarea>
+
+                                  <div class="share-widget-actions">
+                                    <div class=" pull-left">
+                                      <div class="col-md-6">
+                                       
+                                        <select class="selectpicker" name="type" data-live-search="true" data-width="100%" id= "type" >    
+                                            <option value='Public' >Public</option>
+                                            <option value='Classified' >Classified</option>
+                                            <option value='Private' >Private</option>
+                                        </select>
+                                       
+                                      </div>
+                                      <div class="col-md-6">
+                                        <input type="file" name="file" class="btn btn-default btn-file" value="Browse">
+                                      </div>    
+                                    </div>  
+
+                                    <div class="pull-right">
+
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>
+
+                              <div class="pull-right pad-all">
+
+                                <button type="submit" class="btn btn-success" onclick="return (validateCreateProject());">Save Changes</button>
+                                <button type="button" class="previous btn btn-info">Previous</button>
+                                <button type="button" class="next btn btn-primary">Next</button>
+  
+                              </div> <!-- /.col -->
+                      
+                            </div>
+                      
+                          </div> <!--End Seventh tab-->
+                          
+                          <!--Eight tab-->
+                          <div id="tab_finish" class="tab-pane">
+
+                            <div class="pull-right pad-all">
+
+                              <button type="button" class="previous btn btn-info">Previous</button>
+    
+                              <button type="button" class="finish btn btn-success">Finish</button>
+  
+                            </div> <!-- /.col -->      
+
                           </div>
-                        </div>
+                        </div><!--End Eight tab-->
                       </div>
             
-            
-                      <!--Footer button-->
-                      <div class="pull-right pad-all">
-                        <button type="button" class="previous btn btn-primary">Previous</button>
-                        <button type="button" class="next btn btn-primary">Next</button>
-                        <button type="button" class="finish btn btn-success" disabled>Finish</button>
-                      </div>
-            
-                    </form>
+                    
                   </div>
                   <!--===================================================-->
                   <!-- End of Main Form Wizard -->
@@ -327,8 +553,6 @@
           <!--===================================================-->
           <!--End page content-->
 
-          <?php require_once 'views/sidebar/sidebar_button.php'; ?>
-
         </div>
         <!--===================================================-->
         <!--END CONTENT CONTAINER-->
@@ -338,6 +562,8 @@
     </div> <!-- /.container -->
 
     <?php require_once 'views/footer/footer.php'; ?>
+
+    <?php include_once "static/js/updateUserProfileSettingFunctions.php"; ?>
 
 </body>
 </html>

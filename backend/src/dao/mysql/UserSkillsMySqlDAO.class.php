@@ -60,11 +60,11 @@ class UserSkillsMySqlDAO implements UserSkillsDAO{
 		$sql = 'INSERT INTO user_skills (user_id, skill_id) VALUES (?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($userSkill->userId);
-		$sqlQuery->setNumber($userSkill->skillId);
+		$sqlQuery->setNumber($userSkill->getUserId());
+		$sqlQuery->setNumber($userSkill->getSkillId());
 
 		$id = $this->executeInsert($sqlQuery);	
-		$userSkill->id = $id;
+		$userSkill-> setId ($id) ;
 		return $id;
 	}
 	

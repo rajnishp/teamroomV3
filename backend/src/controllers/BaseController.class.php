@@ -22,6 +22,14 @@ abstract class BaseController {
 
 	protected $teamsDAO;
 
+	protected $userEducationDAO;
+	protected $userTechStrengthDAO;
+	protected $userWorkHistoryDAO;
+	protected $userJobPreferenceDAO;
+	protected $userSkillsInsertDAO;
+
+	protected $userJobLocationsDAO;
+
 	protected $logger;
 
 	protected $url;
@@ -46,11 +54,11 @@ abstract class BaseController {
 			$this -> firstName = $_SESSION['first_name'];
 			$this -> lastName = $_SESSION['last_name'];
 
-
 		}
 		
 
 		$DAOFactory = new DAOFactory();
+		
 		$this -> challengesDAO = $DAOFactory->getChallengesDAO();
 		$this -> projectsDAO = $DAOFactory->getProjectsDAO();
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
@@ -60,9 +68,16 @@ abstract class BaseController {
 		
 		$this -> teamsDAO = $DAOFactory-> getTeamsDAO();
 		$this -> notificationsDAO = $DAOFactory-> getNotificationsDAO();
+
+		$this -> userEducationDAO = $DAOFactory->getEducationDAO();
+		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
+		$this -> userWorkHistoryDAO = $DAOFactory->getWorkingHistoryDAO();
+		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
+		$this -> userSkillsInsertDAO = $DAOFactory->getUserSkillsDAO();
+
+		$this -> userJobLocationsDAO = $DAOFactory->getWorkingLocationsDAO();
 		
-
-
+		
 		$this->process();
 
 	}

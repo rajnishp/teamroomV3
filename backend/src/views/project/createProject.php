@@ -37,7 +37,6 @@
                     </h3>
                   </div> <!-- /.heading-block -->
                   
-                  <form class="form-horizontal" onSubmit="return (validateCreateProject());">
 
                     
 
@@ -118,14 +117,12 @@
                           </div>  
 
                           <div class="pull-right">
-                            <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                            <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2" onclick="validateCreateProject()">Post</button>
                           </div>
                         </div>
                       </div>
                     </div>
-                  </form>
-
- 
+                  
               </div>
             </div>
 
@@ -139,8 +136,9 @@
 
 
 <script type="text/javascript">
+/*
 
-function postNewProject(fields){
+function postNewProject(fields, responceTx){
           //fields = ["title","my_role","tech_skills","team_size","description"];
           var imgTx = "";
           if(responceTx != undefined ){
@@ -184,7 +182,39 @@ function postNewProject(fields){
             }
           });
           return false;
+*/
+  function postNewProject(fields){
+    //fields = ["title","my_role","tech_skills","team_size","description"];
+    var dataString = "";
+
+    
+    dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val()  ;
+    //console.log(dataString);
+    
+    $.ajax({
+      type: "POST",
+      url: "<?= $baseUrl ?>project/createProject",
+      data: dataString,
+      cache: false,
+      success: function(result){
+        window.location.href  = result;
+
+      },
+       error: function(result){
+        console.log(result);
+        $.niftyNoty({ 
+          type:"danger",
+          icon:"fa fa-check fa-lg",
+          title:"Project",
+          message:result.responseText,
+          focus: true,
+          container:"floating",
+          timer:4000
+        });
       }
+    });
+    return false;
+  }
 
       function uploadProjectFile(page, fields){
             //var _progress = document.getElementById('_progress'); 
@@ -239,7 +269,7 @@ function postNewProject(fields){
     }
 
     return false;
-    
+
   }
 </script>
   </body>

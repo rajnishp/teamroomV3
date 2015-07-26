@@ -17,6 +17,7 @@ $(document).ready(function() {
 	// =================================================================
 	$('#demo-chosen-select').chosen();
 	$('#demo-cs-multiselect').chosen({width:'100%'});
+	$('#demo-cs-multiselect1').chosen({width:'100%'});
 
 
 

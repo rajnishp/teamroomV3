@@ -8,15 +8,7 @@ class ProfileController extends BaseController {
 
 	function __construct ( $profileUN = null ){
 		parent::__construct();	
-
-		$DAOFactory = new DAOFactory();
-		$this -> userEducationDAO = $DAOFactory->getEducationDAO();
-		$this -> userTechStrengthDAO = $DAOFactory->getTechnicalStrengthDAO();
-		$this -> userWorkHistoryDAO = $DAOFactory->getWorkingHistoryDAO();
-		$this -> userJobPreferenceDAO = $DAOFactory->getJobPreferenceDAO();
 		
-		$this -> knownPeoplesDAO = $DAOFactory->getKnownPeoplesDAO();
-		$this -> notificationDAO = $DAOFactory->getNotificationsDAO();
 
 		if($profileUN){
 			$this->profileUN = $profileUN;
