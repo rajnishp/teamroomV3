@@ -13,7 +13,7 @@
 							<i class="fa fa-comments"></i>
 						</a>
 					</li>
-					<li class="col-xs-4" data-content="Notification">
+					<!-- <li class="col-xs-4" data-content="Notification">
 						<a id="demo-alert" class="shortcut-grid" href="#">
 							<i class="fa fa-bullhorn"></i>
 						</a>
@@ -22,7 +22,7 @@
 						<a id="demo-page-alert" class="shortcut-grid" href="#">
 							<i class="fa fa-bell"></i>
 						</a>
-					</li>
+					</li> -->
 				</ul>
 			</div>
 			<!--================================-->
@@ -255,7 +255,7 @@
 											</div>
 										</a>
 									<?php } ?>
-										<a href="#" class="list-group-item">
+										<!-- <a href="#" class="list-group-item">
 											<div class="media-left">
 												<img class="img-circle img-xs" src="img/av6.png" alt="Profile Picture">
 											</div>
@@ -281,14 +281,14 @@
 												<div class="text-lg">Paul Aguilar</div>
 												<span class="text-muted">2 hours ago</span>
 											</div>
-										</a>
+										</a> -->
 									</div>
 
 
-									<hr>
+									<!-- <hr>
 									<h4 class="pad-hor text-thin">
 										<span class="pull-right badge badge-success">Offline</span> Works
-									</h4>
+									</h4> -->
 								</div>
 								<!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
 								<!--End first tab (Contact list)-->

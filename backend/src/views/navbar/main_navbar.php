@@ -72,7 +72,7 @@ else {
                       <?php } ?>
                   
                       <!-- Dropdown list-->
-                      <li>
+                      <!-- <li>
                         <a href="#" class="media">
                           <div class="media-left">
                             <span class="icon-wrap bg-success">
@@ -84,7 +84,7 @@ else {
                             <small class="text-muted">4 minutes ago</small>
                           </div>
                         </a>
-                      </li>
+                      </li> -->
                     </ul>
                   </div>
                 </div>

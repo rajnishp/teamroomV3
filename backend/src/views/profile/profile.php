@@ -430,8 +430,9 @@
 
       <?php require_once 'views/sidebar/sidebar_button.php'; ?>
 
-    </div> <!-- .container -->
-  </div>
+    </div> <!-- .boxed -->
+  
+  </div> <!-- .container -->
 
   <?php include_once 'views/footer/footer.php'; ?>
   

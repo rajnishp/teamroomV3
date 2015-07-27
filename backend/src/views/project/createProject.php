@@ -27,110 +27,113 @@
 
         <div id="content-container">
             
-            <div class="row">
+          <div class="row">
 
-              <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
+            <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
 
-                  <div class="heading-block">
-                    <h3>
-                      Create New Project
-                    </h3>
-                  </div> <!-- /.heading-block -->
-                  
+              <div class="heading-block">
+                <h3>
+                  Create New Project
+                </h3>
+              </div> <!-- /.heading-block -->
+            
+              <div class="form-horizontal">
+                <div class="form-group">
 
-                    
+                  <label class="col-md-3 control-label">Title</label>
 
-                    <div class="form-group">
+                  <div class="col-md-7">
+                    <input type="text" id ="title" class="form-control" placeholder="Title" />
+                  </div> <!-- /.col -->
 
-                      <label class="col-md-3 control-label">Title</label>
+                </div> <!-- /.form-group -->
 
-                      <div class="col-md-7">
-                        <input type="text" id ="title" class="form-control" placeholder="Title" />
-                      </div> <!-- /.col -->
+                <div class="form-group">
 
-                    </div> <!-- /.form-group -->
+                  <label class="col-md-3 control-label">Used Technical Skills</label>
 
-                    <div class="form-group">
+                  <div class="col-md-7">
+                    <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
+                  </div> <!-- /.col -->
 
-                      <label class="col-md-3 control-label">Used Technical Skills</label>
+                </div> <!-- /.form-group -->
 
-                      <div class="col-md-7">
-                        <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
-                      </div> <!-- /.col -->
+                <div class="form-group">
 
-                    </div> <!-- /.form-group -->
+                  <label class="col-md-3 control-label">Your Role</label>
 
-                    <div class="form-group">
+                  <div class="col-md-7">
+                    <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
+                  </div> <!-- /.col -->
 
-                      <label class="col-md-3 control-label">Your Role</label>
+                </div> <!-- /.form-group -->
 
-                      <div class="col-md-7">
-                        <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
-                      </div> <!-- /.col -->
+                <div class="form-group">
 
-                    </div> <!-- /.form-group -->
+                  <label class="col-md-3 control-label">Team Size</label>
+                  <div class="col-md-7">
+                    <input type="integer" id="team_size" class="form-control" placeholder="Team Size" />
+                  </div>
 
-                    <div class="form-group">
+                </div> <!-- /.form-group -->
 
-                      <label class="col-md-3 control-label">Team Size</label>
-                      <div class="col-md-7">
-                        <input type="integer" id="team_size" class="form-control" placeholder="Team Size" />
-                      </div>
+                <div class="form-group">
 
-                    </div> <!-- /.form-group -->
-
-                    <div class="form-group">
-
-                      <label class="col-md-3 control-label">Duration</label>
-                      <div class="col-md-7">
-                        <div id="demo-dp-range">
-                          <div class="input-daterange input-group" id="datepicker">
-                            <input type="text" class="form-control" name="start" id="start"/>
-                            <span class="input-group-addon">To</span>
-                            <input type="text" class="form-control" name="end" id="end" />
-                          </div>
-                        </div>
-                      </div>
-
-                    </div> <!-- /.form-group -->
-
-                    <div class="form-group">
-                      <label class="col-md-3 control-label">Description</label>
-                      <div class="col-md-7">
-                       
-                        <textarea class="form-control share-widget-textarea" id = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1"></textarea>
-
-                        <div class="share-widget-actions">
-                          <div class=" pull-left">
-                            <div class="col-md-6">
-                             
-                              <select class="selectpicker" name="type" data-live-search="true" data-width="100%" id= "type" >    
-                                  <option value='Public' >Public</option>
-                                  <option value='Classified' >Classified</option>
-                                  <option value='Private' >Private</option>
-                              </select>
-                             
-                            </div>
-                            <div class="col-md-6">
-                              <input type="file" name="_file" class="btn btn-default btn-file" value="Browse">
-                            </div>    
-                          </div>  
-
-                          <div class="pull-right">
-                            <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2" onclick="validateCreateProject()">Post</button>
-                          </div>
-                        </div>
+                  <label class="col-md-3 control-label">Duration</label>
+                  <div class="col-md-7">
+                    <div id="demo-dp-range">
+                      <div class="input-daterange input-group" id="datepicker">
+                        <input type="text" class="form-control" name="start" id="start"/>
+                        <span class="input-group-addon">To</span>
+                        <input type="text" class="form-control" name="end" id="end" />
                       </div>
                     </div>
-                  
-              </div>
-            </div>
+                  </div>
 
+                </div> <!-- /.form-group -->
+
+                <div class="form-group">
+                  <label class="col-md-3 control-label">Description</label>
+                  <div class="col-md-7">
+                   
+                    <textarea class="form-control share-widget-textarea" id = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1"></textarea>
+
+                    <div class="share-widget-actions">
+                      <div class=" pull-left">
+                        <div class="col-md-6">
+                         
+                          <select class="selectpicker" name="type" data-live-search="true" data-width="100%" id= "type" >    
+                              <option value='Public' >Public</option>
+                              <option value='Classified' >Classified</option>
+                              <option value='Private' >Private</option>
+                          </select>
+                         
+                        </div>
+                        <div class="col-md-6">
+                          <input type="file" name="_file" class="btn btn-default btn-file" value="Browse">
+                        </div>    
+                      </div>  
+
+                      <div class="pull-right">
+                        <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2" onclick="validateCreateProject()">Post</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            
+            </div>
+          
+          </div> <!-- /.row -->
+
+        </div> <!-- /.content-container -->
+        
         <?php require_once 'views/sidebar/sidebar_button.php'; ?>
 
-        </div>
+      </div>  <!-- /.boxed -->
       
-      </div>
+    </div> <!-- /.container -->
+
 
     <?php require_once 'views/footer/footer.php'; ?>
 

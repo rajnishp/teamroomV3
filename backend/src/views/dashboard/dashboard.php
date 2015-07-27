@@ -22,24 +22,24 @@
   </head>
   <body>
      <div id="container" class="effect mainnav-lg">
-     <?php require_once 'views/navbar/main_navbar.php'; ?>
-     <div class="boxed">
-     <div id="content-container">
-     <!--   <hr class="spacer-sm"> -->
-     <div class="row" style="margin-top: 20px;">
-        <div class="col-sm-12 col-md-8 col-md-offset-1">
-           <h3 class="title">Post to Collap</h3>
-           <!-- Post to collap starts -->
-           <div class="share-widget clearfix">
-              <form id="postActivity" class="form-horizontal" onSubmit="return (validatePostActivity('dashboard'));">
-                 <div class="share-widget">
-                    <input type="text" class="form-control" id="title" placeholder="Title">
-                 </div>
-                 <br />
-                 <textarea class="form-control share-widget-textarea" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
-                 <div class="share-widget-actions">
-                    <div class="share-widget-types pull-left">
-                       <div class="col-md-6" style="margin-top: 9px;">
+      <?php require_once 'views/navbar/main_navbar.php'; ?>
+        <div class="boxed">
+          <div id="content-container">
+            <!--   <hr class="spacer-sm"> -->
+            <div class="row" style="margin-top: 20px;">
+              <div class="col-sm-12 col-md-8 col-md-offset-1">
+                <h3 class="title">Post to Collap</h3>
+                <!-- Post to collap starts -->
+                <div class="share-widget clearfix">
+                  <form id="postActivity" class="form-horizontal" onSubmit="return (validatePostActivity('dashboard'));">
+                    <div class="share-widget">
+                      <input type="text" class="form-control" id="title" placeholder="Title">
+                    </div>
+                    <br />
+                    <textarea class="form-control share-widget-textarea" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
+                    <div class="share-widget-actions">
+                      <div class="share-widget-types pull-left">
+                        <div class="col-md-6" style="margin-top: 9px;">
                           <label class="form-radio form-normal active form-inline">
                           <input type="radio" checked="" name="activity" id="activity_type" value="1"> Challenge 
                           </label>
@@ -49,83 +49,87 @@
                           <label class="form-radio form-normal">
                           <input type="radio" name="activity" id="activity_type" value="4"> Idea
                           </label>
-                       </div>
-                       <div class="col-md-6">
+                        </div>
+                        <div class="col-md-6">
                           <input type="file" name="_file" id="_file" class="btn btn-default btn-file pull-right">
-                       </div>
+                        </div>
+                      </div>
+                      <div class="pull-right">
+                        <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                      </div>
                     </div>
-                    <div class="pull-right">
-                       <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</a>
-                    </div>
-                 </div>
-                 <!-- /.share-widget-actions -->
-              </form>
-           </div>
-           <!-- /.share-widget -->
-           <!-- /.Activities-block -->
-           <div class="activities-start">
-              <div class="post-title">
-                 <h3>
-                    Activities
-                 </h3>
+                   <!-- /.share-widget-actions -->
+                  </form>
+                </div>
+                <!-- /.share-widget -->
+                <!-- /.Activities-block -->
+                <div class="activities-start">
+                <div class="post-title">
+                   <h3>
+                      Activities
+                   </h3>
+                </div>
+                <!-- /.heading-block -->
+                <hr>
+                <hr class="spacer-sm">
+                <div class="activity-1" id="panel-cont">
+                   <?php foreach ($top10Activities as $activity) { ?>
+                   <div class="post">
+                      <div class="post-aside" style="padding-top: 28px;">
+                         <div class="post-date">
+                            <?php $data = date_parse($activity->getCreationTime()); ?>
+                            <span class="post-date-day"><?= $data["day"] ?></span>
+                            <span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>
+                            <span class="post-date-year"><?= $data["year"] ?></span>
+                         </div>
+                      </div>
+                      <!-- /.post-aside -->
+                      <div class="post-main">
+                         <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
+                         <?php dropDown_comment(8, 7, 9); ?>
+                         <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                         <div class="post-content">
+                            <p> 
+                               <?= $activity->getRefinedStmt() ?>
+                            </p>
+                         </div>
+                         <ol class="comment-list">
+                            <li>
+                               <div class="comment">
+                                  <?php foreach ($activity -> getResponses() as $response) { ?>
+                                  <div class="comment-avatar">
+                                     <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
+                                  </div>
+                                  <!-- /.comment-avatar -->
+                                  <div class="comment-meta">
+                                     <p> <?= $response -> getStmt() ?> </p>
+                                  </div>
+                                  <?php } ?>
+                               </div>
+                            </li>
+                            <li>
+                               <?php 
+                                  $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
+                                  postComment( $img_url , 'dashboard/article/comment', 'comment_to_article' , 'comment_article');
+                                  ?>
+                            </li>
+                         </ol>
+                      </div>
+                      <hr>
+                      <hr class="spacer-sm">
+                   </div>
+                   <?php } ?>
+                </div>
+                </div>
               </div>
-              <!-- /.heading-block -->
-              <hr>
-              <hr class="spacer-sm">
-              <div class="activity-1" id="panel-cont">
-                 <?php foreach ($top10Activities as $activity) { ?>
-                 <div class="post">
-                    <div class="post-aside" style="padding-top: 28px;">
-                       <div class="post-date">
-                          <?php $data = date_parse($activity->getCreationTime()); ?>
-                          <span class="post-date-day"><?= $data["day"] ?></span>
-                          <span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>
-                          <span class="post-date-year"><?= $data["year"] ?></span>
-                       </div>
-                    </div>
-                    <!-- /.post-aside -->
-                    <div class="post-main">
-                       <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
-                       <?php dropDown_comment(8, 7, 9); ?>
-                       <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
-                       <div class="post-content">
-                          <p> 
-                             <?= $activity->getRefinedStmt() ?>
-                          </p>
-                       </div>
-                       <ol class="comment-list">
-                          <li>
-                             <div class="comment">
-                                <?php foreach ($activity -> getResponses() as $response) { ?>
-                                <div class="comment-avatar">
-                                   <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
-                                </div>
-                                <!-- /.comment-avatar -->
-                                <div class="comment-meta">
-                                   <p> <?= $response -> getStmt() ?> </p>
-                                </div>
-                                <?php } ?>
-                             </div>
-                          </li>
-                          <li>
-                             <?php 
-                                $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
-                                postComment( $img_url , 'dashboard/article/comment', 'comment_to_article' , 'comment_article');
-                                ?>
-                          </li>
-                       </ol>
-                    </div>
-                    <hr>
-                    <hr class="spacer-sm">
-                 </div>
-                 <?php } ?>
-              </div>
-           </div>
+            </div>
+          </div>
+          
+          <?php require_once 'views/sidebar/sidebar_button.php'; ?>
         </div>
-     </div>
-     <?php require_once 'views/sidebar/sidebar_button.php'; ?>
-     <?php require_once 'views/footer/footer.php'; ?>
-     
+      </div>
       
+      <?php require_once 'views/footer/footer.php'; ?>
+     
   </body>
 </html>
