@@ -78,7 +78,19 @@
     <!--Form Component [ SAMPLE ]-->
     <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-component.js"></script>
 
-
+<script type="text/javascript">
+	function success(title,message){
+		$.niftyNoty({ 
+                    type:"success",
+                    icon:"fa fa-check fa-lg",
+                    title:title,
+                    message:message,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+	}
+</script>
 <script>
 $('#demo-dp-range .input-daterange').datepicker({
 		format: "MM dd, yyyy",

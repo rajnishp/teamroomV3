@@ -222,9 +222,25 @@
         return false;
       }
 
+      function appendCloneToDiv(fields,result,appendToId, formId){
+         clone = $(formId).clone();
+         
+         $.each(fields, function( index, value ) {
+                      $('#'+value).attr("id", value +  "_" + result);
+                    });
+         $(formId).attr("id", formId + "_" + result );
+
+                    clone.appendTo(appendToId);
+
+                    $.each(fields, function( index, value ) {
+                      $('#'+value).val("");
+        });
+      }
+
       function postUpdateTechStrength(fields, key){
           var dataString = "";
-
+          //console.log(clone);
+          //return false;
           if (key != undefined) {
             dataString = "tech_strength=" + $('#'+fields[0]).val() + "&id=" + key ;
           } 
@@ -237,15 +253,17 @@
                 data: dataString,
                 cache: false,
                 success: function(result){
-                  $.niftyNoty({ 
-                    type:"success",
-                    icon:"fa fa-check fa-lg",
-                    title:"Technical Strength",
-                    message:result,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
+                  var message = "";
+                  if (key == undefined) {
+
+                    appendCloneToDiv(fields,result, "#tech_strength_div", "#tech_strength_form");
+                    message = "Added Successfully";
+                  }
+                  else {
+                    message = "Update Successfully";
+                  }
+                  success("Technical Strength",message);
+                  
                 },
                  error: function(result){
                   console.log(result);
@@ -279,7 +297,7 @@
         }
         if(genericEmptyFieldValidator(fields)){
 
-            postUpdateTechStrength(fields, key);          
+            postUpdateTechStrength(fields, key  );          
 
         }
         return false;
