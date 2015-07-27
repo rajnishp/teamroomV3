@@ -243,7 +243,7 @@
                               <?php foreach ($userEducation as $education) { ?>
                                 <h5 class="bold"> <?= $education -> getInstitute() ?> </h5>
                                 <p class="semibold"> <?= $education -> getDegree() ?> ( <?= $education -> getBranch() ?> ) </p>          
-                                <p class="text-muted"> <?= $workExperience ->getFrom() ?> - <?= $workExperience ->getTo() ?></p>
+                                <p class="text-muted"> <?= $education ->getFrom() ?> - <?= $education ->getTo() ?></p>
                                 <hr>
                               <?php } ?>
                             </div> <!-- /.list-group -->

@@ -76,7 +76,7 @@
                       </form>
                     </div>
                     <div class="col-md-6 col-lg-6 col-sm-6">
-                      <form action="<?= $baseUrl ?>project/message" name="message" >
+                      <form action="" name="message" >
                         <button class="btn btn-lg btn-default btn-labeled fa fa-envelope text-semibold"> MESSAGE </button>
                       </form>
                     </div>
@@ -97,7 +97,7 @@
                       <div class="panel-control">
                         <ul class="nav nav-tabs">
                           <!-- <li><a href="#tabs-create-project" data-toggle="tab">Create Project</a></li> -->
-                          <li><a href="#tabs-post" data-toggle="tab">Post Otgoings</a></li>
+                          <!-- <li><a href="#tabs-post" data-toggle="tab">Post Otgoings</a></li> -->
                           <li class="active"><a href="#tabs-overview" data-toggle="tab">Overview</a></li>
                           <!-- <li><a href="#tabs-dashboard" data-toggle="tab">Dashboard</a></li> -->
                           <li><a href="#tabs-activities" data-toggle="tab">Activities</a></li>
@@ -111,77 +111,7 @@
                     <!--Panel body-->
                     <div class="panel-body">
                       <div class="tab-content">
-                        
-                        <div class="tab-pane fade" id="tabs-post">
-                          
-                          <!-- Post for project starts -->
-
-                            <div class="share-widget clearfix">
-                              
-                              <form id="postActivityProject"  class="form-horizontal" onSubmit="return (validatePostActivity('project'));">
-
-                                <div class="share-widget">
-                                  <input type="text" class="form-control" id="title"  placeholder="Title">
-                                  <input type="hidden" id="project_id" value="<?= $this->projectId ?>">
-                                  </div>
-                                <br />
-
-                                <textarea class="form-control share-widget-textarea" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
-
-                                <div class="share-widget-actions">
-                                  <div class="share-widget-types pull-left">
-                                    
-                                    <div class="col-md-8" style="margin-top: 9px;">
-                                      <label class="form-radio form-normal active form-inline">
-                                        <input type="radio" checked="" name="activity" id="activity_type"value="1"> Challenge 
-                                      </label>
-
-                                      <label class="form-radio form-normal">
-                                        <input type="radio" name="activity" id="activity_type" value="6"> Notes 
-                                      </label>
-                                    
-                                      <label class="form-radio form-normal">
-                                        <input type="radio" name="activity" id="activity_type" value="5" > Task
-                                      </label>
-                                      <label class="form-radio form-normal">
-                                        <input type="radio" name="activity" id="activity_type" value="4"> Idea
-                                      </label>
-                                    </div>
-                                    
-                                    <div class="col-md-4">
-                                      <input type="file" id="_file" class="btn btn-default btn-file pull-right">
-                                    </div>
-                                    
-                                  </div>
-
-                                  <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
-                                  </div>
-                                </div> <!-- /.share-widget-actions -->
-                              
-                              </form>
-
-                              <div id='assign_task'>
-                                <div class="form-group pad-btm">
-                                  <label class="col-lg-3 control-label">To Whom: </label>
-                                  <div class="col-lg-7">
-
-                                    <select class="selectpicker" data-live-search="true" data-width="100%">
-                                      <option>Self</option>
-                                      <option>Rahul</option>
-                                      <option>Rajnsih</option>
-                                    </select>
-                                  
-                                  </div>
-                                </div>
-                              </div> <!-- /.assign task -->
-
-                            </div> <!-- /.share-widget -->
-                          
-                        <!-- Post to collap ends -->
-
-                        </div>
-
+                      
                         <div class="tab-pane fade active in" id="tabs-overview">
                             <div class="post">
                               <div class="post-aside" style="padding-top: 28px;">
@@ -286,6 +216,74 @@
                         </div>
 
                         <div class="tab-pane fade" id="tabs-activities" >
+
+                          <!-- Post project activities starts -->
+
+                            <div class="share-widget clearfix">
+                              
+                              <form id="postActivityProject"  class="form-horizontal" onSubmit="return (validatePostActivity('project'));">
+
+                                <div class="share-widget">
+                                  <input type="text" class="form-control" id="title"  placeholder="Title">
+                                  <input type="hidden" id="project_id" value="<?= $this->projectId ?>">
+                                  </div>
+                                <br />
+
+                                <textarea class="form-control share-widget-textarea" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
+
+                                <div class="share-widget-actions">
+                                  <div class="share-widget-types pull-left">
+                                    
+                                    <div class="col-md-8" style="margin-top: 9px;">
+                                      <label class="form-radio form-normal active form-inline">
+                                        <input type="radio" checked="" name="activity" id="activity_type"value="1"> Challenge 
+                                      </label>
+
+                                      <label class="form-radio form-normal">
+                                        <input type="radio" name="activity" id="activity_type" value="6"> Notes 
+                                      </label>
+                                    
+                                      <label class="form-radio form-normal">
+                                        <input type="radio" name="activity" id="activity_type" value="5" > Task
+                                      </label>
+                                      <label class="form-radio form-normal">
+                                        <input type="radio" name="activity" id="activity_type" value="4"> Idea
+                                      </label>
+                                    </div>
+                                    
+                                    <div class="col-md-4">
+                                      <input type="file" id="_file" class="btn btn-default btn-file pull-right">
+                                    </div>
+                                    
+                                  </div>
+
+                                  <div class="pull-right">
+                                    <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                                  </div>
+                                </div> <!-- /.share-widget-actions -->
+                              
+                              </form>
+
+                              <div id='assign_task'>
+                                <div class="form-group pad-btm">
+                                  <label class="col-lg-3 control-label">To Whom: </label>
+                                  <div class="col-lg-7">
+
+                                    <select class="selectpicker" data-live-search="true" data-width="100%">
+                                      <option>Self</option>
+                                      <option>Rahul</option>
+                                      <option>Rajnsih</option>
+                                    </select>
+                                  
+                                  </div>
+                                </div>
+                              </div> <!-- /.assign task -->
+
+                            </div> <!-- /.share-widget -->
+                          
+                          <!-- Post project activities ends -->
+                          <hr class="spacer-sm">
+                          
                         <div class="activity-1" id="panel-cont">
                           <!-- /.Activities-block -->
                           <?php foreach ($projectActivities as $activity) { ?>

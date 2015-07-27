@@ -102,8 +102,8 @@ class ProjectController extends BaseController {
 										$_POST['tech_skills'],
 										$_POST['my_role'],
 										$_POST['team_size'],
-										date("Y-m-d H:i:s", strtotime( $_POST['start'])),
-										date("Y-m-d H:i:s", strtotime($_POST['end'])),
+										date('Y-m-d', strtotime($_POST['start'])),
+										date('Y-m-d', strtotime($_POST['end'])),
 										null,
 										null,
 										null);

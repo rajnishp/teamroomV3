@@ -32,6 +32,7 @@ class SettingController extends BaseController {
 			$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
 
 			$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);			
+			
 			$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
 			$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
 			
@@ -219,12 +220,13 @@ class SettingController extends BaseController {
 									$this -> userId,
 									$_POST['company_name'],
 									$_POST['designation'],
-									$_POST['from'],
-									$_POST['to'],
+									date('Y-m-d', strtotime($_POST['from'])),
+									date('Y-m-d', strtotime($_POST['to'])),
 									date("Y-m-d H:i:s"),
 									date("Y-m-d H:i:s"),
 									$_POST['id']
 								);
+			
 
 			if(isset($_POST['id'])) {
 				$this -> userWorkHistoryDAO ->update($workExpObj);
