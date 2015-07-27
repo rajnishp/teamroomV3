@@ -44,14 +44,7 @@ $('#email').keypress(function() {
 function validateReg(){
     console.log("I am validating the form");
     returnBool = true;
-    if($('#firstname').val() == "" || $('#firstname').val() == null){
-        $('#firstname').css("border-color", "red");
-        returnBool = false;
-    }
-    if($('#lastname').val() == "" || $('#lastname').val() == null){
-        $('#lastname').css("border-color", "red");
-        returnBool = false;
-    }
+
     if($('#usernameR').val() == "" || $('#usernameR').val() == null){
         $('#usernameR').css("border-color", "red");
         returnBool = false;
@@ -60,15 +53,17 @@ function validateReg(){
         $('#passwordR').css("border-color", "red");
         returnBool = false;
     }
-    if($('#passwordR').val() != $('#password2R').val()){
-        $('#passwordR').css("border-color", "red");
-        $('#password2R').css("border-color", "red");
-        returnBool = false;
-    }
+    
     if($('#email').val() == "" || $('#email').val() == null){
         $('#email').css("border-color", "red");
         returnBool = false;
     }
+
+    if($('#accept_tnc').checked == false){
+        $('#accept_tnc').css("border-color", "red");
+        returnBool = false;
+    }
+    
     var validEmail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
     if (validEmail.test($('#email').val())) {
        

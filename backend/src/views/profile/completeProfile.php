@@ -414,8 +414,8 @@
 
                                 <div class="col-md-7">
 
-                                  <div id="demo-dp-range">
-                                    <div id="datepicker" class="input-daterange input-group">
+                                  <div id="">
+                                    <div id="" class="input-daterange input-group">
                                       <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
                                       <span class="input-group-addon">to</span>
                                       <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>

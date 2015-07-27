@@ -18,7 +18,7 @@ class HomeController {
 		$DAOFactory = new DAOFactory();
 		$this -> projectDAO = $DAOFactory->getProjectsDAO();
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
-		$this -> fromUrl = $_GET['from'];
+		//$this -> fromUrl = $_GET['from'];
 		
 
 	}
@@ -75,17 +75,21 @@ class HomeController {
 
 	}
 	function signup(){
-		if(isset($_POST['username'],$_POST['password'], $_POST['email'], $_POST['firstname'], $_POST['lastname'] )){
-			if($_POST['password'] === $_POST['password2']){
+		global $configs; 
+		$baseUrl = $configs["COLLAP_BASE_URL"];
+		//var_dump($baseUrl); die();
+		if(isset($_POST['username'],$_POST['passwordR'], $_POST['email'])){
+			//if($_POST['password'] === $_POST['password2']){
+				
 				$this->user = new UserInfo(
-										$_POST['firstname'],
-										$_POST['lastname'],
+										null,
+										null,
 										$_POST['email'],
 										null,
 										$_POST['username'],
 										md5($_POST['password']),
 										"dabbling",
-										$_POST['user_type'],
+										"collaborator",
 										0,
 										null,
 										0,
@@ -95,26 +99,36 @@ class HomeController {
 										date("Y-m-d H:i:s"),
 										date("Y-m-d H:i:s"),
 										null);
-				$this->user->setId($this->userInfoDAO->insert($this->user));
-				var_dump($this->user);
-				if($this->user){
+				
+				try {
+					$this->user->setId($this->userInfoDAO->insert($this->user));
+				}
+				catch (Exception $e) {
+					echo "Failed to register: " . var_dump($e);					
+				}
+				
+				//var_dump($this->user);
+
+				if($this->user) {
 					$_SESSION['user_id'] = $this->user->getId();
 					$_SESSION['username'] = $this->user->getUsername() ;
-					$_SESSION['first_name'] = $this->user->getFirstName() ;
-					$_SESSION['last_name'] = $this->user->getLastName() ;
+					
 					$_SESSION['email'] = $this->user->getEmail();
 					$_SESSION['last_login'] = $this->user->getLastLoginTime() ;
 					//$obj = new rank($newid);
 					$_SESSION['rank'] = $this->user->getRank();
+
+					header('Location: ' .$baseUrl ."completeProfile");
 
 				}
 				else{
 					echo "failed to reg";
 				}
 
-			}
+			//}
 		}
 	}
+
 	function logout(){
 
 		global $configs; 

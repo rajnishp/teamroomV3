@@ -50,12 +50,12 @@
                 </div> <!-- /.form-group -->
         
                 <div class="form-group">
-                  <input type="text" class="input-block-level form-control" placeholder="Enter username" id="usernameR" name="username" onkeyup="nospaces(this)" onblur="usernameCheck();"/>
+                  <input type="text" class="input-block-level form-control" placeholder="Enter username" id="usernameR" name="username" onkeyup="nospaces(this)" onblur="usernameCheck();"  />
                   <span id="status"></span>
                 </div> <!-- /.form-group -->
 
                 <div class="form-group">
-                  <input type="password" class="input-block-level form-control" placeholder="Enter password" onkeyup="nospaces(this)" id="passwordR" name="password"/>
+                  <input type="password" class="input-block-level form-control" placeholder="Enter password" onkeyup="nospaces(this)" id="passwordR" name="passwordR" />
                 </div> <!-- /.form-group -->
 
                 
@@ -79,7 +79,7 @@
 
                 <div class="form-group">
                   <label class="checkbox-inline">
-                    <input type="checkbox" class="" value="" tabindex="5">
+                    <input type="checkbox" class="" id="accept_tnc" value="">
                       Aggree to  
                       <a href="#" data-target="#terms-conditions" data-toggle="modal" style="color:#0CD85E"> Terms &amp; Conditions </a>
                   </label>
@@ -143,19 +143,19 @@
               <form class="form account-form login-form masthead-form" action="<?= $baseUrl ?>home/login<?= $this->fromUrl ? "?from=".$this->fromUrl:""  ?>" method="post" onSubmit="return (validateLog());">
 
                 <div class="form-group">
-                  <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username" tabindex="1">
+                  <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username">
                   <i class="form-control-feedback" style="display: none;" data-bv-icon-for="username" data-original-title="" title=""></i>
                   <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="username" data-bv-result="NOT_VALIDATED">The first name is required and cannot be empty</small>
                   <small class="help-block" style="display: none;" data-bv-validator="regexp" data-bv-for="username" data-bv-result="NOT_VALIDATED">The first name can only consist of alphabetical characters and spaces</small>
                 </div>
                 <div class="form-group">
-                  <input type="password" class="input-block-level form-control" id="password" name="password" placeholder="Password" tabindex="1">
+                  <input type="password" class="input-block-level form-control" id="password" name="password" placeholder="Password">
                 </div>
 
                 <div class="form-group clearfix">
                   <div class="pull-left">         
                     <label class="checkbox-inline">
-                      <input type="checkbox" class="" value="" tabindex="3" style="margin-top: 11px;"> <h5> Remember me </h5>
+                      <input type="checkbox" class="" value="" style="margin-top: 11px;"> <h5> Remember me </h5>
                     </label>
                   </div>
 
@@ -616,11 +616,11 @@
 
               <div class="form-group">
                 <label for="forgot-email" class="placeholder-hidden">Your Email</label>
-                <input type="email" class="form-control" id="forgot-email" placeholder="Your Email" tabindex="1"  style= "border-color: blue;">
+                <input type="email" class="form-control" id="forgot-email" placeholder="Your Email"  style= "border-color: blue;">
               </div> <!-- /.form-group -->
 
               <div class="form-group">
-                <button type="submit" class="btn btn-secondary btn-block btn-lg" tabindex="2">
+                <button type="submit" class="btn btn-secondary btn-block btn-lg">
                   Reset Password &nbsp; <i class="fa fa-refresh"></i>
                 </button>
               </div> <!-- /.form-group -->

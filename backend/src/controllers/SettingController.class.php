@@ -196,6 +196,11 @@ class SettingController extends BaseController {
 
 	        if ($update) {
 	            $this -> userInfoDAO -> update($userObj);
+
+	            $newUserInfo = $this -> userInfoDAO -> load($this -> userId);
+
+        		$_SESSION['first_name'] = $newUserInfo->getFirstName();
+				$_SESSION['last_name'] = $newUserInfo->getLastName() ;
 	        }
 			
 			echo "Updated Successfully";

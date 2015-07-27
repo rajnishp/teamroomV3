@@ -418,8 +418,6 @@
             
         dataString = "old_password=" + $('#'+fields[0]).val() + "&new_password_1=" + $('#'+fields[1]).val() + "&new_password_2=" + $('#'+fields[2]).val();
 
-alert(dataString);
-
         $.ajax({
           type: "POST",
           url: "<?= $baseUrl ?>" + "setting/updatePassword",
