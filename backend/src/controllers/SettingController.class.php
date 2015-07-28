@@ -64,8 +64,8 @@ class SettingController extends BaseController {
 				echo "Updated Successfully";
 			}
 			else {
-				$this -> userTechStrengthDAO ->insert($tech_strength);
-				echo "Added Successfully";
+				echo $this -> userTechStrengthDAO ->insert($tech_strength);
+				
 			}
 		}
 		else{

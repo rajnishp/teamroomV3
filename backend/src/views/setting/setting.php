@@ -246,6 +246,7 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
+                        <div id="tech_strength_div">
 
                         <?php foreach ($userTechStrength as $key => $techStrength) { ?>
 
@@ -273,7 +274,7 @@
               
                         <?php } ?>
 
-                        <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
+                        <form action="<?= $baseUrl ?>setting/updateTechStrength" id= "tech_strength_form"class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
 
                           <div class="form-group">
 
@@ -294,7 +295,7 @@
 
                         </form>
 
-          
+                        </div>
                         <div class="heading-block">
                           <h3>
                             Edit Work Experience
