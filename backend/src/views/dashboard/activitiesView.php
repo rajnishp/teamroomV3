@@ -1,4 +1,9 @@
-                  <?php foreach ($top10Activities as $activity) { ?>
+                  
+                  <?php 
+                    if($top10Activities){
+                    foreach ($top10Activities as $activity) { 
+
+                    ?>
 
                       <div class="post">
                         <div class="post-aside" style="padding-top: 28px;">
@@ -55,5 +60,9 @@
                         <hr class="spacer-sm">
                       </div>
 
-                    <?php } ?>
+                    <?php } }
+                        else
+                          echo "Wooo.... You reached the end!!!...<br/>";
+
+                    ?>
                     

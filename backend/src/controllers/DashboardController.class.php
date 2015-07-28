@@ -5,11 +5,11 @@ require_once 'controllers/BaseController.class.php';
 
 class DashboardController extends BaseController {
 
-	
+	private $pageUrl;
 
 	function __construct (  ){
 		parent::__construct();	
-
+		$this ->pageUrl = $this->baseUrl;
 	}
 
 	function render (){

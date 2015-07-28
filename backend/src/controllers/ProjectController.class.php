@@ -5,13 +5,14 @@ require_once 'controllers/BaseController.class.php';
 class ProjectController extends BaseController {
 
 	private $projectId;
+	private $pageUrl;
 	//private $teamsDAO;
 
 	function __construct ( $projectId ){
 		parent::__construct();	
 
 		$this-> projectId = $projectId;
-		
+		$this-> pageUrl = $this -> baseUrl. "project" . $projectId;
 		//$this -> teamsDAO = $this -> DAOFactory-> getTeamsDAO();
 
 
@@ -142,7 +143,11 @@ class ProjectController extends BaseController {
 				$this -> teamsDAO -> insert($newMember) ;
 			}
 			catch (Exception $e){
-				var_dump($e); die();
+				if($e -> getCode() == 1011){
+					$this -> render ();				
+				}
+				else
+					var_dump($e); die();
 			}	
 		}
 		$this -> render ();
