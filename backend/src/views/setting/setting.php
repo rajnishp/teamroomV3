@@ -114,6 +114,104 @@
 
                         <div class="heading-block">
                           <h3>
+                            Social Link Urls
+                          </h3>
+                        </div> <!-- /.heading-block -->
+
+                        <div class="social_links">
+                          <?php 
+                            if ($userSocialLinks) { ?>
+
+                              <form class="form-horizontal"  onsubmit="return (validateUpdateSocialLink(<?= $userSocialLinks->getId()?>));">
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Facebook Link</label>
+
+                                  <div class="col-md-7">
+                                    <input type="url" name="facebook_url" id="facebook_url_<?= $userSocialLinks->getId() ?>" value="<?= $userSocialLinks->getFbLink()?>" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Twitter Link</label>
+
+                                  <div class="col-md-7">
+                                    <input type="url" name="twitter_url" id="twitter_url_<?= $userSocialLinks->getId() ?>" value="<?= $userSocialLinks->getTwitterLink() ?>" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">LinkedIn Link</label>
+
+                                  <div class="col-md-7">
+                                    <input type="url" name="likedin_url" id="likedin_url_<?= $userSocialLinks->getId() ?>" value="<?= $userSocialLinks->getLinkedinLink()?>" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+
+                                <div class="form-group">
+                                  <div class="col-md-7 col-md-push-3">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    &nbsp;
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                  </div> <!-- /.col -->
+                                </div> <!-- /.form-group -->
+
+                              </form>
+                          <?php } else { ?>
+                              <form class="form-horizontal"  onsubmit="return (validateUpdateSocialLink());">
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Facebook Link</label>
+
+                                  <div class="col-md-7">
+                                    <input type="url" name="facebook_url" id="facebook_url" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Twitter Link</label>
+
+                                  <div class="col-md-7">
+                                    <input type="url" name="twitter_url" id="twitter_url" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">LinkedIn Link</label>
+
+                                  <div class="col-md-7">
+                                    <input type="url" name="likedin_url" id="likedin_url" class="form-control"/>
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+
+                                <div class="form-group">
+                                  <div class="col-md-7 col-md-push-3">
+                                    <button type="submit" class="btn btn-primary">Save Changes</button>
+                                    &nbsp;
+                                    <button type="reset" class="btn btn-default">Cancel</button>
+                                  </div> <!-- /.col -->
+                                </div> <!-- /.form-group -->
+
+                              </form>
+                          <?php } ?>
+                        </div> <!-- /.social_links -->
+
+                        <div class="heading-block">
+                          <h3>
                             Edit Information
                           </h3>
                         </div> <!-- /.heading-block -->
@@ -248,17 +346,40 @@
 
                         <div id="tech_strength_div">
 
-                        <?php foreach ($userTechStrength as $key => $techStrength) { ?>
+                          <?php foreach ($userTechStrength as $key => $techStrength) { ?>
 
-                          <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength(<?= $techStrength->getId() ?>));">
+                            <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength(<?= $techStrength->getId() ?>));">
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Technical Strength</label>
+                              
+                                <div class="col-md-7">
+                                  <input type="hidden" name="id" value="<?= $techStrength->getId() ?>" class="form-control"/>
+                                  <input type="text" name="tech_strength" id="tech_strength_<?= $techStrength->getId() ?>" value="<?= ucfirst($techStrength -> getStrength()) ?>" class="form-control"/>
+                                </div> <!-- /.col -->
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+                                <div class="col-md-7 col-md-push-3">
+                                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                                  &nbsp;
+                                  <button type="reset" class="btn btn-default">Cancel</button>
+                                </div> <!-- /.col -->
+                              </div> <!-- /.form-group -->
+
+                            </form>
+                
+                          <?php } ?>
+
+                          <form action="<?= $baseUrl ?>setting/updateTechStrength" id= "tech_strength_form" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Technical Strength</label>
                             
                               <div class="col-md-7">
-                                <input type="hidden" name="id" value="<?= $techStrength->getId() ?>" class="form-control"/>
-                                <input type="text" name="tech_strength" id="tech_strength_<?= $techStrength->getId() ?>" value="<?= ucfirst($techStrength -> getStrength()) ?>" class="form-control"/>
+                                <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
                               </div> <!-- /.col -->
                             </div> <!-- /.form-group -->
 
@@ -271,92 +392,71 @@
                             </div> <!-- /.form-group -->
 
                           </form>
-              
-                        <?php } ?>
 
-                        <form action="<?= $baseUrl ?>setting/updateTechStrength" id= "tech_strength_form"class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
+                        </div> <!-- /.id tech_strength_div -->
 
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Technical Strength</label>
-                          
-                            <div class="col-md-7">
-                              <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
-                            </div> <!-- /.col -->
-                          </div> <!-- /.form-group -->
-
-                          <div class="form-group">
-                            <div class="col-md-7 col-md-push-3">
-                              <button type="submit" class="btn btn-primary">Save Changes</button>
-                              &nbsp;
-                              <button type="reset" class="btn btn-default">Cancel</button>
-                            </div> <!-- /.col -->
-                          </div> <!-- /.form-group -->
-
-                        </form>
-
-                        </div>
                         <div class="heading-block">
                           <h3>
                             Edit Work Experience
                           </h3>
                         </div> <!-- /.heading-block -->
 
-
-                        <?php foreach ($userWorkExperience as $key => $workExperience) { ?>
+                        <div id="work_exp_div">
                           
-                          <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp(<?= $workExperience->getId() ?>));">
-
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Company Name</label>
-
-                              <div class="col-md-7">
-                                <input type="text" name="company_name" id="company_name_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
-                                <input type="hidden" name="id" value="<?= $workExperience -> getId() ?>" class="form-control"/>
-                              </div> <!-- /.col -->
-
-                            </div> <!-- /.form-group -->
+                          <?php foreach ($userWorkExperience as $key => $workExperience) { ?>
                             
-                            <div class="form-group">
+                            <form action="<?= $baseUrl ?>setting/updateWorkExp" class="form-horizontal" method="POST" onSubmit="return (validateUpdateWorkExp(<?= $workExperience->getId() ?>));">
 
-                              <label class="col-md-3 control-label">Designation</label>
+                              <div class="form-group">
 
-                              <div class="col-md-7">
-                                <input type="text" name="designation" id="designation_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
-                              </div> <!-- /.col -->
+                                <label class="col-md-3 control-label">Company Name</label>
 
-                            </div> <!-- /.form-group -->
-                            
-                            <div class="form-group">
+                                <div class="col-md-7">
+                                  <input type="text" name="company_name" id="company_name_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getCompanyName()) ?>" class="form-control"/>
+                                  <input type="hidden" name="id" value="<?= $workExperience -> getId() ?>" class="form-control"/>
+                                </div> <!-- /.col -->
 
-                              <label class="col-md-3 control-label">Duration</label>
+                              </div> <!-- /.form-group -->
+                              
+                              <div class="form-group">
 
-                              <div class="col-md-7">
+                                <label class="col-md-3 control-label">Designation</label>
 
-                                <div id="demo-dp-range">
-                                  <div id="datepicker" class="input-daterange input-group">
-                                    <input type="text" name="from" id="work_from_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control" placeholder="YYY-MM-DD"/>
-                                    <span class="input-group-addon">to</span>
-                                    <input type="text" name="to" id="work_to_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control" placeholder="YYY-MM-DD"/>
+                                <div class="col-md-7">
+                                  <input type="text" name="designation" id="designation_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getDesignation()) ?>" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+                              
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Duration</label>
+
+                                <div class="col-md-7">
+
+                                  <div id="demo-dp-range">
+                                    <div id="datepicker" class="input-daterange input-group">
+                                      <input type="text" name="from" id="work_from_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control" placeholder="YYY-MM-DD"/>
+                                      <span class="input-group-addon">to</span>
+                                      <input type="text" name="to" id="work_to_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control" placeholder="YYY-MM-DD"/>
+                                    </div>
                                   </div>
                                 </div>
-                              </div>
 
-                            </div> <!-- /.form-group -->
+                              </div> <!-- /.form-group -->
 
-                            <div class="form-group">
-                              <div class="col-md-7 col-md-push-3">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                                &nbsp;
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                              </div> <!-- /.col -->
-                            </div> <!-- /.form-group -->
+                              <div class="form-group">
+                                <div class="col-md-7 col-md-push-3">
+                                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                                  &nbsp;
+                                  <button type="reset" class="btn btn-default">Cancel</button>
+                                </div> <!-- /.col -->
+                              </div> <!-- /.form-group -->
 
-                          </form>
-                        <?php } ?>
+                            </form>
+                          <?php } ?>
                           
-                          <form class="form-horizontal"  onSubmit="return (validateUpdateWorkExp());">
+                          <form class="form-horizontal" id ="work_exp_form" onSubmit="return (validateUpdateWorkExp());">
 
                             <div class="form-group">
 
@@ -404,22 +504,83 @@
 
                           </form>
 
+                        </div> <!-- /.id work_exp_div -->
+
                         <div class="heading-block">
                           <h3>
                             Edit Education
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <?php foreach ($userEducation as $key1 => $education) { ?>
-                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method = "POST" onSubmit="return (validateUpdateEducation(<?= $education -> getId() ?>));">
+                        <div id="education_div">
+                          <?php foreach ($userEducation as $key1 => $education) { ?>
+                            <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method = "POST" onSubmit="return (validateUpdateEducation(<?= $education -> getId() ?>));">
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Institute Name</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" name="institute" id="institute_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
+                                  <input type="hidden" name="id" value="<?= ucfirst($education -> getId()) ?>" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+                              
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Name of Degree</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" name="degree" id="degree_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Branch Name</label>
+
+                                <div class="col-md-7">
+                                  <input type="text" name="branch" id="branch_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Duration</label>
+
+                                <div class="col-md-7">
+
+                                  <div id="">
+                                    <div id="" class="input-daterange input-group">
+                                      <input type="text" name="from" id="edu_from_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control" placeholder="YYYY"/>
+                                      <span class="input-group-addon">to</span>
+                                      <input type="text" name="to" id="edu_to_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getTo()) ?>" class="form-control" placeholder="YYYY"/>
+                                    </div>
+                                  </div>
+                                </div>
+                              </div>  <!-- /.form-group -->
+
+                              <div class="form-group">
+                                <div class="col-md-7 col-md-push-3">
+                                  <button type="submit" class="btn btn-primary">Save Changes</button>
+                                  &nbsp;
+                                  <button type="reset" class="btn btn-default">Cancel</button>
+                                </div> <!-- /.col -->
+                              </div> <!-- /.form-group -->
+
+                            </form>
+                          <?php } ?>
+
+                          <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" id="education_form" method="POST" onSubmit="return (validateUpdateEducation());">
 
                             <div class="form-group">
 
                               <label class="col-md-3 control-label">Institute Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="institute" id="institute_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getInstitute()) ?>" class="form-control"/>
-                                <input type="hidden" name="id" value="<?= ucfirst($education -> getId()) ?>" class="form-control"/>
+                                <input type="text" name="institute" id="institute" value="" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -429,7 +590,7 @@
                               <label class="col-md-3 control-label">Name of Degree</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="degree" id="degree_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getDegree()) ?>" class="form-control"/>
+                                <input type="text" name="degree" id="degree" value="" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -438,7 +599,7 @@
                               <label class="col-md-3 control-label">Branch Name</label>
 
                               <div class="col-md-7">
-                                <input type="text" name="branch" id="branch_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getBranch()) ?>" class="form-control"/>
+                                <input type="text" name="branch" id="branch" value="" class="form-control"/>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -451,13 +612,14 @@
 
                                 <div id="">
                                   <div id="" class="input-daterange input-group">
-                                    <input type="text" name="from" id="edu_from_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control" placeholder="YYYY"/>
+                                    <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
                                     <span class="input-group-addon">to</span>
-                                    <input type="text" name="to" id="edu_to_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getTo()) ?>" class="form-control" placeholder="YYYY"/>
+                                    <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
                                   </div>
                                 </div>
                               </div>
-                            </div>  <!-- /.form-group -->
+                            </div> <!-- /.form-group -->
+
 
                             <div class="form-group">
                               <div class="col-md-7 col-md-push-3">
@@ -468,65 +630,7 @@
                             </div> <!-- /.form-group -->
 
                           </form>
-                        <?php } ?>
-
-                        <form action="<?= $baseUrl ?>setting/updateEducation" class="form-horizontal" method="POST" onSubmit="return (validateUpdateEducation());">
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Institute Name</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="institute" id="institute" value="" class="form-control"/>
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-                          
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Name of Degree</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="degree" id="degree" value="" class="form-control"/>
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Branch Name</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="branch" id="branch" value="" class="form-control"/>
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Duration</label>
-
-                            <div class="col-md-7">
-
-                              <div id="">
-                                <div id="" class="input-daterange input-group">
-                                  <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
-                                  <span class="input-group-addon">to</span>
-                                  <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
-                                </div>
-                              </div>
-                            </div>
-                          </div> <!-- /.form-group -->
-
-
-                          <div class="form-group">
-                            <div class="col-md-7 col-md-push-3">
-                              <button type="submit" class="btn btn-primary">Save Changes</button>
-                              &nbsp;
-                              <button type="reset" class="btn btn-default">Cancel</button>
-                            </div> <!-- /.col -->
-                          </div> <!-- /.form-group -->
-
-                        </form>
+                        </div>  <!-- /.education_div -->
 
                         <div class="heading-block">
                           <h3>

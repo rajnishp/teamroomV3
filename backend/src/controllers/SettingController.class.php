@@ -40,6 +40,8 @@ class SettingController extends BaseController {
 
 			$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
 
+			$userSocialLinks = $this -> userSocialLinksDAO -> getUserSocialLinks($this -> userId);
+
 			require_once 'views/setting/setting.php';
 		
 		} catch (Exception $e){
@@ -47,6 +49,91 @@ class SettingController extends BaseController {
 		}
 
 	}
+
+	function updateSocialLinks() {
+		
+		if(isset($_POST['facebook_url']) && $_POST['facebook_url'] != "") {
+		
+			$fbLinkObj = new UserSocialLink(
+					$this -> userId,
+					$_POST['facebook_url'],
+					null,
+					null,
+					null,
+					'Facebook',
+					$_POST['id']
+				);
+
+			if(isset($_POST['id']) && $_POST['id'] != '') {
+				try {
+					$this -> userSocialLinksDAO -> updateSocialLink( $this-> userId, $_POST['facebook_url'], 'Facebook' );
+				} 
+				catch (Exception $e) {
+					$this -> logger -> error ("Error at : $fbLinkObj");
+					echo "Failed..";
+				}
+				echo "Updated Successfully";
+			}
+			else {
+				try {
+					$this -> userSocialLinksDAO ->insert($fbLinkObj);
+				}
+				catch (Exception $e) {
+					echo "Failed.." . var_dump($e);
+				}
+				echo "Added Successfully";
+			}
+		}
+
+		if(isset($_POST['twitter_url']) && $_POST['twitter_url'] != "") {
+			$twitterLinkObj = new UserSocialLink(
+					$this -> userId,
+					$_POST['twitter_url'],
+					null,
+					null,
+					null,
+					'Twitter',
+					$_POST['id']
+				);
+
+			if(isset($_POST['id']) && $_POST['id'] != '') {
+				$this -> userSocialLinksDAO -> updateSocialLink( $this-> userId, $_POST['twitter_url'], 'Twitter' );
+				
+			}
+			else {
+				$this -> userSocialLinksDAO ->insert($twitterLinkObj);
+				
+			}
+		}
+
+		if(isset($_POST['likedin_url']) && $_POST['likedin_url'] != "") {
+			$linkedinLinkObj = new UserSocialLink(
+					$this -> userId,
+					$_POST['likedin_url'],
+					null,
+					null,
+					null,
+					'Linkedin',
+					$_POST['id']
+				);
+
+			if(isset($_POST['id']) && $_POST['id'] != '') {
+				$this -> userSocialLinksDAO -> updateSocialLink( $this-> userId, $_POST['likedin_url'], 'Linkedin' );
+				
+			}
+			else {
+				$this -> userSocialLinksDAO ->insert($linkedinLinkObj);
+				
+			}
+		}
+		
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Social Link Fields Can Not Be Empty";
+		}
+		
+	}
+
 
 	function updateTechStrength() {
 		
@@ -60,7 +147,7 @@ class SettingController extends BaseController {
 				);
 
 			if(isset($_POST['id'])) {
-				$this -> userTechStrengthDAO ->update($tech_strength);
+				$this -> userTechStrengthDAO ->updateSocialLink($tech_strength);
 				echo "Updated Successfully";
 			}
 			else {
@@ -234,8 +321,8 @@ class SettingController extends BaseController {
 			}
 			
 			else {
-				$this -> userWorkHistoryDAO ->insert($workExpObj);
-				echo "Added Successfully";
+				echo $this -> userWorkHistoryDAO ->insert($workExpObj);
+				
 			}
 		}
 		else{
@@ -264,8 +351,7 @@ class SettingController extends BaseController {
 				echo "Updated Successfully";
 			}
 			else {
-				$this -> userEducationDAO ->insert($educationObj);
-				echo "Added Successfully";
+				echo $this -> userEducationDAO ->insert($educationObj);
 			}
 		}
 		else{

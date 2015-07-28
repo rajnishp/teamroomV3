@@ -566,6 +566,19 @@ CREATE TABLE IF NOT EXISTS `user_locations` (
   UNIQUE KEY user_location_id (`user_id`, `location_id`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
 
+--
+-- Table structure for table `user_social_links`
+--
+
+CREATE TABLE IF NOT EXISTS `user_social_links` (
+  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `user_id` int( 15 ) NOT NULL ,
+  `link_url` varchar( 200 ) NOT NULL ,
+  `type` enum ('Facebook', 'Twitter', 'Linkedin' ) NOT NULL ,
+  PRIMARY KEY ( `id` ),
+  UNIQUE KEY user_id_type (`user_id`, `type`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

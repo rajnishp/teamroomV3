@@ -106,10 +106,14 @@
               </div>
               
               <div class="col-lg-1 col-md-1 col-sm-3 col-xs-3">
-                <h4><small>Contact</small></h4>               
-                <a href="#"><i class="fa fa-facebook-square"></i></a>
-                <a href="#"><i class="fa fa-twitter-square"></i></a>
-                <a href="#"><i class="fa fa-linkedin-square"></i></a>
+                <h4><small>Contact</small></h4>
+                <?php if ($userSocialLinks) { ?>
+                  <a href="<?= $userSocialLinks->getFbLink()?>" target="_blank"><i class="fa fa-facebook-square"></i></a>
+                  <a href="<?= $userSocialLinks->getTwitterLink()?>" target="_blank"><i class="fa fa-twitter-square"></i></a>
+                  <a href="<?= $userSocialLinks->getLinkedinLink()?>" target="_blank"><i class="fa fa-linkedin-square"></i></a>
+                <?php } else { ?>
+                  Not Avalable
+                <?php } ?>
               </div>
 
             </div> <!-- /.row text center -->
@@ -144,7 +148,7 @@
                       <ul class="nav nav-tabs">
                         <li class="active"><a data-toggle="tab" href="#tabs-profile"><i class="fa fa link"></i> Profile</a></li>
                         <li id="projectTab"><a data-toggle="tab" href="#tabs-project"  ><i class="fa fa question"></i> Project</a></li>
-                        <li id="activityTab" ><a data-toggle="tab" href="#tabs-activity" ><i class="fa fa video"></i> Activitie</a></li>
+                        <li id="activityTab" ><a data-toggle="tab" href="#tabs-activity" ><i class="fa fa video"></i> Activities</a></li>
                         <li id="ideaTab" ><a data-toggle="tab" href="#tabs-idea" ><i class="fa fa link"></i> Idea</a></li>
                       </ul>
                     </div>
@@ -197,7 +201,7 @@
                               <p> 
                                 <?php 
                                   foreach ($userTechStrength as $techStrength) {
-                                    echo $techStrength -> getStrength(); 
+                                    echo "<p>" .$techStrength -> getStrength() . "</p>"; 
                                   }
                                 ?>
                               </p>
@@ -222,6 +226,35 @@
                                 <h5 class=""> <?= $workExperience -> getCompanyName() ?> </h5>
                                 <p class="semibold"> <?= $workExperience -> getDesignation() ?></p>          
                                 <p class="text-muted"> <?= $workExperience ->getFrom() ?> - <?= $workExperience ->getTo() ?></p>
+                                <hr>
+                              <?php } ?>
+                              
+                            </div> <!-- /.list-group -->
+                          </div>
+                        </div>
+
+                        <div class = "row heading-block">
+                          <div class="col-md-3 col-lg-3 col-sm-3">
+                            
+                            <div class="post-title">
+                              <h4>
+                                Job Preference
+                              </h4>
+                            </div> <!-- /.heading-block -->
+                          </div>
+   
+                          <div class="col-md-9 col-lg-9 col-sm-9">                         
+                            <div>
+                              <div id="job_locations_display">
+                                <?php foreach($userPreferredJobLocations as $jobLocation ) { ?>
+                                  <span class="btn btn-secondary btn-sm"> <?= $jobLocation -> getLocationName() ?> </span>
+                                <?php } ?>
+                              </div> <!-- /.list-group -->
+
+                              <?php foreach ($userJobPreference as $preference) { ?>
+                                <h5 class="">Current Ctc: <?= $preference -> getCurrentCtc() ?> Lacs/Annum</h5>
+                                <h5 class="">Expected Ctc: <?= $preference -> getExpectedCtc() ?>  Lacs/Annum</h5>
+                                <h5 class="">Notice Period: <?= $preference ->getNoticePeriod() ?> Months</h5>
                                 <hr>
                               <?php } ?>
                               

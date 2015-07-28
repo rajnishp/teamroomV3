@@ -31,6 +31,8 @@ abstract class BaseController {
 	protected $jobLocationsDAO;
 	protected $userPreferredLocationsDAO;
 
+	protected $userSocialLinksDAO;
+
 	protected $logger;
 
 	protected $url;
@@ -84,6 +86,7 @@ abstract class BaseController {
 		$this -> involveInDAO = $DAOFactory->getInvolveInDAO();
 
 
+		$this -> userSocialLinksDAO = $DAOFactory->getUserSocialLinksDAO();
 
 		
 		

@@ -266,6 +266,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 								$settingController -> updateJobPreference();
 
 								break;
+								
+							case 'updateSocialLinks':
+								
+								$settingController -> updateSocialLinks();
+
+								break;
 
 							case 'updatePassword':
 								

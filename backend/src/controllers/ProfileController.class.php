@@ -34,7 +34,7 @@ class ProfileController extends BaseController {
 		//loading other click event on the page should be done by ajax
 
 		try{
-			
+
 			if($this->profileUN != null){
 				//$userMProjects = $this->projectsDAO->getUserPublicProjects($this->profileId,0,10);
 				$userProfile = $this->userProfile;
@@ -49,6 +49,10 @@ class ProfileController extends BaseController {
 				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> profileId);
 				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> profileId);
 
+				$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> profileId);
+
+				$userSocialLinks = $this -> userSocialLinksDAO -> getUserSocialLinks($this -> profileId);
+
 			}
 			else if($this->userId){
 				//$userMProjects = $this->projectsDAO->getUserPublicProjects($this->userId,0,10);
@@ -62,6 +66,9 @@ class ProfileController extends BaseController {
 				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
 				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
 
+				$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
+
+				$userSocialLinks = $this -> userSocialLinksDAO -> getUserSocialLinks($this -> userId);
 
 			}
 			else

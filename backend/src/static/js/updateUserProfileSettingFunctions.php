@@ -1,6 +1,70 @@
 <script type="text/javascript">
       
 
+      function postUpdateSocialLinks(fields, key){
+        var dataString = "";
+          
+        if (key != undefined) {
+          dataString = "facebook_url=" + $('#'+fields[0]).val() + "&twitter_url=" + $('#'+fields[1]).val() + "&likedin_url=" + $('#'+fields[2]).val() + "&id=" + key;
+        }
+        else {
+          dataString = "facebook_url=" + $('#'+fields[0]).val() + "&twitter_url=" + $('#'+fields[1]).val() + "&likedin_url=" + $('#'+fields[2]).val(); 
+        }
+        $.ajax({
+          type: "POST",
+          url: "<?= $baseUrl ?>" + "setting/updateSocialLinks",
+          data: dataString,
+          cache: false,
+          success: function(result){
+            $.niftyNoty({ 
+              type:"success",
+              icon:"fa fa-check fa-lg",
+              title:"Profile Information",
+              message:result,
+              focus: true,
+              container:"floating",
+              timer:4000
+            });
+          },
+          error: function(result){
+            console.log(result);
+            $.niftyNoty({ 
+              type:"danger",
+              icon:"fa fa-times fa-lg",
+              title:"Profile Information",
+              message:result.responseText,
+              focus: true,
+              container:"floating",
+              timer:4000
+            });
+          }
+
+        });      
+      }
+
+      function validateUpdateSocialLink(key) {
+
+        console.log("Inside Validate Social Links");
+        
+        fields = ["facebook_url","twitter_url","likedin_url"];
+
+        if(key != undefined ){
+           $.each(fields, function( index, value ) {
+
+              fields[index] = value + "_" +key;
+
+           });
+        }
+
+        if(genericEmptyFieldValidator(fields)){
+          console.log("iam there");
+          postUpdateSocialLinks(fields, key);
+
+        }
+        return false;
+      }
+
+
       function postUpdateJobPreference(fields, key){
         var dataString = "";
 
@@ -245,7 +309,8 @@
             dataString = "tech_strength=" + $('#'+fields[0]).val() + "&id=" + key ;
           } 
           else {
-            dataString = "tech_strength=" + $('#'+fields[0]).val();          }
+            dataString = "tech_strength=" + $('#'+fields[0]).val();
+          }
   
           $.ajax({
                 type: "POST",
@@ -312,7 +377,6 @@
           else {
             dataString = "company_name=" + $('#'+fields[0]).val() + "&designation=" + $('#'+fields[1]).val() + "&from=" + $('#'+fields[2]).val() + "&to=" + $('#'+fields[3]).val() ;
           }                        
-            
           
           console.log(dataString);
 
@@ -322,22 +386,22 @@
             data: dataString,
             cache: false,
             success: function(result){
-              $.niftyNoty({ 
-                type:"success",
-                icon:"fa fa-check fa-lg",
-                title:"Working Experience",
-                message:result,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
+              var message = "";
+              if (key == undefined) {
+                appendCloneToDiv(fields,result, "#work_exp_div", "#work_exp_form");
+                message = "Added Successfully";
+              }
+              else {
+                message = "Update Successfully";
+              }
+              success("Work Experience",message);
             },
-             error: function(result){
+            error: function(result){
               console.log(result);
               $.niftyNoty({ 
                 type:"danger",
                 icon:"fa fa-times fa-lg",
-                title:"Working Experience",
+                title:"Work Experience",
                 message:result.responseText,
                 focus: true,
                 container:"floating",
@@ -382,17 +446,17 @@
             data: dataString,
             cache: false,
             success: function(result){
-              $.niftyNoty({ 
-                type:"success",
-                icon:"fa fa-check fa-lg",
-                title:"Education",
-                message:result,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
+              var message = "";
+              if (key == undefined) {
+                appendCloneToDiv(fields,result, "#education_div", "#education_form");
+                message = "Added Successfully";
+              }
+              else {
+                message = "Update Successfully";
+              }
+              success("Education",message);
             },
-             error: function(result){
+            error: function(result){
               console.log(result);
               $.niftyNoty({ 
                 type:"danger",

@@ -349,6 +349,20 @@ class DAOFactory{
 
 	}
 
+
+	/**
+	 * @return UserSocialLinksDAO
+	 */
+	public static function getUserSocialLinksDAO(){
+
+		require_once('UserSocialLinksDAO.class.php');
+		require_once('models/UserSocialLink.class.php');
+		require_once('mysql/UserSocialLinksMySqlDAO.class.php');
+		require_once('mysql/ext/UserSocialLinksMySqlExtDAO.class.php');
+
+		return new UserSocialLinksMySqlExtDAO();
+	}
+
 	/**
 	 * @return WorkingHistoryDAO
 	 */

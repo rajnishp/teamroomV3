@@ -188,30 +188,38 @@
                           <!--Second tab-->
                           <div id="tab_tech_strength" class="tab-pane fade">
                             
-                            <div class="form-horizontal">
+                            <div id="tech_strength_div">
+                              <div class="form-horizontal" id= "tech_strength_form">
 
-                              <div class="form-group">
+                                <div class="form-group">
 
-                                <label class="col-md-3 control-label">Technical Strength</label>
-                              
-                                <div class="col-md-7">
-                                  <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
-                                </div> <!-- /.col -->
-                              </div> <!-- /.form-group -->
+                                  <label class="col-md-3 control-label">Technical Strength</label>
+                                
+                                  <div class="col-md-7">
+                                    <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
+                                  
+                                  </div> <!-- /.col -->
+                                </div> <!-- /.form-group -->
 
-                              <div class="form-group">
-    
-                                <div class="pull-right pad-all">
+                                <div class="form-group">
 
-                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateTechStrength());">Save Changes</button>
+                                  <label class="col-md-3 control-label"></label>
+                                
+                                  <div class="col-md-7">
+                                  
+                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateTechStrength());">Save Changes</button>
 
-                                  <button type="button" class="previous btn btn-info">Previous</button>
+                                  </div> <!-- /.col -->
+                                </div> <!-- /.form-group -->
 
-                                  <button type="button" class="next btn btn-primary">Next</button>
-    
-                                </div> <!-- /.col -->
-                              </div> <!-- /.form-group -->
-                            
+                              </div>
+                            </div>
+
+                            <div class="pull-right pad-all">
+
+                              <button type="button" class="previous btn btn-info">Previous</button>
+
+                              <button type="button" class="next btn btn-primary">Next</button>
                             </div>
 
                           </div> <!--End Second tab-->
@@ -253,57 +261,70 @@
                           
                           <!--Fourth tab-->
                           <div id="tab_work_exp" class="tab-pane">
-                            <div class="form-horizontal">
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Company Name</label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="company_name" id="company_name" class="form-control"/>
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
+                            
+                            <div id="work_exp_div">
                               
-                              <div class="form-group">
+                              <div class="form-horizontal" <div id="work_exp_form">>
 
-                                <label class="col-md-3 control-label">Designation</label>
+                                <div class="form-group">
 
-                                <div class="col-md-7">
-                                  <input type="text" name="designation" id="designation" class="form-control"/>
-                                </div> <!-- /.col -->
+                                  <label class="col-md-3 control-label">Company Name</label>
 
-                              </div> <!-- /.form-group -->
+                                  <div class="col-md-7">
+                                    <input type="text" name="company_name" id="company_name" class="form-control"/>
+                                  </div> <!-- /.col -->
 
-                              <div class="form-group">
+                                </div> <!-- /.form-group -->
+                                
+                                <div class="form-group">
 
-                                <label class="col-md-3 control-label">Duration</label>
+                                  <label class="col-md-3 control-label">Designation</label>
 
-                                <div class="col-md-7">
+                                  <div class="col-md-7">
+                                    <input type="text" name="designation" id="designation" class="form-control"/>
+                                  </div> <!-- /.col -->
 
-                                  <div id="demo-dp-range">
-                                    <div id="datepicker" class="input-daterange input-group">
-                                      <input type="text" name="from" id="work_from" class="form-control"  placeholder="YYY-MM-DD"/>
-                                      <span class="input-group-addon">to</span>
-                                      <input type="text" name="to" id="work_to" class="form-control"  placeholder="YYY-MM-DD"/>
+                                </div> <!-- /.form-group -->
+
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Duration</label>
+
+                                  <div class="col-md-7">
+
+                                    <div id="demo-dp-range">
+                                      <div id="datepicker" class="input-daterange input-group">
+                                        <input type="text" name="from" id="work_from" class="form-control"  placeholder="YYY-MM-DD"/>
+                                        <span class="input-group-addon">to</span>
+                                        <input type="text" name="to" id="work_to" class="form-control"  placeholder="YYY-MM-DD"/>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              </div> <!-- /.form-group -->
+                                </div> <!-- /.form-group -->
 
-                              <div class="form-group">
-                                <div class="pull-right pad-all">
 
-                                  <button type="submit" class="btn btn-success" onclick ="return (validateUpdateWorkExp());">Save Changes</button>
+                                <div class="form-group">
 
-                                  <button type="button" class="previous btn btn-info">Previous</button>
+                                  <label class="col-md-3 control-label"></label>
+                                
+                                  <div class="col-md-7">
+                                  
+                                    <button type="submit" class="btn btn-success" onclick ="return (validateUpdateWorkExp());">Save Changes</button>
 
-                                  <button type="button" class="next btn btn-primary">Next</button>
-    
-                                </div> <!-- /.col -->
-                              </div> <!-- /.form-group -->
+                                  </div> <!-- /.col -->
+                                </div> <!-- /.form-group -->
+
+                              </div>
 
                             </div>
+
+                            <div class="pull-right pad-all">
+
+                              <button type="button" class="previous btn btn-info">Previous</button>
+
+                              <button type="button" class="next btn btn-primary">Next</button>
+                            </div>
+
                           </div> <!--End Fourth tab-->
             
                           <!--Fifth tab-->
@@ -377,67 +398,76 @@
 
                            <!--Sixth tab-->
                           <div id="tab_education" class="tab-pane">
-                            <div class="form-horizontal">
+                            <div id="education_div">
+                              <div class="form-horizontal"  id="education_form">
 
-                              <div class="form-group">
+                                <div class="form-group">
 
-                                <label class="col-md-3 control-label">Institute Name</label>
+                                  <label class="col-md-3 control-label">Institute Name</label>
 
-                                <div class="col-md-7">
-                                  <input type="text" name="institute" id="institute" value="" class="form-control"/>
-                                </div> <!-- /.col -->
+                                  <div class="col-md-7">
+                                    <input type="text" name="institute" id="institute" value="" class="form-control"/>
+                                  </div> <!-- /.col -->
 
-                              </div> <!-- /.form-group -->
-                              
-                              <div class="form-group">
+                                </div> <!-- /.form-group -->
+                                
+                                <div class="form-group">
 
-                                <label class="col-md-3 control-label">Name of Degree</label>
+                                  <label class="col-md-3 control-label">Name of Degree</label>
 
-                                <div class="col-md-7">
-                                  <input type="text" name="degree" id="degree" value="" class="form-control"/>
-                                </div> <!-- /.col -->
+                                  <div class="col-md-7">
+                                    <input type="text" name="degree" id="degree" value="" class="form-control"/>
+                                  </div> <!-- /.col -->
 
-                              </div> <!-- /.form-group -->
-                              <div class="form-group">
+                                </div> <!-- /.form-group -->
+                                <div class="form-group">
 
-                                <label class="col-md-3 control-label">Branch Name</label>
+                                  <label class="col-md-3 control-label">Branch Name</label>
 
-                                <div class="col-md-7">
-                                  <input type="text" name="branch" id="branch" value="" class="form-control"/>
-                                </div> <!-- /.col -->
+                                  <div class="col-md-7">
+                                    <input type="text" name="branch" id="branch" value="" class="form-control"/>
+                                  </div> <!-- /.col -->
 
-                              </div> <!-- /.form-group -->
+                                </div> <!-- /.form-group -->
 
-                              <div class="form-group">
+                                <div class="form-group">
 
-                                <label class="col-md-3 control-label">Duration</label>
+                                  <label class="col-md-3 control-label">Duration</label>
 
-                                <div class="col-md-7">
+                                  <div class="col-md-7">
 
-                                  <div id="">
-                                    <div id="" class="input-daterange input-group">
-                                      <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
-                                      <span class="input-group-addon">to</span>
-                                      <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
+                                    <div id="">
+                                      <div id="" class="input-daterange input-group">
+                                        <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
+                                        <span class="input-group-addon">to</span>
+                                        <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
+                                      </div>
                                     </div>
                                   </div>
-                                </div>
-                              </div> <!-- /.form-group -->
+                                </div> <!-- /.form-group -->
 
 
-                              <div class="form-group">
-                                <div class="pull-right pad-all">
+                                <div class="form-group">
 
-                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateEducation());">Save Changes</button>
+                                  <label class="col-md-3 control-label"></label>
 
-                                  <button type="button" class="previous btn btn-info">Previous</button>
+                                  <div class="col-md-7">
 
-                                  <button type="button" class="next btn btn-primary">Next</button>
-    
-                                </div> <!-- /.col -->
-                              </div> <!-- /.form-group -->
+                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateEducation());">Save Changes</button>
 
+                                  </div>
+                                </div> <!-- /.form-group -->
+
+                              </div>
                             </div>
+
+                            <div class="pull-right pad-all">
+
+                              <button type="button" class="previous btn btn-info">Previous</button>
+
+                              <button type="button" class="next btn btn-primary">Next</button>
+                            </div>
+
                           </div> <!--End Sixth tab-->
 
 
