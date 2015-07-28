@@ -35,6 +35,8 @@ abstract class BaseController {
 
 	protected $url;
 
+	protected $involveInDAO;
+
 	
 
 	function __construct (  ){
@@ -78,6 +80,10 @@ abstract class BaseController {
 
 		$this -> jobLocationsDAO = $DAOFactory->getWorkingLocationsDAO();
 		$this -> userPreferredLocationsDAO = $DAOFactory->getUserLocationsDAO();
+
+		$this -> involveInDAO = $DAOFactory->getInvolveInDAO();
+
+
 
 		
 		

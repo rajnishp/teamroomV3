@@ -8,9 +8,9 @@
 	class InvolveIn{
 		
 		private $id;
-		private $userId;
-		private $pCId;
-		private $eventType;
+		private $userId;
+		private $pCId;
+		private $eventType;
 		function __construct( $userId,$eventType,$pCId,$id = null)
 		{$this->id = $id;
 			
@@ -60,6 +60,7 @@
 			
 
 		
-		
+		
 	}
+}
 ?>

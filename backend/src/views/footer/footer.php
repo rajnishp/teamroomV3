@@ -99,11 +99,11 @@ $('#demo-dp-range .input-daterange').datepicker({
 		todayHighlight: true
 	});
 
-function addMorePost(url, dataString,addAt){
+function addMorePost(url, dataString, addAt){
 
   $.ajax({
           type: "POST",
-          url: window.location.href + url,
+          url: "<?= $this->pageUrl ?>" + url,
           data: dataString,
           cache: false,
           success: function(result){
@@ -285,6 +285,16 @@ function addMorePost(url, dataString,addAt){
           }
      </script>
 
+     <script type="text/javascript">
+
+
+
+     function validatePostComment(key){
+     	console.log($("#comment_"+key).val());
+     	return false;
+     }
+     </script>
+
 <script type="text/javascript">
   $( document ).ready(function() {
     $('img').each(function(){
@@ -293,7 +303,7 @@ function addMorePost(url, dataString,addAt){
     });
 
     $("img").error(function () {
-	  $(this).unbind("error").attr("src", "<?= $baseUrl ?>static/img/collap.jpg");
+	  $(this).unbind("error").attr("src", "<?= $this->baseUrl ?>static/img/collap.jpg");
 	});
 
     

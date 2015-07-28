@@ -1,4 +1,9 @@
-                  <?php foreach ($top10Activities as $activity) { ?>
+                  
+                  <?php 
+                    if($top10Activities){
+                    foreach ($top10Activities as $activity) { 
+
+                    ?>
 
                       <div class="post">
                         <div class="post-aside" style="padding-top: 28px;">
@@ -44,8 +49,7 @@
                             
                             <li>
                               <?php 
-                                $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
-                                postComment( $img_url , 'dashboard/article/comment', 'comment_to_article' , 'comment_article');
+                                include 'activity/activityComment.php';
                               ?>
                             </li>
                           
@@ -55,5 +59,9 @@
                         <hr class="spacer-sm">
                       </div>
 
-                    <?php } ?>
+                    <?php } }
+                        else
+                          echo "Wooo.... You reached the end!!!...<br/>";
+
+                    ?>
                     

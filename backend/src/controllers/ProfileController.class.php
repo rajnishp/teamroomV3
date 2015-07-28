@@ -5,12 +5,14 @@ require_once 'controllers/BaseController.class.php';
 class ProfileController extends BaseController {
 
 	private $profileId;
+	private $pageUrl;
 
 	function __construct ( $profileUN = null ){
 		parent::__construct();	
 		
+		
 
-		if($profileUN){
+		if($profileUN && !( $profileUN == "projects" || $profileUN == "activities" || $profileUN == "ideas" ) ){
 			$this->profileUN = $profileUN;
 			try{
 				$this->userProfile = $this->userInfoDAO->queryByUsername($this->profileUN);
@@ -21,6 +23,8 @@ class ProfileController extends BaseController {
 			header("location:". $this ->baseUrl);
 			}
 		}
+
+		$this ->pageUrl = $this->baseUrl."profile".$this->profileUN;
 
 	}
 
