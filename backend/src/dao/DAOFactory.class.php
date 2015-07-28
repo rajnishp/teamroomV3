@@ -106,6 +106,11 @@ class DAOFactory{
 	 * @return InvolveInDAO
 	 */
 	public static function getInvolveInDAO(){
+		require_once('InvolveInDAO.class.php');
+		require_once('models/InvolveIn.class.php');
+		require_once('mysql/InvolveInMySqlDAO.class.php');
+		require_once('mysql/ext/InvolveInMySqlExtDAO.class.php');
+
 		return new InvolveInMySqlExtDAO();
 	}
 

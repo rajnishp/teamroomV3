@@ -285,6 +285,16 @@ function addMorePost(url, dataString, addAt){
           }
      </script>
 
+     <script type="text/javascript">
+
+
+
+     function validatePostComment(key){
+     	console.log($("#comment_"+key).val());
+     	return false;
+     }
+     </script>
+
 <script type="text/javascript">
   $( document ).ready(function() {
     $('img').each(function(){

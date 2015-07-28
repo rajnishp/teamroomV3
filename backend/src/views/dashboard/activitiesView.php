@@ -49,8 +49,7 @@
                             
                             <li>
                               <?php 
-                                $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
-                                postComment( $img_url , 'dashboard/article/comment', 'comment_to_article' , 'comment_article');
+                                include 'activity/activityComment.php';
                               ?>
                             </li>
                           

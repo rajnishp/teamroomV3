@@ -108,10 +108,9 @@
                                </div>
                             </li>
                             <li>
-                               <?php 
-                                  $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
-                                  postComment( $img_url , 'dashboard/article/comment', 'comment_to_article' , 'comment_article');
-                                  ?>
+                              <?php 
+                                include 'views/activity/activityComment.php';
+                              ?>
                             </li>
                          </ol>
                       </div>
