@@ -91,7 +91,7 @@
                   </button>
                 </div>
 
-                <div class="line"> or </div>
+                <!-- <div class="line"> or </div>
                 <div class="socials">
                   <ul class="list-inline">
                     
@@ -108,14 +108,16 @@
                     </a></li>
                     
                   </ul>
-                </div> <!-- End of social Login -->
+                </div> --> <!-- End of social Login -->
                 <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
               </form>
-              </div><div class="col-md-7 masthead-text animated fadeInDownBig">
+            </div>
+            
+            <div class="col-md-7 masthead-text animated fadeInDownBig">
 
               <iframe width="630" height="380" src="https://www.youtube.com/embed/hDWHBSCMj0w" frameborder="0" allowfullscreen style="margin-top: 61px;"></iframe>
-          </div>
             </div>
+          </div>
          
         </div>
       </section>
@@ -166,7 +168,7 @@
 
                 <input name="project" type="hidden" value="Collap"/>
                 <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login" name="submit" value="login"><b> Login </b></button>
-                <div class="line"> or </div>  
+                <!-- <div class="line"> or </div>  
                 <div class="socials">
                   <ul class="list-inline">
                     
@@ -183,7 +185,7 @@
                     </a></li>
                     
                   </ul>
-                </div> <!-- End of social Login -->
+                </div> --> <!-- End of social Login -->
 
               </form>
             </div>

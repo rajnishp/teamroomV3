@@ -51,13 +51,13 @@ else {
             <li class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle">
                 <i class="fa fa-bell fa-lg"></i>
-                <span class="badge badge-header badge-danger">5</span>
+                <!-- <span class="badge badge-header badge-danger">5</span> -->
               </a>
 
               <!--Notification dropdown menu-->
               <div class="dropdown-menu dropdown-menu-md with-arrow">
                 <div class="pad-all bord-btm">
-                  <p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p>
+                  <!-- <p class="text-lg text-muted text-thin mar-no">You have 3 messages.</p> -->
                 </div>
                 <div class="nano scrollable">
                   <div class="nano-content">
@@ -104,12 +104,12 @@ else {
 
             <li></li>
             <li></li>
-            <li>
+            <!-- <li>
               <form class="" role="search" style="margin-top: 8px; margin-left: 8px" >
                 <input type="text" class="form-control input-md mainnav-search-query" placeholder="Search">
                 <button class="btn btn-sm mainnav-form-btn" style="margin-top: 8px;"><i class="fa fa-search"></i></button>
               </form>
-            </li>
+            </li> -->
 
           </ul>
 
