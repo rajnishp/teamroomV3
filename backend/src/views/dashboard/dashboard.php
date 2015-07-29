@@ -95,10 +95,10 @@
                          </div>
                          <ol class="comment-list">
                             <li>
-                               <div class="comment">
+                               <div class="comment" id="comment_box_<?= $activity->getId() ?>" >
                                   <?php foreach ($activity -> getResponses() as $response) { ?>
                                   <div class="comment-avatar">
-                                     <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
+                                     <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
                                   </div>
                                   <!-- /.comment-avatar -->
                                   <div class="comment-meta">

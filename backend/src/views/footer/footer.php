@@ -1,4 +1,4 @@
-		
+
 		<!-- Bootstrap core JavaScript
 		================================================== -->
 		<!-- Core JS -->
@@ -318,6 +318,19 @@ function addMorePost(url, dataString, addAt){
 
       <script type="text/javascript">
 
+      	function appendComment(key){
+      		comment = $('#comment_'+key).val();
+      		$('#comment_'+key).val("");
+      		appendHtml = '<div class="comment-avatar">';
+            appendHtml += '<img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
+            appendHtml += '</div>';
+            appendHtml += '<div class="comment-meta">';
+            appendHtml += '<p> '+ comment +' </p>';
+            appendHtml += '</div>';
+
+            $('#comment_box_'+key).append(appendHtml);
+      	}
+
         function postComment(fields, key){
           var dataString = "";
           
@@ -331,7 +344,8 @@ function addMorePost(url, dataString, addAt){
             success: function(result){
               var message = "";
               if (key != undefined) {
-                appendCloneToDiv(fields,result, "#post_comment_div", "#post_comment_form");
+                //appendCloneToDiv(fields,result, "#post_comment_div", "#post_comment_form");
+                appendComment(key);
                 message = "Added Successfully";
               }
               success("Activity Response",message);
