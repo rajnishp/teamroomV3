@@ -122,17 +122,19 @@
         </div>
       </section>
 
-      <hr>
 
-      <section id = "login">
+      <section id = "login" style="background-image: url(<?= $baseUrl ?>static/img/collaboration.jpg);">
         <div class="container">
           <div class="row">
+          
           <div class="col-md-7 masthead-text animated fadeInDownBig">
           </div>
           <div class="col-md-5 masthead-text animated fadeInDownBig">
+          <br/><br/><br/><br/>
           <div class="account-body" style="margin-top: 60px;">
           
             <div class="row">
+
               <h3 class ="pull-left">Login</h3>
               <h5 class="pull-right" style="margin-top: 18px;">
                 <a href="#register" style="color:#0CD85E"> 
@@ -192,6 +194,7 @@
 
             <div class="divider large visible-desktop"></div><br/>
           </div>
+          <br/><br/><br/>
           </div>
           </div>
         </div> <!-- /.container -->
@@ -255,12 +258,12 @@
 
               <div class="row">
                 
-                <div class="col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <hr class="spacer-sm">
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/HKGkBRk1kSo" frameborder="0" allowfullscreen></iframe>
                 </div><!-- /.col -->
                 
-                <div class="col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <div class="feature-content">
                     <h5>TEDx San Diego</h5>
                     <h3>Collaboration - Affect/Possibility: Ken Blanchard</h3>
@@ -302,12 +305,9 @@
 
               <div class="row">
                 
-                <div class="col-sm-6 col-sm-push-6 ">
-                  <hr class="spacer-sm">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/NsndhCQ5hRY" frameborder="0" allowfullscreen></iframe>
-                </div><!-- /.col -->
                 
-                <div class="col-sm-6 col-sm-pull-6">
+                
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <div class="feature-content">
                     <h5>TheArtmadillo</h5>
                     <h3>Effective Team Work and Collaboration</h3>
@@ -329,6 +329,10 @@
                     
                   </div> <!-- /.feature-content -->
                 </div><!-- /.col -->
+                <div class="col-lg-6 col-md-6 col-sm-12">
+                  <hr class="spacer-sm">
+                  <iframe width="560" height="315" src="https://www.youtube.com/embed/NsndhCQ5hRY" frameborder="0" allowfullscreen></iframe>
+                </div><!-- /.col -->
                 
               </div> <!-- /.row -->
 
@@ -342,12 +346,12 @@
 
               <div class="row">
                 
-                <div class="col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <hr class="spacer-xs">
                   <iframe width="560" height="315" src="https://www.youtube.com/embed/63NTB7oObtw" frameborder="0" allowfullscreen></iframe>
                 </div><!-- /.col -->
                 
-                <div class="col-sm-6">
+                <div class="col-lg-6 col-md-6 col-sm-12">
                   <div class="feature-content">
                     <h5>Create, Think and Share.</h5>
                     <h3>Sir Ken Robinson: Collaboration in the 21st Centuryier</h3>
