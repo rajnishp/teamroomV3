@@ -178,11 +178,10 @@ class ProjectResponsesMySqlDAO implements ProjectResponsesDAO{
 	 * @return ProjectResponsesMySql 
 	 */
 	protected function readRow($row){
-		$projectResponse = new ProjectResponse($row['user_id'],$row['project_id'],$row['status'],$row['stmt'], $row['creation_time'],$row['id']);
+		$projectResponse = new ProjectResponse($row['user_id'],$row['project_id'],$row['status'],$row['stmt'], $row['creation_time'], 
+									$row['first_name'], $row['last_name'], $row['username'], $row['id']);
 		
-		
-		
-
+	
 		return $projectResponse;
 	}
 	

@@ -136,31 +136,24 @@
                                 <ol class="comment-list">
                                   
                                   <li>
-                                    <div class="comment">
-                                      
-                                      <?php foreach ($project -> getResponses() as $response) { ?>
-                                        
+                                   <div class="comment" id="comment_box_<?= $project->getId() ?>" >
+                                      <?php foreach ($project -> getResponses() as $projectResponse) { ?>
                                         <div class="comment-avatar">
-                                          <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
-                                        </div> <!-- /.comment-avatar -->
-
-                                        <div class="comment-meta">
-                                          <p> <?= $response -> getStmt() ?> </p>
+                                           <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $projectResponse->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
                                         </div>
-                                      
+                                        <!-- /.comment-avatar -->
+                                        <div class="comment-meta">
+                                           <p> <?= $projectResponse -> getStmt() ?> </p>
+                                        </div>
                                       <?php } ?>
-                                    
-                                    </div>
+                                   </div>
                                   </li>
-                                  
                                   <li>
-
                                     <?php 
-                                      $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
-                                      postComment( $img_url , 'project/comment', 'comment_to_project' , 'comment_project');
+                                      include 'views/project/projectComment.php';
                                     ?>
                                   </li>
-                                
+
                                 </ol>
                               </div>
                               <hr>
@@ -313,27 +306,21 @@
                                 <ol class="comment-list">
                                   
                                   <li>
-                                    <div class="comment">
-                                      
+                                   <div class="comment" id="comment_box_<?= $activity->getId() ?>" >
                                       <?php foreach ($activity -> getResponses() as $response) { ?>
-                                        
-                                        <div class="comment-avatar">
-                                          <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
-                                        </div> <!-- /.comment-avatar -->
-
-                                        <div class="comment-meta">
-                                          <p> <?= $response -> getStmt() ?> </p>
-                                        </div>
-                                      
+                                      <div class="comment-avatar">
+                                         <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
+                                      </div>
+                                      <!-- /.comment-avatar -->
+                                      <div class="comment-meta">
+                                         <p> <?= $response -> getStmt() ?> </p>
+                                      </div>
                                       <?php } ?>
-                                    
-                                    </div>
+                                   </div>
                                   </li>
-                                  
                                   <li>
                                     <?php 
-                                      $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
-                                      postComment( $img_url , 'dashboard/article/comment', 'comment_to_article' , 'comment_article');
+                                      include 'views/activity/activityComment.php';
                                     ?>
                                   </li>
                                 

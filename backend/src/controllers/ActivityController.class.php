@@ -44,7 +44,7 @@ class ActivityController extends BaseController  {
 
 	function postComment() {
 
-		if (isset($_POST['comment'], $_POST['id'])) {
+		if (isset($_POST['comment'], $_POST['id']) && $_POST['id'] != '' && $_POST['comment'] != '') {
 			$commentObj = new ChallengeResponse (
 											$this -> userId,
 											$_POST['id'],
@@ -62,6 +62,11 @@ class ActivityController extends BaseController  {
 				$this -> logger -> error ("Error at : $e");
 			}
 
+		}
+
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Comment Field Can Not Be Empty";
 		}
 	}
 

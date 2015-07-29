@@ -118,7 +118,10 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 								elseif($route['2'] == 'createProject') {
 
 									$projectController -> createProject();
+								}
 
+								elseif ($route['2'] == 'postProjectComment') {
+									$projectController -> postProjectComment();
 								}
 
 								elseif ($route['3'] == 'joinProject') {
@@ -137,8 +140,6 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 					$activityController = new ActivityController($route[2]);
 					
 					$where = $route[2];
-
-					echo "thereeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
 								
 					switch ($where) {
 						case 'postComment':

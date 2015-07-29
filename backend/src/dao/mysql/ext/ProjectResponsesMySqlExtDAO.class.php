@@ -19,7 +19,10 @@ class ProjectResponsesMySqlExtDAO extends ProjectResponsesMySqlDAO{
 	 * Get all records from table
 	 */
 	public function queryAllResponse($projectId){
-		$sql = 'SELECT * FROM project_responses WHERE project_id = ? AND status = 1';
+		$sql = "SELECT response.*, user.first_name, user.last_name, user.username 
+					FROM project_responses as response JOIN user_info as user
+						WHERE response.project_id = ? AND response.user_id = user.id AND response.status = 1 ORDER BY response.creation_time ASC ;";
+		
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($projectId);
 		return $this->getList($sqlQuery);

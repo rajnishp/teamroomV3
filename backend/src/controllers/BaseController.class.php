@@ -17,6 +17,7 @@ abstract class BaseController {
 	protected $baseUrl;
 
 	protected $challengeResponsesDAO;
+	protected $projectResponsesDAO;
 	protected $userSkillDAO;
 	protected $links;
 
@@ -70,6 +71,7 @@ abstract class BaseController {
 		$this -> userSkillDAO = $DAOFactory->getSkillsDAO();
 
 		$this -> challengeResponsesDAO = $DAOFactory->getChallengeResponsesDAO();
+		$this -> projectResponsesDAO = $DAOFactory->getProjectResponsesDAO();
 		
 		$this -> teamsDAO = $DAOFactory-> getTeamsDAO();
 		$this -> notificationsDAO = $DAOFactory-> getNotificationsDAO();

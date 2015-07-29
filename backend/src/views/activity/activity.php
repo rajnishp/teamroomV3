@@ -105,7 +105,7 @@
                 <div class="comment">
 
                   <div class="comment-avatar">
-                    <img alt="" src="uploads/profilePictures/<?= $comment->getUsername() ?>.jpg" class="avatar">
+                    <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $comment->getUsername() ?>.jpg" class="avatar">
                   </div> <!-- /.comment-avatar -->
 
                   <div class="comment-meta">

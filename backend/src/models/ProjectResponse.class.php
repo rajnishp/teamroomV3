@@ -14,13 +14,21 @@
 		private $stmt;
 		private $creationTime;
 
-		function __construct ($userId, $projectId, $status, $stmt, $creationTime, $id = null ) {
+		private $firstName;
+		private $lastName;
+		private $username;
+
+		function __construct ($userId, $projectId, $status, $stmt, $creationTime,  $firstName, $lastName, $username, $id = null ) {
 			$this -> id = $id;
 			$this -> userId = $userId;
 			$this -> projectId =$projectId;
 			$this -> status = $status;
 			$this -> stmt = $stmt;
 			$this -> creationTime = $creationTime;
+
+			$this -> firstName = $firstName;
+			$this -> lastName = $lastName;
+			$this -> username = $username;
 		}
 
 		function setId ($id) {
@@ -63,6 +71,25 @@
 		}
 		function getCreationTime () {
 			return $this -> creationTime;
+		}
+
+		
+		function getFirstName(){
+			return $this-> firstName;
+		}
+		
+		function setLastName($lastName){
+			$this -> lastName = $lastName;
+		}
+		function getLastName(){
+				return $this->lastName;
+		}
+
+		function setUsername($username){
+			$this -> username = $username;
+		}
+		function getUsername(){
+				return $this-> username;
 		}
 		
 		function toString () {

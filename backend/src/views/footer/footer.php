@@ -316,19 +316,20 @@ function addMorePost(url, dataString, addAt){
           }
      </script>
 
+
       <script type="text/javascript">
 
-      	function appendComment(key){
-      		comment = $('#comment_'+key).val();
-      		$('#comment_'+key).val("");
+      	function appendComment(key, commentDiv){
+      		comment = $('#' + commentDiv +key).val();
+      		$('#'+ commentDiv +key).val("");
       		appendHtml = '<div class="comment-avatar">';
-            appendHtml += '<img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
-            appendHtml += '</div>';
-            appendHtml += '<div class="comment-meta">';
-            appendHtml += '<p> '+ comment +' </p>';
-            appendHtml += '</div>';
+          appendHtml += '<img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
+          appendHtml += '</div>';
+          appendHtml += '<div class="comment-meta">';
+          appendHtml += '<p> '+ comment +' </p>';
+          appendHtml += '</div>';
 
-            $('#comment_box_'+key).append(appendHtml);
+          $('#comment_box_'+key).append(appendHtml);
       	}
 
         function postComment(fields, key){
@@ -345,7 +346,7 @@ function addMorePost(url, dataString, addAt){
               var message = "";
               if (key != undefined) {
                 //appendCloneToDiv(fields,result, "#post_comment_div", "#post_comment_form");
-                appendComment(key);
+                appendComment(key, 'comment_');
                 message = "Added Successfully";
               }
               success("Activity Response",message);
@@ -356,7 +357,7 @@ function addMorePost(url, dataString, addAt){
 
           });
 
-      }
+        }
 
         function validatePostComment(key){
          	console.log("Inside Validate comment",key);
@@ -371,7 +372,53 @@ function addMorePost(url, dataString, addAt){
           return false;
         }
 
-     </script>
+      </script>
+
+      <script type="text/javascript">
+
+        function postProjectComment(fields, key){
+          var dataString = "";
+          
+          dataString = "comment=" + $('#'+fields[0]).val() + "&id=" + key ;
+          
+          
+          $.ajax({
+            type: "POST",
+            url: "<?= $baseUrl ?>" + "project/postProjectComment",
+            data: dataString,
+            cache: false,
+            success: function(result){
+              var message = "";
+              if (key != undefined) {
+                //appendCloneToDiv(fields,result, "#post_comment_div", "#post_comment_form");
+                appendComment(key, 'project_comment_');
+                message = "Added Successfully";
+              }
+              success("Project Response",message);
+            },
+             error: function(result){
+              error("Project Response",result.responseText);
+            }
+
+          });
+
+        }
+
+        function validatePostProjectComment(key){
+          console.log("Inside Validate project comment",key);
+          
+          fields = ["project_comment_" + key];
+          
+          if(genericEmptyFieldValidator(fields)){
+
+              postProjectComment(fields, key  );
+
+          }
+          return false;
+        }
+
+      </script>
+
 
 <script type="text/javascript">
   $( document ).ready(function() {

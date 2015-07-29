@@ -153,6 +153,32 @@ class ProjectController extends BaseController {
 		$this -> render ();
 	}
 
+	
+	function postProjectComment() {
+
+		if (isset($_POST['comment'], $_POST['id']) && $_POST['id'] != '' && $_POST['comment'] != '') {
+			$commentObj = new ProjectResponse (
+											$this -> userId,
+											$_POST['id'],
+											1,
+											$_POST['comment'],
+											date("Y-m-d H:i:s")
+										);
+			try {
+				$this -> projectResponsesDAO -> insert($commentObj);
+				echo "Comment Posted";
+			}
+			catch (Exception $e) {
+				$this -> logger -> error ("Error at : $e");
+			}
+
+		}
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Comment Field Can Not Be Empty";
+		}
+	}
+
 }
 
 ?>

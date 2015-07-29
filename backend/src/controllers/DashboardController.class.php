@@ -22,7 +22,6 @@ class DashboardController extends BaseController {
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
 			$top10Activities =  $this->challengesDAO->queryAllChallenges(0,10);
 			
-			//var_dump($top10Activities);
 			require_once 'views/dashboard/dashboard.php';
 
 		} catch (Execption $e){
