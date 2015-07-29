@@ -99,40 +99,45 @@
             <?php } ?>
 
             <ol class="comment-list">
-            <?php foreach ($comments as $comment) { ?>
+            <?php foreach ($comments as $response) { ?>
               
               <li>
-                <div class="comment">
+                <div class="comment" id="comment_box_<?= $activity->getId() ?>">
 
                   <div class="comment-avatar">
-                    <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $comment->getUsername() ?>.jpg" class="avatar">
+                    <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" class="avatar">
                   </div> <!-- /.comment-avatar -->
 
                   <div class="comment-meta">
 
                     <span class="comment-author">
-                      <a href="javascript:;" class="url"><?= ucfirst($comment->getFirstName()) ?> <?= ucfirst($comment->getLastName()) ?></a>
+                      <a href="javascript:;" class="url"><?= ucfirst($response->getFirstName()) ?> <?= ucfirst($response->getLastName()) ?></a>
                     </span>
 
                     <a href="javascript:;" class="comment-timestamp">
-                      <?= $comment->getCreationTime() ?>
+                      <?= date("F jS, Y",strtotime($response->getCreationTime())) ?>
                     </a>
 
                   </div> <!-- /.comment-meta -->
 
                   <div class="comment-body">
-                    <p><?= $comment->getStmt() ?></p>
+                    <p><?= $response->getStmt() ?></p>
                   </div> <!-- /.comment-body -->
 
                 </div> <!-- /.comment -->
               </li>
 
             <?php } ?>
+              <li>
+                <?php 
+                  include 'views/activity/activityComment.php';
+                ?>
+              </li>
             </ol>
 
             <hr class="spacer-md">
 
-            <div class="heading-block">
+<!--             <div class="heading-block">
               <h3>Post a Comment</h3>
             </div>
 
@@ -165,7 +170,7 @@
               </div>
 
              
-            </form>
+            </form> -->
 
           </div> <!-- /.col -->
 

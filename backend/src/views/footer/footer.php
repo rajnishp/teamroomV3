@@ -325,6 +325,7 @@ function addMorePost(url, dataString, addAt){
       		appendHtml = '<div class="comment-avatar">';
           appendHtml += '<img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
           appendHtml += '</div>';
+          
           appendHtml += '<div class="comment-meta">';
           appendHtml += '<p> '+ comment +' </p>';
           appendHtml += '</div>';

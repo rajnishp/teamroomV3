@@ -183,7 +183,7 @@
                             <?php foreach ($teamMembers as $teamMember) { ?>
                               <div class="col-md-6 col-lg-4 col-sm-6">                                                    
                                 <div class="panel media middle" style="background-color: #E4EDF0;">
-                                  <div class="media-left bg-primary pad-all">
+                                  <div class="media-left bg-primary pad-no">
                                     <img alt="" src="uploads/profilePictures/<?= $teamMember->getUsername() ?>.jpg" onerror = "this.src = '<?= $baseUrl ?>static/img/collap.jpg';" class="avatar" width="40" height="40">
                                   </div>
                                   <div class="media-body pad-lft">
@@ -236,9 +236,9 @@
                                         <input type="radio" name="activity" id="activity_type" value="6"> Notes 
                                       </label>
                                     
-                                      <label class="form-radio form-normal">
+                                      <!-- <label class="form-radio form-normal">
                                         <input type="radio" name="activity" id="activity_type" value="5" > Task
-                                      </label>
+                                      </label> -->
                                       <label class="form-radio form-normal">
                                         <input type="radio" name="activity" id="activity_type" value="4"> Idea
                                       </label>
@@ -257,7 +257,7 @@
                               
                               </form>
 
-                              <div id='assign_task'>
+<!--                               <div id='assign_task'>
                                 <div class="form-group pad-btm">
                                   <label class="col-lg-3 control-label">To Whom: </label>
                                   <div class="col-lg-7">
@@ -270,7 +270,7 @@
                                   
                                   </div>
                                 </div>
-                              </div> <!-- /.assign task -->
+                              </div> --> <!-- /.assign task -->
 
                             </div> <!-- /.share-widget -->
                           
@@ -293,7 +293,7 @@
                             
                               <div class="post-main">
                                 <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
-                                <?php dropDown_comment(8, 7, 9); ?>
+                                <?php //dropDown_comment(8, 7, 9); ?>
                                 <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                                   
                               

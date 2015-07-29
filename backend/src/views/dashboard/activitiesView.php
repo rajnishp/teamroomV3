@@ -17,7 +17,7 @@
                       
                         <div class="post-main">
                           <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
-                          <?php dropDown_comment(8, 7, 9); ?>
+                          <?php //dropDown_comment(8, 7, 9); ?>
                           <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                             
                         
@@ -35,7 +35,7 @@
                                 <?php foreach ($activity -> getResponses() as $response) { ?>
                                   
                                   <div class="comment-avatar">
-                                    <img alt="" src="<?= $baseUrl ?>static/imgs/rajnish.jpg" style="width: 44px; height: 44px;" class="avatar">
+                                    <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
                                   </div> <!-- /.comment-avatar -->
 
                                   <div class="comment-meta">

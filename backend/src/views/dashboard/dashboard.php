@@ -86,7 +86,7 @@
                       <!-- /.post-aside -->
                       <div class="post-main">
                          <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
-                         <?php dropDown_comment(8, 7, 9); ?>
+                         <?php //dropDown_comment(8, 7, 9); ?>
                          <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                          <div class="post-content">
                             <p> 

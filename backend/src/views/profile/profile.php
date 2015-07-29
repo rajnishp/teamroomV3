@@ -318,31 +318,24 @@
                               <ol class="comment-list">
                                 
                                 <li>
-                                  <div class="comment">
-                                    
-                                    <?php foreach ($project -> getResponses() as $response) { ?>
-                                      
+                                  <div class="comment" id="comment_box_<?= $project->getId() ?>" >
+                                    <?php foreach ($project -> getResponses() as $projectResponse) { ?>
                                       <div class="comment-avatar">
-                                        <img alt="" src="uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
-                                      </div> <!-- /.comment-avatar -->
-
-                                      <div class="comment-meta">
-                                        <p> <?= $response -> getStmt() ?> </p>
+                                         <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $projectResponse->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
                                       </div>
-                                    
+                                      <!-- /.comment-avatar -->
+                                      <div class="comment-meta">
+                                         <p> <?= $projectResponse -> getStmt() ?> </p>
+                                      </div>
                                     <?php } ?>
-                                  
-                                  </div>
+                                 </div>
                                 </li>
-                                
                                 <li>
-
                                   <?php 
-                                    $img_url = "$baseUrl"."/static/imgs/rajnish.jpg";
-                                    postComment( $img_url , 'project/comment', 'comment_to_project' , 'comment_project');
+                                    include 'views/project/projectComment.php';
                                   ?>
                                 </li>
-                              
+                            
                               </ol>
                             </div>
                             <hr>
@@ -378,7 +371,7 @@
                               
                                 <div class="post-main">
                                   <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
-                                  <?php dropDown_comment(8, 7, 9); ?>
+                                  <?php //dropDown_comment(8, 7, 9); ?>
                                   <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                                     
                                 
