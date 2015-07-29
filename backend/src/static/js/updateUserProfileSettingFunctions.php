@@ -16,27 +16,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            $.niftyNoty({ 
-              type:"success",
-              icon:"fa fa-check fa-lg",
-              title:"Profile Information",
-              message:result,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            success("Social Profile Linking",result.responseText);
           },
           error: function(result){
-            console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-times fa-lg",
-              title:"Profile Information",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            error("Social Profile Linking",result.responseText);
           }
 
         });      
@@ -81,27 +64,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            $.niftyNoty({ 
-              type:"success",
-              icon:"fa fa-check fa-lg",
-              title:"Job Preference",
-              message:result,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            success("Job Preference",result.responseText);
           },
           error: function(result){
-            console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-times fa-lg",
-              title:"Job Preference",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            error("Job Preference",result.responseText);
           }
 
         });
@@ -132,27 +98,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            $.niftyNoty({ 
-              type:"success",
-              icon:"fa fa-check fa-lg",
-              title:"Profile Information",
-              message:result,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            success("Profile Information",result.responseText);
           },
           error: function(result){
-            console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-times fa-lg",
-              title:"Profile Information",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            error("Profile Information",result.responseText);
           }
 
         });      
@@ -185,27 +134,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            $.niftyNoty({ 
-              type:"success",
-              icon:"fa fa-check fa-lg",
-              title:"Update Preferred Job Locations",
-              message:result,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            success("Update Preferred Job Location",result.responseText);
           },
           error: function(result){
-            console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-times fa-lg",
-              title:"Update Preferred Job Location",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            error("Update Preferred Job Location",result.responseText);
           }
 
         });
@@ -219,8 +151,6 @@
         $('#demo-cs-multiselect1 :selected').each(function(i, selected){ 
           locationsArray[i] = $(selected).val(); 
         });
-
-        //alert(skillsArray); return false;
 
         //if(genericEmptyFieldValidator(skillsArray)){
           console.log("iam there");
@@ -241,27 +171,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            $.niftyNoty({ 
-              type:"success",
-              icon:"fa fa-check fa-lg",
-              title:"Update Skills",
-              message:result,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            success("Update Skills",result.responseText);
           },
           error: function(result){
-            console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-times fa-lg",
-              title:"Update Skills",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            error("Update Skills",result.responseText);
           }
 
         });
@@ -276,30 +189,15 @@
           skillsArray[i] = $(selected).val(); 
         });
 
-        //alert(skillsArray); return false;
-
         //if(genericEmptyFieldValidator(skillsArray)){
-          console.log("iam there");
+         
           postUpdateSkills(skillsArray);          
 
         //}
         return false;
       }
 
-      function appendCloneToDiv(fields,result,appendToId, formId){
-         clone = $(formId).clone();
-         
-         $.each(fields, function( index, value ) {
-                      $('#'+value).attr("id", value +  "_" + result);
-                    });
-         $(formId).attr("id", formId + "_" + result );
-
-                    clone.appendTo(appendToId);
-
-                    $.each(fields, function( index, value ) {
-                      $('#'+value).val("");
-        });
-      }
+      
 
       function postUpdateTechStrength(fields, key){
           var dataString = "";
@@ -332,15 +230,7 @@
                 },
                  error: function(result){
                   console.log(result);
-                  $.niftyNoty({ 
-                    type:"danger",
-                    icon:"fa fa-times fa-lg",
-                    title:"Technical Strength",
-                    message:result.responseText,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
+                  error("Technical Strength",result.responseText);
                 }
 
           });
@@ -397,16 +287,7 @@
               success("Work Experience",message);
             },
             error: function(result){
-              console.log(result);
-              $.niftyNoty({ 
-                type:"danger",
-                icon:"fa fa-times fa-lg",
-                title:"Work Experience",
-                message:result.responseText,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
+              error("Work Experience", result.responseText);
             }
           });
 
@@ -458,15 +339,7 @@
             },
             error: function(result){
               console.log(result);
-              $.niftyNoty({ 
-                type:"danger",
-                icon:"fa fa-check fa-lg",
-                title:"Education",
-                message:result.responseText,
-                focus: true,
-                container:"floating",
-                timer:4000
-              });
+              error("Education",result.responseText);
             }
           });
 
@@ -506,27 +379,11 @@
           data: dataString,
           cache: false,
           success: function(result){
-            $.niftyNoty({ 
-              type:"success",
-              icon:"fa fa-check fa-lg",
-              title:"Reset Password",
-              message:result,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            success("Reset Password",message);
           },
-           error: function(result){
+          error: function(result){
             console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-check fa-lg",
-              title:"Reset Password",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            error("Reset Password",result.responseText);
           }
         });
       }

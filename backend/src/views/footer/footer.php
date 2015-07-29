@@ -78,18 +78,49 @@
     <!--Form Component [ SAMPLE ]-->
     <script src="<?= $baseUrl ?>static/sidebar/js/demo/form-component.js"></script>
 
+
+<script type="text/javascript">
+  function appendCloneToDiv(fields,result,appendToId, formId){
+         clone = $(formId).clone();
+         
+         $.each(fields, function( index, value ) {
+                      $('#'+value).attr("id", value +  "_" + result);
+                    });
+         $(formId).attr("id", formId + "_" + result );
+
+                    clone.appendTo(appendToId);
+
+                    $.each(fields, function( index, value ) {
+                      $('#'+value).val("");
+        });
+      }
+</script>
+
+
 <script type="text/javascript">
 	function success(title,message){
 		$.niftyNoty({ 
-                    type:"success",
-                    icon:"fa fa-check fa-lg",
-                    title:title,
-                    message:message,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
+        type:"success",
+        icon:"fa fa-check fa-lg",
+        title:title,
+        message:message,
+        focus: true,
+        container:"floating",
+        timer:4000
+      });
 	}
+
+  function error(title,message){
+    $.niftyNoty({ 
+        type:"danger",
+        icon:"fa fa-times fa-lg",
+        title:title,
+        message:message,
+        focus: true,
+        container:"floating",
+        timer:4000
+      });
+  }
 </script>
 <script>
 $('#demo-dp-range .input-daterange').datepicker({
@@ -285,14 +316,47 @@ function addMorePost(url, dataString, addAt){
           }
      </script>
 
-     <script type="text/javascript">
+      <script type="text/javascript">
 
+        function postComment(fields, key){
+          var dataString = "";
+          
+          dataString = "comment=" + $('#'+fields[0]).val() + "&id=" + key ;
+  
+          $.ajax({
+            type: "POST",
+            url: "<?= $baseUrl ?>" + "activity/postComment",
+            data: dataString,
+            cache: false,
+            success: function(result){
+              var message = "";
+              if (key != undefined) {
+                appendCloneToDiv(fields,result, "#post_comment_div", "#post_comment_form");
+                message = "Added Successfully";
+              }
+              success("Activity Response",message);
+            },
+             error: function(result){
+              error("Activity Response",result.responseText);
+            }
 
+          });
 
-     function validatePostComment(key){
-     	console.log($("#comment_"+key).val());
-     	return false;
-     }
+      }
+
+        function validatePostComment(key){
+         	console.log("Inside Validate comment",key);
+          
+          fields = ["comment_" + key];
+          
+          if(genericEmptyFieldValidator(fields)){
+
+              postComment(fields, key  );
+
+          }
+          return false;
+        }
+
      </script>
 
 <script type="text/javascript">

@@ -69,7 +69,7 @@ class SettingController extends BaseController {
 					$this -> userSocialLinksDAO -> updateSocialLink( $this-> userId, $_POST['facebook_url'], 'Facebook' );
 				} 
 				catch (Exception $e) {
-					$this -> logger -> error ("Error at : $fbLinkObj");
+					$this -> logger -> error ("Error at : $e");
 					echo "Failed..";
 				}
 				echo "Updated Successfully";
@@ -147,7 +147,7 @@ class SettingController extends BaseController {
 				);
 
 			if(isset($_POST['id'])) {
-				$this -> userTechStrengthDAO ->updateSocialLink($tech_strength);
+				$this -> userTechStrengthDAO ->update($tech_strength);
 				echo "Updated Successfully";
 			}
 			else {

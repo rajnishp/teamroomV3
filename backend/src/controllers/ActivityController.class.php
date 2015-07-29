@@ -42,6 +42,29 @@ class ActivityController extends BaseController  {
 
 	}
 
+	function postComment() {
+
+		if (isset($_POST['comment'], $_POST['id'])) {
+			$commentObj = new ChallengeResponse (
+											$this -> userId,
+											$_POST['id'],
+											0,
+											$_POST['comment'],
+											1,
+											date("Y-m-d H:i:s"),
+											null, null, null
+										);
+			try {
+				$this -> challengeResponsesDAO -> insert($commentObj);
+					echo "Comment Posted";
+			}
+			catch (Exception $e) {
+				$this -> logger -> error ("Error at : $e");
+			}
+
+		}
+	}
+
 
 }
 

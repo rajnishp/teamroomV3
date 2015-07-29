@@ -135,7 +135,21 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 			case "activity":
 
 					$activityController = new ActivityController($route[2]);
-					$activityController -> render();
+					
+					$where = $route[2];
+
+					echo "thereeeeeeeeeeeeeeeeeeeeeeeeeeeeee";
+								
+					switch ($where) {
+						case 'postComment':
+							
+							$activityController -> postComment();
+
+							break;
+						default:
+							$activityController -> render();
+							break;
+					}
 				break;
 
 			case "fileUpload":
