@@ -429,6 +429,8 @@ function addMorePost(url, dataString, addAt){
     });
 
     $("img").error(function () {
+    	console.log("error in src");
+      $(this).attr('src', "<?= $this->baseUrl ?>static/img/collap.jpg");
 	  $(this).unbind("error").attr("src", "<?= $this->baseUrl ?>static/img/collap.jpg");
 	});
 

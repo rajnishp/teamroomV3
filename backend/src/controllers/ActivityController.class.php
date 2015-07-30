@@ -37,7 +37,8 @@ class ActivityController extends BaseController  {
 			else 
 					require_once 'views/error/pages-404.php';
 		} catch (Exception $e){
-			echo "Error occur :500 <br>".var_dump($e);
+			require_once 'views/error/pages-404.php';	
+			$this->logger->error("Error occur :500 ".json_encode($e) );
 		}
 
 	}

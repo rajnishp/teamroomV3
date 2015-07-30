@@ -3,7 +3,7 @@
     <div class="container">
 
       <a href="./" class="navbar-brand-img">
-          <img src="static/img/collap.jpg" style="width: 75px;" alt = "Collap"/> 
+          <img src="<?= $baseUrl ?>static/img/collap.jpg" style="width: 75px;" alt = "Collap"/> 
           <span style="font-size: 30px;"> Collap
         </a>
 

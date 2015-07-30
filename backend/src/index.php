@@ -53,6 +53,22 @@ $logger -> debug ("Setting up ...");
 
 
 $route = explode("/",$_SERVER[REQUEST_URI]);
+//router hack for uploads
+if(in_array('uploads', $route)){
+	$redir = $configs['COLLAP_BASE_URL'];
+	$flag = false;
+
+	foreach ($route as $key => $value) {
+		if($value == 'uploads')
+			$flag = true;
+		if($flag)
+			$redir .= $value."/";
+	}
+	//rtrim($redir, "\/");
+	header("location:".substr($redir,0,-1));
+}
+
+//router uploads hack end
 $logger -> debug ("router :: " .json_encode($route));
 
 $logger -> debug ("post :: " .json_encode($_POST));
@@ -70,6 +86,12 @@ if(substr($route[1], 0, 18) == "challengesOpen.php"){
 	$temp = explode("=", $route[1]);
 	$route[2] = $temp[1];
 	$route[1] = "activity";
+	
+}
+if(substr($route[1], 0, 11) == "project.php"){
+	$temp = explode("=", $route[1]);
+	$route[2] = $temp[1];
+	$route[1] = "project";
 	
 }
 //end of url translantion
