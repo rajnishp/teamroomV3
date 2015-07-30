@@ -323,7 +323,7 @@ function addMorePost(url, dataString, addAt){
       		comment = $('#' + commentDiv +key).val();
       		$('#'+ commentDiv +key).val("");
       		appendHtml = '<div class="comment-avatar">';
-          appendHtml += '<img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
+          appendHtml += '<img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $this->username ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
           appendHtml += '</div>';
           
           appendHtml += '<div class="comment-meta">';

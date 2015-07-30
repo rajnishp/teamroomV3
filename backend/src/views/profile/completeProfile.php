@@ -22,7 +22,7 @@
           <!--Page Title-->
           <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
           <div id="page-title">
-            <h1 class="page-header text-overflow">Complete Your Profile</h1>
+            <h1 class="page-header text-overflow">Let's be ready to collaborate.</h1>
 
           </div>
           <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -33,21 +33,20 @@
           <div id="page-content">
             
             <div class="panel">
-              <div class="eq-height clearfix">
-                <!-- <div class="col-md-5 eq-box-md text-center box-vmiddle-wrap bg-primary">
+            <div class="row">
+                 <div class="col-lg-8 col-md-8 eq-box-md text-center box-vmiddle-wrap bg-primary">
             
                    <div class="box-vmiddle pad-all">
-                    <h3 class="text-thin">Register Today</h3>
-                    <span class="icon-wrap icon-wrap-lg icon-circle bg-trans-light">
-                      <i class="fa fa-gift fa-5x text-primary"></i>
-                    </span>
-                    <p>Members get <span class="text-lg text-bold">50%</span> more points, so register today and start earning points for savings on great rewards!</p>
-                    <a class="btn btn-lg btn-primary btn-labeled fa fa-arrow-right" href="#">Learn More...</a>
+                    <h3 class="text-thin">Provide as much as infomation you can, because it will help others to collaborate with you better. </h3>
+                   
                   </div>
+              </div>
+              <div class="eq-height clearfix">
+
                   
-                </div> -->
+                </div> 
                 <!-- <div class="col-md-7 eq-box-md eq-no-panel"> -->
-                <div class="col-md-8 eq-box-md eq-no-panel col-md-offset-2">
+                <div class="col-md-8 eq-box-md eq-no-panel ">
                   <!-- Main Form Wizard -->
                   <!--===================================================-->
                   <div id="demo-main-wz">
@@ -597,6 +596,7 @@
                   <!-- End of Main Form Wizard -->
             
                 </div>
+
               </div>
             </div>
             
