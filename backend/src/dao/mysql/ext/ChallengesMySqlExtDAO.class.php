@@ -379,7 +379,21 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	 * @return ChallengesMySql 
 	 */
 	protected function readRowChallenge($row){
-		$challenge = new Challenge($row['user_id'], $row['project_id'],0,0,$row['title'], $row['stmt'],$row['type'],$row['status'],$row['likes'],$row['dislikes'],$row['creation_time'],0, $row['first_name'], $row['last_name'], $row['username'], $row['id']);
+		$challenge = new Challenge(isset( $row['user_id'] ) ? $row['user_id'] : null,
+   							isset( $row['project_id'] ) ? $row['project_id'] : null, 
+									0,0,
+								isset( $row['title'] ) ? $row['title'] : null,
+								isset( $row['stmt'] ) ? $row['stmt'] : null,
+								isset( $row['type'] ) ? $row['type'] : null,
+								isset( $row['status'] ) ? $row['status'] : null,
+								isset( $row['likes'] ) ? $row['likes'] : null,
+								isset( $row['dislikes'] ) ? $row['dislikes'] : null,
+								isset( $row['creation_time'] ) ? $row['creation_time'] : null,
+								0,
+								isset( $row['first_name'] ) ? $row['first_name'] : null,
+								isset( $row['last_name'] ) ? $row['last_name'] : null,
+								isset( $row['username'] ) ? $row['username'] : null,
+								$row['id']);
 	
 		return $challenge;
 	}

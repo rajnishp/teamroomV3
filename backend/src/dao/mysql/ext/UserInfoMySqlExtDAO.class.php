@@ -62,8 +62,16 @@ class UserInfoMySqlExtDAO extends UserInfoMySqlDAO{
 	 * @return UserInfoMySql 
 	 */
 	protected function readUserRow($row){
-		$userInfo = new UserInfo($row['first_name'],$row['last_name'],$row['email'],$row['phone'],$row['username'],
-								0, $row['rank'],$row['user_type'], 0, 0, 0, $row['working_org_name'],$row['living_town'],$row['about_user'],
+		$userInfo = new UserInfo(isset( $row['first_name'] ) ? $row['first_name'] : null,
+								isset( $row['last_name'] ) ? $row['last_name'] : null,
+								$row['email'],$row['phone'],
+								isset( $row['username'] ) ? $row['username'] : null,
+								0, $row['rank'],
+								isset( $row['user_type'] ) ? $row['user_type'] : null,
+								0, 0, 0, 
+								isset( $row['working_org_name'] ) ? $row['working_org_name'] : null,
+								isset( $row['living_town'] ) ? $row['living_town'] : null,
+								isset( $row['about_user'] ) ? $row['about_user'] : null,
 								0, 0, $row['id']);
 		
 		return $userInfo;
