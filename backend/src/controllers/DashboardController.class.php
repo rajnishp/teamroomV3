@@ -25,7 +25,8 @@ class DashboardController extends BaseController {
 			require_once 'views/dashboard/dashboard.php';
 
 		} catch (Execption $e){
-			echo "Server every on DashboardController <br/>".var_dump($e); 
+			require_once 'views/error/pages-404.php';	
+			$this->logger->error("Error occur :500 ".json_encode(($e) );
 		}
 
 	}
