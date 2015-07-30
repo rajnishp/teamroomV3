@@ -166,11 +166,11 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
 	
 	public function getUserProjects($userId, $start, $limit){
-		$sql = "(SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "(SELECT DISTINCT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team 
 					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 AND project.blob_id = 0 ORDER BY creation_time DESC) 
 				UNION
-				(SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+				(SELECT DISTINCT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team JOIN blobs as `blob`
 					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 
 						AND project.blob_id = blob.id ORDER BY creation_time DESC )";
