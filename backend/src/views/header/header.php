@@ -20,9 +20,12 @@
   <link rel="stylesheet" href="<?= $baseUrl ?>static/css/custom_add.css">
 
   <style type="text/css">
-iframe {
- 
+
+.post-content{
+  max-width: 70%;
 }
+
+
   </style>
 
   <!--STYLESHEET-->
