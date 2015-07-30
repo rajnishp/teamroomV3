@@ -81,7 +81,7 @@ class ProfileController extends BaseController {
 			require_once 'views/profile/profile.php';
 		} catch (Exception $e){
 			require_once 'views/error/pages-404.php';	
-			$this->logger->error("Error occur :500 ".json_encode(($e) );
+			$this->logger->error("Error occur :500 ".json_encode($e) );
 		}
 
 	}
