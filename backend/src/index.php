@@ -53,6 +53,22 @@ $logger -> debug ("Setting up ...");
 
 
 $route = explode("/",$_SERVER[REQUEST_URI]);
+//router hack for uploads
+if(in_array('uploads', $route)){
+	$redir = $configs['COLLAP_BASE_URL'];
+	$flag = false;
+
+	foreach ($route as $key => $value) {
+		if($value == 'uploads')
+			$flag = true;
+		if($flag)
+			$redir .= $value."/";
+	}
+	//rtrim($redir, "\/");
+	header("location:".substr($redir,0,-1));
+}
+
+//router uploads hack end
 $logger -> debug ("router :: " .json_encode($route));
 
 $logger -> debug ("post :: " .json_encode($_POST));

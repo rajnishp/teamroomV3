@@ -138,6 +138,63 @@
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
+                              <div class="form-group">
+
+                                <label class="col-md-3 control-label">Want to Collaborate As</label>
+
+                                <div class="col-md-7">
+                                  <div class="checkbox">
+                                    
+                                    <label class="form-checkbox form-icon active form-text">
+                                    Engineer
+                                    <input type="checkbox" checked="">
+                                    
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    
+                                    <label class="form-checkbox form-icon active form-text">
+                                    Project Manager
+                                    <input type="checkbox" checked="">
+                                    
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    
+                                    <label class="form-checkbox form-icon active form-text">
+                                    UX Designer
+                                    <input type="checkbox" checked="">
+                                    
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    
+                                    <label class="form-checkbox form-icon active form-text">
+                                    Doctor
+                                    <input type="checkbox" checked="">
+                                    
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    
+                                    <label class="form-checkbox form-icon active form-text">
+                                    Research Scholar
+                                    <input type="checkbox" checked="">
+                                    
+                                    </label>
+                                  </div>
+                                  <div class="checkbox">
+                                    
+                                    <label class="form-checkbox form-icon active form-text">
+                                    Lawyer
+                                    <input type="checkbox" checked="">
+                                    
+                                    </label>
+                                  </div>
+                                </div> <!-- /.col -->
+
+                              </div> <!-- /.form-group -->
+                             
 
                               <div class="form-group">
 
@@ -191,7 +248,7 @@
                               <div class="form-horizontal" id= "tech_strength_form">
 
                                 <div class="form-group">
-
+                                 
                                   <label class="col-md-3 control-label">Technical Strength</label>
                                 
                                   <div class="col-md-7">
