@@ -68,27 +68,22 @@ if(isset($_SESSION['username'])){
 			
 			case "profilePic":
 				$pic = explode(".", $_FILES["file"]["name"]) ;
-				$pict = $pic['1'] ;
+				$type = $pic['1'] ;
 				global $configs;
 
 				$root = $configs['COLLAP_FILE_ROOT'];
-				if ($pict == "jpg") {
-					$picname = $username.".".$pict ;
-				}
-				else { 
-					$picname = $username.".jpg" ;
-				}
+				
+				$picname = $username.".jpg" ;
+				
 				$filePath = "profilePictures/".$picname;
 				if(!file_exists($root.$filePath)) {
 					saveFile($filePath); 
 				} 
 				 else {
 					 unlink($root."profilePictures/".$username.".jpg") ;
-					 unlink($root."profilePictures/".$username.".png") ;
-					 unlink($root."profilePictures/".$username.".jpeg") ;
-					 unlink($root."profilePictures/".$username.".gif") ;
 					 saveFile($filePath);
-					 rename($root.$filePath.".jpg",
+					 if($type == 'png')
+					 rename($root.'profilePictures/'.$username."_png.jpg",
 							$root.'profilePictures/'.$username.".jpg");					 
 					 }
 				echo 'uploads/'.$filePath;
