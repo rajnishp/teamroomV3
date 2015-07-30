@@ -88,6 +88,12 @@ if(substr($route[1], 0, 18) == "challengesOpen.php"){
 	$route[1] = "activity";
 	
 }
+if(substr($route[1], 0, 11) == "project.php"){
+	$temp = explode("=", $route[1]);
+	$route[2] = $temp[1];
+	$route[1] = "project";
+	
+}
 //end of url translantion
 
 if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
