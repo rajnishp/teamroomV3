@@ -8,15 +8,15 @@
 	class TeamMembers{
 		
 		private $id;
-		//private $userId;
+		private $userId;
 		private $firstName;
 		private $lastName;
 		private $userName;
 		private $rank;
 
-		function __construct ($firstName, $lastName, $rank, $userName, $id) {
+		function __construct ($userId, $firstName, $lastName, $rank, $userName, $id=null) {
 			$this -> id = $id;
-			//$this -> userId = $userId;
+			$this -> userId = $userId;
 			$this -> firstName = $firstName;
 			$this -> lastName = $lastName;
 			$this -> rank = $rank;
@@ -28,14 +28,14 @@
 		function getId () {
 			return $this -> id;
 		}
-/*
+
 		function setUserId ($userId) {
 			$this -> userId = $userId;
 		}
 		function getUserId () {
 			return $this -> userId;
 		}
-*/
+
 		function setFirstName ($firstName) {
 			$this -> firstName = $firstName;
 		}

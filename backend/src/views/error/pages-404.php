@@ -21,7 +21,7 @@
 		<!--===================================================-->
 		<div class="cls-header">
 			<div class="cls-brand">
-				<a class="box-inline" href="index.html">
+				<a class="box-inline" href="<?= $baseUrl ?>">
 					<!-- <img alt="Nifty Admin" src="images/logo.png" class="brand-icon"> -->
 					<span class="brand-title">Collap.com <span class="text-thin"><i>Let's grow together</i></span></span>
 				</a>

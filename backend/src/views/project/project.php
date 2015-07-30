@@ -71,15 +71,20 @@
                   <div class="pull-right" style="margin-top: 25px;">
                     
                     <div class="col-md-6 col-lg-6 col-sm-6" style="margin-bottom: 6px;">
-                      <form action="<?= $baseUrl ?>project/<?= $project->getId() ?>/joinProject" name="join_project" method="POST">
-                        <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold" name="join_project" style="margin-right: 5px;"> JOIN </button>
-                      </form>
+                      <?php if(!$this->isProjectMember()) { ?>
+                        <form action="<?= $baseUrl ?>project/<?= $project->getId() ?>/joinProject" name="join_project" method="POST">
+                          <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold" name="join_project" style="margin-right: 5px;"> JOIN </button>
+                        </form>
+                      <?php } ?>
                     </div>
+                     
+                  <!--                     
                     <div class="col-md-6 col-lg-6 col-sm-6">
                       <form action="" name="message" >
                         <button class="btn btn-lg btn-default btn-labeled fa fa-envelope text-semibold"> MESSAGE </button>
                       </form>
-                    </div>
+                    </div> 
+                  -->
                   
                   </div>      
                 </div>            
@@ -180,7 +185,7 @@
                           <div class="row">
 
                             <h4> Team Members </h4>
-                            <?php foreach ($teamMembers as $teamMember) { ?>
+                            <?php foreach ($this-> teamMembers as $teamMember) { ?>
                               <div class="col-md-6 col-lg-4 col-sm-6">                                                    
                                 <div class="panel media middle" style="background-color: #E4EDF0;">
                                   <div class="media-left bg-primary pad-no">

@@ -6,9 +6,10 @@ class ProjectController extends BaseController {
 
 	private $projectId;
 	private $pageUrl;
+	private $teamMembers;
 	//private $teamsDAO;
 
-	function __construct ( $projectId ){
+	function __construct ( $projectId){
 		parent::__construct();	
 
 		$this-> projectId = $projectId;
@@ -43,7 +44,8 @@ class ProjectController extends BaseController {
 					
 				//$UserLinks = $this->userInfoDAO->getUsersLinks($this->userId);
 				//$projectTeams = $this-> teamsDAO -> queryAllTeamNames( $this -> projectId );
-				$teamMembers = $this-> teamsDAO -> queryAllTeamMembers($this -> projectId );
+				$this-> teamMembers = $this-> teamsDAO -> queryAllTeamMembers($this -> projectId );
+
 				if($project){
 					if (isset($_SESSION['userId'])) 
 						require_once 'views/project/project_page.php';
@@ -60,12 +62,30 @@ class ProjectController extends BaseController {
 
 			
 
-
 		} catch (Exception $e){
-			echo "At Render() Error occur :500 <br>".var_dump($e);
+			echo "At Render() Error occur :500 <br>";
+			$this -> logger -> error ("Error at : $e");
 		}
 
 	}
+
+	function isProjectMember() {
+		/*if ($this -> project->getUserId == $this -> userId)
+			return true;
+		*/
+			//var_dump($this->teamMembers );
+		foreach ($this->teamMembers as $key => $member) {
+			//var_dump($member);
+			if ( $this->userId == $member->getUserId()) {
+				//echo "insode if ";
+				return true;
+			}
+		}
+		//echo "ouside for "; 
+		//$this -> logger -> debug (" $this -> userId : is not a member of this project ");
+		return false;
+	}
+
 
 	function getNextActivities(){
 		$last = $_POST["last"];
@@ -115,6 +135,20 @@ class ProjectController extends BaseController {
 				$this -> logger -> debug( "project id: " . $this->projectId);
 				echo $this->baseUrl . "project/" . $this->projectId;
 				//header("location: " . );
+				
+				$newMember = new Team(
+									$this-> userId,
+									$this-> projectId,
+									'defaultteam',
+									0,
+									date("Y-m-d H:i:s"),
+									1,
+									0,
+									1,
+									null
+								);
+				
+				$this -> teamsDAO -> insert($newMember) ;
 				
 			}
 			catch (Exception $e){
