@@ -267,7 +267,7 @@ class SettingController extends BaseController {
 	            }
 	        }
 
-	        $newLivingTown= $_POST ['living_town'];
+	        $newLivingTown= $_POST ['living_place'];
 	        if (isset($newLivingTown)) {
 	            if ($newLivingTown != $userObj -> getLivingTown()) {
 	                $update = true;

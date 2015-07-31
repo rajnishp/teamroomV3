@@ -21,7 +21,7 @@ class CompleteProfileController extends BaseController  {
 		}
 		
 		try{
-
+			$userProfile = $this -> userInfoDAO-> load($this->userId);
 			$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
 			$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
 			$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);

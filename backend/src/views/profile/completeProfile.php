@@ -11,18 +11,18 @@
 
 </head>
   <body>
-    <div id="container" class="effect mainnav-lg">
+    <div id="container" class="">
         
       <?php require_once 'views/navbar/main_navbar.php'; ?>
 
       <div class="boxed">
 
-        <div id="content-container">
-          
+        <div id="">
+          <!--id ="content-container" for removing sidebar --> 
           <!--Page Title-->
           <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
           <div id="page-title">
-            <h1 class="page-header text-overflow">Let's be ready to collaborate.</h1>
+            <h1 class="page-header text-overflow text-center">Let's be ready to collaborate.</h1>
 
           </div>
           <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -33,8 +33,8 @@
           <div id="page-content">
             
             <div class="panel">
-            <div class="row">
-                 <div class="col-lg-8 col-md-8 eq-box-md text-center box-vmiddle-wrap bg-primary">
+            <div class="row col-md-offset-2">
+                 <div class="col-lg-10 col-md-10 eq-box-md text-center box-vmiddle-wrap bg-primary">
             
                    <div class="box-vmiddle pad-all">
                     <h3 class="text-thin">Provide as much as infomation you can, because it will help others to collaborate with you better. </h3>
@@ -46,7 +46,7 @@
                   
                 </div> 
                 <!-- <div class="col-md-7 eq-box-md eq-no-panel"> -->
-                <div class="col-md-8 eq-box-md eq-no-panel ">
+                <div class="col-md-10 eq-box-md eq-no-panel ">
                   <!-- Main Form Wizard -->
                   <!--===================================================-->
                   <div id="demo-main-wz">
@@ -124,7 +124,7 @@
                                 <label class="col-md-3 control-label">First Name</label>
 
                                 <div class="col-md-7">
-                                  <input type="text" name="first_name" id= "first_name" class="form-control" />
+                                  <input type="text" name="first_name" id= "first_name"  value="<?= $userProfile->getFirstName() !=null ? $userProfile->getFirstName() : null ?>" placeholder="First Name" class="form-control" />
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -134,7 +134,7 @@
                                 <label class="col-md-3 control-label">Last Name</label>
 
                                 <div class="col-md-7">
-                                  <input type="text" name="last_name"  id= "last_name" class="form-control" />
+                                  <input type="text" name="last_name"  id= "last_name"  value="<?= $userProfile->getLastName() !=null ? $userProfile->getLastName() : null ?>" placeholder="Last Name"  class="form-control" />
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -201,7 +201,7 @@
                                 <label class="col-md-3 control-label">Contact Number</label>
 
                                 <div class="col-md-7">
-                                  <input type="text" name="phone" id="phone" class="form-control" />
+                                  <input type="text" name="phone" id="phone"  value="<?= $userProfile->getPhone() !=null ? $userProfile->getPhone() : null ?>" placeholder="Contact No" class="form-control" />
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -211,7 +211,7 @@
                                 <label class="col-md-3 control-label">Current Living Place</label>
 
                                 <div class="col-md-7">
-                                  <input type="text" name="living_place" id="living_place" class="form-control" />
+                                  <input type="text" name="living_place" id="living_place"  value="<?= $userProfile->getLivingTown() !=null ? $userProfile->getLivingTown() : null ?>" placeholder="Current Living Town" class="form-control" />
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -221,7 +221,7 @@
                                 <label class="col-md-3 control-label">About You</label>
 
                                 <div class="col-md-7">
-                                  <textarea name="about_user" id="about_user" rows="6" class="form-control"></textarea>
+                                  <textarea name="about_user" id="about_user" rows="6" class="form-control" placeholder="Useful Information about You......"><?= $userProfile->getAboutUser() !=null ? $userProfile->getAboutUser() : null ?></textarea>
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -230,10 +230,9 @@
       
                                 <div class="pull-right pad-all">
 
-                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateProfile());">Save Changes</button>
-
-                                  <button type="button" class="next btn btn-primary" id='validateUpdateProfile'>Next</button>
-                                  
+<!--                                   <button type="submit" class="btn btn-success" onclick="return (validateUpdateProfile());">Save Changes</button>
+ -->
+                                   <button type="button" class="next btn btn-primary" id='validateUpdateProfile'>Save and Next</button>
                                 </div> <!-- /.col -->
       
                               </div> <!-- /.form-group -->
@@ -263,7 +262,7 @@
                                 
                                   <div class="col-md-7">
                                   
-                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateTechStrength());">Save Changes</button>
+                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateTechStrength());">Add More</button>
 
                                   </div> <!-- /.col -->
                                 </div> <!-- /.form-group -->
@@ -275,7 +274,7 @@
 
                               <button type="button" class="previous btn btn-info">Previous</button>
 
-                              <button type="button" class="next btn btn-primary">Next</button>
+                              <button type="button" class="next btn btn-primary" id='validateUpdateTechStrength'>Next</button>
                             </div>
 
                           </div> <!--End Second tab-->
@@ -306,7 +305,7 @@
 
                                   <button type="button" class="previous btn btn-info">Previous</button>
 
-                                  <button type="button" class="next btn btn-primary">Next</button>
+                                  <button type="button" class="next btn btn-primary" id='validateUpdateSkills'>Next</button>
     
                                 </div> <!-- /.col -->
                               </div> <!-- /.form-group -->
@@ -365,7 +364,7 @@
                                 
                                   <div class="col-md-7">
                                   
-                                    <button type="submit" class="btn btn-success" onclick ="return (validateUpdateWorkExp());">Save Changes</button>
+                                    <button type="submit" class="btn btn-success" onclick ="return (validateUpdateWorkExp());">Add More</button>
 
                                   </div> <!-- /.col -->
                                 </div> <!-- /.form-group -->
@@ -440,8 +439,8 @@
                               <div class="form-group">
                                 <div class="pull-right pad-all">
 
-                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateJobPreference());">Save Changes</button>
-
+<!--                                   <button type="submit" class="btn btn-success" onclick="return (validateUpdateJobPreference());">Save Changes</button>
+ -->
                                   <button type="button" class="previous btn btn-info">Previous</button>
 
                                   <button type="button" class="next btn btn-primary">Next</button>
@@ -509,7 +508,7 @@
 
                                   <div class="col-md-7">
 
-                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateEducation());">Save Changes</button>
+                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateEducation());">Add More</button>
 
                                   </div>
                                 </div> <!-- /.form-group -->
@@ -616,7 +615,7 @@
 
                               <div class="pull-right pad-all">
 
-                                <button type="submit" class="btn btn-success" onclick="return (validateCreateProject());">Save Changes</button>
+                                <button type="submit" class="btn btn-success" onclick="return (validateCreateProject());">Add More</button>
                                 <button type="button" class="previous btn btn-info">Previous</button>
                                 <button type="button" class="next btn btn-primary">Next</button>
   

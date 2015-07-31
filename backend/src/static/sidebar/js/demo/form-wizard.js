@@ -33,8 +33,7 @@ $(document).ready(function() {
 			$('#demo-main-wz').find('.finish').hide().prop('disabled', true);
 		},
 		onTabShow: function(tab, navigation, index) {
-			console.log("next is clicked",$('#demo-main-wz').find('.next').attr('id'));
-
+			
 			var $total = navigation.find('li').length;
 			var $current = index+1;
 			var $percent = ($current/$total) * 100;
@@ -56,24 +55,62 @@ $(document).ready(function() {
 		},
 		onNext: function(){
 			
-			switch($('#demo-main-wz').find('.next').attr('id')) {
-				    case "validateUpdateProfile":
-				        fields = ["first_name","last_name","phone","living_place", "about_user"];
-				        if(genericEmptyFieldValidator(fields))
-					        postUpdateProfile(fields);
+			switch($('.tab-pane.active.in').attr('id')) {
+					case "tab_profile":
+						fields = ["first_name","last_name","phone","living_place", "about_user"];
+						if(genericEmptyFieldValidator(fields))
+							postUpdateProfile(fields);
+						else 
+							return false;  				
+						break;
+					case "tab_tech_strength":
+						fields = ["tech_strength"];
+						if(genericEmptyFieldValidator(fields))
+				        	postUpdateTechStrength(fields);
 						else 
 							return false;        				
-				        break;
-				    case "validateUpdateTechStrength":
-				        fields = ["tech_strength"];
-				        if(genericEmptyFieldValidator(fields))
-				            postUpdateTechStrength(fields);
+						break;
+				    case "tab_skills":
+				        var skillsArray = []; 
+				        $('#demo-cs-multiselect :selected').each(function(i, selected){ 
+				          skillsArray[i] = $(selected).val(); 
+				        });
+				        if(genericEmptyFieldValidator(skillsArray))
+				            postUpdateSkills(fields);
 				        else 
 							return false;        				
 				        break;
+			       case "tab_work_exp":
+				        fields = ["company_name", "designation", "work_from", "work_to"];
+				        if(genericEmptyFieldValidator(fields))
+				            postUpdateWorkExp(fields);
+				        else 
+							return false;        				
+				        break;
+				    case "tab_job_preference":
+				        fields = ["current_ctc","expected_ctc","notice_period"];
+				        if(genericEmptyFieldValidator(fields))
+				            postUpdateJobPreference(fields);
+				        else
+							return false;
+				        break;
+				    case "tab_education":
+				        fields = ["institute", "degree", "branch", "edu_from", "edu_to"];
+				        if(genericEmptyFieldValidator(fields))
+				           postUpdateEducation(fields);
+				        else
+							return false;        				
+				        break;
+				    case "tab_projects":
+				        fields = ["title","my_role","tech_skills","team_size","description"];
+				        if(genericEmptyFieldValidator(fields))
+				           postNewProject(fields);
+				        else
+							return false; 				
+				        break;
+
 				    default:
-				        fields = ["first_name","last_name","phone","living_place", "about_user"];        				
-				        
+				    	return false; 
 				}
 
 			return true;
