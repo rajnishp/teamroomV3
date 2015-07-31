@@ -232,7 +232,7 @@
 
                                   <button type="submit" class="btn btn-success" onclick="return (validateUpdateProfile());">Save Changes</button>
 
-                                  <button type="button" class="next btn btn-primary">Next</button>
+                                  <button type="button" class="next btn btn-primary" id='validateUpdateProfile'>Next</button>
                                   
                                 </div> <!-- /.col -->
       

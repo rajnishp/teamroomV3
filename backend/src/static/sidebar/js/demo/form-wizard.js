@@ -21,6 +21,7 @@ $(document).ready(function() {
 	// MAIN FORM WIZARD
 	// =================================================================
 	$('#demo-main-wz').bootstrapWizard({
+
 		tabClass		: 'wz-steps',
 		nextSelector	: '.next',
 		previousSelector	: '.previous',
@@ -28,9 +29,12 @@ $(document).ready(function() {
 			return false;
 		},
 		onInit : function(){
+			
 			$('#demo-main-wz').find('.finish').hide().prop('disabled', true);
 		},
 		onTabShow: function(tab, navigation, index) {
+			console.log("next is clicked",$('#demo-main-wz').find('.next').attr('id'));
+
 			var $total = navigation.find('li').length;
 			var $current = index+1;
 			var $percent = ($current/$total) * 100;
@@ -49,7 +53,32 @@ $(document).ready(function() {
 				$('#demo-main-wz').find('.next').show();
 				$('#demo-main-wz').find('.finish').hide().prop('disabled', true);
 			}
+		},
+		onNext: function(){
+			
+			switch($('#demo-main-wz').find('.next').attr('id')) {
+				    case "validateUpdateProfile":
+				        fields = ["first_name","last_name","phone","living_place", "about_user"];
+				        if(genericEmptyFieldValidator(fields))
+					        postUpdateProfile(fields);
+						else 
+							return false;        				
+				        break;
+				    case "validateUpdateTechStrength":
+				        fields = ["tech_strength"];
+				        if(genericEmptyFieldValidator(fields))
+				            postUpdateTechStrength(fields);
+				        else 
+							return false;        				
+				        break;
+				    default:
+				        fields = ["first_name","last_name","phone","living_place", "about_user"];        				
+				        
+				}
+
+			return true;
 		}
+
 	});
 
 
