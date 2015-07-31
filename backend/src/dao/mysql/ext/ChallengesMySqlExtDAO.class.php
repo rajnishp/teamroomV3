@@ -76,7 +76,8 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 
 		$sql = "SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user
-						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id  AND challenge.blob_id = 0 ORDER BY rand() LIMIT 5";
+						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id  AND challenge.blob_id = 0 
+							AND challenge.type != 2 and challenge.type != 5 and challenge.type != 6 and challenge.type != 9 ORDER BY rand() LIMIT 5";
 	
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getListChallenge($sqlQuery);
@@ -101,16 +102,20 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 	*/
 
 	public function getRecentActivities () {
-		$sql = "(SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, 
+		$sql = "(SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, 
 						user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user
-						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id AND challenge.blob_id = 0 ORDER BY challenge.creation_time DESC LIMIT 0, 10 )
+						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id 
+						AND challenge.type != 2 and challenge.type != 5 and challenge.type != 6 and challenge.type != 9
+						AND challenge.blob_id = 0 ORDER BY challenge.creation_time DESC LIMIT 0, 10 )
 				UNION
-				(SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.creation_time, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, 
+				(SELECT challenge.id, challenge.project_id, challenge.title, challenge.stmt, challenge.type, challenge.status, challenge.likes, challenge.dislikes, challenge.creation_time, 
 						user.first_name, user.last_name, user.username 
 					FROM challenges as challenge JOIN user_info as user JOIN blobs as `blob`
 						WHERE challenge.status != 3 AND challenge.status != 7 AND user.id = challenge.user_id 
-							AND challenge.blob_id = blob.id ORDER BY challenge.creation_time DESC LIMIT 0, 10)";
+							AND challenge.type != 2 and challenge.type != 5 and challenge.type != 6 and challenge.type != 9 
+							AND challenge.blob_id = blob.id ORDER BY challenge.creation_time DESC LIMIT 0, 10)
+					ORDER BY creation_time DESC LIMIT 0, 10";
 	
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getListChallenge($sqlQuery);
