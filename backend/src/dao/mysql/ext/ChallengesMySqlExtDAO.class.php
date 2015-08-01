@@ -21,17 +21,30 @@ class ChallengesMySqlExtDAO extends ChallengesMySqlDAO{
 			}
 			
 			elseif(($outsideProject -> getProjectId()) != 0) {
-				$sql = "SELECT teams.user_id FROM teams WHERE project_id = ? and user_id = ? and member_status = 1 ;" ;
-				
-				$sqlQuery = new SqlQuery($sql);
-				$sqlQuery->setNumber($outsideProject -> getProjectId());
-				$sqlQuery->setNumber($userId);
-				
-				$activity = $this->getRowChallenge($sqlQuery);
-				
-				if ($activity)
+
+				$DAOFactory = new DAOFactory();
+				$projectDAO = $DAOFactory->getProjectsDAO();
+
+				$projectObj = $projectDAO -> load($outsideProject -> getProjectId()); 
+
+				if ($projectObj->getType() == 'Public'){
 					return true;
-				else
+				}
+				elseif($projectObj->getType() == 'Classified' || $projectObj->getType() == 'Private') {
+					$sql = "SELECT teams.user_id FROM teams WHERE project_id = ? and user_id = ? and member_status = 1 ;" ;
+					
+					$sqlQuery = new SqlQuery($sql);
+					$sqlQuery->setNumber($outsideProject -> getProjectId());
+					$sqlQuery->setNumber($userId);
+					
+					$activity = $this->getRowChallenge($sqlQuery);
+					
+					if ($activity)
+						return true;
+					else
+						return false;
+				}
+				else 
 					return false;
 
 			}
