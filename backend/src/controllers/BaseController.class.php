@@ -39,6 +39,8 @@ abstract class BaseController {
 	protected $url;
 
 	protected $involveInDAO;
+	protected $collaborativeRoleDAO;
+	protected $notificationsDAO;
 
 	
 
@@ -90,6 +92,9 @@ abstract class BaseController {
 
 		$this -> userSocialLinksDAO = $DAOFactory->getUserSocialLinksDAO();
 
+		$this -> collaborativeRoleDAO = $DAOFactory->getUserCollaborativeRoleDAO();
+
+
 		
 		
 		$this->process();
@@ -109,8 +114,8 @@ abstract class BaseController {
 
 				$this-> links = $this->userInfoDAO->getUsersLinks($this->userId);
 				$this-> notifications = $this-> notificationsDAO -> getByUserId($this->userId);
-				$this-> toDoList = $this->challengesDAO->getToDoList($this->userId);
-				$this-> getDoneList = $this->challengesDAO->getGetDoneList($this->userId);
+				//$this-> toDoList = $this->challengesDAO->getToDoList($this->userId);
+				//$this-> getDoneList = $this->challengesDAO->getGetDoneList($this->userId);
 
 			}
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);

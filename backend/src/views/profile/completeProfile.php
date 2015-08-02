@@ -147,7 +147,7 @@
                                     
                                     <label class="form-checkbox form-icon active form-text">
                                     Engineer
-                                    <input type="checkbox" checked="">
+                                    <input type="checkbox" id="engineer" checked="" value="Engineer" >
                                     
                                     </label>
                                   </div>
@@ -155,7 +155,7 @@
                                     
                                     <label class="form-checkbox form-icon active form-text">
                                     Project Manager
-                                    <input type="checkbox" checked="">
+                                    <input type="checkbox"  id="project_manager" checked="" value="ProjectManager">
                                     
                                     </label>
                                   </div>
@@ -163,7 +163,7 @@
                                     
                                     <label class="form-checkbox form-icon active form-text">
                                     UX Designer
-                                    <input type="checkbox" checked="">
+                                    <input type="checkbox" id="ux_designer" checked=""  value="UxDesigner">
                                     
                                     </label>
                                   </div>
@@ -171,7 +171,7 @@
                                     
                                     <label class="form-checkbox form-icon active form-text">
                                     Doctor
-                                    <input type="checkbox" checked="">
+                                    <input type="checkbox" id="doctor" checked=""  value="Doctor">
                                     
                                     </label>
                                   </div>
@@ -179,7 +179,7 @@
                                     
                                     <label class="form-checkbox form-icon active form-text">
                                     Research Scholar
-                                    <input type="checkbox" checked="">
+                                    <input type="checkbox" id="research_scholar" checked=""  value="ResearchScholar">
                                     
                                     </label>
                                   </div>
@@ -187,7 +187,7 @@
                                     
                                     <label class="form-checkbox form-icon active form-text">
                                     Lawyer
-                                    <input type="checkbox" checked="">
+                                    <input type="checkbox" id="lawyer" checked=""  value="Lawyer">
                                     
                                     </label>
                                   </div>

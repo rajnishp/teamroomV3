@@ -579,6 +579,20 @@ CREATE TABLE IF NOT EXISTS `user_social_links` (
   UNIQUE KEY user_id_type (`user_id`, `type`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
 
+--
+-- Table structure for table `user_collaborative_role`
+--
+
+CREATE TABLE IF NOT EXISTS `user_collaborative_role` (
+  `id` int( 16 ) NOT NULL AUTO_INCREMENT ,
+  `user_id` int( 15 ) NOT NULL ,
+  `type` enum ('Engineer', 'Doctor', 'Lawyer', 'ProjectManager','UxDesigner','ResearchScholar' ) NOT NULL DEFAULT 'Engineer',
+  `added_on` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP ,
+  `last_update_on` timestamp NOT NULL DEFAULT '0000-00-00 00:00:00',
+  PRIMARY KEY ( `id` ),
+  UNIQUE KEY user_id_type (`user_id`, `type`)
+) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
+
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
