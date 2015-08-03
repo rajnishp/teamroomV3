@@ -12,9 +12,18 @@ class HomeController {
 	private $user;
 	private $fromUrl;
 
+	
 
 	function __construct (  ){
 		
+		global $baseUrl;
+		global $configs;
+		
+		if ($_SERVER['HTTP_REFERER'] == $configs["COLLAP_BASE_URL"])
+			$this-> baseUrl = $configs["COLLAP_BASE_URL"];
+		else
+			$this-> baseUrl = $configs["JOBS_COLLAP_BASE_URL"];
+
 		$DAOFactory = new DAOFactory();
 		$this -> projectDAO = $DAOFactory->getProjectsDAO();
 		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
@@ -25,8 +34,7 @@ class HomeController {
 
 	function render (){
 		// here its shower that user is not in session
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
+		 
 		try{
 			//$topProjects = $this -> projectDAO -> getTopProjects(); // have not found the function find and replace
 			require_once 'views/landing/index.php';
@@ -41,8 +49,6 @@ class HomeController {
 
 
 	function login (){
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
 		if(isset($_POST['username'],$_POST['password'])){
 			$this->user = $this->userInfoDAO->getByUsernamePassword( $_POST['username'], md5($_POST['password']));
 			
@@ -60,25 +66,22 @@ class HomeController {
 				if($_GET['from'])
 					$redir = $_GET['from'];
 				else
-					$redir = $baseUrl;
+					$redir = $this-> baseUrl;
 
 				header('Location: '.$redir);		
 
 			}
 			else{
 
-				header('Location: '.$baseUrl);
+				header('Location: '.$this-> baseUrl);
 			}
 
-		} 
+		}
 		else 
-			header('Location: '.$baseUrl);
+			header('Location: '.$this-> baseUrl);
 
 	}
 	function signup(){
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
-		//var_dump($baseUrl); die();
 		if(isset($_POST['username'],$_POST['passwordR'], $_POST['email'])){
 			//if($_POST['password'] === $_POST['password2']){
 				
@@ -119,7 +122,7 @@ class HomeController {
 					//$obj = new rank($newid);
 					$_SESSION['rank'] = $this->user->getRank();
 
-					header('Location: ' .$baseUrl ."completeProfile");
+					header('Location: ' .$this-> baseUrl ."completeProfile");
 
 				}
 				else{
@@ -132,10 +135,6 @@ class HomeController {
 
 	function logout(){
 
-		global $configs; 
-		$baseUrl = $configs["COLLAP_BASE_URL"];
-		
-
 		$requestedPage = $_GET['url'] ;
 		unset($_SESSION['user_id']);
 	    unset($_SESSION['first_name']);
@@ -144,7 +143,7 @@ class HomeController {
 	    unset($_SESSION['last_login']);
 	    unset($_SESSION['rank']);
 	    session_destroy();
-	    header('Location: '.$baseUrl);
+	    header('Location: '.$this-> baseUrl);
 	    mysqli_close($db_handle);
 
 	}
@@ -154,8 +153,39 @@ class HomeController {
 		}
 	}
 
+	function usernameCheck() {
+
+		$username=$_REQUEST['username'];
+		if(preg_match("/[^a-z0-9]/",$username)) {
+			print "<span style=\"color:red;\">Username contains illegal charaters.</span>";
+			exit;
+		}
+
+		$isUserExist = $this->userInfoDAO->load($username);
+
+		if($isUserExist) {
+			print "<span style=\"color:red;\">Username already exists</span>";
+		}
+		else {
+			print "<span style=\"color:green;\"><i class='icon-ok'> </i>Ok</span>";
+		}
+	}
+
+	function emailCheck() {
+		$email=$_REQUEST['email'];
+		
+		$isEmailExist = $this->userInfoDAO->load($email);
+
+		if($isEmailExist) {
+			print "<span style=\"color:red;\">Email already exists</span>";
+			return true ;
+		}
+		else {
+			print "<span style=\"color:green;\"><i class='icon-ok'> </i>Ok</span>";
+			return false;
+		}
+	}
+
 }
-
-
 
 ?>

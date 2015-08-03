@@ -228,7 +228,26 @@ class SettingController extends BaseController {
 		//var_dump($_POST); die();
 		
 		if(isset($_POST['first_name'], $_POST['last_name'], $_POST['phone'], $_POST['living_place'], $_POST['about_user'])) {
-	
+		
+			if(isset($_POST['collaborateAs']) && $_POST['collaborateAs'] !=null) {
+				$collaborateAsArray = explode(',', $_POST['collaborateAs']);
+				foreach ($collaborateAsArray as $key => $collaborateAs) {
+					
+					$collaborateAsObj = new UserCollaborativeRole(
+												$this-> userId,
+												$collaborateAs,
+												date("Y-m-d H:i:s"),
+												date("Y-m-d H:i:s")
+												);
+					try{
+						$this -> collaborativeRoleDAO -> insert($collaborateAsObj);
+					} 
+					catch(Exception $e) {
+						$this->logger->error("Error occur :500 ".json_encode($e) );
+					}
+				}
+			}
+
 	        if (! isset($this -> userId)) {
 	            $warnings_payload [] = 'PUT call to /user must be succeeded ' . 
 	                                    'by /userId i.e. PUT /user/userId';

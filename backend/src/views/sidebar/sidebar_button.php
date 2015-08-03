@@ -58,6 +58,8 @@
 								</a>
 							</li>
 
+						<?php
+						/*
 							<li>
 								<a href="#">
 									<i class="fa fa-tasks"></i>
@@ -108,7 +110,8 @@
 									
 								</ul>
 							</li>
-				
+						*/
+						?>
 							<li class="list-divider"></li>
 				
 							<!--Category name-->

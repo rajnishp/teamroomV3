@@ -4,8 +4,7 @@
 <!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
 <!--[if gt IE 8]><!--> <html lang="en" class="no-js"> <!--<![endif]-->
 <head>
-  <title>All new Collaboration platform, which provides you every thing to grow in you dream field.
-        Find your desired job. Make your Ideas grow to projects. Make your awesome teams. Make your career.</title>
+  <title>Collap | Find your desired job.</title>
 
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -27,7 +26,6 @@
 
     <div class="content">
 
-         
       <section id = "register" style="background-color: #354b5e; background-image: url(<?= $baseUrl ?>static/global/img/bg/dark-mosaic.png);">
 
         <div class="container " style=" padding-top: 70px;" >
@@ -59,24 +57,6 @@
                 </div> <!-- /.form-group -->
 
                 
-                <!-- <label>You are here for</label>
-                  <br>
-
-                  <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeCol' /> Collaboration &nbsp;&nbsp;&nbsp;
-
-                  <input type="checkbox" class="btn btn-mini custom-checkbox" onclick='aboutinvest()' id='typeInv'/> Invester &nbsp;&nbsp;&nbsp;
-                  
-                  <input type="checkbox" class="btn btn-mini custom-checkbox" id='typeFun'/> Fund Searcher 
-
-                  <label>
-                    <div class='totalcapital'>
-                      <label>How much amount you want to invest (in dollars)</label>
-                      <input type="num" class="input-group" id="investment" onkeyup="nospaces(this)" min='10' onkeypress="return IsNumeric(event);" ondrop="return false;" onpaste="return false;" placeholder="Enter amount"/>
-                      <span class="input-group-addon" style='font-size:20px;'>.00 $</span>
-                    </div>
-                  </label> 
-                -->
-
                 <div class="form-group">
                   <label class="checkbox-inline">
                     <input type="checkbox" class="" id="accept_tnc" value="">
@@ -109,7 +89,6 @@
                     
                   </ul>
                 </div> --> <!-- End of social Login -->
-                <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
               </form>
             </div>
             
@@ -168,7 +147,6 @@
                   </div>
                 </div> <!-- /.form-group -->
 
-                <input name="project" type="hidden" value="Collap"/>
                 <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login" name="submit" value="login"><b> Login </b></button>
                 <!-- <div class="line"> or </div>  
                 <div class="socials">
@@ -201,6 +179,7 @@
       </section>   
       
 
+<?php /*
       <div class="item " style="background-color: #354b5e; background-image: url(<?= $baseUrl ?>static/global/img/bg/dark-mosaic.png);">
 
         <hr class="spacer-md hidden-xs">
@@ -481,7 +460,7 @@
         </section>
 
       </div> <!-- /.content -->
-
+*/ ?>
 
     </div> <!-- /#content -->
   </div> <!-- /#wrapper -->
@@ -499,7 +478,6 @@
               <h4>Collap</h4>
             </div> <!-- /.heading-block -->    
 
-            <p>Introducing a powerful online platform to collaborate with like minded people and change the world, solving one problem at a time.</p>
             <p>Collap offers a wide range of tools to identify a challenge and assemble your own team to collaborate and crack it. Here’s to the the joy of collaborative problem solving!</p>
 
           </div> <!-- /.col -->
@@ -922,75 +900,6 @@
 <script src="static/global/js/mvpready-helpers.js"></script>
 <script src="static/js/mvpready-landing.js"></script>
 <script src="static/js/landingPage.js"></script>
-
-<script type="text/javascript">
-
-/*   
-function usernameCheck() {
-  var xmlhttp;
-  var username=document.getElementById("usernameR");
-  if (username.value != ""){
-    if (window.XMLHttpRequest){
-      xmlhttp=new XMLHttpRequest();
-    } 
-    else {
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function(){
-      if (xmlhttp.readyState==4 && xmlhttp.status==200){
-        document.getElementById("status").innerHTML=xmlhttp.responseText;
-      }
-    };
-    xmlhttp.open("GET","<?= $this->baseUrl ?>home/usernameCheck="+encodeURIComponent(username.value),true);
-    xmlhttp.send(null);
-  }
-  return false;
-}
-         
-function emailCheck() {
-  var xmlhttp;
-  var email=document.getElementById("email");
-  if (email.value != ""){
-    if (window.XMLHttpRequest){
-      xmlhttp=new XMLHttpRequest();
-    } 
-    else {
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function(){
-      if (xmlhttp.readyState==4 && xmlhttp.status==200){
-        document.getElementById("status_email").innerHTML=xmlhttp.responseText;
-      }
-    };
-    xmlhttp.open("GET","home/emailCheck="+encodeURIComponent(email.value),true);
-    xmlhttp.send();
-    
-  }
-};
-
-function email_forget() {
-  var xmlhttp;
-  var email_forget=document.getElementById("email_forget");
-  if (email_forget.value != ""){
-    if (window.XMLHttpRequest){
-      xmlhttp=new XMLHttpRequest();
-    } 
-    else {
-      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
-    }
-    xmlhttp.onreadystatechange=function(){
-      if (xmlhttp.readyState==4 && xmlhttp.status==200){
-        document.getElementById("status_email_forget_password").innerHTML=xmlhttp.responseText;
-      }
-    };
-    xmlhttp.open("GET","ajax/email_exist_check_forget_password.php?email_forget="+encodeURIComponent(email_forget.value),true);
-    xmlhttp.send();
-  }
-  if (result = "No user registered with this Email, <br>Please try again with different Email-id or Signup") {                    
-  }
-}
-*/
-</script>
 
 </body>
 </html>

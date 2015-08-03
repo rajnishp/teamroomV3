@@ -89,8 +89,13 @@
 
       function postUpdateProfile(fields){
         var dataString = "";
-          
-        dataString = "first_name=" + $('#'+fields[0]).val() + "&last_name=" + $('#'+fields[1]).val() + "&phone=" + $('#'+fields[2]).val() + "&living_place=" + $('#'+fields[3]).val() + "&about_user=" + $('#'+fields[4]).val();
+
+        var collaborateAsArray = [];
+        collaborateAsArray = $('input[type=checkbox]:checked').map(function(_, el) {
+          return $(el).val();
+        }).get();                
+        
+        dataString = "first_name=" + $('#'+fields[0]).val() + "&last_name=" + $('#'+fields[1]).val() + "&phone=" + $('#'+fields[2]).val() + "&living_place=" + $('#'+fields[3]).val() + "&about_user=" + $('#'+fields[4]).val() + "&collaborateAs=" + collaborateAsArray;
         
         $.ajax({
           type: "POST",

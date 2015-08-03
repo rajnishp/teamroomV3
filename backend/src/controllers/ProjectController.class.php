@@ -70,19 +70,11 @@ class ProjectController extends BaseController {
 	}
 
 	function isProjectMember() {
-		/*if ($this -> project->getUserId == $this -> userId)
-			return true;
-		*/
-			//var_dump($this->teamMembers );
 		foreach ($this->teamMembers as $key => $member) {
-			//var_dump($member);
 			if ( $this->userId == $member->getUserId()) {
-				//echo "insode if ";
 				return true;
 			}
 		}
-		//echo "ouside for "; 
-		//$this -> logger -> debug (" $this -> userId : is not a member of this project ");
 		return false;
 	}
 
@@ -175,13 +167,44 @@ class ProjectController extends BaseController {
 							);
 			try {
 				$this -> teamsDAO -> insert($newMember) ;
+			
+				$projectDetail = $this -> projectsDAO -> load($this -> projectId) ;
+
+				$noticeUrl ="
+					<a href='".$this-> baseUrl."project/".$this-> projectId."' class='media'>
+		              <div class='media-left'>
+		            	<img class='img-circle img-user media-object' src='uploads/profilePictures/".$this -> username.".jpg' style='height: 40px; width:40px;' alt='Profile Picture'>	
+		              </div>
+		              <div class='media-body'>
+		                <div class='text-nowrap'>".ucfirst($this -> firstName)." ".ucfirst($this -> lastName)." Joined Project </div>
+		                <div class='text-nowrap'><b>".$projectDetail->getRefinedTitle()."<b></div>
+		              </div>
+		            </a>";
+	
+				$teamMembers = $this-> teamsDAO -> queryAllTeamMembers($this -> projectId );
+
+				foreach ($teamMembers as $key => $member) {
+	
+					$noticeObj = new Notification(
+										$noticeUrl,
+										$member-> getUserId(),
+										date("Y-m-d H:i:s")
+									);
+					try {
+						$this-> notificationsDAO -> insert($noticeObj);
+						
+					}
+					catch(Exception $e) {
+						$this -> logger -> error ("Error at : $e");
+					}
+				}
 			}
 			catch (Exception $e){
 				if($e -> getCode() == 1011){
-					$this -> render ();				
+					$this -> render ();
 				}
 				else
-					var_dump($e); die();
+					$this -> logger -> error ("Error at : $e"); die();
 			}	
 		}
 		$this -> render ();

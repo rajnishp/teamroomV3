@@ -296,6 +296,18 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return UserCollaborativeRoleDAO
+	 */
+	public static function getUserCollaborativeRoleDAO(){
+		require_once('UserCollaborativeRoleDAO.class.php');
+		require_once('models/UserCollaborativeRole.class.php');
+		require_once('mysql/UserCollaborativeRoleMySqlDAO.class.php');
+		require_once('mysql/ext/UserCollaborativeRoleMySqlExtDAO.class.php');
+		
+		return new UserCollaborativeRoleMySqlExtDAO();
+	}
+
+	/**
 	 * @return UserExternalProfilesDAO
 	 */
 	public static function getUserExternalProfilesDAO(){
