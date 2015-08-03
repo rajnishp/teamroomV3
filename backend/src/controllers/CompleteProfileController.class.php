@@ -35,6 +35,25 @@ class CompleteProfileController extends BaseController  {
 
 	}
 
+	function finishCompleteProfile() {
+
+		if (isset($_POST)) {
+			$pageAccess = 1;
+			//page_access set to 1 for profile completed
+	    	try {
+	            $this -> userInfoDAO -> updatePageAccess($pageAccess, $this-> userId);
+        		header('Location: '. $this-> baseUrl);
+	    	}
+	    	catch(Exception $e) {
+				$this->logger->error("Error occur :500 ".json_encode($e) );
+	    	}			
+		}
+		else{
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Profiles Completion Failed, Try Again";
+		}
+	}
+
 }
 
 ?>

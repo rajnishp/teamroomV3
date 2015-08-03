@@ -75,10 +75,12 @@ $(document).ready(function() {
 				        $('#demo-cs-multiselect :selected').each(function(i, selected){ 
 				          skillsArray[i] = $(selected).val(); 
 				        });
-				        if(genericEmptyFieldValidator(skillsArray))
+				        if (typeof skillsArray !== 'undefined' && skillsArray.length > 0)
 				            postUpdateSkills(fields);
-				        else 
-							return false;        				
+				        else {
+							$('#demo-cs-multiselect').css("border-color", "red");
+							return false;
+				        }
 				        break;
 			       case "tab_work_exp":
 				        fields = ["company_name", "designation", "work_from", "work_to"];
@@ -99,7 +101,7 @@ $(document).ready(function() {
 				        if(genericEmptyFieldValidator(fields))
 				           postUpdateEducation(fields);
 				        else
-							return false;        				
+							return false;
 				        break;
 				    case "tab_projects":
 				        fields = ["title","my_role","tech_skills","team_size","description"];

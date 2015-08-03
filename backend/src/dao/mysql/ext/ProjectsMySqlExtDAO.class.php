@@ -311,13 +311,13 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	 * @return ProjectsMySql 
 	 */
 	protected function readRowProjects($row){
-		$project = new Project($row['user_id'],0, $row['title'], $row['statement'], $row['type'] ,
+/*		$project = new Project($row['user_id'],0, $row['title'], $row['statement'], $row['type'] ,
 								0,0, 
 								$row['creation_time'],0,0,0, 
 								$row['technical_skills'] , $row['my_role'], $row['team_size'], $row['duration_from'], $row['duration_to'],  $row['status'], 
-								$row['first_name'], $row['last_name'], $row['username'], $row['id']);
+								$row['first_name'], $row['last_name'], $row['username'], $row['id']);*/
 
-/*		$project = new Project(isset( $row['user_id'] ) ? $row['user_id'] : null,
+		$project = new Project(isset( $row['user_id'] ) ? $row['user_id'] : null,
 						0, 
 						isset( $row['title'] ) ? $row['title'] : null,
 						isset( $row['statement'] ) ? $row['statement'] : null,
@@ -332,7 +332,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 						isset( $row['status'] ) ? $row['status'] : null, 
 						isset( $row['first_name'] ) ? $row['first_name'] : null,
 						isset( $row['last_name'] ) ? $row['last_name'] : null,
-						isset( $row['username'] ) ? $row['username'] : null, $row['id']);*/
+						isset( $row['username'] ) ? $row['username'] : null, $row['id']);
 		
 		return $project;
 	}

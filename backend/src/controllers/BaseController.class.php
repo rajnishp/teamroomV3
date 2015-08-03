@@ -127,6 +127,20 @@ abstract class BaseController {
 
 	}
 
+	function isProfileCompleted() {
+		try {
+			$userProfile = $this -> userInfoDAO-> load($this->userId);			
+		} 
+		catch(Exception $e) {
+			$this -> logger -> error ("Error at : $e");
+		}
+
+		if ($userProfile -> getPageAccess() != 1 ) {
+			header('Location: '. $this-> baseUrl."completeProfile");
+			break;
+		}
+	}
+
 
 }
 

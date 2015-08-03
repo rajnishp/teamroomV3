@@ -33,6 +33,13 @@ class ProfileController extends BaseController {
 
 		//loading other click event on the page should be done by ajax
 
+
+	// hang on complete profile page untill profile is not completed
+		$this -> isProfileCompleted();
+	// hang on complete profile page untill profile is not completed
+
+
+
 		try{
 
 			if($this->profileUN != null){

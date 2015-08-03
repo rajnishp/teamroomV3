@@ -386,8 +386,15 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 				break;
 			
 			case "completeProfile":
+					$completeProfileController = new CompleteProfileController();
+
+					if($route[2] == "finish"){
+						$completeProfileController -> finishCompleteProfile();
+						break;
+					}
+
 					if( isset($_SESSION["user_id"] )){
-						$completeProfileController = new CompleteProfileController();
+						
 						$completeProfileController -> render();
 						break;
 					}

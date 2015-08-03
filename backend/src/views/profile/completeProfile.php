@@ -17,7 +17,7 @@
 
       <div class="boxed">
 
-        <div id="">
+        <div id="" style="margin-top: 50px;">
           <!--id ="content-container" for removing sidebar --> 
           <!--Page Title-->
           <!--~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~-->
@@ -288,7 +288,7 @@
                                 <label class="col-md-3 control-label">Add Skills</label>
 
                                 <div class="col-md-7">                                  
-                                  <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                                  <select id="demo-cs-multiselect" name="skills" data-placeholder="Choose a Skill..." multiple tabindex="4">
                                     <?php foreach ($allSkills as $skillName) { ?>
                                       <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
                                     <?php } ?>
@@ -319,7 +319,7 @@
                             
                             <div id="work_exp_div">
                               
-                              <div class="form-horizontal" <div id="work_exp_form">>
+                              <div class="form-horizontal" <div id="work_exp_form">
 
                                 <div class="form-group">
 
@@ -648,10 +648,12 @@
 
                             </div>
                             <div class="pull-right pad-all">
+                              <form class="form-horizontal"  action="<?= $this-> baseUrl ?>completeProfile/finish" method="POST">
 
-                              <button type="button" class="previous btn btn-info">Previous</button>
-    
-                              <a href="<?= $baseUrl ?>" type="button" class="finish btn btn-success">Finish</a>
+                                <button type="button" class="previous btn btn-info">Previous</button>
+      
+                                <button type="submit" class="finish btn btn-success">Finish</button>
+                              </form>
   
                             </div> <!-- /.col -->
 

@@ -15,7 +15,13 @@ class DashboardController extends BaseController {
 	function render (){
 	
 		$baseUrl = $this->baseUrl;
-		
+
+
+// hang on complete profile page untill profile is not completed
+		$this -> isProfileCompleted();
+// hang on complete profile page untill profile is not completed
+
+
 		try{
 			//queryAllUserProjects
 			

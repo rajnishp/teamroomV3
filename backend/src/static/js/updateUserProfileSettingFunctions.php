@@ -409,7 +409,7 @@
         var dataString = "";
 
         
-        dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val()  ;
+        dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val() + "&status=" + $('#status').val()  ;
         //console.log(dataString);
         
         $.ajax({
@@ -418,20 +418,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            window.location.href  = result;
-
+            success("New Project",result.responseText);
           },
            error: function(result){
-            console.log(result);
-            $.niftyNoty({ 
-              type:"danger",
-              icon:"fa fa-check fa-lg",
-              title:"Project",
-              message:result.responseText,
-              focus: true,
-              container:"floating",
-              timer:4000
-            });
+            error("New Project",result.responseText);
           }
         });
         return false;

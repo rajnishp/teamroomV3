@@ -25,6 +25,11 @@ class ProjectController extends BaseController {
 		if ( ! isset($this -> projectId) || $this -> projectId == "" ){
 						header('Location: '. $baseUrl);
 		}
+
+	// hang on complete profile page untill profile is not completed
+		$this -> isProfileCompleted();
+	// hang on complete profile page untill profile is not completed
+
 		//loading other click event on the page should be done by ajax
 		
 		try{
@@ -126,8 +131,12 @@ class ProjectController extends BaseController {
 			try {
 				$this -> projectId = $this -> projectsDAO -> insert($newProject) ;
 				$this -> logger -> debug( "project id: " . $this->projectId);
-				echo $this->baseUrl . "project/" . $this->projectId;
-				//header("location: " . );
+				
+				if ($_SERVER['HTTP_REFERER'] == $this->baseUrl."completeProfile")
+					echo "Project Created Successfully";
+				else
+					echo $this->baseUrl . "project/" . $this->projectId;
+					//header("location: " . );
 				
 				$newMember = new Team(
 									$this-> userId,

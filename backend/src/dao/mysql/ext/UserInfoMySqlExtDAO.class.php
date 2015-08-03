@@ -56,6 +56,16 @@ class UserInfoMySqlExtDAO extends UserInfoMySqlDAO{
 		return $this -> executeUpdate($sqlQuery);
 	}
 
+	public function updatePageAccess($pageAccess, $userId){
+		$sql = "UPDATE user_info SET page_access = ? WHERE id = ?";
+
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($pageAccess);
+		$sqlQuery->set($userId);
+		
+		return $this -> executeUpdate($sqlQuery);
+	}
+
 	/**
 	 * Read row
 	 *
