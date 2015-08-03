@@ -593,6 +593,11 @@ CREATE TABLE IF NOT EXISTS `user_collaborative_role` (
   UNIQUE KEY user_id_type (`user_id`, `type`)
 ) ENGINE = InnoDB DEFAULT CHARSET = utf8mb4 AUTO_INCREMENT =1;
 
+--
+-- Alter project table to add `status`
+--
+
+ALTER TABLE `projects` ADD `status` ENUM( 'Ongoing', 'Completed', 'YetToStart' ) NOT NULL ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

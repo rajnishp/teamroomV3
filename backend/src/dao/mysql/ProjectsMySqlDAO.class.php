@@ -59,8 +59,8 @@ class ProjectsMySqlDAO implements ProjectsDAO{
  	 * @param ProjectsMySql project
  	 */
 	public function insert($project){
-		$sql = 'INSERT INTO projects (user_id, blob_id, project_title, stmt, type, org_id, `order`, creation_time, project_value, fund_needed, last_update_time, technical_skills, my_role, team_size, duration_from, duration_to) 
-							VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO projects (user_id, blob_id, project_title, stmt, type, org_id, `order`, creation_time, project_value, fund_needed, last_update_time, technical_skills, my_role, team_size, duration_from, duration_to, status) 
+							VALUES (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($project->getUserId());
@@ -81,6 +81,8 @@ class ProjectsMySqlDAO implements ProjectsDAO{
 		$sqlQuery->set($project->getDurationFrom());
 		$sqlQuery->set($project->getDurationTo());
 
+		$sqlQuery->set($project->getStatus());
+
 		$id = $this->executeInsert($sqlQuery);	
 		$project-> setId ($id);
 		return $id;
@@ -92,7 +94,7 @@ class ProjectsMySqlDAO implements ProjectsDAO{
  	 * @param ProjectsMySql project
  	 */
 	public function update($project){
-		$sql = 'UPDATE projects SET user_id = ?, blob_id = ?, project_title = ?, stmt = ?, type = ?, org_id = ?, `order` = ?, creation_time = ?, project_value = ?, fund_needed = ?, last_update_time = ? WHERE id = ?';
+		$sql = 'UPDATE projects SET user_id = ?, blob_id = ?, project_title = ?, stmt = ?, type = ?, org_id = ?, `order` = ?, creation_time = ?, project_value = ?, fund_needed = ?, last_update_time = ? , status = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($project->getUserId());
@@ -106,6 +108,8 @@ class ProjectsMySqlDAO implements ProjectsDAO{
 		$sqlQuery->setNumber($project->getProjectValue());
 		$sqlQuery->setNumber($project->getFundNeeded());
 		$sqlQuery->set($project->getLastUpdateTime());
+
+		$sqlQuery->set($project->getStatus());
 
 		$sqlQuery->setNumber($project->getId());
 		return $this->executeUpdate($sqlQuery);
@@ -197,6 +201,13 @@ class ProjectsMySqlDAO implements ProjectsDAO{
 		return $this->getList($sqlQuery);
 	}
 
+	public function queryByStatus($value){
+		$sql = 'SELECT * FROM projects WHERE status = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
 
 	public function deleteByUserId($value){
 		$sql = 'DELETE FROM projects WHERE user_id = ?';
@@ -275,6 +286,13 @@ class ProjectsMySqlDAO implements ProjectsDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function deleteByStatus($value){
+		$sql = 'DELETE FROM projects WHERE status = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
 
 	
 	/**
@@ -284,7 +302,7 @@ class ProjectsMySqlDAO implements ProjectsDAO{
 	 */
 	protected function readRow($row){
 		$project = new Project($project->userId = $row['user_id'], $row['blob_id'],$row['project_title'], $row['stmt'],$row['type'],$row['org_id'],$row['order'],$row['creation_time'],$row['project_value'], $row['fund_needed'], $row['last_update_time'],
-								$row['technical_skills'], $row['my_role'], $row['team_size'], $row['duration_from'], $row['duration_to'],
+								$row['technical_skills'], $row['my_role'], $row['team_size'], $row['duration_from'], $row['duration_to'], $row['status'],
 								$row['first_name'], $row['last_name'], $row['username'],
 		$row['id']);
 		

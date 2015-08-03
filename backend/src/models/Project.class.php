@@ -28,6 +28,8 @@
 		private $durationFrom;
 		private $durationTo;
 
+		private $status;
+
 		private $firstName;
 		private $lastName;
 		private $userName;
@@ -36,7 +38,7 @@
 	
 		function __construct ($userId, $blobId, $projectTitle, $stmt, $type, $orgId, $order, 
 								$creationTime, $projectValue, $fundNeeded, $lastUpdateTime,
-								$technicalSkills, $myRole, $teamSize, $durationFrom, $durationTo, 
+								$technicalSkills, $myRole, $teamSize, $durationFrom, $durationTo, $status,
 								$firstName, $lastName, $userName, $id = null) {
 			$this -> id = $id;
 			$this -> userId = $userId;
@@ -56,6 +58,8 @@
 			$this -> teamSize = $teamSize;
 			$this -> durationFrom = $durationFrom;
 			$this -> durationTo = $durationTo;
+
+			$this -> status = $status;
 
 			$this -> firstName = $firstName;
 			$this -> lastName = $lastName;
@@ -235,6 +239,14 @@
 		}
 		function getDurationTo () {
 			return $this -> durationTo;
+		}
+
+
+		function setStatus($status){
+			$this -> status = $status;
+		}
+		function getStatus(){
+			return $this-> status;
 		}
 
 

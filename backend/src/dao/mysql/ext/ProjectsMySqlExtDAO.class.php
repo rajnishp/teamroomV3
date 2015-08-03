@@ -95,11 +95,11 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	public function getByUserIdProjectId($userId, $projectId){
 
 
-			$sql = "(SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+			$sql = "(SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time,  project.status, user.first_name, user.last_name, user.username 
 						FROM projects as project JOIN user_info as user 
 							WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id AND project.blob_id = 0)
 					UNION
-					(SELECT project.id, project.project_title as title, blob.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+					(SELECT project.id, project.project_title as title, blob.stmt as statement, project.type, project.creation_time,  project.status, user.first_name, user.last_name, user.username 
 						FROM projects as project JOIN user_info as user JOIN blobs as `blob`
 							WHERE project.id = ? AND project.user_id = ? AND project.user_id = user.id
 								AND project.blob_id = blob.id)
@@ -125,12 +125,12 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
 	public function getByProjectId ($projectId) {
 		//var_dump($projectId); die();
-		$sql = "(SELECT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "(SELECT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, project.status,  user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user 
 						WHERE project.id = ? AND project.user_id = user.id AND project.blob_id = 0
 							AND project.type != 'Deleted') 
 				UNION
-				(SELECT project.user_id, project.id, project.project_title as title, blob.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+				(SELECT project.user_id, project.id, project.project_title as title, blob.stmt as statement, project.type, project.creation_time, project.status,  user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN blobs as `blob`
 						WHERE project.id = ? AND project.user_id = user.id
 							AND project.blob_id = blob.id
@@ -152,7 +152,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	}
 
 	public function getByUserId ($userId){
-		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time,  project.status, user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user
 						WHERE project.user_id = user.id AND project.type != 'Deleted' ORDER BY creation_time DESC";
 		$sqlQuery = new SqlQuery($sql);
@@ -166,11 +166,11 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
 	
 	public function getUserProjects($userId, $start, $limit){
-		$sql = "(SELECT DISTINCT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+		$sql = "(SELECT DISTINCT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, project.status,  user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team 
 					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 AND project.blob_id = 0 ORDER BY creation_time DESC) 
 				UNION
-				(SELECT DISTINCT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+				(SELECT DISTINCT project.user_id, project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time,  project.status, user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team JOIN blobs as `blob`
 					WHERE (project.user_id = ? OR team.user_id = ?) AND project.user_id = user.id AND project.type != 'Deleted' AND team.member_status = 1 
 						AND project.blob_id = blob.id ORDER BY creation_time DESC )";
@@ -190,7 +190,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	}
 
 	public function getUserPublicProjects($userId, $start, $limit){
-		$sql = "(SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, 
+		$sql = "(SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time,  project.status, 
 					user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team 
 					WHERE (project.user_id = ? OR team.user_id = ?) 
@@ -199,7 +199,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 						AND team.member_status = 1
 						AND project.blob_id = 0)
 				UNION
-				(SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username 
+				(SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time,  project.status, user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user JOIN teams as team JOIN blobs as `blob` 
 					WHERE (project.user_id = ? OR team.user_id = ?) 
 						AND project.user_id = user.id 
@@ -235,7 +235,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
 
 	public function getUserJoinedProjects($userId){
-		$sql = "SELECT DISTINCT team.project_id AS id, project.project_title AS title, project.stmt AS statement, project.type, project.creation_time, 
+		$sql = "SELECT DISTINCT team.project_id AS id, project.project_title AS title, project.stmt AS statement, project.type, project.creation_time,  project.status, 
 								user.first_name, user.last_name, user.username
 					FROM teams AS team JOIN projects AS project JOIN user_info AS user
 						WHERE 
@@ -254,7 +254,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	}
 
 	public function queryAllUserProjects($userId){
-		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, 
+		$sql = "SELECT DISTINCT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time,  project.status,
 								user.first_name, user.last_name, user.username 
 					FROM projects as project JOIN user_info as user
 						WHERE project.user_id = ? 
@@ -274,7 +274,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	}
 
 	public function getTopProjects() {
-		$sql = "SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, user.first_name, user.last_name, user.username, 
+		$sql = "SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, project.status, user.first_name, user.last_name, user.username, 
 						(SELECT COUNT(user_id) FROM teams WHERE teams.project_id = project.id GROUP BY project_id ORDER BY COUNT(user_id) DESC LIMIT 0, 10) as project_members
 						FROM projects as project JOIN user_info as user 
 							GROUP BY project.id ORDER BY project_members DESC LIMIT 0, 10;";
@@ -314,7 +314,7 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 		$project = new Project($row['user_id'],0, $row['title'], $row['statement'], $row['type'] ,
 								0,0, 
 								$row['creation_time'],0,0,0, 
-								$row['technical_skills'] , $row['my_role'], $row['team_size'], $row['duration_from'], $row['duration_to'], 
+								$row['technical_skills'] , $row['my_role'], $row['team_size'], $row['duration_from'], $row['duration_to'],  $row['status'], 
 								$row['first_name'], $row['last_name'], $row['username'], $row['id']);
 
 /*		$project = new Project(isset( $row['user_id'] ) ? $row['user_id'] : null,
@@ -328,7 +328,8 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 						isset( $row['my_role'] ) ? $row['my_role'] : null,
 						isset( $row['team_size'] ) ? $row['team_size'] : null,
 						isset( $row['duration_from'] ) ? $row['duration_from'] : null,
-						isset( $row['duration_to'] ) ? $row['duration_to'] : null, 
+						isset( $row['duration_to'] ) ? $row['duration_to'] : null,
+						isset( $row['status'] ) ? $row['status'] : null, 
 						isset( $row['first_name'] ) ? $row['first_name'] : null,
 						isset( $row['last_name'] ) ? $row['last_name'] : null,
 						isset( $row['username'] ) ? $row['username'] : null, $row['id']);*/

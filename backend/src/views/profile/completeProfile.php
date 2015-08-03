@@ -571,6 +571,19 @@
 
                               <div class="form-group">
 
+                                <label class="col-md-3 control-label">Project Status</label>
+                                <div class="col-md-5">
+                                  <select class="selectpicker" name="status" data-width="100%" id= "status" >
+                                    <option value='Ongoing' >Ongoing ( Still it is ongoing or you want to expend your idea )</option>
+                                    <option value='Completed' >Completed ( If you have completed your project )</option>
+                                    <option value='YetToStart' >Yet To Start ( Its good time to start, <i>Best Of Luck</i>)</option>
+                                  </select>                  
+                                </div>
+
+                              </div> <!-- /.form-group -->
+
+                              <div class="form-group">
+
                                 <label class="col-md-3 control-label">Duration</label>
                                 <div class="col-md-7">
                                   <div id="demo-dp-range">

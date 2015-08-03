@@ -98,7 +98,7 @@ class ProjectController extends BaseController {
 	
 	function createProject(){
 		$this -> logger -> debug( "inside Crete Porject");
-		if(isset($_POST['title'], $_POST['description'], $_POST['type'], $_POST['tech_skills'], $_POST['my_role'], $_POST['team_size'], $_POST['start'], $_POST['end'])){
+		if(isset($_POST['title'], $_POST['description'], $_POST['type'], $_POST['tech_skills'], $_POST['my_role'], $_POST['team_size'], $_POST['start'], $_POST['end'], $_POST['status'])){
 			
 			$newProject = new Project(
 										$this->userId,
@@ -117,6 +117,7 @@ class ProjectController extends BaseController {
 										$_POST['team_size'],
 										date('Y-m-d', strtotime($_POST['start'])),
 										date('Y-m-d', strtotime($_POST['end'])),
+										$_POST['status'],
 										null,
 										null,
 										null);

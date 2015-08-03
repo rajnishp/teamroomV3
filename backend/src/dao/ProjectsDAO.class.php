@@ -72,6 +72,9 @@ interface ProjectsDAO{
 	public function queryByFundNeeded($value);
 
 	public function queryByLastUpdateTime($value);
+	
+
+	public function queryByStatus($value);
 
 
 	public function deleteByUserId($value);
@@ -95,6 +98,8 @@ interface ProjectsDAO{
 	public function deleteByFundNeeded($value);
 
 	public function deleteByLastUpdateTime($value);
+	
+	public function deleteByStatus($value);
 
 
 }

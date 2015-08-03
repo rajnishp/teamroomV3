@@ -79,6 +79,21 @@
 
                 <div class="form-group">
 
+                  <label class="col-md-3 control-label">Project Status</label>
+                  <div class="col-md-5">
+                    <select class="selectpicker" name="status" data-width="100%" id= "status" >
+                      <option value='Ongoing' >Ongoing ( Still it is ongoing or you want to expend your idea )</option>
+                      <option value='Completed' >Completed ( If you have completed your project )</option>
+                      <option value='YetToStart' >Yet To Start ( Its good time to start, <i>Best Of Luck</i>)</option>
+                    </select>                  
+                  </div>
+
+                </div> <!-- /.form-group -->
+
+
+
+                <div class="form-group">
+
                   <label class="col-md-3 control-label">Duration</label>
                   <div class="col-md-7">
                     <div id="demo-dp-range">
@@ -128,7 +143,7 @@
 
         </div> <!-- /.content-container -->
         
-        <?php require_once 'views/sidebar/sidebar_button.php'; ?>
+        <?php //require_once 'views/sidebar/sidebar_button.php'; ?>
 
       </div>  <!-- /.boxed -->
       
@@ -191,7 +206,7 @@ function postNewProject(fields, responceTx){
     var dataString = "";
 
     
-    dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val()  ;
+    dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val() + "&status=" + $('#status').val()  ;
     //console.log(dataString);
     
     $.ajax({
