@@ -13,7 +13,7 @@ class ProjectController extends BaseController {
 		parent::__construct();	
 
 		$this-> projectId = $projectId;
-		$this-> pageUrl = $this -> baseUrl. "project" . $projectId;
+		$this-> pageUrl = $this -> baseUrl. "project/" . $projectId;
 		//$this -> teamsDAO = $this -> DAOFactory-> getTeamsDAO();
 
 
