@@ -279,7 +279,7 @@
                           
                           <!-- Post project activities ends -->
                           <hr class="spacer-sm">
-                  <?php /*        
+                          
                         <div class="activity-1" id="panel-cont">
                           <!-- /.Activities-block -->
                           <?php foreach ($projectActivities as $activity) { ?>
@@ -337,7 +337,7 @@
                           </div>
                           <!-- /.Activities-block ends-->
                         </div>
-                  */ ?>
+                  
                       </div>
                     </div>
                   </div>
@@ -417,7 +417,7 @@
             </div>
         </div>
 
-        <?php //require_once 'views/sidebar/sidebar_button.php'; ?>
+        <?php require_once 'views/sidebar/sidebar_button.php'; ?>
 
       </div>
     </div>

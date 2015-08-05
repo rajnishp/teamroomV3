@@ -89,14 +89,12 @@
                           <p class="text-thin">Projects</p>
                         </a>
                       </li>
-                       
                       <li class="col-xs-1">
                         <a data-toggle="tab" href="#tab_join_projects">
                           <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-plus"></i></span>
                           <p class="text-thin">Join Projects</p>
                         </a>
                       </li>
-
                       <li class="col-xs-1">
                         <a data-toggle="tab" href="#tab_finish">
                           <span class="icon-wrap icon-wrap-xs bg-success"><i class="fa fa-heart"></i></span>

@@ -70,18 +70,6 @@ $(document).ready(function() {
 						else 
 							return false;        				
 						break;
-/*				    case "tab_skills":
-				        var skillsArray = []; 
-				        $('#demo-cs-multiselect :selected').each(function(i, selected){ 
-				          skillsArray[i] = $(selected).val(); 
-				        });
-				        if (typeof skillsArray !== 'undefined' && skillsArray.length > 0)
-				            postUpdateSkills(fields);
-				        else {
-							$('#demo-cs-multiselect').css("border-color", "red");
-							return false;
-				        }
-				        break;*/
 			       case "tab_work_exp":
 				        fields = ["company_name", "designation", "work_from", "work_to"];
 				        if(genericEmptyFieldValidator(fields))

@@ -417,7 +417,9 @@ function addMorePost(url, dataString, addAt){
           }
           return false;
         }
+      </script>
 
+    <script type="text/javascript">
 
       function postJoinProject(key){
         var dataString = "";
@@ -447,7 +449,7 @@ function addMorePost(url, dataString, addAt){
         return false;
       }
 
-      </script>
+    </script>
 
 
 <script type="text/javascript">
@@ -487,7 +489,3 @@ function addMorePost(url, dataString, addAt){
 </script>
 <noscript><p><img src="//loc.dpower4.com/piwik/piwik/piwik.php?idsite=1" style="border:0;" alt="" /></p></noscript>
 <!-- End Piwik Code -->
-
-
-	</body>
-</html>
