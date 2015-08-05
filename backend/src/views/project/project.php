@@ -266,8 +266,15 @@
                                   </div>
 
                                   <div class="pull-right">
-                                    <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                                    <?php if(isset($this->userId)) { 
+                                      if(!$this->isProjectMember()) { ?>
+                                        <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                                    <?php } } else { ?>
+                                      <a href= "<?=$this->baseUrl ?>" class='btn btn-info'>Post</a>
+                                    <?php } ?>
                                   </div>
+
+                                
                                 </div> <!-- /.share-widget-actions -->
                               
                               </form>
