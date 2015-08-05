@@ -266,10 +266,9 @@
                                   </div>
 
                                   <div class="pull-right">
-                                    <?php if(isset($this->userId)) { 
-                                      if(!$this->isProjectMember()) { ?>
+                                    <?php if(isset($this->userId)) { ?>
                                         <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
-                                    <?php } } else { ?>
+                                    <?php } else { ?>
                                       <a href= "<?=$this->baseUrl ?>" class='btn btn-info'>Post</a>
                                     <?php } ?>
                                   </div>

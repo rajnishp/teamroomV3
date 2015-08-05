@@ -134,7 +134,7 @@ class ProjectController extends BaseController {
 				$this -> logger -> debug( "project id: " . $this->projectId);
 				
 				if ($_SERVER['HTTP_REFERER'] == $this->baseUrl."completeProfile")
-					echo "Project Created Successfully";
+					echo $this -> projectId;
 				else
 					echo $this->baseUrl . "project/" . $this->projectId;
 					//header("location: " . );

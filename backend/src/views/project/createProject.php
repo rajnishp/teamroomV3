@@ -72,7 +72,7 @@
 
                   <label class="col-md-3 control-label">Team Size</label>
                   <div class="col-md-7">
-                    <input type="integer" id="team_size" class="form-control" placeholder="Team Size" />
+                    <input type="number" id="team_size" class="form-control" placeholder="Team Size" />
                   </div>
 
                 </div> <!-- /.form-group -->

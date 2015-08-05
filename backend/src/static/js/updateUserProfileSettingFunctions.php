@@ -412,7 +412,7 @@
       }
 
 
-      function postNewProject(fields){
+      function postNewProject(fields, key){
         //fields = ["title","my_role","tech_skills","team_size","description"];
         var dataString = "";
 
@@ -426,21 +426,29 @@
           data: dataString,
           cache: false,
           success: function(result){
-            success("New Project",result);
-          },
-           error: function(result){
-            error("New Project",result);
-          }
+            var message = "";
+              if (key == undefined) {
+                appendCloneToDiv(fields,result, "#project_div", "#project_form");
+                message = "Created Successfully";
+              }
+              else {
+                message = "Update Successfully";
+              }
+              success("New Project",message);
+            },
+            error: function(result){
+              error("New Project", result);
+            }
         });
         //return false;
       }
 
-      function validateCreateProject(){
+      function validateCreateProject(key){
         fields = ["title","my_role","tech_skills","team_size","description"];
         
         if (genericEmptyFieldValidator(fields)) {
        
-                postNewProject(fields);
+                postNewProject(fields, key);
         }
 
         return false;
