@@ -340,7 +340,7 @@
 
                         <div class="heading-block">
                           <h3>
-                            Edit Technical Strength
+                            Edit Activities and Achievement
                           </h3>
                         </div> <!-- /.heading-block -->
 
@@ -352,7 +352,7 @@
 
                               <div class="form-group">
 
-                                <label class="col-md-3 control-label">Technical Strength</label>
+                                <label class="col-md-3 control-label">Activities/Achievement</label>
                               
                                 <div class="col-md-7">
                                   <input type="hidden" name="id" value="<?= $techStrength->getId() ?>" class="form-control"/>
@@ -376,7 +376,7 @@
 
                             <div class="form-group">
 
-                              <label class="col-md-3 control-label">Technical Strength</label>
+                              <label class="col-md-3 control-label">Activities/Achievement</label>
                             
                               <div class="col-md-7">
                                 <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>

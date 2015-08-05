@@ -238,12 +238,12 @@
                   else {
                     message = "Update Successfully";
                   }
-                  success("Technical Strength",message);
+                  success("Activities and Achievement",message);
                   
                 },
                  error: function(result){
                   console.log(result);
-                  error("Technical Strength",result);
+                  error("Activities and Achievement",result);
                 }
 
           });

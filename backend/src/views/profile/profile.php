@@ -198,7 +198,7 @@
                             
                             <div class="post-title">
                               <h4>
-                                Technical Strength
+                                Extra Activities and Achievements
                               </h4>
                             </div> <!-- /.heading-block -->
                           </div>

@@ -164,7 +164,7 @@ class SettingController extends BaseController {
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
-			echo "Technical Strength Can Not Be Empty";
+			echo "Field Can Not Be Empty";
 		}
 		
 	}
@@ -223,7 +223,7 @@ class SettingController extends BaseController {
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
-			echo "Technical Strength Can Not Be Empty";
+			echo "Job Preference fields Can Not Be Empty";
 		}
 			
 	}
