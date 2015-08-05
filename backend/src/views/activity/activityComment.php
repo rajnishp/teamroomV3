@@ -16,7 +16,7 @@
 <?php } else { ?>
         <div class='comment' id="project_comment_div">
             <div class='comment-avatar'>
-                <img alt='' src="uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" style='width: 44px; height: 44px;' class='avatar'>
+                <img alt='' src="<?= $this->baseUrl ?>static/img/collap.jpg" style='width: 44px; height: 44px;' class='avatar'>
             </div>
             <div class='comment-meta' style='margin-left: -20px;'>
                 <!-- comment to activity post form -->
