@@ -121,9 +121,12 @@
 
             <div class="text-center">
               <p>
-                <?php if(!$this->isKnown()) { ?>
+                <?php if(isset($this->userId)) {
+                  if(!$this->isKnown()) { ?>
                     <button class="btn btn-info" onclick="postLinkRequest()">Link</button>
-                <?php }?>
+                <?php } } else { ?>
+                    <a href= "<?=$this->baseUrl ?>" class='btn btn-info'>Link</a>
+                <?php } ?>
                 <!-- &nbsp;
                 <a href="javascript:;" class="btn btn-tertiary">Message</a> -->
               </p>

@@ -194,10 +194,17 @@
         $('#demo-cs-multiselect :selected').each(function(i, selected){ 
           skillsArray[i] = $(selected).val(); 
         });
-
+        
+        if (typeof skillsArray !== 'undefined' && skillsArray.length > 0)
+          postUpdateSkills(skillsArray);
+        else {
+          $('#demo-cs-multiselect').css("border-color", "red");
+          error("Skills","Select your skills");
+          return false;
+        }
         //if(genericEmptyFieldValidator(skillsArray)){
          
-          postUpdateSkills(skillsArray);          
+                  
 
         //}
         return false;

@@ -11,6 +11,7 @@ class HomeController {
 	private $userInfoDAO;
 	private $user;
 	private $fromUrl;
+	private $logger;
 
 	
 
@@ -23,6 +24,10 @@ class HomeController {
 			$this-> baseUrl = $configs["COLLAP_BASE_URL"];
 		//else
 		//	$this-> baseUrl = $configs["JOBS_COLLAP_BASE_URL"];
+
+		global $logger;
+		$this -> logger = $logger;
+		$this -> logger -> debug("HomeController started");
 
 
 		$DAOFactory = new DAOFactory();
@@ -113,11 +118,10 @@ class HomeController {
 					$this->user->setId($this->userInfoDAO->insert($this->user));
 				}
 				catch (Exception $e) {
-					echo "Failed to register: " . var_dump($e);					
+					$this->logger->error( "Failed to register, Error occur :500 ".json_encode($e) );
+
 				}
 				
-				//var_dump($this->user);
-
 				if($this->user) {
 					$_SESSION['user_id'] = $this->user->getId();
 					$_SESSION['username'] = $this->user->getUsername() ;
@@ -131,6 +135,8 @@ class HomeController {
 
 				}
 				else{
+					header('Location: '.$this-> baseUrl);
+					//base url redirected for any error occurred
 					echo "failed to reg";
 				}
 

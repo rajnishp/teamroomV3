@@ -35,7 +35,8 @@ class ProfileController extends BaseController {
 
 
 	// hang on complete profile page untill profile is not completed
-		$this -> isProfileCompleted();
+		if (isset($this -> userId))
+			$this -> isProfileCompleted();
 	// hang on complete profile page untill profile is not completed
 
 

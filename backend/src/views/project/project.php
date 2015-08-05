@@ -57,7 +57,7 @@
 
         <div id="content-container">
             
-            <div class="row">
+            <div class="row" style="margin-top: 26px;">
 
               <div class="col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
                 
@@ -71,8 +71,12 @@
                   <div class="pull-right" style="margin-top: 25px;">
                     
                     <div class="col-md-6 col-lg-6 col-sm-6" style="margin-bottom: 6px;">
-                      <?php if(!$this->isProjectMember()) { ?>
-                        <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold pull-right" id="join_project_button_<?= $project-> getId()?>" onclick="validateJoinProject(<?= $project-> getId()?>)" style="margin-right: 5px; margin-top: 14px;"> JOIN </button>
+                    
+                      <?php if(isset($this->userId)) { 
+                        if(!$this->isProjectMember()) { ?>
+                          <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold pull-right" id="join_project_button_<?= $project-> getId()?>" onclick="validateJoinProject(<?= $project-> getId()?>)" style="margin-right: 5px; margin-top: 14px;"> JOIN </button>
+                      <?php } } else { ?>
+                        <a href= "<?=$this->baseUrl ?>" class='btn btn-info'>Link</a>
                       <?php } ?>
                     </div>
                      
