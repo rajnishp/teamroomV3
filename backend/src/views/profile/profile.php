@@ -54,7 +54,11 @@
 
     <div class="boxed">
 
-      <div id="content-container">
+      <?php if (isset($this->userId)) { ?>
+        <div id="content-container">
+      <?php } else  { ?>
+        <div  style="margin-top: 84px;" >
+      <?php } ?>
 
         <div class="row">
           

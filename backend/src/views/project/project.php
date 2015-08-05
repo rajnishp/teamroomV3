@@ -54,10 +54,12 @@
 
       <div class="boxed">
 
-
+      <?php if (isset($this->userId)) { ?>
         <div id="content-container">
-            
-            <div class="row" style="margin-top: 26px;">
+      <?php } else  { ?>
+        <div  style="margin-top: 84px;" >
+      <?php } ?>
+            <div class="row">
 
               <div class="col-sm-12 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1">
                 
@@ -76,7 +78,7 @@
                         if(!$this->isProjectMember()) { ?>
                           <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold pull-right" id="join_project_button_<?= $project-> getId()?>" onclick="validateJoinProject(<?= $project-> getId()?>)" style="margin-right: 5px; margin-top: 14px;"> JOIN </button>
                       <?php } } else { ?>
-                        <a href= "<?=$this->baseUrl ?>" class='btn btn-info'>Link</a>
+                        <a href= "<?=$this->baseUrl ?>" class='btn btn-info'>Login to Contribute</a>
                       <?php } ?>
                     </div>
                      
@@ -218,6 +220,8 @@
                         <div class="tab-pane fade" id="tabs-activities" >
 
                           <!-- Post project activities starts -->
+                        <div class="row">
+                          <div class="col-sm-12 col-md-8 col-lg-8">
 
                             <div class="share-widget clearfix">
                               
@@ -234,7 +238,7 @@
                                 <div class="share-widget-actions">
                                   <div class="share-widget-types pull-left">
                                     
-                                    <div class="col-md-8" style="margin-top: 9px;">
+                                    <div class="col-md-9" style="margin-top: 9px;">
                                       <label class="form-radio form-normal active form-inline">
                                         <input type="radio" checked="" name="activity" id="activity_type"value="1"> Challenge 
                                       </label>
@@ -251,8 +255,12 @@
                                       </label>
                                     </div>
                                     
-                                    <div class="col-md-4">
+                                    <div class="col-md-3">
+                                    <span class="btn btn-default btn-file">
+                                      Browse...
                                       <input type="file" id="_file" class="btn btn-default btn-file pull-right">
+                                    </span>
+                                      
                                     </div>
                                     
                                   </div>
@@ -264,7 +272,8 @@
                               
                               </form>
 
-<!--                               <div id='assign_task'>
+                              <!--
+                               <div id='assign_task'>
                                 <div class="form-group pad-btm">
                                   <label class="col-lg-3 control-label">To Whom: </label>
                                   <div class="col-lg-7">
@@ -280,7 +289,17 @@
                               </div> --> <!-- /.assign task -->
 
                             </div> <!-- /.share-widget -->
-                          
+                          </div>
+
+                          <div class="col-sm-12 col-md-4 col-lg-4">
+                            <div class="timeline-label" style="margin-left: 50px;">
+                              <h4 class="text-info mar-no pad-btm"> Project Activities</h4>
+                              <p>Be in touch with collaborators.</p>
+                              <p>Being ready to update project activity always.</p>
+                              <p>Post problems, solutions, imporatant information</p>
+                            </div>
+                          </div>
+                        </div>
                           <!-- Post project activities ends -->
                           <hr class="spacer-sm">
                           

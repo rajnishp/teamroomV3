@@ -50,7 +50,11 @@
 
     <div class="boxed">
 
-      <div id="content-container">
+      <?php if (isset($this->userId)) { ?>
+        <div id="content-container">
+      <?php } else  { ?>
+        <div  style="margin-top: 84px;" >
+      <?php } ?>
 
 
         <div class="row col-md-offset-1 col-sm-offset-1 col-lg-offset-1 col-xs-offset-1"  style="margin-top: 20px;">
@@ -183,7 +187,6 @@
             <hr class="visible-xs">
 
             <hr class="spacer-sm">
-            <hr class="spacer-xs">
 
             <h4>Most Popular Posts</h4>
 
