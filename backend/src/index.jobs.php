@@ -194,7 +194,6 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 						switch ($form) {
 							case 'login':
-								
 								$homeController -> login ();
 								break;
 

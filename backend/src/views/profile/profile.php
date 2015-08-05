@@ -305,9 +305,8 @@
                             </div> <!-- /.post-aside -->
                             
                             <div class="post-main">
-                              <h4 class="post-title"><?= $project->getRefinedTitle() ?></h4>
-                              <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
-                                
+                              <h4 class="post-title"><a href="<?= $baseUrl ?>project/<?= $project->getId() ?>" <?= $project->getRefinedTitle() ?></a></h4>
+                              <h5 class="post-meta">Published by <a href="<?= $baseUrl ?>profile/<?= $project->getUsername() ?>"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                             
                               <div class="post-content">
                                 <p> 
@@ -370,9 +369,9 @@
                                 </div> <!-- /.post-aside -->
                               
                                 <div class="post-main">
-                                  <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
+                                  <h4 class="post-title"> <a href="<?= $baseUrl ?>activity/<?= $activity->getId() ?>" ><?= $activity->getRefinedTitle() ?> </a></h4>
                                   <?php //dropDown_comment(8, 7, 9); ?>
-                                  <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                                  <h5 class="post-meta">Published by <a href="<?= $baseUrl ?>profile/<?= $activity->getUsername() ?>"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                                     
                                 
                                   <div class="post-content">

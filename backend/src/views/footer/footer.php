@@ -122,7 +122,7 @@
       });
   }
 </script>
-<script>
+<script type="text/javascript">
 $('#demo-dp-range .input-daterange').datepicker({
 		format: "MM dd, yyyy",
 		todayBtn: "linked",
@@ -417,6 +417,35 @@ function addMorePost(url, dataString, addAt){
           }
           return false;
         }
+
+
+      function postJoinProject(key){
+        var dataString = "";
+        dataString = "project_id=" + key;
+        
+        $.ajax({
+          type: "POST",
+          url: "<?= $baseUrl ?>project/"+key+"/joinProject",
+          data: dataString,
+          cache: false,
+          success: function(result){
+            $('#join_project_' + key).remove();
+            $('#join_project_button_' + key).remove();
+            success("Join Project",result);
+          },
+           error: function(result){
+            error("Join Project",result);
+          }
+        });
+        return false;
+      }
+
+      function validateJoinProject(key){
+        if (key != undefined)
+          postJoinProject(key);
+        
+        return false;
+      }
 
       </script>
 

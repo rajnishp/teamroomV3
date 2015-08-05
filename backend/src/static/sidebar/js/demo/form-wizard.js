@@ -70,7 +70,7 @@ $(document).ready(function() {
 						else 
 							return false;        				
 						break;
-				    case "tab_skills":
+/*				    case "tab_skills":
 				        var skillsArray = []; 
 				        $('#demo-cs-multiselect :selected').each(function(i, selected){ 
 				          skillsArray[i] = $(selected).val(); 
@@ -81,7 +81,7 @@ $(document).ready(function() {
 							$('#demo-cs-multiselect').css("border-color", "red");
 							return false;
 				        }
-				        break;
+				        break;*/
 			       case "tab_work_exp":
 				        fields = ["company_name", "designation", "work_from", "work_to"];
 				        if(genericEmptyFieldValidator(fields))
@@ -107,12 +107,16 @@ $(document).ready(function() {
 				        fields = ["title","my_role","tech_skills","team_size","description"];
 				        if(genericEmptyFieldValidator(fields))
 				           postNewProject(fields);
-				        else
-							return false; 				
+				        else {
+				        	error("Create Project", "Create Atleast one Project");
+							return false;
+						}
 				        break;
-
+					case "tab_join_projects":
+				    	return true;
+				        break;
 				    default:
-				    	return false; 
+				    	return false;
 				}
 
 			return true;

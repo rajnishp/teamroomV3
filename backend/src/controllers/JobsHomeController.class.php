@@ -22,9 +22,10 @@ class JobsHomeController {
 	}
 
 	function render (){
+		
 		// here its shower that user is not in session
-		global $configs;
-		$baseUrl = $configs["JOBS_COLLAP_BASE_URL"];
+		//global $configs;
+		//$baseUrl = $configs["JOBS_COLLAP_BASE_URL"];
 		try{
 			//$topProjects = $this -> projectDAO -> getTopProjects(); // have not found the function find and replace
 			require_once 'views/landing/index.job.php';

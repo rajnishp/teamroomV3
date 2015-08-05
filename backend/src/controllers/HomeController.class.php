@@ -19,10 +19,11 @@ class HomeController {
 		global $baseUrl;
 		global $configs;
 		
-		if ($_SERVER['HTTP_REFERER'] == $configs["COLLAP_BASE_URL"])
+		//if ($_SERVER['HTTP_REFERER'] == $configs["COLLAP_BASE_URL"])
 			$this-> baseUrl = $configs["COLLAP_BASE_URL"];
-		else
-			$this-> baseUrl = $configs["JOBS_COLLAP_BASE_URL"];
+		//else
+		//	$this-> baseUrl = $configs["JOBS_COLLAP_BASE_URL"];
+
 
 		$DAOFactory = new DAOFactory();
 		$this -> projectDAO = $DAOFactory->getProjectsDAO();
@@ -50,10 +51,12 @@ class HomeController {
 
 	function login (){
 		if(isset($_POST['username'],$_POST['password'])){
+
 			$this->user = $this->userInfoDAO->getByUsernamePassword( $_POST['username'], md5($_POST['password']));
 			
 		
 			if($this->user){
+				
 				$_SESSION['user_id'] = $this->user->getId();
 				$_SESSION['username'] = $this->user->getUsername() ;
 				$_SESSION['first_name'] = $this->user->getFirstName() ;
@@ -63,10 +66,12 @@ class HomeController {
 					//$obj = new rank($newid);
 				$_SESSION['rank'] = $this->user->getRank();
 				
-				if($_GET['from'])
+				if($_GET['from']) {
 					$redir = $_GET['from'];
-				else
+				}
+				else {
 					$redir = $this-> baseUrl;
+				}
 
 				header('Location: '.$redir);		
 
@@ -134,17 +139,29 @@ class HomeController {
 	}
 
 	function logout(){
-
+		
 		$requestedPage = $_GET['url'] ;
+		
 		unset($_SESSION['user_id']);
 	    unset($_SESSION['first_name']);
 	    unset($_SESSION['username']);
 	    unset($_SESSION['email']);
 	    unset($_SESSION['last_login']);
 	    unset($_SESSION['rank']);
+	    
+	    session_unset($_SESSION['user_id']);
+	    session_unset($_SESSION['first_name']);
+	    session_unset($_SESSION['username']);
+	    session_unset($_SESSION['email']);
+	    session_unset($_SESSION['last_login']);
+	    session_unset($_SESSION['rank']);
+	    session_unset();
+	    
 	    session_destroy();
+	    
 	    header('Location: '.$this-> baseUrl);
 	    mysqli_close($db_handle);
+	    die();
 
 	}
 	function forgetPasswod(){

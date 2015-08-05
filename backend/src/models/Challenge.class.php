@@ -24,12 +24,12 @@ require_once 'models/BaseModel.class.php';
 		private $lastUpdateTime;
 		private $firstName;
 		private $lastName;
-		private $userName;
+		private $username;
 		private $responses;
 
 
 		function __construct( $userId, $projectId, $blobId, $orgId, $title, $stmt, $type, $status, $likes
-		,$dislikes, $creationTime, $lastUpdateTime, $firstName, $lastName, $userName, $id = null)
+		,$dislikes, $creationTime, $lastUpdateTime, $firstName, $lastName, $username, $id = null)
 		{
 			$this -> id = $id;
 			$this -> userId= $userId;
@@ -46,7 +46,7 @@ require_once 'models/BaseModel.class.php';
 			$this -> lastUpdateTime=$lastUpdateTime;
 			$this -> firstName = $firstName;
 			$this -> lastName = $lastName;
-			$this -> userName = $userName;
+			$this -> username = $username;
 		}
 	
 		function getRefinedStmt(){

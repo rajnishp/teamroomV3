@@ -285,17 +285,29 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 	}
 
 	public function getRecommendedProjects($userId) {
-		$sql = "SELECT DISTINCT *, project_title as title
-					FROM projects
-						WHERE user_id != ?
-							AND type = 'Public'
-							AND id NOT
+		$sql = "(SELECT DISTINCT project.*, project.project_title as title, project.stmt as statement, user.first_name, user.last_name, user.username
+					FROM projects as project JOIN user_info as user
+						WHERE project.user_id != ? AND project.user_id = user.id
+							AND project.type = 'Public' AND project.status != 'Completed' AND project.blob_id = 0
+							AND project.id NOT
 							IN ( SELECT DISTINCT project_id
 									FROM teams
-										WHERE user_id = ?)
-				ORDER BY rand( ) LIMIT 10 ;";
+										WHERE teams.user_id = ?)
+				ORDER BY rand( ) LIMIT 10)
+				UNION 
+				(SELECT DISTINCT project.*, project.project_title as title, SUBSTRING( `blob`.stmt , 1, 500 ) AS statement, user.first_name, user.last_name, user.username
+					FROM projects as project JOIN user_info as user JOIN blobs as `blob`
+						WHERE project.user_id != ? AND project.user_id = user.id
+							AND project.type = 'Public' AND project.status != 'Completed' AND project.blob_id = `blob`.id
+							AND project.id NOT
+							IN ( SELECT DISTINCT project_id
+									FROM teams
+										WHERE teams.user_id = ?)
+				ORDER BY rand( ) LIMIT 10) ORDER BY rand( ) LIMIT 10 ;";
 
 		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		$sqlQuery->setNumber($userId);
 		$sqlQuery->setNumber($userId);
 		$sqlQuery->setNumber($userId);
 

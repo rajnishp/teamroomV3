@@ -62,13 +62,7 @@
                       <li class="col-xs-2">
                         <a data-toggle="tab" href="#tab_tech_strength">
                           <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-code"></i></span>
-                          <p class="text-thin">Technical Strength</p>
-                        </a>
-                      </li>
-                      <li class="col-xs-1">
-                        <a data-toggle="tab" href="#tab_skills">
-                          <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-code"></i></span>
-                          <p class="text-thin">Skills</p>
+                          <p class="text-thin">Skills, Activities</p>
                         </a>
                       </li>
                       <li class="col-xs-2">
@@ -93,6 +87,13 @@
                         <a data-toggle="tab" href="#tab_projects">
                           <span class="icon-wrap icon-wrap-xs bg-info"><i class="fa fa-book"></i></span>
                           <p class="text-thin">Projects</p>
+                        </a>
+                      </li>
+                       
+                      <li class="col-xs-1">
+                        <a data-toggle="tab" href="#tab_join_projects">
+                          <span class="icon-wrap icon-wrap-xs bg-warning"><i class="fa fa-plus"></i></span>
+                          <p class="text-thin">Join Projects</p>
                         </a>
                       </li>
 
@@ -190,6 +191,9 @@
                                     <input type="checkbox" id="lawyer" checked=""  value="Lawyer">
                                     
                                     </label>
+                                    
+                                    <small class="help-block">Best suited according to your knowledge domain, you can choose multiples</small>
+
                                   </div>
                                 </div> <!-- /.col -->
 
@@ -222,6 +226,7 @@
 
                                 <div class="col-md-7">
                                   <textarea name="about_user" id="about_user" rows="6" class="form-control" placeholder="Useful Information about You......"><?= $userProfile->getAboutUser() !=null ? $userProfile->getAboutUser() : null ?></textarea>
+                                  <small class="help-block">Ex: I am a person with a positive attitude, worked at Collap..</small>                        
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -230,8 +235,10 @@
       
                                 <div class="pull-right pad-all">
 
-<!--                                   <button type="submit" class="btn btn-success" onclick="return (validateUpdateProfile());">Save Changes</button>
- -->
+                                <!--                                   
+
+                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateProfile());">Save Changes</button>
+                                -->
                                    <button type="button" class="next btn btn-primary" id='validateUpdateProfile'>Save and Next</button>
                                 </div> <!-- /.col -->
       
@@ -242,16 +249,42 @@
             
                           <!--Second tab-->
                           <div id="tab_tech_strength" class="tab-pane fade">
-                            
                             <div id="tech_strength_div">
+
+                              <div class="form-horizontal">
+                                <div class="form-group">
+
+                                  <label class="col-md-3 control-label">Add Skills</label>
+
+                                  <div class="col-md-7">                                  
+                                    <select id="demo-cs-multiselect" name="skills" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                                      <?php foreach ($allSkills as $skillName) { ?>
+                                        <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
+                                      <?php } ?>
+                                    </select>
+                                    
+                                    <small class="help-block">Ex: C, Cpp, PHP, JAVA</small>                                
+
+                                    <button type="submit" id="skills" class="btn btn-success" onclick="return (validateUpdateSkills());">Add Skills</button>
+
+                                  </div> <!-- /.col -->
+
+                                </div> <!-- /.form-group -->
+
+                              </div> <!-- /.form-horizontal -->
+
+                            
                               <div class="form-horizontal" id= "tech_strength_form">
 
                                 <div class="form-group">
                                  
-                                  <label class="col-md-3 control-label">Technical Strength</label>
+                                  <label class="col-md-3 control-label">Extra Activities and Achievement</label>
                                 
                                   <div class="col-md-7">
                                     <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
+                                  
+                                    <small class="help-block">Completed course on ETHICAL HACKING from XYZ...</small>                                
+                                    <small class="help-block">Winner of xyz Hackathon with Idea ------ </small>                                
                                   
                                   </div> <!-- /.col -->
                                 </div> <!-- /.form-group -->
@@ -279,42 +312,8 @@
 
                           </div> <!--End Second tab-->
                           
+                        
                           <!--Third tab-->
-                          <div id="tab_skills" class="tab-pane fade">
-                            
-                            <div class="form-horizontal">
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Add Skills</label>
-
-                                <div class="col-md-7">                                  
-                                  <select id="demo-cs-multiselect" name="skills" data-placeholder="Choose a Skill..." multiple tabindex="4">
-                                    <?php foreach ($allSkills as $skillName) { ?>
-                                      <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
-                                    <?php } ?>
-                                  </select>
-
-                                  <button type="submit" id="skills" class="btn btn-success" onclick="return (validateUpdateSkills());">Add Skills</button>
-
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-                                <div class="pull-right pad-all">
-
-                                  <button type="button" class="previous btn btn-info">Previous</button>
-
-                                  <button type="button" class="next btn btn-primary" id='validateUpdateSkills'>Next</button>
-    
-                                </div> <!-- /.col -->
-                              </div> <!-- /.form-group -->
-
-                            </div> <!-- /.form-horizontal -->
-
-                          </div> <!--End Third tab-->
-                          
-                          <!--Fourth tab-->
                           <div id="tab_work_exp" class="tab-pane">
                             
                             <div id="work_exp_div">
@@ -327,6 +326,8 @@
 
                                   <div class="col-md-7">
                                     <input type="text" name="company_name" id="company_name" class="form-control"/>
+                                    <small class="help-block">Ex: Example Pvt. Ltd</small>
+
                                   </div> <!-- /.col -->
 
                                 </div> <!-- /.form-group -->
@@ -337,6 +338,9 @@
 
                                   <div class="col-md-7">
                                     <input type="text" name="designation" id="designation" class="form-control"/>
+                                    
+                                    <small class="help-block">Ex: Software Developer</small>
+
                                   </div> <!-- /.col -->
 
                                 </div> <!-- /.form-group -->
@@ -354,6 +358,9 @@
                                         <input type="text" name="to" id="work_to" class="form-control"  placeholder="YYY-MM-DD"/>
                                       </div>
                                     </div>
+                                    
+                                    <small class="help-block">Working Duration like August 01, 2014 to July 30, 2015</small>
+
                                   </div>
                                 </div> <!-- /.form-group -->
 
@@ -380,9 +387,9 @@
                               <button type="button" class="next btn btn-primary">Next</button>
                             </div>
 
-                          </div> <!--End Fourth tab-->
-            
-                          <!--Fifth tab-->
+                          </div> <!--End Third tab-->
+                          
+                          <!--Fourth tab-->
                           <div id="tab_job_preference" class="tab-pane">
                             
                             <div class="form-horizontal">
@@ -396,6 +403,8 @@
                                       <option value="<?= $availablelocation -> getId() ?>" id ="location_<?= $availablelocation -> getId() ?>"><?= $availablelocation-> getLocationName() ?></option>  
                                     <?php } ?>
                                   </select>
+                                  
+                                  <small class="help-block">Preferred Job Location: Bangalore, Delhi/NCR ( First location will be first prefernece )</small>
 
                                   <button type="submit" id="locations" class="btn btn-success" onclick="return (validateUpdateLocations());">Add Locations</button>
 
@@ -403,15 +412,16 @@
 
                               </div> <!-- /.form-group -->
                               
-                              
-                                
-
+                            
                               <div class="form-group">
 
                                 <label class="col-md-3 control-label">Current CTC </label>
 
                                 <div class="col-md-7">
                                   <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                
+                                  <small class="help-block"> Ex: 6 LPA </small>
+                                
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -422,6 +432,9 @@
 
                                 <div class="col-md-7">
                                   <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                
+                                  <small class="help-block"> Ex: 9 LPA </small>
+                                
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -432,6 +445,9 @@
 
                                 <div class="col-md-7">
                                   <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
+                                 
+                                  <small class="help-block"> Ex: 2 Months </small>
+                                  
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -439,8 +455,9 @@
                               <div class="form-group">
                                 <div class="pull-right pad-all">
 
-<!--                                   <button type="submit" class="btn btn-success" onclick="return (validateUpdateJobPreference());">Save Changes</button>
- -->
+                                  <!--                                   
+                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateJobPreference());">Save Changes</button>
+                                 -->
                                   <button type="button" class="previous btn btn-info">Previous</button>
 
                                   <button type="button" class="next btn btn-primary">Next</button>
@@ -449,9 +466,10 @@
                               </div> <!-- /.form-group -->
                             </div>
                           
-                          </div> <!--End Fifth tab-->
-
-                           <!--Sixth tab-->
+                          </div> <!--End Fourth tab-->
+            
+                          
+                          <!--Fifth tab-->
                           <div id="tab_education" class="tab-pane">
                             <div id="education_div">
                               <div class="form-horizontal"  id="education_form">
@@ -462,6 +480,9 @@
 
                                   <div class="col-md-7">
                                     <input type="text" name="institute" id="institute" value="" class="form-control"/>
+                                    
+                                    <small class="help-block"> Ex: Indian Institute of Technology Delhi </small>
+
                                   </div> <!-- /.col -->
 
                                 </div> <!-- /.form-group -->
@@ -472,6 +493,9 @@
 
                                   <div class="col-md-7">
                                     <input type="text" name="degree" id="degree" value="" class="form-control"/>
+                                    
+                                    <small class="help-block"> Ex: Bachelor of Engineering/Technology </small>
+
                                   </div> <!-- /.col -->
 
                                 </div> <!-- /.form-group -->
@@ -481,6 +505,9 @@
 
                                   <div class="col-md-7">
                                     <input type="text" name="branch" id="branch" value="" class="form-control"/>
+
+                                    <small class="help-block"> Ex: Computer Science and Engineering </small>
+
                                   </div> <!-- /.col -->
 
                                 </div> <!-- /.form-group -->
@@ -498,6 +525,9 @@
                                         <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
                                       </div>
                                     </div>
+
+                                    <small class="help-block"> Ex: Duration of Degree 2012 to 2014 </small>
+
                                   </div>
                                 </div> <!-- /.form-group -->
 
@@ -523,10 +553,10 @@
                               <button type="button" class="next btn btn-primary">Next</button>
                             </div>
 
-                          </div> <!--End Sixth tab-->
+                          </div> <!--End Fifth tab-->
 
 
-                          <!--Seventh tab-->
+                          <!--Sixth tab-->
                           <div id="tab_projects" class="tab-pane">
                             <div class="form-horizontal">
 
@@ -536,6 +566,9 @@
 
                                 <div class="col-md-7">
                                   <input type="text" id ="title" class="form-control" placeholder="Title" />
+                                  
+                                  <small class="help-block"> Ubuntu Unity: deliver a consistent user experience for desktop and netbook users alike</small>
+
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -546,6 +579,9 @@
 
                                 <div class="col-md-7">
                                   <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
+                                  
+                                  <small class="help-block"> C++, JavaScript, QML, Python, Vala</small>
+
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -556,6 +592,9 @@
 
                                 <div class="col-md-7">
                                   <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
+                                  
+                                  <small class="help-block"> Like Architect or Frontend Developer with JavaScript</small>
+
                                 </div> <!-- /.col -->
 
                               </div> <!-- /.form-group -->
@@ -565,6 +604,9 @@
                                 <label class="col-md-3 control-label">Team Size</label>
                                 <div class="col-md-7">
                                   <input type="integer" id="team_size" class="form-control" placeholder="Team Size" />
+
+                                  <small class="help-block"> Total team Members: 1, 2, 3, 4, ....</small>
+
                                 </div>
 
                               </div> <!-- /.form-group -->
@@ -593,6 +635,9 @@
                                       <input type="text" class="form-control" name="end" id="end" />
                                     </div>
                                   </div>
+                                  
+                                  <small class="help-block"> When it started (August 01, 2014 ) to ended ( July 30, 2015 )</small>
+
                                 </div>
 
                               </div> <!-- /.form-group -->
@@ -623,6 +668,9 @@
 
                                     </div>
                                   </div>
+
+                                  <small class="help-block"> Project Description with Introduction, Problem, Solution, Features ...</small>
+
                                 </div>
                               </div>
 
@@ -633,11 +681,53 @@
                                 <button type="button" class="next btn btn-primary">Next</button>
   
                               </div> <!-- /.col -->
-                      
+                              
                             </div>
                       
-                          </div> <!--End Seventh tab-->
+                          </div> <!--End Sixth tab-->
                           
+                          <!--Seventh tab-->
+                          <div id="tab_join_projects" class="tab-pane">
+                            <!--Recommended Join Projects-->
+                            <?php  foreach ($this -> recommendedProjects as $project) { ?>
+                              <div class="post" id="join_project_<?= $project-> getId()?>">
+                                <div class="post-aside" style="padding-top: 28px;">
+                                  <div class="post-date">
+                                    <?php $data = date_parse($project->getCreationTime()); ?>
+                                    <span class="post-date-day"><?= $data["day"] ?></span>
+                                    <span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>
+                                    <span class="post-date-year"><?= $data["year"] ?></span>
+                                  </div>
+                    
+                                </div> <!-- /.post-aside -->
+                                
+                                <div class="post-main">
+                                  <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold pull-right" onclick="return (validateJoinProject(<?= $project-> getId()?>));" style="margin-right: 5px; margin-top: 14px;"> JOIN </button>
+                                  <h4 class="post-title"><a href="<?= $this -> baseUrl ?>project/<?= $project -> getId() ?>"><?= $project->getRefinedTitle() ?></a></h4>
+                                  <h5 class="post-meta">Published by <a href="<?= $this -> baseUrl ?>profile/<?= $project -> getUsername() ?>"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> </h5>
+                                
+                                  <div class="post-content">
+                                    <p> 
+                                      <?= $project->getRefinedStmt() ?> ........<a href="<?= $this -> baseUrl ?>project/<?= $project -> getId() ?>">Read More </a>
+                                    </p>
+                                  </div>
+
+                                </div>
+                                <hr>
+                                <hr class="spacer-sm">
+                              </div>
+
+                            <?php } ?>
+                            
+                            <div class="pull-right pad-all">
+
+                              <button type="button" class="previous btn btn-info">Previous</button>
+                              <button type="button" class="next btn btn-primary" >Next</button>
+
+                            </div> <!-- /.col -->
+                           
+                          </div><!--End Seventh tab-->
+
                           <!--Eight tab-->
                           <div id="tab_finish" class="tab-pane">
                             <div class="form-horizontal">

@@ -48,7 +48,6 @@ class ProfileController extends BaseController {
 
 				
 				$userActivities = $this->challengesDAO->getUserActivities($this->profileId,0,10);
-				
 				$userSkills = $this ->userSkillDAO->getUserSkills($this->profileId);
 
 				$userEducation = $this -> userEducationDAO -> queryByUserId($this -> profileId);

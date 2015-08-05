@@ -85,9 +85,9 @@
                       </div>
                       <!-- /.post-aside -->
                       <div class="post-main">
-                         <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
+                         <h4 class="post-title"><a href="<?= $this-> baseUrl ?>activity/<?= $activity -> getId() ?>" target="_blank"><?= $activity->getRefinedTitle() ?></a></h4>
                          <?php //dropDown_comment(8, 7, 9); ?>
-                         <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                         <h5 class="post-meta">Published by <a href="<?= $this-> baseUrl ?>profile/<?= $activity -> getUsername() ?>" target="_blank"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                          <div class="post-content">
                             <p> 
                                <?= $activity->getRefinedStmt() ?>

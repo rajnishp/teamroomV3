@@ -65,16 +65,14 @@
                   
                   <div class="pull-left">
                     <h4 class="post-title"><?= $project->getRefinedTitle() ?></h4>
-                    <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                    <h5 class="post-meta">Published by <a href="<?= $this -> baseUrl ?>profile/<?= $project-> getUsername() ?>"><?= ucfirst($project->getFirstName()) ?> <?= ucfirst($project->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                   </div>
 
                   <div class="pull-right" style="margin-top: 25px;">
                     
                     <div class="col-md-6 col-lg-6 col-sm-6" style="margin-bottom: 6px;">
                       <?php if(!$this->isProjectMember()) { ?>
-                        <form action="<?= $baseUrl ?>project/<?= $project->getId() ?>/joinProject" name="join_project" method="POST">
-                          <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold" name="join_project" style="margin-right: 5px;"> JOIN </button>
-                        </form>
+                        <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold pull-right" id="join_project_button_<?= $project-> getId()?>" onclick="validateJoinProject(<?= $project-> getId()?>)" style="margin-right: 5px; margin-top: 14px;"> JOIN </button>
                       <?php } ?>
                     </div>
                      
@@ -169,7 +167,7 @@
 
                         <div class="tab-pane fade" id="tabs-dashboard">
                           <h4 class="text-thin">Dashboard</h4>
-                          <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit.</p>
+                          <p> </p>
                         </div>
 
                         <div class="tab-pane fade" id="tabs-teams">
@@ -192,7 +190,7 @@
                                     <img alt="" src="uploads/profilePictures/<?= $teamMember->getUsername() ?>.jpg" onerror = "this.src = '<?= $baseUrl ?>static/img/collap.jpg';" class="avatar" width="40" height="40">
                                   </div>
                                   <div class="media-body pad-lft">
-                                    <a href="#" class="text-capitalize"><?= $teamMember -> getFirstName() ?> <?= $teamMember -> getLastName() ?></a>
+                                    <a href="<?= $this-> baseUrl ?>profile/<?= $teamMember -> getUsername() ?>" class="text-capitalize"><?= $teamMember -> getFirstName() ?> <?= $teamMember -> getLastName() ?></a>
                                     <p class="text-muted"><?= $teamMember -> getRank() ?></p>
                                   </div>
                                 </div>
@@ -281,7 +279,7 @@
                           
                           <!-- Post project activities ends -->
                           <hr class="spacer-sm">
-                          
+                  <?php /*        
                         <div class="activity-1" id="panel-cont">
                           <!-- /.Activities-block -->
                           <?php foreach ($projectActivities as $activity) { ?>
@@ -297,9 +295,9 @@
                               </div> <!-- /.post-aside -->
                             
                               <div class="post-main">
-                                <h4 class="post-title"><?= $activity->getRefinedTitle() ?></h4>
+                                <h4 class="post-title"> <a href="<?= $this-> baseUrl ?>activity/<?= $activity -> getId() ?>" target="_blank"> <?= $activity->getRefinedTitle() ?></a></h4>
                                 <?php //dropDown_comment(8, 7, 9); ?>
-                                <h5 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
+                                <h5 class="post-meta">Published by <a href="<?= $this -> baseUrl ?>profile/<?= $activity -> getUsername() ?>" target="_blank"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>
                                   
                               
                                 <div class="post-content">
@@ -339,6 +337,7 @@
                           </div>
                           <!-- /.Activities-block ends-->
                         </div>
+                  */ ?>
                       </div>
                     </div>
                   </div>
@@ -418,7 +417,7 @@
             </div>
         </div>
 
-        <?php require_once 'views/sidebar/sidebar_button.php'; ?>
+        <?php //require_once 'views/sidebar/sidebar_button.php'; ?>
 
       </div>
     </div>

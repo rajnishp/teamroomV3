@@ -16,10 +16,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            success("Social Profile Linking",result.responseText);
+            success("Social Profile Linking",result);
           },
           error: function(result){
-            error("Social Profile Linking",result.responseText);
+            error("Social Profile Linking",result);
           }
 
         });      
@@ -64,10 +64,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            success("Job Preference",result.responseText);
+            success("Job Preference",result);
           },
           error: function(result){
-            error("Job Preference",result.responseText);
+            error("Job Preference",result);
           }
 
         });
@@ -103,10 +103,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            success("Profile Information",result.responseText);
+            success("Profile Information",result);
           },
           error: function(result){
-            error("Profile Information",result.responseText);
+            error("Profile Information",result);
           }
 
         });      
@@ -139,10 +139,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            success("Update Preferred Job Location",result.responseText);
+            success("Update Preferred Job Location",result);
           },
           error: function(result){
-            error("Update Preferred Job Location",result.responseText);
+            error("Update Preferred Job Location",result);
           }
 
         });
@@ -156,12 +156,13 @@
         $('#demo-cs-multiselect1 :selected').each(function(i, selected){ 
           locationsArray[i] = $(selected).val(); 
         });
-
-        //if(genericEmptyFieldValidator(skillsArray)){
-          console.log("iam there");
-          postUpdateLocations(locationsArray);          
-
-        //}
+        if (typeof locationsArray !== 'undefined' && locationsArray.length > 0)
+          postUpdateLocations(locationsArray);
+        else {
+          $('#demo-cs-multiselect1').css("border-color", "red");
+          error("Preferred Job Location","Give atleast one location");
+          return false;
+        }
         return false;
       }
 
@@ -176,10 +177,10 @@
           data: dataString,
           cache: false,
           success: function(result){
-            success("Update Skills",result.responseText);
+            success("Update Skills",result);
           },
           error: function(result){
-            error("Update Skills",result.responseText);
+            error("Update Skills",result);
           }
 
         });
@@ -235,7 +236,7 @@
                 },
                  error: function(result){
                   console.log(result);
-                  error("Technical Strength",result.responseText);
+                  error("Technical Strength",result);
                 }
 
           });
@@ -292,7 +293,7 @@
               success("Work Experience",message);
             },
             error: function(result){
-              error("Work Experience", result.responseText);
+              error("Work Experience", result);
             }
           });
 
@@ -344,7 +345,7 @@
             },
             error: function(result){
               console.log(result);
-              error("Education",result.responseText);
+              error("Education",result);
             }
           });
 
@@ -384,11 +385,11 @@
           data: dataString,
           cache: false,
           success: function(result){
-            success("Reset Password",message);
+            success("Reset Password",result);
           },
           error: function(result){
             console.log(result);
-            error("Reset Password",result.responseText);
+            error("Reset Password",result);
           }
         });
       }
@@ -418,13 +419,13 @@
           data: dataString,
           cache: false,
           success: function(result){
-            success("New Project",result.responseText);
+            success("New Project",result);
           },
            error: function(result){
-            error("New Project",result.responseText);
+            error("New Project",result);
           }
         });
-        return false;
+        //return false;
       }
 
       function validateCreateProject(){
@@ -438,4 +439,5 @@
         return false;
 
       }
+
       </script>

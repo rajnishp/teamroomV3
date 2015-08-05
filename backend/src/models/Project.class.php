@@ -32,14 +32,14 @@
 
 		private $firstName;
 		private $lastName;
-		private $userName;
+		private $username;
 		private $responses;
 
 	
 		function __construct ($userId, $blobId, $projectTitle, $stmt, $type, $orgId, $order, 
 								$creationTime, $projectValue, $fundNeeded, $lastUpdateTime,
 								$technicalSkills, $myRole, $teamSize, $durationFrom, $durationTo, $status,
-								$firstName, $lastName, $userName, $id = null) {
+								$firstName, $lastName, $username, $id = null) {
 			$this -> id = $id;
 			$this -> userId = $userId;
 			$this -> blobId = $blobId;
@@ -63,7 +63,7 @@
 
 			$this -> firstName = $firstName;
 			$this -> lastName = $lastName;
-			$this -> userName = $userName;
+			$this -> username = $username;
 
 		}
 		

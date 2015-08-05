@@ -76,7 +76,7 @@
 
                 <div class="post-main">
                   <h3 class="post-title"><a href="#"><?= $activity->getRefinedTitle() ?></a></h3>
-                  <h4 class="post-meta">Published by <a href="javascript:;"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h4>
+                  <h4 class="post-meta">Published by <a href="<?= $this -> baseUrl ?>profile/<?= $activity -> getUsername()?>" target="_blank"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h4>
                   <?= $activity->getRefinedStmt() ?>
                   
                   <!-- <div class="post-content"> -->
@@ -111,7 +111,9 @@
                   <div class="comment-meta">
 
                     <span class="comment-author">
-                      <a href="javascript:;" class="url"><?= ucfirst($response->getFirstName()) ?> <?= ucfirst($response->getLastName()) ?></a>
+                      <a href="<?= $this -> baseUrl ?>profile/<?= $activity -> getUsername()?>" target="_blank" class="url">
+                        <?= ucfirst($response->getFirstName()) ?> <?= ucfirst($response->getLastName()) ?>
+                      </a>
                     </span>
 
                     <a href="javascript:;" class="comment-timestamp">

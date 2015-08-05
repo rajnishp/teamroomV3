@@ -163,10 +163,12 @@ class ProjectController extends BaseController {
 	}
 
 	function joinProject () {
-		if(isset($_POST['join_project'])) {
+		
+		if(isset($_POST['project_id']) && $_POST['project_id'] != '') {
+			
 			$newMember = new Team(
 								$this-> userId,
-								$this-> projectId,
+								$_POST['project_id'],
 								'defaultteam',
 								0,
 								date("Y-m-d H:i:s"),
@@ -177,7 +179,7 @@ class ProjectController extends BaseController {
 							);
 			try {
 				$this -> teamsDAO -> insert($newMember) ;
-			
+				
 				$projectDetail = $this -> projectsDAO -> load($this -> projectId) ;
 
 				$noticeUrl ="
@@ -187,7 +189,7 @@ class ProjectController extends BaseController {
 		              </div>
 		              <div class='media-body'>
 		                <div class='text-nowrap'>".ucfirst($this -> firstName)." ".ucfirst($this -> lastName)." Joined Project </div>
-		                <div class='text-nowrap'><b>".$projectDetail->getRefinedTitle()."<b></div>
+		                <div class='text-nowrap'><b>".$projectDetail->getRefinedTitle()."</b></div>
 		              </div>
 		            </a>";
 	
@@ -208,16 +210,12 @@ class ProjectController extends BaseController {
 						$this -> logger -> error ("Error at : $e");
 					}
 				}
+				echo "Project Joined Successfully";
 			}
 			catch (Exception $e){
-				if($e -> getCode() == 1011){
-					$this -> render ();
-				}
-				else
-					$this -> logger -> error ("Error at : $e"); die();
-			}	
+				$this -> logger -> error ("Error at : $e"); die();
+			}
 		}
-		$this -> render ();
 	}
 
 	
