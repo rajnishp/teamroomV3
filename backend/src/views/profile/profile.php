@@ -73,7 +73,7 @@
               </div>
               <div class="panel-media" >
                
-                <img src="uploads/profilePictures/<?= $userProfile->getUsername() ?>.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
+                <img src="/uploads/profilePictures/<?= $userProfile->getUsername() ?>.jpg" style="left: 43%;width: 120px;height: 120px;" class="panel-media-img img-circle img-border-light" alt="Profile Picture">
                 
               </div>
               
