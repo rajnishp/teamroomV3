@@ -696,7 +696,7 @@
                           <!--Seventh tab-->
                           <div id="tab_join_projects" class="tab-pane">
                             <!--Recommended Join Projects-->
-                            <?php  foreach ($this -> recommendedProjects as $project) { ?>
+                            <?php  foreach ($this -> recommendedJoinProjects as $project) { ?>
                               <div class="post" id="join_project_<?= $project-> getId()?>">
                                 <div class="post-aside" style="padding-top: 28px;">
                                   <div class="post-date">

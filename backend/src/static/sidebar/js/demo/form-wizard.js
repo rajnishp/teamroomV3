@@ -58,10 +58,25 @@ $(document).ready(function() {
 			switch($('.tab-pane.active.in').attr('id')) {
 					case "tab_profile":
 						fields = ["first_name","last_name","phone","living_place", "about_user"];
-						if(genericEmptyFieldValidator(fields))
+						if(genericEmptyFieldValidator(fields)) {
+					        
+					        var phoneVal = $('#'+fields[2]).val();
+					        
+					        var stripped = phoneVal.replace(/[\(\)\.\-\ ]/g, '');    
+							if (isNaN(parseInt(stripped))) {
+								error("Contact No", "The mobile number contains illegal characters");
+								$('#phone').css("border", "1px solid OrangeRed");
+								return false;
+							}
+					        else if (phoneVal.length < 6) {
+					          error("Contact No", "Make sure you included valid contact number");
+					          $('#phone').css("border", "1px solid OrangeRed");
+					          return false;
+					        }
 							postUpdateProfile(fields);
-						else 
-							return false;  				
+						}
+						else
+							return false;
 						break;
 					case "tab_tech_strength":
 						fields = ["tech_strength"];
@@ -76,11 +91,30 @@ $(document).ready(function() {
 				            postUpdateWorkExp(fields);
 				        else 
 							return false;        				
-				        break;
+				        break;							
 				    case "tab_job_preference":
 				        fields = ["current_ctc","expected_ctc","notice_period"];
-				        if(genericEmptyFieldValidator(fields))
-				            postUpdateJobPreference(fields);
+				        console.log("i am there");
+						
+				        if(genericEmptyFieldValidator(fields)) {
+				        	var flag = true;
+				            $.each(fields, function( index, value ) {
+			                
+								var fieldVal = $("#"+ value).val();
+								if (!$.isNumeric(fieldVal)) {
+									$("#"+ value).css("border", "1px solid OrangeRed");
+									flag = false;
+								}
+	  			            });
+
+				            if (flag){
+								postUpdateJobPreference(fields);
+				            }
+				            else {
+				            	error("Job Preference Information", "The Information contains illegal characters");
+				            	return false;
+				            }
+				        }
 				        else
 							return false;
 				        break;

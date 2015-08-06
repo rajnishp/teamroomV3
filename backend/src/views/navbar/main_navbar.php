@@ -124,7 +124,7 @@ else {
             <li id="dropdown-user" class="dropdown">
               <a href="#" data-toggle="dropdown" class="dropdown-toggle text-right">
                 <span class="pull-right">
-                  <img class="img-circle img-user media-object" src="uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" alt="Profile Picture">
+                  <img class="img-circle img-user media-object" src="/uploads/profilePictures/<?= $_SESSION['username'] ?>.jpg" alt="Profile Picture">
                 </span>
                 <div class="username hidden-xs"><?= ucfirst($_SESSION['first_name']) ?></div>
               </a>

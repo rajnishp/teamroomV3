@@ -44,11 +44,21 @@ $('#email').keypress(function() {
 function validateReg(){
     console.log("I am validating the form");
     returnBool = true;
+    usernameValue = $('#usernameR').val();
 
     if($('#usernameR').val() == "" || $('#usernameR').val() == null){
         $('#usernameR').css("border-color", "red");
         returnBool = false;
     }
+
+    if(usernameValue.length < 6 ){
+        //error("Username Length", "Username Length shoulb be atleast 6");
+        $('#usernameR').css("border-color", "red");
+        $('#usernameR').innerHTML = "<small> Username length Must be atleast 6</small>";
+        
+        returnBool = false;
+    }
+    
     if($('#passwordR').val() == "" || $('#passwordR').val() == null){
         $('#passwordR').css("border-color", "red");
         returnBool = false;
@@ -58,6 +68,7 @@ function validateReg(){
         $('#email').css("border-color", "red");
         returnBool = false;
     }
+
 
     if($('#accept_tnc').checked == false){
         $('#accept_tnc').css("border-color", "red");

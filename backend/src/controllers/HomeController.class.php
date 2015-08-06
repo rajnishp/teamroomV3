@@ -69,7 +69,8 @@ class HomeController extends BaseController {
 
 	}
 	function signup(){
-		if(isset($_POST['username'],$_POST['passwordR'], $_POST['email'])){
+		if(isset($_POST['username'],$_POST['passwordR'], $_POST['email'])
+			&& $_POST['username'] != '' && $_POST['passwordR'] != '' && $_POST['email'] !=''){
 			//if($_POST['password'] === $_POST['password2']){
 				
 				$this->user = new UserInfo(
