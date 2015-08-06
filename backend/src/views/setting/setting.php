@@ -436,9 +436,9 @@
 
                                   <div id="demo-dp-range">
                                     <div id="datepicker" class="input-daterange input-group">
-                                      <input type="text" name="from" id="work_from_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control" placeholder="YYY-MM-DD"/>
+                                      <input type="text" name="from" id="work_from_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getFrom()) ?>" class="form-control" placeholder="YYYY-MM-DD"/>
                                       <span class="input-group-addon">to</span>
-                                      <input type="text" name="to" id="work_to_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control" placeholder="YYY-MM-DD"/>
+                                      <input type="text" name="to" id="work_to_<?= $workExperience->getId() ?>" value="<?= ucfirst($workExperience -> getTo()) ?>" class="form-control" placeholder="YYYY-MM-DD"/>
                                     </div>
                                   </div>
                                 </div>

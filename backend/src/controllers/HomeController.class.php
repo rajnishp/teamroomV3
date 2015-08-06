@@ -1,44 +1,21 @@
 <?php
 
-require_once 'dao/DAOFactory.class.php';
-//require_once 'components/xxx.class.php';
-//require_once '.class.php';
+require_once 'controllers/BaseController.class.php';
 
-class HomeController {
-
-	private $userId;
-	private $project;
-	private $userInfoDAO;
-	private $user;
-	private $fromUrl;
-	private $logger;
-
-	
+class HomeController extends BaseController {	
 
 	function __construct (  ){
 		
-		global $baseUrl;
-		global $configs;
-		
-		//if ($_SERVER['HTTP_REFERER'] == $configs["COLLAP_BASE_URL"])
-			$this-> baseUrl = $configs["COLLAP_BASE_URL"];
-		//else
-		//	$this-> baseUrl = $configs["JOBS_COLLAP_BASE_URL"];
+		parent::__construct();
 
-		global $logger;
-		$this -> logger = $logger;
 		$this -> logger -> debug("HomeController started");
 
-
-		$DAOFactory = new DAOFactory();
-		$this -> projectDAO = $DAOFactory->getProjectsDAO();
-		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
-		//$this -> fromUrl = $_GET['from'];
-		
+		//$this -> fromUrl = $_GET['from'];		
 
 	}
 
 	function render (){
+		$baseUrl = $this->baseUrl;
 		// here its shower that user is not in session
 		 
 		try{

@@ -238,20 +238,20 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 
 			default:
-				if( isset($_SESSION["user_id"] )){
+				/*if( isset($_SESSION["user_id"] )){
 					$profileController = new ProfileController();
 					
 					$profileController -> render ();
 
 					break;
-				} 
+				}*/ 
 
-				else {
+				//else {
 					//langing page of collap 
 					// Can also be routed to 404 page
 					$jobsHomeController = new JobsHomeController();
 					$jobsHomeController -> render ();
-				}
+				//}
 
 			break;
 		}

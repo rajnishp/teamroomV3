@@ -28,7 +28,6 @@
             <!--   <hr class="spacer-sm"> -->
             <div class="row" style="margin-top: 20px;">
               <div class="col-sm-12 col-md-8 col-md-offset-1">
-                <h3 class="title">Post to Collap</h3>
                 <!-- Post to collap starts -->
                 <div class="share-widget clearfix">
                   <form id="postActivity" class="form-horizontal" onSubmit="return (validatePostActivity('dashboard'));">

@@ -1,27 +1,19 @@
 <?php
 
-require_once 'dao/DAOFactory.class.php';
-//require_once 'components/xxx.class.php';
-//require_once '.class.php';
+require_once 'controllers/BaseController.class.php';
 
-class JobsHomeController {
-
-	private $userId;
-	private $userInfoDAO;
-	private $user;
-	private $fromUrl;
-
+class JobsHomeController  extends BaseController {
 
 	function __construct (  ){
 		
-		$DAOFactory = new DAOFactory();
-		$this -> userInfoDAO = $DAOFactory->getUserInfoDAO();
-		//$this -> fromUrl = $_GET['from'];
+		parent::__construct();
 		
+		$this -> logger -> debug("JobsHomeController started");
 
 	}
 
 	function render (){
+		$baseUrl = $this->baseUrl;
 		
 		// here its shower that user is not in session
 		//global $configs;

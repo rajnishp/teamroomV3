@@ -123,7 +123,7 @@
             </div>
 
             <div class="row">            
-              <form class="form account-form login-form masthead-form" action="<?= $baseUrl ?>home/login<?= $this->fromUrl ? "?from=".$this->fromUrl:""  ?>" method="post" onSubmit="return (validateLog());">
+              <form class="form account-form login-form masthead-form" action="<?= $this -> baseUrl ?>home/login<?= $this->fromUrl ? "?from=".$this->fromUrl:""  ?>" method="post" onSubmit="return (validateLog());">
 
                 <div class="form-group">
                   <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username">
