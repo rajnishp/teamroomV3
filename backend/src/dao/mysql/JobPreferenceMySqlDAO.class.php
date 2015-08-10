@@ -57,7 +57,8 @@ class JobPreferenceMySqlDAO implements JobPreferenceDAO{
  	 * @param JobPreferenceMySql jobPreference
  	 */
 	public function insert($jobPreference){
-		$sql = 'INSERT INTO job_preference (user_id, current_ctc, expected_ctc, notice_period, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO job_preference (user_id, current_ctc, expected_ctc, notice_period, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?) 
+					ON DUPLICATE KEY UPDATE current_ctc = ?, expected_ctc = ?, notice_period = ?, last_update_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($jobPreference->getUserId());
@@ -65,6 +66,11 @@ class JobPreferenceMySqlDAO implements JobPreferenceDAO{
 		$sqlQuery->set($jobPreference->getExpectedCtc());
 		$sqlQuery->set($jobPreference->getNoticePeriod());
 		$sqlQuery->set($jobPreference->getAddedOn());
+		$sqlQuery->set($jobPreference->getLastUpdateOn());
+
+		$sqlQuery->set($jobPreference->getCurrentCtc());
+		$sqlQuery->set($jobPreference->getExpectedCtc());
+		$sqlQuery->set($jobPreference->getNoticePeriod());
 		$sqlQuery->set($jobPreference->getLastUpdateOn());
 
 		$id = $this->executeInsert($sqlQuery);	

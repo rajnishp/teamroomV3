@@ -551,7 +551,7 @@ ALTER TABLE projects
 /* Alter table job_prefenrennce , delete location_id, its ambigious */
 
 ALTER TABLE `job_preference` DROP `location_id` ;
-
+ALTER TABLE `job_preference` ADD UNIQUE (`user_id`);
 
 --
 -- Table structure for table `user_locations`
