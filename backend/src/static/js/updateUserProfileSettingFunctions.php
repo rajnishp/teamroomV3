@@ -78,11 +78,25 @@
         console.log("Inside Validate Job Preference");
         
         fields = ["current_ctc","expected_ctc","notice_period"];
-        
-        if(genericEmptyFieldValidator(fields)){
-          console.log("iam there");
-          postUpdateJobPreference(fields, key);
 
+        if(genericEmptyFieldValidator(fields)) {
+          var flag = true;
+            $.each(fields, function( index, value ) {
+              
+              var fieldVal = $("#"+ value).val();
+              if (!$.isNumeric(fieldVal)) {
+                $("#"+ value).css("border", "1px solid OrangeRed");
+                flag = false;
+              }
+            });
+
+            if (flag) {
+              postUpdateJobPreference(fields, key);
+            }
+            else {
+              error("Job Preference Information", "The Information contains illegal characters");
+              return false;
+            }
         }
         return false;
       }
@@ -93,7 +107,7 @@
         var collaborateAsArray = [];
         collaborateAsArray = $('input[type=checkbox]:checked').map(function(_, el) {
           return $(el).val();
-        }).get();                
+        }).get();        
         
         dataString = "first_name=" + $('#'+fields[0]).val() + "&last_name=" + $('#'+fields[1]).val() + "&phone=" + $('#'+fields[2]).val() + "&living_place=" + $('#'+fields[3]).val() + "&about_user=" + $('#'+fields[4]).val() + "&collaborateAs=" + collaborateAsArray;
         
@@ -121,7 +135,21 @@
         fields = ["first_name","last_name","phone","living_place", "about_user"];
 
         if(genericEmptyFieldValidator(fields)){
-          console.log("iam there");
+          
+          var phoneVal = $('#'+fields[2]).val();
+                  
+          var stripped = phoneVal.replace(/[\(\)\.\-\ ]/g, '');    
+          if (isNaN(parseInt(stripped))) {
+            error("Contact No", "The mobile number contains illegal characters");
+            $('#phone').css("border", "1px solid OrangeRed");
+            return false;
+          }
+          else if (phoneVal.length < 6) {
+            error("Contact No", "Make sure you included valid contact number");
+            $('#phone').css("border", "1px solid OrangeRed");
+            return false;
+          }
+          
           postUpdateProfile(fields);          
 
         }

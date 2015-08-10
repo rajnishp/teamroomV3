@@ -113,7 +113,6 @@
                     
                       <div class="panel-body">
                         <div class="tab-content">
-            
                           <!--First tab-->
                           <div id="tab_profile" class="tab-pane">
                             <div class="form-horizontal">
@@ -304,7 +303,7 @@
                             <div class="pull-right pad-all">
 
                               <button type="button" class="previous btn btn-info">Previous</button>
-
+                              <button type="button" class="next btn btn-primary" id="skip_tab_tech_strength" >Skip</button>
                               <button type="button" class="next btn btn-primary" id='validateUpdateTechStrength'>Next</button>
                             </div>
 
@@ -381,7 +380,7 @@
                             <div class="pull-right pad-all">
 
                               <button type="button" class="previous btn btn-info">Previous</button>
-
+                              <button type="button" class="next btn btn-primary" id="skip_tab_work_exp" >Skip</button>
                               <button type="button" class="next btn btn-primary">Next</button>
                             </div>
 
@@ -457,7 +456,7 @@
                                   <button type="submit" class="btn btn-success" onclick="return (validateUpdateJobPreference());">Save Changes</button>
                                  -->
                                   <button type="button" class="previous btn btn-info">Previous</button>
-
+                                  <button type="button" class="next btn btn-primary" id="skip_tab_job_pref" >Skip</button>
                                   <button type="button" class="next btn btn-primary">Next</button>
     
                                 </div> <!-- /.col -->
@@ -547,7 +546,7 @@
                             <div class="pull-right pad-all">
 
                               <button type="button" class="previous btn btn-info">Previous</button>
-
+                              <button type="button" class="next btn btn-primary" id="skip_tab_education" >Skip</button>
                               <button type="button" class="next btn btn-primary">Next</button>
                             </div>
 
@@ -696,7 +695,7 @@
                           <!--Seventh tab-->
                           <div id="tab_join_projects" class="tab-pane">
                             <!--Recommended Join Projects-->
-                            <?php  foreach ($this -> recommendedProjects as $project) { ?>
+                            <?php  foreach ($this -> recommendedJoinProjects as $project) { ?>
                               <div class="post" id="join_project_<?= $project-> getId()?>">
                                 <div class="post-aside" style="padding-top: 28px;">
                                   <div class="post-date">

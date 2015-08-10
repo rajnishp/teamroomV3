@@ -106,6 +106,7 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 		
 		//single page app
 		switch ($page) {
+
 			case "project":
 										
 					$projectController = new ProjectController($route[2]);
@@ -176,7 +177,7 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 				break;
 
 			case "fileUpload":
-					require_once "controllers/FilesController.class.php";
+				require_once "controllers/FilesController.class.php";
 					
 				break;
 
@@ -362,25 +363,25 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 							case 'forgetPassword':
 								$homeController -> forgetPassword ();
 								break;
-
-							case 'usernameCheck':
-								$homeController -> usernameCheck ();
-								break;
-
-							case 'emailCheck':
-								$homeController -> emailCheck ();
-								break;
 							
 							default:
 								$homeController -> render ();
 								break;
 						}
-						
-
 
 					}
 					else{
-						$homeController -> render ();
+						$checkNewRoute = explode("=",$route[2]);
+						
+						if ($checkNewRoute[0] == 'usernameCheck') {
+							$homeController -> usernameCheck (urldecode($checkNewRoute[1]));
+						}
+						elseif($checkNewRoute[0] == 'emailCheck') {
+							$homeController -> emailCheck (urldecode($checkNewRoute[1]));
+						}
+						else {
+							$homeController -> render ();
+						}
 					}
 
 				break;

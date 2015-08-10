@@ -9,8 +9,6 @@
 
 $(document).ready(function() {
 
-
-
 	// FORM WIZARD
 	// =================================================================
 	// Require Bootstrap Wizard
@@ -54,42 +52,112 @@ $(document).ready(function() {
 			}
 		},
 		onNext: function(){
-			
 			switch($('.tab-pane.active.in').attr('id')) {
 					case "tab_profile":
 						fields = ["first_name","last_name","phone","living_place", "about_user"];
-						if(genericEmptyFieldValidator(fields))
+						if(genericEmptyFieldValidator(fields)) {
+					        
+					        var phoneVal = $('#'+fields[2]).val();
+					        
+					        var stripped = phoneVal.replace(/[\(\)\.\-\ ]/g, '');    
+							if (isNaN(parseInt(stripped))) {
+								error("Contact No", "The mobile number contains illegal characters");
+								$('#phone').css("border", "1px solid OrangeRed");
+								return false;
+							}
+					        else if (phoneVal.length < 6) {
+					          error("Contact No", "Make sure you included valid contact number");
+					          $('#phone').css("border", "1px solid OrangeRed");
+					          return false;
+					        }
 							postUpdateProfile(fields);
-						else 
-							return false;  				
+						}
+						else
+							return false;
 						break;
 					case "tab_tech_strength":
 						fields = ["tech_strength"];
-						if(genericEmptyFieldValidator(fields))
-				        	postUpdateTechStrength(fields);
-						else 
-							return false;        				
+						
+						$("#skip_tab_tech_strength").click(function(){
+						    $(this).data('clicked', true);
+						    console.log("inside clicked true, check");
+						});
+						if($('#skip_tab_tech_strength').data('clicked')) {
+							console.log("inside clicked true");
+							return true;
+						}
+						else {
+							if(genericEmptyFieldValidator(fields))
+					        	postUpdateTechStrength(fields);
+							else 
+								return false;
+						}
 						break;
-			       case "tab_work_exp":
+			       	case "tab_work_exp":
 				        fields = ["company_name", "designation", "work_from", "work_to"];
-				        if(genericEmptyFieldValidator(fields))
-				            postUpdateWorkExp(fields);
-				        else 
-							return false;        				
-				        break;
+	
+						$("#skip_tab_work_exp").click(function(){
+						    $(this).data('clicked', true);
+						});
+						if($('#skip_tab_work_exp').data('clicked')) {
+						   	return true;
+						}
+						else {
+					        if(genericEmptyFieldValidator(fields))
+					            postUpdateWorkExp(fields);
+					        else 
+								return false;
+						}
+				        break;							
 				    case "tab_job_preference":
 				        fields = ["current_ctc","expected_ctc","notice_period"];
-				        if(genericEmptyFieldValidator(fields))
-				            postUpdateJobPreference(fields);
-				        else
-							return false;
+				        console.log("i am there");
+	
+						$("#skip_tab_job_pref").click(function(){
+						    $(this).data('clicked', true);
+						});
+						if($('#skip_tab_job_pref').data('clicked')) {
+						   	return true;
+						}
+						else {
+					        if(genericEmptyFieldValidator(fields)) {
+								var flag = true;
+					            $.each(fields, function( index, value ) {
+				                
+									var fieldVal = $("#"+ value).val();
+									if (!$.isNumeric(fieldVal)) {
+										$("#"+ value).css("border", "1px solid OrangeRed");
+										flag = false;
+									}
+		  			            });
+
+					            if (flag){
+									postUpdateJobPreference(fields);
+					            }
+					            else {
+					            	error("Job Preference Information", "The Information contains illegal characters");
+					            	return false;
+					            }
+					        }
+					        else
+								return false;
+						}
 				        break;
 				    case "tab_education":
 				        fields = ["institute", "degree", "branch", "edu_from", "edu_to"];
-				        if(genericEmptyFieldValidator(fields))
-				           postUpdateEducation(fields);
-				        else
-							return false;
+	
+						$("#skip_tab_education").click(function(){
+						    $(this).data('clicked', true);
+						});
+						if($('#skip_tab_education').data('clicked')) {
+						   	return true;
+						}
+						else {
+					        if(genericEmptyFieldValidator(fields))
+					           postUpdateEducation(fields);
+					        else
+								return false;
+						}
 				        break;
 				    case "tab_projects":
 				        fields = ["title","my_role","tech_skills","team_size","description"];
@@ -103,6 +171,7 @@ $(document).ready(function() {
 					case "tab_join_projects":
 				    	return true;
 				        break;
+				   
 				    default:
 				    	return false;
 				}

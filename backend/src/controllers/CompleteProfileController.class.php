@@ -25,6 +25,7 @@ class CompleteProfileController extends BaseController  {
 			$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
 			$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
 			$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
+			$this-> recommendedJoinProjects = $this->projectsDAO->getRecommendedJoinProjectsTab($this->userId);
 
 			require_once 'views/profile/completeProfile.php';
 			

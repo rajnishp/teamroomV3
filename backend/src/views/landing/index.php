@@ -41,7 +41,7 @@
               <!-- SECTION TITLE -->
               <h4 class="masthead-title">Register</h4>
             </div>
-              <form class="form account-form registration-form masthead-form" method="POST" action="<?= $baseUrl?>home/signup" onSubmit="return (validateReg());">
+              <form class="form account-form registration-form masthead-form" method="POST" action="<?= $this-> baseUrl?>home/signup" onSubmit="return (validateReg());">
 
                 
                 <div class="form-group">
@@ -51,7 +51,7 @@
         
                 <div class="form-group">
                   <input type="text" class="input-block-level form-control" placeholder="Enter username" id="usernameR" name="username" onkeyup="nospaces(this)" onblur="usernameCheck();"  />
-                  <span id="status"></span>
+                  <span id="status_username"></span>
                 </div> <!-- /.form-group -->
 
                 <div class="form-group">
@@ -925,7 +925,6 @@
 
 <script type="text/javascript">
 
-/*   
 function usernameCheck() {
   var xmlhttp;
   var username=document.getElementById("usernameR");
@@ -938,7 +937,7 @@ function usernameCheck() {
     }
     xmlhttp.onreadystatechange=function(){
       if (xmlhttp.readyState==4 && xmlhttp.status==200){
-        document.getElementById("status").innerHTML=xmlhttp.responseText;
+        document.getElementById("status_username").innerHTML=xmlhttp.responseText;
       }
     };
     xmlhttp.open("GET","<?= $this->baseUrl ?>home/usernameCheck="+encodeURIComponent(username.value),true);
@@ -946,7 +945,7 @@ function usernameCheck() {
   }
   return false;
 }
-         
+
 function emailCheck() {
   var xmlhttp;
   var email=document.getElementById("email");
@@ -962,12 +961,13 @@ function emailCheck() {
         document.getElementById("status_email").innerHTML=xmlhttp.responseText;
       }
     };
-    xmlhttp.open("GET","home/emailCheck="+encodeURIComponent(email.value),true);
+    xmlhttp.open("GET","<?= $this->baseUrl ?>home/emailCheck="+encodeURIComponent(email.value),true);
     xmlhttp.send();
     
   }
 };
 
+/*
 function email_forget() {
   var xmlhttp;
   var email_forget=document.getElementById("email_forget");

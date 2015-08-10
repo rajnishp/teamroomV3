@@ -69,7 +69,8 @@ class HomeController extends BaseController {
 
 	}
 	function signup(){
-		if(isset($_POST['username'],$_POST['passwordR'], $_POST['email'])){
+		if(isset($_POST['username'],$_POST['passwordR'], $_POST['email'])
+			&& $_POST['username'] != '' && $_POST['passwordR'] != '' && $_POST['email'] !=''){
 			//if($_POST['password'] === $_POST['password2']){
 				
 				$this->user = new UserInfo(
@@ -153,35 +154,35 @@ class HomeController extends BaseController {
 		}
 	}
 
-	function usernameCheck() {
+	function usernameCheck($username) {
 
-		$username=$_REQUEST['username'];
+		//$username=$_REQUEST['username'];
 		if(preg_match("/[^a-z0-9]/",$username)) {
 			print "<span style=\"color:red;\">Username contains illegal charaters.</span>";
 			exit;
 		}
 
-		$isUserExist = $this->userInfoDAO->load($username);
+		$isUserExist = $this->userInfoDAO->queryByUsername($username);
 
 		if($isUserExist) {
 			print "<span style=\"color:red;\">Username already exists</span>";
 		}
 		else {
-			print "<span style=\"color:green;\"><i class='icon-ok'> </i>Ok</span>";
+			print "<span style=\"color:green;\"><i class='fa fa-ok'> </i>Ok</span>";
 		}
 	}
 
-	function emailCheck() {
-		$email=$_REQUEST['email'];
+	function emailCheck($email) {
+		//$email=$_REQUEST['email'];
 		
-		$isEmailExist = $this->userInfoDAO->load($email);
+		$isEmailExist = $this->userInfoDAO->queryByEmail($email);
 
 		if($isEmailExist) {
 			print "<span style=\"color:red;\">Email already exists</span>";
 			return true ;
 		}
 		else {
-			print "<span style=\"color:green;\"><i class='icon-ok'> </i>Ok</span>";
+			print "<span style=\"color:green;\"><i class='fa fa-ok'> </i>Ok</span>";
 			return false;
 		}
 	}
