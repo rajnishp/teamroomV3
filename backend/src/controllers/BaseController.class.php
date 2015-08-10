@@ -43,6 +43,8 @@ abstract class BaseController {
 	protected $collaborativeRoleDAO;
 	protected $notificationsDAO;
 
+	protected $userPushFormsDAO;
+
 	
 
 	function __construct (  ){
@@ -95,6 +97,8 @@ abstract class BaseController {
 		$this -> userSocialLinksDAO = $DAOFactory->getUserSocialLinksDAO();
 
 		$this -> collaborativeRoleDAO = $DAOFactory->getUserCollaborativeRoleDAO();
+
+		$this -> userPushFormsDAO = $DAOFactory->getFormsDAO();
 
 
 		

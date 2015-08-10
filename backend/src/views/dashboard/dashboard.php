@@ -28,6 +28,11 @@
             <!--   <hr class="spacer-sm"> -->
             <div class="row" style="margin-top: 20px;">
               <div class="col-sm-12 col-md-8 col-md-offset-1">
+
+              <!-- push forms div starts here for dynamic loading for forms -->  
+                <div id ="push_form_div"> </div>
+              <!-- push forms div starts here for dynamic loading for forms ends -->
+
                 <!-- Post to collap starts -->
                 <div class="share-widget clearfix">
                   <form id="postActivity" class="form-horizontal" onSubmit="return (validatePostActivity('dashboard'));">
@@ -132,6 +137,30 @@
       </div>
       
       <?php require_once 'views/footer/footer.php'; ?>
+      <?php include_once "static/js/updateUserProfileSettingFunctions.php"; ?>
+
+      <script type="text/javascript">
+
+            /*console.log("outside setTimeout fnction");
+            setTimeout(function(){
+              console.log("inside setTimeout fnction");
+              $.ajax({
+                type: "POST",
+                url: "<?= $this-> baseUrl ?>" + "dashboard/pushForm",
+                //data: dataString,
+                cache: false,
+                success: function(result){
+                  //result = "<span> i am there </span>";
+                  $('#push_form_div').html(result);
+                },
+                error: function(result){
+                
+                }
+              });
+            },10000);*/
+
+
+      </script>
      
   </body>
 </html>

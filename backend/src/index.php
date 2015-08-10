@@ -8,6 +8,8 @@ include_once "controllers/ProfileController.class.php";
 include_once "controllers/DashboardController.class.php";
 include_once "controllers/SettingController.class.php";
 include_once "controllers/CompleteProfileController.class.php";
+include_once "controllers/PushFormsController.class.php";
+
 
 //include_once "components/base.php";
 
@@ -250,6 +252,11 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 							case 'forgetPassword':
 								$homeController -> forgetPassword ();
+								break;
+
+							case 'pushForm':
+								$pushFormController = new PushFormsController($route[2]);
+								$pushFormController ->  pushForm();
 								break;
 
 							default:

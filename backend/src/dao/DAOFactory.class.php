@@ -96,6 +96,20 @@ class DAOFactory{
 	}
 
 	/**
+	 * @return FormsDAO
+	 */
+	public static function getFormsDAO(){
+		
+		require_once('FormsDAO.class.php');
+		require_once('models/Form.class.php');
+		require_once('mysql/FormsMySqlDAO.class.php');
+		require_once('mysql/ext/FormsMySqlExtDAO.class.php');
+		
+		return new FormsMySqlExtDAO();
+	}
+
+
+	/**
 	 * @return InvestmentInfoDAO
 	 */
 	public static function getInvestmentInfoDAO(){
@@ -312,6 +326,20 @@ class DAOFactory{
 	 */
 	public static function getUserExternalProfilesDAO(){
 		return new UserExternalProfilesMySqlExtDAO();
+	}
+
+
+	/**
+	 * @return UserFormsDAO
+	 */
+	public static function getUserFormsDAO(){
+		
+		require_once('UserFormsDAO.class.php');
+		require_once('models/UserForm.class.php');
+		require_once('mysql/UserFormsMySqlDAO.class.php');
+		require_once('mysql/ext/UserFormsMySqlExtDAO.class.php');
+		
+		return new UserFormsMySqlExtDAO();
 	}
 
 	/**

@@ -24,6 +24,7 @@ CREATE DATABASE `teamroom_push_forms` CHARACTER SET utf8mb4 COLLATE utf8mb4_gene
 
 -- --------------------------------------------------------
 
+USE `teamroom_push_forms`;
 --
 -- Table structure for table `forms`
 --
