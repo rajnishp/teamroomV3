@@ -84,6 +84,10 @@
                       </div>
                       <!-- /.post-aside -->
                       <div class="post-main">
+                       <?php if( get_class($activity) == "Project" ) { 
+                          ?>
+                         <button class="btn btn-lg btn-success btn-labeled fa fa-plus text-semibold pull-right" onclick="return (validateJoinProject(<?= $activity-> getId()?>));" style="margin-right: 5px; margin-top: 14px;"> JOIN </button>
+                        <?php } ?>
                          <h4 class="post-title"><a href="<?= $this-> baseUrl ?>activity/<?= $activity -> getId() ?>" target="_blank"><?= $activity->getRefinedTitle() ?></a></h4>
                          <?php //dropDown_comment(8, 7, 9); ?>
                          <h5 class="post-meta">Published by <a href="<?= $this-> baseUrl ?>profile/<?= $activity -> getUsername() ?>" target="_blank"><?= ucfirst($activity->getFirstName()) ?> <?= ucfirst($activity->getLastName()) ?></a> in <a href="javascript:;">India</a></h5>

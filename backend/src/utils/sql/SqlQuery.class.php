@@ -3,7 +3,7 @@
 /**
  * Object represents sql query with params
  *
- * @author: Rahul Lahoria (rahul_lahoria@capillarytech.com)
+ * @author: Rahul Lahoria (rahul_lahoria@yahoo.com)
  * @date: 9.12.2014
  */
 require_once 'exceptions/InvalidAttributeTypeException.class.php';

@@ -26,8 +26,10 @@ class DashboardController extends BaseController {
 			//queryAllUserProjects
 			
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
+			$recProject = $this->projectsDAO->getLastestProjects();
+			//var_dump($recProject);die();
 			$top10Activities =  $this->challengesDAO->queryAllChallenges(0,10);
-			
+			$top10Activities = array_merge($recProject, $top10Activities);
 			require_once 'views/dashboard/dashboard.php';
 
 		} catch (Execption $e){
