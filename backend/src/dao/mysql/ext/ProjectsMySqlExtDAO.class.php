@@ -284,6 +284,17 @@ class ProjectsMySqlExtDAO extends ProjectsMySqlDAO{
 
 	}
 
+	public function getLastestProjects() {
+		$sql = "SELECT project.id, project.project_title as title, project.stmt as statement, project.type, project.creation_time, project.status, user.first_name, user.last_name, user.username, 
+						(SELECT COUNT(user_id) FROM teams WHERE teams.project_id = project.id GROUP BY project_id ORDER BY COUNT(user_id) DESC LIMIT 0, 10) as project_members
+						FROM projects as project JOIN user_info as user 
+							GROUP BY project.id ORDER BY project_members DESC LIMIT 0, 10;";
+
+		$sqlQuery = new SqlQuery($sql);
+		return $this->getListProjects($sqlQuery);
+
+	}
+
 	public function getRecommendedProjects($userId) {
 		$sql = "(SELECT DISTINCT project.*, project.project_title as title, project.stmt as statement, user.first_name, user.last_name, user.username
 					FROM projects as project JOIN user_info as user
