@@ -22,13 +22,22 @@ class CompleteProfileController extends BaseController  {
 		
 		try{
 			$userProfile = $this -> userInfoDAO-> load($this->userId);
-			$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
-			$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
-			$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
-			$this-> recommendedJoinProjects = $this->projectsDAO->getRecommendedJoinProjectsTab($this->userId);
 
-			require_once 'views/profile/completeProfile.php';
+			$this-> recommendedJoinProjects = $this->projectsDAO->getRecommendedJoinProjectsTab($this->userId);			
 			
+			if ($_SESSION['jobsCollap']) {
+			
+				$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
+				$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
+				$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
+			
+				require_once 'views/profile/jobCompleteProfile.php';
+			}
+			else
+				require_once 'views/profile/completeProfile.php';
+
+
+
 		} catch (Exception $e){
 			require_once 'views/error/pages-404.php';	
 			$this->logger->error("Error occur :500 ".json_encode($e) );

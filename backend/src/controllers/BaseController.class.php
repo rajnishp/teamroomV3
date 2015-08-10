@@ -15,6 +15,7 @@ abstract class BaseController {
 	protected $projectsDAO;
 	protected $userInfoDAO;
 	protected $baseUrl;
+	protected $jobsBaseUrl;
 
 	protected $challengeResponsesDAO;
 	protected $projectResponsesDAO;
@@ -48,6 +49,7 @@ abstract class BaseController {
 		
 		global $configs; 
 		$this->baseUrl = $configs["COLLAP_BASE_URL"];
+		$this->jobsBaseUrl = $configs["JOBS_COLLAP_BASE_URL"];
 
 		$this->url = rtrim($this->baseUrl,"/").$_SERVER[REQUEST_URI];
 

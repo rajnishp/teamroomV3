@@ -52,7 +52,7 @@ $(document).ready(function() {
 			}
 		},
 		onNext: function(){
-			switch($('.tab-pane.active.in').attr('id')) {
+			switch($('.tab-pane.active').attr('id')) {
 					case "tab_profile":
 						fields = ["first_name","last_name","phone","living_place", "about_user"];
 						if(genericEmptyFieldValidator(fields)) {

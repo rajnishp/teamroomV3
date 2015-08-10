@@ -54,6 +54,9 @@ class HomeController extends BaseController {
 				else {
 					$redir = $this-> baseUrl;
 				}
+				if ($_SERVER['HTTP_REFERER'] == $this-> jobsBaseUrl) {
+					$_SESSION['jobsCollap'] =true;
+				}
 
 				header('Location: '.$redir);		
 
@@ -108,6 +111,10 @@ class HomeController extends BaseController {
 					$_SESSION['last_login'] = $this->user->getLastLoginTime() ;
 					//$obj = new rank($newid);
 					$_SESSION['rank'] = $this->user->getRank();
+
+					if ($_SERVER['HTTP_REFERER'] == $this-> jobsBaseUrl) {
+						$_SESSION['jobsCollap'] =true;
+					}
 
 					header('Location: ' .$this-> baseUrl ."completeProfile");
 
