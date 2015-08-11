@@ -6,7 +6,7 @@ require_once 'controllers/BaseController.class.php';
 class DashboardController extends BaseController {
 
 	private $pageUrl;
-
+	private $teamMembers;
 	function __construct (  ){
 		parent::__construct();	
 		$this ->pageUrl = $this->baseUrl;
@@ -23,6 +23,7 @@ class DashboardController extends BaseController {
 
 
 		try{
+
 			//queryAllUserProjects
 			
 			//$recProject = $this->projectsDAO->queryAllUserProjects($this->userId);
@@ -31,6 +32,7 @@ class DashboardController extends BaseController {
 			$top10Activities =  $this->challengesDAO->queryAllChallenges(0,10);
 			$top10Activities = array_merge($recProject, $top10Activities);
 			shuffle($top10Activities);
+			
 			require_once 'views/dashboard/dashboard.php';
 
 		} catch (Execption $e){
@@ -38,6 +40,16 @@ class DashboardController extends BaseController {
 			$this->logger->error("Error occur :500 ".json_encode($e) );
 		}
 
+	}
+
+	private	function isProjectMember($projectId) {
+		$this-> teamMembers = $this-> teamsDAO -> queryAllTeamMembers( $projectId);
+		foreach ($this->teamMembers as $key => $member) {
+			if ( $this->userId == $member->getUserId()) {
+				return true;
+			}
+		}
+		return false;
 	}
 
 	function getNextActivities(){
