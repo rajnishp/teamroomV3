@@ -30,6 +30,7 @@ class DashboardController extends BaseController {
 			//var_dump($recProject);die();
 			$top10Activities =  $this->challengesDAO->queryAllChallenges(0,10);
 			$top10Activities = array_merge($recProject, $top10Activities);
+			shuffle($top10Activities);
 			require_once 'views/dashboard/dashboard.php';
 
 		} catch (Execption $e){

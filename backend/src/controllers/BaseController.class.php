@@ -2,7 +2,6 @@
 
 require_once 'dao/DAOFactory.class.php';
 require_once 'views/source/actionDropdown.php';
-require_once 'views/source/postForms.php';
 //require_once 'components/xxx.class.php';
 //require_once '.class.php';
 
