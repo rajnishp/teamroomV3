@@ -194,17 +194,28 @@
         return false;
       }
 
-      function postUpdateSkills(fields){
+      function postUpdateSkills(fields1, fields2, fields3){
         var dataString = "";
-        dataString = "skills="+fields;
+        dataString = "skills="+fields1 + "&new_skills=" + fields2;
         //alert (dataString); return false;
-        
+        fields2 = fields2.split(',');
+        //fields2 is a string, spplit converts it to an array with seperated by comma
         $.ajax({
           type: "POST",
           url: "<?= $baseUrl ?>" + "setting/updateSkills",
           data: dataString,
           cache: false,
           success: function(result){
+            if (fields3 != undefined && fields3.length > 0) {
+              $.each(fields3, function(key, value){
+                $("#skills_display_div").append("<span class='btn btn-secondary btn-sm'>" + value + "<span>");
+              });              
+            }
+            if (fields2 != undefined && fields2.length > 0) {
+              $.each(fields2, function(key, value){
+                $("#skills_display_div").append("<span class='btn btn-secondary btn-sm'>" + value + "<span>");
+              });              
+            }
             success("Update Skills",result);
           },
           error: function(result){
@@ -217,24 +228,26 @@
 
         console.log("Inside Validate user Skills");
         
-        
+        var newSkillsArray = $('#new_skill').val();
+
         var skillsArray = []; 
         $('#demo-cs-multiselect :selected').each(function(i, selected){ 
           skillsArray[i] = $(selected).val(); 
         });
+
+        var skillNamesArray = [];
+        $('#demo-cs-multiselect :selected').each(function(i, selected){ 
+          skillNamesArray[i] = $(selected).text(); 
+        });
         
-        if (typeof skillsArray !== 'undefined' && skillsArray.length > 0)
-          postUpdateSkills(skillsArray);
+        if ((typeof skillsArray !== 'undefined' && skillsArray.length > 0) || (newSkillsArray != undefined && newSkillsArray.length > 0) )
+          postUpdateSkills(skillsArray, newSkillsArray, skillNamesArray);
         else {
           $('#demo-cs-multiselect').css("border-color", "red");
           error("Skills","Select your skills");
           return false;
         }
-        //if(genericEmptyFieldValidator(skillsArray)){
-         
-                  
 
-        //}
         return false;
       }
 

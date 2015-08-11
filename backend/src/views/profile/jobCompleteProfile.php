@@ -253,15 +253,15 @@
 
                                   <label class="col-md-3 control-label">Add Skills</label>
 
-                                  <div class="col-md-7">                                  
-                                    <select id="demo-cs-multiselect" name="skills" data-placeholder="Choose a Skill..." multiple tabindex="4">
+                                  <div class="col-md-7">
+                                    <select id="demo-cs-multiselect" name="skills" data-placeholder="Choose a Skill..." multiple tabindex="4" style="margin-bottom: 0px;">
                                       <?php foreach ($allSkills as $skillName) { ?>
-                                        <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>  
+                                        <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>
                                       <?php } ?>
                                     </select>
-                                    
                                     <small class="help-block">Ex: C, Cpp, PHP, JAVA</small>                                
-
+                                    <input type="text" name = "new_skill" id="new_skill" class="form-control" placeholder="Add new Skill" data-role="tagsinput" style="margin-bottom: 0px;">
+                                    <small class="help-block">Enter new Skill seperated by comma (,)...</small>
                                     <button type="submit" id="skills" class="btn btn-success" onclick="return (validateUpdateSkills());">Add Skills</button>
 
                                   </div> <!-- /.col -->
@@ -280,7 +280,7 @@
                                   <div class="col-md-7">
                                     <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
                                   
-                                    <small class="help-block">Completed course on ETHICAL HACKING from XYZ...</small>                                
+                                    <small class="help-block">Completed course on ETHICAL HACKING from XYZ...</small>
                                     <small class="help-block">Winner of xyz Hackathon with Idea ------ </small>                                
                                   
                                   </div> <!-- /.col -->

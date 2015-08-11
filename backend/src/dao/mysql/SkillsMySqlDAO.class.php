@@ -57,9 +57,10 @@ class SkillsMySqlDAO implements SkillsDAO{
  	 * @param SkillsMySql skill
  	 */
 	public function insert($skill){
-		$sql = 'INSERT INTO skills (name) VALUES (?)';
+		$sql = 'INSERT INTO skills (name) VALUES (?) ON DUPLICATE KEY UPDATE name = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
+		$sqlQuery->set($skill->getName());
 		$sqlQuery->set($skill->getName());
 
 		$id = $this->executeInsert($sqlQuery);	

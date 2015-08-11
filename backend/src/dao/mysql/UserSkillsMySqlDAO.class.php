@@ -57,9 +57,11 @@ class UserSkillsMySqlDAO implements UserSkillsDAO{
  	 * @param UserSkillsMySql userSkill
  	 */
 	public function insert($userSkill){
-		$sql = 'INSERT INTO user_skills (user_id, skill_id) VALUES (?, ?)';
+		$sql = 'INSERT INTO user_skills (user_id, skill_id) VALUES (?, ?) ON DUPLICATE KEY UPDATE user_id = ?, skill_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
+		$sqlQuery->setNumber($userSkill->getUserId());
+		$sqlQuery->setNumber($userSkill->getSkillId());
 		$sqlQuery->setNumber($userSkill->getUserId());
 		$sqlQuery->setNumber($userSkill->getSkillId());
 

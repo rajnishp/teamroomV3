@@ -446,27 +446,41 @@ class SettingController extends BaseController {
 
 	function updateSkills() {
 
-		if(isset($_POST['skills']) && $_POST['skills'] != '') {
+		if((isset($_POST['skills']) && $_POST['skills'] != '') || (isset($_POST['new_skills']) && $_POST['new_skills'] != '') ) {
 
 			$skillIds = explode(',', $_POST['skills']);
-
 			foreach ($skillIds as $skill_id) {
-				
-				$skillsObj = new UserSkill(
-									$this -> userId,
-									$skill_id
-								);
-
+				$skillsObj = new UserSkill( $this -> userId, $skill_id);
 				try {
 					$this -> userSkillsInsertDAO ->insert($skillsObj);
 				}
 				catch (Exception $e) {
+					$this->logger->error("Error occur :500 ".json_encode($e) );
+				}
+			}
 
+			$newSkills = explode(',', $_POST['new_skills']);
+			foreach ($newSkills as $skillName) {	
+				$newSkillObj = new Skill( $skillName );
+				try {
+					$newSkillId = $this -> userSkillDAO ->insert($newSkillObj);					
+				}
+				catch (Exception $e) {
+					$this->logger->error("Error occur :500 ".json_encode($e) );
+				}
+				if ($newSkillId) {
+					$newSkillsObj = new UserSkill( $this -> userId, $newSkillId );
+					try {
+						$this -> userSkillsInsertDAO ->insert($newSkillsObj);
+						$this->logger->debug("insert new skill to userskills");
+					}
+					catch (Exception $e) {
+						$this->logger->error("Error occur :500 ".json_encode($e) );
+					}
 				}
 			}
 			echo "Updated Successfully";
 		}
-		
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Skills field can Not Be Empty";
