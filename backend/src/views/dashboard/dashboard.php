@@ -12,7 +12,7 @@
 <html lang="en" class="no-js">
   <!--<![endif]-->
   <head>
-     <title>Homepage &middot; Welcome to Collap</title>
+     <title>Homepage | Welcome to Collap</title>
      <meta charset="utf-8">
      <meta name="viewport" content="width=device-width, initial-scale=1.0">
      <meta name="author" content="collap com">
