@@ -57,7 +57,9 @@ class DashboardController extends BaseController {
 						$newsActivities[] = new Challenge(0, null, null,0, $news->titleNoFormatting, 
 											$imgStr.$news->content . " <a href='". $news->unescapedUrl ."' > more </a>  ", null, null, 0, 0, 
 											date("Y-m-d H:i:s")	, null, $news->publisher, null, null, null);
-			}	}
+						$imgStr = "";
+				}	
+			}
 		}
 		return $newsActivities;
 
