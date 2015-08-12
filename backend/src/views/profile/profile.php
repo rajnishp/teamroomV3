@@ -239,7 +239,10 @@
                           </div>
                         </div>
 
-                        <?php if($userJobPreference-> getUserId() == $this-> userId) { ?>
+                        <?php foreach ($userJobPreference as $preference) { 
+                          if($preference-> getUserId() == $this-> userId) { 
+                            echo $preference-> getUserId() . "userId job preference". "<br/> userid Session". $this-> userId; 
+                            ?>
                           <div class = "row heading-block">
                             <div class="col-md-3 col-lg-3 col-sm-3">
                               
@@ -268,7 +271,10 @@
                               </div> <!-- /.list-group -->
                             </div>
                           </div>
-                        <?php } ?>
+                        <?php }
+                          break;
+                         }?>
+
                         <div class = "row">
                           <div class="col-md-3 col-lg-3 col-sm-3">
                             <div class="post-title">

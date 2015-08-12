@@ -55,7 +55,7 @@ class ProfileController extends BaseController {
 				$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> profileId);
 				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> profileId);
 				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> profileId);
-//var_dump($userJobPreference); die();
+
 				$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> profileId);
 
 				$userSocialLinks = $this -> userSocialLinksDAO -> getUserSocialLinks($this -> profileId);
@@ -72,7 +72,7 @@ class ProfileController extends BaseController {
 				$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
 				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
 				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
-//var_dump($userJobPreference); die();
+
 				$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
 
 				$userSocialLinks = $this -> userSocialLinksDAO -> getUserSocialLinks($this -> userId);
