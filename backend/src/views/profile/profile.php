@@ -240,9 +240,7 @@
                         </div>
 
                         <?php foreach ($userJobPreference as $preference) { 
-                          if($preference-> getUserId() == $this-> userId) { 
-                            echo $preference-> getUserId() . "userId job preference". "<br/> userid Session". $this-> userId; 
-                            ?>
+                          if($preference-> getUserId() == $this-> userId) { ?>
                           <div class = "row heading-block">
                             <div class="col-md-3 col-lg-3 col-sm-3">
                               
