@@ -27,7 +27,7 @@
           <div id="content-container">
             <!--   <hr class="spacer-sm"> -->
             <div class="row" style="margin-top: 20px;">
-              <div class="col-lg-8 col-sm-12 col-md-8 col-md-offset-1">
+              <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
 
               <!-- push forms div starts here for dynamic loading for forms -->  
                 <div id ="push_form_div"> </div>
@@ -42,8 +42,10 @@
                     <br />
                     <textarea class="form-control share-widget-textarea" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
                     <div class="share-widget-actions">
-                      <div class="share-widget-types pull-left">
-                        <div class="col-md-6" style="margin-top: 9px;">
+                      
+                      <div class="share-widget-types">
+                        
+                        <div class="col-md-6 col-sm-6 col-xs-7" style="margin-top: 9px;">
                           <label class="form-radio form-normal active form-inline">
                           <input type="radio" checked="" name="activity" id="activity_type" value="1"> Challenge 
                           </label>
@@ -54,12 +56,22 @@
                           <input type="radio" name="activity" id="activity_type" value="4"> Idea
                           </label>
                         </div>
-                        <div class="col-md-6">
-                          <input type="file" name="_file" id="_file" class="btn btn-default btn-file pull-right">
+
+                        <div class="col-md-3 col-sm-4 col-xs-3">
+                          
+                          <!-- <input type="file" name="_file" id="_file" class="btn btn-default btn-file pull-right"> -->
+                        
+                          <span class="btn btn-default btn-file">
+                            Browse... <input type="file" name="_file" id="_file" class="btn btn-default btn-file">
+                          </span>
+                        
                         </div>
-                      </div>
-                      <div class="pull-right">
-                        <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                        <div class="col-md-3 col-sm-2 col-xs-2">
+                          <div class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                    <!-- /.share-widget-actions -->
@@ -76,6 +88,7 @@
                 <!-- /.heading-block -->
                 <hr>
                 <hr class="spacer-sm">
+                
                 <div class="activity-1" id="panel-cont">
                    <?php foreach ($top10Activities as $activity) { ?>
                    <div class="post">
@@ -130,6 +143,7 @@
                    </div>
                    <?php } ?>
                 </div>
+                
                 </div>
               </div>
             </div>

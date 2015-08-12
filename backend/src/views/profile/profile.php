@@ -239,8 +239,7 @@
                           </div>
                         </div>
 
-                        <?php foreach ($userJobPreference as $preference) { 
-                          if($preference-> getUserId() == $this-> userId) { ?>
+                        <?php if($userJobPreference[0] !=NULL && $userJobPreference[0] -> getUserId() == $this-> userId) { ?>
                           <div class = "row heading-block">
                             <div class="col-md-3 col-lg-3 col-sm-3">
                               
@@ -269,9 +268,7 @@
                               </div> <!-- /.list-group -->
                             </div>
                           </div>
-                        <?php }
-                          break;
-                         }?>
+                        <?php } ?>
 
                         <div class = "row">
                           <div class="col-md-3 col-lg-3 col-sm-3">

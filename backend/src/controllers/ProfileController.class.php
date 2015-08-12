@@ -73,6 +73,8 @@ class ProfileController extends BaseController {
 				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
 				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
 
+//var_dump($userJobPreference[0]); die();
+
 				$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
 
 				$userSocialLinks = $this -> userSocialLinksDAO -> getUserSocialLinks($this -> userId);
