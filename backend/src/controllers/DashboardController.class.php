@@ -55,7 +55,7 @@ class DashboardController extends BaseController {
 						if($news->image->url)
 							$imgStr = "<img class=\"post-img img-responsive\" style=\"max-width: 100%;\" src=\"". $news->image->url ."\">";
 						$newsActivities[] = new Challenge(0, null, null,0, $news->titleNoFormatting, 
-											$imgStr.$news->content . " <a href='". $news->unescapedUrl ."' > more </a>  ", null, null, 0, 0, 
+											$imgStr.$news->content . " <a href='". $news->unescapedUrl ."' > <b> more </b> </a>  ", null, null, 0, 0, 
 											date("Y-m-d H:i:s")	, null, $news->publisher, null, null, null);
 			}	}
 		}

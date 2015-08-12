@@ -27,7 +27,7 @@
           <div id="content-container">
             <!--   <hr class="spacer-sm"> -->
             <div class="row" style="margin-top: 20px;">
-              <div class="col-sm-12 col-md-8 col-md-offset-1">
+              <div class="col-lg-8 col-sm-12 col-md-8 col-md-offset-1">
 
               <!-- push forms div starts here for dynamic loading for forms -->  
                 <div id ="push_form_div"> </div>
