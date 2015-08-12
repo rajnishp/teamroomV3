@@ -216,85 +216,9 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <form action="<?= $baseUrl ?>setting/updateUserInfo" class="form-horizontal" method="POST" onSubmit="return (validateUpdateProfile());">
+                        <form class="form-horizontal" onSubmit="return (validateUpdateProfile());">
 
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Username</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="user_name" id="user_name" value="<?= ucfirst($userProfile->getUsername())?>" class="form-control" disabled />
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">First Name</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="first_name" id= "first_name" value="<?= ucfirst($userProfile->getFirstName() )?>" class="form-control" />
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-
-
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Last Name</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="last_name"  id= "last_name" value="<?= ucfirst($userProfile->getLastName() )?>" class="form-control" />
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Contact Number</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="phone" id="phone" value="<?= ucfirst($userProfile->getPhone() )?>" class="form-control" />
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Current Living Place</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="living_place" id="living_place" value="<?= ucfirst($userProfile->getLivingTown() )?>" class="form-control" />
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-
-
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Email Address</label>
-
-                            <div class="col-md-7">
-                              <input type="text" name="email_address" value="<?= ucfirst($userProfile->getEmail() )?>" class="form-control" disabled/>
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">About You</label>
-
-                            <div class="col-md-7">
-                              <textarea name="about_user" id="about_user" rows="6" class="form-control"><?= $userProfile -> getAboutUser() ?></textarea>
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-
-
+                          <?php require_once 'views/forms/basicInformation.php'; ?>
 
                           <div class="form-group">
                             <div class="col-md-7 col-md-push-3">
@@ -556,7 +480,7 @@
                                   <div id="">
                                     <div id="" class="input-daterange input-group">
                                       <input type="text" name="from" id="edu_from_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getFrom()) ?>" class="form-control" placeholder="YYYY"/>
-                                      <span class="input-group-addon">to</span>
+                                      <span class="input-group-addon">To</span>
                                       <input type="text" name="to" id="edu_to_<?= $education -> getId() ?>" value="<?= ucfirst($education -> getTo()) ?>" class="form-control" placeholder="YYYY"/>
                                     </div>
                                   </div>
@@ -614,7 +538,7 @@
                                 <div id="">
                                   <div id="" class="input-daterange input-group">
                                     <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
-                                    <span class="input-group-addon">to</span>
+                                    <span class="input-group-addon">UpTo</span>
                                     <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
                                   </div>
                                 </div>
@@ -680,6 +604,7 @@
 
                                 <input type="text" name="current_ctc" id="current_ctc" value="<?= $userJobPreference -> getCurrentCtc() ?>" class="form-control"/>
                                 <input type="hidden" name="id" value="<?= $userJobPreference -> getId() ?>" class="form-control"/>
+                                <small class="help-block"> Ex: Only Numeric Value (If 6,40,000 (6.4 LPA) then enter only 6.4) </small>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -690,6 +615,7 @@
 
                               <div class="col-md-7">
                                 <input type="text" name="expected_ctc" id="expected_ctc" value="<?= $userJobPreference -> getExpectedCtc() ?>" class="form-control"/>
+                                <small class="help-block"> Ex: Only Numeric Value (If 9,00,000 (9.0 LPA) then enter only 9) </small>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -700,6 +626,7 @@
 
                               <div class="col-md-7">
                                 <input type="text" name="notice_period" id="notice_period" value="<?= $userJobPreference -> getNoticePeriod() ?>" class="form-control"/>
+                                <small class="help-block"> Ex: Only Integer Value (For 2 Months enter only 2) </small>
                               </div> <!-- /.col -->
 
                             </div> <!-- /.form-group -->
@@ -725,6 +652,7 @@
 
                                   <div class="col-md-7">
                                     <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                    <small class="help-block"> Ex: Only Numeric Value (If 6,40,000 (6.4 LPA) then enter only 6.4) </small>
                                   </div> <!-- /.col -->
 
                                 </div> <!-- /.form-group -->
@@ -735,6 +663,7 @@
 
                                   <div class="col-md-7">
                                     <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
+                                    <small class="help-block"> Ex: Only Numeric Value (If 9,00,000 (9.0 LPA) then enter only 9) </small>
                                   </div> <!-- /.col -->
 
                                 </div> <!-- /.form-group -->
@@ -742,7 +671,7 @@
                                 <div class="form-group">
 
                                   <label class="col-md-3 control-label">Notice Period </label>
-
+                                  <small class="help-block"> Ex: Only Integer Value (For 2 Months enter only 2) </small>
                                   <div class="col-md-7">
                                     <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
                                   </div> <!-- /.col -->
