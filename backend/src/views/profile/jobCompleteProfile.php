@@ -159,65 +159,7 @@
                             
                             <div id="work_exp_div">
                               
-                              <div class="form-horizontal" <div id="work_exp_form">
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Company Name</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="company_name" id="company_name" class="form-control"/>
-                                    <small class="help-block">Ex: Example Pvt. Ltd</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-                                
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Designation</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="designation" id="designation" class="form-control"/>
-                                    
-                                    <small class="help-block">Ex: Software Developer</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Duration</label>
-
-                                  <div class="col-md-7">
-
-                                    <div id="demo-dp-range">
-                                      <div id="datepicker" class="input-daterange input-group">
-                                        <input type="text" name="from" id="work_from" class="form-control"  placeholder="YYYY-MM-DD"/>
-                                        <span class="input-group-addon">to</span>
-                                        <input type="text" name="to" id="work_to" class="form-control"  placeholder="YYYY-MM-DD"/>
-                                      </div>
-                                    </div>
-                                    
-                                    <small class="help-block">Working Duration like August 01, 2014 to July 30, 2015</small>
-
-                                  </div>
-                                </div> <!-- /.form-group -->
-
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label"></label>
-                                
-                                  <div class="col-md-7">
-                                  
-                                    <button type="submit" class="btn btn-success" onclick ="return (validateUpdateWorkExp());">Add More</button>
-
-                                  </div> <!-- /.col -->
-                                </div> <!-- /.form-group -->
-
-                              </div>
+                              <?php require_once 'views/forms/workExperience.php'; ?>
 
                             </div>
 
@@ -313,78 +255,9 @@
                           <!--Fifth tab-->
                           <div id="tab_education" class="tab-pane">
                             <div id="education_div">
-                              <div class="form-horizontal"  id="education_form">
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Institute Name</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="institute" id="institute" value="" class="form-control"/>
-                                    
-                                    <small class="help-block"> Ex: Indian Institute of Technology Delhi </small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-                                
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Name of Degree</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="degree" id="degree" value="" class="form-control"/>
-                                    
-                                    <small class="help-block"> Ex: Bachelor of Engineering/Technology </small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Branch Name</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="branch" id="branch" value="" class="form-control"/>
-
-                                    <small class="help-block"> Ex: Computer Science and Engineering </small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Duration</label>
-
-                                  <div class="col-md-7">
-
-                                    <div id="">
-                                      <div id="" class="input-daterange input-group">
-                                        <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
-                                        <span class="input-group-addon">UpTo</span>
-                                        <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
-                                      </div>
-                                    </div>
-
-                                    <small class="help-block"> Ex: Duration of Education 2012 to 2014 </small>
-
-                                  </div>
-                                </div> <!-- /.form-group -->
-
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label"></label>
-
-                                  <div class="col-md-7">
-
-                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateEducation());">Add More</button>
-
-                                  </div>
-                                </div> <!-- /.form-group -->
-
-                              </div>
+                              
+                              <?php require_once 'views/forms/education.php'; ?>
+                              
                             </div>
 
                             <div class="pull-right pad-all">
