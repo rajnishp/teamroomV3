@@ -75,7 +75,11 @@ class HomeController extends BaseController {
 		if(isset($_POST['username'],$_POST['passwordR'], $_POST['email'])
 			&& $_POST['username'] != '' && $_POST['passwordR'] != '' && $_POST['email'] !=''){
 			//if($_POST['password'] === $_POST['password2']){
-				
+				if ($_SERVER['HTTP_REFERER'] == $this-> jobsBaseUrl) {
+					$userType = 'jobSearch';
+				} 
+				else
+					$userType = 'collaborator';
 				$this->user = new UserInfo(
 										null,
 										null,
@@ -84,7 +88,7 @@ class HomeController extends BaseController {
 										$_POST['username'],
 										md5($_POST['password']),
 										"dabbling",
-										"collaborator",
+										$userType,
 										0,
 										null,
 										0,

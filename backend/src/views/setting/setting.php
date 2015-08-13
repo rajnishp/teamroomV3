@@ -236,32 +236,7 @@
                           </h3>
                         </div> <!-- /.heading-block -->
 
-                        <div class="form-horizontal">
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">Update Skills </label>
-
-                            <div class="col-md-7">
-                              <div id="skills_display_div">
-                                <?php foreach($userSkills as $skill ) { ?>
-                                  <span class="btn btn-secondary btn-sm"> <?= $skill -> getName() ?> </span>
-                                <?php } ?>
-                              </div> <!-- /.list-group -->
-                              <hr class="spacer-sm">
-                              <select id="demo-cs-multiselect" data-placeholder="Choose a Skill..." multiple tabindex="4">
-                                <?php
-                                  foreach ($allSkills as $skillName) { ?>
-                                  <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>" name="<?= $skillName -> getName() ?>"><?= $skillName -> getName() ?></option>  
-                                <?php } ?>
-                              </select>
-                              <input type="text" name = "new_skill" id="new_skill" class="form-control" placeholder="Add new Skill" data-role="tagsinput">
-                              <small class="help-block">Enter new Skill seperated by comma (,)...</small>
-                              <button type="submit" id="skills" class="btn btn-primary" onclick="return (validateUpdateSkills());">Add Skills</button>
-
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
-                        </div>
+                        <?php require_once 'views/forms/addSkills.php'; ?>                        
 
                         <div class="heading-block">
                           <h3>
@@ -271,52 +246,7 @@
 
                         <div id="tech_strength_div">
 
-                          <?php foreach ($userTechStrength as $key => $techStrength) { ?>
-
-                            <form action="<?= $baseUrl ?>setting/updateTechStrength" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength(<?= $techStrength->getId() ?>));">
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Activities/Achievement</label>
-                              
-                                <div class="col-md-7">
-                                  <input type="hidden" name="id" value="<?= $techStrength->getId() ?>" class="form-control"/>
-                                  <input type="text" name="tech_strength" id="tech_strength_<?= $techStrength->getId() ?>" value="<?= ucfirst($techStrength -> getStrength()) ?>" class="form-control"/>
-                                </div> <!-- /.col -->
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-                                <div class="col-md-7 col-md-push-3">
-                                  <button type="submit" class="btn btn-primary">Save Changes</button>
-                                  &nbsp;
-                                  <button type="reset" class="btn btn-default">Cancel</button>
-                                </div> <!-- /.col -->
-                              </div> <!-- /.form-group -->
-
-                            </form>
-                
-                          <?php } ?>
-
-                          <form action="<?= $baseUrl ?>setting/updateTechStrength" id= "tech_strength_form" class="form-horizontal" method="POST" onSubmit="return (validateUpdateTechStrength());">
-
-                            <div class="form-group">
-
-                              <label class="col-md-3 control-label">Activities/Achievement</label>
-                            
-                              <div class="col-md-7">
-                                <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
-                              </div> <!-- /.col -->
-                            </div> <!-- /.form-group -->
-
-                            <div class="form-group">
-                              <div class="col-md-7 col-md-push-3">
-                                <button type="submit" class="btn btn-primary">Save Changes</button>
-                                &nbsp;
-                                <button type="reset" class="btn btn-default">Cancel</button>
-                              </div> <!-- /.col -->
-                            </div> <!-- /.form-group -->
-
-                          </form>
+                          <?php require_once 'views/forms/techStrength.php'; ?>                          
 
                         </div> <!-- /.id tech_strength_div -->
 
@@ -561,6 +491,7 @@
                           <h3>
                           Edit Job Preferences
                           </h3>
+                          <small class="help-block">It will be private, only shown to Recruiters on demand.</small>
                         </div> <!-- /.heading-block -->
 
                         <div class="form-horizontal">

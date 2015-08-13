@@ -84,6 +84,7 @@
 
     <div class="col-md-7">
       <input type="text" name="phone" id="phone"  value="<?= $userProfile->getPhone() !=null ? $userProfile->getPhone() : null ?>" placeholder="Contact No" class="form-control" />
+      <small class="help-block">It will be private, only shown to others on your permission</small>
     </div> <!-- /.col -->
 
   </div> <!-- /.form-group -->

@@ -28,6 +28,11 @@ class CompleteProfileController extends BaseController  {
 			if ($_SESSION['jobsCollap']) {
 			
 				$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
+				$userSkills = $this -> userSkillDAO-> getUserSkills( $this-> userId );
+	
+				$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
+
+
 				$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
 				$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
 			

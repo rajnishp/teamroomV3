@@ -138,56 +138,10 @@
                           <div id="tab_tech_strength" class="tab-pane">
                             <div id="tech_strength_div">
 
-                              <div class="form-horizontal">
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Add Skills</label>
-
-                                  <div class="col-md-7">
-                                    <select id="demo-cs-multiselect" name="skills" data-placeholder="Choose a Skill..." multiple tabindex="4" style="margin-bottom: 0px;">
-                                      <?php foreach ($allSkills as $skillName) { ?>
-                                        <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>
-                                      <?php } ?>
-                                    </select>
-                                    <small class="help-block">Ex: C, Cpp, PHP, JAVA</small>                                
-                                    <input type="text" name = "new_skill" id="new_skill" class="form-control" placeholder="Add new Skill" data-role="tagsinput" style="margin-bottom: 0px;">
-                                    <small class="help-block">Enter new Skill seperated by comma (,)...</small>
-                                    <button type="submit" id="skills" class="btn btn-success" onclick="return (validateUpdateSkills());">Add Skills</button>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                              </div> <!-- /.form-horizontal -->
-
+                              <?php require_once 'views/forms/addSkills.php'; ?>
                             
-                              <div class="form-horizontal" id= "tech_strength_form">
+                              <?php require_once 'views/forms/techStrength.php'; ?>
 
-                                <div class="form-group">
-                                 
-                                  <label class="col-md-3 control-label">Extra Activities and Achievement</label>
-                                
-                                  <div class="col-md-7">
-                                    <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
-                                  
-                                    <small class="help-block">Completed course on ETHICAL HACKING from XYZ...</small>
-                                    <small class="help-block">Winner of xyz Hackathon with Idea ------ </small>                                
-                                  
-                                  </div> <!-- /.col -->
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label"></label>
-                                
-                                  <div class="col-md-7">
-                                  
-                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateTechStrength());">Add More</button>
-
-                                  </div> <!-- /.col -->
-                                </div> <!-- /.form-group -->
-
-                              </div>
                             </div>
 
                             <div class="pull-right pad-all">
