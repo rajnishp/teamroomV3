@@ -169,32 +169,57 @@ class HomeController extends BaseController {
 
 		//$username=$_REQUEST['username'];
 		if(preg_match("/[^a-z0-9]/",$username)) {
-			print "<span style=\"color:red;\">Username contains illegal charaters.</span>";
+			//print "<span style=\"color:red;\">Username contains illegal charaters.</span>";
+			echo "<style type=\"text/css\">
+			        #usernameR {border: 3px solid red;}
+		        </style>";
 			exit;
 		}
 
 		$isUserExist = $this->userInfoDAO->queryByUsername($username);
 
 		if($isUserExist) {
-			print "<span style=\"color:red;\">Username already exists</span>";
+			//print "<span style=\"color:red;\">Username already exists</span>";
+			echo "<style type=\"text/css\">
+			        #usernameR {border: 3px solid red;}
+		        </style>";
 		}
 		else {
-			print "<span style=\"color:green;\"><i class='fa fa-ok'> </i>Ok</span>";
+			//print "<span style=\"color:green;\"><i class='fa fa-ok'> </i>Ok</span>";
+			echo "<style type=\"text/css\">
+			        #usernameR {border: 3px solid green;}
+		        </style>";
 		}
 	}
 
 	function emailCheck($email) {
 		//$email=$_REQUEST['email'];
-		
-		$isEmailExist = $this->userInfoDAO->queryByEmail($email);
 
-		if($isEmailExist) {
-			print "<span style=\"color:red;\">Email already exists</span>";
-			return true ;
+		$email = filter_var($email, FILTER_SANITIZE_EMAIL);
+
+		// Validate e-mail
+		if (!filter_var($email, FILTER_VALIDATE_EMAIL) === false) {
+		
+			$isEmailExist = $this->userInfoDAO->queryByEmail($email);
+
+			if($isEmailExist) {
+				//print "<span style=\"color:red;\">Email already exists</span>";
+				echo "<style type=\"text/css\">
+				        #email {border: 3px solid red;}
+			        </style>";
+			}
+			else {
+				//print "<span style=\"border:3px solid green;\"></span>";
+				echo "<style type=\"text/css\">
+				        #email {border: 3px solid green;}
+			        </style>";
+			}
 		}
 		else {
-			print "<span style=\"color:green;\"><i class='fa fa-ok'> </i>Ok</span>";
-			return false;
+			//print "<span style=\"color:red;\">Not a Valid Email</span>";
+			echo "<style type=\"text/css\">
+			        #email {border: 3px solid red;}
+		        </style>";
 		}
 	}
 

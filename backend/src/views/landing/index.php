@@ -42,7 +42,6 @@
               <h4 class="masthead-title">Register</h4>
             </div>
               <form class="form account-form registration-form masthead-form" method="POST" action="<?= $this-> baseUrl?>home/signup" onSubmit="return (validateReg());">
-
                 
                 <div class="form-group">
                   <input type="email" class="input-block-level form-control" placeholder="Enter email-id" id="email" name="email" onkeyup="nospaces(this)" onblur="emailCheck();" tabindex="1">
@@ -138,7 +137,7 @@
               <h3 class ="pull-left">Login</h3>
               <h5 class="pull-right" style="margin-top: 18px;">
                 <a href="#register" style="color:#0CD85E"> 
-                  Don't have an account? 
+                  Don't have an account?
                 </a>
               </h5>
             </div>
@@ -937,7 +936,8 @@ function usernameCheck() {
     }
     xmlhttp.onreadystatechange=function(){
       if (xmlhttp.readyState==4 && xmlhttp.status==200){
-        document.getElementById("status_username").innerHTML=xmlhttp.responseText;
+        //document.getElementById("status_username").innerHTML=xmlhttp.responseText;
+        document.getElementById("usernameR").innerHTML=xmlhttp.responseText;
       }
     };
     xmlhttp.open("GET","<?= $this->baseUrl ?>home/usernameCheck="+encodeURIComponent(username.value),true);
@@ -958,7 +958,8 @@ function emailCheck() {
     }
     xmlhttp.onreadystatechange=function(){
       if (xmlhttp.readyState==4 && xmlhttp.status==200){
-        document.getElementById("status_email").innerHTML=xmlhttp.responseText;
+        //document.getElementById("status_email").innerHTML=xmlhttp.responseText;
+        document.getElementById("email").innerHTML=xmlhttp.responseText;
       }
     };
     xmlhttp.open("GET","<?= $this->baseUrl ?>home/emailCheck="+encodeURIComponent(email.value),true);
@@ -992,5 +993,13 @@ function email_forget() {
 */
 </script>
 
+<script type="text/javascript">
+    function nospaces(t){
+        if(t.value.match(/\s/g)){
+            //bootstrap_alert(".alert_placeholder_nospace", "Sorry, you are not allowed to enter any spaces", 5000,"alert-warning");
+            t.value=t.value.replace(/\s/g,'');
+        }
+    }
+</script>
 </body>
 </html>

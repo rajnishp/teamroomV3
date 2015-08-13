@@ -24,9 +24,9 @@ $('#firstname').keypress(function() {
 $('#lastname').keypress(function() {
      $('#lastname').css("border-color", "blue");
 });
-$('#usernameR').keypress(function() {
+/*$('#usernameR').keypress(function() {
      $('#usernameR').css("border-color", "blue");
-});
+});*/
 $('#username').keypress(function() {
      $('#username').css("border-color", "blue");
 });
@@ -37,9 +37,9 @@ $('#passwordR').keypress(function() {
      $('#passwordR').css("border-color", "blue");
      $('#password2R').css("border-color", "blue");
 });
-$('#email').keypress(function() {
+/*$('#email').keypress(function() {
      $('#email').css("border-color", "blue");
-});
+});*/
 
 function validateReg(){
     console.log("I am validating the form");
@@ -70,8 +70,9 @@ function validateReg(){
     }
 
 
-    if($('#accept_tnc').checked == false){
+    if($('#accept_tnc').checked === false){
         $('#accept_tnc').css("border-color", "red");
+        console.log("i am not checked");
         returnBool = false;
     }
     
