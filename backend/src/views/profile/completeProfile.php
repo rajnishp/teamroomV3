@@ -115,7 +115,7 @@
 
                             </div>
 
-                            <div class="pull-right pad-all">
+                            <div class="pull-right pad-all" id = "switch_tab_project">
 
                               <button type="button" class="previous btn btn-info">Previous</button>
                               <button type="button" class="next btn btn-primary">Next</button>
@@ -127,6 +127,7 @@
                           
                           <!--Seventh tab-->
                           <div id="tab_join_projects" class="tab-pane">
+
                             <!--Recommended Join Projects-->
                             <?php  foreach ($this -> recommendedJoinProjects as $project) { ?>
                               <div class="post" id="join_project_<?= $project-> getId()?>">
@@ -157,7 +158,7 @@
                               </div>
 
                             <?php } ?>
-                            
+                    
                             <div class="pull-right pad-all">
 
                               <form class="form-horizontal"  action="<?= $this-> baseUrl ?>completeProfile/finish" method="POST">

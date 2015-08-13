@@ -81,18 +81,19 @@
 
 <script type="text/javascript">
   function appendCloneToDiv(fields,result,appendToId, formId){
-         clone = $(formId).clone();
+        clone = $(formId).clone();
          
-         $.each(fields, function( index, value ) {
-                      $('#'+value).attr("id", value +  "_" + result);
-                    });
-         $(formId).attr("id", formId + "_" + result );
-
-                    clone.appendTo(appendToId);
-
-                    $.each(fields, function( index, value ) {
-                      $('#'+value).val("");
+        $.each(fields, function( index, value ) {
+          $('#'+value).attr("id", value +  "_" + result);
         });
+        $(formId).attr("id", formId + "_" + result );
+
+        clone.appendTo(appendToId);
+
+        $.each(fields, function( index, value ) {
+          $('#'+value).val("");
+        });
+
       }
 </script>
 

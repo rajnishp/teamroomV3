@@ -452,7 +452,9 @@
         return false;
       }
 
-
+      function removeDiv(id) {
+        $('#' + id).remove();
+      }
       function postNewProject(fields, key){
         //fields = ["title","my_role","tech_skills","team_size","description"];
         var dataString = "";
@@ -470,6 +472,9 @@
             var message = "";
               if (key == undefined) {
                 appendCloneToDiv(fields,result, "#project_div", "#project_form");
+
+                $('#switch_tab_project').append('<button type="button" class="next btn btn-primary" id="skip_tab_project" >Skip</button>');
+                
                 message = "Created Successfully";
               }
               else {
