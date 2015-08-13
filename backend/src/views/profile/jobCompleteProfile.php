@@ -174,66 +174,10 @@
                           
                           <!--Fourth tab-->
                           <div id="tab_job_preference" class="tab-pane">
-                            
-                            <div class="form-horizontal">
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Preferred Locations <br/>(First Location is first <b>Preference</b>) </label>
-
-                                <div class="col-md-7">          
-                                  <select id="demo-cs-multiselect1" data-placeholder="Choose Location by Preference..." multiple tabindex="4">
-                                    <?php foreach ($allLocations as $availablelocation) { ?>
-                                      <option value="<?= $availablelocation -> getId() ?>" id ="location_<?= $availablelocation -> getId() ?>"><?= $availablelocation-> getLocationName() ?></option>  
-                                    <?php } ?>
-                                  </select>
-                                  
-                                  <small class="help-block">Preferred Job Location: Bangalore, Delhi/NCR ( First location will be first prefernece )</small>
-
-                                  <button type="submit" id="locations" class="btn btn-success" onclick="return (validateUpdateLocations());">Add Locations</button>
-
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
                               
-                            
-                              <div class="form-group">
+                            <?php require_once 'views/forms/jobPreferenceInfo.php'; ?>
 
-                                <label class="col-md-3 control-label">Current CTC </label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
-                                
-                                  <small class="help-block"> Ex: Only Numeric Value (If 6,40,000 (6.4 LPA) then enter only 6.4) </small>
-                                
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Expected CTC </label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
-                                
-                                  <small class="help-block"> Only Numeric Value (If 9,00,000 (9.0 LPA) then enter only 9) </small>
-                                
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Notice Period </label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
-                                 
-                                  <small class="help-block"> Ex: Only Integer Value (For 2 Months enter only 2) </small>
-                                  
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
+                            <div class="form-horizontal">
                               
                               <div class="form-group">
                                 <div class="pull-right pad-all">
@@ -257,7 +201,7 @@
                             <div id="education_div">
                               
                               <?php require_once 'views/forms/education.php'; ?>
-                              
+
                             </div>
 
                             <div class="pull-right pad-all">
@@ -272,131 +216,11 @@
 
                           <!--Sixth tab-->
                           <div id="tab_projects" class="tab-pane">
+                            
                             <div id="project_div">
 
-                              <div class="form-horizontal" id="project_form">
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Title</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" id ="title" class="form-control" placeholder="Title" />
-                                    
-                                    <small class="help-block"> Ubuntu Unity: deliver a consistent user experience for desktop and netbook users alike</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Used Technical Skills</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
-                                    
-                                    <small class="help-block"> C++, JavaScript, QML, Python, Vala</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Your Role</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
-                                    
-                                    <small class="help-block"> Like Architect or Frontend Developer with JavaScript</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Team Size</label>
-                                  <div class="col-md-7">
-                                    <input type="number" id="team_size" class="form-control" placeholder="Team Size" />
-
-                                    <small class="help-block"> Total team Members: 1, 2, 3, 4, ....</small>
-
-                                  </div>
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Project Status</label>
-                                  <div class="col-md-5">
-                                    <select class="selectpicker" name="status" data-width="100%" id= "status" >
-                                      <option value='Ongoing' >Ongoing ( Still it is ongoing or you want to expend your idea )</option>
-                                      <option value='Completed' >Completed ( If you have completed your project )</option>
-                                      <option value='YetToStart' >Yet To Start ( Its good time to start, <i>Best Of Luck</i>)</option>
-                                    </select>                  
-                                  </div>
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Duration</label>
-                                  <div class="col-md-7">
-                                    <div id="demo-dp-range">
-                                      <div class="input-daterange input-group" id="datepicker">
-                                        <input type="text" class="form-control" name="start" id="start"/>
-                                        <span class="input-group-addon">To</span>
-                                        <input type="text" class="form-control" name="end" id="end" />
-                                      </div>
-                                    </div>
-                                    
-                                    <small class="help-block"> When it started (August 01, 2014 ) to ended ( July 30, 2015 )</small>
-
-                                  </div>
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-                                  <label class="col-md-3 control-label">Description</label>
-                                  <div class="col-md-7">
-                                   
-                                    <textarea class="form-control share-widget-textarea" id = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1"></textarea>
-
-                                    <div class="share-widget-actions">
-                                      <div class=" pull-left">
-                                        <div class="col-md-6">
-                                         
-                                          <select class="selectpicker" name="type" data-live-search="true" data-width="100%" id= "type" >    
-                                              <option value='Public' >Public</option>
-                                              <option value='Classified' >Classified</option>
-                                              <option value='Private' >Private</option>
-                                          </select>
-                                         
-                                        </div>
-                                        <div class="col-md-6">
-                                          <input type="file" name="file" class="btn btn-default btn-file" value="Browse">
-                                        </div>    
-                                      </div>  
-
-                                      <div class="pull-right">
-
-                                      </div>
-                                    </div>
-
-                                    <small class="help-block"> Project Description with Introduction, Problem, Solution, Features ...</small>
-
-                                  </div>
-                                </div>
-
-                                <div class="form-group">
-                                  <label class="col-md-3 control-label"></label>
-                                  <div class="col-md-7">
-                                    <button type="submit" class="btn btn-success" onclick="return (validateCreateProject());">Add More</button>
-                                  </div>
-                                </div> <!-- /.form-group -->
-                              </div>
+                              <?php require_once 'views/forms/createProject.php'; ?>
+                              
                             </div>  
 
                             <div class="pull-right pad-all">
