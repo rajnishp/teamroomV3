@@ -88,6 +88,8 @@
                           <!--First tab-->
                           <div id="tab_profile" class="tab-pane">
 
+                            <?php require_once 'views/forms/profilePicture.php'; ?>                            
+
                             <div class="form-horizontal">
                               
                               <?php require_once 'views/forms/basicInformation.php'; ?>
@@ -103,6 +105,7 @@
                               </div> <!-- /.form-group -->
 
                             </div> <!--End Form user basic profile-->
+
 
                           </div> <!-- End First tab-->
                         

@@ -90,8 +90,8 @@
                 <hr class="spacer-sm">
                 
                 <div class="activity-1" id="panel-cont">
-                   <?php foreach ($top10Activities as $activity) { ?>
-                   <div class="post">
+                  <?php foreach ($top10Activities as $activity) { ?>
+                    <div class="post">
                       <div class="post-aside" style="padding-top: 28px;">
                          <div class="post-date">
                             <?php $data = date_parse($activity->getCreationTime()); ?>
