@@ -115,7 +115,7 @@
             
             <div class="col-md-7 masthead-text animated fadeInDownBig">
 
-              <iframe width="630" height="380" src="https://www.youtube.com/embed/hDWHBSCMj0w" frameborder="0" allowfullscreen style="margin-top: 61px;"></iframe>
+              <iframe width="100%" height="340" src="https://www.youtube.com/embed/hDWHBSCMj0w" frameborder="0" allowfullscreen style="margin-top: 21px;"></iframe>
             </div>
           </div>
          
@@ -224,7 +224,7 @@
             <hr class="spacer-sm visible-xs visible-sm">
 
             <div class="col-md-6 masthead-img animated pulse">
-              <iframe width="560" height="315" src="https://www.youtube.com/embed/iN_A7keXtVg" frameborder="0" allowfullscreen></iframe>
+              <iframe width="100%" height="315" src="https://www.youtube.com/embed/iN_A7keXtVg" frameborder="0" allowfullscreen></iframe>
               <hr class="spacer-md">
               <hr class="spacer-xs">
 
@@ -260,7 +260,7 @@
                 
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <hr class="spacer-sm">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/HKGkBRk1kSo" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="100%" height="315" src="https://www.youtube.com/embed/HKGkBRk1kSo" frameborder="0" allowfullscreen></iframe>
                 </div><!-- /.col -->
                 
                 <div class="col-lg-6 col-md-6 col-sm-12">
@@ -331,7 +331,7 @@
                 </div><!-- /.col -->
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <hr class="spacer-sm">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/NsndhCQ5hRY" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="100%" height="315" src="https://www.youtube.com/embed/NsndhCQ5hRY" frameborder="0" allowfullscreen></iframe>
                 </div><!-- /.col -->
                 
               </div> <!-- /.row -->
@@ -348,7 +348,7 @@
                 
                 <div class="col-lg-6 col-md-6 col-sm-12">
                   <hr class="spacer-xs">
-                  <iframe width="560" height="315" src="https://www.youtube.com/embed/63NTB7oObtw" frameborder="0" allowfullscreen></iframe>
+                  <iframe width="100%" height="315" src="https://www.youtube.com/embed/63NTB7oObtw" frameborder="0" allowfullscreen></iframe>
                 </div><!-- /.col -->
                 
                 <div class="col-lg-6 col-md-6 col-sm-12">

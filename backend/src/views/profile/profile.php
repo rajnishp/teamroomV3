@@ -239,34 +239,39 @@
                           </div>
                         </div>
 
-                        <div class = "row heading-block">
-                          <div class="col-md-3 col-lg-3 col-sm-3">
-                            
-                            <div class="post-title">
-                              <h4>
-                                Job Preference
-                              </h4>
-                            </div> <!-- /.heading-block -->
-                          </div>
-   
-                          <div class="col-md-9 col-lg-9 col-sm-9">                         
-                            <div>
-                              <div id="job_locations_display">
-                                <?php foreach($userPreferredJobLocations as $jobLocation ) { ?>
-                                  <span class="btn btn-secondary btn-sm"> <?= $jobLocation -> getLocationName() ?> </span>
-                                <?php } ?>
-                              </div> <!-- /.list-group -->
-
-                              <?php foreach ($userJobPreference as $preference) { ?>
-                                <h5 class="">Current Ctc: <?= $preference -> getCurrentCtc() ?> Lacs/Annum</h5>
-                                <h5 class="">Expected Ctc: <?= $preference -> getExpectedCtc() ?>  Lacs/Annum</h5>
-                                <h5 class="">Notice Period: <?= $preference ->getNoticePeriod() ?> Months</h5>
-                                <hr>
-                              <?php } ?>
+                        <?php foreach ($userJobPreference as $preference) { 
+                          if($preference-> getUserId() == $this-> userId) { ?>
+                          <div class = "row heading-block">
+                            <div class="col-md-3 col-lg-3 col-sm-3">
                               
-                            </div> <!-- /.list-group -->
+                              <div class="post-title">
+                                <h4>
+                                  Job Preference
+                                </h4>
+                              </div> <!-- /.heading-block -->
+                            </div>
+
+                            <div class="col-md-9 col-lg-9 col-sm-9">
+                              <div>
+                                <div id="job_locations_display">
+                                  <?php foreach($userPreferredJobLocations as $jobLocation ) { ?>
+                                    <span class="btn btn-secondary btn-sm"> <?= $jobLocation -> getLocationName() ?> </span>
+                                  <?php } ?>
+                                </div> <!-- /.list-group -->
+
+                                <?php foreach ($userJobPreference as $preference) { ?>
+                                  <h5 class="">Current Ctc: <?= $preference -> getCurrentCtc() ?> Lacs/Annum</h5>
+                                  <h5 class="">Expected Ctc: <?= $preference -> getExpectedCtc() ?>  Lacs/Annum</h5>
+                                  <h5 class="">Notice Period: <?= $preference ->getNoticePeriod() ?> Months</h5>
+                                  <hr>
+                                <?php } ?>
+                                
+                              </div> <!-- /.list-group -->
+                            </div>
                           </div>
-                        </div>
+                        <?php }
+                          break;
+                         }?>
 
                         <div class = "row">
                           <div class="col-md-3 col-lg-3 col-sm-3">
