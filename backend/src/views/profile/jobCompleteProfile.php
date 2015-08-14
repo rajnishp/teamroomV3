@@ -225,7 +225,7 @@
                               
                             </div>  
 
-                            <div class="pull-right pad-all">
+                            <div class="pull-right pad-all" id = "switch_tab_project">
 
                               <button type="button" class="previous btn btn-info">Previous</button>
                               <button type="button" class="next btn btn-primary">Next</button>
