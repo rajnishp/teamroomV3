@@ -140,7 +140,7 @@ abstract class BaseController {
 			$this -> logger -> error ("Error at : $e");
 		}
 
-		if ($userProfile -> getPageAccess() != 1 ) {
+		if ($userProfile -> getPageAccess() < 1 ) {
 			header('Location: '. $this-> baseUrl."completeProfile");
 			break;
 		}

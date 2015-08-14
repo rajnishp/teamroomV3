@@ -57,6 +57,23 @@ class HomeController extends BaseController {
 				if ($_SERVER['HTTP_REFERER'] == $this-> jobsBaseUrl) {
 					$_SESSION['jobsCollap'] =true;
 				}
+	
+				try{
+					$timestamp = date('Y-m-d G:i:s');
+					$this-> userInfoDAO -> updateLastLoginTime( $_SESSION['user_id'] , $timestamp);
+				}
+				catch (Exception $e) {
+					$this->logger->error( "Failed to updateLastLoginTime, Error occur :500 ".json_encode($e) );
+				}
+
+				if($this->user -> getPageAccess() > 0) {
+					try{
+						$this -> userInfoDAO -> updatePageAccess($_SESSION['user_id']);
+					}
+					catch (Exception $e) {
+						$this->logger->error( "Failed to updatePageAccess, Error occur :500 ".json_encode($e) );
+					}
+				}
 
 				header('Location: '.$redir);		
 

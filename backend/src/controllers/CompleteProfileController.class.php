@@ -60,10 +60,10 @@ class CompleteProfileController extends BaseController  {
 	function finishCompleteProfile() {
 
 		if (isset($_POST)) {
-			$pageAccess = 1;
+
 			//page_access set to 1 for profile completed
 	    	try {
-	            $this -> userInfoDAO -> updatePageAccess($pageAccess, $this-> userId);
+	            $this -> userInfoDAO -> updatePageAccess($this-> userId);
         		header('Location: '. $this-> baseUrl);
 	    	}
 	    	catch(Exception $e) {

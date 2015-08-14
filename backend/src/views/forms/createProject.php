@@ -20,7 +20,7 @@
       <div class="col-md-7">
         <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
         
-        <small class="help-block"> C++, JavaScript, QML, Python, Vala</small>
+        <small class="help-block"> C++, QML, Python, Team Building, Project Management</small>
 
       </div> <!-- /.col -->
 
@@ -33,7 +33,7 @@
       <div class="col-md-7">
         <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
         
-        <small class="help-block"> Like Architect or Frontend Developer with JavaScript</small>
+        <small class="help-block"> Architect, Project Manager, DBA, Frontend Developer with JavaScript</small>
 
       </div> <!-- /.col -->
 
