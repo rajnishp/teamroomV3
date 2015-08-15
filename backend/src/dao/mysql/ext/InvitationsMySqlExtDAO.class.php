@@ -7,6 +7,11 @@
  */
 class InvitationsMySqlExtDAO extends InvitationsMySqlDAO{
 
-	
+	public function getUsersToInvite(){
+		$sql = "SELECT * FROM mailing_engine.invitations ORDER BY `count` ;";
+		$sqlQuery = new SqlQuery($sql);
+		
+		return $this->getList($sqlQuery);
+	}
 }
 ?>

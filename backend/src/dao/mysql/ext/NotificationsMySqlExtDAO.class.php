@@ -14,6 +14,17 @@ class NotificationsMySqlExtDAO extends NotificationsMySqlDAO{
 		$sqlQuery->setNumber($userId);
 		return $this->getList($sqlQuery);
 	}
+
+	public function getNotificationNotLogin24Hours(){
+		$sql = 'SELECT notice.*, user.first_name, user.last_name, user.email, TIMESTAMPDIFF( HOUR , user.last_login_time, now( ) ) AS login_before FROM notifications AS notice JOIN user_info AS user
+					WHERE notice.user_id = user.id
+						AND TIMESTAMPDIFF( HOUR , user.last_login_time, now( ) ) >24
+						ORDER BY login_before';
+		$sqlQuery = new SqlQuery($sql);
+		
+		$sqlQuery->setNumber($userId);
+		return $this->getList($sqlQuery);
+	}
 	
 }
 ?>

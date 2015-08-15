@@ -75,6 +75,15 @@ class UserInfoMySqlExtDAO extends UserInfoMySqlDAO{
 		return $this->executeUpdate($sqlQuery);
 	}
 
+	public function getUserNoNotificationNotLoginLast3days(){
+		$sql = 'SELECT * FROM user_info WHERE id NOT IN ( SELECT user_id FROM notifications )
+					AND TIMESTAMPDIFF( HOUR , last_login_time, now( ) ) >72 ';
+
+		$sqlQuery = new SqlQuery($sql);
+		
+		return $this->getList($sqlQuery);
+	}
+
 	/**
 	 * Read row
 	 *

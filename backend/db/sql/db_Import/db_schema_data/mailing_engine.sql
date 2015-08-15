@@ -41,6 +41,8 @@ CREATE TABLE IF NOT EXISTS `generic_emails` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
 
+ALTER TABLE `generic_emails` CHANGE `type` `type` ENUM( 'Notification', 'Invitation', 'FollowUp' ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL ;
+
 -- --------------------------------------------------------
 
 --
