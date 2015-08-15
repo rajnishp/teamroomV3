@@ -1,26 +1,27 @@
 <?php
 	/**
-	 * Object represents table 'user_forms'
+	 * Object represents table 'user_follow_up'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-08-10 11:13	 
+     	 * @date: 2015-08-15 14:32	 
 	 */
-	class UserForm{
+	class UserFollowUp{
 		
 		private $id;
 		private $userId;
-		private $formId;
+		private $email;
+		private $state;
 		private $status;
-		private $priority;
 		private $addedOn;
 		private $lastUpdateOn;
+		
 
-		function __construct ($userId, $formId, $status, $priority, $addedOn, $lastUpdateOn, $id = null) {
+		function __construct ($userId, $email, $state, $status, $addedOn, $lastUpdateOn, $id = null) {
 			$this -> id = $id;
 			$this -> userId = $userId;
-			$this -> formId = $formId;
+			$this -> email = $email;
+			$this -> state = $state;
 			$this -> status = $status;
-			$this -> priority = $priority;
 			$this -> addedOn = $addedOn;
 			$this -> lastUpdateOn = $lastUpdateOn;
 
@@ -40,11 +41,11 @@
 			return $this-> userId;
 		}
 
-		function setFormId($formId){
-			$this -> formId = $formId;
+		function setEmail($email){
+			$this -> email = $email;
 		}
-		function getFormId(){
-			return $this-> formId;
+		function getEmail(){
+			return $this-> email;
 		}
 
 		function setStatus($status){
@@ -54,11 +55,11 @@
 			return $this-> status;
 		}
 
-		function setPriority($priority){
-			$this -> priority = $priority;
+		function setState($state){
+			$this -> state = $state;
 		}
-		function getPriority(){
-			return $this-> priority;
+		function getState(){
+			return $this-> state;
 		}
 
 		function setAddedOn($addedOn){
@@ -74,6 +75,5 @@
 		function getLastUpdateOn(){
 			return $this-> lastUpdateOn;
 		}
-		
 	}
 ?>

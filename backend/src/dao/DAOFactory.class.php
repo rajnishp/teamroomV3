@@ -429,5 +429,44 @@ class DAOFactory{
 		return new WorkingLocationsMySqlExtDAO();
 	}
 
+	/**
+	 * @return GenericEmailsDAO
+	 */
+	public static function getGenericEmailsDAO(){
+		
+		require_once('GenericEmailsDAO.class.php');
+		require_once('models/GenericEmail.class.php');
+		require_once('mysql/GenericEmailsMySqlDAO.class.php');
+		require_once('mysql/ext/GenericEmailsMySqlExtDAO.class.php');
+
+		return new GenericEmailsMySqlExtDAO();
+	}
+
+	/**
+	 * @return InvitationsDAO
+	 */
+	public static function getInvitationsDAO(){
+
+		require_once('InvitationDAO.class.php');
+		require_once('models/Invitations.class.php');
+		require_once('mysql/InvitationsMySqlDAO.class.php');
+		require_once('mysql/ext/InvitationsMySqlExtDAO.class.php');
+
+		return new InvitationsMySqlExtDAO();
+	}
+
+	/**
+	 * @return UserFollowUpDAO
+	 */
+	public static function getUserFollowUpDAO(){
+
+		require_once('UserFollowUpDAO.class.php');
+		require_once('models/UserFollowUp.class.php');
+		require_once('mysql/UserFollowUpMySqlDAO.class.php');
+		require_once('mysql/ext/UserFollowUpMySqlExtDAO.class.php');		
+
+		return new UserFollowUpMySqlExtDAO();
+	}
+
 }
 ?>

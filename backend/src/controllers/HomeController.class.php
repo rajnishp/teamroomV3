@@ -137,6 +137,30 @@ class HomeController extends BaseController {
 						$_SESSION['jobsCollap'] =true;
 					}
 
+					try {
+	
+						$getuserPushForm =  $this-> userPushFormsDAO -> queryAll();
+						$priority = 1;
+						foreach ($getuserPushForm as $form) {
+							
+							$userForm = new UserForm($_SESSION['user_id'],
+														$form-> getId(),
+														0,
+														$priority,
+														date("Y-m-d H:i:s"),
+														date("Y-m-d H:i:s")
+													);
+
+							$this->userPushFormsInsertDAO->insert($userForm);
+							$priority++;
+						}
+
+					}
+					catch (Exception $e) {
+						$this->logger->error( "Failed to insert user push form, Error occur :500 ".json_encode($e) );
+
+					}
+
 					header('Location: ' .$this-> baseUrl ."completeProfile");
 
 				}

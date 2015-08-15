@@ -64,11 +64,14 @@ class CompleteProfileController extends BaseController  {
 			//page_access set to 1 for profile completed
 	    	try {
 	            $this -> userInfoDAO -> updatePageAccess($this-> userId);
+
+	            //$this -> userPushFormsInsertDAO -> deleteByUserId($this->userId);
+
         		header('Location: '. $this-> baseUrl);
 	    	}
 	    	catch(Exception $e) {
 				$this->logger->error("Error occur :500 ".json_encode($e) );
-	    	}			
+	    	}
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');

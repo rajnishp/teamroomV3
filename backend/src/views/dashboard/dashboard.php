@@ -158,24 +158,22 @@
 
       <script type="text/javascript">
 
-            /*console.log("outside setTimeout fnction");
-            setTimeout(function(){
-              console.log("inside setTimeout fnction");
-              $.ajax({
-                type: "POST",
-                url: "<?= $this-> baseUrl ?>" + "dashboard/pushForm",
-                //data: dataString,
-                cache: false,
-                success: function(result){
-                  //result = "<span> i am there </span>";
-                  $('#push_form_div').html(result);
-                },
-                error: function(result){
-                
-                }
-              });
-            },10000);*/
-
+        setTimeout(function(){
+          console.log("inside setTimeout fnction");
+          $.ajax({
+            type: "POST",
+            url: "<?= $this-> baseUrl ?>" + "dashboard/pushForm",
+            //data: dataString,
+            cache: false,
+            success: function(result){
+              //result = "<span> i am there </span>";
+              $('#push_form_div').html(result);
+            },
+            error: function(result){
+            
+            }
+          });
+        },10000);
 
       </script>
      

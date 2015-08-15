@@ -36,6 +36,9 @@ CREATE TABLE IF NOT EXISTS `forms` (
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 AUTO_INCREMENT=1 ;
 
+
+ALTER TABLE `forms` ADD `type` VARCHAR( 30 ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL AFTER `form` ;
+
 -- --------------------------------------------------------
 
 --

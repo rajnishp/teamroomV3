@@ -1,20 +1,20 @@
 <?php
 /**
- * Class that operate on table 'teamroom_push_forms.user_forms'. Database Mysql.
+ * Class that operate on table 'generic_emails'. Database Mysql.
  *
  * @author: http://phpdao.com
- * @date: 2015-08-10 11:13
+ * @date: 2015-08-15 14:32
  */
-class UserFormsMySqlDAO implements UserFormsDAO{
+class GenericEmailsMySqlDAO implements GenericEmailsDAO{
 
 	/**
 	 * Get Domain object by primry key
 	 *
 	 * @param String $id primary key
-	 * @return UserFormsMySql 
+	 * @return GenericEmailsMySql 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE id = ?';
+		$sql = 'SELECT * FROM mailing_engine.generic_emails WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms';
+		$sql = 'SELECT * FROM mailing_engine.generic_emails';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,17 +35,17 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM mailing_engine.generic_emails ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
 	
 	/**
  	 * Delete record from table
- 	 * @param userForm primary key
+ 	 * @param genericEmail primary key
  	 */
 	public function delete($id){
-		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE id = ?';
+		$sql = 'DELETE FROM mailing_engine.generic_emails WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->executeUpdate($sqlQuery);
@@ -54,41 +54,41 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 	/**
  	 * Insert record to table
  	 *
- 	 * @param UserFormsMySql userForm
+ 	 * @param GenericEmailsMySql genericEmail
  	 */
-	public function insert($userForm){
-		$sql = 'INSERT INTO teamroom_push_forms.user_forms (user_id, form_id, status, priority, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?)';
+	public function insert($genericEmail){
+		$sql = 'INSERT INTO mailing_engine.generic_emails (subject, body, type, status, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($userForm->getUserId());
-		$sqlQuery->setNumber($userForm->getFormId());
-		$sqlQuery->setNumber($userForm->getStatus());
-		$sqlQuery->setNumber($userForm->getPriority());
-		$sqlQuery->set($userForm->getAddedOn());
-		$sqlQuery->set($userForm->getLastUpdateOn());
+		$sqlQuery->set($genericEmail->getSubject());
+		$sqlQuery->set($genericEmail->getBody());
+		$sqlQuery->set($genericEmail->getType());
+		$sqlQuery->setNumber($genericEmail->getStatus());
+		$sqlQuery->set($genericEmail->getAddedOn());
+		$sqlQuery->set($genericEmail->getLastUpdateOn());
 
 		$id = $this->executeInsert($sqlQuery);	
-		$userForm-> setId($id);
+		$genericEmail-> setId($id);
 		return $id;
 	}
 	
 	/**
  	 * Update record in table
  	 *
- 	 * @param UserFormsMySql userForm
+ 	 * @param GenericEmailsMySql genericEmail
  	 */
-	public function update($userForm){
-		$sql = 'UPDATE teamroom_push_forms.user_forms SET user_id = ?, form_id = ?, status = ?, priority = ?, added_on = ?, last_update_on = ? WHERE id = ?';
+	public function update($genericEmail){
+		$sql = 'UPDATE mailing_engine.generic_emails SET subject = ?, body = ?, type = ?, status = ?, added_on = ?, last_update_on = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($userForm->getUserId());
-		$sqlQuery->setNumber($userForm->getFormId());
-		$sqlQuery->setNumber($userForm->getStatus());
-		$sqlQuery->setNumber($userForm->getPriority());
-		$sqlQuery->set($userForm->getAddedOn());
-		$sqlQuery->set($userForm->getLastUpdateOn());
+		$sqlQuery->set($genericEmail->getSubject());
+		$sqlQuery->set($genericEmail->getBody());
+		$sqlQuery->set($genericEmail->getType());
+		$sqlQuery->setNumber($genericEmail->getStatus());
+		$sqlQuery->set($genericEmail->getAddedOn());
+		$sqlQuery->set($genericEmail->getLastUpdateOn());
 
-		$sqlQuery->setNumber($userForm->id);
+		$sqlQuery->setNumber($genericEmail->getId());
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -96,91 +96,91 @@ class UserFormsMySqlDAO implements UserFormsDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM teamroom_push_forms.user_forms';
+		$sql = 'DELETE FROM mailing_engine.generic_emails';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function queryByUserId($value){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE user_id = ?';
+	public function queryBySubject($value){
+		$sql = 'SELECT * FROM mailing_engine.generic_emails WHERE subject = ?';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
+		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
-	public function queryByFormId($value){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE form_id = ?';
+	public function queryByBody($value){
+		$sql = 'SELECT * FROM mailing_engine.generic_emails WHERE body = ?';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByType($value){
+		$sql = 'SELECT * FROM mailing_engine.generic_emails WHERE type = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByStatus($value){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE status = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->getList($sqlQuery);
-	}
-
-	public function queryByPriority($value){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE priority = ?';
+		$sql = 'SELECT * FROM mailing_engine.generic_emails WHERE status = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByAddedOn($value){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE added_on = ?';
+		$sql = 'SELECT * FROM mailing_engine.generic_emails WHERE added_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByLastUpdateOn($value){
-		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE last_update_on = ?';
+		$sql = 'SELECT * FROM mailing_engine.generic_emails WHERE last_update_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 
-	public function deleteByUserId($value){
-		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE user_id = ?';
+	public function deleteBySubject($value){
+		$sql = 'DELETE FROM mailing_engine.generic_emails WHERE subject = ?';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
+		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
-	public function deleteByFormId($value){
-		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE form_id = ?';
+	public function deleteByBody($value){
+		$sql = 'DELETE FROM mailing_engine.generic_emails WHERE body = ?';
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByType($value){
+		$sql = 'DELETE FROM mailing_engine.generic_emails WHERE type = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByStatus($value){
-		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE status = ?';
-		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->setNumber($value);
-		return $this->executeUpdate($sqlQuery);
-	}
-
-	public function deleteByPriority($value){
-		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE priority = ?';
+		$sql = 'DELETE FROM mailing_engine.generic_emails WHERE status = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByAddedOn($value){
-		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE added_on = ?';
+		$sql = 'DELETE FROM mailing_engine.generic_emails WHERE added_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByLastUpdateOn($value){
-		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE last_update_on = ?';
+		$sql = 'DELETE FROM mailing_engine.generic_emails WHERE last_update_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -191,12 +191,12 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 	/**
 	 * Read row
 	 *
-	 * @return UserFormsMySql 
+	 * @return GenericEmailsMySql 
 	 */
 	protected function readRow($row){
-		$userForm = new UserForm($row['user_id'], $row['form_id'], $row['status'], $row['priority'], $row['added_on'], $row['last_update_on'], $row['id']);
-
-		return $userForm;
+		$genericEmail = new GenericEmail($row['subject'], $row['body'], $row['type'], $row['status'], $row['added_on'], $row['last_update_on'], $row['id']);
+		
+		return $genericEmail;
 	}
 	
 	protected function getList($sqlQuery){
@@ -211,7 +211,7 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 	/**
 	 * Get row
 	 *
-	 * @return UserFormsMySql 
+	 * @return GenericEmailsMySql 
 	 */
 	protected function getRow($sqlQuery){
 		$tab = QueryExecutor::execute($sqlQuery);

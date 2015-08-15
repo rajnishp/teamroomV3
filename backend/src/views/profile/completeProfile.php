@@ -87,7 +87,7 @@
                         <div class="tab-content">
                           <!--First tab-->
                           <div id="tab_profile" class="tab-pane">
-
+                            <small class="help-block">Three Steps to Go: Collaborate</small>
                             <?php require_once 'views/forms/profilePicture.php'; ?>                            
 
                             <div class="form-horizontal">
@@ -111,7 +111,7 @@
                         
                           <!--Sixth tab-->
                           <div id="tab_projects" class="tab-pane">
-                            
+                            <small class="help-block">Two Steps to Go: Create your own Project to Collaborate </small>
                             <div id="project_div">
 
                               <?php require_once 'views/forms/createProject.php'; ?>
@@ -130,7 +130,7 @@
                           
                           <!--Seventh tab-->
                           <div id="tab_join_projects" class="tab-pane">
-
+                          <small class="help-block">Last Step to Go: Start Collaboration by Join Existing Projects </small>
                             <!--Recommended Join Projects-->
                             <?php  foreach ($this -> recommendedJoinProjects as $project) { ?>
                               <div class="post" id="join_project_<?= $project-> getId()?>">

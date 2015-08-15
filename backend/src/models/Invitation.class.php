@@ -1,26 +1,26 @@
 <?php
 	/**
-	 * Object represents table 'user_forms'
+	 * Object represents table 'invitations'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-08-10 11:13	 
+     	 * @date: 2015-08-15 14:32	 
 	 */
-	class UserForm{
+	class Invitation{
 		
 		private $id;
 		private $userId;
-		private $formId;
+		private $email;
+		private $count;
 		private $status;
-		private $priority;
 		private $addedOn;
 		private $lastUpdateOn;
 
-		function __construct ($userId, $formId, $status, $priority, $addedOn, $lastUpdateOn, $id = null) {
+		function __construct ($userId, $email, $count, $status, $addedOn, $lastUpdateOn, $id = null) {
 			$this -> id = $id;
 			$this -> userId = $userId;
-			$this -> formId = $formId;
+			$this -> email = $email;
+			$this -> count = $count;
 			$this -> status = $status;
-			$this -> priority = $priority;
 			$this -> addedOn = $addedOn;
 			$this -> lastUpdateOn = $lastUpdateOn;
 
@@ -40,11 +40,11 @@
 			return $this-> userId;
 		}
 
-		function setFormId($formId){
-			$this -> formId = $formId;
+		function setEmail($email){
+			$this -> email = $email;
 		}
-		function getFormId(){
-			return $this-> formId;
+		function getEmail(){
+			return $this-> email;
 		}
 
 		function setStatus($status){
@@ -54,11 +54,11 @@
 			return $this-> status;
 		}
 
-		function setPriority($priority){
-			$this -> priority = $priority;
+		function setCount($count){
+			$this -> count = $count;
 		}
-		function getPriority(){
-			return $this-> priority;
+		function getCount(){
+			return $this-> count;
 		}
 
 		function setAddedOn($addedOn){

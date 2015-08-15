@@ -1,26 +1,27 @@
 <?php
 	/**
-	 * Object represents table 'user_forms'
+	 * Object represents table 'generic_bodys'
 	 *
      	 * @author: http://phpdao.com
-     	 * @date: 2015-08-10 11:13	 
+     	 * @date: 2015-08-15 14:32	 
 	 */
-	class UserForm{
+	class Genericbody{
 		
 		private $id;
-		private $userId;
-		private $formId;
+		private $subject;
+		private $body;
+		private $type;
 		private $status;
-		private $priority;
 		private $addedOn;
 		private $lastUpdateOn;
+		
 
-		function __construct ($userId, $formId, $status, $priority, $addedOn, $lastUpdateOn, $id = null) {
+		function __construct ($subject, $body, $type, $status, $addedOn, $lastUpdateOn, $id = null) {
 			$this -> id = $id;
-			$this -> userId = $userId;
-			$this -> formId = $formId;
+			$this -> subject = $subject;
+			$this -> body = $body;
+			$this -> type = $type;
 			$this -> status = $status;
-			$this -> priority = $priority;
 			$this -> addedOn = $addedOn;
 			$this -> lastUpdateOn = $lastUpdateOn;
 
@@ -33,18 +34,18 @@
 			return $this->id;
 		}
 
-		function setUserId($userId){
-			$this -> userId = $userId;
+		function setSubject($subject){
+			$this -> subject = $subject;
 		}
-		function getUserId(){
-			return $this-> userId;
+		function getSubject(){
+			return $this-> subject;
 		}
 
-		function setFormId($formId){
-			$this -> formId = $formId;
+		function setBody($body){
+			$this -> body = $body;
 		}
-		function getFormId(){
-			return $this-> formId;
+		function getBody(){
+			return $this-> body;
 		}
 
 		function setStatus($status){
@@ -54,11 +55,11 @@
 			return $this-> status;
 		}
 
-		function setPriority($priority){
-			$this -> priority = $priority;
+		function setType($type){
+			$this -> type = $type;
 		}
-		function getPriority(){
-			return $this-> priority;
+		function getType(){
+			return $this-> type;
 		}
 
 		function setAddedOn($addedOn){
