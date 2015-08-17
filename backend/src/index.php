@@ -306,6 +306,18 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 								$settingController -> updateSkills();
 
 								break;
+								
+							case 'removeSkill':
+								
+								$settingController -> removeSkill();
+
+								break;
+
+							case 'removeLocation':
+								
+								$settingController -> removeLocation();
+
+								break;
 							
 							case 'updateLocations':
 								

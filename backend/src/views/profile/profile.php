@@ -184,9 +184,13 @@
                           <div class="col-md-9 col-lg-9 col-sm-9">
                           
                             <div class="">
-                              <?php foreach($userSkills as $skill ) { ?>
-                                <span class="btn btn-secondary btn-sm"> <?= $skill -> getName() ?> </span>
-                              <?php } ?>
+                              <?php if($this->userId) {
+                                foreach($userSkills as $skill ) { ?>
+                                <button class="btn btn-secondary btn-sm btn-hover-info add-tooltip" data-original-title="Click to Remove Skill" data-toggle="tooltip" data-placement="top" id= "skill_<?= $skill -> getId() ?>" onclick="return (removeSkill(<?= $skill -> getId() ?>)) ;"> <?= $skill -> getName() ?> </button>
+                              <?php } } else { 
+                                foreach($userSkills as $skill ) { ?>
+                                <span class="btn btn-secondary btn-sm" id= "skill_<?= $skill -> getId() ?>"> <?= $skill -> getName() ?> </span>
+                              <?php } } ?>
                             </div> <!-- /.list-group -->
 
                           </div>
@@ -254,7 +258,7 @@
                               <div>
                                 <div id="job_locations_display">
                                   <?php foreach($userPreferredJobLocations as $jobLocation ) { ?>
-                                    <span class="btn btn-secondary btn-sm"> <?= $jobLocation -> getLocationName() ?> </span>
+                                    <button class="btn btn-secondary btn-sm btn-hover-info add-tooltip" data-original-title="Click to Remove Location" data-toggle="tooltip" data-placement="top" id= "location_<?= $locationName -> getId() ?>" onclick="return (removeLocation(<?= $locationName -> getId() ?>)) ;"> <?= $jobLocation -> getLocationName() ?> </button>
                                   <?php } ?>
                                 </div> <!-- /.list-group -->
 
@@ -455,14 +459,14 @@
 
       </div> <!-- /.content container -->
 
-      <?php require_once 'views/sidebar/sidebar_button.php'; ?>
+      <?php //require_once 'views/sidebar/sidebar_button.php'; ?>
 
     </div> <!-- .boxed -->
   
   </div> <!-- .container -->
 
   <?php include_once 'views/footer/footer.php'; ?>
-  
+  <?php include_once "static/js/updateUserProfileSettingFunctions.php"; ?>  
   <script type="text/javascript">
 
         function  postLinkRequest(){

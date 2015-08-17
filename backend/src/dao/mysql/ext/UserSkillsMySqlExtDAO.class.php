@@ -6,7 +6,6 @@
  * @date: 2015-03-03 14:48
  */
 class UserSkillsMySqlExtDAO extends UserSkillsMySqlDAO{
-
 	
 }
 ?>

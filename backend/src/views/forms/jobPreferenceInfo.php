@@ -7,7 +7,7 @@
         <div class="col-md-7">
           <div class="">
             <?php foreach($userPreferredJobLocations as $locationName ) { ?>
-              <span class="btn btn-secondary btn-sm"> <?= $locationName -> getLocationName() ?> </span>
+              <button class="btn btn-secondary btn-sm btn-hover-info add-tooltip" data-original-title="Click to Remove Location" data-toggle="tooltip" data-placement="top" id= "location_<?= $locationName -> getId() ?>" onclick="return (removeLocation(<?= $locationName -> getId() ?>)) ;"> <?= $locationName -> getLocationName() ?> </button>
             <?php } ?>
           </div> <!-- /.list-group -->
           

@@ -6,7 +6,7 @@
     <div class="col-md-7">
       <div id="skills_display_div">
         <?php foreach($userSkills as $skill ) { ?>
-          <span class="btn btn-secondary btn-sm"> <?= $skill -> getName() ?> </span>
+          <button class="btn btn-secondary btn-sm btn-hover-info add-tooltip" data-original-title="Click to Remove Skill" data-toggle="tooltip" data-placement="top" id= "skill_<?= $skill -> getId() ?>" onclick="return (removeSkill(<?= $skill -> getId() ?>)) ;"> <?= $skill -> getName() ?> </button>
         <?php } ?>
       </div> <!-- /.list-group -->
       <hr class="spacer-sm">

@@ -499,7 +499,7 @@ class SettingController extends BaseController {
 			foreach ($newSkills as $skillName) {	
 				$newSkillObj = new Skill( $skillName );
 				try {
-					$newSkillId = $this -> userSkillDAO ->insert($newSkillObj);					
+					$newSkillId = $this -> userSkillDAO ->insert($newSkillObj);
 				}
 				catch (Exception $e) {
 					$this->logger->error("Error occur :500 ".json_encode($e) );
@@ -521,6 +521,36 @@ class SettingController extends BaseController {
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Skills field can Not Be Empty";
 		}
+	}
+
+	function removeSkill() {
+		if(isset($_POST['skill_id']) && $_POST['skill_id'] != '') {
+			try {
+				$this -> userSkillsInsertDAO ->delete($_POST['skill_id']);
+				$this->logger->debug("remove skill");
+			}
+			catch (Exception $e) {
+				$this->logger->error("Error occur :500 , In removing skill".var_dump(json_encode($e) ));
+			}
+			echo "Skill removed Successfully";
+		}
+		else
+			echo "Skill cannot be removed";
+	}
+
+	function removeLocation() {
+		if(isset($_POST['location_id']) && $_POST['location_id'] != '') {
+			try {
+				$this -> userPreferredLocationsDAO ->delete($_POST['location_id']);
+				$this->logger->debug("remove location");
+			}
+			catch (Exception $e) {
+				$this->logger->error("Error occur :500 , In removing location".var_dump(json_encode($e) ));
+			}
+			echo "Location removed Successfully";
+		}
+		else
+			echo "Location cannot be removed";
 	}
 
 	function updateLocations() {
