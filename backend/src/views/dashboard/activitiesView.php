@@ -30,26 +30,35 @@
                           <ol class="comment-list">
                             
                             <li>
-                              <div class="comment">
-                                
+                              <div class="comment" id="comment_box_<?= $activity->getId() ?>" >
                                 <?php foreach ($activity -> getResponses() as $response) { ?>
-                                  
                                   <div class="comment-avatar">
-                                    <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
-                                  </div> <!-- /.comment-avatar -->
+                                     <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
+                                  </div>
+                                  <!-- /.comment-avatar -->
+                                  <div class="comment-meta">
+                                    <span class="comment-author">
+                                      <a href="<?= $this -> baseUrl ?>profile/<?= $activity -> getUsername()?>" target="_blank" class="url">
+                                        <?= ucfirst($response->getFirstName()) ?> <?= ucfirst($response->getLastName()) ?>
+                                      </a>
+                                    </span>
+
+                                    <a href="javascript:;" class="comment-timestamp">
+                                      <?= date("F jS, Y",strtotime($response->getCreationTime())) ?>
+                                    </a>
+
+                                  </div> <!-- /.comment-meta -->
 
                                   <div class="comment-meta">
-                                    <p> <?= $response -> getStmt() ?> </p>
+                                     <p> <?= $response -> getStmt() ?> </p>
                                   </div>
-                                
                                 <?php } ?>
-                              
                               </div>
                             </li>
                             
                             <li>
                               <?php 
-                                include 'activity/activityComment.php';
+                                include 'views/activity/activityComment.php';
                               ?>
                             </li>
                           

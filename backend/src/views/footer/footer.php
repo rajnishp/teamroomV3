@@ -336,13 +336,24 @@ function addMorePost(url, dataString, addAt){
       	function appendComment(key, commentDiv){
       		comment = $('#' + commentDiv +key).val();
       		$('#'+ commentDiv +key).val("");
-      		appendHtml = '<div class="comment-avatar">';
-          appendHtml += '<img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $this->username ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
-          appendHtml += '</div>';
-          
-          appendHtml += '<div class="comment-meta">';
-          appendHtml += '<p> '+ comment +' </p>';
-          appendHtml += '</div>';
+
+          appendHtml = '<hr>';
+          appendHtml +=   '<div class="comment-avatar">';
+          appendHtml +=     '<img alt="" src="<?= $this->baseUrl ?>uploads/profilePictures/<?= $this->username ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
+          appendHtml +=   '</div>';
+          appendHtml +=   '<div class="comment-meta">';
+          appendHtml +=     '<span class="comment-author">';
+          appendHtml +=       '<a href="<?= $this -> baseUrl ?>profile/<?= $this->username ?>" target="_blank" class="url">';
+          appendHtml +=          '<?= ucfirst( $this -> firstName ) ?> <?= ucfirst($this -> lastName) ?>';
+          appendHtml +=       '</a>';
+          appendHtml +=     '</span>';
+          appendHtml +=     '<a href="" class="comment-timestamp">';
+          appendHtml +=       '<?= date("F jS, Y",strtotime(date("Y-m-d H:i:s"))) ?>';
+          appendHtml +=     '</a>';
+          appendHtml +=   '</div>';
+          appendHtml +=   '<div class="comment-body">';
+          appendHtml +=     '<p> '+ comment +' </p>';
+          appendHtml +=   '</div>';
 
           $('#comment_box_'+key).append(appendHtml);
       	}
