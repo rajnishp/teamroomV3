@@ -75,26 +75,41 @@ class HomeController extends BaseController {
 					}
 				}
 
-				header('Location: '.$redir);		
+				//header('Location: '.$redir);		
 
 			}
 			else{
-
-				header('Location: '.$this-> baseUrl);
+				echo "Username and Password donot match, Try Again";
+				//header('Location: '.$this-> baseUrl);
 			}
 
 		}
-		else 
-			header('Location: '.$this-> baseUrl);
+		//else 
+			//header('Location: '.$this-> baseUrl);
 
 	}
 	function signup(){
+		
 		if(isset($_POST['username'],$_POST['passwordR'], $_POST['email'])
 			&& $_POST['username'] != '' && $_POST['passwordR'] != '' && $_POST['email'] !=''){
 			//if($_POST['password'] === $_POST['password2']){
+			//$flag = true;
+			$isUserNameExist = $this->userInfoDAO->queryByUsername($_POST['username']);
+			$isEmailExist = $this->userInfoDAO->queryByEmail($_POST['email']);
+
+			if ($isEmailExist) {
+				echo "User is reistered with this Email,<br>Try different email or Please Sign In";
+				//$flag = false;
+			}
+			elseif ($isUserNameExist) {
+				echo "User is reistered with this Username,<br>Try different Username or Please Sign In";
+				//$flag = false;
+			}
+			else {
+
 				if ($_SERVER['HTTP_REFERER'] == $this-> jobsBaseUrl) {
 					$userType = 'jobSearch';
-				} 
+				}
 				else
 					$userType = 'collaborator';
 				$this->user = new UserInfo(
@@ -161,15 +176,20 @@ class HomeController extends BaseController {
 
 					}
 
-					header('Location: ' .$this-> baseUrl ."completeProfile");
+					//header('Location: ' .$this-> baseUrl ."completeProfile");
+					//$flag = true;
+					
 
 				}
 				else{
-					header('Location: '.$this-> baseUrl);
+					echo "Failed to register";
+					//$flag = false;
+					//header('Location: '.$this-> baseUrl);
 					//base url redirected for any error occurred
-					echo "failed to reg";
+					//echo "failed to reg";
 				}
-
+			}
+			//return $flag;
 			//}
 		}
 	}
@@ -214,6 +234,7 @@ class HomeController extends BaseController {
 			echo "<style type=\"text/css\">
 			        #usernameR {border: 3px solid red;}
 		        </style>";
+		    return false;
 			exit;
 		}
 
@@ -224,12 +245,14 @@ class HomeController extends BaseController {
 			echo "<style type=\"text/css\">
 			        #usernameR {border: 3px solid red;}
 		        </style>";
+		    return false;
 		}
 		else {
 			//print "<span style=\"color:green;\"><i class='fa fa-ok'> </i>Ok</span>";
 			echo "<style type=\"text/css\">
 			        #usernameR {border: 3px solid green;}
 		        </style>";
+		    return true;
 		}
 	}
 
@@ -248,12 +271,14 @@ class HomeController extends BaseController {
 				echo "<style type=\"text/css\">
 				        #email {border: 3px solid red;}
 			        </style>";
+			    return false;
 			}
 			else {
 				//print "<span style=\"border:3px solid green;\"></span>";
 				echo "<style type=\"text/css\">
 				        #email {border: 3px solid green;}
 			        </style>";
+			    return true;
 			}
 		}
 		else {
@@ -261,6 +286,7 @@ class HomeController extends BaseController {
 			echo "<style type=\"text/css\">
 			        #email {border: 3px solid red;}
 		        </style>";
+		    return false;
 		}
 	}
 

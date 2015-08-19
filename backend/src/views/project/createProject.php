@@ -78,6 +78,26 @@
                 </div> <!-- /.form-group -->
 
                 <div class="form-group">
+                  <label class="col-md-3 control-label">Team Members</label>
+                  <div class="col-md-7">
+                    <div  id="add_team_member_div" >
+                      <div class="col-md-6">
+                        <input type="email" id="team_member_1" class="form-control" placeholder="Member Email " />
+                      </div>
+                      <div class="col-md-6">
+                        <input type="email" id="team_member_2" class="form-control" placeholder="Member Email " />
+                      </div>
+                      <div class="col-md-6">
+                        <input type="email" id="team_member_3" class="form-control" placeholder="Member Email " />
+                      </div>
+                      <div class="col-md-6">
+                        <input type="email" id="team_member_4" class="form-control" placeholder="Member Email " />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                
+                <div class="form-group">
 
                   <label class="col-md-3 control-label">Project Status</label>
                   <div class="col-md-5">
@@ -205,9 +225,10 @@ function postNewProject(fields, responceTx){
     //fields = ["title","my_role","tech_skills","team_size","description"];
     var dataString = "";
 
-    
-    dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val() + "&status=" + $('#status').val()  ;
-    //console.log(dataString);
+    var members = $('#team_member_1').val() +","+ $('#team_member_2').val() +","+ $('#team_member_3').val();
+    dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val() + "&status=" + $('#status').val() + "&members="+ members;
+                  // + "&member1=" + $('#team_member_1').val()  + "&member2=" + $('#team_member_2').val()  + "&member3="+ $('#team_member_3').val();
+    console.log(dataString);
     
     $.ajax({
       type: "POST",
@@ -274,10 +295,9 @@ function postNewProject(fields, responceTx){
             request.send(data);
           }
 
-
   function validateCreateProject(){
     fields = ["title","my_role","tech_skills","team_size","description"];
-    
+        
     if (genericEmptyFieldValidator(fields)) {
         //    if(_file.files.length != 0){
           //    uploadProjectFile('project',fields);
@@ -289,6 +309,10 @@ function postNewProject(fields, responceTx){
     return false;
 
   }
-</script>
+
+/*  function addMoreMember() {
+    $( "#add_team_member_div" ).clone().appendTo( "#add_team_member_div" );
+  }*/
+ </script>
   </body>
 </html>

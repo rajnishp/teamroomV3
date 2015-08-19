@@ -41,6 +41,7 @@
               <!-- SECTION TITLE -->
               <h4 class="masthead-title">Register</h4>
             </div>
+            <?php /*
               <form class="form account-form registration-form masthead-form" method="POST" action="<?= $this-> baseUrl?>home/signup" onSubmit="return (validateReg());">
                 
                 <div class="form-group">
@@ -110,6 +111,39 @@
                 </div> --> <!-- End of social Login -->
                 <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
               </form>
+            */ ?>
+              <form class="form account-form registration-form masthead-form"  onsubmit="return (validateReg());">
+                
+                <div class="form-group">
+                  <input type="email" class="input-block-level form-control" placeholder="Enter email-id" id="email" name="email" onkeyup="nospaces(this)" onblur="emailCheck();" tabindex="1">
+                  <span id="status_email"></span>
+                </div> <!-- /.form-group -->
+        
+                <div class="form-group">
+                  <input type="text" class="input-block-level form-control" placeholder="Enter username" id="usernameR" name="username" onkeyup="nospaces(this)" onblur="usernameCheck();"  />
+                  <span id="status_username"></span>
+                </div> <!-- /.form-group -->
+
+                <div class="form-group">
+                  <input type="password" class="input-block-level form-control" placeholder="Enter password" onkeyup="nospaces(this)" id="passwordR" name="passwordR" />
+                </div> <!-- /.form-group -->
+
+                <div class="form-group">
+                  <label class="checkbox-inline">
+                    <input type="checkbox" class="" id="accept_tnc" value="">
+                      Aggree to  
+                      <a href="#" data-target="#terms-conditions" data-toggle="modal" style="color:#0CD85E"> Terms &amp; Conditions </a>
+                  </label>
+                </div>
+                
+                <div class="form-group">
+                  <button type="submit" class="btn btn-success" name="submit" value="signup" id="request_reg" style="width:100%;height:50px;font-size:22px;" >
+                    <b>Register</b>
+                  </button>
+                </div>
+                <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
+              </form>>
+            
             </div>
             
             <div class="col-md-7 masthead-text animated fadeInDownBig">
@@ -142,8 +176,56 @@
               </h5>
             </div>
 
-            <div class="row">            
+            <div class="row">
+            <?php /*
               <form class="form account-form login-form masthead-form" action="<?= $baseUrl ?>home/login<?= $this->fromUrl ? "?from=".$this->fromUrl:""  ?>" method="post" onSubmit="return (validateLog());">
+
+                <div class="form-group">
+                  <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username">
+                  <i class="form-control-feedback" style="display: none;" data-bv-icon-for="username" data-original-title="" title=""></i>
+                  <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="username" data-bv-result="NOT_VALIDATED">The first name is required and cannot be empty</small>
+                  <small class="help-block" style="display: none;" data-bv-validator="regexp" data-bv-for="username" data-bv-result="NOT_VALIDATED">The first name can only consist of alphabetical characters and spaces</small>
+                </div>
+                <div class="form-group">
+                  <input type="password" class="input-block-level form-control" id="password" name="password" placeholder="Password">
+                </div>
+
+                <div class="form-group clearfix">
+                  <div class="pull-left">         
+                    <label class="checkbox-inline">
+                      <input type="checkbox" class="" value="" style="margin-top: 11px;"> <h5> Remember me </h5>
+                    </label>
+                  </div>
+
+                  <div class="pull-right">
+                    <h5><a href="#forget-password" data-target="#forget-password" data-toggle="modal" style="color:#0CD85E"> Forgot Password? </a> </h5>
+                  </div>
+                </div> <!-- /.form-group -->
+
+                <input name="project" type="hidden" value="Collap"/>
+                <button class="btn btn-success" style="width:100%;height:50px;font-size:22px;" id="login" name="submit" value="login"><b> Login </b></button>
+                <!-- <div class="line"> or </div>  
+                <div class="socials">
+                  <ul class="list-inline">
+                    
+                    <li><a  href="https://www.facebook.com/pages/collapcom/739310236156746" target='_blank'>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/facebook.png" style="width:50px;"/>
+                    </a></li>
+                    
+                    <li><a  href="https://plus.google.com/117170233233281087141" rel="publisher" target='_blank'>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/google.png" style="width:50px;"/>
+                    </a></li>
+                    
+                    <li><a  href="https://in.linkedin.com/" target='_blank'>
+                      <img class="media-object img-circle" src="<?= $baseUrl ?>static/imgs/linkdin.png" style="width:50px;"/>
+                    </a></li>
+                    
+                  </ul>
+                </div> --> <!-- End of social Login -->
+
+              </form>
+              */ ?>
+              <form class="form account-form login-form masthead-form"  onsubmit="return (validateLog());" >
 
                 <div class="form-group">
                   <input type="text" class=" input-block-level form-control" id="username" name="username" placeholder="Email or Username">
@@ -920,7 +1002,9 @@
 <script src="static/global/js/mvpready-core.js"></script>
 <script src="static/global/js/mvpready-helpers.js"></script>
 <script src="static/js/mvpready-landing.js"></script>
-<script src="static/js/landingPage.js"></script>
+<!-- <script src="static/js/landingPage.js"></script> -->
+
+<?php include 'static/js/landingPage.php'; ?>
 
 <script type="text/javascript">
 

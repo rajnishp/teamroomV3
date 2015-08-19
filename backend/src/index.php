@@ -368,6 +368,12 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 					if($route[2] == "logout"){
 						$homeController -> logout ();
 					}
+					elseif($route[2] == 'signup') {
+						$homeController -> signup ();
+					}
+					elseif($route[2] == 'login') {
+						$homeController -> login ();
+					}
 					
 					if (!empty($_POST)){
 						$form = $_POST['submit'];

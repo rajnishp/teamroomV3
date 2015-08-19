@@ -1,6 +1,7 @@
 <?php
 
 require_once 'controllers/BaseController.class.php';
+require_once 'controllers/EmailController.class.php';
 
 class ProjectController extends BaseController {
 
@@ -103,7 +104,9 @@ class ProjectController extends BaseController {
 	
 	
 	function createProject(){
-		$this -> logger -> debug( "inside Crete Porject");
+		
+		$this -> logger -> debug( "inside Create Project");
+
 		if(isset($_POST['title'], $_POST['description'], $_POST['type'], $_POST['tech_skills'], $_POST['my_role'], $_POST['team_size'], $_POST['start'], $_POST['end'], $_POST['status'])){
 			
 			$newProject = new Project(
@@ -158,6 +161,16 @@ class ProjectController extends BaseController {
 
 				echo "Failed to post";
 			}	
+		}
+
+		if (isset($_POST['members']) && $_POST['members'] != '') {
+			$projectMembers = explode(',', $_POST['members']);
+			foreach ($projectMembers as $key => $member) {
+				//$emailController = new EmailController();
+				//$emailController -> sendMail( $key, $temp->getSubject(), str_replace("{{ notification }}", $value, $temp->getBody()));
+
+				//mail($member, "test member mail", "hey i ma testing maikl");
+			}
 		}
 		
 
