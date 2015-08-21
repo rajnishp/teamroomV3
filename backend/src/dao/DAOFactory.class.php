@@ -306,6 +306,12 @@ class DAOFactory{
 	 * @return UserAccessAidDAO
 	 */
 	public static function getUserAccessAidDAO(){
+		
+		require_once('UserAccessAidDAO.class.php');
+		require_once('models/UserAccessAid.class.php');
+		require_once('mysql/UserAccessAidMySqlDAO.class.php');
+		require_once('mysql/ext/UserAccessAidMySqlExtDAO.class.php');
+
 		return new UserAccessAidMySqlExtDAO();
 	}
 

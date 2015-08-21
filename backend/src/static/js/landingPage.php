@@ -161,4 +161,39 @@ function validateLog(){
     return false;
     //return returnBool;
 }
+
+function validateForgetPassword(){
+    returnBool = true;
+    if($('#forget_email').val() == "" || $('#forget_email').val() == null){
+        $('#forget_email').css("border-color", "red");
+        //returnBool = false;
+        return false;
+    }
+    else {
+        var dataString = "";      
+        dataString = "forget_email=" + $('#forget_email').val(); 
+        
+        alert(dataString);
+        $.ajax({
+          type: "POST",
+          url: "<?= $this-> baseUrl?>"+"home/forgetPassword",
+          data: dataString,
+          cache: false,
+          success: function(result){
+            $("#forget_email_status").innerHTML(result);
+            alert(result);
+            console.log(result);
+            //location.reload();
+          },
+          error: function(result){
+            $("#forget_email_status").innerHTML(result);
+            alert(result);
+            console.log(result);
+          }
+
+        });
+    }
+    return false;
+    //return returnBool;
+}
 </script>

@@ -164,12 +164,16 @@ class ProjectController extends BaseController {
 		}
 
 		if (isset($_POST['members']) && $_POST['members'] != '') {
+			$subject = $this->firstName." ". $this-> lastName ." Added you as Collaborator";
+			$body = $this->firstName ." ". $this-> lastName. "has Added you as collaborator for project 
+														<br/>".$_POST['title'] ."<br/><br/> View at http://collap.com/project/".$this -> projectId ;
 			$projectMembers = explode(',', $_POST['members']);
 			foreach ($projectMembers as $key => $member) {
-				//$emailController = new EmailController();
+				$emailController = new EmailController();
 				//$emailController -> sendMail( $key, $temp->getSubject(), str_replace("{{ notification }}", $value, $temp->getBody()));
+				
+				$emailController -> sendMail( $member, $subject, $body);
 
-				//mail($member, "test member mail", "hey i ma testing maikl");
 			}
 		}
 		

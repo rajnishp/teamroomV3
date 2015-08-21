@@ -51,7 +51,7 @@
 			$this -> id = $id;
 		}
 		function getId(){
-			return $this->id;
+			return $this-> id;
 		}
 
 		function setFirstName($firstName){

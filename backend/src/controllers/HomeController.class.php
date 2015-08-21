@@ -1,8 +1,9 @@
 <?php
 
 require_once 'controllers/BaseController.class.php';
+require_once 'controllers/EmailController.class.php';
 
-class HomeController extends BaseController {	
+class HomeController extends BaseController {
 
 	function __construct (  ){
 		
@@ -10,6 +11,7 @@ class HomeController extends BaseController {
 
 		$this -> logger -> debug("HomeController started");
 
+		
 		//$this -> fromUrl = $_GET['from'];		
 
 	}
@@ -19,6 +21,8 @@ class HomeController extends BaseController {
 		// here its shower that user is not in session
 		 
 		try{
+/*			$isEmailExist = $this->userInfoDAO->queryByEmail('rajnish_pawar90@yahoo.com');
+			var_dump($isEmailExist); die();*/
 			//$topProjects = $this -> projectDAO -> getTopProjects(); // have not found the function find and replace
 			require_once 'views/landing/index.php';
 
@@ -118,7 +122,7 @@ class HomeController extends BaseController {
 										$_POST['email'],
 										null,
 										$_POST['username'],
-										md5($_POST['password']),
+										md5($_POST['passwordR']),
 										"dabbling",
 										$userType,
 										0,
@@ -220,9 +224,94 @@ class HomeController extends BaseController {
 	    die();
 
 	}
-	function forgetPasswod(){
-		if(isset($_POST['email'])){
+	function forgetPassword(){
 
+		if(isset($_POST['forget_email'])){
+			$emailRequest = $_POST['forget_email'];
+			if($emailRequest == "" || preg_replace("/\s+/", "", $emailRequest) == "") {
+				//header('Location: #');
+				//return false;
+				echo "<span>Email cannot be empty</span>";
+			}
+			elseif  (! preg_match("/^[^@]+@[^@.]+\.[^@]*\w\w$/", $emailRequest)){
+				//header('Location: #');
+				//return false;
+				echo "<span>Not a valid Email </span>";
+			}
+			else {
+				try {
+					$isEmailExist = $this->userInfoDAO->queryByEmail($emailRequest);
+					//echo "<span>" . var_dump($isEmailExist) . "</span>";
+				}
+				catch (Exception $e) {
+					$this->logger->error( "Error occur : in queryByEmail ".json_encode($e) );
+				}
+				if ($isEmailExist) {
+
+					$emailController = new EmailController();
+					try {
+						$isAccessAidSet = $this-> userAccessAidDAO -> queryByUserIdStatus($isEmailExist[0]->getId());
+						//$already_sent_mail = mysqli_query($db_handle, "SELECT id, status, hash_key FROM user_access_aid WHERE user_id= '$user_id_access' AND status = '0';");
+					}
+					catch (Exception $e) {
+						$this->logger->error( "Error occur : in queryByUserIdStatus ".json_encode($e) );
+					}
+											
+					
+					if($isAccessAidSet) {
+						$hashValue = $isAccessAidSet[0]-> getHashKey() .".". $isAccessAidSet[0]-> getId();
+						$body = "Hi". $isEmailExist[0]->getFirstName()." ".$isEmailExist[0]->getLastName(). "<br/>,
+							You recently requested a password reset.<br/>
+							To change your Collap password,<br/>
+							Click http://collap.com/forgetPassword?hash_key=$hashValue
+							<br/><br/>
+							Thanks for using Collap! <br/>
+							The Collap Team";
+
+						$emailController -> sendMail( $isEmailExist[0]->getEmail(), "Password Recovery from Collap", $body);
+
+						echo "<span>
+								<div class='jumbotron' style='margin-top: 60px; color: #2E1313;'>
+									<p align='center'> Please check your Email, shortly you get an email, Go through your email and change your password<br>
+									<br><a class='btn' href='index.php'>Go Back</a></p>
+								</div>
+							</span>";								
+					}
+					else {
+						$hash_key = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 32);
+						//mysqli_query($db_handle, "INSERT INTO user_access_aid (user_id, hash_key) VALUES ('$user_id_access', '$hash_key');");
+						$accessAidObj = new UserAccessAid (
+															$isEmailExist[0]->getId(),
+															$hash_key,
+															0,
+															date('Y-m-d G:i:s')
+														);
+
+						$accessAidId = $this-> userAccessAidDAO -> insert($accessAidObj);
+
+						$hashValue = $hash_key.".".$accessAidId;
+						$body = "Hi". $isEmailExist[0]->getFirstName()." ".$isEmailExist[0]->getLastName(). "<br/>,
+							You recently requested a password reset.<br/>
+							To change your Collap password,<br/>
+							Click http://collap.com/forgetPassword?hash_key=$hashValue
+							<br/><br/>
+							Thanks for using Collap! <br/>
+							The Collap Team";
+
+						$emailController -> sendMail( $isEmailExist[0]->getEmail(), "Password Recovery from Collap", $body);
+
+						echo "<span>
+								<div class='jumbotron' style='margin-top: 60px; color: #2E1313;'>
+									<p align='center'> Please check your Email, shortly you get an email, Go through your email and change your password<br>
+									<br><a class='btn' href='index.php'>Go Back</a></p>
+								</div>
+							</span>";
+					}
+				}
+				else {
+					echo "<span>No user is reistered with this Email.</span>";
+				}
+			}
 		}
 	}
 

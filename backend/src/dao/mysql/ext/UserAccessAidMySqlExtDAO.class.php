@@ -7,6 +7,19 @@
  */
 class UserAccessAidMySqlExtDAO extends UserAccessAidMySqlDAO{
 
-	
+	public function queryByUserIdStatus($userId){
+		$sql = 'SELECT * FROM user_access_aid WHERE user_id = ? AND status = 0 ';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByHashKeyAidId($hashKey, $userId){
+		$sql = 'SELECT * FROM user_access_aid WHERE hash_key = ? AND user_id = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->setNumber($userId);
+		return $this->getList($sqlQuery);
+	}
+
 }
 ?>

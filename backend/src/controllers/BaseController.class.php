@@ -45,7 +45,8 @@ abstract class BaseController {
 	protected $userPushFormsDAO;
 	
 	protected $userPushFormsInsertDAO;
-
+	
+	protected $userAccessAidDAO;
 
 	
 
@@ -103,6 +104,8 @@ abstract class BaseController {
 		$this -> userPushFormsDAO = $DAOFactory->getFormsDAO();
 
 		$this -> userPushFormsInsertDAO = $DAOFactory->getUserFormsDAO();
+
+		$this -> userAccessAidDAO = $DAOFactory->getUserAccessAidDAO();
 		
 		
 		$this->process();

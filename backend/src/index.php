@@ -374,6 +374,9 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 					elseif($route[2] == 'login') {
 						$homeController -> login ();
 					}
+					elseif($route[2] == 'forgetPassword') {
+						$homeController -> forgetPassword ();
+					}
 					
 					if (!empty($_POST)){
 						$form = $_POST['submit'];
@@ -434,6 +437,24 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 				
 
 			default:
+
+					$recoverPasswordReq = explode('?', $page);
+					
+					if ($recoverPasswordReq[0] == "recoverPassword") {
+						
+						$recoverPasswordController = new RecoverPasswordController();
+
+						if($routeHashKeyCheck[0] == "updatePassword"){
+							$recoverPasswordController -> updatePassword();
+							break;
+						}
+						else {
+							$haskKeyAidId = explode('.', $recoverPasswordReq[1]);	
+							$recoverPasswordController->render($haskKeyAidId[0], $haskKeyAidId[1]);
+						}
+						break;
+					}
+
 					if( isset($_SESSION["user_id"] )){
 						$dashboardController = new DashboardController();
 						

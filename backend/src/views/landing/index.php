@@ -142,7 +142,7 @@
                   </button>
                 </div>
                 <p style="text-align:center;"> We'll never post anything anywhere without your permission </p>
-              </form>>
+              </form>
             
             </div>
             
@@ -699,11 +699,12 @@
 
             <h5>We'll email you instructions on how to reset your password.</h5>
 
-            <form class="form account-form" method="POST" action="forgetPassword" onsubmit="validateEmail()">
+            <form class="form account-form" onsubmit="return (validateForgetPassword());">
 
               <div class="form-group">
-                <label for="forgot-email" class="placeholder-hidden">Your Email</label>
-                <input type="email" class="form-control" id="forgot-email" placeholder="Your Email"  style= "border-color: blue;">
+                <label for="forget_email" class="placeholder-hidden">Your Email</label>
+                <input type="email" class="form-control" id="forget_email" placeholder="Your Email"  style= "border-color: blue;" />
+                <span id = "forget_email_status"></span>
               </div> <!-- /.form-group -->
 
               <div class="form-group">
