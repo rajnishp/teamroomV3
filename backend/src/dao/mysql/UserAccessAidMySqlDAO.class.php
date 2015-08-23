@@ -60,13 +60,13 @@ class UserAccessAidMySqlDAO implements UserAccessAidDAO{
 		$sql = 'INSERT INTO user_access_aid (user_id, hash_key, status, time) VALUES (?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($userAccessAid->userId);
-		$sqlQuery->set($userAccessAid->hashKey);
-		$sqlQuery->setNumber($userAccessAid->status);
-		$sqlQuery->set($userAccessAid->time);
+		$sqlQuery->setNumber($userAccessAid->getUserId());
+		$sqlQuery->set($userAccessAid->getHashKey());
+		$sqlQuery->setNumber($userAccessAid->getStatus());
+		$sqlQuery->set($userAccessAid->getTime());
 
 		$id = $this->executeInsert($sqlQuery);	
-		$userAccessAid->id = $id;
+		$userAccessAid-> setId($id);
 		return $id;
 	}
 	
@@ -79,12 +79,12 @@ class UserAccessAidMySqlDAO implements UserAccessAidDAO{
 		$sql = 'UPDATE user_access_aid SET user_id = ?, hash_key = ?, status = ?, time = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
-		$sqlQuery->setNumber($userAccessAid->userId);
-		$sqlQuery->set($userAccessAid->hashKey);
-		$sqlQuery->setNumber($userAccessAid->status);
-		$sqlQuery->set($userAccessAid->time);
+		$sqlQuery->setNumber($userAccessAid->getUserId());
+		$sqlQuery->set($userAccessAid->getHashKey());
+		$sqlQuery->setNumber($userAccessAid->getStatus());
+		$sqlQuery->set($userAccessAid->getTime());
 
-		$sqlQuery->setNumber($userAccessAid->id);
+		$sqlQuery->setNumber($userAccessAid->getId());
 		return $this->executeUpdate($sqlQuery);
 	}
 
@@ -164,9 +164,6 @@ class UserAccessAidMySqlDAO implements UserAccessAidDAO{
 	protected function readRow($row){
 		$userAccessAid = new UserAccessAid($row['user_id'],$row['hash_key'],$row['status'],$row['time'],$row['id']);
 		
-		
-		
-
 		return $userAccessAid;
 	}
 	

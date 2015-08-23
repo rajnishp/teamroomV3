@@ -16,6 +16,7 @@ include_once "controllers/DashboardController.class.php";
 include_once "controllers/SettingController.class.php";
 include_once "controllers/CompleteProfileController.class.php";
 include_once "controllers/PushFormsController.class.php";
+include_once "controllers/RecoverPasswordController.class.php";
 
 
 //include_once "components/base.php";
@@ -62,6 +63,7 @@ $logger -> debug ("Setting up ...");
 
 
 $route = explode("/",$_SERVER[REQUEST_URI]);
+
 //router hack for uploads
 if(in_array('uploads', $route)){
 	$redir = $configs['COLLAP_BASE_URL'];
@@ -112,7 +114,6 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 }else {
 
 		$page = $route[1];
-		
 		//single page app
 		switch ($page) {
 
@@ -306,6 +307,18 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 								$settingController -> updateSkills();
 
 								break;
+								
+							case 'removeSkill':
+								
+								$settingController -> removeSkill();
+
+								break;
+
+							case 'removeLocation':
+								
+								$settingController -> removeLocation();
+
+								break;
 							
 							case 'updateLocations':
 								
@@ -351,10 +364,18 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 				break;
 
 			case "home":
-
 					$homeController = new HomeController();
 					if($route[2] == "logout"){
 						$homeController -> logout ();
+					}
+					elseif($route[2] == 'signup') {
+						$homeController -> signup ();
+					}
+					elseif($route[2] == 'login') {
+						$homeController -> login ();
+					}
+					elseif($route[2] == 'forgetPassword') {
+						$homeController -> forgetPassword ();
 					}
 					
 					if (!empty($_POST)){
@@ -416,6 +437,35 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 				
 
 			default:
+
+					$recoverPasswordReq = explode('?', $page);
+					
+					if ($recoverPasswordReq[0] == "forgetPassword") {
+						//var_dump($recoverPasswordReq); die();
+						$recoverPasswordController = new RecoverPasswordController();
+						
+						//$routeHashKeyCheck = explode('?', $recoverPasswordReq[1]);
+						
+						//var_dump($routeHashKeyCheck); die();
+
+						if($route[2] == "newPassword"){
+							
+							$previousRoute = explode("/",$_SERVER['HTTP_REFERER']);
+							$previousPage = explode('?', $previousRoute[3]);
+							$hashKey = explode('=', $previousPage[1]);
+							$haskKeyAidId = explode('.', $hashKey[1]);
+							
+							$recoverPasswordController -> updatePassword($haskKeyAidId[0], $haskKeyAidId[1]);
+							break;
+						}
+						else {
+							$hashKey = explode('=', $recoverPasswordReq[1]);
+							$haskKeyAidId = explode('.', $hashKey[1]);
+							$recoverPasswordController->render($haskKeyAidId[0], $haskKeyAidId[1]);
+						}
+						break;
+					}
+
 					if( isset($_SESSION["user_id"] )){
 						$dashboardController = new DashboardController();
 						

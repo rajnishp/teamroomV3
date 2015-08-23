@@ -23,7 +23,7 @@ class PushFormsController extends BaseController {
 			echo $getuserPushForm -> getForm();
 		} 
 		catch (Execption $e){
-			$this->logger->error("Error occur :500 ".json_encode($e) );
+			$this->logger->error("Error occur :500, Failed to getuserPushForm".json_encode($e) );
 		}
 	}
 

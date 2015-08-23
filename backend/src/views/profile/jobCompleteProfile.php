@@ -115,189 +115,35 @@
                         <div class="tab-content">
                           <!--First tab-->
                           <div id="tab_profile" class="tab-pane">
+
+                            <?php require_once 'views/forms/profilePicture.php'; ?>
+
                             <div class="form-horizontal">
-
+                              
+                              <?php require_once 'views/forms/basicInformation.php'; ?>
+                            
                               <div class="form-group">
 
-                                <label class="col-md-3 control-label">First Name</label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="first_name" id= "first_name"  value="<?= $userProfile->getFirstName() !=null ? $userProfile->getFirstName() : null ?>" placeholder="First Name" class="form-control" />
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Last Name</label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="last_name"  id= "last_name"  value="<?= $userProfile->getLastName() !=null ? $userProfile->getLastName() : null ?>" placeholder="Last Name"  class="form-control" />
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Want to Collaborate As</label>
-
-                                <div class="col-md-7">
-                                  <div class="checkbox">
-                                    
-                                    <label class="form-checkbox form-icon active form-text">
-                                    Engineer
-                                    <input type="checkbox" id="engineer" checked="" value="Engineer" >
-                                    
-                                    </label>
-                                  </div>
-                                  <div class="checkbox">
-                                    
-                                    <label class="form-checkbox form-icon active form-text">
-                                    Project Manager
-                                    <input type="checkbox"  id="project_manager" checked="" value="ProjectManager">
-                                    
-                                    </label>
-                                  </div>
-                                  <div class="checkbox">
-                                    
-                                    <label class="form-checkbox form-icon active form-text">
-                                    UX Designer
-                                    <input type="checkbox" id="ux_designer" checked=""  value="UxDesigner">
-                                    
-                                    </label>
-                                  </div>
-                                  <div class="checkbox">
-                                    
-                                    <label class="form-checkbox form-icon active form-text">
-                                    Doctor
-                                    <input type="checkbox" id="doctor" checked=""  value="Doctor">
-                                    
-                                    </label>
-                                  </div>
-                                  <div class="checkbox">
-                                    
-                                    <label class="form-checkbox form-icon active form-text">
-                                    Research Scholar
-                                    <input type="checkbox" id="research_scholar" checked=""  value="ResearchScholar">
-                                    
-                                    </label>
-                                  </div>
-                                  <div class="checkbox">
-                                    
-                                    <label class="form-checkbox form-icon active form-text">
-                                    Lawyer
-                                    <input type="checkbox" id="lawyer" checked=""  value="Lawyer">
-                                    
-                                    </label>
-                                    
-                                    <small class="help-block">Best suited according to your knowledge domain, you can choose multiples</small>
-
-                                  </div>
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-                             
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Contact Number</label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="phone" id="phone"  value="<?= $userProfile->getPhone() !=null ? $userProfile->getPhone() : null ?>" placeholder="Contact No" class="form-control" />
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Current Living Place</label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="living_place" id="living_place"  value="<?= $userProfile->getLivingTown() !=null ? $userProfile->getLivingTown() : null ?>" placeholder="Current Living Town" class="form-control" />
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">About You</label>
-
-                                <div class="col-md-7">
-                                  <textarea name="about_user" id="about_user" rows="6" class="form-control" placeholder="Useful Information about You......"><?= $userProfile->getAboutUser() !=null ? $userProfile->getAboutUser() : null ?></textarea>
-                                  <small class="help-block">Ex: I am a person with a positive attitude, worked at Collap..</small>                        
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-      
                                 <div class="pull-right pad-all">
 
-                                <!--                                   
-
-                                  <button type="submit" class="btn btn-success" onclick="return (validateUpdateProfile());">Save Changes</button>
-                                -->
-                                   <button type="button" class="next btn btn-primary" id='validateUpdateProfile'>Save and Next</button>
+                                   <button type="button" class="next btn btn-primary">Save and Next</button>
+                            
                                 </div> <!-- /.col -->
-      
+
                               </div> <!-- /.form-group -->
 
                             </div> <!--End Form user basic profile-->
+                          
                           </div> <!-- End First tab-->
             
                           <!--Second tab-->
                           <div id="tab_tech_strength" class="tab-pane">
                             <div id="tech_strength_div">
 
-                              <div class="form-horizontal">
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Add Skills</label>
-
-                                  <div class="col-md-7">
-                                    <select id="demo-cs-multiselect" name="skills" data-placeholder="Choose a Skill..." multiple tabindex="4" style="margin-bottom: 0px;">
-                                      <?php foreach ($allSkills as $skillName) { ?>
-                                        <option value="<?= $skillName -> getId() ?>" id ="skill_<?= $skillName -> getId() ?>"><?= $skillName -> getName() ?></option>
-                                      <?php } ?>
-                                    </select>
-                                    <small class="help-block">Ex: C, Cpp, PHP, JAVA</small>                                
-                                    <input type="text" name = "new_skill" id="new_skill" class="form-control" placeholder="Add new Skill" data-role="tagsinput" style="margin-bottom: 0px;">
-                                    <small class="help-block">Enter new Skill seperated by comma (,)...</small>
-                                    <button type="submit" id="skills" class="btn btn-success" onclick="return (validateUpdateSkills());">Add Skills</button>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                              </div> <!-- /.form-horizontal -->
-
+                              <?php require_once 'views/forms/addSkills.php'; ?>
                             
-                              <div class="form-horizontal" id= "tech_strength_form">
+                              <?php require_once 'views/forms/techStrength.php'; ?>
 
-                                <div class="form-group">
-                                 
-                                  <label class="col-md-3 control-label">Extra Activities and Achievement</label>
-                                
-                                  <div class="col-md-7">
-                                    <input type="text" name="tech_strength" id="tech_strength" value="" class="form-control"/>
-                                  
-                                    <small class="help-block">Completed course on ETHICAL HACKING from XYZ...</small>
-                                    <small class="help-block">Winner of xyz Hackathon with Idea ------ </small>                                
-                                  
-                                  </div> <!-- /.col -->
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label"></label>
-                                
-                                  <div class="col-md-7">
-                                  
-                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateTechStrength());">Add More</button>
-
-                                  </div> <!-- /.col -->
-                                </div> <!-- /.form-group -->
-
-                              </div>
                             </div>
 
                             <div class="pull-right pad-all">
@@ -315,65 +161,7 @@
                             
                             <div id="work_exp_div">
                               
-                              <div class="form-horizontal" <div id="work_exp_form">
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Company Name</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="company_name" id="company_name" class="form-control"/>
-                                    <small class="help-block">Ex: Example Pvt. Ltd</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-                                
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Designation</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="designation" id="designation" class="form-control"/>
-                                    
-                                    <small class="help-block">Ex: Software Developer</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Duration</label>
-
-                                  <div class="col-md-7">
-
-                                    <div id="demo-dp-range">
-                                      <div id="datepicker" class="input-daterange input-group">
-                                        <input type="text" name="from" id="work_from" class="form-control"  placeholder="YYYY-MM-DD"/>
-                                        <span class="input-group-addon">to</span>
-                                        <input type="text" name="to" id="work_to" class="form-control"  placeholder="YYYY-MM-DD"/>
-                                      </div>
-                                    </div>
-                                    
-                                    <small class="help-block">Working Duration like August 01, 2014 to July 30, 2015</small>
-
-                                  </div>
-                                </div> <!-- /.form-group -->
-
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label"></label>
-                                
-                                  <div class="col-md-7">
-                                  
-                                    <button type="submit" class="btn btn-success" onclick ="return (validateUpdateWorkExp());">Add More</button>
-
-                                  </div> <!-- /.col -->
-                                </div> <!-- /.form-group -->
-
-                              </div>
+                              <?php require_once 'views/forms/workExperience.php'; ?>
 
                             </div>
 
@@ -388,66 +176,10 @@
                           
                           <!--Fourth tab-->
                           <div id="tab_job_preference" class="tab-pane">
-                            
-                            <div class="form-horizontal">
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Preferred Locations <br/>(First Location is first <b>Preference</b>) </label>
-
-                                <div class="col-md-7">          
-                                  <select id="demo-cs-multiselect1" data-placeholder="Choose Location by Preference..." multiple tabindex="4">
-                                    <?php foreach ($allLocations as $availablelocation) { ?>
-                                      <option value="<?= $availablelocation -> getId() ?>" id ="location_<?= $availablelocation -> getId() ?>"><?= $availablelocation-> getLocationName() ?></option>  
-                                    <?php } ?>
-                                  </select>
-                                  
-                                  <small class="help-block">Preferred Job Location: Bangalore, Delhi/NCR ( First location will be first prefernece )</small>
-
-                                  <button type="submit" id="locations" class="btn btn-success" onclick="return (validateUpdateLocations());">Add Locations</button>
-
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
                               
-                            
-                              <div class="form-group">
+                            <?php require_once 'views/forms/jobPreferenceInfo.php'; ?>
 
-                                <label class="col-md-3 control-label">Current CTC </label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="current_ctc" id="current_ctc" placeholder ="Lacs/Annum" class="form-control"/>
-                                
-                                  <small class="help-block"> Ex: 6 LPA </small>
-                                
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Expected CTC </label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="expected_ctc" id="expected_ctc" placeholder ="Lacs/Annum" class="form-control"/>
-                                
-                                  <small class="help-block"> Ex: 9 LPA </small>
-                                
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
-
-                              <div class="form-group">
-
-                                <label class="col-md-3 control-label">Notice Period </label>
-
-                                <div class="col-md-7">
-                                  <input type="text" name="notice_period" id="notice_period" placeholder ="Enter Months" class="form-control"/>
-                                 
-                                  <small class="help-block"> Ex: 2 Months </small>
-                                  
-                                </div> <!-- /.col -->
-
-                              </div> <!-- /.form-group -->
+                            <div class="form-horizontal">
                               
                               <div class="form-group">
                                 <div class="pull-right pad-all">
@@ -469,78 +201,9 @@
                           <!--Fifth tab-->
                           <div id="tab_education" class="tab-pane">
                             <div id="education_div">
-                              <div class="form-horizontal"  id="education_form">
+                              
+                              <?php require_once 'views/forms/education.php'; ?>
 
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Institute Name</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="institute" id="institute" value="" class="form-control"/>
-                                    
-                                    <small class="help-block"> Ex: Indian Institute of Technology Delhi </small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-                                
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Name of Degree</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="degree" id="degree" value="" class="form-control"/>
-                                    
-                                    <small class="help-block"> Ex: Bachelor of Engineering/Technology </small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Branch Name</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" name="branch" id="branch" value="" class="form-control"/>
-
-                                    <small class="help-block"> Ex: Computer Science and Engineering </small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Duration</label>
-
-                                  <div class="col-md-7">
-
-                                    <div id="">
-                                      <div id="" class="input-daterange input-group">
-                                        <input type="text" name="from" id="edu_from" value="" class="form-control" placeholder="YYYY"/>
-                                        <span class="input-group-addon">to</span>
-                                        <input type="text" name="to" id="edu_to" value="" class="form-control" placeholder="YYYY"/>
-                                      </div>
-                                    </div>
-
-                                    <small class="help-block"> Ex: Duration of Degree 2012 to 2014 </small>
-
-                                  </div>
-                                </div> <!-- /.form-group -->
-
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label"></label>
-
-                                  <div class="col-md-7">
-
-                                    <button type="submit" class="btn btn-success" onclick="return (validateUpdateEducation());">Add More</button>
-
-                                  </div>
-                                </div> <!-- /.form-group -->
-
-                              </div>
                             </div>
 
                             <div class="pull-right pad-all">
@@ -555,134 +218,14 @@
 
                           <!--Sixth tab-->
                           <div id="tab_projects" class="tab-pane">
+                            
                             <div id="project_div">
 
-                              <div class="form-horizontal" id="project_form">
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Title</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" id ="title" class="form-control" placeholder="Title" />
-                                    
-                                    <small class="help-block"> Ubuntu Unity: deliver a consistent user experience for desktop and netbook users alike</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Used Technical Skills</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
-                                    
-                                    <small class="help-block"> C++, JavaScript, QML, Python, Vala</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Your Role</label>
-
-                                  <div class="col-md-7">
-                                    <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
-                                    
-                                    <small class="help-block"> Like Architect or Frontend Developer with JavaScript</small>
-
-                                  </div> <!-- /.col -->
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Team Size</label>
-                                  <div class="col-md-7">
-                                    <input type="number" id="team_size" class="form-control" placeholder="Team Size" />
-
-                                    <small class="help-block"> Total team Members: 1, 2, 3, 4, ....</small>
-
-                                  </div>
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Project Status</label>
-                                  <div class="col-md-5">
-                                    <select class="selectpicker" name="status" data-width="100%" id= "status" >
-                                      <option value='Ongoing' >Ongoing ( Still it is ongoing or you want to expend your idea )</option>
-                                      <option value='Completed' >Completed ( If you have completed your project )</option>
-                                      <option value='YetToStart' >Yet To Start ( Its good time to start, <i>Best Of Luck</i>)</option>
-                                    </select>                  
-                                  </div>
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-
-                                  <label class="col-md-3 control-label">Duration</label>
-                                  <div class="col-md-7">
-                                    <div id="demo-dp-range">
-                                      <div class="input-daterange input-group" id="datepicker">
-                                        <input type="text" class="form-control" name="start" id="start"/>
-                                        <span class="input-group-addon">To</span>
-                                        <input type="text" class="form-control" name="end" id="end" />
-                                      </div>
-                                    </div>
-                                    
-                                    <small class="help-block"> When it started (August 01, 2014 ) to ended ( July 30, 2015 )</small>
-
-                                  </div>
-
-                                </div> <!-- /.form-group -->
-
-                                <div class="form-group">
-                                  <label class="col-md-3 control-label">Description</label>
-                                  <div class="col-md-7">
-                                   
-                                    <textarea class="form-control share-widget-textarea" id = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1"></textarea>
-
-                                    <div class="share-widget-actions">
-                                      <div class=" pull-left">
-                                        <div class="col-md-6">
-                                         
-                                          <select class="selectpicker" name="type" data-live-search="true" data-width="100%" id= "type" >    
-                                              <option value='Public' >Public</option>
-                                              <option value='Classified' >Classified</option>
-                                              <option value='Private' >Private</option>
-                                          </select>
-                                         
-                                        </div>
-                                        <div class="col-md-6">
-                                          <input type="file" name="file" class="btn btn-default btn-file" value="Browse">
-                                        </div>    
-                                      </div>  
-
-                                      <div class="pull-right">
-
-                                      </div>
-                                    </div>
-
-                                    <small class="help-block"> Project Description with Introduction, Problem, Solution, Features ...</small>
-
-                                  </div>
-                                </div>
-
-                                <div class="form-group">
-                                  <label class="col-md-3 control-label"></label>
-                                  <div class="col-md-7">
-                                    <button type="submit" class="btn btn-success" onclick="return (validateCreateProject());">Add More</button>
-                                  </div>
-                                </div> <!-- /.form-group -->
-                              </div>
+                              <?php require_once 'views/forms/createProject.php'; ?>
+                              
                             </div>  
 
-                            <div class="pull-right pad-all">
+                            <div class="pull-right pad-all" id = "switch_tab_project">
 
                               <button type="button" class="previous btn btn-info">Previous</button>
                               <button type="button" class="next btn btn-primary">Next</button>

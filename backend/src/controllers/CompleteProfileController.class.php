@@ -28,7 +28,19 @@ class CompleteProfileController extends BaseController  {
 			if ($_SESSION['jobsCollap']) {
 			
 				$allSkills = $this -> userSkillDAO->availableUserSkills($this->userId);
+				
+				$userSkills = $this -> userSkillDAO-> getUserSkills( $this-> userId );
+	
+				$userTechStrength = $this -> userTechStrengthDAO -> queryByUserId($this -> userId);
+
+				$userEducation = $this -> userEducationDAO -> queryByUserId($this -> userId);			
+				
+				$userWorkExperience = $this -> userWorkHistoryDAO -> queryByUserId($this -> userId);
+			
 				$allLocations = $this -> jobLocationsDAO-> availableJobLocations( $this-> userId );
+				
+				$userJobPreference = $this -> userJobPreferenceDAO -> getUserJobPreference($this -> userId);
+
 				$userPreferredJobLocations = $this -> jobLocationsDAO -> getUserJobPreferredJobLocations($this -> userId);
 			
 				require_once 'views/profile/jobCompleteProfile.php';
@@ -48,15 +60,18 @@ class CompleteProfileController extends BaseController  {
 	function finishCompleteProfile() {
 
 		if (isset($_POST)) {
-			$pageAccess = 1;
+
 			//page_access set to 1 for profile completed
 	    	try {
-	            $this -> userInfoDAO -> updatePageAccess($pageAccess, $this-> userId);
+	            $this -> userInfoDAO -> updatePageAccess($this-> userId);
+
+	            //$this -> userPushFormsInsertDAO -> deleteByUserId($this->userId);
+
         		header('Location: '. $this-> baseUrl);
 	    	}
 	    	catch(Exception $e) {
 				$this->logger->error("Error occur :500 ".json_encode($e) );
-	    	}			
+	    	}
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');

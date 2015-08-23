@@ -599,6 +599,8 @@ CREATE TABLE IF NOT EXISTS `user_collaborative_role` (
 
 ALTER TABLE `projects` ADD `status` ENUM( 'Ongoing', 'Completed', 'YetToStart' ) NOT NULL ;
 
+ALTER TABLE `user_info` CHANGE `user_type` `user_type` ENUM( 'collaborator', 'fundsearcher', 'collaboratorFundsearcher', 'investor', 'collaboratorInvester', 'fundsearcherInvestor', 'collaboratorInvestorFundsearcher', 'jobSearch' ) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL;
+
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

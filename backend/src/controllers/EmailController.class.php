@@ -20,7 +20,7 @@ class EmailController extends BaseController  {
 
 	function pushUserNotifications(){
 
-		$userNotificationNoLogin24hours = $this-> notificationsDAO -> getNotificationNotLogin24Hurs();//by making join with user table
+		$userNotificationNoLogin24hours = $this-> notificationsDAO -> getNotificationNotLogin24Hours();//by making join with user table
 
 		$emails = array();
 		foreach ($userNotificationNoLogin24hours as $key => $value) {
@@ -42,7 +42,7 @@ class EmailController extends BaseController  {
 
 		$userNoNotificationNotLoginLast3days = $this -> userInfoDAO -> getUserNoNotificationNotLoginLast3days();
 
-		$emails = $this -> genericEmailDAO -> getFollowUpEmails();
+		$emails = $this -> genericEmailDAO -> getFollowUpEmail();
 		
 		$usersAllReadyUnderFollowUp = $this -> userUnderFollowUpDAO -> getUserUnderFollowUp();
 
@@ -76,7 +76,7 @@ class EmailController extends BaseController  {
 
 	function inviteUser(){
 
-		$userToInvite = $this->invitaionDAO-> getUsersToInvite();
+		$userToInvite = $this-> invitaionDAO-> getUsersToInvite();
 
 		$emails = $this -> genericEmailDAO -> getInvitationEmails();
 
@@ -91,7 +91,7 @@ class EmailController extends BaseController  {
 	}
 
 
-	function sendMail($to, $subject, $message){
+	static function sendMail($to, $subject, $message){
 
 		/*$to = "rahul_lahoria@yahoo.com";
 		$subject = "HTML email";

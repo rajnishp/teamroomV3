@@ -103,37 +103,35 @@
             <?php } ?>
 
             <ol class="comment-list">
-            <?php foreach ($comments as $response) { ?>
               
               <li>
                 <div class="comment" id="comment_box_<?= $activity->getId() ?>">
+                  <?php foreach ($comments as $response) { ?>
+                    <div class="comment-avatar">
+                      <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" class="avatar">
+                    </div> <!-- /.comment-avatar -->
 
-                  <div class="comment-avatar">
-                    <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" class="avatar">
-                  </div> <!-- /.comment-avatar -->
+                    <div class="comment-meta">
 
-                  <div class="comment-meta">
+                      <span class="comment-author">
+                        <a href="<?= $this -> baseUrl ?>profile/<?= $activity -> getUsername()?>" target="_blank" class="url">
+                          <?= ucfirst($response->getFirstName()) ?> <?= ucfirst($response->getLastName()) ?>
+                        </a>
+                      </span>
 
-                    <span class="comment-author">
-                      <a href="<?= $this -> baseUrl ?>profile/<?= $activity -> getUsername()?>" target="_blank" class="url">
-                        <?= ucfirst($response->getFirstName()) ?> <?= ucfirst($response->getLastName()) ?>
+                      <a href="javascript:;" class="comment-timestamp">
+                        <?= date("F jS, Y",strtotime($response->getCreationTime())) ?>
                       </a>
-                    </span>
 
-                    <a href="javascript:;" class="comment-timestamp">
-                      <?= date("F jS, Y",strtotime($response->getCreationTime())) ?>
-                    </a>
+                    </div> <!-- /.comment-meta -->
 
-                  </div> <!-- /.comment-meta -->
-
-                  <div class="comment-body">
-                    <p><?= $response->getStmt() ?></p>
-                  </div> <!-- /.comment-body -->
-
+                    <div class="comment-body">
+                      <p><?= $response->getStmt() ?></p>
+                    </div> <!-- /.comment-body -->
+                <?php } ?>
                 </div> <!-- /.comment -->
               </li>
-
-            <?php } ?>
+            
               <li>
                 <?php 
                   include 'views/activity/activityComment.php';

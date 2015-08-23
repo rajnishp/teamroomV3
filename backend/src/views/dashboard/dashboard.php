@@ -27,7 +27,7 @@
           <div id="content-container">
             <!--   <hr class="spacer-sm"> -->
             <div class="row" style="margin-top: 20px;">
-              <div class="col-lg-8 col-sm-12 col-md-8 col-md-offset-1">
+              <div class="col-lg-8 col-md-8 col-sm-10 col-xs-10 col-lg-offset-1 col-md-offset-1 col-sm-offset-1 col-xs-offset-1">
 
               <!-- push forms div starts here for dynamic loading for forms -->  
                 <div id ="push_form_div"> </div>
@@ -42,8 +42,10 @@
                     <br />
                     <textarea class="form-control share-widget-textarea" id = "description" rows="3" placeholder="Share what you've been up to..." tabindex="1"></textarea>
                     <div class="share-widget-actions">
-                      <div class="share-widget-types pull-left">
-                        <div class="col-md-6" style="margin-top: 9px;">
+                      
+                      <div class="share-widget-types">
+                        
+                        <div class="col-md-6 col-sm-6 col-xs-7" style="margin-top: 9px;">
                           <label class="form-radio form-normal active form-inline">
                           <input type="radio" checked="" name="activity" id="activity_type" value="1"> Challenge 
                           </label>
@@ -54,12 +56,22 @@
                           <input type="radio" name="activity" id="activity_type" value="4"> Idea
                           </label>
                         </div>
-                        <div class="col-md-6">
-                          <input type="file" name="_file" id="_file" class="btn btn-default btn-file pull-right">
+
+                        <div class="col-md-3 col-sm-4 col-xs-3">
+                          
+                          <!-- <input type="file" name="_file" id="_file" class="btn btn-default btn-file pull-right"> -->
+                        
+                          <span class="btn btn-default btn-file">
+                            Browse... <input type="file" name="_file" id="_file" class="btn btn-default btn-file">
+                          </span>
+                        
                         </div>
-                      </div>
-                      <div class="pull-right">
-                        <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                        <div class="col-md-3 col-sm-2 col-xs-2">
+                          <div class="pull-right">
+                            <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2">Post</button>
+                          </div>
+                        </div>
+
                       </div>
                     </div>
                    <!-- /.share-widget-actions -->
@@ -76,9 +88,10 @@
                 <!-- /.heading-block -->
                 <hr>
                 <hr class="spacer-sm">
+                
                 <div class="activity-1" id="panel-cont">
-                   <?php foreach ($top10Activities as $activity) { ?>
-                   <div class="post">
+                  <?php foreach ($top10Activities as $activity) { ?>
+                    <div class="post">
                       <div class="post-aside" style="padding-top: 28px;">
                          <div class="post-date">
                             <?php $data = date_parse($activity->getCreationTime()); ?>
@@ -106,17 +119,30 @@
                          </div>
                          <ol class="comment-list">
                             <li>
-                               <div class="comment" id="comment_box_<?= $activity->getId() ?>" >
-                                  <?php foreach ($activity -> getResponses() as $response) { ?>
+                              <div class="comment" id="comment_box_<?= $activity->getId() ?>" >
+                                <?php foreach ($activity -> getResponses() as $response) { ?>
                                   <div class="comment-avatar">
                                      <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $response->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
                                   </div>
                                   <!-- /.comment-avatar -->
                                   <div class="comment-meta">
+                                    <span class="comment-author">
+                                      <a href="<?= $this -> baseUrl ?>profile/<?= $activity -> getUsername()?>" target="_blank" class="url">
+                                        <?= ucfirst($response->getFirstName()) ?> <?= ucfirst($response->getLastName()) ?>
+                                      </a>
+                                    </span>
+
+                                    <a href="javascript:;" class="comment-timestamp">
+                                      <?= date("F jS, Y",strtotime($response->getCreationTime())) ?>
+                                    </a>
+
+                                  </div> <!-- /.comment-meta -->
+
+                                  <div class="comment-meta">
                                      <p> <?= $response -> getStmt() ?> </p>
                                   </div>
-                                  <?php } ?>
-                               </div>
+                                <?php } ?>
+                              </div>
                             </li>
                             <li>
                               <?php 
@@ -130,6 +156,7 @@
                    </div>
                    <?php } ?>
                 </div>
+                
                 </div>
               </div>
             </div>
@@ -144,24 +171,22 @@
 
       <script type="text/javascript">
 
-            /*console.log("outside setTimeout fnction");
-            setTimeout(function(){
-              console.log("inside setTimeout fnction");
-              $.ajax({
-                type: "POST",
-                url: "<?= $this-> baseUrl ?>" + "dashboard/pushForm",
-                //data: dataString,
-                cache: false,
-                success: function(result){
-                  //result = "<span> i am there </span>";
-                  $('#push_form_div').html(result);
-                },
-                error: function(result){
-                
-                }
-              });
-            },10000);*/
-
+/*        setTimeout(function(){
+          console.log("inside setTimeout fnction");
+          $.ajax({
+            type: "POST",
+            url: "<?= $this-> baseUrl ?>" + "dashboard/pushForm",
+            //data: dataString,
+            cache: false,
+            success: function(result){
+              //result = "<span> i am there </span>";
+              $('#push_form_div').html(result);
+            },
+            error: function(result){
+            
+            }
+          });
+        },10000);*/
 
       </script>
      

@@ -359,9 +359,6 @@ class UserInfoMySqlDAO implements UserInfoDAO{
 	protected function readRow($row){
 		$userInfo = new UserInfo($row['first_name'],$row['last_name'],$row['email'],$row['phone'],$row['username'],$row['password'],$row['rank'],$row['user_type'],$row['org_id'],$row['capital'],$row['page_access'],$row['working_org_name'],$row['living_town'],$row['about_user'],$row['reg_time'],$row['last_login_time'],$row['id']);
 		
-		
-		
-
 		return $userInfo;
 	}
 	

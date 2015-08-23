@@ -81,18 +81,19 @@
 
 <script type="text/javascript">
   function appendCloneToDiv(fields,result,appendToId, formId){
-         clone = $(formId).clone();
+        clone = $(formId).clone();
          
-         $.each(fields, function( index, value ) {
-                      $('#'+value).attr("id", value +  "_" + result);
-                    });
-         $(formId).attr("id", formId + "_" + result );
-
-                    clone.appendTo(appendToId);
-
-                    $.each(fields, function( index, value ) {
-                      $('#'+value).val("");
+        $.each(fields, function( index, value ) {
+          $('#'+value).attr("id", value +  "_" + result);
         });
+        $(formId).attr("id", formId + "_" + result );
+
+        clone.appendTo(appendToId);
+
+        $.each(fields, function( index, value ) {
+          $('#'+value).val("");
+        });
+
       }
 </script>
 
@@ -206,7 +207,33 @@ function addMorePost(url, dataString, addAt){
    
    
 </script>
+<script type="text/javascript">
+  function prependPostedActivity(divID, titleDiv, descriptionDiv) {
+    var title = $('#'+titleDiv).val();
+    var description = $('#'+descriptionDiv).val();
+    appendHtml = '<div class="post">';
+    appendHtml +=  '<div class="post-aside" style="padding-top: 28px;">';
+    appendHtml +=    '<div class="post-date">';
+    appendHtml +=      '<?php $data = date_parse(date("Y-m-d H:i:s")); ?>';
+    appendHtml +=      '<span class="post-date-day"><?= $data["day"] ?></span>';
+    appendHtml +=      '<span class="post-date-month"><?= date("M", mktime(null, null, null, $data["month"])) ?></span>';
+    appendHtml +=      '<span class="post-date-year"><?= $data["year"] ?></span>';
+    appendHtml +=    '</div>';
+    appendHtml +=  '</div>';
+    appendHtml +=  '<div class="post-main">';
+    appendHtml +=    '<h4 class="post-title"><a href="" target="_blank">'+ title + '</a></h4>';
+    appendHtml +=      '<h5 class="post-meta">Published by <a href="<?= $this-> baseUrl ?>profile/<?= $this-> username ?>" target="_blank"><?= ucfirst($this -> firstName) ?> <?= ucfirst($this -> lastName) ?></a> in <a href="">India</a></h5>';
+    appendHtml +=      '<div class="post-content">';
+    appendHtml +=        '<p>'+description+'</p>';
+    appendHtml +=      '</div>';
+    appendHtml +=   '</div>';
+    appendHtml += '</div><hr>';
 
+    $('#'+divID).prepend(appendHtml);
+  }
+
+
+</script>
 <script type="text/javascript">
      
         function postDBActivity(fields, responceTx){
@@ -237,29 +264,16 @@ function addMorePost(url, dataString, addAt){
                 data: dataString,
                 cache: false,
                 success: function(result){
-                  $.niftyNoty({ 
-                    type:"success",
-                    icon:"fa fa-check fa-lg",
-                    title:"Post Activity",
-                    message:result,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
+                  success("Post Activity", result);
+                  prependPostedActivity('panel-cont', 'title', 'description');
+
+                  $('#title').val('');
+                  $('#description').val('');
                 },
                  error: function(result){
                   console.log(result);
-                  $.niftyNoty({ 
-                    type:"danger",
-                    icon:"fa fa-check fa-lg",
-                    title:"Post Activity",
-                    message:result.responseText,
-                    focus: true,
-                    container:"floating",
-                    timer:4000
-                  });
+                  error("Post Activity", result);
                 }
-        
               });
         
         }
@@ -322,13 +336,24 @@ function addMorePost(url, dataString, addAt){
       	function appendComment(key, commentDiv){
       		comment = $('#' + commentDiv +key).val();
       		$('#'+ commentDiv +key).val("");
-      		appendHtml = '<div class="comment-avatar">';
-          appendHtml += '<img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $this->username ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
-          appendHtml += '</div>';
-          
-          appendHtml += '<div class="comment-meta">';
-          appendHtml += '<p> '+ comment +' </p>';
-          appendHtml += '</div>';
+
+          appendHtml = '<hr>';
+          appendHtml +=   '<div class="comment-avatar">';
+          appendHtml +=     '<img alt="" src="<?= $this->baseUrl ?>uploads/profilePictures/<?= $this->username ?>.jpg" style="width: 44px; height: 44px;" class="avatar">';
+          appendHtml +=   '</div>';
+          appendHtml +=   '<div class="comment-meta">';
+          appendHtml +=     '<span class="comment-author">';
+          appendHtml +=       '<a href="<?= $this -> baseUrl ?>profile/<?= $this->username ?>" target="_blank" class="url">';
+          appendHtml +=          '<?= ucfirst( $this -> firstName ) ?> <?= ucfirst($this -> lastName) ?>';
+          appendHtml +=       '</a>';
+          appendHtml +=     '</span>';
+          appendHtml +=     '<a href="" class="comment-timestamp">';
+          appendHtml +=       '<?= date("F jS, Y",strtotime(date("Y-m-d H:i:s"))) ?>';
+          appendHtml +=     '</a>';
+          appendHtml +=   '</div>';
+          appendHtml +=   '<div class="comment-body">';
+          appendHtml +=     '<p> '+ comment +' </p>';
+          appendHtml +=   '</div>';
 
           $('#comment_box_'+key).append(appendHtml);
       	}
@@ -473,6 +498,71 @@ function addMorePost(url, dataString, addAt){
 
   setTimeout(lazyExecute,5000);
 </script>
+
+<script type="text/javascript">
+  function uploadProfilePic(){
+            //var _progress = document.getElementById('_progress'); 
+            if(src.files.length === 0){
+              
+              return false ;
+            }
+            else if (src.files['0'].size > 2015000) {
+             
+                  $.niftyNoty({ 
+                    type:"danger",
+                    icon:"fa fa-check fa-lg",
+                    title:"File Upload Error",
+                    message:"File size is too large",
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+              
+              return false ;
+            } 
+            else {
+              var data = new FormData();
+              data.append('file', src.files[0]);
+              var request = new XMLHttpRequest();
+              var responceTx = "";
+              request.onreadystatechange = function(){
+                if(request.readyState == 4){
+                  responceTx = request.response;
+                  $.niftyNoty({ 
+                    type:"danger",
+                    icon:"fa fa-check fa-lg",
+                    title:"Profile Pic Change Successfully",
+                    message:responceTx,
+                    focus: true,
+                    container:"floating",
+                    timer:4000
+                  });
+                }
+              };
+            }
+            request.upload.addEventListener('progress', function(e){
+              //_progress.style.width = Math.ceil(e.loaded/e.total) * 100 + '%';
+            }, false);  
+            request.open('POST', '<?= $baseUrl ?>fileUpload/profilePic');
+            request.send(data);
+          }
+
+  function showImage() {
+    var src = document.getElementById("src");
+    var target = document.getElementById("target");
+  var fr=new FileReader();
+  // when image is loaded, set the src of the image where you want to display it
+  fr.onload = function(e) { target.src = this.result; };
+  src.addEventListener("change",function() {
+    // fill fr with image data    
+    fr.readAsDataURL(src.files[0]);
+    uploadProfilePic();
+  });
+}
+showImage();
+
+</script>  
+
 
 <!-- Piwik -->
 <script type="text/javascript">

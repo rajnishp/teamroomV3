@@ -9,6 +9,11 @@
 
 $(document).ready(function() {
 
+$(document).on('click', '#skip_tab_project', 'next'+'btn'+'btn-primary' ,function(){
+				            console.log("inside cliked skip_tab_project");
+						    $(this).data('clicked', true);
+						    $(".next").click();
+						});
 	// FORM WIZARD
 	// =================================================================
 	// Require Bootstrap Wizard
@@ -161,11 +166,19 @@ $(document).ready(function() {
 				        break;
 				    case "tab_projects":
 				        fields = ["title","my_role","tech_skills","team_size","description"];
-				        if(genericEmptyFieldValidator(fields))
-				           postNewProject(fields);
-				        else {
-				        	error("Create Project", "Create Atleast one Project");
-							return false;
+				        
+				        
+						if($('#skip_tab_project').data('clicked')) {
+							console.log("inside clikeded true skip_tab_project");
+						   	//return true;
+						}
+						else {
+					        if(genericEmptyFieldValidator(fields))
+					           postNewProject(fields);
+					        else {
+					        	error("Create Project", "Create Atleast one Project");
+								return false;
+							}
 						}
 				        break;
 					case "tab_join_projects":

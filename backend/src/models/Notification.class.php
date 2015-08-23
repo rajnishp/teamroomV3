@@ -12,11 +12,18 @@
 		private $userId;
 		private $time;
 
-		function __construct($noticeUrl, $userId, $time, $id = null) {
+		private $firstName;
+		private $lastName;
+		private $email;
+
+		function __construct($noticeUrl, $userId, $time, $firstName, $lastName, $email, $id = null) {
 			$this -> id = $id;
 			$this -> noticeUrl = $noticeUrl;
 			$this -> userId = $userId;
 			$this -> time= $time;
+			$this -> firstName = $firstName;
+			$this -> lastName = $lastName;
+			$this -> email = $email;
 		}
 		
 		function setId($id){
@@ -46,6 +53,28 @@
 		}
 		function getNoticelUrl(){
 			return $this-> noticeUrl;	
+		}
+
+
+		function setFirstName($firstName){
+			$this -> firstName = $firstName;
+		}
+		function getFirstName(){
+			return $this-> firstName;
+		}
+		
+		function setLastName($lastName){
+			$this -> lastName = $lastName;
+		}
+		function getLastName(){
+				return $this->lastName;
+		}
+
+		function setEmail($email){
+			$this -> email = $email;
+		}
+		function getEmail(){
+				return $this-> email;
 		}
 
 		function toString (){

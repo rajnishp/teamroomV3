@@ -43,6 +43,10 @@ abstract class BaseController {
 	protected $notificationsDAO;
 
 	protected $userPushFormsDAO;
+	
+	protected $userPushFormsInsertDAO;
+	
+	protected $userAccessAidDAO;
 
 	
 
@@ -99,7 +103,9 @@ abstract class BaseController {
 
 		$this -> userPushFormsDAO = $DAOFactory->getFormsDAO();
 
+		$this -> userPushFormsInsertDAO = $DAOFactory->getUserFormsDAO();
 
+		$this -> userAccessAidDAO = $DAOFactory->getUserAccessAidDAO();
 		
 		
 		$this->process();
@@ -139,10 +145,11 @@ abstract class BaseController {
 		catch(Exception $e) {
 			$this -> logger -> error ("Error at : $e");
 		}
-
-		if ($userProfile -> getPageAccess() != 1 ) {
-			header('Location: '. $this-> baseUrl."completeProfile");
-			break;
+		if ($userProfile) {
+			if ($userProfile -> getPageAccess() < 1 ) {
+				header('Location: '. $this-> baseUrl."completeProfile");
+				break;
+			}
 		}
 	}
 

@@ -52,11 +52,15 @@ interface FormsDAO{
 	public function clean();
 
 	public function queryByForm($value);
+	
+	public function queryByType($value);
 
 	public function queryByAddedOn($value);
 
 
 	public function deleteByForm($value);
+	
+	public function deleteByType($value);
 
 	public function deleteByAddedOn($value);
 

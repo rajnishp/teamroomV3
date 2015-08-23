@@ -9,11 +9,13 @@
 		
 		private $id;
 		private $form;
+		private $type;
 		private $addedOn;
 		
-		function __construct ($form, $addedOn, $id = null) {
+		function __construct ($form, $type, $addedOn, $id = null) {
 			$this-> id= $id;
 			$this-> form= $form;
+			$this-> type= $type;
 			$this-> addedOn= $addedOn;
 
 		}
@@ -30,6 +32,13 @@
 		}
 		function getForm(){
 			return $this-> form;
+		}
+
+		function setType($type){
+			$this -> type= $type;
+		}
+		function getType(){
+			return $this-> type;		
 		}
 
 		function setAddedOn($addedOn){

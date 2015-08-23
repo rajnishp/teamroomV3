@@ -40,6 +40,13 @@
 			return $this-> userId;
 		}
 
+		function setFormId($formId){
+			$this -> formId = $formId;
+		}
+		function getFormId(){
+			return $this-> formId;
+		}
+
 		function setStatus($status){
 			$this -> status = $status;
 		}

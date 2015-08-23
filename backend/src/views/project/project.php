@@ -150,6 +150,20 @@
                                            <img alt="" src="<?= $baseUrl ?>uploads/profilePictures/<?= $projectResponse->getUsername() ?>.jpg" style="width: 44px; height: 44px;" class="avatar">
                                         </div>
                                         <!-- /.comment-avatar -->
+
+                                        <div class="comment-meta">
+                                          <span class="comment-author">
+                                            <a href="<?= $this -> baseUrl ?>profile/<?= $projectResponse -> getUsername()?>" target="_blank" class="url">
+                                              <?= ucfirst($projectResponse->getFirstName()) ?> <?= ucfirst($projectResponse->getLastName()) ?>
+                                            </a>
+                                          </span>
+
+                                          <a href="javascript:;" class="comment-timestamp">
+                                            <?= date("F jS, Y",strtotime($projectResponse->getCreationTime())) ?>
+                                          </a>
+
+                                        </div> <!-- /.comment-meta -->
+  
                                         <div class="comment-meta">
                                            <p> <?= $projectResponse -> getStmt() ?> </p>
                                         </div>

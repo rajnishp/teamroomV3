@@ -56,14 +56,32 @@ class UserInfoMySqlExtDAO extends UserInfoMySqlDAO{
 		return $this -> executeUpdate($sqlQuery);
 	}
 
-	public function updatePageAccess($pageAccess, $userId){
-		$sql = "UPDATE user_info SET page_access = ? WHERE id = ?";
+	public function updatePageAccess($userId){
+		$sql = "UPDATE user_info SET page_access = (page_access + 1) WHERE id = ?";
 
 		$sqlQuery = new SqlQuery($sql);
-		$sqlQuery->set($pageAccess);
 		$sqlQuery->set($userId);
 		
 		return $this -> executeUpdate($sqlQuery);
+	}
+
+	public function updateLastLoginTime($userId, $timestamp){
+		$sql = 'UPDATE user_info SET  last_login_time = ? WHERE id = ?';
+		$sqlQuery = new SqlQuery($sql);
+		
+		$sqlQuery->set($timestamp);
+		$sqlQuery->set($userId);
+		
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function getUserNoNotificationNotLoginLast3days(){
+		$sql = 'SELECT * FROM user_info WHERE id NOT IN ( SELECT user_id FROM notifications )
+					AND TIMESTAMPDIFF( HOUR , last_login_time, now( ) ) >72 ';
+
+		$sqlQuery = new SqlQuery($sql);
+		
+		return $this->getList($sqlQuery);
 	}
 
 	/**

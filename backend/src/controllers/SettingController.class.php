@@ -154,13 +154,21 @@ class SettingController extends BaseController {
 				);
 
 			if(isset($_POST['id'])) {
-				$this -> userTechStrengthDAO ->update($tech_strength);
+				$newTechStrength = $this -> userTechStrengthDAO ->update($tech_strength);
 				echo "Updated Successfully";
 			}
 			else {
-				echo $this -> userTechStrengthDAO ->insert($tech_strength);
-				
+				$newTechStrength =  $this -> userTechStrengthDAO ->insert($tech_strength);
+				echo $newTechStrength;
 			}
+			if ($newTechStrength) {
+		    	try {
+		            $this -> userPushFormsInsertDAO -> deleteByFormIdUserId($this->userId, 2);
+				}
+		    	catch(Exception $e) {
+					$this->logger->error("Error occur :500 ,Failed to detele user form tech strength".json_encode($e) );
+		    	}
+		    }
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
@@ -342,14 +350,33 @@ class SettingController extends BaseController {
 			
 
 			if(isset($_POST['id'])) {
-				$this -> userWorkHistoryDAO ->update($workExpObj);
-				echo "Updated Successfully";
+				try {
+					$newWorkExp = $this -> userWorkHistoryDAO ->update($workExpObj);
+					echo "Updated Successfully";					
+				}
+				catch(Exception $e) {
+					$this->logger->error("Error occur :500 , Failed to update work exp".json_encode($e) );
+		    	}
+
 			}
 			
 			else {
-				echo $this -> userWorkHistoryDAO ->insert($workExpObj);
-				
+				try {
+					$newWorkExp = $this -> userWorkHistoryDAO ->insert($workExpObj);
+					echo $newWorkExp;
+				}
+				catch(Exception $e) {
+					$this->logger->error("Error occur :500 , Failed to insert work exp".json_encode($e) );
+		    	}
 			}
+			if ($newWorkExp) {
+		    	try {
+		            $this -> userPushFormsInsertDAO -> deleteByFormIdUserId($this->userId, 3);
+				}
+		    	catch(Exception $e) {
+					$this->logger->error("Error occur :500 , Failed to detele user form work exp".json_encode($e) );
+		    	}
+		    }
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
@@ -373,12 +400,21 @@ class SettingController extends BaseController {
 								);
 
 			if(isset($_POST['id'])) {
-				$this -> userEducationDAO ->update($educationObj);
+				$newEducation = $this -> userEducationDAO ->update($educationObj);
 				echo "Updated Successfully";
 			}
 			else {
-				echo $this -> userEducationDAO ->insert($educationObj);
+				$newEducation = $this -> userEducationDAO ->insert($educationObj);
+				echo $newEducation;
 			}
+			if ($newEducation) {
+		    	try {
+		            $this -> userPushFormsInsertDAO -> deleteByFormIdUserId($this->userId, 4);
+				}
+		    	catch(Exception $e) {
+					$this->logger->error("Error occur :500 , Failed to detele user form education".json_encode($e) );
+		    	}
+		    }
 		}
 		else{
 			header('HTTP/1.1 500 Internal Server Error');
@@ -463,7 +499,7 @@ class SettingController extends BaseController {
 			foreach ($newSkills as $skillName) {	
 				$newSkillObj = new Skill( $skillName );
 				try {
-					$newSkillId = $this -> userSkillDAO ->insert($newSkillObj);					
+					$newSkillId = $this -> userSkillDAO ->insert($newSkillObj);
 				}
 				catch (Exception $e) {
 					$this->logger->error("Error occur :500 ".json_encode($e) );
@@ -485,6 +521,36 @@ class SettingController extends BaseController {
 			header('HTTP/1.1 500 Internal Server Error');
 			echo "Skills field can Not Be Empty";
 		}
+	}
+
+	function removeSkill() {
+		if(isset($_POST['skill_id']) && $_POST['skill_id'] != '') {
+			try {
+				$this -> userSkillsInsertDAO ->delete($_POST['skill_id']);
+				$this->logger->debug("remove skill");
+			}
+			catch (Exception $e) {
+				$this->logger->error("Error occur :500 , In removing skill".var_dump(json_encode($e) ));
+			}
+			echo "Skill removed Successfully";
+		}
+		else
+			echo "Skill cannot be removed";
+	}
+
+	function removeLocation() {
+		if(isset($_POST['location_id']) && $_POST['location_id'] != '') {
+			try {
+				$this -> userPreferredLocationsDAO ->delete($_POST['location_id']);
+				$this->logger->debug("remove location");
+			}
+			catch (Exception $e) {
+				$this->logger->error("Error occur :500 , In removing location".var_dump(json_encode($e) ));
+			}
+			echo "Location removed Successfully";
+		}
+		else
+			echo "Location cannot be removed";
 	}
 
 	function updateLocations() {

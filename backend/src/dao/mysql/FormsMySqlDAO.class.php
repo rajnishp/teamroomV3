@@ -14,7 +14,7 @@ class FormsMySqlDAO implements FormsDAO{
 	 * @return FormsMySql 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM forms WHERE id = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.forms WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class FormsMySqlDAO implements FormsDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM forms';
+		$sql = 'SELECT * FROM teamroom_push_forms.forms';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,7 +35,7 @@ class FormsMySqlDAO implements FormsDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM forms ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM teamroom_push_forms.forms ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -45,7 +45,7 @@ class FormsMySqlDAO implements FormsDAO{
  	 * @param form primary key
  	 */
 	public function delete($id){
-		$sql = 'DELETE FROM forms WHERE id = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.forms WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->executeUpdate($sqlQuery);
@@ -57,10 +57,11 @@ class FormsMySqlDAO implements FormsDAO{
  	 * @param FormsMySql form
  	 */
 	public function insert($form){
-		$sql = 'INSERT INTO forms (form, added_on) VALUES (?, ?)';
+		$sql = 'INSERT INTO teamroom_push_forms.forms (form, type, added_on) VALUES (?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($form->getForm());
+		$sqlQuery->set($form->getType());
 		$sqlQuery->set($form->getAddedOn());
 
 		$id = $this->executeInsert($sqlQuery);	
@@ -74,10 +75,11 @@ class FormsMySqlDAO implements FormsDAO{
  	 * @param FormsMySql form
  	 */
 	public function update($form){
-		$sql = 'UPDATE forms SET form = ?, added_on = ? WHERE id = ?';
+		$sql = 'UPDATE teamroom_push_forms.forms SET form = ?, type = ?, added_on = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->set($form->getForm());
+		$sqlQuery->set($form->getType());
 		$sqlQuery->set($form->getAddedOn());
 
 		$sqlQuery->setNumber($form->getId());
@@ -88,20 +90,27 @@ class FormsMySqlDAO implements FormsDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM forms';
+		$sql = 'DELETE FROM teamroom_push_forms.forms';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function queryByForm($value){
-		$sql = 'SELECT * FROM forms WHERE form = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.forms WHERE form = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->getList($sqlQuery);
+	}
+
+	public function queryByType($value){
+		$sql = 'SELECT * FROM teamroom_push_forms.forms WHERE type = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByAddedOn($value){
-		$sql = 'SELECT * FROM forms WHERE added_on = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.forms WHERE added_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -109,14 +118,21 @@ class FormsMySqlDAO implements FormsDAO{
 
 
 	public function deleteByForm($value){
-		$sql = 'DELETE FROM forms WHERE form = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.forms WHERE form = ?';
+		$sqlQuery = new SqlQuery($sql);
+		$sqlQuery->set($value);
+		return $this->executeUpdate($sqlQuery);
+	}
+
+	public function deleteByType($value){
+		$sql = 'DELETE FROM teamroom_push_forms.forms WHERE type = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByAddedOn($value){
-		$sql = 'DELETE FROM forms WHERE added_on = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.forms WHERE added_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
@@ -130,7 +146,7 @@ class FormsMySqlDAO implements FormsDAO{
 	 * @return FormsMySql 
 	 */
 	protected function readRow($row){
-		$form = new Form($row['form'], $row['added_on'], $row['id']);
+		$form = new Form($row['form'], $row['type'], $row['added_on'], $row['id']);
 		
 		return $form;
 	}

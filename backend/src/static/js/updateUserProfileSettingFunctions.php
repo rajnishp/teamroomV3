@@ -156,6 +156,27 @@
         return false;
       }
 
+      function removeLocation(key){
+        var dataString = "";
+        
+        dataString = "location_id="+key; 
+        
+        $.ajax({
+          type: "POST",
+          url: "<?= $baseUrl ?>" + "setting/removeLocation",
+          data: dataString,
+          cache: false,
+          success: function(result){
+            $('#location_'+key).remove();
+            $('.tooltip.fade.top.in').remove();
+            success("Preferred Job Location",result);
+          },
+          error: function(result){
+            error("Preferred Job Location",result);
+          }
+        });
+      }
+      
       function postUpdateLocations(fields){
         var dataString = "";
         dataString = "locations="+fields;
@@ -251,7 +272,27 @@
         return false;
       }
 
-      
+      function removeSkill(key){
+        var dataString = "";
+        
+        dataString = "skill_id="+key; 
+        
+        $.ajax({
+          type: "POST",
+          url: "<?= $baseUrl ?>" + "setting/removeSkill",
+          data: dataString,
+          cache: false,
+          success: function(result){
+            $('#skill_'+key).remove();
+            $('.tooltip.fade.top.in').remove();
+            success("Update Skill",result);
+          },
+          error: function(result){
+            error("Update Skill",result);
+          }
+
+        });      
+      }
 
       function postUpdateTechStrength(fields, key){
           var dataString = "";
@@ -452,7 +493,9 @@
         return false;
       }
 
-
+      function removeDiv(id) {
+        $('#' + id).remove();
+      }
       function postNewProject(fields, key){
         //fields = ["title","my_role","tech_skills","team_size","description"];
         var dataString = "";
@@ -470,6 +513,9 @@
             var message = "";
               if (key == undefined) {
                 appendCloneToDiv(fields,result, "#project_div", "#project_form");
+
+                $('#switch_tab_project').append('<button type="button" class="next btn btn-primary" id="skip_tab_project" >Skip</button>');
+                
                 message = "Created Successfully";
               }
               else {

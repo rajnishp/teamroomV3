@@ -1,6 +1,6 @@
 <?php
 /**
- * Class that operate on table 'user_forms'. Database Mysql.
+ * Class that operate on table 'teamroom_push_forms.user_forms'. Database Mysql.
  *
  * @author: http://phpdao.com
  * @date: 2015-08-10 11:13
@@ -14,7 +14,7 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 	 * @return UserFormsMySql 
 	 */
 	public function load($id){
-		$sql = 'SELECT * FROM user_forms WHERE id = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->getRow($sqlQuery);
@@ -24,7 +24,7 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 	 * Get all records from table
 	 */
 	public function queryAll(){
-		$sql = 'SELECT * FROM user_forms';
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -35,7 +35,7 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 	 * @param $orderColumn column name
 	 */
 	public function queryAllOrderBy($orderColumn){
-		$sql = 'SELECT * FROM user_forms ORDER BY '.$orderColumn;
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms ORDER BY '.$orderColumn;
 		$sqlQuery = new SqlQuery($sql);
 		return $this->getList($sqlQuery);
 	}
@@ -45,7 +45,7 @@ class UserFormsMySqlDAO implements UserFormsDAO{
  	 * @param userForm primary key
  	 */
 	public function delete($id){
-		$sql = 'DELETE FROM user_forms WHERE id = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($id);
 		return $this->executeUpdate($sqlQuery);
@@ -57,7 +57,7 @@ class UserFormsMySqlDAO implements UserFormsDAO{
  	 * @param UserFormsMySql userForm
  	 */
 	public function insert($userForm){
-		$sql = 'INSERT INTO user_forms (user_id, form_id, status, priority, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?)';
+		$sql = 'INSERT INTO teamroom_push_forms.user_forms (user_id, form_id, status, priority, added_on, last_update_on) VALUES (?, ?, ?, ?, ?, ?)';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($userForm->getUserId());
@@ -78,7 +78,7 @@ class UserFormsMySqlDAO implements UserFormsDAO{
  	 * @param UserFormsMySql userForm
  	 */
 	public function update($userForm){
-		$sql = 'UPDATE user_forms SET user_id = ?, form_id = ?, status = ?, priority = ?, added_on = ?, last_update_on = ? WHERE id = ?';
+		$sql = 'UPDATE teamroom_push_forms.user_forms SET user_id = ?, form_id = ?, status = ?, priority = ?, added_on = ?, last_update_on = ? WHERE id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		
 		$sqlQuery->setNumber($userForm->getUserId());
@@ -96,48 +96,48 @@ class UserFormsMySqlDAO implements UserFormsDAO{
  	 * Delete all rows
  	 */
 	public function clean(){
-		$sql = 'DELETE FROM user_forms';
+		$sql = 'DELETE FROM teamroom_push_forms.user_forms';
 		$sqlQuery = new SqlQuery($sql);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function queryByUserId($value){
-		$sql = 'SELECT * FROM user_forms WHERE user_id = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE user_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByFormId($value){
-		$sql = 'SELECT * FROM user_forms WHERE form_id = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE form_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByStatus($value){
-		$sql = 'SELECT * FROM user_forms WHERE status = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE status = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByPriority($value){
-		$sql = 'SELECT * FROM user_forms WHERE priority = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE priority = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByAddedOn($value){
-		$sql = 'SELECT * FROM user_forms WHERE added_on = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE added_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
 	}
 
 	public function queryByLastUpdateOn($value){
-		$sql = 'SELECT * FROM user_forms WHERE last_update_on = ?';
+		$sql = 'SELECT * FROM teamroom_push_forms.user_forms WHERE last_update_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->getList($sqlQuery);
@@ -145,42 +145,42 @@ class UserFormsMySqlDAO implements UserFormsDAO{
 
 
 	public function deleteByUserId($value){
-		$sql = 'DELETE FROM user_forms WHERE user_id = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE user_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByFormId($value){
-		$sql = 'DELETE FROM user_forms WHERE form_id = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE form_id = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByStatus($value){
-		$sql = 'DELETE FROM user_forms WHERE status = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE status = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByPriority($value){
-		$sql = 'DELETE FROM user_forms WHERE priority = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE priority = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->setNumber($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByAddedOn($value){
-		$sql = 'DELETE FROM user_forms WHERE added_on = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE added_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
 	}
 
 	public function deleteByLastUpdateOn($value){
-		$sql = 'DELETE FROM user_forms WHERE last_update_on = ?';
+		$sql = 'DELETE FROM teamroom_push_forms.user_forms WHERE last_update_on = ?';
 		$sqlQuery = new SqlQuery($sql);
 		$sqlQuery->set($value);
 		return $this->executeUpdate($sqlQuery);
