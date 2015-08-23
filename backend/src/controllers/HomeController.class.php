@@ -224,6 +224,7 @@ class HomeController extends BaseController {
 	    die();
 
 	}
+	
 	function forgetPassword(){
 
 		if(isset($_POST['forget_email'])){

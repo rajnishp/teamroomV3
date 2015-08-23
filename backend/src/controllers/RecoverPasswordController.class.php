@@ -4,6 +4,7 @@ class RecoverPasswordController {
 
 	private $userAccessAidDAO;
 	private $userInfoDAO;
+
 	function __construct (  ){
 		
 		global $configs;
@@ -25,6 +26,7 @@ class RecoverPasswordController {
 	}
 
 	function render ($hashKey, $accessAidId){
+
 		$verifyCheckAccessAid = $this-> userAccessAidDAO -> queryByHashKeyAidId($hashKey, $accessAidId);
 		if ($verifyCheckAccessAid) {
 			try{
@@ -40,35 +42,32 @@ class RecoverPasswordController {
 	}
 
 
-	function updatePassword() {
+	function updatePassword($hashKey, $accessAidId) {
 		
 		if(isset($_POST['new_password_1'], $_POST['new_password_2'])) {
 			
 			$verifyCheckAccessAid = $this-> userAccessAidDAO -> queryByHashKeyAidId($hashKey, $accessAidId);
 
-			if (($_POST['new_password_1']) == ($_POST['new_password_2']), $verifyCheckAccessAid-> getUserId()) {
+			if (($_POST['new_password_1']) == ($_POST['new_password_2'])) {
 			
 				$newPassword = md5($_POST['new_password_1']);
 			
 				try {				
-					$this -> userInfoDAO -> updateNewPassword($newPassword, );
-				
+					$this -> userInfoDAO -> updateNewPassword($newPassword, $verifyCheckAccessAid[0]-> getUserId() );
+					$this-> userAccessAidDAO -> updateStatus($accessAidId);
 				}
 				catch (Exception $e) {
 					echo "Error occurred: " . var_dump($e);
 				}
-				echo "Updated Successfully";
-
-			}	
+				echo "Updated Successfully, Login with new Password";
+			}
 
 			else{
-				header('HTTP/1.1 500 Internal Server Error');
 				echo "New Password do not match, Try Again";
 			}
 
 		}
 		else{
-			header('HTTP/1.1 500 Internal Server Error');
 			echo "Password fields can Not Be Empty";
 		}	
 	}

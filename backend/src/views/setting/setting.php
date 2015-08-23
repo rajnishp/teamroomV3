@@ -323,7 +323,7 @@
 
                           </div> <!-- /.form-group -->
 
-                        </form>
+                        </div>
 
                       </div> <!-- /.tab-password -->
 
