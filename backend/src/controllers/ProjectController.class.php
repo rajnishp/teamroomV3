@@ -169,10 +169,10 @@ class ProjectController extends BaseController {
 														<br/>".$_POST['title'] ."<br/><br/> View at http://collap.com/project/".$this -> projectId ;
 			$projectMembers = explode(',', $_POST['members']);
 			foreach ($projectMembers as $key => $member) {
-				$emailController = new EmailController();
+				
 				//$emailController -> sendMail( $key, $temp->getSubject(), str_replace("{{ notification }}", $value, $temp->getBody()));
 				
-				$emailController -> sendMail( $member, $subject, $body);
+				EmailController :: sendMail( $member, $subject, $body);
 
 			}
 		}

@@ -91,7 +91,7 @@ class EmailController extends BaseController  {
 	}
 
 
-	function sendMail($to, $subject, $message){
+	static function sendMail($to, $subject, $message){
 
 		/*$to = "rahul_lahoria@yahoo.com";
 		$subject = "HTML email";

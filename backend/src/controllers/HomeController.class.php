@@ -251,7 +251,7 @@ class HomeController extends BaseController {
 				}
 				if ($isEmailExist) {
 
-					$emailController = new EmailController();
+					
 					try {
 						$isAccessAidSet = $this-> userAccessAidDAO -> queryByUserIdStatus($isEmailExist[0]->getId());
 						//$already_sent_mail = mysqli_query($db_handle, "SELECT id, status, hash_key FROM user_access_aid WHERE user_id= '$user_id_access' AND status = '0';");
@@ -267,12 +267,12 @@ class HomeController extends BaseController {
 							You recently requested a password reset.<br/>
 							To change your Collap password,<br/>
 							Click <a href='".$this-> baseUrl."/forgetPassword?hash_key=$hashValue' target='_blank'> Reset Password </a> <br/>
-							Or Copy the link and open in browser:".$this-> baseUrl."/forgetPassword?hash_key=$hashValue
+							Or Copy the link and open in browser:".$this-> baseUrl."forgetPassword?hash_key=$hashValue
 							<br/><br/>
 							Thanks for using Collap! <br/>
 							The Collap Team";
 
-						$emailController -> sendMail( $isEmailExist[0]->getEmail(), "Password Recovery from Collap", $body);
+						EmailController :: sendMail( $isEmailExist[0]->getEmail(), "Password Recovery from Collap", $body);
 
 						echo "<span>
 								<div class='jumbotron' style='margin-top: 10px; color: rgb(46, 19, 19); margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px'>
@@ -299,12 +299,12 @@ class HomeController extends BaseController {
 							You recently requested a password reset.<br/>
 							To change your Collap password,<br/>
 							Click <a href='".$this-> baseUrl."/forgetPassword?hash_key=$hashValue' target='_blank'> Reset Password </a> <br/>
-							Or Copy the link and open in browser:".$this-> baseUrl."/forgetPassword?hash_key=$hashValue
+							Or Copy the link and open in browser:".$this-> baseUrl."forgetPassword?hash_key=$hashValue
 							<br/><br/>
 							Thanks for using Collap! <br/>
 							The Collap Team";
 
-						$emailController -> sendMail( $isEmailExist[0]->getEmail(), "Password Recovery from Collap", $body);
+						EmailController :: sendMail( $isEmailExist[0]->getEmail(), "Password Recovery from Collap", $body);
 
 							echo "<span>
 									<div class='jumbotron' style='margin-top: 10px; color: rgb(46, 19, 19); margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px'>
