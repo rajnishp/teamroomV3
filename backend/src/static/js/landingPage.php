@@ -170,25 +170,26 @@ function validateForgetPassword(){
         return false;
     }
     else {
+        $('span[id^="forget_email_status"]').empty();
         var dataString = "";      
         dataString = "forget_email=" + $('#forget_email').val(); 
         
-        alert(dataString);
         $.ajax({
           type: "POST",
           url: "<?= $this-> baseUrl?>"+"home/forgetPassword",
           data: dataString,
           cache: false,
           success: function(result){
-            $("#forget_email_status").innerHTML(result);
-            alert(result);
-            console.log(result);
-            //location.reload();
+            $("#forget_email_status").append(result);
+            setTimeout(function () {
+              $('span[id^="forget_email_status"]').empty();
+            }, 10000);
           },
           error: function(result){
-            $("#forget_email_status").innerHTML(result);
-            alert(result);
-            console.log(result);
+            $("#forget_email_status").append(result);
+            setTimeout(function () {
+              $('span[id^="forget_email_status"]').empty();
+            }, 10000);
           }
 
         });

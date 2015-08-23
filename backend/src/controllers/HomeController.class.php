@@ -233,11 +233,13 @@ class HomeController extends BaseController {
 				//header('Location: #');
 				//return false;
 				echo "<span>Email cannot be empty</span>";
+				die();
 			}
 			elseif  (! preg_match("/^[^@]+@[^@.]+\.[^@]*\w\w$/", $emailRequest)){
 				//header('Location: #');
 				//return false;
 				echo "<span>Not a valid Email </span>";
+				die();
 			}
 			else {
 				try {
@@ -261,10 +263,11 @@ class HomeController extends BaseController {
 					
 					if($isAccessAidSet) {
 						$hashValue = $isAccessAidSet[0]-> getHashKey() .".". $isAccessAidSet[0]-> getId();
-						$body = "Hi". $isEmailExist[0]->getFirstName()." ".$isEmailExist[0]->getLastName(). "<br/>,
+						$body = "Hi ". $isEmailExist[0]->getFirstName()." ".$isEmailExist[0]->getLastName(). ", <br/>
 							You recently requested a password reset.<br/>
 							To change your Collap password,<br/>
-							Click http://collap.com/forgetPassword?hash_key=$hashValue
+							Click <a href='".$this-> baseUrl."/forgetPassword?hash_key=$hashValue' target='_blank'> Reset Password </a> <br/>
+							Or Copy the link and open in browser:".$this-> baseUrl."/forgetPassword?hash_key=$hashValue
 							<br/><br/>
 							Thanks for using Collap! <br/>
 							The Collap Team";
@@ -272,11 +275,12 @@ class HomeController extends BaseController {
 						$emailController -> sendMail( $isEmailExist[0]->getEmail(), "Password Recovery from Collap", $body);
 
 						echo "<span>
-								<div class='jumbotron' style='margin-top: 60px; color: #2E1313;'>
+								<div class='jumbotron' style='margin-top: 10px; color: rgb(46, 19, 19); margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px'>
 									<p align='center'> Please check your Email, shortly you get an email, Go through your email and change your password<br>
-									<br><a class='btn' href='index.php'>Go Back</a></p>
+									<br><a data-dismiss='modal' href='#login'>Go Back</a></p>
 								</div>
-							</span>";								
+							</span>";
+						die();
 					}
 					else {
 						$hash_key = substr(str_shuffle("0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"), 0, 32);
@@ -291,26 +295,29 @@ class HomeController extends BaseController {
 						$accessAidId = $this-> userAccessAidDAO -> insert($accessAidObj);
 
 						$hashValue = $hash_key.".".$accessAidId;
-						$body = "Hi". $isEmailExist[0]->getFirstName()." ".$isEmailExist[0]->getLastName(). "<br/>,
+						$body = "Hi ". $isEmailExist[0]->getFirstName()." ".$isEmailExist[0]->getLastName(). "<br/>
 							You recently requested a password reset.<br/>
 							To change your Collap password,<br/>
-							Click http://collap.com/forgetPassword?hash_key=$hashValue
+							Click <a href='".$this-> baseUrl."/forgetPassword?hash_key=$hashValue' target='_blank'> Reset Password </a> <br/>
+							Or Copy the link and open in browser:".$this-> baseUrl."/forgetPassword?hash_key=$hashValue
 							<br/><br/>
 							Thanks for using Collap! <br/>
 							The Collap Team";
 
 						$emailController -> sendMail( $isEmailExist[0]->getEmail(), "Password Recovery from Collap", $body);
 
-						echo "<span>
-								<div class='jumbotron' style='margin-top: 60px; color: #2E1313;'>
-									<p align='center'> Please check your Email, shortly you get an email, Go through your email and change your password<br>
-									<br><a class='btn' href='index.php'>Go Back</a></p>
-								</div>
-							</span>";
+							echo "<span>
+									<div class='jumbotron' style='margin-top: 10px; color: rgb(46, 19, 19); margin-bottom: 10px; padding-top: 10px; padding-bottom: 10px'>
+										<p align='center'> Please check your Email, shortly you get an email, Go through your email and change your password<br>
+										<br><a data-dismiss='modal' href='#login'>Go Back</a></p>
+									</div>
+								</span>";
+							die();
 					}
 				}
 				else {
 					echo "<span>No user is reistered with this Email.</span>";
+					die();
 				}
 			}
 		}

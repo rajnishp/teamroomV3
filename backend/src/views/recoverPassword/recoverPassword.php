@@ -45,48 +45,53 @@
                 <div class="jumbotron">
                     <p align='center'>Reset your password</p>
                     <div class="alert-placeholder"> </div>
-                    <?php 
+                    <?php
                         /*if ($accessed_or_not == 0) {
                             echo "<p align='center'>Something going wrong here, Please try again</p>";
                         }
                         else {*/
                     ?>
-
+                    
                     <form class="form-horizontal" onsubmit="return (validateUpdatePassword());">
 
-                          <div class="form-group">
+                      <div class="form-group">
 
-                            <label class="col-md-3 control-label">New Password</label>
+                        <label class="col-md-4 control-label">New Password</label>
 
-                            <div class="col-md-7">
-                              <input type="password" name="new_password_1" id="new_password_1" class="form-control" />
-                            </div> <!-- /.col -->
+                        <div class="col-md-5">
+                          <input type="password" name="new_password_1" id="new_password_1" class="form-control" />
+                          <span id = "new_password_1_status"> </span>
+                        </div> <!-- /.col -->
 
-                          </div> <!-- /.form-group -->
-
-
-                          <div class="form-group">
-
-                            <label class="col-md-3 control-label">New Password Confirm</label>
-
-                            <div class="col-md-7">
-                              <input type="password" name="new_password_2" id="new_password_2" class="form-control" />
-                            </div> <!-- /.col -->
-
-                          </div> <!-- /.form-group -->
+                      </div> <!-- /.form-group -->
 
 
-                          <div class="form-group">
+                      <div class="form-group">
 
-                            <div class="col-md-7 col-md-push-3">
-                              <button type="submit" class="btn btn-primary">Save Changes</button>
-                              &nbsp;
-                              <button type="reset" class="btn btn-default">Cancel</button>
-                            </div> <!-- /.col -->
+                        <label class="col-md-4 control-label">New Password Confirm</label>
 
-                          </div> <!-- /.form-group -->
-                      </form>
+                        <div class="col-md-5">
+                          <input type="password" name="new_password_2" id="new_password_2" class="form-control" />
+                          <span id = "new_password_status"> </span>
+                        </div> <!-- /.col -->
+
+                      </div> <!-- /.form-group -->
+
+
+                      <div class="form-group">
+
+                        <div class="col-md-5 col-md-push-4">
+                          <button type="submit" class="btn btn-primary">Save Changes</button>
+                          &nbsp;
+                          <button type="reset" class="btn btn-default">Cancel</button>
+                        </div> <!-- /.col -->
+
+                      </div> <!-- /.form-group -->
+                    </form>
+                    <span id = "update_password_status">
+                    </span>
                     <?php //} ?>
+
                 </div>
             </div>
         </div>
@@ -96,16 +101,30 @@
       function validateUpdatePassword () {
         if($('#new_password_1').val() == "" || $('#new_password_1').val() == null || $('#new_password_1').val().length < 6){
             $('#new_password_1').css("border-color", "red");
-            //returnBool = false;
+            $('span[id^="new_password_1_status"]').empty();
+            $("#new_password_1_status").append("<span> Password length should be atleast 6</span>");
             return false;
         }
         else if($('#new_password_2').val() == "" || $('#new_password_2').val() == null){
             $('#new_password_2').css("border-color", "red");
-            //returnBool = false;
+            $('#new_password_1').css("border-color", "green");
+            $('span[id^="new_password_1_status"]').empty();
+            return false;
+        }
+        else if ($('#new_password_1').val() != $('#new_password_2').val()) {
+          $('#new_password_2').css("border-color", "red");
+            $('span[id^="new_password_status"]').empty();
+            $("#new_password_status").append("<span> Password do not match, Try Again</span>");
+            $('#new_password_1').css("border-color", "green");
+            $('span[id^="new_password_1_status"]').empty();
             return false;
         }
 
         else {
+            $('span[id^="new_password_1_status"]').empty();
+            $('span[id^="new_password_status"]').empty();
+            $('span[id^="update_password_status"]').empty();
+
             $('#new_password_1').css("border-color", "green");
             $('#new_password_2').css("border-color", "green");
 
@@ -118,15 +137,17 @@
               data: dataString,
               cache: false,
               success: function(result){
-                alert(result);
                 $('#new_password_1').val("");
                 $('#new_password_2').val("");
-                setTimeout(function () {
+
+                $("#update_password_status").append(result);
+                 setTimeout(function () {
                   window.location.href = "<?= $this-> baseUrl ?>"; //will redirect to your blog page (an ex: blog.html)
-                }, 5000);
+                }, 15000);
+                
               },
               error: function(result){
-                alert(result);
+                
               }
 
             });

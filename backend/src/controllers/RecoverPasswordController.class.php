@@ -52,23 +52,38 @@ class RecoverPasswordController {
 			
 				$newPassword = md5($_POST['new_password_1']);
 			
-				try {				
+				try {			
 					$this -> userInfoDAO -> updateNewPassword($newPassword, $verifyCheckAccessAid[0]-> getUserId() );
 					$this-> userAccessAidDAO -> updateStatus($accessAidId);
 				}
 				catch (Exception $e) {
-					echo "Error occurred: " . var_dump($e);
+					$this -> logger -> error("Error occurred: " . var_dump($e));
 				}
-				echo "Updated Successfully, Login with new Password";
+				echo "<span>
+						<p align='center'> Password Updated Successfully, Login with new Password</p><br>
+						You will be redirected to login page after some time or <a href = '".$this->baseUrl."'>Click here</a>
+					</span>";
+				
+				die();
 			}
 
 			else{
-				echo "New Password do not match, Try Again";
+				echo "<span>
+						<p align='center'> 
+							New Password do not match, Try Again
+						</p>
+					</span>";
+				die();
 			}
 
 		}
 		else{
-			echo "Password fields can Not Be Empty";
+			echo "<span>
+					<p align='center'>
+						Password fields can Not Be Empty
+					</p>
+				</span>";
+			die();
 		}	
 	}
 
