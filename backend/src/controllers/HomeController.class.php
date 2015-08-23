@@ -266,7 +266,7 @@ class HomeController extends BaseController {
 						$body = "Hi ". $isEmailExist[0]->getFirstName()." ".$isEmailExist[0]->getLastName(). ", <br/>
 							You recently requested a password reset.<br/>
 							To change your Collap password,<br/>
-							Click <a href='".$this-> baseUrl."/forgetPassword?hash_key=$hashValue' target='_blank'> Reset Password </a> <br/>
+							Click <a href='".$this-> baseUrl."forgetPassword?hash_key=$hashValue' target='_blank'> Reset Password </a> <br/>
 							Or Copy the link and open in browser:".$this-> baseUrl."forgetPassword?hash_key=$hashValue
 							<br/><br/>
 							Thanks for using Collap! <br/>
@@ -298,7 +298,7 @@ class HomeController extends BaseController {
 						$body = "Hi ". $isEmailExist[0]->getFirstName()." ".$isEmailExist[0]->getLastName(). "<br/>
 							You recently requested a password reset.<br/>
 							To change your Collap password,<br/>
-							Click <a href='".$this-> baseUrl."/forgetPassword?hash_key=$hashValue' target='_blank'> Reset Password </a> <br/>
+							Click <a href='".$this-> baseUrl."forgetPassword?hash_key=$hashValue' target='_blank'> Reset Password </a> <br/>
 							Or Copy the link and open in browser:".$this-> baseUrl."forgetPassword?hash_key=$hashValue
 							<br/><br/>
 							Thanks for using Collap! <br/>
