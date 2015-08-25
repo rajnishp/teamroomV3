@@ -188,6 +188,15 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 					if($route[2] == "logout"){
 						$homeController -> logout ();
 					}
+					elseif($route[2] == 'signup') {
+						$homeController -> signup ();
+					}
+					elseif($route[2] == 'login') {
+						$homeController -> login ();
+					}
+					elseif($route[2] == 'forgetPassword') {
+						$homeController -> forgetPassword ();
+					}
 					
 					if (!empty($_POST)){
 						$form = $_POST['submit'];
@@ -224,7 +233,17 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 					}
 					else{
-						$jobsHomeController -> render ();
+						$checkNewRoute = explode("=",$route[2]);
+						
+						if ($checkNewRoute[0] == 'usernameCheck') {
+							$homeController -> usernameCheck (urldecode($checkNewRoute[1]));
+						}
+						elseif($checkNewRoute[0] == 'emailCheck') {
+							$homeController -> emailCheck (urldecode($checkNewRoute[1]));
+						}
+						else {
+							$homeController -> render ();
+						}
 					}
 
 				break;
@@ -238,6 +257,35 @@ if ( ! isset($_SESSION['user_id']) && count($route) <= 1  ){
 
 
 			default:
+
+				$recoverPasswordReq = explode('?', $page);
+					
+				if ($recoverPasswordReq[0] == "forgetPassword") {
+					//var_dump($recoverPasswordReq); die();
+					$recoverPasswordController = new RecoverPasswordController();
+					
+					//$routeHashKeyCheck = explode('?', $recoverPasswordReq[1]);
+					
+					//var_dump($routeHashKeyCheck); die();
+
+					if($route[2] == "newPassword"){
+						
+						$previousRoute = explode("/",$_SERVER['HTTP_REFERER']);
+						$previousPage = explode('?', $previousRoute[3]);
+						$hashKey = explode('=', $previousPage[1]);
+						$haskKeyAidId = explode('.', $hashKey[1]);
+						
+						$recoverPasswordController -> updatePassword($haskKeyAidId[0], $haskKeyAidId[1]);
+						break;
+					}
+					else {
+						$hashKey = explode('=', $recoverPasswordReq[1]);
+						$haskKeyAidId = explode('.', $hashKey[1]);
+						$recoverPasswordController->render($haskKeyAidId[0], $haskKeyAidId[1]);
+					}
+					break;
+				}
+
 				/*if( isset($_SESSION["user_id"] )){
 					$profileController = new ProfileController();
 					
