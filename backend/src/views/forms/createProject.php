@@ -52,6 +52,26 @@
     </div> <!-- /.form-group -->
 
     <div class="form-group">
+      <label class="col-md-3 control-label">Team Members</label>
+      <div class="col-md-7">
+        <div  id="add_team_member_div" >
+          <div class="col-md-6 form-group" style="margin-left: 0px;">
+            <input type="email" id="team_member_1" class="form-control" placeholder="Email ( Member 1 )" />
+          </div>
+          <div class="col-md-6 form-group" style="margin-left: 0px;">
+            <input type="email" id="team_member_2" class="form-control" placeholder="Email ( Member 2 )" />
+          </div>
+          <div class="col-md-6 form-group" style="margin-left: 0px;">
+            <input type="email" id="team_member_3" class="form-control" placeholder="Email ( Member 3 )" />
+          </div>
+          <div class="col-md-6 form-group" style="margin-left: 0px;">
+            <input type="email" id="team_member_4" class="form-control" placeholder="Email ( Member 4 )" />
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
 
       <label class="col-md-3 control-label">Project Status</label>
       <div class="col-md-5">
@@ -100,7 +120,8 @@
              
             </div>
             <div class="col-md-6">
-              <input type="file" name="file" class="btn btn-default btn-file" value="Browse">
+              <input type="file" name="_file" class="btn btn-default btn-file" value="Browse">
+              <!-- <input type="file" name="file" class="btn btn-default btn-file" value="Browse"> -->
             </div>    
           </div>  
 
@@ -117,7 +138,7 @@
     <div class="form-group">
       <label class="col-md-3 control-label"></label>
       <div class="col-md-7">
-        <button type="submit" class="btn btn-success" onclick="return (validateCreateProject());">Add More</button>
+        <button type="submit" class="btn btn-success" onclick="return (validateCreateProject());">Add Project</button>
       </div>
     </div> <!-- /.form-group -->
   </div>
