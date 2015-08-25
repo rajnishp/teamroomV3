@@ -500,7 +500,7 @@
         //fields = ["title","my_role","tech_skills","team_size","description"];
         var dataString = "";
 
-        var members = $('#team_member_1').val() +","+ $('#team_member_2').val() +","+ $('#team_member_3').val();
+        var members = $('#team_member_1').val() +","+ $('#team_member_2').val() +","+ $('#team_member_3').val() +","+ $('#team_member_4').val();
         dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val() + "&status=" + $('#status').val()  + "&members="+ members ;
         //console.log(dataString);
         
