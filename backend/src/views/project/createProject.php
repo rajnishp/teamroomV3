@@ -29,134 +29,15 @@
             
           <div class="row">
 
-            <div class="col-sm-10 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1">
+            <div class="col-sm-10 col-xs-10 col-md-10 col-lg-10 col-md-offset-1 col-lg-offset-1 col-sm-offset-1 col-xs-offset-1">
 
               <div class="heading-block">
                 <h3>
                   Create New Project
                 </h3>
               </div> <!-- /.heading-block -->
-            
-              <div class="form-horizontal">
-                <div class="form-group">
-
-                  <label class="col-md-3 control-label">Title</label>
-
-                  <div class="col-md-7">
-                    <input type="text" id ="title" class="form-control" placeholder="Title" />
-                  </div> <!-- /.col -->
-
-                </div> <!-- /.form-group -->
-
-                <div class="form-group">
-
-                  <label class="col-md-3 control-label">Used Technical Skills</label>
-
-                  <div class="col-md-7">
-                    <input type="text" id="tech_skills" class="form-control" placeholder="Used Technical Skills..." />
-                  </div> <!-- /.col -->
-
-                </div> <!-- /.form-group -->
-
-                <div class="form-group">
-
-                  <label class="col-md-3 control-label">Your Role</label>
-
-                  <div class="col-md-7">
-                    <input type="text" id="my_role" class="form-control" placeholder="Specify Your Role" />
-                  </div> <!-- /.col -->
-
-                </div> <!-- /.form-group -->
-
-                <div class="form-group">
-
-                  <label class="col-md-3 control-label">Team Size</label>
-                  <div class="col-md-7">
-                    <input type="number" id="team_size" class="form-control" placeholder="Team Size" />
-                  </div>
-
-                </div> <!-- /.form-group -->
-
-                <div class="form-group">
-                  <label class="col-md-3 control-label">Team Members</label>
-                  <div class="col-md-7">
-                    <div  id="add_team_member_div" >
-                      <div class="col-md-6">
-                        <input type="email" id="team_member_1" class="form-control" placeholder="Member Email " />
-                      </div>
-                      <div class="col-md-6">
-                        <input type="email" id="team_member_2" class="form-control" placeholder="Member Email " />
-                      </div>
-                      <div class="col-md-6">
-                        <input type="email" id="team_member_3" class="form-control" placeholder="Member Email " />
-                      </div>
-                      <div class="col-md-6">
-                        <input type="email" id="team_member_4" class="form-control" placeholder="Member Email " />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-                
-                <div class="form-group">
-
-                  <label class="col-md-3 control-label">Project Status</label>
-                  <div class="col-md-5">
-                    <select class="selectpicker" name="status" data-width="100%" id= "status" >
-                      <option value='Ongoing' >Ongoing ( Still it is ongoing or you want to expend your idea )</option>
-                      <option value='Completed' >Completed ( If you have completed your project )</option>
-                      <option value='YetToStart' >Yet To Start ( Its good time to start, <i>Best Of Luck</i>)</option>
-                    </select>                  
-                  </div>
-
-                </div> <!-- /.form-group -->
-
-
-
-                <div class="form-group">
-
-                  <label class="col-md-3 control-label">Duration</label>
-                  <div class="col-md-7">
-                    <div id="demo-dp-range">
-                      <div class="input-daterange input-group" id="datepicker">
-                        <input type="text" class="form-control" name="start" id="start"/>
-                        <span class="input-group-addon">To</span>
-                        <input type="text" class="form-control" name="end" id="end" />
-                      </div>
-                    </div>
-                  </div>
-
-                </div> <!-- /.form-group -->
-
-                <div class="form-group">
-                  <label class="col-md-3 control-label">Description</label>
-                  <div class="col-md-7">
-                   
-                    <textarea class="form-control share-widget-textarea" id = "description" rows="10" placeholder="Share what you've been up to..." tabindex="1"></textarea>
-
-                    <div class="share-widget-actions">
-                      <div class=" pull-left">
-                        <div class="col-md-6">
-                         
-                          <select class="selectpicker" name="type" data-live-search="true" data-width="100%" id= "type" >    
-                              <option value='Public' >Public</option>
-                              <option value='Classified' >Classified</option>
-                              <option value='Private' >Private</option>
-                          </select>
-                         
-                        </div>
-                        <div class="col-md-6">
-                          <input type="file" name="_file" class="btn btn-default btn-file" value="Browse">
-                        </div>    
-                      </div>  
-
-                      <div class="pull-right">
-                        <button type="submit" class="btn btn-primary btn-labeled fa fa-send fa-lg" tabindex="2" onclick="validateCreateProject()">Post</button>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            
+           
+              <?php include 'views/forms/createProject.php'; ?>
             </div>
           
           </div> <!-- /.row -->
@@ -225,7 +106,7 @@ function postNewProject(fields, responceTx){
     //fields = ["title","my_role","tech_skills","team_size","description"];
     var dataString = "";
 
-    var members = $('#team_member_1').val() +","+ $('#team_member_2').val() +","+ $('#team_member_3').val();
+    var members = $('#team_member_1').val() +","+ $('#team_member_2').val() +","+ $('#team_member_3').val() +","+ $('#team_member_4').val();
     dataString = "title=" + $('#'+fields[0]).val() + "&my_role=" + $('#'+fields[1]).val() + "&tech_skills=" + $('#'+fields[2]).val() + "&team_size=" + $('#'+fields[3]).val() + "&description=" + $('#'+fields[4]).val() + "&start=" + $('#start').val() + "&end=" + $('#end').val() + "&type=" + $('#type').val() + "&status=" + $('#status').val() + "&members="+ members;
                   // + "&member1=" + $('#team_member_1').val()  + "&member2=" + $('#team_member_2').val()  + "&member3="+ $('#team_member_3').val();
     console.log(dataString);

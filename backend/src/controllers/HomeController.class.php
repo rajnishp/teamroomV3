@@ -103,10 +103,12 @@ class HomeController extends BaseController {
 
 			if ($isEmailExist) {
 				echo "User is reistered with this Email,<br>Try different email or Please Sign In";
+				die();
 				//$flag = false;
 			}
 			elseif ($isUserNameExist) {
 				echo "User is reistered with this Username,<br>Try different Username or Please Sign In";
+				die();
 				//$flag = false;
 			}
 			else {
@@ -181,19 +183,16 @@ class HomeController extends BaseController {
 					}
 
 					//header('Location: ' .$this-> baseUrl ."completeProfile");
-					//$flag = true;
-					
 
 				}
 				else{
 					echo "Failed to register";
-					//$flag = false;
+					die();
 					//header('Location: '.$this-> baseUrl);
 					//base url redirected for any error occurred
-					//echo "failed to reg";
 				}
 			}
-			//return $flag;
+
 			//}
 		}
 	}

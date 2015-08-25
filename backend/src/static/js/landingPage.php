@@ -197,4 +197,59 @@ function validateForgetPassword(){
     return false;
     //return returnBool;
 }
+
+
+
+
+
+function usernameCheck() {
+  var xmlhttp;
+  var username=document.getElementById("usernameR");
+  if (username.value != ""){
+    if (window.XMLHttpRequest){
+      xmlhttp=new XMLHttpRequest();
+    } 
+    else {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+      if (xmlhttp.readyState==4 && xmlhttp.status==200){
+        //document.getElementById("status_username").innerHTML=xmlhttp.responseText;
+        document.getElementById("usernameR").innerHTML=xmlhttp.responseText;
+      }
+    };
+    xmlhttp.open("GET","<?= $this->baseUrl ?>home/usernameCheck="+encodeURIComponent(username.value),true);
+    xmlhttp.send(null);
+  }
+  return false;
+}
+
+function emailCheck() {
+  var xmlhttp;
+  var email=document.getElementById("email");
+  if (email.value != ""){
+    if (window.XMLHttpRequest){
+      xmlhttp=new XMLHttpRequest();
+    } 
+    else {
+      xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+    }
+    xmlhttp.onreadystatechange=function(){
+      if (xmlhttp.readyState==4 && xmlhttp.status==200){
+        //document.getElementById("status_email").innerHTML=xmlhttp.responseText;
+        document.getElementById("email").innerHTML=xmlhttp.responseText;
+      }
+    };
+    xmlhttp.open("GET","<?= $this->baseUrl ?>home/emailCheck="+encodeURIComponent(email.value),true);
+    xmlhttp.send();
+    
+  }
+};
+
+  function nospaces(t){
+      if(t.value.match(/\s/g)){
+          //bootstrap_alert(".alert_placeholder_nospace", "Sorry, you are not allowed to enter any spaces", 5000,"alert-warning");
+          t.value=t.value.replace(/\s/g,'');
+      }
+  }
 </script>
