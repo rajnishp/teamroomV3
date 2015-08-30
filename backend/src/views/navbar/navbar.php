@@ -7,6 +7,7 @@
           <span style="font-size: 30px;"> Collap
         </a>
 
+
         <button class="navbar-toggle" type="button" data-toggle="collapse" data-target=".navbar-collapse">
           <span class="sr-only">Toggle navigation</span>
           <i class="fa fa-bars"></i>
@@ -20,11 +21,7 @@
         </form>
  -->
         <ul class="mainnav-menu">
-          <li>
-            <!-- For facebook Likes -->
-            <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
-          </li>
-          
+
           <li class="dropdown ">
             <a href="<?= $baseUrl ?>#login<?= $this->url ? "?from=".urlencode($this->url):"" ?>">
               Login

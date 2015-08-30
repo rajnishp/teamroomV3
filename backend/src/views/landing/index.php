@@ -40,6 +40,8 @@
                 <div class="section-header">
               <!-- SECTION TITLE -->
               <h4 class="masthead-title">Register</h4>
+              <!-- For facebook Likes -->
+              <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
             </div>
             <?php /*
               <form class="form account-form registration-form masthead-form" method="POST" action="<?= $this-> baseUrl?>home/signup" onSubmit="return (validateReg());">
@@ -167,7 +169,9 @@
           <div class="account-body" style="margin-top: 60px;">
           
             <div class="row">
-
+              <!-- For facebook Likes -->
+              <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+              
               <h3 class ="pull-left">Login</h3>
               <h5 class="pull-right" style="margin-top: 18px;">
                 <a href="#register" style="color:#0CD85E"> 
