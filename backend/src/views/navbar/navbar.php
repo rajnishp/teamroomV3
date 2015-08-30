@@ -20,7 +20,11 @@
         </form>
  -->
         <ul class="mainnav-menu">
-
+          <li>
+            <!-- For facebook Likes -->
+            <div class="fb-like" data-share="true" data-width="450" data-show-faces="true"></div>
+          </li>
+          
           <li class="dropdown ">
             <a href="<?= $baseUrl ?>#login<?= $this->url ? "?from=".urlencode($this->url):"" ?>">
               Login
