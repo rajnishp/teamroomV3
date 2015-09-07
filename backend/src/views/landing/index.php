@@ -237,7 +237,7 @@
                   <small class="help-block" style="display: none;" data-bv-validator="notEmpty" data-bv-for="username" data-bv-result="NOT_VALIDATED">The first name is required and cannot be empty</small>
                   <small class="help-block" style="display: none;" data-bv-validator="regexp" data-bv-for="username" data-bv-result="NOT_VALIDATED">The first name can only consist of alphabetical characters and spaces</small>
                 </div>
-                <div class="form-group">
+                <div class="form-group" id="password_div">
                   <input type="password" class="input-block-level form-control" id="password" name="password" placeholder="Password">
                 </div>
 

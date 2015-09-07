@@ -44,7 +44,7 @@
 
         </div> <!-- /.content-container -->
         
-        <?php //require_once 'views/sidebar/sidebar_button.php'; ?>
+        <?php require_once 'views/sidebar/sidebar_button.php'; ?>
 
       </div>  <!-- /.boxed -->
       

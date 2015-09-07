@@ -83,13 +83,19 @@ class HomeController extends BaseController {
 
 			}
 			else{
+				header('HTTP/1.1 500 Internal Server Error');
 				echo "Username and Password donot match, Try Again";
 				//header('Location: '.$this-> baseUrl);
+				die();
 			}
 
 		}
-		//else 
+		else {
+			header('HTTP/1.1 500 Internal Server Error');
+			echo "Username and Password field cannot be empty";
+			die();
 			//header('Location: '.$this-> baseUrl);
+		}
 
 	}
 	function signup(){
@@ -102,11 +108,13 @@ class HomeController extends BaseController {
 			$isEmailExist = $this->userInfoDAO->queryByEmail($_POST['email']);
 
 			if ($isEmailExist) {
+				header('HTTP/1.1 500 Internal Server Error');
 				echo "User is reistered with this Email,<br>Try different email or Please Sign In";
 				die();
 				//$flag = false;
 			}
 			elseif ($isUserNameExist) {
+				header('HTTP/1.1 500 Internal Server Error');
 				echo "User is reistered with this Username,<br>Try different Username or Please Sign In";
 				die();
 				//$flag = false;
@@ -116,8 +124,10 @@ class HomeController extends BaseController {
 				if ($_SERVER['HTTP_REFERER'] == $this-> jobsBaseUrl) {
 					$userType = 'jobSearch';
 				}
-				else
+				else{
 					$userType = 'collaborator';
+				}
+
 				$this->user = new UserInfo(
 										null,
 										null,
@@ -186,6 +196,7 @@ class HomeController extends BaseController {
 
 				}
 				else{
+					header('HTTP/1.1 500 Internal Server Error');
 					echo "Failed to register";
 					die();
 					//header('Location: '.$this-> baseUrl);

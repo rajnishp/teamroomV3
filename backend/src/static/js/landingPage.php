@@ -94,7 +94,6 @@ function validateReg(){
     
     
     else {
-        console.log("insode  validateRegCheck at end before retirn");   
         var dataString = "";
           
         dataString = "username=" + $('#usernameR').val() + "&email=" + $('#email').val() + "&passwordR=" + $('#passwordR').val(); 
@@ -105,17 +104,7 @@ function validateReg(){
           data: dataString,
           cache: false,
           success: function(result){
-            //console.log(result);
-            //if(result){
-                //alert(result);
-                console.log("inside if result set checked true");
-                location.reload();
-            //}
-            //else {
-                //alert(result);
-                //console.log("inside else result not set");
-                //location.reload();
-            //}
+            location.reload();
           },
           error: function(result){
             return false;
@@ -141,7 +130,7 @@ function validateLog(){
         return false;
     }
     else {
-        var dataString = "";      
+        var dataString = "";
         dataString = "username=" + $('#username').val() + "&password=" + $('#password').val(); 
 
         $.ajax({
@@ -150,10 +139,19 @@ function validateLog(){
           data: dataString,
           cache: false,
           success: function(result){
-            location.reload();
+            var hash = window.location.hash.slice(); //Puts hash in variable, and removes the # character;
+            if (hash){
+              hash = (hash.split("?")[1]).split("=")[1];
+              window.location.replace(hash);              
+            }
+            else{
+              location.reload();
+            }
           },
           error: function(result){
-
+            $('#username').css("border-color", "red");
+            $('#password').css("border-color", "red");
+            $('#password_div').append("<font color='red'>Incorrect Value for Username or Password</font>");
           }
 
         });
